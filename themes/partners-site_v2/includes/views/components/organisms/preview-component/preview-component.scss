@@ -1,0 +1,268 @@
+.o-preview-component {
+  background-color: transparent;
+
+  @include media-breakpoint-up(md) {
+    display: flex;
+    align-items: stretch;
+    min-height: 360px;
+  }
+
+  &--reverse {
+    @include media-breakpoint-up(md) {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &__col {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    width: 50%;
+    flex: 0 0 auto;
+    @include media-breakpoint-down(sm) {
+      width: 100%;
+    }
+
+  }
+
+
+  &__img {
+      position: relative; 
+      height: 35vw;
+      // max-height: 594px; 
+      picture{
+        img{
+          max-height: 34vw;
+          object-fit: cover;
+          @include media-breakpoint-down(md) {
+            height: auto;
+            max-height: 50vw;
+            
+           }
+        }
+      } 
+      
+      @include media-breakpoint-down(md) {
+        height: auto;
+        max-height: 50vw;
+        
+       }
+  
+  }
+
+  &__content {
+    width:100%;
+    padding-left: 9%;  
+    padding-right: 9%;
+    @include media-breakpoint-down(lg) {
+      padding-left: 4%;
+      padding-right: 5%;
+    }
+    @include media-breakpoint-down(md) {
+      padding: 32px;
+    }
+    @include media-breakpoint-down(xs) {
+      width: 100%;
+      height: auto;
+      padding: 32px;
+    } 
+  }
+
+
+  .content {
+    padding-left: 9%;  
+    padding-right: 9%;
+    @include media-breakpoint-down(lg) {
+      padding-left: 4%;
+      padding-right: 5%;
+    }
+    @include media-breakpoint-down(md) {
+      padding: 32px;
+    }
+    @include media-breakpoint-down(xs) {
+      padding: 32px;
+    }
+
+
+    &__heading {
+      color: $black;
+      margin-bottom: 1rem;
+  
+        @include media-breakpoint-up(lg) {
+          margin-bottom: 16px;
+          font-size: 32px;
+        }
+    }
+    &__contact-info-wrapper{
+      width: 46%;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 4%;
+  
+        @include media-breakpoint-down(xl) {
+          margin-right: 10px;
+        }
+        @include media-breakpoint-down(md) {
+          width: 100%;
+        }
+  
+        @include media-breakpoint-down(sm) {
+          width: 100%;
+        }
+  
+        &:last-child{
+          margin-right: 0px;
+        }
+    }
+
+    &__description {
+      font-size: 18px;
+        line-height: 28px; 
+        color: $grey-400;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto; 
+  
+        p:last-child {
+          margin-bottom: 0;
+        }
+  
+        @include media-breakpoint-down(lg) {
+          font-size: 16px;
+          line-height: 20px;
+        }
+    }
+
+    &__contact-info {
+      margin-top: 2rem;
+    }
+
+    &__button {
+      display: block;
+      width: 100%;
+      margin-top: 2rem;
+
+      @include media-breakpoint-up(lg) {
+        margin-top: 3rem;
+        width: auto;
+        display: inline-block;
+      }
+    }
+
+    &__table {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+
+      @include media-breakpoint-up(lg) {
+        margin-bottom: 0;
+        display: block;
+      }
+    }
+
+    .table {
+      &__label {
+        width: 50%;
+        font-size: 12px;
+        color: $grey-400;
+        padding-right: 1rem;
+        margin-bottom: 1.5rem;
+
+        @include media-breakpoint-up(lg) {
+          width: auto;
+          float: left;
+          clear: both;
+          font-size: 14px;
+          line-height: 24px;
+          padding-right: 0;
+          margin-bottom: 1rem;
+        }
+      }
+
+      &__value {
+        width: 50%;
+        text-align: right;
+        font-size: 12px;
+        color: $black;
+        margin-bottom: 1.5rem;
+
+        @include media-breakpoint-up(lg) {
+          width: auto;
+          font-size: 14px;
+          line-height: 24px;
+          margin-bottom: 1rem;
+        }
+      }
+    }
+
+    &__list {
+      width: 100%;
+      padding: 0;
+      list-style-type: none;
+      margin: 1.5rem 0 0 0;
+
+      @include media-breakpoint-up(lg) {
+        margin-top: 2rem;
+      }
+    }
+
+    .list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); 
+      grid-auto-flow: row;
+      grid-auto-rows: min-content;
+      list-style-type: disc;
+      padding-left: 1.5rem;
+      margin-top: 24px;
+      column-gap: 30px;
+      @include media-breakpoint-down(md) {
+        grid-template-columns: none; 
+      }
+    }
+    .list {
+        
+      &__item {
+        font-size: 12px;
+        line-height: 18px;
+        color: $grey-400;
+        margin-bottom: 8px;
+    
+        &:last-child {
+          margin-bottom: 0;
+        }
+    
+        @include media-breakpoint-up(xl) {
+          font-size: 16px; 
+          line-height: 24px;
+          margin-bottom: 8px;
+        }
+        @include media-breakpoint-down(xl) {
+          font-size: 14px;
+          line-height: 24px;
+          margin-bottom: 8px;
+        }
+        
+      }
+    }
+  }
+}
+
+
+.bigContainer{
+  max-width: 1609px;
+  width: 95%;
+}
+
+.o-preview-component{
+  .a-image__img{
+
+    @include media-breakpoint-down(md) {
+      position: relative;
+      height: 100%;
+    }
+  }
+
+}

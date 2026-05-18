@@ -1,0 +1,110 @@
+@media screen and (max-width:2400px) and (min-width:1600px) {
+  .single-stock-car {
+      .o-stock-car__container {
+          max-width:1610px;
+      }
+      .o-stock-car__column-slider {
+          width: calc(100% - 500px);
+      }
+      .a-site-heading > div {
+          max-width:1600px;
+      }
+      .o-stock-car__column-details {
+          width:100%;
+      }
+      
+          .o-accordion-section__accordion {
+              max-width:unset;
+              h3 {
+                  font-size:20px!important;
+              }   
+              .item__list-item { 
+                  font-size:16px!important;
+              }
+          }
+          .l-stock-car-single__accordion-section {
+              padding-bottom:8rem;
+          }
+          .l-stock-car-single__gallery {
+  
+              padding:30px 0;
+              transform:none!important;
+          }
+          .full-width-gallery {
+              .container {
+                  max-width:1600px;
+                  .o-gallery__desktop-item {
+                      width:100%;
+                      height:100%;
+                      text-align:center;
+                  }
+                  }
+              }
+              .o-stock-cars-slider__container.container {
+                  max-width:1600px;
+              }
+              
+          }
+  }
+.l-stock-car-single {
+  $carGalleryImageHeightMobile: 164;
+  $carGalleryImageHeightDesktop: 248;
+
+  &__accordion-section {
+    margin-top: 4rem;
+    padding-bottom: $carGalleryImageHeightMobile / 16 + 6rem;
+
+    @include media-breakpoint-up(lg) {
+      margin-top: 8rem;
+      padding-bottom: $carGalleryImageHeightDesktop / 16 + 6rem;
+    }
+  }
+
+  &__gallery {
+    transform: translateY(-50%);
+    margin-bottom: -$carGalleryImageHeightMobile / 16 + 3rem;
+
+    @include media-breakpoint-up(lg) {
+      margin-bottom: -$carGalleryImageHeightDesktop / 16 + 15rem;
+    }
+  }
+ 
+}
+.single-stock-car {
+  .o-stock-car__column-slider {
+    @include media-breakpoint-down(md) {
+      max-height:500px;      
+    }
+    .m-car-gallery-slider__preview.preview {
+      @include media-breakpoint-down(md) { 
+        max-height:500px;    
+      }
+    }
+  }
+  .najem-info,
+      .lease-info {
+        padding:19px 0;
+      }
+      .najem-info {
+        display:none;
+      }
+      .najem-info span,
+      .lease-info span {
+        color:#1C6BBA;
+      }
+      .najem-info span:hover,
+      .lease-info span:hover {
+        cursor:pointer;
+      }
+      .najem-info p,
+      .lease-info p {
+        font-size:12px;
+        font-weight:400;
+        line-height:18px;
+        color:#000;
+      }
+      .najem-info p:not(:first-child),
+      .lease-info p:not(:first-child) {
+        display:none;
+      }
+}

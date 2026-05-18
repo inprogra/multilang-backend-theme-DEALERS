@@ -1,0 +1,49 @@
+.l-homepage {
+  &__offers {
+
+  }
+
+  .offers {
+
+    &__heading {
+      margin: 0 auto;
+    }
+
+    &__preview-component {
+    }
+  }
+
+  &__stock-cars-slider {
+  }
+
+  &__bottom-image {
+    position: relative;
+    display: block;
+    height: 256px;
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    object-fit: cover;
+    object-position: bottom center;
+
+    @include media-breakpoint-up(lg) {
+      height: 540px;
+    }
+  }
+
+  .bottom-image {
+    &__img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+
+      img {
+        object-fit: cover;
+        object-position: bottom center;
+      }
+    }
+  }
+}

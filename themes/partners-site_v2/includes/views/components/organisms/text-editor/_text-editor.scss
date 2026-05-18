@@ -1,0 +1,62 @@
+.o-text-editor {
+
+  &__content {
+    width: 100%;
+    max-width: 1064px;
+    margin: 0 auto;
+    @include media-breakpoint-down(lg) {
+      max-width: 808px;
+    }
+    @include media-breakpoint-down(md) {
+      max-width: 644px;
+    }
+    @include media-breakpoint-down(sm) {
+      max-width: 596px; 
+    }
+    @include media-breakpoint-down(xs) {
+      max-width: unset;
+    } 
+
+
+    h2 {
+      font-size: 28px;
+      line-height: 32px; 
+      color: #0A0A0A;
+      font-weight: 600;
+      margin-bottom: 16;
+
+      @include media-breakpoint-up(lg) {
+        font-size: 32px;
+        line-height: 36px;
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+    }
+
+    p {
+      font-size: 20px;
+      line-height: 28px;
+      color: $grey-400;
+      margin-bottom: 3rem;
+      @include media-breakpoint-down(sm) {
+        font-size: 16px;
+        line-height: 24px;
+      }
+
+      &:last-child {
+        margin-bottom: 0; 
+      }
+
+      @include media-breakpoint-up(lg) {
+        font-size: 20px;
+        line-height: 28px;
+        margin-bottom: 4rem;
+        font-weight: 350;
+      }
+    }
+
+    a {
+      transition: color $transition-base;
+    }
+  }
+}

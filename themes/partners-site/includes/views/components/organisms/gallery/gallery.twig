@@ -1,0 +1,47 @@
+<div class="{{ additionalClass|e('html_attr') }} o-gallery js-gallery">
+    <div class="container">
+        <div class="o-gallery__mobile-slider mobile-slider js-full-size-gallery">
+            <div class="swiper-container mobile-slider__slider js-gallery__slider">
+                <div class="swiper-wrapper">
+                    {% for galleryItem in gallery %}
+                        <div class="swiper-slide mobile-slider__slide slide js-full-size-gallery__trigger"
+                             data-gallery-image="{{ galleryItem.full.src }}"
+                             data-gallery-width="{{ galleryItem.full.width }}"
+                             data-gallery-height="{{ galleryItem.full.height }}"
+                             data-gallery-index="{{ loop.index0 }}"
+                        >
+                            {% include 'components/atoms/image/image.twig' with galleryItem.mobileImage|merge({
+                                additionalClass: 'slide__img'
+                            }) %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% include 'components/atoms/slider-button/slider-button.twig' with {
+                additionalClass: 'mobile-slider__button mobile-slider__button--prev js-gallery__button js-gallery__button--prev',
+                direction: 'prev'
+            } only %}
+            {% include 'components/atoms/slider-button/slider-button.twig' with {
+                additionalClass: 'mobile-slider__button mobile-slider__button--next js-gallery__button js-gallery__button--next',
+                direction: 'next'
+            } only %}
+        </div>
+        <div class="o-gallery__desktop js-full-size-gallery">
+            {% for galleryItem in gallery %}
+                <div class="o-gallery__desktop-item js-full-size-gallery__trigger"
+                     data-gallery-image="{{ galleryItem.full.src }}"
+                     data-gallery-width="{{ galleryItem.full.width }}"
+                     data-gallery-height="{{ galleryItem.full.height }}"
+                     data-gallery-index="{{ loop.index0 }}"
+                >
+                    {% include 'components/atoms/image/image.twig' with galleryItem.desktopImage|merge({
+                        additionalClasses: 'o-gallery__desktop-item-img',
+                        defaultMediaQuery: {
+                            size: '322px'
+                        }
+                    }) only %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

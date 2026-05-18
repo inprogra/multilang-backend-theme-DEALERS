@@ -1,0 +1,38 @@
+{% if image %}
+<div class="quotationCarsMainContainer">
+    <div class="quotationCarsMainRow">
+
+        <div class="quotationCarsImageColumn">
+            <div class="quotationCarsImageContainer">
+               {% if image %}
+               {% include 'components/atoms/image/image-query.twig' with {
+               additionalClass: '',
+               image: image
+           } %}
+            {% endif %}
+            </div>
+        </div>
+
+        <div class="quotationCarsDescriptionColumn">
+            <div class="quotationCarsDescriptionContainer">
+                <div class="titleQuotationCars">
+                    <h3>{{ title }}</h3>
+                </div>
+                <div class="quotationcarsDescription">
+                    <p>{{ description|raw }}</p>
+                </div>
+                {% if link %}
+                    <div class="buttonContainer">
+                        <div class="btnBody">
+                            <a class="buttonHref" href="{{ link.url }}" {% if link.target %}target="{{ link.target }}"{% endif %}>
+                                {{ link.title }} 
+                            </a>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endif %}

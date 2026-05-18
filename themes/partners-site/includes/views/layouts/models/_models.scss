@@ -1,0 +1,438 @@
+.l-models {
+  position: relative;
+  margin-bottom: 6rem;
+
+  @include media-breakpoint-up(xl) {
+    margin-bottom: 11rem;
+  }
+
+  &__container {
+    position: relative;
+  }
+
+  &__accordion {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+
+    @include media-breakpoint-up(lg) {
+      display: none;
+    }
+  }
+
+  .accordion {
+    &__category {
+      border-bottom: 1px solid $grey-200;
+
+      &:first-child {
+        border-top: 1px solid $grey-200;
+      }
+
+      &.is-active {
+        .category {
+          &__open-icon {
+            &::before {
+              transform: translate(-50%, -50%) rotate(90deg);
+            }
+          }
+          &__bottom {
+            max-height: 2000px;
+          }
+        }
+      }
+    }
+
+    .category {
+
+      &__top {
+        position: relative;
+        padding: 2rem 3rem 2rem 0;
+        cursor: pointer;
+      }
+
+      &__open-icon {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        width: 16px;
+        height: 16px;
+        transform: translateY(-50%);
+
+        &:before,
+        &::after {
+          content: '';
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 2px;
+          height: 100%;
+          background-color: $black;
+        }
+
+        &::before {
+          transform: translate(-50%, -50%);
+          transition: transform $transition-base;
+        }
+
+        &::after {
+          transform: translate(-50%, -50%) rotate(90deg);
+        }
+      }
+
+      &__heading {
+        font-size: 20px;
+        line-height: 28px;
+        color: $black;
+        margin-bottom: 0;
+      }
+
+      &__subheading {
+        font-size: 14px;
+        line-height: 24px;
+        color: $grey-400;
+        margin-bottom: 0;
+      }
+
+      &__bottom {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height $transition-base;
+      }
+
+      &__bottom-inner {
+        padding-bottom: 2rem;
+      }
+
+      &__cars-type {
+        margin-bottom: 0;
+        font-size: 14px;
+        line-height: 22px;
+        color: $grey-400;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+      }
+
+      &__cars {
+        list-style-type: none;
+        padding-left: 0;
+        margin-bottom: 4rem;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      &__car {
+        height: 72px;
+      }
+
+      .car {
+        &__link {
+          height: 100%;
+          display: flex;
+          align-items: center;
+        }
+
+        &__details {
+          width: calc(100% - 140px);
+        }
+
+        &__name {
+          font-size: 14px;
+          line-height: 24px;
+          color: $black;
+          margin-bottom: 0;
+        }
+
+        &__price {
+          font-size: 12px;
+          line-height: 18px;
+          color: $grey-400;
+          margin-bottom: 0;
+        }
+
+        &__img {
+          display: block;
+          width: 140px;
+        }
+      }
+    }
+  }
+
+  &__desktop-tabs {
+    display: none;
+
+    @include media-breakpoint-up(lg) {
+      display: flex;
+      align-items: stretch;
+    }
+  }
+
+  .desktop-tabs {
+    &__sidebar {
+      list-style-type: none;
+      padding-left: 0;
+      width: 276px;
+      padding-right: 3.5rem;
+      border-right: 1px solid $grey-300;
+      margin-bottom: 0;
+    }
+
+    &__sidebar-item {
+      position: relative;
+      margin-bottom: 4.5rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .sidebar-item {
+      &__button {
+        position: relative;
+        display: block;
+        border: none;
+        padding: 0;
+        background-color: transparent;
+        text-align: left;
+
+        &::before {
+          content: '';
+          position: absolute;
+          left: -2rem;
+          top: 50%;
+          width: 2px;
+          height: 100%;
+          background-color: $secondary;
+          transform: translateY(-50%);
+          opacity: 0;
+          transition: opacity $transition-base;
+        }
+
+        &.is-active {
+          &::before {
+            opacity: 1;
+          }
+
+          .sidebar-item {
+            &__heading,
+            &__subheading {
+              color: $black;
+            }
+          }
+        }
+      }
+
+      &__heading {
+        display: block;
+        line-height: 28px;
+        color: $grey-400;
+        margin-bottom: 0;
+        transition: color $transition-base;
+      }
+
+      &__subheading {
+        display: block;
+        font-size: 16px;
+        line-height: 24px;
+        color: $grey-400;
+        transition: color $transition-base;
+      }
+    }
+
+    &__content {
+      width: calc(100% - 276px);
+      padding-left: 2rem;
+    }
+
+    &__category {
+      visibility: hidden;
+      position: fixed;
+      transform: translateX(100vw);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity $transition-base;
+
+      &.is-active {
+        position: static;
+        opacity: 1;
+        pointer-events: all;
+        transform: none;
+        visibility: visible;
+      }
+    }
+
+    .category {
+      &__cars-type {
+        font-size: 14px;
+        line-height: 22px;
+        color: $grey-400;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        margin-bottom: .5rem;
+        margin-left: 3rem;
+      }
+
+      &__cars {
+        list-style-type: none;
+        padding-left: 0;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        margin-bottom: 0;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      &__car {
+        width: 210px;
+        margin-right: 7rem;
+        margin-bottom: 4rem;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+
+      .car {
+        &__link {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: flex-start;
+        }
+
+        &__details {
+          margin: 0 3rem;
+        }
+
+        &__name {
+          font-size: 16px;
+          line-height: 24px;
+          color: $black;
+          margin-bottom: 0;
+        }
+
+        &__price {
+          font-size: 12px;
+          line-height: 20px;
+          color: $grey-400;
+        }
+
+        &__img {
+          display: block;
+          height: 56px;
+          object-fit: contain;
+          margin: 0 2rem;
+          image-rendering: -webkit-optimize-contrast;
+        }
+      }
+    }
+  }
+
+  &__stock-info {
+    pointer-events: none;
+    margin-top: 3rem;
+
+    @include media-breakpoint-up(xl) {
+      position: absolute;
+      inset: 0;
+    }
+
+    &-container {
+      @include media-breakpoint-up(xl) {
+        height: 100%;
+      }
+    }
+
+    &-column {
+      display: flex;
+      justify-content: center;
+
+      @include media-breakpoint-up(lg) {
+        justify-content: flex-end;
+      }
+
+      @include media-breakpoint-up(xl) {
+        position: relative;
+        float: right;
+        height: 100%;
+        width: 100%;
+        max-width: 288px;
+      }
+    }
+
+    &-column.is-sticky-over &-box {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    &-column.is-sticky &-box {
+      position: fixed;
+      bottom: 135px;
+      right: 0;
+    }
+
+    &-column.is-sticky-under &-box {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+
+    &-box {
+      pointer-events: all;
+      max-width: 288px;
+      background: $white;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.05), 0px 25px 35px rgba(0, 0, 0, 0.03);
+      border-radius: 4px;
+      padding: 2rem 3rem;
+
+      @include media-breakpoint-up(lg) {
+        // this is for js-sticky. Without it el.offsetHeight of this
+        // equals parent height for some reason (after DOMContentLoaded)
+        max-height: 250px;
+      }
+
+      @include media-breakpoint-up(xl) {
+        background-color: rgba($white, 0.9);
+      }
+    }
+
+    .box {
+      &__heading {
+        font-size: 14px;
+        font-weight: $font-weight-medium;
+        line-height: 24px;
+        color: $black;
+      }
+
+      &__description {
+        font-size: 14px;
+        line-height: 24px;
+        color: $grey-400;
+      }
+
+      &__bottom {
+        margin-top: 1rem;
+        border-top: 1px solid $grey-300;
+        padding-top: 2rem;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      &__link {
+        font-size: 14px;
+        line-height: 24px;
+        font-weight: $font-weight-medium;
+        color: $secondary;
+        text-transform: uppercase;
+      }
+
+    }
+  }
+}

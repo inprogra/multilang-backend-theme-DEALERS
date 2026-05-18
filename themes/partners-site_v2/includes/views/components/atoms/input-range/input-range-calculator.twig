@@ -1,0 +1,112 @@
+<div id="battery-size" class="cost-calculator {{ additionalClass|e('html_attr') }} a-input-range js-input-range" {% if currency %} data-currency="%" {% endif %} data-selected-min="20" data-selected-max="80">
+    <div class="a-input-range__top">
+        
+        {% include '/components/atoms/cost-range/input.twig' %}
+    </div>
+    <div class="a-input-range__inputs">
+        <div class="a-input-range__input-item">
+            {% include 'components/atoms/input/input.twig' with {
+                id: 'price-range-min', 
+                name: name ~ '-min',
+                value: 20,
+                label: 'Poziom startowy:',
+                additionalClass: 'js-input-range__min',
+                type: 'text',
+                currency: '%'
+            } %}
+        </div>
+        <div class="a-input-range__input-item">
+            {% include 'components/atoms/input/input.twig' with {
+                id: 'price-range-max',
+                name: name ~ '-max',
+                value: 100,
+                label: 'Poziom planowany:',
+                additionalClass: 'js-input-range__max',
+                type: 'text',
+                currency: '%'
+            } %}
+        </div>
+    </div>
+</div>
+<style>
+.cost-calculator.a-input-range {
+    display:flex;
+
+}
+.cost-calculator .a-input-range__slider {
+    width:292px;
+    margin-right:16px;
+}
+@media screen and (min-width:998px) {
+	.a-input-range__slider {
+		width: calc(100% - 59px);
+	}
+}
+</style>
+<script type="text/javascript">
+	$(document).ready(function() {
+        slideOne();
+    slideTwo();
+    fillColor();
+    $('#slider-2').trigger('change');
+    })
+
+let sliderOne = document.getElementById("slider-1");
+let sliderTwo = document.getElementById("slider-2");
+var displayValOne = document.getElementById("price-range-min");
+let displayValTwo = document.getElementById("price-range-max");
+let minGap = 0;
+let sliderTrack = document.querySelector(".slider-track");
+let sliderMaxValue = document.getElementById("slider-1").max;
+
+$('#price-range-min').on('change',function() {
+    if (parseInt($('#price-range-max').val()) < $(this).val()) {
+        $('#price-range-max').val(parseInt($('#price-range-min').val()) + 1);   
+    }
+     if ($(this).val() < 0 || $(this).val() > 100) {
+        $(this).val(0);
+    }
+    sliderOne.value = ($(this).val() >= 0 ? $(this).val() : 0);
+   // console.log(sliderOne.value);
+    fillColor();
+    $('#slider-2').trigger('change');
+   // slideOne(true);
+})
+$('#price-range-max').on('change',function() {
+    if (parseInt($('#price-range-min').val()) > $(this).val()) {
+        $(this).val(parseInt($('#price-range-min').val()) + 1);   
+    }
+    if ($(this).val() > 100 || $(this).val() < 0) {
+        $(this).val(100);
+    }
+    
+    //displayValTwo.value = $(this).val();
+    sliderTwo.value =  ($(this).val() <= 100 ? $(this).val() : 100);
+    fillColor();
+    $('#slider-2').trigger('change');
+   // slideTwo(true);
+})
+function slideOne(manual = false){
+    if(parseInt(sliderTwo.value) - parseInt(sliderOne.value) < minGap){
+        sliderOne.value = parseInt(sliderTwo.value) - minGap;
+    }
+    if (!manual) {
+    displayValOne.value = sliderOne.value;
+    }
+    fillColor();
+}
+function slideTwo(manual = false){
+    if(parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= minGap){
+        sliderTwo.value = parseInt(sliderOne.value) + minGap;
+    }
+    if (!manual) {
+    displayValTwo.value = sliderTwo.value;
+    }
+    fillColor();
+}
+function fillColor(){    
+    percent1 = (sliderOne.value / sliderMaxValue) * 100 ;
+    percent2 = (sliderTwo.value / sliderMaxValue) * 100 ;
+    sliderTrack.style.background = `linear-gradient(to right, #dadae5 ${percent1}% , #284E80 ${percent1}% , #284E80 ${percent2}%, #dadae5 ${percent2}%)`;
+}
+	</script>

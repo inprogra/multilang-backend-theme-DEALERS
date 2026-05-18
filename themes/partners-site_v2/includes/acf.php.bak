@@ -1,0 +1,463 @@
+<?php
+
+use Classes\Cache;
+use Classes\Showroom;
+
+add_filter('acf/prepare_field', 'acfFieldsRestrictions');
+function acfFieldsRestrictions($field)
+{
+    if (isset($field['main-site-only']) && $field['main-site-only'] && !is_main_site()) {
+        return false;
+    }
+
+    if (isset($field['child-site-only']) && $field['child-site-only'] && is_main_site()) {
+        return false;
+    }
+
+    if (isset($field['admin-only']) && $field['admin-only'] && !current_user_can('administrator')) {
+        return false;
+    }
+
+    if (isset($field['multi-showroom-only']) && $field['multi-showroom-only'] && !Showroom::isMultiShowroom()) {
+        return false;
+    }
+
+    if (isset($field['multi-service-only']) && $field['multi-service-only'] && !Showroom::isMultiService()) {
+        return false;
+    }
+
+    if (isset($field['multi-showroom-and-service-only']) && $field['multi-showroom-and-service-only'] && !Showroom::isMultiShowroomAndService()) {
+        return false;
+    }
+
+    if (isset($field['required-multi-showroom-and-service-only']) && $field['required-multi-showroom-and-service-only']) {
+        if (Showroom::isMultiShowroomAndService()) {
+            $field['required'] = true;
+        } else {
+            $field['required'] = false;
+        }
+    }
+
+    return $field;
+}
+
+add_filter('acf/load_field_groups', 'acfFieldGroupsRestrictions', 30, 1);
+function acfFieldGroupsRestrictions($fieldGroups)
+{
+    $filteredGroups = [];
+
+    foreach ($fieldGroups as $fieldGroup) {
+        if (isset($fieldGroup['main-site-only']) && $fieldGroup['main-site-only'] && !is_main_site()) {
+            continue;
+        }
+        $filteredGroups[] = $fieldGroup;
+    }
+    return $filteredGroups;
+}
+
+add_filter('block_categories', 'registerBlockCategories', 10, 2);
+function registerBlockCategories($categories, $post): array
+{
+    return array_merge(
+        $categories,
+        [
+            [
+                'title' => 'Volvo',
+                'slug' => 'volvo',
+            ]
+        ]
+    );
+}
+
+add_action('after_setup_theme', 'removeCorePatterns');
+function removeCorePatterns()
+{
+    remove_theme_support('core-block-patterns');
+}
+
+add_action('acf/init', 'registerCustomBlocks');
+function registerCustomBlocks()
+{
+    if (function_exists('acf_register_block_type')) {
+        acf_register_block_type([
+            'name' => 'preview-component',
+            'title' => __('Podgląd oferty'),
+            'description' => __('Podgląd oferty'),
+            'render_template' => 'includes/blocks/preview-component.php',
+            'category' => 'volvo',
+            'mode' => 'edit',
+            'supports' => [
+                'align' => false,
+                'mode' => false,
+            ],
+            'icon' => '<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><path d="M20.1 11.2l-6.7-6.7c-.1-.1-.3-.2-.5-.2H5c-.4-.1-.8.3-.8.7v7.8c0 .2.1.4.2.5l6.7 6.7c.2.2.5.4.7.5s.6.2.9.2c.3 0 .6-.1.9-.2.3-.1.5-.3.8-.5l5.6-5.6c.4-.4.7-1 .7-1.6.1-.6-.2-1.2-.6-1.6zM19 13.4L13.4 19c-.1.1-.2.1-.3.2-.2.1-.4.1-.6 0-.1 0-.2-.1-.3-.2l-6.5-6.5V5.8h6.8l6.5 6.5c.2.2.2.4.2.6 0 .1 0 .3-.2.5zM9 8c-.6 0-1 .4-1 1s.4 1 1 1 1-.4 1-1-.4-1-1-1z"></path></svg>',
+            'example' => [
+                'attributes' => [
+                    'mode' => 'preview',
+                    'data' => [
+                        'backendPreview' => true
+                    ]
+                ]
+            ]
+        ]);
+
+        acf_register_block_type([
+            'name' => 'site-heading',
+            'title' => __('Nagłówek strony'),
+            'description' => __(''),
+            'render_template' => 'includes/blocks/site-heading.php',
+            'category' => 'volvo',
+            'mode' => 'edit',
+            'supports' => [
+                'align' => false,
+                'mode' => false,
+            ],
+            'icon' => '<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><path d="M6.2 5.2v13.4l5.8-4.8 5.8 4.8V5.2z"></path></svg>',
+            'example' => [
+                'attributes' => [
+                    'mode' => 'preview',
+                    'data' => [
+                        'backendPreview' => true
+                    ]
+                ]
+            ]
+        ]);
+
+        acf_register_block_type([
+            'name' => 'two-column-content-component',
+            'title' => __('Dwie kolumny'),
+            'description' => __('Zdjęcie/film + tekst'),
+            'render_template' => 'includes/blocks/two-column-content-component.php',
+            'category' => 'volvo',
+            'mode' => 'edit',
+            'supports' => [
+                'align' => false,
+                'mode' => false,
+            ],
+            'icon' => '<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><path d="M4 17h7V6H4v11zm9-10v1.5h7V7h-7zm0 5.5h7V11h-7v1.5zm0 4h7V15h-7v1.5z"></path></svg>',
+            'example' => [
+                'attributes' => [
+                    'mode' => 'preview',
+                    'data' => [
+                        'backendPreview' => true
+                    ]
+                ]
+            ]
+        ]);
+
+        acf_register_block_type([
+            'name' => 'offer-boxes',
+            'title' => __('Kafelki sprzedażowe'),
+            'description' => __('Kafelki sprzedażowe'),
+            'render_template' => 'includes/blocks/offer-boxes.php',
+            'category' => 'volvo',
+            'mode' => 'edit',
+            'supports' => [
+                'align' => false,
+                'mode' => false,
+            ],
+            'icon' => '<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true" focusable="false"><path d="M19 6H6c-1.1 0-2 .9-2 2v9c0 1.1.9 2 2 2h13c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-4.1 1.5v10H10v-10h4.9zM5.5 17V8c0-.3.2-.5.5-.5h2.5v10H6c-.3 0-.5-.2-.5-.5zm14 0c0 .3-.2.5-.5.5h-2.6v-10H19c.3 0 .5.2.5.5v9z"></path></svg>',
+            'example' => [
+                'attributes' => [
+                    'mode' => 'preview',
+                    'data' => [
+                        'backendPreview' => true
+                    ]
+                ]
+            ]
+        ]);
+
+        acf_register_block_type([
+            'name' => 'offer-cards',
+            'title' => __('Karty ofertowe'),
+            'description' => __('3-kolumnowy układ kart ofertowych'),
+            'render_template' => 'includes/blocks/offer-cards.php',
+            'category' => 'volvo',
+            'mode' => 'edit',
+            'supports' => [
+                'align' => false,
+                'mode' => false,
+            ],
+            'icon' => '<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="536.602px" height="536.602px" viewBox="0 0 536.602 536.602" style="enable-background:new 0 0 536.602 536.602;" xml:space="preserve"><rect x="389.722" y="194.86" width="146.88" height="146.881"/><rect x="194.861" y="194.86" width="146.88" height="146.881"/><rect y="194.86" width="146.88" height="146.881"/></svg>',
+            'example' => [
+                'attributes' => [
+                    'mode' => 'preview',
+                    'data' => [
+                        'backendPreview' => true
+                    ]
+                ]
+            ]
+        ]);
+
+        acf_register_block_type([
+            'name' => 'banner-with-content-overlay',
+            'title' => __('Banner z opisem'),
+            'description' => __('Banner z opisem'),
+            'render_template' => 'includes/blocks/banner-with-content-overlay.php',
+            'category' => 'volvo',
+            'mode' => 'edit',
+            'supports' => [
+                'align' => false,
+                'mode' => false,
+            ],
+            'icon' => '<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true" focusable="false"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM5 4.5h14c.3 0 .5.2.5.5v8.4l-3-2.9c-.3-.3-.8-.3-1 0L11.9 14 9 12c-.3-.2-.6-.2-.8 0l-3.6 2.6V5c-.1-.3.1-.5.4-.5zm14 15H5c-.3 0-.5-.2-.5-.5v-2.4l4.1-3 3 1.9c.3.2.7.2.9-.1L16 12l3.5 3.4V19c0 .3-.2.5-.5.5z"></path></svg>',
+            'example' => [
+                'attributes' => [
+                    'mode' => 'preview',
+                    'data' => [
+                        'backendPreview' => true
+                    ]
+                ]
+            ]
+        ]);
+
+        acf_register_block_type([
+            'name' => 'hero-image',
+            'title' => __('Zdjęcie Banner'),
+            'description' => __('Zdjęcie Banner'),
+            'render_template' => 'includes/blocks/hero-image.php',
+            'category' => 'volvo',
+            'mode' => 'edit',
+            'supports' => [
+                'align' => false,
+                'mode' => false,
+            ],
+            'icon' => 'format-image',
+            'example' => [
+                'attributes' => [
+                    'mode' => 'preview',
+                    'data' => [
+                        'backendPreview' => true
+                    ]
+                ]
+            ]
+        ]);
+
+        acf_register_block_type([
+            'name' => 'gallery',
+            'title' => __('Galeria'),
+            'description' => __('Galeria'),
+            'render_template' => 'includes/blocks/gallery.php',
+            'category' => 'volvo',
+            'mode' => 'edit',
+            'supports' => [
+                'align' => false,
+                'mode' => false,
+            ],
+            'icon' => 'format-image',
+            'example' => [
+                'attributes' => [
+                    'mode' => 'preview',
+                    'data' => [
+                        'backendPreview' => true
+                    ]
+                ]
+            ]
+        ]);
+
+        acf_register_block_type([
+            'name' => 'text-editor',
+            'title' => __('Edytor tekstowy (Blogowy)'),
+            'description' => __('Edytor tekstowy (Blogowy)'),
+            'render_template' => 'includes/blocks/text-editor.php',
+            'category' => 'volvo',
+            'mode' => 'edit',
+            'supports' => [
+                'align' => false,
+                'mode' => false,
+            ],
+            'icon' => 'editor-textcolor',
+            'example' => [
+                'attributes' => [
+                    'mode' => 'preview',
+                    'data' => [
+                        'backendPreview' => true
+                    ]
+                ]
+            ]
+        ]);
+
+        acf_register_block_type([
+            'name' => 'text-editor-extended',
+            'title' => __('Edytor tekstowy (rozbudowany)'),
+            'description' => __('Edytor tekstowy stosowany do stron informacyjnych'),
+            'render_template' => 'includes/blocks/text-editor-extended.php',
+            'category' => 'volvo',
+            'mode' => 'edit',
+            'supports' => [
+                'align' => false,
+                'mode' => false,
+            ],
+            'icon' => 'editor-textcolor',
+            'example' => [
+                'attributes' => [
+                    'mode' => 'preview',
+                    'data' => [
+                        'backendPreview' => true
+                    ]
+                ]
+            ]
+        ]);
+        acf_register_block_type([
+            'name' => 'table-component',
+            'title' => __('Generator tabeli'),
+            'description' => __('Generator tabeli'),
+            'render_template' => 'includes/blocks/table-component.php',
+            'category' => 'volvo',
+            'mode' => 'edit',
+            'supports' => [
+                'align' => false,
+                'mode' => false,
+            ],
+            'icon' => '<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" focusable="false"><path d="M20.1 11.2l-6.7-6.7c-.1-.1-.3-.2-.5-.2H5c-.4-.1-.8.3-.8.7v7.8c0 .2.1.4.2.5l6.7 6.7c.2.2.5.4.7.5s.6.2.9.2c.3 0 .6-.1.9-.2.3-.1.5-.3.8-.5l5.6-5.6c.4-.4.7-1 .7-1.6.1-.6-.2-1.2-.6-1.6zM19 13.4L13.4 19c-.1.1-.2.1-.3.2-.2.1-.4.1-.6 0-.1 0-.2-.1-.3-.2l-6.5-6.5V5.8h6.8l6.5 6.5c.2.2.2.4.2.6 0 .1 0 .3-.2.5zM9 8c-.6 0-1 .4-1 1s.4 1 1 1 1-.4 1-1-.4-1-1-1z"></path></svg>',
+            'example' => [
+                'attributes' => [
+                    'mode' => 'preview',
+                    'data' => [
+                        'backendPreview' => true
+                    ]
+                ]
+            ]
+        ]);
+    }
+}
+
+add_action('acf/init', 'registerAcfOptionsPages');
+add_action('acf/init', 'register_network_settings_pages');
+function register_network_settings_pages() {
+    
+    acf_add_options_page([
+        'page_title' => 'Finansowanie',
+        'menu_title' => 'Finansowanie',
+        'menu_slug' => 'options-leasing',
+        'post_id' => 'acf_network_options',
+        'capability' => 'manage_network_options',
+        'network' => true
+    ]);
+    
+    
+
+}   
+
+function registerAcfOptionsPages()
+{
+    if (function_exists('acf_add_options_page')) {
+        acf_add_options_page([
+            'page_title' => 'Opcje Strony Głównej',
+            'menu_title' => 'Opcje Strony Głównej',
+            'menu_slug' => 'options-homepage',
+            'post_id' => 'options-homepage',
+            'capability' => 'edit_posts',
+            'redirect' => false
+        ]);
+
+        acf_add_options_page([
+            'page_title' => 'Serwis',
+            'menu_title' => 'Serwis',
+            'menu_slug' => 'options-service',
+            'post_id' => 'options-service',
+            'capability' => 'edit_posts',
+            'redirect' => false
+        ]);
+
+        acf_add_options_page([
+            'page_title' => 'Opcje modeli',
+            'menu_title' => 'Opcje modeli',
+            'menu_slug' => 'options-models',
+            'post_id' => 'options-models',
+            'capability' => 'edit_posts',
+            'redirect' => false
+        ]);
+
+        acf_add_options_page([
+            'page_title' => 'Ustawienia Dealera',
+            'menu_title' => 'Ustawienia Dealera',
+            'menu_slug' => 'options-dealer',
+            'post_id' => 'options-dealer',
+            'capability' => 'edit_posts',
+            'redirect' => false
+        ]);
+
+        acf_add_options_page([
+            'page_title' => 'Przekierowania',
+            'menu_title' => 'Przekierowania',
+            'menu_slug' => 'options-redirects',
+            'post_id' => 'options-redirects',
+            'capability' => 'edit_posts',
+            'redirect' => false
+        ]);
+
+        acf_add_options_page([
+            'page_title' => 'Opcje Jazdy testowej',
+            'menu_title' => 'Opcje Jazdy testowej',
+            'menu_slug' => 'options-test-drive',
+            'post_id' => 'options-test-drive',
+            'capability' => 'administrator',
+            'redirect' => false,
+            'main-site-only' => true
+        ]);
+
+        acf_add_options_page([
+            'page_title' => 'Ustawienia globalne',
+            'menu_title' => 'Ustawienia globalne',
+            'menu_slug' => 'options-global',
+            'post_id' => 'options-global',
+            'capability' => 'edit_posts',
+            'redirect' => false
+        ]);
+    }
+}
+
+add_filter('acf/get_options_pages', 'acfOptionsPagesRestrictions');
+function acfOptionsPagesRestrictions($pages)
+{
+    foreach ($pages as $slug => $page) {
+        if (isset($page['main-site-only']) && $page['main-site-only'] && !is_main_site()) {
+            unset($pages[$slug]);
+        }
+    }
+    return $pages;
+}
+
+add_action('admin_head', 'my_custom_fonts');
+function my_custom_fonts()
+{
+    echo '<style>
+    .block-editor-inserter__preview-container {
+        width: 500px;
+    }
+    .block-editor-inserter__preview-content {
+      background-color: #fff;
+    } 
+  </style>';
+}
+
+add_action('admin_head', 'removeGutenbergBlocks');
+add_action('enqueue_block_editor_assets', 'removeGutenbergBlocks');
+function removeGutenbergBlocks()
+{
+    wp_enqueue_script(
+        'remove-gutenberg-blocks',
+        Cache::getAsset('editor.js'),
+        array('wp-blocks', 'wp-dom'),
+        '1.0.0',
+        true
+    );
+}
+
+
+add_filter('acf/update_value', 'acfReplaceDotWithComma', 10, 3);
+function acfReplaceDotWithComma($value, $post_id, $field)
+{
+    if ($field['type'] === 'text' && isset($field['replace_dot_with_comma']) && $field['replace_dot_with_comma'] === true) {
+        $value = str_replace('.', ',', $value);
+    }
+    return $value;
+}
+
+add_filter('acf/format_value/type=number', 'acfChangeNumberFormat');
+function acfChangeNumberFormat($value)
+{
+    $value = str_replace('.', ',', $value);
+    return $value;
+}

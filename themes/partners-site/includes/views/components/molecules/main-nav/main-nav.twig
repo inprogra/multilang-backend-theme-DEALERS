@@ -1,0 +1,37 @@
+<nav class="{{ additionalClass|e('html_attr') }} m-main-nav">
+	<ul class="m-main-nav__list">
+		{% for item in items %}
+			{% if 'samochody-elektryfikacja' not in item.url %}
+				<li class="m-main-nav__item">
+				
+					<a class="m-main-nav__link" href="{{ item.url }}" {% if item.nofollow %} rel="noopener noreferrer nofollow" {% endif %} {% if item.target == '_blank' %} target="_blank" {% endif %}>{{ item.title|trim }}</a>
+				</li>
+			{% endif %}
+		{% endfor %}
+		<li class="nostyles">
+			<a href="/szukaj">
+				<span>Szukaj</span>
+				<img src="/app/themes/partners-site/images/search_icon.png"/></a>
+		</li>
+		{% if hasHamburger %}
+			<li class="m-main-nav__item m-main-nav__item--hamburger">
+				{% include 'components/atoms/hamburger/hamburger.twig' with hamburger|merge({
+                    'displayText': ''
+                }) %}
+			</li>
+		{% endif %}
+	</ul>
+</nav>
+<style>
+	.nostyles {
+		list-style: none;
+		margin-right: 25px;
+	}
+	.m-main-nav__list li a span {
+		display: none;
+	}
+	.m-side-nav__menu-link img {
+		padding-left: 12px;
+		margin-top: -2px;
+	}
+</style>

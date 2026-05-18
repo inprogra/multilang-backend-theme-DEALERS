@@ -1,0 +1,246 @@
+.o-blog-post-footer {
+  @include media-breakpoint-up(lg) {
+    display: flex;
+    align-items: stretch;
+    max-height: 200px;
+  }
+
+  &--reverse {
+    @include media-breakpoint-up(lg) {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &__col {
+    background-color: $grey-100;
+    flex-grow: 2;
+
+    &:first-child {
+      margin: 16px 0px 16px -16px;
+
+      @include media-breakpoint-up(lg) {
+        margin: unset;
+      }
+    }
+  
+    &:last-child {
+      margin-right: -16px;
+
+      @include media-breakpoint-up(lg) {
+        margin-right: unset;
+      }
+    }
+  
+    @include media-breakpoint-up(lg) {
+      position: relative;
+      flex-shrink: 0;
+      flex-basis: auto;
+      margin-right: unset;
+      width: 38.5%;
+      height: 200px;
+    }
+  }
+
+  &__img {
+    height: 100%;
+  }
+
+  &__img-container {
+    flex-grow: 1;
+    position:relative;
+    margin-right: -16px;
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background-color: #1c6bba;
+    }
+
+    @include media-breakpoint-up(lg) {
+      width: 208px;
+      margin-left: 24px;
+      flex-grow: unset;
+    }
+  }
+
+  img {
+    padding-left: 4px;
+    padding-right: 16px;
+
+    @include media-breakpoint-up(lg) {
+      position: absolute;
+      height: 100%;
+      padding: 0;
+      margin-left: 4px;
+    }
+  }
+
+  &__content {
+    @include media-breakpoint-up(lg) {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      height: 100%;
+    }
+  }
+
+  &__author {
+    @include media-breakpoint-up(lg) {
+      align-items: end;
+    }
+  }
+
+  .content {
+    padding: 2.5rem 2rem 2rem;
+
+    @include media-breakpoint-up(lg) {
+      padding: 48px 24px;
+    }
+
+    &__heading {
+      font-size: 16px;
+      font-weight: 500;
+      color: $black;
+
+      @include media-breakpoint-up(lg) {
+        font-size: 20px;
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    &__description {
+      font-size: 12px;
+      color: $black;
+
+      @include media-breakpoint-up(lg) {
+        font-size: 14px;
+        line-height: 24px;
+      }
+    }
+
+    &__contact-info {
+      margin-top: 2rem;
+    }
+
+    &__button {
+      display: block;
+      width: 100%;
+      margin-top: 2rem;
+
+      @include media-breakpoint-up(lg) {
+        margin-top: 3rem;
+        width: auto;
+        display: inline-block;
+      }
+    }
+
+    &__table {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+
+      @include media-breakpoint-up(lg) {
+        margin-bottom: 0;
+        display: block;
+      }
+      
+      img {
+        padding-right: 16px;
+      }
+    }
+
+    .table {
+      &__label {
+        width: 50%;
+        font-size: 12px;
+        color: $grey-400;
+        padding-right: 1rem;
+        margin-bottom: 1.5rem;
+
+        @include media-breakpoint-up(lg) {
+          width: auto;
+          float: left;
+          clear: both;
+          font-size: 14px;
+          line-height: 24px;
+          padding-right: 0;
+          margin-bottom: 1rem;
+        }
+      }
+
+      &__value {
+        width: 50%;
+        text-align: right;
+        font-size: 12px;
+        color: $black;
+        margin-bottom: 1.5rem;
+
+        @include media-breakpoint-up(lg) {
+          width: auto;
+          font-size: 14px;
+          line-height: 24px;
+          margin-bottom: 1rem;
+        }
+      }
+    }
+
+    &__list {
+      width: 100%;
+      padding: 0;
+      list-style-type: none;
+      margin: 1.5rem 0 0 0;
+
+      @include media-breakpoint-up(lg) {
+        margin-top: 2rem;
+      }
+    }
+
+    .list {
+      &__item {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        font-size: 12px;
+        line-height: 18px;
+        color: $grey-400;
+        margin-bottom: 1rem;
+
+        &:before {
+          content: "";
+          display: inline-block;
+          flex: 0 0 auto;
+          width: 12px;
+          height: 8px;
+          margin-top: 0.6rem;
+          margin-right: 1rem;
+          background-color: $secondary;
+          mask-image: url("../../../../../assets/private/img/list-checkmark.svg");
+          mask-size: contain;
+          mask-repeat: no-repeat;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        @include media-breakpoint-up(lg) {
+          font-size: 14px;
+          line-height: 24px;
+          margin-bottom: 2.5rem;
+
+          &::before {
+            margin-top: 0.9rem;
+            width: 15px;
+            height: 10px;
+          }
+        }
+      }
+    }
+  }
+}

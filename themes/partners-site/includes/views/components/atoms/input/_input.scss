@@ -1,0 +1,65 @@
+.a-input {
+  position: relative;
+  line-height: 0;
+
+  &__field, &__label {
+    display: inline-block;
+  }
+
+  &__field {
+    width: 100%;
+    height: 44px;
+    padding: 2.5rem 2rem 1rem 2rem;
+    border: solid 1px $grey-300;
+    border-radius: $border-radius;
+    font-size: 14px;
+    line-height: 1;
+    background-color: $white;
+    transition: border $transition-base;
+
+    &:focus {
+      border-color: $blue-light;
+      outline: 0;
+    }
+  }
+
+  &__label {
+    pointer-events: none;
+    position: absolute;
+    top: 15px;
+    left: 2rem;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1;
+    color: $grey-400;
+    transition: top $transition-base, font-size $transition-base, transform $transition-base, color $transition-base;
+  }
+
+  &.is-active {
+    .a-input {
+      &__label {
+        top: 6px;
+        font-size: 12px;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &.has-error {
+    .a-input {
+      &__field {
+        border-width: 2px;
+        border-color: $red-error;
+
+        &:focus {
+          border-width: 1px;
+          border-color: $blue-light;
+        }
+      }
+
+      &__label {
+        color: $red-error
+      }
+    }
+  }
+}

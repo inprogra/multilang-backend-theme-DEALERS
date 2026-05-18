@@ -1,0 +1,67 @@
+<div class="{{ additionalClass|e('html_attr') }} {% if image.0.format == 1 %} custom_size_img {% endif %} a-image custom" --height="100%" --width="100%" style="{{ style|raw }};height:100%">
+    <picture>
+        {% if image is iterable %}
+        {% for s in image %}
+        <source srcset="{% if thumb %}{{ s.thumb }}{% else %}{{ s.src }}{% endif %}" media="(min-width: {{ s.query }}px)">
+        {% endfor %}
+        <img loading="lazy" class="{% if image.0.format == 1 %} smaller_img {% endif %}" src="{% if thumb %}{{ s.thumb }}{% else %}{{ s.src }}{% endif %}" alt=""></picture>
+        {% else %}
+        <img loading="lazy" class="{% if image.0.format == 1 %} smaller_img {% endif %}" src="{{image}}" alt=""></picture>
+        {% endif %}
+            
+
+        </div>
+
+        <style>
+.a-image.custom {
+    img:not(.smaller_img) {
+        width:100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+body.home .m-hero-slider .a-image.custom {
+img {
+        object-fit:cover!important;
+}
+}
+
+</style>
+        {% if image.0.format == 1 %}
+
+            <style>
+    .custom_size_img {
+        text-align:center;
+    }
+    @media screen and (min-width:1680px) {
+    body:not(.grid) {
+        .smaller_img {
+                width:100%;
+        }
+    }
+    body.grid {
+    .smaller_img {
+        max-height: 220px;
+            }
+        }
+    }
+   
+{% for s in image %} 
+    @media screen and (max-width: {{ s.query }}px) {
+        body.grid {
+            .smaller_img {
+                max-height: {{ s.theight }}px!important;
+            }
+        }
+        body:not(.grid) {
+        .smaller_img {
+                width:100%!important;
+        }
+    }        
+        
+    }
+{% endfor %}
+{% endif %}   
+</style> 
+        
+        

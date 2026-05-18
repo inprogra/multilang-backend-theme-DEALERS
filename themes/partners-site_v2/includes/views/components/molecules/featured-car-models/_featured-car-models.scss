@@ -1,0 +1,443 @@
+.featuredCarModeltitlesMainContainer{
+  width: 100%;
+  height: auto;
+  padding-top: 48px;
+  margin-bottom: 46px;
+
+  .featuredCarModeltitlesMainRow{
+    width: 100%;
+    height: auto;
+
+    .featuredCarModeltitlesMainColumn{
+      width: 100%;
+      height: auto;
+    
+      h2{
+        text-align: center;
+        font-size: 48px;
+        font-weight: 500;
+        color: #000000;
+
+        @include media-breakpoint-down(md) {
+          font-size: 28px;
+        }
+        @include media-breakpoint-down(sm) {
+          font-size: 24px;
+        }
+
+        strong{
+          color: #616161;
+        }
+      }
+    }
+  }
+}
+
+.featuredCarModelsMainContainer{
+  width: 100%;
+  height: 665px;
+  padding: 0px;
+
+  @include media-breakpoint-down(md) {
+    height: auto;
+  }
+
+
+  .featuredCarModelsMainRow{
+
+    width: 85%;
+    max-width: 1609px;
+    height: 100%;
+    margin-left: auto; 
+    margin-right: auto;
+    background: #FAFAFA;
+    
+    @include media-breakpoint-down(lg) { 
+      width: 93%;
+    }
+    @include media-breakpoint-down(md) {
+      width: 96%;
+      height: auto;
+    }
+
+    @include media-breakpoint-down(xs) {
+      width: 100%;
+    }
+   
+    .featuredCarModelsMainColumn{
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+
+      .featuredCarModelsBox{
+        width: 100%;
+        height: 630px;
+        display: flex;
+        
+        @include media-breakpoint-down(md) {
+          height: 543px;
+        }
+        @include media-breakpoint-down(xs) {
+          height: 480px;
+        }
+    
+        .featuredCarModelsImage{
+          width: 1000px;
+          height: 100%;
+          position: relative;
+          margin-left: auto;
+          margin-right: auto; 
+
+          @include media-breakpoint-down(lg) { 
+            width: 80%;
+          }
+          
+          @include media-breakpoint-down(xs) {
+            width: 100%;
+          }
+          
+          img{
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+            position: absolute;
+            top: -30px;
+          }
+
+          .featuredCarModelsTitleMainRow{
+            width: 100%;
+            height: auto;
+            padding-top: 30px;
+            margin-left: auto;
+            margin-right: auto; 
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            @include media-breakpoint-down(xs) {
+              padding-top: 0px;
+            }
+            
+            .featuredCarModelsTitleMainColumn{
+         
+              width: 100%;
+              height: auto;
+              position: relative;
+        
+              .featuredCarModelsTitle{
+                width: 100%;
+                height: auto;
+                padding-top: 40px;
+
+                @include media-breakpoint-down(xs) {
+                  padding-top: 24px;
+                }
+        
+                h2{
+                  font-size: 32px;
+                  color: #0A0A0A;
+                  font-weight: 500;
+                  margin-bottom: 0px;
+                  text-align: center;
+
+                  @include media-breakpoint-down(xs) {
+                    font-size: 24px;
+                  }
+                }
+              }
+            }
+          }
+
+          .featuredCarModelsDescription{
+            width: 100%;
+            height: auto;
+            position: absolute;
+            top: auto;
+            bottom: 40px;
+            left: 0px;
+  
+            .featuredCarModelName{
+              text-align: center;
+              h3{
+                font-size: 32px;
+                font-weight: 500;
+                color: #0A0A0A;
+                margin-bottom: 0px;
+                @include media-breakpoint-down(sm) {
+                  font-size: 24px;
+                  margin-bottom: 8px;
+                }
+  
+              }
+            }
+            .featuredCarModelPrice{
+              text-align: center;
+              p{
+                font-size: 16px;
+                font-weight: 350;
+                color: #0A0A0A;
+  
+              }
+            }
+            .sliderBtnContainer{
+              width: 100%;
+              height: auto;
+              position: relative;
+              padding-top: 10px;
+              justify-content: center;
+              display: flex;
+
+              .btnBody{
+                width: 154px;
+                height: 48px;
+                background: #1F1F1F;
+                border-radius: 4px;
+                border-style: solid;
+                border-color: #1F1F1F; 
+                border-width: 1px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: 0.4s;
+
+                @include media-breakpoint-down(xs) {
+                  width: 77px;
+                  height: 40px;
+
+                }
+
+                &:hover{
+                  background: #FFFFFF;
+                  transition: 0.4s;
+                }
+
+                &:hover a{
+                  color: #1F1F1F;
+                  transition: 0.4s;
+                 }
+
+                a{
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  color: #FFFFFF;
+                  font-size: 16px;
+                  font-weight: 500;
+                  width: 100%;
+                  height: 100%;
+                  transition: 0.4s;
+                  @include media-breakpoint-down(xs) {
+                    font-size: 14px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .nextBox{
+        position: absolute; 
+        top: 0px;
+        left: auto;
+        right: -60%;
+        transform: scale(0.7);
+        opacity: 0.6; 
+        @include media-breakpoint-down(xs) {
+          display: none;
+        }
+      }
+
+      .prevBox{
+        position: absolute; 
+        top: 0px;
+        left: -60%;
+        transform: scale(0.7);
+        opacity: 0.6; 
+
+        @include media-breakpoint-down(xs) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+body.home .owl-carousel .owl-stage-outer{
+
+  @include media-breakpoint-up(xl) {
+    height: 625px;
+  }
+  @include media-breakpoint-down(lg) {
+    height: auto;
+  }
+
+}
+body.home {
+.owl-nav{
+  display: block !important;
+  button{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    border-style: solid !important;
+    border-width: 1px !important;
+    border-color: #0A0A0A !important;
+    position: absolute;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    top: 50%; 
+
+    @include media-breakpoint-down(md) {
+      top: auto;
+      bottom: 150px;
+    }
+
+      span{
+        opacity: 0; 
+      }
+  }
+  .owl-prev{
+    //left: 185px;
+    left: 15vw;
+    background-image: url('../../../../../assets/img/chevronForward.svg') !important;
+    
+    @include media-breakpoint-down(lg) {
+      left: 12%;
+    }
+    
+
+    @include media-breakpoint-down(md) {
+      left: 12%;
+    }
+    @include media-breakpoint-down(xs) {
+      left: 4%;
+    }
+  }
+  .owl-next{
+    left: auto;
+    //right: 185px;
+    right: 15vw;
+    transform: rotate(180deg);
+    background-image: url('../../../../../assets/img/chevronForward.svg') !important;
+
+    @include media-breakpoint-down(lg) {
+      right: 12%;
+    }
+
+    @include media-breakpoint-down(md) {
+      right: 12%;
+    }
+    @include media-breakpoint-down(xs) {
+      right: 4%;
+    }
+  }
+}
+.owl-dots{
+  width: 100%;
+  height: auto;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 0px;
+  padding-bottom: 32px;
+
+  .owl-dot{
+    width: 60px;
+    height: 2px;
+    background: #DCDCDC !important; 
+    transition: 0.4s;
+  }
+  .active{
+    background: #0A0A0A !important;
+    transition: 0.4s;
+  }
+}
+.owl-item{
+  opacity:0.6;
+  cursor: pointer;
+  transition:0.4s;
+  //z-index: 2;
+
+  .featuredCarModelsBox{
+    .featuredCarModelsImage{
+
+      .featuredCarModelsTitleMainRow{
+        opacity: 0;
+        transition: 0.4s;
+      }
+      .featuredCarModelsDescription{
+        opacity:0;
+        transition: 0.4s;
+      }
+      img{
+        transform:scale(1.2) !important;
+        transition:0.4s;
+        @include media-breakpoint-down(lg) {
+          transform:scale(1.5) !important;
+        }
+
+        &:hover{
+          transition:0.4s;
+          @include media-breakpoint-up(xl) {
+            transform:scale(1.4) !important;
+          }
+          @include media-breakpoint-down(lg) {
+            transform:scale(1.8) !important;
+          }
+
+          @include media-breakpoint-down(md) {
+            transform:scale(1.6) !important;
+          }
+          @include media-breakpoint-down(sm) {
+            transform:scale(1.4) !important;
+          }
+        }
+      }
+    }
+  }
+}
+.owl-item.center{
+  opacity:1 !important;
+  transition:0.4s;
+  z-index: 1;
+  cursor: auto;
+  
+  .featuredCarModelsBox{
+    .featuredCarModelsImage{
+      .featuredCarModelsTitleMainRow{
+        opacity: 1;
+        transition: 0.4s;
+      }
+      .featuredCarModelsDescription{
+        opacity:1;
+        transition: 0.4s;
+      }
+      img{
+        @include media-breakpoint-up(xl) {
+          transform:scale(1.4) !important;
+          transition:0.4s;
+        }
+
+        // @include media-breakpoint-down(xl) {
+        //   transform:scale(1.4) !important;
+        //   transition:0.4s;
+        // }
+        
+        @include media-breakpoint-down(lg) {
+          transform:scale(1.9) !important;
+          transition: 0.4s;
+        }
+
+        @include media-breakpoint-down(md) {
+          transform:scale(2.1) !important;
+          transition: 0.4s;
+        }
+        @include media-breakpoint-down(sm) {
+          transform:scale(1.1) !important;
+          transition: 0.4s;
+        }
+      }
+    }
+  }
+}
+}

@@ -1,0 +1,35 @@
+
+
+
+<div class="discoveryCardMainColumn">
+    <div class="discoveryCardBox">
+        <div class="discoveryCardImageContainer">
+            {% if item.image %}
+            {% include 'components/atoms/image/image-query.twig' with {
+            additionalClass: '',
+            image: item.image
+        } %}
+            {% endif %}
+         
+
+        </div>
+        <div class="discoveryCardDescriptionContainer">
+            <div class="discoveryCardCategory">
+                <span>{{ item.option }}</span>
+            </div>
+            <div class="discoveryCardTitle">
+                <h3>{{ item.title }}</h3>
+            </div>
+            <div class="discoveryCardDescription">
+                <p>{{ item.description | raw }}</p>
+            </div>
+        </div>
+        <div class="buttonContainer">
+            <div class="btnBody">
+                <a class="buttonHref" href="{{ item.link.url ?: '#' }}">
+                    Sprawdź
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

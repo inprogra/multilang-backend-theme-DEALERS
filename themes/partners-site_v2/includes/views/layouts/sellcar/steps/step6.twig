@@ -1,0 +1,144 @@
+<div class="stepContent" data-step="step6">
+	<div class="stepHeader">
+		<span class="stepNumber">{{ __('Krok 6/6') }}</span>
+		<h3>{{ __('Dane kontaktowe') }}</h3>
+		<div class="formFields">
+			<div class="flexContainer">
+				<div class="leftForm">
+					<div class="singleField">
+						<label for="model">{{ __('Twoje dane*') }}</label>
+						<div class="inputBlock">
+							<input type="text" name="firstname" class="a-input__field firstname" placeholder="{{ __('Imię') }}" required/>
+						</div>
+						<div class="inputBlock">
+							<input type="text" name="lastname" class="a-input__field lastname" placeholder="{{ __('Nazwisko') }}" required/>
+						</div>
+						<div class="inputBlock">
+							<input type="text" name="phone" class="a-input__field firstname" placeholder="{{ __('Numer telefonu') }}" required/>
+						</div>
+						<div class="inputBlock">
+							<input type="text" name="email" class="a-input__field email" placeholder="{{ __('Email') }}" required/>
+						</div>
+					</div>
+				</div>
+				<div class="rightForm">
+					<div class="singleField">
+						<label for="model">{{ __('Interesuje mnie*') }}</label>
+						<div class="form__content-field a-checkbox">
+							<input type="checkbox" name="variant_1" value="zakup nowego pojazdu">
+							<span class="a-checkbox__icon"></span>
+							<div class="a-checkbox__label">
+								<label class="a-checkbox__label-main">{{ __('zakup nowego pojazdu') }}</label>
+							</div>
+						</div>
+						<div class="form__content-field a-checkbox">
+							<input type="checkbox" name="variant_2" value="zakup używanego pojazdu">
+							<span class="a-checkbox__icon"></span>
+							<div class="a-checkbox__label">
+								<label class="a-checkbox__label-main">{{ __('zakup używanego pojazdu') }}</label>
+							</div>
+						</div>
+						<div class="form__content-field a-checkbox">
+							<input type="checkbox" name="variant_3" value="wyłącznie sprzedaż pojazdu używanego">
+							<span class="a-checkbox__icon"></span>
+							<div class="a-checkbox__label">
+								<label class="a-checkbox__label-main">{{ __('wyłącznie sprzedaż pojazdu używanego') }}</label>
+							</div>
+
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="agreeContainer">
+		<p class="info_rules">{{ __('Administratorem Twoich danych osobowych będzie Volvo Car Poland sp. z o.o. z siedzibą w Warszawie, ul. Puławska 558/560, 02-884 Warszawa (dalej jako: „Volvo Car Poland").') }}
+			<span class="more">{{ __('więcej &gt;') }}</span>
+		</p>
+		{% include 'layouts/sellcar/regulations/rule_1.twig' %}
+		<div class="select_all form__content-field a-checkbox">
+			<input type="checkbox" name="select_all">
+			<span class="a-checkbox__icon"></span>
+			<div class="a-checkbox__label">
+				<label class="a-checkbox__label-main">{{ __('Zaznacz wszystkie zgody.') }}</label>
+			</div>
+		</div>
+		<p class="info_rules">
+			{{ __('Jeżeli wyrazisz poniższe zgody, będziemy mogli dokonać wstępnej wyceny Twojego samochodu, a autoryzowany dealer marki Volvo będzie mógł się z Tobą skontaktować w celu dokonania dokładnej wyceny Twojego samochodu i przedstawienia oferty jego wykupu') }}
+		</p>
+		<div class="automark form__content-field a-checkbox">
+			<input type="checkbox" name="agree_1" required>
+			<span class="a-checkbox__icon"></span>
+			<div class="a-checkbox__label">
+				<label class="a-checkbox__label-main">{{ __('* Zapoznałam/em się z treścią') }}
+			<a target="_blank" href="/valuation-rules/25.02.25-regulamin-szacunkowej-wyceny.pdf">{{ __('regulaminu') }}</a>
+
+				{{ __('i akceptuję jego treść.') }}</label>
+			</div>
+		</div>
+		<div class="automark form__content-field a-checkbox">
+			<input type="checkbox" name="agree_2">
+			<span class="a-checkbox__icon"></span>
+			<div class="a-checkbox__label">
+				<label class="a-checkbox__label-main">{{ __('* Wyrażam zgodę na udostępnienie moich danych osobowych przez Volvo Car Poland sp. z o.o., ul. Puławska 558/560, Warszawa (02-884) do') }}
+					{{dealer_address}}
+					{{ __('w celu przedstawienia mi przez') }}
+					{{dealer_name}}
+					{{ __('dokładnej wyceny i oferty wykupu mojego samochodu marki Volvo.') }}
+				</label>
+			</div>
+		</div>
+		<p class="info_rules">
+			{{ __('Jestem świadoma/y, że powyższe zgody mogę wycofać w każdej chwili, jednakże wycofanie danej zgody nie wpływa na zgodność z prawem przetwarzania, którego dokonano na podstawie zgody przed jej wycofaniem. Zgodę możesz wycofać za pomocą formularza dostępnego na stronie:') }}<br/>
+			<a target="_blank" href="https://www.volvocars.com/pl/subject-rights-request-form">https://www.volvocars.com/pl/subject-rights-request-form</a>.
+		</p>
+		<p class="info_rules">
+			{{ __('Jeżeli wyrazisz poniższe zgody, będziemy mogli przesyłać do Ciebie informacje o produktach i usługach marki Volvo') }}</p>
+
+		<div class="select_all_1 form__content-field a-checkbox">
+			<input type="checkbox" name="select_all" required>
+			<span class="a-checkbox__icon"></span>
+			<div class="a-checkbox__label">
+				<label class="a-checkbox__label-main">{{ __('Wyrażam zgody marketingowe na oba poniższe kanały kontaktu.') }}
+					
+				</label>
+<span class="more">{{ __('więcej &gt;') }}</span>
+
+				{% include 'layouts/sellcar/regulations/rule_2.twig' %}
+			</div>
+
+		</div>
+		<div class="automark1 orm__content-field a-checkbox">
+			<input type="checkbox" name="agree_3">
+			<span class="a-checkbox__icon"></span>
+			<div class="a-checkbox__label">
+				<label class="a-checkbox__label-main">{{ __('kontakt głosowy, na podany przeze mnie numer telefonu, w tym przy użyciu automatycznych systemów wywołujących') }}
+				</label>
+			</div>
+
+		</div>
+		<div class="automark1 form__content-field a-checkbox">
+			<input type="checkbox" name="agree_4">
+			<span class="a-checkbox__icon"></span>
+			<div class="a-checkbox__label">
+				<label class="a-checkbox__label-main">{{ __('SMS/e-mail, na podany przeze mnie numer telefonu, w tym przy użyciu automatycznych systemów wywołujących') }}
+				</label>
+			</div>
+
+		</div>
+		<p class="info_rules">
+			{{ __('Jestem świadoma/y, że powyższe zgody mogę wycofać w każdej chwili, jednakże wycofanie danej zgody nie wpływa na zgodność z prawem przetwarzania, którego dokonano na podstawie zgody przed jej wycofaniem. Zgodę możesz wycofać za pomocą formularza dostępnego na stronie:') }}<br/>
+			<a target="_blank" href="https://www.volvocars.com/pl/subject-rights-request-form">https://www.volvocars.com/pl/subject-rights-request-form</a>.
+		</p>
+	</div>
+</div></div>
+<input type="hidden" name="url" value="{{dealer_url}}"/>
+<input type="hidden" name="dealer_email" value="{{dealer_email}}"/>
+<input type="hidden" name="car_vin_number" value="" />
+<input type="hidden" name="valuation_url" value=""/>
+
+
+

@@ -1,0 +1,101 @@
+<div class="vinomat-search container">
+	<div class="vinomat-search-inner">
+		<div class="vinomat-search-title-section">
+			<h2>Sprawdź oferty przygotowane dla Twojego Volvo</h2>
+			<p>Wpisz numer VIN Twojego auta i zobacz listę usług i promocji</p>
+		</div>
+		<div class="vinomat-search-field">
+			<form name="vinomat-search" class="vinomat-form" method="POST" action="">
+            <input type="hidden" name="checkYear" value="1" />
+				<input type="text" class="vinomat-search" name="vinomat-search" maxlength="20" value="" placeholder="Numer VIN" required/>
+				<input type="submit" value="Wyszukaj"/>
+			</form>
+		</div>
+	</div>
+</div>
+<style>
+	.vinomat-search-inner h2 {
+		text-align: center;
+		font-size: 32px;
+		line-height: 36px;
+		font-weight: 500;
+		margin-bottom: 8px;
+	}
+	.vinomat-search-inner p {
+		margin-top: -2px;
+		text-align: center;
+		font-size: 14px;
+		line-height: 20px;
+		font-weight: 400;
+		color: #141414;
+	}
+    .vinomat-form {
+        //margin-top:24px;
+        text-align:center;
+        margin:24px auto 0 auto;
+    }
+    .vinomat-form input[type="text"] {
+        max-width: 656px;
+        width:100%;
+        height:44px;
+        font-size:14px;
+        box-sizing:border-box;
+        padding:12px 16px;
+        border-radius:4px;
+        border:1px solid #d5d5d5;
+        margin-right:16px;
+    }
+    .vinomat-form input[type="submit"] {
+        width:144px;
+        padding:0;
+        margin:0;
+        box-shadow:none;
+        border:0;
+        border-radius:4px;
+        background:#284E80;
+        color:#fff;
+        text-transform:uppercase;
+        font-size:14px;
+        line-height:20px;
+        text-align:center;
+        height:44px;
+        border-radius:4px;
+        font-weight:500;
+    }
+    .o-form-service__heading {
+        color:#000;
+    }
+    .heading_more {
+        width:100%;
+        text-align:center;
+        color:#707070;
+    }
+</style>
+<script type="text/javascript">
+var status = false;
+$(document).ready(function() {
+    if ($('#lead-type').length > 0) { 
+        status = true;
+    }
+    $('form.vinomat-form').submit(function() {
+        if ($('#lead-type').length > 0) {
+        gtag('event', 'vinomat_search', {
+                         'form_send': '1',                        
+        });
+        }
+    })
+    $('#lead-type').on('change', function() {
+        gtag('event', 'place_choose', {
+                         'form_send': '1',                        
+        });
+    })
+    if (status) {
+        $('.vinomat_link').on('click',function() {
+             gtag('event', 'offer_links', {
+                         'form_send': '1',                        
+        });
+        })
+    }
+})
+
+</script>

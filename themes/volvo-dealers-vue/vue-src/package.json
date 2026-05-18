@@ -1,0 +1,23 @@
+{
+  "name": "volvo-dealers-vue",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Vue source files for Volvo Dealers Theme - OPTIONAL build system",
+  "scripts": {
+    "dev": "echo 'Vite dev server requires Node.js 18+. Theme works without building - see README.md'",
+    "build": "echo 'Build requires Node.js 18+. Theme works without building - see README.md'",
+    "preview": "echo 'Preview requires Node.js 18+. Theme works without building - see README.md'"
+  },
+  "dependencies": {
+    "axios": "^0.26.1",
+    "swiper": "^8.3.2",
+    "vue": "^3.2.31",
+    "vue-i18n": "^9.1.11",
+    "vue-router": "^4.0.14"
+  },
+  "optionalDependencies": {
+    "@vitejs/plugin-vue": "^2.2.4",
+    "sass": "^1.49.9",
+    "vite": "^2.8.6"
+  }
+}

@@ -1,0 +1,11 @@
+<ul class="{{ additionalClass|e('html_attr') }} a-social-media-links">
+    {% for key, url in items %}
+        <li class="a-social-media-links__item">
+            <a href="{{ url }}" rel="noopener noreferrer nofollow" target="_blank" class="a-social-media-links__item-link">
+                {% include 'components/atoms/icon/icon.twig' with {
+                    'icon': key
+                } only %}
+            </a>
+        </li>
+    {% endfor %}
+</ul>

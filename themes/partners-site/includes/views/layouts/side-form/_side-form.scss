@@ -1,0 +1,106 @@
+.l-side-form {
+  &__bar {
+    z-index: 900;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: $grey-100;
+
+    @media screen and (max-height: 400px) {
+      display: none;
+    }
+  }
+
+  .bar {
+    padding: 1.5rem 2rem;
+    box-shadow: 0 -4px 8px rgb(20 20 20  / 7%);
+
+    &__container {
+      display: flex;
+      justify-content: center;
+
+      @include media-breakpoint-down(lg) {
+        padding: 0;
+      }
+
+      @include media-breakpoint-up(lg) {
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    &__text {
+      display: none;
+      font-size: 16px;
+      line-height: 1.5;
+      font-weight: $font-weight-medium;
+
+      @include media-breakpoint-up(lg) {
+        display: block;
+      }
+
+      a {
+        transition: color $transition-base;
+      }
+    }
+
+    &__button {
+      width: 100%;
+      max-width: 288px;
+
+      @include media-breakpoint-up(lg) {
+
+      }
+    }
+  }
+
+  &__aside {
+    z-index: 1100;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: $white;
+    width: 100%;
+    max-width: 445px;
+    transform: translate(100%);
+    transition: transform $transition-base;
+
+    body.admin-bar & {
+      @media (min-width: 783px) {
+        margin-top: 32px;
+      }
+    }
+  }
+
+  &__form {
+    height: 100%;
+  }
+
+  &__backdrop {
+    z-index: 1090;
+    pointer-events: none;
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: $black;
+    transition: opacity $transition-base;
+  }
+
+  &.is-opened {
+    .l-side-form {
+      &__aside {
+        transform: translate(0);
+      }
+
+      &__backdrop {
+        pointer-events: all;
+        opacity: 0.8;
+      }
+    }
+  }
+}

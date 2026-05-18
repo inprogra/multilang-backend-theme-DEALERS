@@ -1,0 +1,19 @@
+.breadcrumbs {
+  padding: 10px 0;
+}
+
+.breadcrumbs a:first-child {
+  color: #616161;
+  margin-left: 0;
+}
+
+.breadcrumbs span {
+  color: #616161;
+}
+
+.breadcrumbs a {
+  display: inline-block;
+  margin-right: 8px;
+  margin-left: 8px;
+  color: #0A0A0A;
+}

@@ -1,0 +1,18 @@
+<div class="{{ additionalClass|e('html_attr') }} a-checkbox {% if checked == 'on' %} is-active {% endif %}" data-field-name="{{ name }}">
+    <input type="checkbox" name="{{ name }}" {{ value ? ('value="' ~ value ~ '"')|raw : '' }} {% if checked == 'on' %} checked='checked' {% endif %}/>
+    <span class="a-checkbox__icon"></span>
+    <div class="a-checkbox__label">
+        <label class="a-checkbox__label-main">{% if mandatory %}* {% endif %}{{ label }}</label>
+        {% if detailsLabel %}
+            <div class="a-checkbox__label-details details">
+                <span class="details__trigger details__trigger-expand">Więcej &rsaquo;</span>
+                <span class="details__text">
+                    <span class="details__text-inner">
+                        <span>{{ detailsLabel|trim|raw }}</span>
+                        <span class="details__trigger details__trigger-shrink">Mniej &lsaquo;</span>
+                    </span>
+                </span>
+            </div>
+        {% endif %}
+    </div>
+</div>

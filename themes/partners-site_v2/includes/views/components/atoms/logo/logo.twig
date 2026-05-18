@@ -1,0 +1,8 @@
+<a href="{{ url }}" class="{{ additionalClass|e('html_attr') }} a-logo">
+    <span class="a-logo__img">
+        {{ svg|raw }}
+    </span>
+    {% if partnerName %}
+        <span class="a-logo__text">{{ partnerName|raw }}</span>
+    {% endif %}
+</a>

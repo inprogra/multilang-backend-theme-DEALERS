@@ -1,0 +1,26 @@
+<div class="o-banner-with-content-overlay">
+    {% include 'components/atoms/image/image.twig' with image|merge({
+        additionalClass: 'o-banner-with-content-overlay__img'
+    }) %}
+    <div class="o-banner-with-content-overlay__container container">
+        <div class="o-banner-with-content-overlay__content content">
+            <div class="content__inner">
+                {% if heading %}
+                    <h2 class="h2 content__heading">{{ heading|trim }}</h2>
+                {% endif %}
+                {% if description %}
+                    <div class="content__description">
+                        <p>
+                            {{ description|trim }}
+                        </p>
+                    </div>
+                {% endif %}
+                {% if hasButton %}
+                    {% include 'components/atoms/button/button-link.twig' with button|merge({
+                        additionalClass: 'content__button'
+                    }) only %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

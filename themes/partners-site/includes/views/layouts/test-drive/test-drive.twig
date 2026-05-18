@@ -1,0 +1,101 @@
+<div class="l-test-drive js-test-drive">
+    <div class="l-test-drive__container container">
+        <div class="l-test-drive__wrapper">
+            <div class="l-test-drive__main main">
+                <div class="main__inner js-sticky__element">
+                    <div class="main__header">
+                        <h1 class="main__heading">Jazda testowa</h1>
+                        <h2 class="main__subheading">Wskaż samochód</h2>
+                    </div>
+                    <div class="main__content">
+                        <div class="main__groups js-test-drive__models">
+                        
+                            {% for group in groups %}
+                                
+                                    {% for model in group %}
+                                    <div class="main__groups-item">
+                                        <label class="main__model model js-test-drive__model">
+                                            <a href="/jazda-testowa-model-{{model.slug}}" class="link_model_href">
+                                            <div class="model__image">
+                                                <img src="{{ model.image.sizes.2.src }}" alt="{{ model.name}}" />
+                                                
+                                            </div>
+                                            <div class="text-center full-width">
+                                              <input type="checkbox d-none" name="models" value="{{ model.name }}"/>
+                                            <div class="model__label">
+                                                <span class="model__label-icon"></span>
+                                                <p class="model__label-text">{{ model.name }}</p>
+                                            </div>
+                                            </div>
+                                            </a>
+                                        </label>
+                                        </div>
+                                    {% endfor %}
+                               
+                            {% endfor %}
+                             
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>
+<style>
+@media screen and (min-width:998px) {
+.l-test-drive .main__groups {
+    max-width:100%;
+    display:flex;   
+    flex-wrap:wrap;
+    flex-direction:row;
+}
+.l-test-drive .main__groups > div {
+    
+    flex: 1 0 21%; /* explanation below */
+    margin: 5px;
+    text-align:center;
+}
+}
+.l-test-drive .main__groups > div a {
+    display:block;
+    width:100%;
+}
+.full-width {
+    width:100%;
+}
+.main__model  a {
+    color:rgb(22, 42, 70);
+}
+.model__label p {
+    text-align:center;
+}
+.d-none {
+    display:none;
+}
+.model__label {
+    width:100%;
+}
+.model__label span,
+.model__label span::before {
+    display:none!important;
+}
+.main__inner.js-sticky__element {
+    left:0!important;
+    right:0;
+}
+.l-test-drive__main.is-sticky .main__inner,
+.l-test-drive__main.is-sticky-under .main__inner {
+    position:relative;
+}
+.l-test-drive .main__model {
+    width:100%;
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('a.link_model_href').click(function() {
+        document.location.href = $(this).attr('href');
+    })
+});
+</script>

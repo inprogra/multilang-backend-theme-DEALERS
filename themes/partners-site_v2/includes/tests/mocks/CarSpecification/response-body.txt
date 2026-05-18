@@ -1,0 +1,469 @@
+{
+    "items": [
+        {
+            "code": "25_C",
+            "name": "T5 250 KM automatyczna Geartronic, 8 biegów, AWD",
+            "sectionId": "DRIVE",
+            "sectionName": "Napęd"
+        },
+        {
+            "code": "13",
+            "name": "Inscription",
+            "sectionId": "VERSION",
+            "sectionName": "Wersja"
+        },
+        {
+            "code": "71700",
+            "name": "717 Onyx Black",
+            "sectionId": "PAINT_METALLIC",
+            "sectionName": "Kolor metaliczny"
+        },
+        {
+            "code": "RA4000",
+            "name": "RA40 Fotele komfortowe z tapicerką skórzaną Moritz",
+            "sectionId": "UPHOLSTERY",
+            "sectionName": "Tapicerka"
+        },
+        {
+            "code": "PD02",
+            "name": "Pakiet oświetlenia wnętrza poziom III",
+            "sectionId": "OPTION_INTERIOR",
+            "sectionName": "Wnętrze"
+        },
+        {
+            "code": "FT02",
+            "name": "Lane Keeping Aid (LKA) - układ utrzymania pasa ruchu",
+            "sectionId": "OPTION_SAFETY",
+            "sectionName": "Bezpieczeństwo"
+        },
+        {
+            "code": "NI02",
+            "name": "Elektrycznie regulowany fotel kierowcy z pamięcią ustawień",
+            "sectionId": "OPTION_COMFORT",
+            "sectionName": "Komfort"
+        },
+        {
+            "code": "0085",
+            "name": "727 - Czujnik wilgotności powietrza",
+            "sectionId": "OPTION_FUNCTIONALITY",
+            "sectionName": "Funkcjonalność"
+        },
+        {
+            "code": "NO03",
+            "name": "Zagłówki tylne",
+            "sectionId": "OPTION_FUNCTIONALITY",
+            "sectionName": "Funkcjonalność"
+        },
+        {
+            "code": "KG02",
+            "name": "33 - Tempomat",
+            "sectionId": "OPTION_FUNCTIONALITY",
+            "sectionName": "Funkcjonalność"
+        },
+        {
+            "code": "KU02",
+            "name": "Volvo On Call",
+            "sectionId": "OPTION_SENSUS",
+            "sectionName": "Sensus"
+        },
+        {
+            "code": "KB02",
+            "name": "12,3-calowy cyfrowy wyświetlacz zegarów kierowcy",
+            "sectionId": "OPTION_SENSUS",
+            "sectionName": "Sensus"
+        },
+        {
+            "code": "L102",
+            "name": "140 - Autoalarm Volvo Guard z czujnikami przechyłu i ruchu wewnątrz kabiny",
+            "sectionId": "OPTION_SECURITY",
+            "sectionName": "Zabezpieczenia"
+        },
+        {
+            "code": "R603",
+            "name": "Zestaw naprawczy",
+            "sectionId": "OPTION_OTHERS",
+            "sectionName": "Pozostałe"
+        },
+        {
+            "code": "PN03",
+            "name": "Automatycznie przyciemniane lusterko wsteczne oraz lusterka boczne",
+            "sectionId": "OPTION_FUNCTIONALITY",
+            "sectionName": "Funkcjonalność"
+        },
+        {
+            "code": "VB02",
+            "name": "Nawigacja Sensus",
+            "sectionId": "OPTION_SENSUS",
+            "sectionName": "Sensus"
+        },
+        {
+            "code": "GR03",
+            "name": "Chromowane akcenty wykończenia z przodu (przedni spojler i wlot powietrza)",
+            "sectionId": "OPTION_EXTERIOR",
+            "sectionName": "Nadwozie"
+        },
+        {
+            "code": "0072",
+            "name": "System mocowania fotelika ISOFIX dla zewnętrznych miejsc tylnej kanapy",
+            "sectionId": "OPTION_INTERIOR",
+            "sectionName": "Wnętrze"
+        },
+        {
+            "code": "NC0C",
+            "name": "Naturalne drewno Driftwood",
+            "sectionId": "INLAY",
+            "sectionName": "Wykończenie wnętrza"
+        },
+        {
+            "code": "RL02",
+            "name": "CITY SAFETY - Układ wspomagania hamowania dla różnicy prędkości pomiędzy pojazdami sięgającej 50 km/h",
+            "sectionId": "OPTION_SAFETY",
+            "sectionName": "Bezpieczeństwo"
+        },
+        {
+            "code": "VP02",
+            "name": "529 - Czujniki parkowania - tył (PARK ASSIST)",
+            "sectionId": "OPTION_FUNCTIONALITY",
+            "sectionName": "Funkcjonalność"
+        },
+        {
+            "code": "N502",
+            "name": "Podłokietnik tylnej kanapy ze schowkiem i uchwytami na kubki",
+            "sectionId": "OPTION_COMFORT",
+            "sectionName": "Komfort"
+        },
+        {
+            "code": "NV02",
+            "name": "Elektyczna regulacja odcinka lędźwiowego",
+            "sectionId": "OPTION_COMFORT",
+            "sectionName": "Komfort"
+        },
+        {
+            "code": "TJ01",
+            "name": "Zderzaki w kolorze nadwozia",
+            "sectionId": "OPTION_EXTERIOR",
+            "sectionName": "Nadwozie"
+        },
+        {
+            "code": "T211",
+            "name": "Oznaczenie silnika T5",
+            "sectionId": "OPTION_OTHERS",
+            "sectionName": "Pozostałe"
+        },
+        {
+            "code": "RU02",
+            "name": "Trójramienna, skórzana kierownica z elementami aluminium",
+            "sectionId": "STEERING_WHEEL",
+            "sectionName": "Kierownica"
+        },
+        {
+            "code": "DI02",
+            "name": "Skórzane pokrycie gałki zmiany biegów",
+            "sectionId": "GEAR_KNOB",
+            "sectionName": "Dźwignia zmiany biegów"
+        },
+        {
+            "code": "PU02",
+            "name": "Regulowane podparcie ud w fotelach przednich",
+            "sectionId": "UNDEFINED",
+            "sectionName": ""
+        },
+        {
+            "code": "PB02",
+            "name": "Podświetlane lusterka w osłonach przeciwsłonecznych",
+            "sectionId": "OPTION_INTERIOR",
+            "sectionName": "Wnętrze"
+        },
+        {
+            "code": "SR02",
+            "name": "Podwójne, zintegrowane końcówki rur wydechowych",
+            "sectionId": "OPTION_EXTERIOR",
+            "sectionName": "Nadwozie"
+        },
+        {
+            "code": "K702",
+            "name": "Elektrycznie składane lusterka zewnętrzne",
+            "sectionId": "OPTION_FUNCTIONALITY",
+            "sectionName": "Funkcjonalność"
+        },
+        {
+            "code": "FR02",
+            "name": "RSI (ROAD SIGN INFORMATION) - układ informowania o znakach drogowych",
+            "sectionId": "OPTION_FUNCTIONALITY",
+            "sectionName": "Funkcjonalność"
+        },
+        {
+            "code": "0083",
+            "name": "Czujnik deszczu",
+            "sectionId": "OPTION_FUNCTIONALITY",
+            "sectionName": "Funkcjonalność"
+        },
+        {
+            "code": "LF01",
+            "name": "Lusterka zewnętrzne w kolorze nadwozia",
+            "sectionId": "OPTION_EXTERIOR",
+            "sectionName": "Nadwozie"
+        },
+        {
+            "code": "DB04",
+            "name": "Automatyczna Geartronic, 8 biegów AWD",
+            "sectionId": "UNDEFINED",
+            "sectionName": ""
+        },
+        {
+            "code": "KK03",
+            "name": "2 porty USB w tunelu środkowym",
+            "sectionId": "OPTION_SENSUS",
+            "sectionName": "Sensus"
+        },
+        {
+            "code": "NJ01",
+            "name": "Mechaniczna regulacja fotela pasażera z elektryczną regulacją wysokości",
+            "sectionId": "OPTION_COMFORT",
+            "sectionName": "Komfort"
+        },
+        {
+            "code": "RO02",
+            "name": "Slippery Road Alert and Hazard Light Alert",
+            "sectionId": "UNDEFINED",
+            "sectionName": ""
+        },
+        {
+            "code": "0087",
+            "name": "Układ wstrzymywania pracy silnika STOP/START",
+            "sectionId": "OPTION_FUNCTIONALITY",
+            "sectionName": "Funkcjonalność"
+        },
+        {
+            "code": "R12F",
+            "name": "18-calowe, 5-ramienne Black Diamond Cut",
+            "sectionId": "WHEELS",
+            "sectionName": "Koła"
+        },
+        {
+            "code": "ED01",
+            "name": "ECC (ELECTRONIC CLIMATE CONTROL) - klimatyzacja elektroniczna 2-strefowa",
+            "sectionId": "OPTION_COMFORT",
+            "sectionName": "Komfort"
+        },
+        {
+            "code": "NY02",
+            "name": "Dywaniki tekstylne",
+            "sectionId": "OPTION_INTERIOR",
+            "sectionName": "Wnętrze"
+        },
+        {
+            "code": "EJ02",
+            "name": "Wyłącznik poduszki powietrznej pasażera PACOS",
+            "sectionId": "OPTION_SAFETY",
+            "sectionName": "Bezpieczeństwo"
+        },
+        {
+            "code": "EE02",
+            "name": "Przewietrzanie wnętrza po odblokowaniu zamków samochodu",
+            "sectionId": "OPTION_SENSUS",
+            "sectionName": "Sensus"
+        },
+        {
+            "code": "0084",
+            "name": "Sterowanie audio z kierownicy",
+            "sectionId": "OPTION_SENSUS",
+            "sectionName": "Sensus"
+        },
+        {
+            "code": "RS02",
+            "name": "EBL (EMERGENCY BRAKE LIGHTS) - ostrzeganie innych użytkowników drogi o gwałtownym hamowaniu",
+            "sectionId": "OPTION_SAFETY",
+            "sectionName": "Bezpieczeństwo"
+        },
+        {
+            "code": "TC01",
+            "name": "Colour coordinated door handles without damper",
+            "sectionId": "IGNORED",
+            "sectionName": ""
+        },
+        {
+            "code": "R518",
+            "name": "235/45R18",
+            "sectionId": "UNDEFINED",
+            "sectionName": ""
+        },
+        {
+            "code": "MC02",
+            "name": "CLEAN ZONE - Pakiet czystego wnętrza z systemem wstępnej wentylacji auta w momencie otwarcia samochodu",
+            "sectionId": "OPTION_COMFORT",
+            "sectionName": "Komfort"
+        },
+        {
+            "code": "FJ01",
+            "name": "Standardowe wykończenie podsufitki",
+            "sectionId": "OPTION_OTHERS",
+            "sectionName": "Pozostałe"
+        },
+        {
+            "code": "RA03",
+            "name": "Zawieszenie Dynamic",
+            "sectionId": "OPTION_FUNCTIONALITY",
+            "sectionName": "Funkcjonalność"
+        },
+        {
+            "code": "T102",
+            "name": "Oznaczenie AWD",
+            "sectionId": "OPTION_OTHERS",
+            "sectionName": "Pozostałe"
+        },
+        {
+            "code": "K502",
+            "name": "System audio HIGH PERFORMANCE SOUND",
+            "sectionId": "OPTION_SENSUS",
+            "sectionName": "Sensus"
+        },
+        {
+            "code": "LB03",
+            "name": "Kluczyk Inscription w kolorze tapicerki",
+            "sectionId": "OPTION_SECURITY",
+            "sectionName": "Zabezpieczenia"
+        },
+        {
+            "code": "8G04",
+            "name": "Android Auto i Apple Carplay",
+            "sectionId": "OPTION_SENSUS",
+            "sectionName": "Sensus"
+        },
+        {
+            "code": "0088",
+            "name": "Złącze Bluetooth",
+            "sectionId": "OPTION_SENSUS",
+            "sectionName": "Sensus"
+        },
+        {
+            "code": "RD02",
+            "name": "Asystent podjazdu",
+            "sectionId": "OPTION_COMFORT",
+            "sectionName": "Komfort"
+        },
+        {
+            "code": "TM02",
+            "name": "Chromowane listwy wokół szyb bocznych",
+            "sectionId": "OPTION_EXTERIOR",
+            "sectionName": "Nadwozie"
+        },
+        {
+            "code": "JB0A",
+            "name": "Reflektory przednie w technologi LED",
+            "sectionId": "OPTION_FUNCTIONALITY",
+            "sectionName": "Funkcjonalność"
+        },
+        {
+            "code": "MCP5T",
+            "name": "Pakiet WINTER",
+            "sectionId": "PACKAGE",
+            "sectionName": "Pakiety"
+        },
+        {
+            "code": "MCP6K",
+            "name": "Pakiet PARK ASIST",
+            "sectionId": "PACKAGE",
+            "sectionName": "Pakiety"
+        },
+        {
+            "code": "MCP6D",
+            "name": "Pakiet LIGHT",
+            "sectionId": "PACKAGE",
+            "sectionName": "Pakiety"
+        },
+        {
+            "code": "MCP6B",
+            "name": "Pakiet INTELLISAFE PRO",
+            "sectionId": "PACKAGE",
+            "sectionName": "Pakiety"
+        },
+        {
+            "code": "000011",
+            "name": "11 Podgrzewane siedzenia przednie",
+            "sectionId": "OPTION_COMFORT",
+            "sectionName": "Komfort"
+        },
+        {
+            "code": "000063",
+            "name": "63 Podgrzewane dysze spryskiwaczy szyby przedniej",
+            "sectionId": "OPTION_FUNCTIONALITY",
+            "sectionName": "Funkcjonalność"
+        },
+        {
+            "code": "000691",
+            "name": "691 Przednie i tylne czujniki parkowania",
+            "sectionId": "OPTION_FUNCTIONALITY",
+            "sectionName": "Funkcjonalność"
+        },
+        {
+            "code": "000790",
+            "name": "790 Kamera wspomagająca parkowanie tyłem (Park Assist Camera)",
+            "sectionId": "OPTION_FUNCTIONALITY",
+            "sectionName": "Funkcjonalność"
+        },
+        {
+            "code": "000016",
+            "name": "16 Lampy przeciwmgłowe",
+            "sectionId": "OPTION_FUNCTIONALITY",
+            "sectionName": "Funkcjonalność"
+        },
+        {
+            "code": "000065",
+            "name": "65 Wysokociśnieniowy układ oczyszczania lamp",
+            "sectionId": "OPTION_FUNCTIONALITY",
+            "sectionName": "Funkcjonalność"
+        },
+        {
+            "code": "000645",
+            "name": "645 Reflektory skrętne Full LED z technologią Active High Beam II",
+            "sectionId": "OPTION_SAFETY",
+            "sectionName": "Bezpieczeństwo"
+        },
+        {
+            "code": "000132",
+            "name": "132 ADAPTIVE CRUISE CONTROLActive Cruise Control (ACC) - aktywny tempomat i Pliot Assist II generacji",
+            "sectionId": "OPTION_SAFETY",
+            "sectionName": "Bezpieczeństwo"
+        },
+        {
+            "code": "000603",
+            "name": "603 System bezpieczeństwa Intellisafe Surround",
+            "sectionId": "OPTION_SAFETY",
+            "sectionName": "Bezpieczeństwo"
+        },
+        {
+            "code": "000140",
+            "name": null,
+            "sectionId": "UNDEFINED",
+            "sectionName": ""
+        },
+        {
+            "code": "000062",
+            "name": "62 Tylna szyba z osłoną przeciwsłoneczną",
+            "sectionId": "OPTION_INTERIOR",
+            "sectionName": "Wnętrze"
+        },
+        {
+            "code": "900378",
+            "name": null,
+            "sectionId": "UNDEFINED",
+            "sectionName": ""
+        },
+        {
+            "code": "000165",
+            "name": "165 Koło zapasowe",
+            "sectionId": "OPTION_OTHERS",
+            "sectionName": "Pozostałe"
+        },
+        {
+            "code": "000750",
+            "name": null,
+            "sectionId": "UNDEFINED",
+            "sectionName": ""
+        }
+    ],
+    "wltpCo2Emission": null,
+    "wltpFuelConsumption": null,
+    "tyreLabels": null
+}

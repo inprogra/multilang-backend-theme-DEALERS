@@ -1,0 +1,103 @@
+.l-not-found {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+
+  &__top {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 6rem;
+  }
+
+  &__logo {
+    .a-logo {
+
+      &__img {
+        width: 100px;
+
+        @include media-breakpoint-up(lg) {
+          width: 180px;
+        }
+
+        @include media-breakpoint-up(lg) {
+          width: 240px;
+        }
+      }
+
+      &__text {
+        font-size: 12px;
+
+        @include media-breakpoint-up(sm) {
+          padding-left: 5rem;
+          margin-left: 5rem;
+        }
+
+        @include media-breakpoint-up(lg) {
+          font-size: 27px;
+          padding-left: 7rem;
+          margin-left: 7rem;
+
+          &::before {
+            height: 18px;
+          }
+        }
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: center;
+  }
+
+  .content {
+    &__text-wrapper {
+      display: flex;
+      align-items: flex-end;
+    }
+
+    &__text {
+      font-size: 96px;
+      font-weight: $font-weight-medium;
+      color: $grey-200;
+      line-height: 1;
+      margin-bottom: 0;
+
+      @include media-breakpoint-up(sm) {
+        font-size: 150px;
+      }
+
+      @include media-breakpoint-up(lg) {
+        font-size: 288px;
+      }
+    }
+
+    &__img {
+      display: block;
+      width: 164px;
+      margin-right: -45px;
+      transform: translateX(-45px);
+
+      @include media-breakpoint-up(sm) {
+        width: 250px;
+        transform: translate(-24%, -10%);
+      }
+
+      @include media-breakpoint-up(lg) {
+        width: 460px;
+      }
+    }
+  }
+
+  &__bottom {
+    margin-top: 4rem;
+    border-top: 1px solid $grey-300;
+    padding-top: 3rem;
+  }
+
+  &__heading {
+    text-align: center;
+    color: $grey-400;
+  }
+}

@@ -1,0 +1,126 @@
+.o-footer {
+  background: $grey-100;
+
+  &__container {
+  }
+
+  &__nav {
+    max-width: 1016px;
+    padding: 2rem 0;    
+    margin: 0 auto 3rem;
+    border-bottom:0;
+
+    @include media-breakpoint-up(lg) {
+      padding: 5rem 0 2.5rem;
+      margin-bottom: 4.5rem;
+    }
+  }
+
+  .nav {
+    &__list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      margin: 0 -1.5rem;
+     
+    }
+
+    &__item {
+      display: inline-block;
+      margin: 0 .5rem;
+    }
+
+    &__link {
+      display: block;
+      padding: 0 1rem;
+      font-size: 12px;
+      line-height: 24px;
+      font-weight: $font-weight-medium;
+      text-transform: uppercase;
+      color:#000;
+
+      @include media-breakpoint-up(lg) {
+        font-size: 14px;
+      }
+    }
+  }
+
+  &__centre {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  &__contacts {
+    display: inline-flex;
+    flex-direction: column;
+    line-height: 0;
+
+    @include media-breakpoint-up(md) {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      width: 100%;
+      margin-right: -1rem;
+    }
+
+    &-item {
+      width: auto;
+      min-width: 245px;
+      margin-bottom: 2.5rem;
+
+      @include media-breakpoint-up(md) {
+        width: auto;
+        margin-bottom: 0;
+        margin-right: 1rem;
+      }
+      @include media-breakpoint-down(xs) {
+        min-width: unset;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__social-media-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin-top: 2rem;
+
+    @include media-breakpoint-up(lg) {
+      margin-top: 7.75rem;
+    }
+  }
+
+  &__copyright {
+    max-width: 600px;
+    padding: 2rem 0 3rem;
+    border-top: 0;
+    margin: 1rem auto 0;
+
+    @include media-breakpoint-up(lg) {
+      padding: 2rem 0 5rem;
+      margin-top: 3.5rem;
+    }
+
+    &-text {
+      display: block;
+      margin: 0;
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.5;
+      color: $grey-400;
+
+      @include media-breakpoint-up(lg) {
+        font-size: 14px;
+        line-height: 24px;
+      }
+    }
+  }
+}

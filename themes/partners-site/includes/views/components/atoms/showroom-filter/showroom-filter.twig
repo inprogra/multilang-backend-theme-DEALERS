@@ -1,0 +1,27 @@
+<div class="{{ additionalClass|e('html_attr') }} a-showroom-filter js-showroom-filter" data-field-name="showroom">
+    {% if showAllButton %}
+        {% set id =  'input-' ~ uniqueID() %}
+        <div class="a-showroom-filter__item item">
+            <input type="radio" id="{{ id }}" class="item__radio js-showroom-filter__input" name="showroom" value="all" {{ selected == 'all'? 'checked': '' }}>
+            <label for="{{ id }}" class="item__label">
+                Wszystkie salony
+            </label>
+        </div>
+    {% endif %}
+    {% for key,filter in filters %}
+        {% set id =  'input-' ~ uniqueID() %}
+        <div class="a-showroom-filter__item item">
+            {% if selectFirst %}
+                <input id="{{ id }}" type="radio" class="item__radio" name="showroom" value="{{ key }}" {{ loop.index0 == 0 ? 'checked' : '' }}>
+            {% else %}
+                <input id="{{ id }}" type="radio" class="item__radio js-showroom-filter__input" name="showroom" value="{{ key }}" {{ selected == key ? 'checked' : '' }}>
+            {% endif %}
+            <label for="{{ id }}" class="item__label">
+                {{ filter|trim }}
+            </label>
+        </div>
+    {% endfor %}
+</div>
+{% include 'components/atoms/error/error.twig' with {
+    for: 'showroom',
+} only %}

@@ -1,0 +1,807 @@
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+<div class="l-stock__loading">
+    {% include 'components/atoms/spinner/spinner.twig' %}
+</div>
+<main class="l-stock__cars cars">
+    <div class="container message_title_container">
+        {% if carsCount > 0 %}
+            <h2 class="h2 cars__heading">
+                <span class="cars__heading-text">{{ __('Znaleźliśmy dla Ciebie') }}</span>
+                <span class="cars__heading-count">
+                    {{ carsCount ~ ' ' ~ carsCountText ~ ':' }}
+                </span>
+            </h2>
+            <div class="selectGrid" id="gridSelector">
+                <div class="grid shot_type active">
+                    <img src="/img/grid.svg" />
+                </div>
+                <div class="list shot_type ">
+                    <img class="img_list" src="/img/List.png" />
+                </div>
+
+                <span class="gridPointer"></span>
+            </div>
+        {% endif %}
+    </div>
+
+    <ul class="cars__list">
+        {% for car in cars %}
+            <li class="cars__list-item">
+                {% include 'components/organisms/stock-car/stock-car.twig' with car|merge({
+                    index_key: loop.index
+                }) %}
+            </li>
+        {% endfor %}
+    </ul>
+    {% for car in cars %}
+    
+{% endfor %}
+</main>
+<div class="l-stock__pagination js-stock__pagination">
+    <input type="hidden" name="page" class="js-stock__currentPage" value="{{ pagination.currentPage }}">
+        <input type="hidden" name="resetPagination" class="js-stock__resetPagination" value="1">
+            {% if pagination.maxPages > 1 %}
+                {% include 'components/atoms/pagination/pagination.twig' with {
+            currentPage: pagination.currentPage,
+            maxPages: pagination.maxPages,
+            jsItemClass: 'js-stock__pagination-item'
+        } only %}
+            {% endif %}
+        </div>
+        {% if featuredCars.cars|length > 0 %}
+            {{ openSection(2,1)|raw }}
+            {% include 'components/organisms/stock-cars-slider/stock-cars-4.twig' with {
+            additionalClass: '',
+            heading: featuredCars.heading,
+            cars: featuredCars.cars,
+        } only %}
+            {{ closeSection()|raw }}
+        {% endif %}
+        <style>
+            .hide_before {
+                display:none;
+            }
+            .hide-number{
+                background: none;
+                float: none; 
+                border: none; 
+                text-transform: uppercase;  
+                font-size: 10px; 
+                color: #284e80; 
+                font-weight: 600; 
+                cursor: pointer;
+                position: relative;
+                right: 0px;
+                left: auto;
+                top: 0;
+                padding: 2px;
+            }
+        
+.a-section-heading__grey strong {
+    margin-top:96px;
+    display:block;
+}
+.o-stock-cars-slider h2 {
+    padding-bottom:48px;
+}
+.o-stock-car__name-text {
+        padding-right:10px;
+}
+.grid .o-stock-car__name-text {
+        height:48px;
+}
+@media screen and (min-width:1680px) {
+.a-site-heading .container {
+    width:100%;
+    max-width:1620px;
+    padding:0;
+    
+}
+.a-site-heading .container h1 {
+    padding: 42px 0;
+    br {
+            display:none!important;
+    }
+}
+.a-site-heading__description {
+    max-width:unset;
+}
+.a-site-heading .a-site-heading__description {
+        font-size:20px;
+        text-align:center;
+
+}
+.l-stock__cars.cars > .container {
+        width:100%;
+        max-width:1637px;
+}
+body.grid .cars__list { 
+    width:100%;
+    max-width:1637px!important;
+}
+
+.l-stock__filters.filters.container {
+    max-width:1680px;
+}
+.single-stock-car {
+    .o-stock-car__container {
+        max-width:1610px;
+    }
+    .o-stock-car__column-slider {
+        width: calc(100% - 500px);
+    }
+    .a-site-heading > div {
+        max-width:1600px;
+    }
+    .o-stock-car__column-details {
+        width:100%;
+    }
+    .najem-info,
+		.lease-info {
+			padding:19px 0;
+		}
+		.najem-info {
+			display:none;
+		}
+		.najem-info span,
+		.lease-info span {
+			color:#1C6BBA;
+		}
+		.najem-info span:hover,
+		.lease-info span:hover {
+			cursor:pointer;
+		}
+		.najem-info p,
+		.lease-info p {
+			font-size:12px;
+			font-weight:400;
+			line-height:18px;
+			color:#000;
+		}
+		.najem-info p:not(:first-child),
+		.lease-info p:not(:first-child) {
+			display:none;
+		}
+        .o-accordion-section__accordion {
+            max-width:unset;
+            h3 {
+                font-size:20px!important;
+            }   
+            .item__list-item { 
+                font-size:16px!important;
+            }
+        }
+        .l-stock-car-single__accordion-section {
+            padding-bottom:8rem;
+        }
+        .l-stock-car-single__gallery {
+
+            padding:30px 0;
+            transform:none!important;
+        }
+        .full-width-gallery {
+            .container {
+                max-width:1600px;
+                .o-gallery__desktop-item {
+                    width:100%;
+                    height:100%;
+                }
+                }
+            }
+            .o-stock-cars-slider__container.container {
+                max-width:1600px;
+            }
+            
+        }
+        body:not(.grid) {
+            li.cars__list-item > div {
+                    max-width:1610px;
+                    margin:0 auto;
+                > .container {
+                    max-width:1610px;
+                }
+                .o-stock-car__column-slider {
+                    width: calc(100% - 500px);
+                }
+            }
+            li.cars__list-item:nth-child(odd) {
+                background-color: #FAFAFA
+            }
+            
+}
+ {
+   margin: 0 23px 0 0!important;  
+}
+body.grid .cars__list > li:nth-child(4n-1)
+ {
+ 
+
+}
+.message_title_container {
+        position:relative;
+        padding-top:32px;
+        margin-bottom: 48px;
+    }
+}
+@media screen and (min-width:768px) {
+    .message_title_container {
+        position:relative;
+        padding-top:32px;
+        margin-bottom: 48px;
+    }
+    #gridSelector > .shot_type {
+        display:none;
+    }
+    #gridSelector > .shot_type.active {
+        display:block;
+    }
+    #gridSelector {
+        background:#fff;
+        width:88px;
+        height:42px;
+        border:1px solid #D5D5D5;
+        border-radius:4px;
+        position: absolute;
+        right:20px;;
+        top:25px;
+        z-index:99;
+    }
+    #gridSelector.active {
+        height:auto;
+        padding-bottom:10px;
+    }
+    #gridSelector.active > .shot_type {
+        display:block;
+    }
+    #gridSelector .gridPointer {
+        background-image: url('/img/grid_selector.png');
+        background-repeat: no-repeat;
+        display:inline-block;
+        width:20px;
+        height:10px;
+        position:absolute;
+        right:12px;
+        top:15px;
+    }
+}
+@media screen and (min-width:1200px) {
+
+    #gridSelector {
+        top: 32px;
+    }
+}
+    @media screen and (max-width:1440px) {
+    #gridSelector > .grid img:nth-child(2),
+    #gridSelector > .grid img:nth-child(5)
+     {
+        margin: 0 2px;
+    }
+    }
+    #gridSelector > div > img.img_list {
+        padding:8px 0px 4px 16px;
+    }
+    #gridSelector > .grid {
+        width:56px;
+        padding-left:16px;
+    }
+    #gridSelector > .grid > img {
+        padding-top:10px;
+    }   
+    #gridSelector > .grid.active {
+        margin-top:-2px;
+    }
+    #gridSelector:hover {
+        cursor:pointer;
+    }
+    body.grid .cars__list {
+        max-width: 1280px;
+        margin-left:auto;
+        margin-right:auto;
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        
+    }
+    body.grid .cars__list > li {
+        max-width: 392px;
+        justify-content: space-between;
+
+    }
+
+    @media screen and (max-width:1221px) {
+     body.grid .cars__list > li {
+        max-width: 312px; 
+     }
+     body.grid .cars__list {
+        justify-content: space-evenly; 
+     }
+     .preview__button{
+        display: none;
+     }
+     .o-stock-car__column-slider {
+        height: auto !important;
+     }
+    }
+    @media screen and (max-width:1440px) {
+     body.grid .cars__list > li:nth-child(3n+2) {
+        margin: 0 23px;  
+     }
+     }
+     body.grid .o-stock-car__column-details {
+        width:100%!important;
+        overflow:hidden;
+     }
+     body.grid .o-stock-car__column-slider {
+        width:100%;
+        padding:0;
+       
+       
+        margin-bottom:16px;
+     }
+     body.grid .m-car-gallery-slider__thumbs {
+        display:none!important;
+     }
+     body.grid .o-stock-car__container {
+        flex-wrap: wrap;
+        padding:0;
+     }
+     body.grid .o-stock-car {
+        padding-top:0;
+        background:#fff;
+     }
+     body.grid .o-stock-car__prices {
+        background:#fafafa;
+        padding:16px;
+     }
+     body.grid .o-stock-car .technical-details__list {
+        width:100%;
+        padding-left:16px;
+        padding-right:16px;
+     }
+     body.grid .technical-details__bottom-inner .technical-details__list:nth-child(2) {
+        display:none;
+     }
+     body.grid .column-details__bottom p {
+        display:none;
+     }
+
+    @media screen and (max-width:1024px) {
+         .stock_cars_heading .container{
+            flex-direction: column;
+            align-items: flex-start;
+         }
+         .stock_cars_heading .container > p{
+            width: 100%;
+            margin-left: 0px;
+            margin-top: 18px;
+         }
+         .stock_cars_heading .container > h1{
+            width: 230px;
+         }
+    }
+    
+    
+     @media screen and (max-width:768px) {
+        #gridSelector {
+            display:none!important;
+        }
+        .o-stock-car{
+            padding-bottom: 48px;
+        }
+        .stock_cars_heading .container{
+            padding: 48px 24px;
+        }
+     }
+     body:not(.grid) .grid_only,
+     body:not(.grid) .hide_on_list {
+			display:none;
+		}
+		body.grid .o-stock-car__offer-details.grid_only {
+			color:#6d6d6d;
+			font-size:12px;
+			line-height:18px;
+			margin-bottom:16px;
+			display:block;
+		}
+		body.grid .o-stock-car__prices.prices {
+            min-height:142px;
+			margin-top:16px;
+			margin-bottom:16px;
+			display:flex;
+			align-items:center;
+			
+		}
+		body.grid .prices__total-value.grid_only {
+			width:70%;
+		}
+		body.grid .grid_only.static_width {
+			width:30%;
+		}
+		body.grid .crossline * {
+			margin-right:16px;
+			font-size:12px!important;
+			text-decoration:line-through;
+		}
+		body.grid .grid_only .prices__value {
+			font-size:16px;
+			font-weight:400;
+		} 
+		body.grid .hide_on_grid {
+			display:none!important; 
+		}
+		body.grid .grid_only {
+			color:#141414;
+		}
+	.pin {
+			position:absolute;		
+			background-image:url('/app/themes/partners-site_v2/images/black_label.svg');
+            background-position:center right;
+            background-repeat:no-repeat;
+            padding: 2px 12px 0 12px; 
+			font-size:14px;
+            line-height:24px;
+			height:24px;
+            
+			z-index:9999;
+			left:0;
+			top:0;
+			font-weight:400;
+			font-family: "Volvo Centum";
+			line-height:18px;
+			
+			color:#fff;
+			
+			z-index:2;
+
+
+		}
+       
+        .pin:before {
+            content:" ";
+            background:#000;
+            left:0;
+            width:50%;
+            height:18px;
+        }
+		.car_archive .pin {
+			background:#000;
+			z-index:10;
+		}
+		@media screen and (min-width:997px) {
+			.o-stock-car__contact.contact {
+			text-align:left!important;
+			margin-bottom:8px!important;
+			margin-top:0!important;
+			width:190px!important;
+		}
+		}
+		@media screen and (max-width:996px) {
+			.o-stock-car__contact.contact {
+			text-align:left!important;
+			margin-bottom:8px!important;
+			margin-top:0!important;
+			width:100%!important;
+			}
+			.fake__contact__phone {
+				margin-top:16px!important;
+			}
+		}
+		.fake__contact__phone {
+			color: #141414;		
+			
+			font-weight:400!important;
+			margin-top:3px;
+		}
+		.fake__contact__phone:hover {
+			cursor:pointer;
+		}
+		
+		.o-stock-car__contact.contact a:not(.fake__contact__phone) {
+			
+			color:#1C6BBA!important;
+			font-weight:400!important;
+			margin-top:3px;
+		}
+		.contact__label {
+			display:inline-block!important;
+			color:#6D6D6D!important;
+		}
+		.najem-info,
+		.lease-info {
+			padding:19px 0;
+		}
+		.najem-info {
+			display:none;
+		}
+		.najem-info span,
+		.lease-info span {
+			color:#1C6BBA;
+		}
+		.najem-info span:hover,
+		.lease-info span:hover {
+			cursor:pointer;
+		}
+		.najem-info p,
+		.lease-info p {
+			font-size:12px;
+			font-weight:400;
+			line-height:18px;
+			color:#000;
+		}
+		.najem-info p:not(:first-child),
+		.lease-info p:not(:first-child) {
+			display:none;
+		}
+		.column-details__top,
+		#finansowanie {
+			position: relative;
+		}
+		.go_back {
+			display: none;
+		}
+		@media screen and(min-width:997px) {
+			.go_back {
+				display: block;
+				position: absolute;
+				left: 0;
+				top: -50px;
+				text-transform: uppercase;
+				font-weight: 600;
+			}
+			.go_back img {
+				margin-right: 8px;
+			}
+		}
+		.omnibus_view {
+			margin-top:8px;
+		}
+		.omnibus_view .prices__label.prices__label--primary,
+		.omnibus_view .prices__total-value.prices__total-value--primary {
+			margin-bottom:8px;
+		}
+		.omnibus_view .technical-details__heading  {
+			margin-bottom:8px;
+		}
+		.omnibus_box  {
+			width:100%;
+		}
+		.omnibus {
+			font-size:12px!important;
+			font-weight:400!important;
+			line-height:18px!important;
+			color:#6D6D6D;
+		}
+		.omnibus_box {
+			width:100%;
+			font-size:12px!important;
+			font-weight:400!important;
+			line-height:18px!important;
+			color:#6D6D6D;
+		}
+		.omnibus_container {
+			display:inline-block;
+			
+
+		}
+		.omnibus_container.left_omnibus {
+			text-align:left;
+			float:left;
+		}
+		.omnibus_container.right_omnibus {
+			text-align:right;
+			float:right;
+		}
+		.omnibus_view.o-stock-car__prices {
+			margin-bottom:12px;
+		}
+		
+		div.a-image {
+			background:#D5D5D5;
+		}
+		.a-image__img {
+			width: auto;
+			left:50%;
+			transform: translateX(-50%);
+		}
+		
+		@media screen and (min-width:997px) {
+			.desktop_view {
+				display:block;
+			}
+			.mobile_view {
+				display:none;
+			}
+		}
+		@media screen and (max-width:997px) {
+			.desktop_view {
+				display:none;
+			}
+			.mobile_view {
+				display:block;
+			}
+		}
+        @media screen and (max-width:575px) {
+			.a-image{
+                height: auto;
+                padding: 0px;
+            }
+
+            
+		}
+
+
+
+        
+</style>
+{% if imagesFormat == 1 %} {% endif %}
+<script type="text/javascript">
+
+console.log('gallery');
+
+
+ 
+    var numberslide = $('.swiper-wrapper').length;
+    console.log(numberslide)
+
+
+if (Cookies.get('view') == '' || !Cookies.get('view')) {
+         Cookies.set('view', 'grid')
+    }
+ if ($(document).width() < 997) {
+        Cookies.set('view', 'list')
+    }
+    
+   
+    $('.js-stock__cars-wrapper').on('click','.selectGrid',function() {
+        $(this).toggleClass('active');        
+    });
+    $('.js-stock__cars-wrapper').on('click','.shot_type',function() {
+        if ($(this).hasClass('active')) {
+            $('#gridSelector').removeClass('active');
+          //  return false;
+        }
+        //$('body').removeClass($('.shot_type.active').attr('class'))
+        $('.shot_type.active').removeClass('active');
+        $(this).addClass('active');
+      //  $('body').addClass($(this).attr('class'));
+        if ($(this).hasClass('grid')) {
+            Cookies.set('view', 'grid')
+        } else {
+            Cookies.set('view', 'list')
+        }
+        location.reload();
+    })
+    if (Cookies.get('view') && Cookies.get('view') == 'grid') {
+        $('body').addClass('grid');
+        $('.shot_type.active').removeClass('active');
+        $('.grid.shot_type').addClass('active');
+        $(window).resize();
+    }
+    if (Cookies.get('view') && Cookies.get('view') == 'list') {
+    
+        $('.shot_type.active').removeClass('active');
+        $('.list.shot_type').addClass('active');
+        $(window).resize();
+    }
+
+    // wp_pixel
+const opened = XMLHttpRequest.prototype.open;
+
+XMLHttpRequest.prototype.open = function(method, url, async, user, password) {
+    this.addEventListener('load', function() {
+        var carItems = document.querySelectorAll('.cars__list-item');
+        var contentsData = [];
+
+        carItems.forEach(function(item, index) {
+            var nameElement = item.querySelector('.o-stock-car__name');
+            var offerNumberElement = item.querySelector('.o-stock-car__offer-number');
+            var priceElement = item.querySelector('.prices__value');
+
+            var name = nameElement?.textContent.replace(/\s+/g, ' ').trim() || '[Brak nazwy]';
+            var offerNumber = offerNumberElement?.textContent.replace(/\s+/g, ' ').trim() || '[Brak numeru oferty]';
+            var priceText = priceElement?.textContent.replace(/\s+/g, ' ').trim() || '[Brak ceny]';
+
+            var price = parseFloat(priceText.replace(/[^\d,.-]/g, '').replace(',', '.')) || 0;
+
+            contentsData.push({
+                id: offerNumber,
+                nazwa: name,
+                cena: price
+            });
+        });
+        if (typeof wph === 'function') { 
+                    wph('track', 'ViewContent', {
+                    content_name: 'ProductList',
+                    contents: contentsData
+                });
+        }
+        
+    });
+
+    opened.apply(this, arguments);
+};
+
+   
+        
+        
+        
+       
+
+
+    /// przycisk 
+
+function clickEvent() {
+    document.querySelectorAll('.hide-number').forEach(function(element) {
+        element.removeEventListener('click', handleClick);
+        element.addEventListener('click', handleClick);
+    });
+}
+
+function handleClick() {
+    var phoneScript = {{ phoneJs | json_encode | raw }}; 
+    if (!phoneScript || phoneScript.trim() === "") {
+        return;
+    }
+    //$(this).css('display', 'none');
+    try {
+        (new Function(phoneScript))();
+    } catch (error) {
+        console.error('Błąd w kodzie phoneJs:', error);
+    }
+}
+ 
+document.addEventListener('DOMContentLoaded', function() {
+    var phoneScript = {{ phoneJs | json_encode | raw }};
+    if (!phoneScript || phoneScript.trim() === "") {
+        document.querySelectorAll('.hide-number').forEach(function(element) {
+          //  element.style.display = 'none';
+        });
+        return;
+    }
+    clickEvent();
+});
+
+const open = XMLHttpRequest.prototype.open;
+
+XMLHttpRequest.prototype.open = function(method, url, async, user, password) {
+
+    this.addEventListener('load', function() {
+        $('.boxopen').colorbox({
+        maxWidth:'80%',
+        maxHeight:'80%',
+        closeButton:true,
+        preload:true,
+        photo:true,
+        close: '<svg  viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="40" height="40" rx="20" fill="white" fill-opacity="0.01" style="mix-blend-mode:multiply"/><rect width="40" height="40" rx="20" fill="black" fill-opacity="0.04"/><path fill-rule="evenodd" clip-rule="evenodd" d="M14.6464 14.6464C14.8417 14.4512 15.1583 14.4512 15.3536 14.6464L20 19.2929L24.6464 14.6464C24.8417 14.4512 25.1583 14.4512 25.3536 14.6464C25.5488 14.8417 25.5488 15.1583 25.3536 15.3536L20.7071 20L25.3536 24.6464C25.5488 24.8417 25.5488 25.1583 25.3536 25.3536C25.1583 25.5488 24.8417 25.5488 24.6464 25.3536L20 20.7071L15.3536 25.3536C15.1583 25.5488 14.8417 25.5488 14.6464 25.3536C14.4512 25.1583 14.4512 24.8417 14.6464 24.6464L19.2929 20L14.6464 15.3536C14.4512 15.1583 14.4512 14.8417 14.6464 14.6464Z" fill="#0A0A0A"/></svg>',
+        previous: '<svg  viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 0.667969L6.33333 6.0013L1.23188 11.3346" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path></svg>',
+        next: '<svg  viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 0.667969L6.33333 6.0013L1.23188 11.3346" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path></svg>'
+        });
+        $('.preview__slide div').click(function() {
+            let image = $(this).parent().index();
+            console.log(image);
+            $(this).parentsUntil('.o-stock-car__container').parent().siblings('.boxopen:eq('+image+')').click();
+            return false;
+        });
+        var phoneScript = {{ phoneJs | json_encode | raw }}; 
+        if (!phoneScript || phoneScript.trim() === "") {
+            document.querySelectorAll('.hide-number').forEach(function(element) {
+               // element.style.display = 'none';
+            });
+            return; 
+        }
+        setTimeout(clickEvent, 100);
+    });
+    open.apply(this, arguments);
+};
+</script>
+        
+<script type="text/javascript">
+			$(document).ready(function() {
+			
+			
+			});
+			
+			</script>
+	
+	
+	

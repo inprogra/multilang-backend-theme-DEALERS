@@ -1,0 +1,161 @@
+<div class="custom-single-range {{ additionalClass|e('html_attr') }} a-input-range js-input-range" data-selected-min="{{ selected.min }}" data-selected-max="{{ selected.max }}" >
+  
+    <div class="slidecontainer range_slider">
+        <input type="range" min="{{min_price}}" max="{{max_price}}" step="0.01" value="1.50" class="slider myRange" id="myRange">
+    </div>
+    <div class="a-input-range__inputs greyout">
+        <div class="a-input-range__input-item">
+            {% include 'components/atoms/input/input.twig' with {
+                id: 'kw-price', 
+                name: 'kw-price',
+                value: '1.50 PLN',
+                label: 'Stawka za 1 kWh:',
+                additionalClass: 'js-input-range__min',
+                type: 'text',
+                disabled: disabled,
+            } %}
+        </div>
+</div>
+<style>
+.custom-single-range .a-input-range__input-item {
+    margin-top:-25px;
+}
+.custom-single-range  {
+    display:flex;
+}
+.greyout {
+    color:#D5D5D5;
+    width:286px;
+}
+.cost-calculator #myRange {
+    width:292px;
+    margin-right:16px;
+}
+.range_slider input {
+    width:100%;
+}
+.slider_labels {
+    position:relative;
+    height:20px;
+    padding-top:33px;
+    color:#6d6d6d;
+    font-size:14px;
+    font-weight:400;
+}
+.slider_labels .range_label_left {
+    position:absolute;
+    left:0;
+    top:10px;
+}
+.slider_labels .range_label_right {
+    position:absolute;
+    right:0;
+    top:10px;
+}
+.range_slider input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  background: #D5D5D5;
+  height: 0.5rem;
+  border-radius:2px;
+}
+
+/******** Firefox ********/
+input[type="range"]::-moz-range-track {
+  background: #D5D5D5;
+  height: 0.5rem;
+  border-radius:2px;
+}
+/*Chrome*/
+
+/** FF*/
+input[type="range"]::-moz-range-progress {
+  background-color: #007aff;;
+  margin-right:3px; 
+}
+input[type="range"]::-moz-range-track {  
+  background-color: #D5D5D5;
+}
+/* IE*/
+input[type="range"]::-ms-fill-lower {
+  background-color: #284E80; 
+}
+input[type="range"]::-ms-fill-upper {  
+  background-color: #D5D5D5;
+}
+/***** Focus Styles *****/
+/* Removes default focus */
+input[type="range"]:focus {
+  outline: none;
+}
+/***** Thumb Styles *****/
+/***** Firefox *****/
+input[type="range"]::-moz-range-thumb {
+    border: 0;
+  outline: 6px solid #007aff;
+  outline-offset: 0rem;    
+   width:6px;
+  height:6px; 
+}
+/***** Chrome, Safari, Opera, and Edge Chromium *****/
+input[type="range"]:focus::-webkit-slider-thumb {
+     border: 0;
+  outline: 6px solid #007aff;
+  outline-offset: 0rem;    
+   width:5px;
+  height:5px; 
+}
+
+/******** Firefox ********/
+input[type="range"]:focus::-moz-range-thumb {
+    border: 0;
+  outline: 6px solid #007aff;
+  outline-offset: 0rem;    
+   width:5px;
+  height:5px; 
+  background: #fff;
+}
+input[type=range]{
+    -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 300px;
+    height: 5px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+       -webkit-appearance: none;
+    border: none;
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    background: #fff;
+    margin-top: -2px;
+    outline: 6px solid #007aff;
+  outline-offset: 0.1rem;  
+  position:relative;
+}
+
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ccc;
+}
+@media screen and (min-width:998px) {
+	.a-input-range__slider {
+		width: calc(100% - 59px);
+	}
+}
+</style>

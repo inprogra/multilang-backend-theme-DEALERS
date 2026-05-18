@@ -1,0 +1,51 @@
+<div class="{{ additionalClass|e('html_attr') }}  contact-field">
+  <div class="a-select__input  is-active lead-type">
+  
+  <label for="lead-type" class="a-input__label js-input__label"></label>
+  <div class="a-select__input-arrow a-arrow a-arrow--bottom"></div>
+  
+    <select name="salon" id="lead-type" required>
+   
+    {% for key,version in global_form %}
+         <option value="{{version.key}}">{{version.value}}</option>
+    {% endfor %}     
+    </select>
+  </div>
+</div>
+
+
+<style>
+  .contact-field {
+    width: 48.5%;
+  }
+  .always-active .a-input__label {
+    top: 6px;
+    font-size: 12px;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  #lead-type:focus {
+    outline: none;
+}
+  #lead-type {    
+    width:100%;
+    box-shadow: none;
+    
+    background: #fff;
+    height: 44px;
+    border: 1px solid #cccc;
+    border-radius: 4px;
+    padding: 0.8rem 2.5rem 0.8rem 2.5rem;
+    font-size:14px;
+  }
+  #lead-type option {
+    font-size:14px;
+  }
+  #lead-type  {
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+}
+</style>
+
+

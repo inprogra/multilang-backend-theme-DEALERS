@@ -1,0 +1,137 @@
+<div class="gmap header container">
+
+	<div class="gmap navigation">
+		<ul>
+			<li class="active" style="display:none;">
+				<div>Oblicz zasięg</div>
+			</li>
+			<li style="display:none;">
+				<div id="get_location">Znajdź ładowarkę</div>
+			</li>
+		</ul>
+	</div>
+	<div class="gmap options option_1">
+		{% if selectedModel %}
+			<div style="display: none" class="content__item" id="selectCar3" data-id-el="instance_4">
+				<input type="hidden" value="{{selectedModel}}" id='electricmap-selected-model' name="carmodel">
+			{% else %}
+				<div class="content__item" id="selectCar3" data-id-el="instance_4">
+					{% include 'components/atoms/select/select-multi.twig' with {
+							label: 'Model',
+							name: 'model',
+							items: models,
+							selected: null,
+							multiple: 'false'
+						} %}
+				{% endif %}
+			</div>
+			<div class="content__item" id="selectEngine4" data-id-el="instance_4">
+				{% include 'components/atoms/select/select-multi.twig' with {
+                                label: 'Rodzaj napędu',
+                                name: 'engine',
+                                items: engine,
+                                selected: null,
+								multiple: 'false'
+                            } %}
+			</div>
+			<div class="content__item radio-container">
+				<p>Wybór ładowarek</p>
+				{% include 'components/atoms/input-radio/input-radio.twig' with {
+                                additionalClass: 'models__item',
+								name: 'charger_type',
+								value: 'all',
+								label: 'Wszystkie',
+								hide: false
+								
+                            } %}
+				{% include 'components/atoms/input-radio/input-radio.twig' with {
+                                additionalClass: 'models__item',
+								name: 'charger_type',
+								value: 'fast',
+								label: 'Szybka',
+								checked: true,
+								hide: false
+                            } %}
+				{% include 'components/atoms/input-radio/input-radio.twig' with {
+                                additionalClass: 'models__item',
+								name: 'charger_type',
+								value: 'standard',
+								label: 'Standard',
+								hide: true
+                            } %}
+			</div>
+			<div class="content__item search_icon">
+				{% include 'components/atoms/input/input.twig' with {
+                                id: 'citysearch',
+                                label: 'Znajdź na mapie',
+                                name: 'city',
+                                additionalClass: 'custom_city_input'                                
+                            } %}
+				<img src="/img/search.png"/>
+			</div>
+			<div class="content__item content__item--range">
+				{% include 'components/atoms/input-range/input-range-custom.twig' with {
+                                        label: 'Rodzaj napędu',
+                                        name: 'engine',
+                                        items: ['XC40 Recharge'],
+                                        selected: [20,80]
+                                    } %}
+
+			</div>
+		</div>
+		<div class="gmap options option_2">
+			<div class="content__submit" style="position:relative;">
+				<div class="selected__options d-none">
+					<div>Wybrane opcje:</div>
+					<ul id="active_filters" class="active_layers"></ul>
+					<div class="clear"></div>
+				</div>
+				<div class="clearout__filters  " style="position: absolute;right: 264px;top: 10px;" id="reset__filters">Wyczyść filtry</div>
+
+				<button type="submit" class="content__submit-button a-button">
+					Wyszukaj
+				</button>
+			</div>
+ 
+		</div>
+		<div class="gmap_map container" style="position:relative;">
+			<div id="limit-dashboard" class="range-container no-active">350 km</div>
+			<div id="map"></div>
+		</div>
+		<p class="disclaimer">{{ legal_map|raw }}</p>
+		<div id="car-range-legend">
+			<div>
+				<p>Zasięgi:</p>
+				<span>
+					<svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<rect x="0.5" y="0.5" width="19" height="19" fill="#CCEED4" stroke="#D5D5D5"/>
+					</svg>
+					Eko
+				</span>
+				<span>
+					<svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<rect x="0.5" y="0.5" width="19" height="19" fill="#CCDEF1" stroke="#D5D5D5"/>
+					</svg>
+					Sport
+				</span>
+			</div>
+			<div>
+				<p>Ładowarki:</p>
+				<span>
+					<img src="/img/fast.png"/>
+					Szybka - DC
+				</span>
+				<span style="display:none;">
+					<img src="/img/charge.png"/>
+					Standard - AC
+				</span>
+			</div>
+		</div>
+		<script>
+			var locations = JSON.parse('{{ points|json_encode|raw }}');
+var ranges = JSON.parse('{{ ranges|json_encode|raw }}');
+var combinations = JSON.parse('{{ combinations|json_encode|raw }}');
+var combinations_desc = JSON.parse('{{ combinations_desc|json_encode|raw }}');
+		</script>
+		<script type="text/javascript" src="/app/themes/partners-site_v2/includes/views/components/organisms/electricmap/electricmap.js"></script>
+		<link rel="stylesheet" href="/app/themes/partners-site_v2/includes/views/components/organisms/electricmap/electricmap.css" type="text/css">

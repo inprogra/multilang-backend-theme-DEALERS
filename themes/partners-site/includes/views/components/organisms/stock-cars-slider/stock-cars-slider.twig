@@ -1,0 +1,63 @@
+<div class="{{ additionalClass|e('html_attr') }} o-stock-cars-slider">
+    <div class="o-stock-cars-slider__container container">
+        {{ openSection(false,3,false)|raw }}
+            {% include 'components/atoms/section-heading/section-heading.twig' with {
+                additionalClass: 'o-stock-cars-slider__heading',
+                grey: heading,
+            } %}
+        {{ closeSection(false)|raw }}
+        <div class="o-stock-cars-slider__slider slider js-stock-cars-slider" style="position:relative;">
+            <div class="swiper-container js-stock-cars-slider__slider">
+                <div class="swiper-wrapper">
+                    {% for car in cars %}
+                        <div class="o-stock-cars-slider__slide swiper-slide">
+                            <a href="{{ car.url }}" class="o-stock-cars-slider__item o-stock-cars-slider__item--car car">
+                                <div class="car__img-wrapper">
+                                    {% include 'components/atoms/image/image.twig' with car.image|merge({
+                                        additionalClass: 'car__img'
+                                    }) only %}
+                                </div>
+                                <span class="car__category">{{ car.category }}</span>
+                                <h3 class="car__name">{{ car.model }}</h3>
+                                <div class="car__details">
+                                    <span class="car__engine">{{ car.engine }}</span>
+                                    <span class="car__price">{{ car.price|number_format(0, '.', '&nbsp;')|raw }}&nbsp;zł</span>
+                                </div>
+                                <div class="car__bottom">
+                                    <span class="car__button">Zobacz auto</span>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                    {% if excerpt %}
+                        <div class="o-stock-cars-slider__slide swiper-slide">
+                            <a href="{{ excerpt.link.url }}" {% if excerpt.link.nofollow %} rel="noopener noreferrer nofollow"{% endif %} {% if excerpt.link.target == '_blank' %} target="_blank" {% endif %} class="o-stock-cars-slider__item o-stock-cars-slider__item--excerpt excerpt">
+                                <div class="excerpt__content">
+                                    {% if excerpt.heading %}
+                                        <h3 class="excerpt__heading">{{ excerpt.heading }}</h3>
+                                    {% endif %}
+                                    {% if excerpt.description %}
+                                        <p class="excerpt__description">{{ excerpt.description }}</p>
+                                    {% endif %}
+                                </div>
+                                <div class="excerpt__bottom">
+                                    {% if excerpt.link.text %}
+                                        <span class="excerpt__button">{{ excerpt.link.text }}</span>
+                                    {% endif %}
+                                </div>
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% include 'components/atoms/slider-button/slider-button.twig' with {
+                additionalClass: 'slider__button slider__button--prev js-stock-cars-slider__button--prev',
+                direction: 'prev'
+            } %}
+            {% include 'components/atoms/slider-button/slider-button.twig' with {
+                additionalClass: 'slider__button slider__button--next js-stock-cars-slider__button--next',
+                direction: 'next'
+            } %}
+        </div>
+    </div>
+</div>

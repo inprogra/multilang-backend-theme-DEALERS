@@ -1,0 +1,42 @@
+.a-logo {
+  display: flex;
+  align-items: center;
+
+  &__img {
+    width: 95px;
+    display: block;
+
+    svg {
+      width: 100%;
+    }
+
+    @include media-breakpoint-up(lg) {
+      width: 98px;
+    }
+  }
+
+  &__text {
+    position: relative;
+    font-size: 10px;
+    color: $black;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding-left: 3rem;
+    margin-left: 3rem;
+
+    &::before {
+      content: '';
+      height: 8px;
+      width: 1px;
+      background-color: $black;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    @include media-breakpoint-up(lg) {
+        font-size: 12px;
+    }
+  }
+}

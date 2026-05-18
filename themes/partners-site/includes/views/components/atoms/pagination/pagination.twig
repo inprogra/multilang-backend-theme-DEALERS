@@ -1,0 +1,28 @@
+<div class="{{ additionalClass|e('html_attr') }} a-pagination">
+    <div class="a-pagination__buttons">
+        <button class="a-pagination__button {{ currentPage <= 1 ? 'a-pagination__button--hidden ' }}a-pagination__button--prev button {{ jsItemClass }}"
+                data-pagination-number="{{ currentPage - 1 }}">
+            <span class="button__arrow-wrapper">
+                <span class="button__arrow a-arrow a-arrow--left a-arrow--white"></span>
+            </span>
+            <span class="button__text">Poprzednia strona</span>
+        </button>
+        {% for i in 1..maxPages %}
+            <button class="a-pagination__button button{{ i == currentPage ? ' a-pagination__button--active' }} {{ jsItemClass }}"
+                    data-pagination-number="{{ i }}">
+                <span class="button__number-wrapper">
+                    <span class="button__number">
+                        {{ i }}
+                    </span>
+                </span>
+            </button>
+        {% endfor %}
+        <button class="a-pagination__button {{ currentPage >= maxPages ? 'a-pagination__button--hidden ' }}a-pagination__button--next button {{ jsItemClass }}"
+                data-pagination-number="{{ currentPage + 1 }}">
+            <span class="button__arrow-wrapper">
+                <span class="button__arrow a-arrow a-arrow--white"></span>
+            </span>
+            <span class="button__text">Następna strona</span>
+        </button>
+    </div>
+</div>

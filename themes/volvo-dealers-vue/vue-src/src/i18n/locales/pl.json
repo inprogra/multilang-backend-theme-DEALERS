@@ -1,0 +1,82 @@
+{
+  "nav": {
+    "models": "Nasze modele",
+    "offers": "Oferty",
+    "available": "Dostępne na miejscu",
+    "used": "Używane Selekt",
+    "tradeIn": "Wyceń swoje Volvo",
+    "service": "Serwis",
+    "testDrive": "Jazda testowa",
+    "blog": "Blog",
+    "financing": "Finansowanie",
+    "configurator": "Konfigurator",
+    "accessories": "Akcesoria",
+    "events": "Wydarzenia",
+    "jewelry": "pARTs Jewelry",
+    "showroom": "Showroom Volvo",
+    "travel": "Podróżuję Volvo",
+    "contact": "Kontakt",
+    "career": "Kariera",
+    "whistleblowers": "Sygnaliści",
+    "search": "Szukaj"
+  },
+  "hero": {
+    "learnMore": "Dowiedz się więcej",
+    "from": "Już od",
+    "monthly": "netto miesięcznie"
+  },
+  "carModels": {
+    "title": "Poznaj gamę",
+    "titleBold": "modeli Volvo",
+    "category": {
+      "suv": "SUV",
+      "wagon": "Kombi",
+      "electric": "Elektryczne"
+    },
+    "price": {
+      "from": "Zakup od",
+      "currency": "zł"
+    },
+    "cta": "Poznaj"
+  },
+  "shoppingBox": {
+    "polestar": {
+      "title": "Volvo Polestar",
+      "description": "Nowe emocje w starszym samochodzie."
+    },
+    "battery": {
+      "title": "Akumulator Volvo",
+      "description": "Sprawdź."
+    },
+    "service": {
+      "title": "Serwis rosnących rabatów",
+      "description": "Im więcej lat ma Twój samochód, tym większe rabaty."
+    },
+    "wallbox": {
+      "title": "Wallbox Volvo",
+      "description": "Energia, którą daje Ci Volvo."
+    }
+  },
+  "discovery": {
+    "category": "oferta",
+    "cta": "Sprawdź"
+  },
+  "footer": {
+    "volvoPoland": "Volvo Car Poland",
+    "social": {
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn",
+      "youtube": "YouTube"
+    }
+  },
+  "common": {
+    "close": "Zamknij",
+    "open": "Otwórz",
+    "readMore": "Czytaj więcej",
+    "submit": "Wyślij",
+    "loading": "Ładowanie...",
+    "error": "Wystąpił błąd",
+    "notFound": "Nie znaleziono"
+  }
+}

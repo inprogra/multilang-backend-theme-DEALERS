@@ -1,0 +1,175 @@
+# Copyright (C) 2026 Volvo Car Poland
+# This file is distributed under the same license as the Partners Site V2 theme.
+msgid ""
+msgstr ""
+"Project-Id-Version: Partners Site V2 1.0.0\n"
+"Report-Msgid-Bugs-To: https://volvotest.pl\n"
+"POT-Creation-Date: 2026-02-03 12:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: functions.php:10
+msgid "Primary Menu"
+msgstr ""
+
+#: functions.php:11
+msgid "Footer Menu"
+msgstr ""
+
+#: page-dostepne-na-miejscu.php:5
+msgid "Available Cars"
+msgstr ""
+
+#: includes/acf-fields.php:10
+msgid "Car Details"
+msgstr ""
+
+#: includes/acf-fields.php:15
+msgid "Model"
+msgstr ""
+
+#: includes/acf-fields.php:16
+msgid "Enter car model"
+msgstr ""
+
+#: includes/acf-fields.php:20
+msgid "Version"
+msgstr ""
+
+#: includes/acf-fields.php:21
+msgid "Enter car version"
+msgstr ""
+
+#: includes/acf-fields.php:25
+msgid "Year"
+msgstr ""
+
+#: includes/acf-fields.php:26
+msgid "Production year"
+msgstr ""
+
+#: includes/acf-fields.php:30
+msgid "Price"
+msgstr ""
+
+#: includes/acf-fields.php:31
+msgid "Car price in PLN"
+msgstr ""
+
+#: includes/acf-fields.php:35
+msgid "Mileage"
+msgstr ""
+
+#: includes/acf-fields.php:36
+msgid "Car mileage in kilometers"
+msgstr ""
+
+#: includes/acf-fields.php:40
+msgid "Fuel Type"
+msgstr ""
+
+#: includes/acf-fields.php:41
+msgid "Select fuel type"
+msgstr ""
+
+#: includes/acf-fields.php:45
+msgid "Transmission"
+msgstr ""
+
+#: includes/acf-fields.php:46
+msgid "Select transmission type"
+msgstr ""
+
+#: includes/acf-fields.php:50
+msgid "Color"
+msgstr ""
+
+#: includes/acf-fields.php:51
+msgid "Exterior color"
+msgstr ""
+
+#: includes/acf-fields.php:55
+msgid "Interior"
+msgstr ""
+
+#: includes/acf-fields.php:56
+msgid "Interior color and material"
+msgstr ""
+
+#: includes/acf-fields.php:60
+msgid "VIN"
+msgstr ""
+
+#: includes/acf-fields.php:61
+msgid "Vehicle Identification Number"
+msgstr ""
+
+#: includes/acf-fields.php:65
+msgid "Dealer"
+msgstr ""
+
+#: includes/acf-fields.php:66
+msgid "Select dealer"
+msgstr ""
+
+#: includes/acf-fields.php:70
+msgid "Images"
+msgstr ""
+
+#: includes/acf-fields.php:71
+msgid "Upload car images"
+msgstr ""
+
+#: includes/acf-fields.php:75
+msgid "Financing Options"
+msgstr ""
+
+#: includes/acf-fields.php:80
+msgid "Leasing Available"
+msgstr ""
+
+#: includes/acf-fields.php:81
+msgid "Enable leasing option"
+msgstr ""
+
+#: includes/acf-fields.php:85
+msgid "Rent Available"
+msgstr ""
+
+#: includes/acf-fields.php:86
+msgid "Enable rent option"
+msgstr ""
+
+#: includes/acf-fields.php:90
+msgid "Monthly Rate"
+msgstr ""
+
+#: includes/acf-fields.php:91
+msgid "Estimated monthly rate"
+msgstr ""
+
+#: header.php:10
+msgid "Skip to content"
+msgstr ""
+
+#: footer.php:10
+msgid "All rights reserved"
+msgstr ""
+
+#: footer.php:15
+msgid "Privacy Policy"
+msgstr ""
+
+#: footer.php:16
+msgid "Terms of Service"
+msgstr ""
+
+#: footer.php:17
+msgid "Contact"
+msgstr ""

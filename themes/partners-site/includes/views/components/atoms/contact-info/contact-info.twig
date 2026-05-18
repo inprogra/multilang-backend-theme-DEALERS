@@ -1,0 +1,17 @@
+<div class="{{ additionalClass|e('html_attr') }} a-contact-info">
+    <p>
+        {{ name|trim }}
+        {% if position %}
+        <br>
+        {{ position|trim }}
+        {% endif %}
+        {% if phone %}
+            <br>
+            <a href="tel:{{ phone|replace({' ': ''}) }}">{{ phone|trim }}</a>
+        {% endif %}
+        {% if email %}
+            <br>
+            <a href="mailto:{{ email }}">{{ email|trim }}</a>
+        {% endif %}
+    </p>
+</div>

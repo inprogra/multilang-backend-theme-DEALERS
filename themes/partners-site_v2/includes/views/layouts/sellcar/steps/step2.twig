@@ -1,0 +1,44 @@
+<div class="stepContent" data-step="step2">
+	<div class="stepHeader">
+		<span class="stepNumber">{{ __('Krok 2/6') }}</span>
+		<h3>{{ __('Pierwsza rejestracja') }}</h3>
+		<div class="formFields">
+			<div class="singleField carsell-type-data">
+				<label for="model">{{ __('Kiedy pojazd został zarejestrowany?') }}</label>
+				<input type="text" name="car_year" class="a-input__field with_calendar_icon car_year" value="" placeholder="{{ __('Wybierz datę rejestracji') }}" required/>
+			</div>
+	
+			<div class="singleField carsell-type-data generation hidden">
+				<label for="model">{{ __('Generacja') }}</label>
+				{% include 'components/atoms/select/select-form-year.twig' with {
+                    additionalClass: 'form__content-field always-active js-input carsell-type-data',
+                    label: __('Wiadomość'),
+                    name: 'car_generation',       
+                    select_field: false            
+                } only %}
+			</div>
+			<div class="singleField carsell-type-data body hidden">
+				<label for="model">{{ __('Jaka jest wersja nadwozia?') }}</label>
+				{% include 'components/atoms/select/select-form-year.twig' with {
+                    additionalClass: 'form__content-field always-active js-input carsell-type-data',
+                    label: __('Wiadomość'),
+                    name: 'car_body',       
+                    select_field: false            
+                } only %}
+			</div>
+		</div>
+	</div>
+
+</div>
+<style>
+	.with_calendar_icon {
+		background-image: url('/mailing/calendar_icon_seller.png');
+		background-repeat: no-repeat;
+		background-position: 96% 9px;
+	}
+</style>
+<script type="text/javascript">
+$(document).ready(function() {
+	
+})
+</script>

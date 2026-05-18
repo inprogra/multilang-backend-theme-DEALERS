@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#f0f0f0"/>
+  <text x="400" y="300" font-family="Arial, sans-serif" font-size="32" text-anchor="middle" fill="#666">wallbox</text>
+  <text x="400" y="340" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#999">Placeholder - Replace with actual image</text>
+</svg>

@@ -1,0 +1,80 @@
+<div class="{{ additionalClass|e('html_attr') }} m-car-gallery-slider{% if stockVariant %} m-car-gallery-slider--stock{% endif %} js-full-size-gallery">
+<div class="m-car-gallery-slider__preview preview js-car-gallery-slider">
+    <div class="swiper-container">
+        {% if has_archive %}
+            <div class="black_archive_layer"></div>
+        {% endif %}
+        <div class="swiper-wrapper">
+            {% set el = 0 %}
+            {% for galleryItem in gallery %}				
+                {% set Item = galleryItem.0.src %}
+              
+               
+                <div class="preview__slide slide swiper-slide " data-gallery-image="{{Item}}" data-gallery-width="{{galleryItem.0.width}}" data-gallery-height="{{galleryItem.0.height}}" data-gallery-index="{{ loop.index0 }}">
+                {% include 'components/atoms/image/image-query.twig' with {
+                additionalClass: '',
+                image: galleryItem
+            } %}
+                    
+                </div>
+                
+                {% set el = el + 1 %}
+            {% endfor %}
+        </div>
+    </div>
+    {% include 'components/atoms/slider-button/slider-button.twig' with {
+        additionalClass: 'preview__button preview__button--prev js-preview__button--prev',
+        direction: 'prev'
+    } %}
+    {% include 'components/atoms/slider-button/slider-button.twig' with {
+        additionalClass: 'preview__button preview__button--next js-preview__button--next',
+        direction: 'next'
+    } %}
+</div>
+<div class="swiper-container test m-car-gallery-slider__thumbs thumbs js-car-gallery-thumb-slider">
+    <div class="swiper-wrapper test">
+   
+    {% set el = 0 %}
+        {% for galleryItem in gallery_thumbs %}
+       
+        <div class="thumbs__slide slide swiper-slide">
+            {% if has_archive %}
+                <div class="black_archive_layer"></div>
+            {% endif %}
+            {% include 'components/atoms/image/image-query.twig' with {
+            additionalClass: '',
+            image: galleryItem
+        } %}
+        </div>
+    
+        
+       
+            {% set el = el + 1 %}
+        {% endfor %}
+    </div>
+    {% if gallery|length > 3 %}
+        {% include 'components/atoms/slider-button/slider-button.twig' with {
+            additionalClass: 'thumbs__button thumbs__button--prev js-car-gallery-thumb-slider__button--prev',
+            direction: 'prev'
+        } %}
+        {% include 'components/atoms/slider-button/slider-button.twig' with {
+            additionalClass: 'thumbs__button thumbs__button--next js-car-gallery-thumb-slider__button--next',
+            direction: 'next'
+        } %}
+    {% endif %}
+</div>
+</div>
+<style>
+.car_archive button {
+    display: none !important;
+}
+.black_archive_layer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+</style>

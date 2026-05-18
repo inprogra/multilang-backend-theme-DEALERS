@@ -1,0 +1,61 @@
+<?php
+
+namespace Controllers;
+
+use Classes\Cache;
+use \Classes\Controller;
+use Classes\ImageBuilder;
+use \Classes\MultisiteFixer;
+
+class BannerWithContentOverlayController extends Controller
+{
+    public function render(): string
+    {
+        $backendPreview = get_field('backendPreview');
+        if ($backendPreview) {
+            $img = Cache::getAsset('bannerWithContentOverlay.png');
+            return '<img src="' . $img . '" >';
+        }
+
+        $imageID = get_field('img');
+
+        $image = new ImageBuilder($imageID);
+        $image->addSize([1920, 556]);
+        $image->addSize([3840, 1112]);
+
+        $image->addSize([1600, 556]);
+
+        $image->addSize([1366, 540]);
+
+        $image->addSize([450, null]);
+        $image->addSize([900, null]);
+        $image->addSize([1350, null]);
+
+        $image->addSize([721, null]);
+        $image->addSize([1442, null]);
+        $image->addSize([2163, null]);
+
+        $image->addSize([959, null]);
+        $image->addSize([1918, null]);
+        $image->addSize([2877, null]);
+
+        $image->addMediaQuery(null, '100vw', true);
+
+        $link = get_field('link');
+
+        $hasButton = !empty($link);
+        $button = [];
+
+        if ($hasButton) {
+            $button = MultisiteFixer::buildLink($link);
+        }
+
+        return $this->blockView('components/organisms/banner-with-content-overlay/banner-with-content-overlay', [
+            'image' => $image->get(),
+            'heading' => get_field('heading'),
+            'description' => get_field('description'),
+            'hasButton' => $hasButton,
+            'button' => $button
+        ]);
+    }
+}

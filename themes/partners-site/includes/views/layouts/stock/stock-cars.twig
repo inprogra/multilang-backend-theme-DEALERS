@@ -1,0 +1,315 @@
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+<div class="l-stock__loading">
+    {% include 'components/atoms/spinner/spinner.twig' %}
+</div>
+<main class="l-stock__cars cars">
+    <div class="container message_title_container">
+        {% if carsCount > 0 %}
+            <h2 class="h2 cars__heading">
+                <span class="cars__heading-text">
+                    Znaleźliśmy dla Ciebie
+                </span>
+                <span class="cars__heading-count">
+                    {{ carsCount ~ ' ' ~ carsCountText ~ ':' }}
+                </span>
+            </h2>
+            <div class="selectGrid" id="gridSelector">
+                <div class="grid shot_type active">
+                    <img src="/img/grid.png" />
+                    <img src="/img/grid.png" />
+                    <img src="/img/grid.png" />
+                    <img src="/img/grid.png" />
+                    <img src="/img/grid.png" />
+                    <img src="/img/grid.png" />
+                </div>
+                <div class="list shot_type ">
+                    <img class="img_list" src="/img/list.png" />
+                </div>
+
+                <span class="gridPointer"></span>
+            </div>
+        {% endif %}
+    </div>
+   
+
+    <ul class="cars__list">
+        {% for car in cars %}
+            <li class="cars__list-item">
+                {% include 'components/organisms/stock-car/stock-car.twig' with car %}
+            </li>
+        {% endfor %}
+    </ul>
+</main>
+<div class="l-stock__pagination js-stock__pagination">
+    <input type="hidden" name="page" class="js-stock__currentPage" value="{{ pagination.currentPage }}">
+        <input type="hidden" name="resetPagination" class="js-stock__resetPagination" value="1">
+            {% if pagination.maxPages > 1 %}
+                {% include 'components/atoms/pagination/pagination.twig' with {
+            currentPage: pagination.currentPage,
+            maxPages: pagination.maxPages,
+            jsItemClass: 'js-stock__pagination-item'
+        } only %}
+            {% endif %}
+        </div>
+        {% if featuredCars.cars|length > 0 %}
+            {{ openSection(2,1)|raw }}
+            {% include 'components/organisms/stock-cars-slider/stock-cars-slider.twig' with {
+            additionalClass: '',
+            heading: featuredCars.heading,
+            cars: featuredCars.cars,
+        } only %}
+            {{ closeSection()|raw }}
+        {% endif %}
+        <style>
+
+@media screen and (min-width:997px) {
+    .message_title_container {
+        position:relative;
+        padding-top:32px;
+    }
+    #gridSelector > .shot_type {
+        display:none;
+    }
+    #gridSelector > .shot_type.active {
+        display:block;
+    }
+    #gridSelector {
+        background:#fff;
+        width:102px;
+        height:42px;
+        border:1px solid #D5D5D5;
+        border-radius:4px;
+        position: absolute;
+        right:20px;;
+        top:32px;
+        z-index:99;
+    }
+    #gridSelector.active {
+        height:auto;
+        padding-bottom:10px;
+    }
+    #gridSelector.active > .shot_type {
+        display:block;
+    }
+    #gridSelector .gridPointer {
+        background-image: url('/img/grid_selector.png');
+        background-repeat: no-repeat;
+        display:inline-block;
+        width:20px;
+        height:10px;
+        position:absolute;
+        right:12px;
+        top:15px;
+    }
+    #gridSelector > .grid img:nth-child(2),
+    #gridSelector > .grid img:nth-child(5)
+     {
+        margin: 0 2px;
+    }
+  
+    #gridSelector > div > img.img_list {
+        padding:4px 0px 4px 16px;
+    }
+    #gridSelector > .grid {
+        width:56px;
+        padding-left:16px;
+    }
+    #gridSelector > .grid.active {
+        margin-top:-2px;
+    }
+    #gridSelector:hover {
+        cursor:pointer;
+    }
+    body.grid .cars__list {
+        max-width: 1280px;
+        margin-left:auto;
+        margin-right:auto;
+        display:flex;
+        flex-wrap: wrap;
+        
+    }
+    body.grid .cars__list > li {
+        max-width: 405px;
+        justify-content: space-between;
+
+    }
+     body.grid .cars__list > li:nth-child(3n+2) {
+        margin: 0 23px;  
+     }
+     body.grid .o-stock-car__column-details {
+        width:100%!important;
+        overflow:hidden;
+     }
+     body.grid .o-stock-car__column-slider {
+        width:100%;
+        padding:0;
+        max-height:227px;
+        margin-bottom:16px;
+     }
+     body.grid .m-car-gallery-slider__thumbs {
+        display:none!important;
+     }
+     body.grid .o-stock-car__container {
+        flex-wrap: wrap;
+        padding:0;
+     }
+     body.grid .o-stock-car {
+        padding-top:0;
+        background:#fff;
+     }
+     body.grid .o-stock-car__prices {
+        background:#fafafa;
+        padding:16px;
+     }
+     body.grid .o-stock-car .technical-details__list {
+        width:100%;
+        padding-left:16px;
+        padding-right:16px;
+     }
+     body.grid .technical-details__bottom-inner .technical-details__list:nth-child(2) {
+        display:none;
+     }
+     body.grid .column-details__bottom p {
+        display:none;
+     }
+     }
+     @media screen and (max-width:997px) {
+        #gridSelector {
+            display:none!important;
+        }
+     }
+</style>
+        <script type="text/javascript">
+if (Cookies.get('view') == '' || !Cookies.get('view')) {
+         Cookies.set('view', 'grid')
+    }
+ if ($(document).width() < 997) {
+        Cookies.set('view', 'list')
+    }
+    
+   
+    $('.js-stock__cars-wrapper').on('click','.selectGrid',function() {
+        $(this).toggleClass('active');        
+    });
+    $('.js-stock__cars-wrapper').on('click','.shot_type',function() {
+        if ($(this).hasClass('active')) {
+            $('#gridSelector').removeClass('active');
+            return false;
+        }
+        //$('body').removeClass($('.shot_type.active').attr('class'))
+        $('.shot_type.active').removeClass('active');
+        $(this).addClass('active');
+      //  $('body').addClass($(this).attr('class'));
+        if ($(this).hasClass('grid')) {
+            Cookies.set('view', 'grid')
+        } else {
+            Cookies.set('view', 'list')
+        }
+        location.reload();
+    })
+    if (Cookies.get('view') && Cookies.get('view') == 'grid') {
+        $('body').addClass('grid');
+        $('.shot_type.active').removeClass('active');
+        $('.grid.shot_type').addClass('active');
+        $(window).resize();
+    }
+    if (Cookies.get('view') && Cookies.get('view') == 'list') {
+    
+        $('.shot_type.active').removeClass('active');
+        $('.list.shot_type').addClass('active');
+        $(window).resize();
+    }
+
+    // wp_pixel
+const opened = XMLHttpRequest.prototype.open;
+
+XMLHttpRequest.prototype.open = function(method, url, async, user, password) {
+    this.addEventListener('load', function() {
+        var carItems = document.querySelectorAll('.cars__list-item');
+        var contentsData = [];
+
+        carItems.forEach(function(item, index) {
+            var nameElement = item.querySelector('.o-stock-car__name');
+            var offerNumberElement = item.querySelector('.o-stock-car__offer-number');
+            var priceElement = item.querySelector('.prices__value');
+
+            var name = nameElement?.textContent.replace(/\s+/g, ' ').trim() || '[Brak nazwy]';
+            var offerNumber = offerNumberElement?.textContent.replace(/\s+/g, ' ').trim() || '[Brak numeru oferty]';
+            var priceText = priceElement?.textContent.replace(/\s+/g, ' ').trim() || '[Brak ceny]';
+
+            var price = parseFloat(priceText.replace(/[^\d,.-]/g, '').replace(',', '.')) || 0;
+
+            contentsData.push({
+                id: offerNumber,
+                nazwa: name,
+                cena: price
+            });
+        });
+
+        wph('track', 'ViewContent', {
+            content_name: 'ProductList',
+            contents: contentsData
+        });
+    });
+
+    opened.apply(this, arguments);
+};
+
+   
+        
+        
+        
+       
+
+
+    /// przycisk 
+
+function clickEvent() {
+    document.querySelectorAll('.hide-number').forEach(function(element) {
+        element.removeEventListener('click', handleClick);
+        element.addEventListener('click', handleClick);
+    });
+}
+
+function handleClick() {
+    var phoneScript = {{ phoneJs | json_encode | raw }}; 
+    if (!phoneScript || phoneScript.trim() === "") {
+        return;
+    }
+    //$(this).css('display', 'none');
+    try {
+        (new Function(phoneScript))();
+    } catch (error) {
+        console.error('Błąd w kodzie phoneJs:', error);
+    }
+}
+ 
+document.addEventListener('DOMContentLoaded', function() {
+    var phoneScript = {{ phoneJs | json_encode | raw }};
+    if (!phoneScript || phoneScript.trim() === "") {
+        document.querySelectorAll('.hide-number').forEach(function(element) {
+          //  element.style.display = 'none';
+        });
+        return;
+    }
+    clickEvent();
+});
+
+const open = XMLHttpRequest.prototype.open;
+
+XMLHttpRequest.prototype.open = function(method, url, async, user, password) {
+
+    this.addEventListener('load', function() {
+        var phoneScript = {{ phoneJs | json_encode | raw }}; 
+        if (!phoneScript || phoneScript.trim() === "") {
+            document.querySelectorAll('.hide-number').forEach(function(element) {
+               // element.style.display = 'none';
+            });
+            return; 
+        }
+        setTimeout(clickEvent, 100);
+    });
+    open.apply(this, arguments);
+};
+</script>
+        

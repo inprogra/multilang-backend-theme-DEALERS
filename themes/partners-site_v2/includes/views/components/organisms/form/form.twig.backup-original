@@ -1,0 +1,337 @@
+<div class="{{ additionalClass|e('html_attr') }} o-form gtm-form js-form">
+	<div class="o-form__loading">
+		{% include 'components/atoms/spinner/spinner.twig' %}
+	</div>
+
+	<form class="o-form__form form default-form" novalidate>
+		<input type="hidden" name="source" value="{{ source }}">
+		<input type="hidden" name="destination" value="{{ destination }}">
+		<input type="hidden" name="hireMonth" class="js-form__hire-month-field">
+		<input type="hidden" name="hireFee" class="js-form__hire-fee-field">
+		<input type="hidden" name="hireMileage" class="js-form__hire-mileage-field">
+		<input type="hidden" name="hireAssistance" class="js-form__hire-assistance-field">
+		<input type="hidden" name="hireRate" class="js-form__hire-rate-field">
+		<input type="hidden" name="leasingMonth" class="js-form__leasing-month-field">
+		<input type="hidden" name="leasingFee" class="js-form__leasing-fee-field">
+		<input type="hidden" name="leasingPurchase" class="js-form__leasing-purchase-field">
+		<input type="hidden" name="leasingAssistance" class="js-form__leasing-assistance-field">
+		<input type="hidden" name="leasingRate" class="js-form__leasing-rate-field">
+		<div class="form__header">
+			<h2 class="form__header-text">{{ heading|trim }}</h2>
+			{% include 'components/atoms/close/close.twig' with {
+                additionalClass: 'form__header-close ' ~ closeAdditionalClass,
+            } only %}
+		</div>
+		<div class="form__content">
+			<p class="form__content-subtitle">{{ message_0|raw }}</p>
+            <p class="form__content-subtitle smallText"><sup>*</sup> Pola obowiązkowe</p>
+
+			<div class="form__content-extra-fields js-form__hire-month"></div>
+			<div class="form__content-extra-fields js-form__hire-fee"></div>
+			<div class="form__content-extra-fields js-form__hire-mileage"></div>
+			<div class="form__content-extra-fields js-form__leasing-month"></div>
+			<div class="form__content-extra-fields js-form__leasing-fee"></div>
+			<div class="form__content-extra-fields js-form__leasing-purchase"></div>
+			{% if showrooms %}
+				{% include 'components/atoms/showroom-filter/showroom-filter.twig' with {
+                    additionalClass: 'form__showroom-filter js-contact-search__showroom-filter',
+                    filters: showrooms
+                } %}
+			{% endif %}
+			<fieldset class="form__content-section">
+				{% include 'components/atoms/input/input.twig' with {
+                    additionalClass: 'form__content-field',
+                    label: 'Imię',
+                    name: 'name',
+                    mandatory: true,
+                } only %}
+
+                {% include 'components/atoms/error/error.twig' with {
+                    for: 'name',
+                    defaultText: 'Wpisz swoje imię'
+                } only %}
+
+                {% include 'components/atoms/input/input.twig' with {
+                    additionalClass: 'form__content-field',
+                    label: 'Nazwisko',
+                    name: 'surname',
+                    mandatory: true,
+                } only %}
+
+                {% include 'components/atoms/error/error.twig' with {
+                    for: 'surname',
+                    defaultText: 'Wpisz swoje nazwisko'
+                } only %}
+
+                {% include 'components/atoms/input/input.twig' with {
+                    additionalClass: 'form__content-field',
+                    label: 'Numer telefonu',
+                    name: 'phoneNumber',
+                    mandatory: true,
+                } only %}
+
+                {% include 'components/atoms/error/error.twig' with {
+                    for: 'phoneNumber',
+                    defaultText: 'Wpisz swój numer telefonu'
+                } only %}
+
+                {% include 'components/atoms/input/input.twig' with {
+                    additionalClass: 'form__content-field',
+                    label: 'E-mail',
+                    name: 'email',
+                    mandatory: true,
+                } only %}
+
+                {% include 'components/atoms/error/error.twig' with {
+                    for: 'email',
+                    defaultText: 'Wpisz prawidłowy adres e-mail (np. jan.kowalski@workmail.com)'
+                } only %}
+                {% if destination == 'allvalues' %}
+					{% include 'components/atoms/select/select-form.twig' with {
+                    additionalClass: 'form__content-field always-active js-input lead-type-data',
+                    label: 'Wiadomość',
+                    name: 'message',
+                    attributes: {
+                        'data-field-name': 'leadType'
+                    }                    
+                } only %}
+                {% include 'components/atoms/error/error.twig' with {
+                    for: 'leadType',
+                    defaultText: 'Wybierz kategorię'
+                } only %}
+
+				{% endif %}
+
+				{% include 'components/atoms/textarea/textarea.twig' with {
+                    additionalClass: 'form__content-field',
+                    label: 'Wiadomość',
+                    name: 'message',
+                    mandatory: true,
+                } only %}
+                {% include 'components/atoms/error/error.twig' with {
+                    for: 'message',
+                    defaultText: 'Wpisz wiadomosc'
+                } only %}
+				<div class="form__content-consents">
+                     
+                    <div class= 'informationPersonalData'>  
+                        <p>Administratorem Twoich danych osobowych pozostawionych w związku z wiadomością będzie <span class="companyName">Volvo Car Poland </span> sp. z o.o. z siedzibą w <span class="city">Warszawie </span> przy ulicy <span class="street">Puławskiej 558/560 (02-884 Warszawa)</span>.
+                        <span class="detailsInformationBtn moreInformation">Więcej ›</span>
+                        <div class ="detailsInformationContainer">
+                            <p>Twoje dane osobowe będą przez nas przetwarzane w celu: obsługi sprawy, w związku z którą do nas piszesz. W zależności od przedmiotu przedstawionej sprawy może zaistnieć różna podstawa prawna przetwarzania Twoich danych osobowych. Podstawą prawną przetwarzania może być art. 6 ust. 1 lit. b) ogólnego rozporządzenia o ochronie danych osobowych (RODO) tj. wiążąca nas umowa lub podjęcie działań przed zawarciem umowy, jeżeli sprawa w związku z którą z nami się kontaktujesz dotyczy łączącej nas umowy lub podjęcia działania na Twoje żądanie przed zawarciem umowy. Podstawą prawną przetwarzania może być również art. 6 ust. 1 lit. f) RODO, tj. nasz prawnie uzasadniony interes polegający na możliwości udzielania odpowiedzi na kierowane pytania lub przekazywaniu informacji, jeżeli piszesz do nas np. w celu uzyskania informacji o naszych produktach, czy ofercie, a także art. 6 ust. 1 lit. c) RODO, tj. ciążący na nas obowiązek prawny, jeżeli sprawa, w związku z którą z nami się kontaktujesz, wynika z obowiązujących przepisów prawa, np. w momencie, gdy piszesz do nas z prośbą o realizację prawa, które przysługuje Tobie na mocy przepisów o ochronie danych osobowych. Będziemy przetwarzać Twoje dane osobowe również w celu poprawy jakości świadczonych usług, w szczególności obsługi posprzedażowej. Podstawą prawną przetwarzania w tym celu jest art. 6 ust. 1 lit. f) RODO, tj. nasz prawnie uzasadniony interes polegający na możliwości udoskonalania świadczonych przez nas usług, w tym poprawy działania naszego biura obsługi klienta. Ponadto będziemy przetwarzać Twoje dane osobowe w celu możliwości ustalania, dochodzenia i obrony przed roszczeniami, który stanowi nasz prawnie uzasadniony interes. Podstawą prawną przetwarzania w tym celu jest art. 6 ust. 1 lit. f) RODO.</p>
+                            <p>Przysługuje Tobie prawo do: dostępu do treści Twoich danych oraz prawo ich sprostowania, przeniesienia, usunięcia, ograniczenia przetwarzania, a także - w odniesieniu do przetwarzania danych osobowych na podstawie art. 6 ust. 1 lit. f) RODO - prawo wniesienia sprzeciwu wobec przetwarzania Twoich danych osobowych z przyczyn związanych z Twoją szczególną sytuacją.
+                            </p> 
+                            <p>Więcej informacji na temat przetwarzania Twoich danych osobowych znajdziesz <a href="/klauzula-informacyjna">tutaj</a><span class="detailsInformationBtn lessInformation">Mniej ‹</span></p>  
+                            
+                        </div>
+                    </div>
+                   
+
+					{# Inicjalizacja licznika #}
+                        {% set checkboxCounter = 0 %}
+
+                        {% set checkboxCounter = checkboxCounter + 1 %}
+                        {% include 'components/atoms/checkbox/checkbox.twig' with {
+                            additionalClass: 'form__content-field',
+                            name: 'dataProcessingConsent',
+                            mandatory: true,
+                            label: 'Wyrażam zgodę na przetwarzanie moich danych osobowych, w tym danych kontaktowych, danych historii zakupów produktów i usług Volvo oraz danych dotyczących korzystania z serwisów volvocars.com przez <span class="companyName">Volvo Car Poland</span> sp. z o.o. w celu marketingu bezpośredniego produktów i usług marki Volvo.',
+                            detailsLabel: 'Jeżeli wyrazi Pan/Pani zgodę, Pana/Pani dane osobowe będą przetwarzane przez administratora - <span class="companyName">Volvo Car Poland</span> sp. z o.o., ul. <span class="street2">Puławskiej 558/560 (02-884 Warszawa)</span> (VCP), na podstawie art. 6 ust. 1 pkt a) ogólnego rozporządzenia o ochronie danych osobowych (RODO), w celu marketingu bezpośredniego produktów i usług marki Volvo, takich jak samochody, części i akcesoria, usługi Volvo Car Financial Services oraz inne usługi dostępne w sieci Volvo. Informujemy, że: podanie danych jest dobrowolne; może Pan/Pani w każdej chwili wycofać zgodę (w tym przy użyciu danych kontaktowych administratora lub inspektora ochrony danych), przy czym wycofanie zgody nie wpływa na zgodność z prawem przetwarzania, którego dokonano na podstawie zgody przed jej wycofaniem; <span class="inspector">z inspektorem ochrony danych VCP może się Pan/Pani skontaktować przy użyciu adresu mailowego: globdpo@volvocars.com; </span> odbiorcami Pana/Pani danych osobowych mogą być podmioty świadczące usługi na rzecz VCP, w tym: dostawcy usług marketingowych i IT, autoryzowani dealerzy Volvo, podmioty z grupy kapitałowej Volvo oraz partnerzy oferujący produkty Volvo Car Financial Services (np. kredyty, leasingi i ubezpieczenia); dane osobowe będą przechowywane przez czas potrzebny do realizacji naszych celów marketingowych lub do momentu skutecznego wycofania przez Pana/Panią zgody na przetwarzanie Pana/Pani danych osobowych w tym celu; przysługuje Panu/Pani prawo dostępu do treści danych osobowych oraz prawo ich sprostowania, usunięcia, ograniczenia przetwarzania i przeniesienia (wniosek o realizację tych uprawnień można złożyć pod adresem: https://www.volvocars.com/pl/subject-rights-request-form), a także prawo do wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych; Pana/Pani dane osobowe będą przetwarzane również w formie profilowania online i profilowania społecznościowego, które będzie polegało na zbieraniu i agregowaniu Pana/Pani danych w celu stworzenia profilu klienta i przedstawiania materiałów reklamowych i ofert lepiej dostosowanych do Pana/Pani potrzeb. Więcej informacji o przetwarzaniu danych osobowych w sieci Volvo zamieściliśmy na stronie: <a href="https://www.volvocars.com/pl/legal/privacy/privacy-customer-privacy-policy" target="_blank">polityka prywatności</a>.',
+                            checkboxCounter: checkboxCounter
+                        } only %}
+
+                        {% set checkboxCounter = checkboxCounter + 1 %}
+                        {% include 'components/atoms/checkbox/checkbox.twig' with {
+                            additionalClass: 'form__content-field',
+                            name: 'tradeContactConsent',
+                            label: 'Wyrażam zgodę na kontakt telefoniczny.',
+                            detailsLabel: 'Wyrażam zgodę na prowadzenie przez <span class="companyName">Volvo Car Poland</span> sp. z o.o. (ul. Puławska 558/560, 02-884 Warszawa), lub na jej zlecenie marketingu bezpośredniego produktów i usług marki Volvo, takich jak samochody, części i akcesoria, usługi Volvo Car Financial Services oraz inne usługi dostępne w sieci Volvo, poprzez kontakt głosowy na podany przeze mnie numer telefonu, w tym przy użyciu automatycznych systemów wywołujących. Zgoda jest dobrowolna i może być w każdej chwili wycofana (w tym przy użyciu danych kontaktowych wskazanych powyżej <span class="inspector2"> lub w wiadomości e-mail wysłanej na adres inspektora ochrony danych: globdpo@volvocars.com</span>). Wycofanie zgody nie wpływa na zgodność z prawem przetwarzania, którego dokonano na podstawie zgody przed jej wycofaniem. Pozostałe informacje dotyczące przetwarzania danych w celach marketingowych znajdziesz w powyższej klauzuli zgody na przetwarzanie danych osobowych w celach marketingowych lub na stronie  <a href="https://www.volvocars.com/pl/legal/privacy/privacy-customer-privacy-policy" target="_blank">polityka prywatności</a>.',
+                            checked: doubleOpt,
+                            checkboxCounter: checkboxCounter,
+                            group: true
+                        } only %}
+
+                        {% set checkboxCounter = checkboxCounter + 1 %}
+                        {% include 'components/atoms/checkbox/checkbox.twig' with {
+                            additionalClass: 'form__content-field',
+                            name: 'marketingContactConsent',
+                            label: ' Wyrażam zgodę na kontakt mailowy/SMS.',
+                            detailsLabel: 'Wyrażam zgodę na prowadzenie przez <span class="companyName">Volvo Car Poland</span> sp. z o.o. (ul. Puławska 558/560, 02-884 Warszawa) lub na jej zlecenie marketingu bezpośredniego produktów i usług marki Volvo, takich jak samochody, części i akcesoria, usługi Volvo Car Financial Services oraz inne usługi dostępne w sieci Volvo, poprzez przesyłanie informacji handlowych za pomocą środków komunikacji elektronicznej, w szczególności za pomocą poczty elektronicznej, a także za pomocą wiadomości SMS, na podany przeze mnie adres e-mail lub numer telefonu komórkowego. Zgoda jest dobrowolna i może być w każdej chwili wycofana (w tym przy użyciu danych kontaktowych wskazanych powyżej <span class="inspector2"> lub w wiadomości e-mail wysłanej na adres inspektora ochrony danych: globdpo@volvocars.com</span>). Wycofanie zgody nie wpływa na zgodność z prawem przetwarzania, którego dokonano na podstawie zgody przed jej wycofaniem. Pozostałe informacje dotyczące przetwarzania danych w celach marketingowych znajdziesz w powyższej klauzuli zgody na przetwarzanie danych osobowych w celach marketingowych lub na stronie <a href="https://www.volvocars.com/pl/legal/privacy/privacy-customer-privacy-policy" target="_blank">polityka prywatności</a>.',                            checked: doubleOpt,
+                            checkboxCounter: checkboxCounter,
+                            group: true
+                        } only %}
+
+			</fieldset>
+			<div class="form__content-annotation">
+				<p> <sup>1</sup> Zgoda konieczna, aby <span class="companyName">Volvo Car Poland</span> sp. z o.o. mogła przetwarzać Pana/Pani dane osobowe w celach marketingowych i miała możliwość przekazywania Panu/Pani treści o tym charakterze. </p>
+                <p> <sup>2</sup> Zgoda konieczna, aby <span class="companyName">Volvo Car Poland</span> sp. z o.o. mogła przekazywać Panu/Pani treści marketingowe poprzez kontakt telefoniczny w formie połączeń głosowych. </p>
+                <p> <sup>3</sup> Zgoda konieczna, aby <span class="companyName">Volvo Car Poland</span> sp. z o.o. mogła przekazywać Panu/Pani treści marketingowe poprzez wiadomości e-mail/SMS.</p>
+                <p> Bez zgody oznaczonej <sup>1 </sup> oraz co najmniej jednej ze zgód oznaczonych <sup>2</sup> i <sup>3 </sup> nie będziemy mogli przekazywać Panu/Pani treści dotyczących produktów oraz usług marki Volvo wskazanymi powyżej kanałami komunikacji.</p>
+            </div>
+		</div>
+		<div class="form__footer">
+			{% include 'components/atoms/button/button.twig' with {
+                additionalClass: 'form__footer-button',
+                type: 'submit',
+                text: 'Wyślij wiadomość'
+            } only %}
+		</div>
+        
+	</form>
+
+	<div class="o-form__thanks thanks">
+		{% include 'components/atoms/close/close.twig' with {
+            additionalClass: 'thanks__close ' ~ closeAdditionalClass,
+        } only %}
+		<div class="thanks__inner">
+			{% include 'components/atoms/image/image.twig' with thankyouImage|merge({
+                additionalClass: 'thanks__image'
+            }) only %}
+			<h2 class="thanks__title h3">Dealer
+				{{ partnerName|trim }}
+				otrzymał&nbsp;twoją&nbsp;wiadomość</h2>
+			{% include 'components/atoms/status/status.twig' with {
+                additionalClass: 'thanks__status',
+                message:  message_1
+            } only %}
+
+		</div>
+	</div>
+</div>
+<style>
+	.form__content-extra-fields {
+		font-size: 14px;
+	}
+    .smallText{
+        font-size: 12px !important;
+        letter-spacing: 0.24px;
+        sup{
+            top: 3px;
+        }
+    }
+</style>
+
+{# wp pixel #}
+<script type="text/javascript">
+var pageTitle = document.title;
+window.onload = function() {
+    document.querySelector('.form__footer-button').addEventListener('click', function() {  
+         if (typeof wph !== 'undefined') {   
+        wph('track', 'Conversion', {'content_name': { content_name: pageTitle }}) 
+         }
+    });
+};
+</script>
+{# end wp pixel #}
+
+ <script type="text/javascript">
+{% if thankYouCodeJS %}
+function triggerOnThanks() {
+        {{ thankYouCodeJS | raw }}
+} 
+{% endif %}
+
+{% if thankYouCode %}
+var thanks_code = '{{ thankYouCode | json_encode | raw }}'
+{% else %}
+{% set thanks_code = "null" %}
+var thanks_code = '';
+{% endif %}
+$(document).ready(function() {
+    
+    if ($('.always-active').length > 0) { 
+        $('.always-active select').on('change',function() {
+            switch($('.always-active select option:selected').val()) {
+                case 'Samochody nowe':
+                    $('input[name="destination"]').attr('value','new-cars');
+                break;
+                case 'Samochody używane':
+                    $('input[name="destination"]').attr('value','used-cars');
+                break;
+                case 'Serwis i akcesoria':
+                    $('input[name="destination"]').attr('value','service');
+                break;
+            }
+        })
+        $('.always-active select').trigger('change');
+    }
+   
+    $('.default-form, .l-test-drive__aside .o-form__form').submit(function() {
+        if ($('.always-active').length > 0) {
+            $('.always-active').hide();
+        }
+    
+          let inter = setInterval(function() {
+            if ($('.thanks__title.h3').is(":visible") && $('.thankscode_req').length == 0) {
+                $('body').append('<div class="thankscode_req"></div>');
+                {% if thankYouCodeJS %}
+                    triggerOnThanks();
+                {% endif %}
+
+                $('body .thankscode_req').append(thanks_code);
+
+
+                let current_path = $(location).attr("pathname");
+                let user_choose = $('#lead-type option:selected').val();
+                if (user_choose = 'Samochody nowe') {
+                     gtag('event', 'new_cars', {
+                         'form_send': '1',                        
+                         }); 
+                         return false;
+                } else if (user_choose == 'Samochody używane') {
+                     gtag('event', 'used_cars', {
+                         'form_send': '1',                        
+                         });   
+                         return false;
+                } else if (user_choose == 'Serwis i akcesoria') {
+                         gtag('event', 'service', {
+                         'form_send': '1',                        
+                         });
+                         return false;
+                } else {
+
+                }
+                if (current_path.indexOf('/kontakt/') > -1) {
+                          gtag('event', 'contact', {
+                         'form_send': '1',                        
+                         });
+                } else if (current_path.indexOf('/modele/') > -1) {
+                          gtag('event', 'new_cars', {
+                         'form_send': '1',                        
+                         });                         
+                } else if (current_path.indexOf('/dostepne-na-miejscu/') > -1) {
+                          gtag('event', 'used_cars', {
+                         'form_send': '1',                        
+                         });
+                } else if (current_path.indexOf('/campaign/') > -1) {
+                          gtag('event', 'used_cars', {
+                         'form_send': '1',                        
+                         });
+                } else if (current_path.indexOf('/jazda-testowa/') > -1) {
+                          gtag('event', 'test_drive', {
+                         'form_send': '1',                        
+                         });
+                } else if (current_path.indexOf('/serwis') > -1) {
+                          gtag('event', 'service', {
+                         'form_send': '1',                        
+                         });
+                } else {
+                    gtag('event', 'general', {
+                         'form_send': '1',                        
+                         });
+                }
+              /*  if (current_path == '/kontakt/') {                  
+                    gtag('event', 'contact', {
+                        'form_send': '1',                        
+                    });
+                }            */
+            }
+        },100);
+       
+      
+    })
+})
+
+	
+</script>
+

@@ -1,0 +1,20 @@
+#dol-cars-controls {
+    margin: 20px 0;
+}
+
+#dol-cars-controls .spinner {
+    float: none;
+    margin-left: 10px;
+}
+
+#dol-cars-message {
+    margin: 20px 0;
+}
+
+#dol-cars-table {
+    margin-top: 20px;
+}
+
+#dol-cars-table td:last-child button {
+    margin: 2px 0;
+}

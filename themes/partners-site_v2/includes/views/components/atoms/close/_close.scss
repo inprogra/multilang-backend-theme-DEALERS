@@ -1,0 +1,43 @@
+.a-close {
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+
+  &__inner {
+    position: relative;
+    display: block;
+    width: 22px;
+    height: 15px;
+
+    &:before, &:after {
+      content: '';
+      transition: all $transition-base;
+      position: absolute;
+      right: 0;
+      height: 1px;
+      border-radius: 2px;
+      background-color: $black;
+      width: 100%;
+    }
+
+    &::before {
+      top: 50%;
+      transform: translateY(-50%) rotate(-45deg);
+    }
+
+    &::after {
+      bottom: 50%;
+      transform: translateY(50%) rotate(45deg);
+    }
+  }
+
+  &--white {
+    .a-close {
+      &__inner {
+        &:before, &:after {
+          background-color: $white;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+<h2 class="{{ additionalClass|e('html_attr') }} h2 a-section-heading">
+    {% if greyAsSecond %}
+        {% if black %}
+            <span class="a-section-heading__black">{{ black|trim }}</span>
+        {% endif %}
+        {% if grey %}
+            <span class="a-section-heading__grey">{{ grey|trim|raw }}</span>
+        {% endif %}
+    {% else %}
+        {% if grey %}
+            <span class="a-section-heading__grey">{{ grey|trim|raw }}</span>
+        {% endif %}
+        {% if black %}
+            <span class="a-section-heading__black">{{ black|trim }}</span>
+        {% endif %}
+    {% endif %}
+</h2>

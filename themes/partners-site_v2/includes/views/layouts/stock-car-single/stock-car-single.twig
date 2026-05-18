@@ -1,0 +1,193 @@
+<div class="l-stock-car-single js-stock-car-single" data-offer-id="{{ car.offerNumber }}">
+
+    {{ openSection(1, 3)|raw }}
+    {{ openSection(false, 2, false)|raw }}
+    {% include 'components/atoms/breadcrumbs/breadcrumbs.twig' with {
+        type: 'Dostępne na miejscu',
+        type_link: '/dostepne-na-miejscu',
+        path: siteHeading.heading,
+        link: true,
+        href: false,
+	} %}
+    {{ closeSection(false)|raw }}
+        {{ openSection(false, 2, false)|raw }}
+            {% include 'components/atoms/site-heading/site-heading.twig' with {
+                heading: siteHeading.heading,
+                description: siteHeading.description
+            } only %}
+        {{ closeSection(false)|raw }}
+        {% include 'components/organisms/stock-car/stock-car.twig' with car|merge({
+            preventLazyLoadingFirstSlide: true,
+            preventLazyLoadingThumbs: true,
+            hasAccordion: accordion ? true : false
+        }) only %}
+    {{ closeSection()|raw }}
+    {{ openSection(false, false)|raw }}
+        {% include 'components/organisms/accordion-section/accordion-section.twig' with {
+            additionalClass: 'l-stock-car-single__accordion-section js-stock-car-single__accordion-section',
+            heading: {
+                grey: accordionHeading
+            },
+            accordion: accordion,
+
+        } only %}
+      <!--
+        {% include 'components/organisms/gallery/gallery.twig' with {
+            gallery: gallery,
+            additionalClass: 'l-stock-car-single__gallery full-width-gallery'
+        } only %} -->
+    <div class="container">
+        <p class="stock-car-single-rules">
+            Informacje umieszczone na stronie internetowej służą jedynie celom informacyjnym. Ogłoszenia, cenniki i inne informacje zawarte na stronie internetowej nie stanowią oferty w rozumieniu art. 66 § 1 Kodeksu Cywilnego. Sprzedający nie odpowiada za ewentualne błędy lub nieaktualność ogłoszenia. 
+        </p>
+        <style>
+            .stock-car-single-rules {
+                margin-bottom:32px;
+                margin-top:32px;
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 18px;
+                color: #000;
+
+            }
+        </style>
+    </div>
+    {{ closeSection()|raw }}
+    {% if featuredCars.cars|length > 0 %}
+        {{ openSection(false,1)|raw }}
+        {% include 'components/organisms/stock-cars-slider/stock-cars-slider.twig' with {
+            additionalClass: '',
+            heading: featuredCars.heading,
+            cars: featuredCars.cars,
+        } only %}
+        {{ closeSection()|raw }}
+    {% endif %}
+</div>
+<style>
+    .pin {
+    position:absolute;		
+    background-image:url('/app/themes/partners-site_v2/images/black_label.svg');
+    background-position:center right;
+    background-repeat:no-repeat;
+    padding: 2px 12px 0 12px; 
+    font-size:14px;
+    line-height:24px;
+    height:24px;
+    
+    z-index:9999;
+    left:0;
+    top:0;
+    font-weight:400;
+    font-family: "Volvo Centum";
+    line-height:18px;
+    
+    color:#fff;
+    
+    z-index:2;
+
+
+}
+
+.pin:before {
+    content:" ";
+    background:#000;
+    left:0;
+    width:50%;
+    height:18px;
+}
+.car_archive .pin {
+    background:#000;
+    z-index:10;
+}
+.single-stock-car {
+.omnibus_view {
+margin-top:8px;
+}
+.omnibus_view .prices__label.prices__label--primary,
+.omnibus_view .prices__total-value.prices__total-value--primary {
+margin-bottom:8px;
+}
+.omnibus_view .technical-details__heading  {
+margin-bottom:8px;
+}
+.omnibus_box  {
+width:100%;
+}
+.omnibus {
+font-size:12px!important;
+font-weight:400!important;
+line-height:18px!important;
+color:#6D6D6D;
+}
+.omnibus_box {
+width:100%;
+font-size:12px!important;
+font-weight:400!important;
+line-height:18px!important;
+color:#6D6D6D;
+}
+.omnibus_container {
+display:inline-block;
+
+
+}
+.omnibus_container.left_omnibus {
+text-align:left;
+float:left;
+}
+.omnibus_container.right_omnibus {
+text-align:right;
+float:right;
+}
+.omnibus_view.o-stock-car__prices {
+margin-bottom:12px;
+}
+.o-stock-cars-slider {
+    .stock-cars-offer {
+        display:flex;
+    }
+    .stock-cars-offer > div {
+        width:288px;
+        margin-right:24px;
+    }
+    .stock-cars-offer img {
+        margin-bottom:16px;
+    }
+    .stock-cars-offer .car__category {
+        margin-bottom:4px;
+        display:none!important;
+    }
+    .stock-cars-offer .car_name {
+        font-size:16px;
+        margin-bottom:4px;
+    }
+    .o-stock-cars-slider .car__details {
+        display:block;
+    }
+    .stock-cars-offer .car__engine {
+        display:block;
+        margin-bottom:4px;
+        width:100%;
+        font-size:16px;
+    }
+    .stock-cars-offer .car__price {
+        font-size:12px;
+        font-weight:400;
+    }
+    .car__bottom {
+        border:0!important;
+        text-align:left!important;
+        justify-content:flex-start!important;
+    }
+    .car__bottom span {
+        color: #000!important;
+        font-weight:600!important;
+        text-transform:none!important;
+        font-size:16px!important;;
+    }
+    }
+    .go_back {
+        display:none;
+    }
+}
+</style>

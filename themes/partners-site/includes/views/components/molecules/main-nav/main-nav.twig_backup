@@ -1,0 +1,18 @@
+<nav class="{{ additionalClass|e('html_attr') }} m-main-nav">
+    <ul class="m-main-nav__list">
+        {% for item in items %}
+        {% if   'samochody-elektryfikacja' not in item.url %}
+            <li class="m-main-nav__item">
+                <a class="m-main-nav__link" href="{{ item.url }}" {% if item.nofollow %} rel="noopener noreferrer nofollow"{% endif %} {% if item.target == '_blank' %} target="_blank" {% endif %}>{{ item.title|trim }}</a>
+            </li>
+        {% endif %}
+        {% endfor %}
+        {% if hasHamburger %}
+            <li class="m-main-nav__item m-main-nav__item--hamburger">
+                {% include 'components/atoms/hamburger/hamburger.twig' with hamburger|merge({
+                    'displayText': 'Więcej'
+                }) %}
+            </li>
+        {% endif %}
+    </ul>
+</nav>

@@ -1,0 +1,177 @@
+{% if onepage == 'on' %}
+<style>
+    body > div > footer {
+        display:none!important;
+    }
+    body > div > header .bar__nav.m-main-nav {
+        display:none!important;
+    }
+</style>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.bar__logo.a-logo').click(function(e) {
+        e.preventDefault();
+
+        return false;
+    }); 
+})
+</script>
+{% endif %}
+{% if sideform == 'on' %}
+<div class="l-campaign__container container bigMainContainer">
+<div class="l-campaign__content content">
+{% endif %}
+{{ content|raw }}
+{% if additionalContent %}
+    {{ additionalContent|raw }}
+{% endif %}
+<div>
+    {{ openSection(3,3)|raw }}
+    {% include 'components/organisms/text-editor/text-editor.twig' with {
+        content: legalInfoContent
+    } only %}
+    {{ closeSection()|raw }}
+</div>
+{% if sideform == 'on' %}
+</div>
+<div id="migrate_target" class="l-campaign__aside aside">
+
+</div>
+</div>
+<input type="hidden" name="sideform_status" id="sideform_status" value="{{sideform}}" />
+
+<style>
+.o-offer-boxes--two-in-row .offerBoxesMaincontainer .o-offer-boxes__list .o-offer-boxes__box  {
+    width: 48%;
+    padding: 40px;
+    
+}
+.o-offer-boxes--two-in-row .offerBoxesMaincontainer .o-offer-boxes__list .o-offer-boxes__box:first-child{
+    width: 100%;
+}
+@media (max-width: 1200px) {
+  .o-offer-boxes--two-in-row .offerBoxesMaincontainer .o-offer-boxes__list .o-offer-boxes__box {
+    width: 100%;
+  }  
+}
+
+.o-form .form__header{
+    border: none; 
+    max-width: 640px;
+    width: 90%;
+    padding: 1rem 3rem;
+}
+.bigMainContainer{
+    max-width: 1608px;
+    width: 95%;
+}
+
+.bigMainContainer .l-campaign__content .l-section .bigContainer .o-two-column-content-component__inner .o-two-column-content-component__column--img{
+    max-height: 745px;
+}
+.l-campaign__content.content {
+    max-width: 1200px;
+}
+.l-side-form__bar.bar {
+    /* display: none; */
+}
+@media (max-width: 1499px) {
+  .l-campaign .l-section .o-offer-boxes--two-in-row .o-offer-boxes__box,
+  .l-campaign .l-section .o-offer-boxes--three-in-row .o-offer-boxes__box {
+    width: 100%;
+  }
+}
+.js-side-form__backdrop{
+    display: none !important; 
+}
+@media (max-width: 991px) {
+    .bigMainContainer{
+        width: 100%;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .o-form .form__content{
+        max-width: 640px; 
+        width: 90%;
+        margin-left: auto; 
+        margin-right: auto; 
+}
+
+.l-side-form__aside{
+    max-width: 100%;
+    }
+
+}
+@media (min-width: 1500px) {
+    .l-side-form__aside{
+        max-width: 440px;
+
+    }
+
+
+}
+@media (min-width: 1500px){
+    .l-side-form {
+        width: 100% !important;
+        max-width: 440px !important;
+    }
+}
+@media (min-width: 992px) {
+.l-side-form__aside{
+    position: fixed;
+    right: auto; 
+    top: auto; 
+    height: 85%;
+    width: 98%;
+    max-width: 376px !important;
+    }
+
+    
+.l-side-form {
+    height: 100vh !important;
+    position: fixed;
+    width: 100% !important;
+    max-width: 360px !important
+    }
+
+    .o-form .form__header-close{
+        display: none; 
+    }
+
+}
+
+.l-side-form__aside
+.l-campaign__aside{
+    width: 100%;
+    display: block;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.l-campaign__aside #migrate.scrollme{
+    box-shadow: none; 
+}
+
+
+.o-form .form__footer{
+     margin-top: 40px;
+     width: 95%;
+}
+.o-form .form__header{
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 0px; 
+}
+.o-form .form__header-text{
+    font-size: 20px;
+}
+
+
+</style>
+<script> 
+
+
+</script>
+
+{% endif %}

@@ -1,0 +1,216 @@
+{% set classes = [
+    additionalClass|e('html_attr'),
+    'o-two-column-content-component'
+] %}
+
+{% if reverse %}
+    {% set classes = classes|merge(['o-two-column-content-component--reverse']) %}
+{% endif %}
+
+{% if equal_columns == '70' %}
+    {% set classes = classes|merge(['o-two-column-content-component--two-third']) %}
+{% endif %}
+
+{% if video %}
+    {% set classes = classes|merge(['o-two-column-content-component--has-video']) %}
+{% endif %}
+
+<div class="{{ classes|join(' ') }} container" style="padding: 0px;">
+    <div class="o-two-column-content-component__inner">
+        <div class="new_model_image_box_static o-two-column-content-component__column o-two-column-content-component__column--img">
+            {% if heading %}
+                <h2 class="h3 content__heading">
+                    {{ heading }}
+                </h2>
+            {% endif %}
+            {% if subheading %}
+                <p class="content__subheading">
+                    {{ subheading }}
+                </p>
+            {% endif %}
+            
+            {% if video  %}
+                {% include 'components/atoms/video/video.twig' with {
+                    additionalClass: 'o-two-column-content-component__video',
+                    image: image,
+                    video: video
+                } only %}
+            {% elseif custom_video %}
+                    {% include 'components/atoms/video/custom_video.twig' with {
+                    additionalClass: 'o-two-column-content-component__video',
+                    image: image,
+                    video: custom_video
+                } only %}
+            {% elseif image %}
+          
+                {% include 'components/atoms/image/custom-image.twig' with {
+                    additionalClass: 'new_model_img',
+                    image: image,
+                    sizes: sizes
+                } %}
+            {% endif %}
+            <div class="content__description" style="margin:25px 0 15px 0;">
+        <p>{{ __('Poznaj Volvo bliżej – umów się na jazdę testową i poczuj różnicę. A jeśli już wiesz, czego szukasz, odwiedź nasz konfigurator i stwórz Volvo idealne dla siebie.') }}</p>
+        </div>
+       
+            {% if content %}
+                {% for contentItem in content %}
+                    {% if contentItem.acf_fc_layout == 'description' %}
+                        <div class="content__description">
+                            <p>
+                                {{ contentItem.description|raw }}
+                            </p>
+                        </div>
+                    {% elseif contentItem.acf_fc_layout == 'contact-info' %}
+                        <div class="content__contact-info-wrapper">
+                            {% include 'components/atoms/contact-info/contact-info.twig' with contentItem.contactPerson|merge ({
+                                    additionalClass: 'content__contact-info',
+                                }) only %}
+                        </div>
+                    {% elseif contentItem.acf_fc_layout == 'link' %}
+                        {% if contentItem.buttonAction == 'form' %}
+                            {% include 'components/atoms/button/button.twig' with {
+                                    additionalClass: 'content__link js-open-side-form',
+                                    secondary: true,
+                                    text: contentItem.buttonText
+                                } only %}
+                        {% elseif contentItem.link %}
+
+                            {% include 'components/atoms/button/button-link.twig' with contentItem.link|merge({
+                                    additionalClass: 'content__link',
+                                    secondary: true
+                                }) only %}
+                        {% endif %}
+                    {% elseif contentItem.acf_fc_layout == 'table' %}
+                        <dl class="content__table table">
+                            {% for item in contentItem.table %}
+                                <dt class="table__label">
+                                    {{ item.label }}
+                                </dt>
+                                <dd class="table__value">
+                                    {{ item.value }}
+                                </dd>
+                            {% endfor %}
+                        </dl>
+                    {% elseif contentItem.acf_fc_layout == 'list' %}
+                        <ul class="content__list list">
+                            {% for item in contentItem.list %}
+                                <li class="list__item">
+                                    {{ item.text }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% elseif contentItem.acf_fc_layout == 'price_from' %}
+
+                        {% for item in contentItem.price_from_group %}
+                            <div class="price_from_container">
+                                <div class="price_from_text">
+                                    {{ item.price_from_text }}
+                                </div>
+                                <div class="price_from_price">
+                                    <b>
+                                        {{ item.field_price|raw }}
+                                    </b>
+                                    &nbsp; zł brutto
+                                </div>
+                                <style>
+                            .price_from_container {
+                                margin-top:20px;
+                            }
+                            .price_from_text {
+                                color: #6D6D6D;
+                                font-size:12px;
+                                line-height:18px;
+                                font-weight:400;
+                                margin-bottom:4px;
+                            }
+                            .price_from_price {
+                                 font-size:12px;
+                                line-height:18px;
+                                font-weight:400;
+                                color:#1C6BBA;
+                            }
+                            .price_from_price b {
+                                font-size:20px;
+                                line-height:28px;
+                                font-weight:600;
+                                color:#1C6BBA;
+                            }
+                        </style>
+                            </div>
+                        {% endfor %}
+
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+            {% if buttons %}
+                <div class="content__buttons">
+                    {% for button in buttons %}
+                        <div class="content__buttons-item">
+                            {% set additionalClass = ['content__buttons-link'] %}
+
+                            {% if button.additionalClass %}
+                                {% set additionalClass = additionalClass|merge([button.additionalClass]) %}
+                            {% endif %}
+
+                            {% include 'components/atoms/button/button-link.twig' with button|merge({
+                                additionalClass: additionalClass|join(' '),
+                                secondary: true
+                            }) only %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+     
+        {% if leftContent %}
+            <div class="o-two-column-content-component__column o-two-column-content-component__column--content">
+                <div class="o-two-column-content-component__content content custom_flex">
+                    {{ leftContent|raw }}
+                </div>
+            </div>
+        {% endif %}
+
+    </div>
+</div>
+
+<style>
+.o-offer-boxes__box--is-link:hover, .o-offer-boxes__box--is-link:focus{
+    box-shadow: none !important; 
+}
+.l-model-single__version .new_model_image_box_static{
+    padding-left: 20px;
+    max-width: 800px; 
+}
+.new_model_img{
+    max-height: 500px;
+}
+.o-two-column-content-component__inner{
+    align-items: flex-start;
+}
+@media screen and (max-width: 1024px) {
+  .single-model .o-two-column-content-component__column {
+    width: 100% !important;
+    padding-left: 0px !important;
+    height: auto !important;
+  }
+  .new_model_img{
+    display: flex; 
+    justify-content: center; 
+    max-height: 500px;
+  }
+  .content__buttons{
+    display: flex !important;
+    justify-content: center !important; 
+  }
+  .o-two-column-content-component .content__buttons-item{
+  
+    display: contents !important;
+  }
+  .btnContainer{
+  margin: 20px;
+  }
+}
+</style>
+
+

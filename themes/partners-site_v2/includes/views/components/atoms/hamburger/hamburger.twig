@@ -1,0 +1,10 @@
+<button class="{{ additionalClass|e('html_attr') }} a-hamburger">
+    {% if displayText %}
+        <span class="a-hamburger__text">
+                {{ displayText|trim }}
+        </span>
+    {% endif %}
+    <span class="a-hamburger__lines">
+        <span class="a-hamburger__lines-inner"></span>
+    </span>
+</button>

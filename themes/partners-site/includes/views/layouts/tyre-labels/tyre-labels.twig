@@ -1,0 +1,16 @@
+<div class="l-tyre-labels">
+    {{ openSection(2,3)|raw }}
+    {% include 'components/atoms/site-heading/site-heading.twig' with {
+        heading: heading
+    } only %}
+    {{ closeSection()|raw }}
+    <div class="container">
+        <ul class="l-tyre-labels__list">
+            {% for label in tyreLabels %}
+                <li class="l-tyre-labels__item item">
+                    <img src="{{ label.url }}" alt="" class="item__img">
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

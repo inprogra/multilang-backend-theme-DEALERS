@@ -1,0 +1,55 @@
+.m-main-nav {
+  height: 100%;
+
+  &__list {
+    height: 100%;
+    padding: 0;
+    margin-bottom: 0;
+
+    @include media-breakpoint-up(lg) {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__item {
+    display: none;
+    margin-right: 4rem;
+
+    @include media-breakpoint-up(lg) {
+      display: block;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &--hamburger {
+      display: inline-block;
+      height: 100%;
+
+      .a-hamburger {
+        height: 100%;
+        padding: 0 24px;
+        margin-right: -24px;
+
+        @include media-breakpoint-up(lg) {
+          padding-left: 0;
+        }
+      }
+    }
+  }
+
+  &__link {
+    padding: 1.25rem 0;
+    border-bottom: solid 1px transparent;
+    font-size: 14px;
+    font-weight: 500;
+    color: $black;
+    transition: border-bottom-color $transition-base;
+
+    &:hover {
+      border-bottom-color: $black;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+<div class="o-offer-cards">
+    <div class="container offerCardsMainContainer">
+        {{ openSection(false,3,false)|raw }}
+        {% include 'components/atoms/section-heading/section-heading.twig' with {
+            additionalClass: 'o-stock-cars-slider__heading',
+            grey: heading,
+        } %}
+        {{ closeSection(false)|raw }}
+        <div class="o-offer-cards__list">
+            {% for card in cards %}
+                <a href="{{ card.link.url }}"
+                   class="o-offer-cards__item item"
+                        {% if card.link.nofollow %} rel="noopener noreferrer nofollow"{% endif %}
+                        {% if card.link.target == '_blank' %} target="_blank" {% endif %} 
+                >
+                    <div class="item__inner">
+                        <div class="item__header">                         
+                            {% include 'components/atoms/image/image-query.twig' with {
+                            additionalClass: 'item__header-image',
+                            image: card.image
+                        } %}
+                        </div>
+                        <div class="item__content">
+                            <h3 class="item__heading">{{ card.heading|trim }}</h3>
+                            <p class="item__description">{{ card.description|trim }}</p>
+                            <p class="item__cta">{{ card.ctaText|trim }}
+                                <span class="a-arrow a-arrow--secondary"></span>
+                            </p>
+                            
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,125 @@
+.o-offer-box {
+    background: #000;
+
+    &__list {
+        @include media-breakpoint-up(md) {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 0 -1.5rem -3rem;
+        }
+    }
+
+    &__item {
+        display: block;
+        width: 100%;
+        border-radius: $border-radius;
+        background: $white;
+        margin-bottom: 2rem;
+
+        @include media-breakpoint-up(md) {
+            max-width: 392px;
+            margin: 0 1.5rem 3rem;
+        }
+
+        .item {
+
+            &__inner {
+                position: relative;
+                display: flex;
+                overflow: hidden;
+                width: 100%;
+                min-height: 125px;
+                border-radius: $border-radius;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.05), 0 25px 35px rgba(0, 0, 0, 0.03);
+                background: $white;
+                transition: box-shadow $transition-base;
+
+                @include media-breakpoint-up(md) {
+                    flex-direction: column;
+                    min-height: 100%;
+                }
+            }
+
+            &__header {
+                position: relative;
+                overflow: hidden;
+                width: 37.5%;
+
+                @include media-breakpoint-up(md) {
+                    flex: auto 0 0;
+                    width: 100%;
+                }
+
+                &-image {
+                    position: absolute;
+                    object-fit: cover;
+                    height: 100%;
+                    width: 100%;
+
+                    @include media-breakpoint-down(sm) {
+                        padding: 0;
+                    }
+
+                    @include media-breakpoint-up(md) {
+                        position: static;
+                        height: auto;
+                    }
+                }
+            }
+
+            &__content {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                width: 62.5%;
+                padding: 1rem 2rem;
+
+                @include media-breakpoint-up(md) {
+                    flex: auto 1 1;
+                    width: 100%;
+                }
+            }
+
+            &__heading {
+                font-size: 14px;
+                line-height: 24px;
+                font-weight: $font-weight-medium;
+                color: $black;
+            }
+
+            &__description {
+                display: none;
+                font-size: 12px;
+                line-height: 18px;
+                color: $grey-400;
+                margin-bottom: 1.5rem;
+
+                @include media-breakpoint-up(sm) {
+                    display: block;
+                }
+            }
+
+            &__cta {
+                width: 100%;
+                padding-top: 1rem;
+                border-top: solid 1px $grey-300;
+                margin: auto 0 0;
+                line-height: 24px;
+                font-size: 14px;
+                font-weight: $font-weight-medium;
+                text-align: right;
+                text-transform: uppercase;
+                color: $blue-light;
+            }
+        }
+
+        &:hover {
+            .item {
+                &__inner {
+                    box-shadow: 0 0 8px rgb(0 0 0 / 20%);
+                }
+            }
+        }
+    }
+}

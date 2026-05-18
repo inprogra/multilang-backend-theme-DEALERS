@@ -1,0 +1,39 @@
+<header class="o-header js-header">
+    <div class="o-header__bar bar js-header__bar">
+        <div class="bar__container">
+            {% include 'components/atoms/logo/logo.twig' with logo|merge({
+                'additionalClass': 'bar__logo'
+            }) only %}
+            {% include 'components/molecules/main-nav/main-nav.twig' with {
+                'additionalClass': 'bar__nav',
+                'hamburger' :  {
+                    'additionalClass': 'js-header__hamburger',
+                },
+                'hasHamburger': hasSideNav,
+                'items': menuItems
+            } only %}
+        </div>
+    </div>
+    {% if hasSideNav %}
+        {% include 'components/molecules/side-nav/side-nav.twig' with {
+            'additionalClass': 'o-header__side-nav js-header__side-nav',
+            'logo' :  logo|merge({
+                'additionalClass': 'o-header__logo'
+            }),
+            'hamburger': {
+                'additionalClass': 'm-side-nav__top-hamburger js-header__hamburger'
+            },
+            'socialMedia': socialMedia,
+            'menuItems': menuItems,
+            'sideNavMenuItems': sideNavMenuItems,
+        
+        } only %}
+        <div class="o-header__backdrop js-header__backdrop"></div>
+    {% endif %}
+</header>
+
+<style>
+.o-header .bar__container a{
+text-decoration: none !important;
+}
+</style>

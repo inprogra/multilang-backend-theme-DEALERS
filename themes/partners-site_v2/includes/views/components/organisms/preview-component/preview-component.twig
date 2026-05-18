@@ -1,0 +1,71 @@
+<div class="container bigContainer">
+    <article
+            class="{{ additionalClass|e('html_attr') }} o-preview-component{% if reverse %} o-preview-component--reverse{% endif %}">
+        <div class="o-preview-component__col">
+            {% include 'components/atoms/image/image-query.twig' with {
+                additionalClass: 'o-preview-component__img',
+                image: image
+            } only %}
+        </div>
+        <div class="o-preview-component__col">
+            <div class="o-preview-component__content content">
+               {% if heading is defined and heading|trim is not empty %} 
+                    {% set tag = heading_tag|default('h2') %}
+
+                    {% if tag not in ['h1','h2','h3','h4','h5','h6'] %}
+                        {% set tag = 'h2' %}
+                    {% endif %}
+
+                    <{{ tag }} class="content__heading">
+                        {{ heading|trim }}
+                    </{{ tag }}>
+                {% endif %}
+ 
+                {% if content %}
+                    {% for contentItem in content %}
+                        {% if contentItem.acf_fc_layout == 'description' %}
+                            <div class="content__description">
+                                <p>    
+                                    {{ contentItem.description|raw }}
+                                </p>  
+                            </div>
+                        {% elseif contentItem.acf_fc_layout == 'contact-info' %}
+                            <div class="content__contact-info-wrapper">
+                                {% include 'components/atoms/contact-info/contact-info.twig' with contentItem.contactPerson|merge ({
+                                    additionalClass: 'content__contact-info',
+                                    positionClass:'positionClass'
+                                }) only %}
+                            </div>
+                        {% elseif contentItem.acf_fc_layout == 'link' %}
+                            {% if contentItem.buttonAction == 'form' %}
+                                {% include 'components/atoms/button/button.twig' with {
+                                    additionalClass: 'content__button js-open-side-form',
+                                    secondary: true,
+                                    text: contentItem.buttonText
+                                } only %}
+                            {% elseif contentItem.link %}
+                                {% include 'components/atoms/button/button-link.twig' with contentItem.link|merge({
+                                    additionalClass: 'content__button',
+                                    secondary: true
+                                }) only %}
+                            {% endif %}
+                        {% elseif contentItem.acf_fc_layout == 'table' %}
+                            <dl class="content__table table">
+                                {% for item in contentItem.table %}
+                                    <dt class="table__label">{{ item.label|trim }}</dt>
+                                    <dd class="table__value">{{ item.value|trim }}</dd>
+                                {% endfor %}
+                            </dl>
+                        {% elseif contentItem.acf_fc_layout == 'list' %}
+                            <ul class="content__list list">
+                                {% for item in contentItem.list %}
+                                    <li class="list__item">{{ item.text|trim }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </article>
+</div>

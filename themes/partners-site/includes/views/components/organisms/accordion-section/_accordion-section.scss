@@ -1,0 +1,152 @@
+.o-accordion-section {
+  background-color: $grey-100;
+  padding: 3.5rem 0;
+
+  @include media-breakpoint-up(lg) {
+    padding: 8rem 0;
+  }
+
+  &__heading {
+    text-align: center;
+    max-width: 1016px;
+    margin: 0 auto 3rem;
+
+    strong {
+      color: $black;
+    }
+  }
+
+  .heading {
+    &__black {
+      color: $black;
+    }
+
+    &__grey {
+      color: $grey-400;
+    }
+  }
+
+  &__accordion {
+    list-style-type: none;
+    padding: 0;
+    max-width: 808px;
+    margin: 0 auto;
+  }
+
+  .accordion {
+    &__item {
+      border-bottom: 1px solid $grey-300;
+    }
+
+    .item {
+      &__top {
+        padding: 2rem 0;
+        cursor: pointer;
+
+        @include media-breakpoint-up(lg) {
+          padding: 2.6rem 0 2.25rem;
+        }
+      }
+
+      &__heading {
+        position: relative;
+        font-size: 14px;
+        line-height: 1;
+        font-weight: $font-weight-normal;
+        color: $black;
+        margin-bottom: 0;
+
+        &::after {
+          content: '';
+          width: 8px;
+          height: 16px;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-color: $secondary;
+          mask-image: url('../../../../../assets/private/img/arrow.svg');
+          mask-size: contain;
+          mask-repeat: no-repeat;
+          position: absolute;
+          right: 4px;
+          top: 50%;
+          transform: translateY(-50%) rotate(90deg);
+          transition: transform $transition-base;
+
+          @include media-breakpoint-up(lg) {
+            right: 28px;
+          }
+        }
+      }
+
+      &__bottom {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height $transition-base;
+      }
+
+      &__bottom-inner {
+        padding-bottom: 2rem;
+
+        @include media-breakpoint-up(lg) {
+          padding-bottom: 3.5rem;
+        }
+      }
+
+      &__description {
+        a {
+          transition: color $transition-base;
+        }
+      }
+
+      &__list {
+        list-style-type: none;
+        padding: 0;
+
+        @include media-breakpoint-up(lg) {
+          columns: 2;
+        }
+      }
+
+      &__list-item {
+        break-inside: avoid;
+        position: relative;
+        padding-left: 2.5rem;
+        margin-bottom: 1rem;
+        font-size: 12px;
+        line-height: 18px;
+        color: $grey-400;
+
+        @include media-breakpoint-up(lg) {
+          margin-bottom: 1.5rem;
+        }
+
+        &:before {
+          content: '';
+          position: absolute;
+          top: 5px;
+          left: 0;
+          width: 12px;
+          height: 8px;
+          background-color: $secondary;
+          mask-image: url('../../../../../assets/private/img/checkmark.svg');
+          mask-size: contain;
+          mask-repeat: no-repeat;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      &.is-active {
+        .item {
+          &__heading {
+            &::after {
+              transform: translateY(-50%) rotate(-90deg);
+            }
+          }
+        }
+      }
+    }
+  }
+}

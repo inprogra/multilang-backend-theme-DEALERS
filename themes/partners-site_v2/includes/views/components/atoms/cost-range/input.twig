@@ -1,0 +1,157 @@
+<div class="wrapper-box">      
+        <div class="container">
+            <div class="slider-track"></div>
+            <input type="range" min="0" max="99" value="20" id="slider-1" oninput="slideOne()">
+            <input type="range" min="0" max="100" value="80" id="slider-2" oninput="slideTwo()">
+        </div>
+    </div>
+    
+    <!--Script-->
+    <style>
+.a-input-range__inputs {
+    margin-left:16px;
+}
+.wrapper-box{
+    position: relative!important;
+    width: 292px!important;
+    background-color: #ffffff!important;
+   
+    border-radius: 10px!important;
+}
+.wrapper-box .container{
+    position: relative!important;
+    width: 292px!important;
+    height: 100px!important;
+    margin-top: -15px!important;
+    padding:0!important;
+}
+.wrapper-box #slider-1 {
+    z-index:1;
+}
+.wrapper-box #slider-2 {
+    z-index:2;
+}
+.wrapper-box input[type="range"]{
+    -webkit-appearance: none!important;
+    -moz-appearance: none!important;
+    appearance: none!important;
+    width: 100%!important;
+    outline: none!important;
+    position: absolute!important;
+    margin: auto!important;
+    top: 0!important;
+    bottom: 0!important;
+    background-color: transparent!important;
+    pointer-events: none!important;
+    accent-color: transparent;
+
+}
+.wrapper-box .slider-track{
+    width: 100%!important;
+    height: 4px!important;
+    position: absolute!important;
+    margin: auto!important;
+    top: 0!important;
+    bottom: 0!important;
+    border-radius: 5px!important;
+    z-index:1;
+}
+.wrapper-box input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 10px;
+  background-color: #284E80;
+  overflow: visible;
+  cursor: pointer;
+  outline:6px solid #284E80;
+}
+.wrapper-box input[type="range"]::-moz-range-thumb { 
+  -moz-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 10px;
+  background-color:#284E80;
+  overflow: visible;
+  cursor: pointer;
+   outline:6px solid #284E80;
+}
+.wrapper-box input[type="range"]::-moz-range-progress { 
+    background:transparent!important;
+}
+.wrapper-box input[type="range"]::-webkit-slider-runnable-track{
+    -webkit-appearance: none!important;
+    height: 4px!important;
+    background:transparent!important;
+}
+.wrapper-box input[type="range"]::-moz-range-track{
+    -moz-appearance: none!important;
+    height: 4px!important;
+      background:transparent!important;
+
+}
+.wrapper-box input[type="range"]::-ms-track{
+    appearance: none!important;
+    height: 4px!important;
+      background:transparent!important;
+}
+
+.wrapper-box input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance: none!important;
+    height: 6px!important;
+    width: 6px!important;
+    background-color: #fff!important;
+    cursor: pointer!important;
+    margin-top: -2px!important;
+    pointer-events: auto!important;
+    border-radius: 50%!important;
+}
+.wrapper-box input[type="range"]::-moz-range-thumb{
+    -webkit-appearance: none!important;
+      height: 6px!important;
+    width: 6px!important;
+    cursor: pointer!important;
+    border-radius: 50%!important;
+    background-color: #fff!important;
+    pointer-events: auto!important;
+}
+.wrapper-box input[type="range"]::-ms-thumb{
+    appearance: none!important;
+      height: 6px!important;
+    width: 6px!important;
+    cursor: pointer!important;
+    border-radius: 50%!important;
+    background-color: #284E80!important;
+    pointer-events: auto!important;
+}
+.wrapper-box input[type="range"]:active::-webkit-slider-thumb{
+    background-color: #fff!important;
+    border: 0 solid #284E80!important;
+}
+.wrapper-box .values{
+    background-color: #284E80!important;
+    width: 32%!important;
+    position: relative!important;
+    margin: auto!important;
+    padding: 10px 0!important;
+    border-radius: 5px!important;
+    text-align: center!important;
+    font-weight: 500!important;
+    font-size: 25px!important;
+    color: #ffffff!important;
+}
+.wrapper-box .values:before{
+    content: ""!important;
+    position: absolute!important;
+    height: 0!important;
+    width: 0!important;
+    border-top: 15px solid #284E80!important;
+    border-left: 15px solid transparent!important;
+    border-right: 15px solid transparent!important;
+    margin: auto!important;
+    bottom: -14px!important;
+    left: 0!important;
+    right: 0!important;
+}
+	</style>
+	

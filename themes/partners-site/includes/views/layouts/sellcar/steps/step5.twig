@@ -1,0 +1,122 @@
+<div class="stepContent" data-step="step5">
+	<div class="stepHeader">
+		<span class="stepNumber">Krok 5/6</span>
+		<h3>Informacje ogólne</h3>
+		<div class="formFields">
+			<div class="singleField  radio js-radio">
+				<label for="company">Wyceniasz pojazd jako osoba prywatna czy firma?</label>
+				<div class="radio-list">
+					<div class="radio-el">
+						<label for="id_1_car_company">
+							<input id="id_1_car_company" type="radio" class="radio" name="car_company" value="Osoba prywatna" checked>
+							<span class="checkmark"></span>
+							<span style="margin-left: 22px;">
+								Osoba prywatna
+							</span>
+						</label>
+					</div>
+					<div class="radio-el">
+						<label for="id_2_car_company">
+							<input id="id_2_car_company" type="radio" class="radio" name="car_company" value="Firma" checked="">
+							<span class="checkmark"></span>
+							<span style="margin-left: 22px;">
+								Firma
+							</span>
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="singleField  radio js-radio">
+				<label for="company">Jaka była forma sprzedaży pojazdu?</label>
+				<div class="radio-list">
+					<div class="radio-el">
+						<label for="id_1_car_selltype">
+							<input id="id_1_car_selltype" type="radio" class="radio" name="car_selltype" value="Faktura VAT" checked>
+							<span class="checkmark"></span>
+							<span style="margin-left: 22px;">
+								Faktura VAT
+							</span>
+						</label>
+					</div>
+					<div class="radio-el">
+						<label for="id_2_car_selltype">
+							<input id="id_2_car_selltype" type="radio" class="radio" name="car_selltype" value="Umowa kupna sprzedaży" checked="">
+							<span class="checkmark"></span>
+							<span style="margin-left: 22px;">
+								Umowa kupna sprzedaży
+							</span>
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="singleField">
+				<label for="model">Przebieg auta w km</label>
+				<input type="number" min="1" max="999999" step="1" name="car_distance" class="a-input__field car_distance" placeholder="Przebieg auta" required/>
+
+			</div>
+			<div class="singleField">
+				<label for="model">Wskaż łączną liczbę właścicieli</label>
+				<input type="number" min="1" max="10" name="car_owners" step="1" class="a-input__field car_owners" placeholder="Liczba właścicieli" required/>
+
+			</div>
+			<div class="singleField car_condition carsell-type-data">
+				<label for="model">Jak oceniasz stan pojazdu?</label>
+				{% set select_field = '<option value="Średni">Średni</option><option value="Dobry">Dobry</option><option value="Bardzo dobry">Bardzo dobry</option><option value="Idealny">Idealny</option>' %}
+				{% include 'components/atoms/select/select-form-year.twig' with {
+                    additionalClass: 'form__content-field always-active js-input carsell-type-data',
+                    label: 'Wiadomość',
+                    name: 'car_state',       
+                    select_field: select_field            
+                } only %}
+			</div>
+			<div class="singleField  radio js-radio">
+				<label for="company">Czy pojazd był serwisowany w ASO?</label>
+				<div class="radio-list">
+					<div class="radio-el">
+						<label for="id_1_car_service">
+							<input id="id_1_car_service" type="radio" class="radio" name="car_service" value="tak" checked>
+							<span class="checkmark"></span>
+							<span style="margin-left: 22px;">
+								Tak
+							</span>
+						</label>
+					</div>
+					<div class="radio-el">
+						<label for="id_2_car_service">
+							<input id="id_2_car_service" type="radio" class="radio" name="car_service" value="nie" checked="">
+							<span class="checkmark"></span>
+							<span style="margin-left: 22px;">
+								Nie
+							</span>
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="singleField  radio js-radio">
+				<label for="company">Gdzie został zakupiony pojazd?</label>
+				<div class="radio-list">
+					<div class="radio-el">
+						<label for="id_1_car_country">
+							<input id="id_1_car_country" type="radio" class="radio" name="car_country" value="W Polsce" checked>
+							<span class="checkmark"></span>
+							<span style="margin-left: 22px;">
+								W Polsce
+							</span>
+						</label>
+					</div>
+					<div class="radio-el">
+						<label for="id_2_car_country">
+							<input id="id_2_car_country" type="radio" class="radio" name="car_country" value="Za granicą" checked="">
+							<span class="checkmark"></span>
+							<span style="margin-left: 22px;">
+								Za granicą
+							</span>
+						</label>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+</div>

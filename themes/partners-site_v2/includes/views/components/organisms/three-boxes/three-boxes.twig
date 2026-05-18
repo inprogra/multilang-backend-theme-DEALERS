@@ -1,0 +1,44 @@
+<div class="discoveryCardSmallMainContainer">
+    <div class="discoveryCardSmallMainHeadTitleRow">
+        <div class="discoveryCardSmallMainHeatTitleColumn">
+            <h2>{{ mainHeading | raw }}</h2>
+        </div>
+    </div>
+
+    <div class="discoveryCardSmallMainRow">
+        {% for item in boxes %}
+            {% if item.heading and item.description %}
+                <div class="discoveryCardSmallMainColumn">
+                    {% if item.link and item.link.url %}
+                        <a href="{{ item.link.url }}" class="smalCardHref">
+                    {% endif %}
+                            <div class="dicoveryCardSmallMainBox">
+                                <div class="discoveryCardSmallImageContainer">
+                                    {% if item.image and item.image.url %}
+                                        <img src="{{ item.image.url }}" alt="{{ item.image.alt ?: 'Zdjęcie' }}">
+                                    {% else %}
+                                        <img src="/path/to/placeholder.jpg" alt="Brak obrazka">
+                                    {% endif %}
+                                </div>
+                                <div class="discoveryCardSmallDescriptionContainer">
+                                    <div class="discoveryCardSmallTitleHeadContainer">
+                                        <div class="discoveryCardSmallTitle">
+                                            <h3>{{ item.heading }}</h3>
+                                        </div>
+                                        <div class="discoveryCardSmallIcon">
+                                            <span class="a-arrow a-arrow--secondary"></span>
+                                        </div>
+                                    </div>
+                                    <div class="discoveryCardSmallDescription">
+                                        <p>{{ item.description | raw }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                    {% if item.link and item.link.url %}
+                        </a>
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,133 @@
+<div class="l-model-single l-test-drive js-test-drive container">
+    <div class="l-test-drive__container container">
+        <div class="l-test-drive__wrapper">
+            <div class="l-test-drive__main main">
+                <div class="main__inner js-sticky__element">
+                    <div class="main__header">
+                        <h1 class="main__heading">Jazda testowa</h1>
+                        <h2 class="main__subheading">Uzupełnij formularz kontaktowy</h2>
+                    </div>
+                    <div class="choosen_car_title">
+                        Wybrany model: <span class="car_name">{{content_title}}</span>
+                    </div>
+                    <div class="choosen_car_change">
+                        <a href="/jazda-testowa">
+                            Zmień
+                        </a>
+                    </div>
+                    <input type="hidden" value="{{content_title}}" class="js-test-drive__models" />
+                    <div class="main__content l-model-single js-model-single" style="position:relative;">
+                        <div class="version version__top" style="width:100%;">
+                            <div class="top__column top__column--slider">
+                            {% include 'components/molecules/car-gallery-slider/car-gallery-slider-test-drive.twig' with {
+                                    additionalClass: 'top__slider',
+                                    gallery: gallery,
+                                    preventLazyLoadingFirstSlide: true
+                                } %}
+                        </div>
+                    </div>
+                                   
+                    </div>
+                     <div>
+                                {{content|raw}}
+                    </div>    
+                </div>
+            </div>
+            <div class="l-test-drive__aside aside">
+               {% include 'components/organisms/form-test-drive/form-test-drive.twig' with {
+                    additionalClass: 'l-test-drive__form js-test-drive__form',
+                    source: source,
+                    destination: destination,
+                    showrooms: showrooms,
+                    partnerName: partnerName,
+                    thanksCode: thanksCode,
+                    thankyouImage: thankyouImage,
+                    suggestedDate: todayDate
+                } %}
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+
+@media screen and (min-width:997px) {
+    .version.version__top  {
+         max-width:740px;
+    }
+   
+}
+@media screen and (max-width:996px) {
+    .m-car-gallery-slider .preview__button--prev {
+        left:15px;
+    }
+    .m-car-gallery-slider .preview__button--next {
+        right:15px;
+    }
+}
+.l-test-drive__main.main {
+    width:100%;
+}
+.l-model-single .version .top__column {
+    width:100%;
+    padding:0;
+}
+body.admin-bar .l-test-drive .main__inner {
+    height:100%;
+    max-height:100%;
+}
+
+.choosen_car_change {
+    margin-top:8px;
+    margin-bottom:16px;
+}
+.choosen_car_title {
+    margin-top:32px;
+    line-height:20px;
+    font-weight:400;
+    font-size:14px;
+}
+.choosen_car_title .car_name {
+    font-weight:600;
+    line-height:28px;
+    font-size:20px;
+    display:inline-block;
+    margin-top:-10px;
+}
+.full-width {
+    width:100%;
+}
+.main__model  a {
+    color:rgb(22, 42, 70);
+}
+.model__label p {
+    text-align:center;
+}
+.d-none {
+    display:none;
+}
+.model__label {
+    width:100%;
+}
+.model__label span,
+.model__label span::before {
+    display:none!important;
+}
+.main__inner.js-sticky__element {
+    left:0!important;
+    right:0;
+}
+.l-test-drive__main.is-sticky .main__inner,
+.l-test-drive__main.is-sticky-under .main__inner {
+    position:relative;
+}
+.l-test-drive .main__model {
+    width:100%;
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('a.link_model_href').click(function() {
+        document.location.href = $(this).attr('href');
+    })
+});
+</script>

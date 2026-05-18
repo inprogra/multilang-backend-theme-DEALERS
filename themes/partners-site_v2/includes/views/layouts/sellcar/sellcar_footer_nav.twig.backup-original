@@ -1,0 +1,189 @@
+<div class="footer_nav_block container">
+	<a href="#" id="prevStep" class="content__submit-button white a-button" style="padding-left:0;padding-right:0;min-width:unset;">Wstecz</a>
+	<a href="#" id="nextStep" class="content__submit-button a-button"><span>Przejdź Dalej</span><img style="display:none;" src="/images/preloader.gif" /></a>
+</div>
+<style>
+#nextStep.blocked
+{   
+    max-height:50px;
+    span {
+        display:none!important;
+    }
+    text-align:center;
+img {
+    display:inline-block!important;
+}
+}
+
+
+</style>
+ <script type="text/javascript">
+$(document).ready(function() {
+     
+    $('#nextStep').click(function(e) {
+        if ($(this).hasClass('disabled') || $(this).hasClass('blocked')) {
+            e.preventDefault();
+            return false;
+        } else {
+            $(this).removeClass('disabled');
+            $(this).removeAttr('disabled');
+        }
+
+        
+        var status = true;
+        e.preventDefault();
+        let currentStep = $('.do.active').attr('data-step');
+        gtag('event', 'Odkup_pojazd_step_'+ currentStep, {
+            'form_send': '1',                        
+        });
+      
+        let indexEl = currentStep.replace('step','');
+
+        $('#prevStep').removeClass('disabled');
+        $('.leftSideSteps .info').hide();
+        
+
+        $('.leftSideSteps div.stage_'+indexEl).show();
+        $('.leftSideSteps div.stage_'+indexEl+' p').text('');
+
+        $('.leftSideSteps div.stage_'+indexEl).addClass('filled');
+
+
+
+        if ($(window).width() < 993) {
+                        if ($('.leftSideSteps h2').hasClass('hide-param')) {
+                            $('.leftSideSteps h2').nextAll('.filled').hide();
+                        }    
+         }
+        $('.stepContent[data-step="step'+indexEl+'"] .singleField:not(.hidden)').each(function() {
+            if ($(this).find('input').length > 0) {
+               let result = $(this).find('input').val();            
+                
+                if (result && (result !== null || result !== '')) {                
+                   
+
+                    $('.leftSideSteps div.stage_'+indexEl+' p').append(result+', ');  
+                  //  status = true;              
+                 $(this).removeClass('error');
+                } else {
+                
+                 $(this).addClass('error');                
+                    status = false;
+                }
+
+            }
+            if ($(this).find('select').length > 0) {
+                result = $(this).find('select').find('option:selected').text();
+                if (result && $(this).find('select').find('option:selected').val() !== '' && result !== undefined) {
+                 $(this).removeClass('error');
+                    $('.leftSideSteps div.stage_'+indexEl+' p').append(result+', ');   
+                //    status = true;             
+                } else {
+                 $(this).addClass('error');
+                    status = false;
+                }
+            }
+        });
+         
+
+        if (status !== false) {
+        
+        $('#prevStep').removeClass('disabled');
+        if (currentStep == 'step6') {
+            $(this).text('POPROŚ O WYCENĘ');
+            if ($('.automark input[type="checkbox"]').is(':checked') == false) {
+                $('.automark').addClass('error');
+                return false;
+            }
+            $('.stepContent input').removeAttr('disabled');
+
+            $('.stepContent select').removeAttr('disabled');
+            let data = $('#pricing_form').serializeArray();
+          
+
+            $('.manualsteps_inner').hide();
+            $('.stepsOuter').hide();
+            $('.footer_nav').hide();
+            
+            jQuery.ajax ({
+        url: '/wp/wp-admin/admin-ajax.php',
+        type: "POST",
+        data: {action: 'storePricing', data},
+        dataType: "json",
+        contentType: "application/x-www-form-urlencoded",
+        success: function(r){
+            console.log(r);
+        }
+        });
+            $('.thankYou.container').show();
+            //return false;
+        } else {
+            $(this).text('Przejdź Dalej');
+        }
+        $('.do.active').removeClass('active').addClass('done').next('span').addClass('filled').next('span').addClass('active');
+        currentStep = $('.do.active').attr('data-step');
+        if (currentStep == 'step6') {
+            $(this).text('POPROŚ O WYCENĘ');
+            //return false;
+        }
+        
+        $('.stepContent').hide().siblings('.stepContent[data-step="'+currentStep+'"]').show();
+        }
+        return false;
+    })
+     $('#prevStep').click(function(e) {
+        let currentStep = $('.do.active').attr('data-step');
+        if (currentStep == 'step1') { 
+            return false;
+        }
+
+        if (currentStep == 'step2') {
+            $(this).addClass('disabled');
+            //return false;
+        } else {
+            $(this).removeClass('disabled');
+        }
+        $('#nextStep').text('Przejdź dalej');
+        e.preventDefault();
+        $('.do.active').removeClass('active').prev('span').removeClass('filled').prev('span').removeClass('done').addClass('active');
+        currentStep = $('.do.active').attr('data-step');
+        $('.stepContent').hide().siblings('.stepContent[data-step="'+currentStep+'"]').show();
+        return false;
+    })
+    $('.leftSideSteps span span').click(function() {
+       
+        let el = $(this).attr('data-edit');
+        $('.progressbar.filled').removeClass('filled');
+        $('.do.active').removeClass('active');
+        $('.do.done').removeClass('done');
+        $('.step_'+el).addClass('active');
+        $('.stepContent').hide();
+        $('.stepContent[data-step="step'+el+'"]').show();
+    })
+   
+$('.mobile_only.show_more_text').click(function() {
+    if ($(this).text() == 'Rozwiń treść') {
+        $(this).text('Zwiń treść');
+        $(this).prev('p').find('.mobile_only').hide();
+        $(this).prev('p').find('.hide_on_mobile').show();
+    } else {
+        $(this).text('Rozwiń treść');
+        $(this).prev('p').find('.mobile_only').show();
+        $(this).prev('p').find('.hide_on_mobile').hide();
+    }
+});
+            if ($(window).width() < 993) {
+                        $('.leftSideSteps h2').addClass('show_mobile');
+                    }
+                    $('h2.show_mobile').on('click',function() {
+      
+        if ($(this).hasClass('hide-param')) {
+                $(this).removeClass('hide-param');
+                $(this).nextAll('.filled').show();
+        } else {
+                $(this).addClass('hide-param');
+                $(this).nextAll('.filled').hide();
+        }
+    })
+})
+</script>

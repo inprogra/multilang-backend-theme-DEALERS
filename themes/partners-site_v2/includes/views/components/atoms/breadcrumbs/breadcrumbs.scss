@@ -1,0 +1,22 @@
+.breadcrumbs {
+    margin-top:20px;
+    padding:10px 0;
+    a:first-child {
+        color:#616161;
+        margin-left:0;
+    }
+    span {
+        color:#616161;
+    }
+    a {
+        display:inline-block;
+        margin-right:8px;
+        margin-left:8px;
+        color:#0A0A0A;
+    }
+}
+@media screen and (min-width:1680px) {
+    .breadcrumbs_template {
+        max-width:1680px;
+    }
+}

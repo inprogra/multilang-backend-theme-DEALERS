@@ -1,0 +1,51 @@
+// Typography
+//
+// Font, line-height, and color for body text, headings, and more.
+
+// stylelint-disable value-keyword-case
+$font-family-sans-serif:      "Volvo Novum", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-base:            $font-family-sans-serif !default;
+$font-family-headings:        "Volvo Broad Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+// stylelint-enable value-keyword-case
+
+$font-size-base:              16px !default; // Assumes the browser default, typically `16px`
+$font-size-lg:                18px !default;
+$font-size-sm:                14px !default;
+
+$font-weight-normal:          400 !default;
+$font-weight-medium:          500 !default;
+
+$h1-font-size:                $font-size-base * 3 !default;
+$h2-font-size:                $font-size-base * 2 !default;
+$h3-font-size:                $font-size-base * 1.25 !default;
+$h4-font-size:                $font-size-base !default;
+$h5-font-size:                $font-size-base !default;
+$h6-font-size:                $font-size-base !default;
+
+$h1-font-size-mobile: 32px;
+$h2-font-size-mobile: 20px;
+$h3-font-size-mobile: 16px;
+
+$headings-margin-bottom:      1rem !default;
+$headings-font-family:        null !default;
+$headings-font-weight:        500 !default;
+$headings-line-height:        1.2 !default;
+$headings-color:              null !default;
+
+// Links
+//
+// Style anchor elements.
+
+$link-color:                              $secondary !default;
+$link-decoration:                         none !default;
+$link-hover-color:                        darken($primary, 15%) !default;
+// Darken percentage for links with `.text-*` class (e.g. `.text-success`)
+$emphasized-link-hover-darken-percentage: 15% !default;
+
+// Paragraphs
+//
+// Style p element.
+
+$paragraph-margin-bottom:   1rem !default;
+$line-height-base: 1.25;

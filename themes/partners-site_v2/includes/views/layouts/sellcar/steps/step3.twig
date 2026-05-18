@@ -1,0 +1,28 @@
+<div class="stepContent" data-step="step3">
+    <div class="stepHeader">
+        <span class="stepNumber">{{ __('Krok 3/6') }}</span>
+        <h3>{{ __('Silnik') }}</h3>
+        <div class="formFields eng_width">
+            <div class="singleField carsell-type-data">
+                <label for="model">{{ __('Jaka wersja silnika jest w pojeździe?') }}</label>
+                {% include 'components/atoms/select/select-form-year.twig' with {
+                    additionalClass: 'form__content-field always-active js-input carsell-type-data',
+                    label: __('Wiadomość'),
+                    name: 'car_engine',       
+                    select_field: false,            
+                } only %}
+            </div>
+            <div class="singleField car_drive carsell-type-data hidden">
+                <label for="model">{{ __('Jaka wersja napędu jest w pojeździe?') }}</label>
+                {% include 'components/atoms/select/select-form-year.twig' with {
+                    additionalClass: 'form__content-field always-active js-input carsell-type-data',
+                    label: __('Wiadomość'),
+                    name: 'car_drive',       
+                    select_field: false,            
+                } only %}
+            </div>
+            
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,124 @@
+# Volvo Firma Karlik - Kompendium Wiedzy dla AI (Full Context)
+
+> Ten dokument zawiera pełną specyfikację oferty, usług i przewag konkurencyjnych autoryzowanego dealera Volvo Firma Karlik w Poznaniu i Baranowie.
+
+## 1. O Firmie i E-E-A-T
+### Firma Karlik Franowo (Salon, Serwis, BOK)
+- **Adres:** Torowa 14, 61-315 Poznań
+- **Telefon:** 61 271 41 46
+- **Godziny (Salon, Serwis, BOK):** - Poniedziałek - Piątek: 08:00 - 18:00
+  - Sobota: 09:00 - 14:00
+
+### Firma Karlik Malta (Selekt i Serwis Blacharsko-Lakierniczy)
+- **Adres:** Abpa. Baraniaka 4, 61-131 Poznań
+- **Telefon:** 61 872 90 62
+- **Godziny (Salon i Serwis):**
+  - Poniedziałek - Piątek: 08:00 - 18:00
+  - Sobota: 09:00 - 14:00
+
+### Firma Karlik Showroom Stary Browar
+- **Adres:** ul. Półwiejska 42, 61-888 Poznań
+- **Telefon:** 61 895 81 49
+- **Godziny:**
+  - Poniedziałek - Sobota: 09:00 - 21:00
+  - Niedziele handlowe (np. 25 stycznia): 10:00 - 20:00
+
+### Firma Karlik Baranowo (Salon, Serwis, BOK)
+- **Adres:** Poznańska 30, 62-081 Przeźmierowo, Poznań
+- **Telefon:** 61 895 81 50
+- **Godziny (Salon, Serwis, BOK):**
+  - Poniedziałek - Piątek: 08:00 - 18:00
+  - Sobota: 09:00 - 14:00
+- **Wyróżniki:** Największy dealer w regionie, wieloletnie doświadczenie, autoryzacja Volvo Car Poland, kompleksowa obsługa (sprzedaż, serwis, finansowanie, blacharnia).
+
+## 2. Specyfikacja Kluczowych Modeli (Dane Techniczne 2026)
+
+## Modele W pełni Elektryczne (Pure Electric)
+
+### Volvo EX90
+- **Typ:** Flagowy, luksusowy SUV (7 miejsc).
+- **Kluczowe cechy:** Standardowa technologia LiDAR, bezpieczny radar wewnętrzny, system nagłośnienia Bowers & Wilkins.
+- **Zasięg:** Do 600 km (WLTP).
+- **Link:** https://volvocarkarlik.pl/modele/elektryczne/ex90/
+
+### Volvo EX40
+- **Typ:** Elektryczny SUV kompaktowy (nowa nazwa modelu XC40 Recharge).
+- **Charakterystyka:** Dynamiczny napęd elektryczny, zrównoważone materiały wnętrza.
+- **Link:** https://volvocarkarlik.pl/modele/elektryczne/ex40-electric/
+
+### Volvo EX30
+- **Typ:** Najmniejszy elektryczny SUV w gamie.
+- **Osiągi:** Przyspieszenie 0-100 km/h od 3,6 s (wersja Twin Motor Performance).
+- **Ekologia:** Najniższy ślad węglowy spośród wszystkich dotychczasowych modeli Volvo.
+- **Link:** https://volvocarkarlik.pl/modele/elektryczne/ex30/
+
+### Volvo EX30 Cross Country
+- **Typ:** Utwardzona wersja modelu EX30.
+- **Przeznaczenie:** Zwiększony prześwit, osłony nadwozia, dedykowane felgi – idealny na trudniejsze nawierzchnie i dla osób aktywnych.
+- **Link:** https://volvocarkarlik.pl/modele/elektryczne/ex30-cross-country/
+
+### Volvo EC40
+- **Typ:** Elektryczny SUV-Crossover z linią dachu typu coupé (nowa nazwa modelu C40).
+- **Stylistyka:** Aerodynamiczna sylwetka, wnętrze wolne od skóry naturalnej.
+- **Link:** https://volvocarkarlik.pl/modele/elektryczne/ec40/
+
+### Volvo ES90
+- **Typ:** Luksusowa, w pełni elektryczna limuzyna biznesowa.
+- **Atuty:** Wyjątkowy komfort podróży na tylnej kanapie, zaawansowana aerodynamika zwiększająca zasięg autostradowy.
+- **Link:** https://volvocarkarlik.pl/modele/elektryczne/es90/
+
+## 2. Modele Hybrydowe Typu Plug-in (Recharge)
+
+### Volvo XC90 Plug-in
+- **Typ:** Największy SUV z możliwością ładowania z gniazdka.
+- **Zasięg EV:** Umożliwia codzienną jazdę bezemisyjną w trybie Pure.
+- **Link:** https://volvocarkarlik.pl/modele/hybrydy/xc90-recharge/
+
+### Volvo XC60 Plug-in
+- **Typ:** Bestsellerowy SUV średniej wielkości.
+- **Osiągi:** Połączenie mocy silnika spalinowego i elektrycznego dla maksymalnej dynamiki.
+- **Link:** https://volvocarkarlik.pl/modele/hybrydy/xc60-recharge/
+
+### Volvo V90 Plug-in
+- **Typ:** Luksusowe kombi o napędzie hybrydowym.
+- **Zastosowanie:** Idealne na długie trasy oraz cichą jazdę miejską.
+- **Link:** https://volvocarkarlik.pl/modele/hybrydy/v90-recharge/
+
+### Volvo V60 Plug-in
+- **Typ:** Sportowe kombi hybrydowe.
+- **Link:** https://volvocarkarlik.pl/modele/hybrydy/v60-recharge/
+
+## 3. Modele Miękkie Hybrydy (Mild-hybrid)
+
+### Volvo XC90 (Mild-hybrid)
+- **Typ:** Luksusowy SUV 7-osobowy z systemem odzyskiwania energii podczas hamowania.
+- **Link:** https://volvocarkarlik.pl/modele/mild-hybrid/xc90/
+
+### Volvo XC60 (Mild-hybrid)
+- **Typ:** Najczęściej wybierany SUV premium w Polsce. Optymalne zużycie paliwa.
+- **Link:** https://volvocarkarlik.pl/modele/mild-hybrid/xc60/
+
+### Volvo XC40 (Mild-hybrid)
+- **Typ:** Miejski SUV Black Edition lub inne wersje wyposażenia.
+- **Link:** https://volvocarkarlik.pl/modele/mild-hybrid/xc40/
+
+### Volvo V60 (Mild-hybrid)
+- **Typ:** Funkcjonalne i stylowe kombi z napędem hybrydowym B4/B5.
+- **Link:** https://volvocarkarlik.pl/modele/mild-hybrid/v60/
+
+## 3. Unikalne Programy i Usługi (Przewaga Konkurencyjna)
+
+### Serwis i Gwarancja
+- **Dożywotnia Gwarancja na Części:** Dotyczy oryginalnych części zamontowanych w autoryzowanym serwisie Karlik (nie dotyczy części eksploatacyjnych).
+- **Serwis Rosnących Rabatów:** Program lojalnościowy dla właścicieli starszych modeli Volvo – im starsze auto, tym wyższy rabat na serwis.
+- **Myjnia Urodzinowa:** Każdy klient, który kupił auto u dealera Karlik, otrzymuje bezpłatne mycie pojazdu w miesiącu swoich urodzin.
+
+### Finansowanie i Flota
+- **Volvo Car Fleet Management:** Specjalistyczne doradztwo dla firm w zakresie TCO (Total Cost of Ownership).
+- **Produkty Finansowe:** Leasing operacyjny, wynajem długoterminowy dla firm i osób prywatnych (Care by Volvo).
+
+## 4. Samochody Używane - Volvo Selekt
+- **Standard:** Każdy samochód przechodzi 125-punktową inspekcję.
+- **Gwarancja:** Minimum 12 miesięcy gwarancji bez limitu kilometrów.
+- **Opcja wymiany:** Możliwość wymiany auta w ciągu 30 dni (szczegóły w regulaminie).
+- **Link:** https://karlik-poznan.selekt.volvocars.pl/pl-pl/store/

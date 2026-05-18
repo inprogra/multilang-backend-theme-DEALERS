@@ -1,0 +1,30 @@
+.o-form {
+  &--test-drive {
+    position: relative;
+
+    .o-form {
+      &__thanks {
+        @include media-breakpoint-down(sm) {
+          padding-bottom: 6rem;
+        }
+      }
+    }
+
+    &.is-completed .o-form {
+      &__form {
+        @include media-breakpoint-up(md) {
+          display: block;
+        }
+      }
+
+      &__thanks {
+        @include media-breakpoint-up(md) {
+          z-index: 9;
+          background: #fff;
+          position: absolute;
+          inset: 0;
+        }
+      }
+    }
+  }
+}

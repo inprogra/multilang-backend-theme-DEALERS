@@ -1,0 +1,43 @@
+<ul class="l-models__accordion accordion js-accordion">
+    {% for category in categories %}
+        <li class="accordion__category category js-accordion__item{% if category.isMobileActive %} is-active{% endif %}">
+            <div class="category__top js-accordion__item-top">
+                <h2 class="category__heading">{{ category.heading }}</h2>
+                <p class="category__subheading">{{ category.subheading }}</p>
+                <span class="category__open-icon"></span>
+            </div>
+            <div class="category__bottom js-accordion__item-bottom">
+                <div class="category__bottom-inner js-accordion__item-bottom-inner">
+                    {% for carType in category.carTypes %}
+                        {% if carType.name %}
+                            <h3 class="category__cars-type">{{ carType.name }}</h3>
+                        {% endif %}
+                        <ul class="category__cars">
+                            {% for car in carType.cars %}
+                                <li class="category__car car">
+                                    <a href="{{ car.url }}" class="car__link">
+                                        <div class="car__details">
+                                            <h4 class="car__name">{{ car.name }}</h4>
+                                           
+                                            {% if car.price and car.hide_price != 'on' %}
+                                                <p class="car__price">Już
+                                                    od {{ car.price|number_format(0, '.', '&nbsp;')|raw }}&nbsp;zł</p>
+                                            {% endif %}
+                                        </div>
+                                        <div class="car__img">
+                                            {% include 'components/atoms/image/image.twig' with car.imageMobile|merge({
+                                                defaultMediaQuery: {
+                                                    size: '140px'
+                                                }
+                                            }) only %}
+                                        </div>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endfor %}
+                </div>
+            </div>
+        </li>
+    {% endfor %}
+</ul>

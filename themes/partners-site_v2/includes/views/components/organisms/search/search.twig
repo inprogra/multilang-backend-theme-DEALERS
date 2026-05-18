@@ -1,0 +1,154 @@
+<div class="container search_form">
+    <form action="" method="GET">
+        <input type="text" name="search" class="search_input" value="{{search}}" placeholder="Szukaj" />
+        {% if search %}
+        <a class="clear_results" href="/szukaj"><img src="/app/themes/partners-site_v2/images/clear.png" /></a>
+        <img class="horizontal_line" src="/app/themes/partners-site_v2/images/horizontal_line.png" />
+        {% endif %}
+        <button class="search_button"><img src="/app/themes/partners-site_v2/images/search_icon.png" /></button>
+    </form>
+</div>
+<div class="container results_container">
+    {% if search %}
+        <div class="search_results_for">
+            Lista wyników dla "<b>{{search}}</b>"
+        </div>
+    {% endif %}
+    {% if results %}
+        <div class="results">
+                {% for r in results %}
+                       <div class="result">
+                            <div class="result-image">
+                            {% if r.image == '/app/themes/partners-site_v2/images/noimage.svg' %}
+                                <picture>
+                                    <source media="(max-width: 997px)" srcset="/app/themes/partners-site_v2/images/noimage_mobile.svg" />
+                                    <img src="/app/themes/partners-site_v2/images/noimage.svg" />
+                                </picture>
+                            {% else %}
+                                <img src="{{r.image}}" />
+                            {% endif %}
+                            </div>
+                            <div class="result-entry" data-check="{{search}}" data-search="{{r.content_trimmed }}">
+                                <h2><a href="/{{(r.post_type == 'campaign' ? 'kampanie' : r.post_type)}}/{{r.post_name}}">{{r.post_title}}</a></h2>
+                                <p></p>
+                            </div>
+                       </div>
+                       <div class="clr"></div>
+                {% endfor %}
+        </div>
+    {% endif %}
+</div>
+<script type="text/javascript" src="/app/themes/partners-site_v2/includes/views/components/organisms/search/search.js"></script>
+<style>
+
+.results_container {
+    max-width:664px;
+    padding:0;
+    margin-bottom:42px;
+}
+.result-entry {
+    max-width:380px;
+}
+.result-entry p {
+    font-size:14px;
+    line-height:20px;
+    font-weight:400;
+    font-family:"Volvo Centum";
+}
+.horizontal_line {
+    position:absolute;
+    right:43px; 
+    top:7px;
+}
+.clear_results {
+    position:absolute;
+    right:54px; 
+    top:7px;
+}
+.clr {
+    clear:both;
+    float:none;
+}
+.result {
+    width:664px;
+    margin-top:42px;
+    display:flex;
+}
+.result-entry {
+    text-align:left;
+    margin-left:20px;
+}
+.result-entry h2 {
+    font-size: 20px;
+    line-height:28px;
+    font-weight:600;
+    
+}
+.result-entry h2 a {
+    color:#000;
+}
+.result .result-image {
+    width:180px!important;
+    height:102px;
+    display:inline-block;
+}
+.result-entry {
+    display:inline-block;
+}
+.result .result-image img {
+    width:100%;
+}
+.search_results_for {
+    text-align:center;
+    margin-top:32px;
+    font-size:14px;
+    font-weight:400;
+}
+.search_button {
+    background:none;
+    box-shadow:none;
+    border:0;
+    position:absolute;
+    right:9px; 
+    top:7px;
+}
+.search_form {
+    padding-top:32px;
+    margin:0 auto;
+    text-align: center;
+    position:relative;  
+}
+.search_form form {
+     display:inline-block;
+     position:relative;
+
+}
+.search_input {
+    width:470px;
+    height:40px;
+    border-radius:40px;
+    box-shadow:none;
+    border: 1px solid #d5d5d5;
+    padding:0 40px 0 16px;
+    background: #fafafa;
+}
+@media screen and (max-width:997px) {
+    .nostyles {
+        position: absolute;
+        top: 19px;
+        right: 22px;
+    
+    }
+    .search_input {
+        width:100%;
+    }
+    .result {
+        width:100%;
+        padding:0 16px;
+    }
+    .result .result-image {
+        width:102px;
+        overflow:hidden;
+    }
+}
+</style>

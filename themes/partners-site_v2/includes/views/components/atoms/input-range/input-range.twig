@@ -1,0 +1,37 @@
+<div class="{{ additionalClass|e('html_attr') }} a-input-range js-input-range" data-selected-min="{{ selected.min }}" data-selected-max="{{ selected.max }}">
+<div class="a-input-range__inputs">
+        <div class="a-input-range__input-item">
+            {% include 'components/atoms/input/input.twig' with {
+                id: 'price-range-min',
+                name: name ~ '-min',
+                value: min,
+                label: 'Od:',
+                additionalClass: 'js-input-range__min',
+                type: 'text',
+            } %}
+        </div>
+        <div class="a-input-range__input-item">
+            {% include 'components/atoms/input/input.twig' with {
+                id: 'price-range-max',
+                name: name ~ '-max',
+                value: max,
+                label: 'Do:',
+                additionalClass: 'js-input-range__max',
+                type: 'text',
+            } %}
+        </div>
+    </div>
+    <div class="a-input-range__top">
+        
+        <div class="a-input-range__slider js-input-range__slider">
+        </div>
+    </div>
+    
+</div>
+<style>
+@media screen and (min-width:998px) {
+	.a-input-range__slider {
+		width:100%;
+	}
+}
+</style>

@@ -1,0 +1,47 @@
+
+<div  class="car_section_background {{ additionalClass|e('html_attr') }} a-image" style="--width: {{ sizes.0.width }};--height: {{ sizes.0.height }};{{ style|raw }}">
+    
+</div>
+
+
+<style>
+.car_section_background img {display:none;}
+.car_section_background {
+    background-image: url('{{ sizes.0.src }}');
+    background-position: center center;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+@media screen and (max-width: 978px) {
+.l-homepage__bottom-image {
+    height:270px;
+} 
+
+.car_section_background {
+    background-image: url('{{ bottomImageMobile.sizes.0.src }}');
+    background-size:cover;
+   background-position: 80% center;
+    padding-bottom:120px;
+}
+}
+@media screen and (max-width:640px) {
+    
+    .car_section_background {
+            background-image: url('{{ bottomImageMobile.sizes.1.src }}');
+    }
+}
+@media screen and (max-width:468px) {
+    .l-homepage__bottom-image {
+        height:auto;
+    }
+    .l-homepage__bottom-image {
+        height:135px;
+    }
+    .car_section_background { 
+       background-image: url('{{ bottomImageMobile.sizes.0.src }}');
+       background-size:cover;
+    }
+    
+}
+</style>
+

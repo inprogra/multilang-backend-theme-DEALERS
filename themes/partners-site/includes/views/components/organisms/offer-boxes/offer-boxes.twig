@@ -1,0 +1,45 @@
+<div class="o-offer-boxes o-offer-boxes--{{ layout ?: 'three-in-row' }} {% if pullUp %} pullUp {% endif %}">
+    <div class="container">
+        <div class="o-offer-boxes__list">
+            {% for item in items %}
+                {% if item.link.url %}
+                    <a href="{{ item.link.url }}" {% if item.link.nofollow %} rel="noopener noreferrer nofollow"{% endif %} {% if item.link.target == '_blank' %} target="_blank" {% endif %} class="o-offer-boxes__box o-offer-boxes__box--is-link box">
+                        <div class="box__inner">
+                            <div class="box__icon">{{ getSVG(item.icon)|raw }}</div>
+                            <h3 class="box__heading">{{ item.heading|trim }}</h3>
+                            <p class="box__description">{{ item.description|trim }}</p>
+                            <p class="box__button">{{ item.link.text|trim}} <span class="a-arrow a-arrow--small a-arrow--secondary"></span></p>
+                        </div>
+                    </a>
+                {% else %}
+                    <div class="o-offer-boxes__box box">
+                        <div class="box__inner">
+                            <div class="box__icon">{{ getSVG(item.icon)|raw }}</div>
+                            <h3 class="box__heading">{{ item.heading|trim }}</h3>
+                            <p class="box__description">{{ item.description|trim }}</p>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<style>
+.pullUp {
+    margin-top:-140px;
+    z-index:10;
+    position:relative;
+}
+.pullUp .o-offer-boxes__box {
+    max-width:498px;
+    
+}
+.pullUp .o-offer-boxes__list {
+    justify-content:center;
+}
+@media screen and (max-width:997px) {
+    .pullUp {
+    margin-top:0;
+    }
+}
+</style>

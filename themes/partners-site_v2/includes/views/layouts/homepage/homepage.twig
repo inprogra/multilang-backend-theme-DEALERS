@@ -1,0 +1,55 @@
+<div class="l-homepage">
+
+    {{ openSection(0,0)|raw }}
+        {% include 'components/molecules/special-offer/special-offer.twig' with specialOffer only %} 
+    {{ closeSection()|raw }}
+
+    {{ openSection(0,4)|raw }}
+        {% include 'components/molecules/hero-slider/hero-slider.twig' with heroSlider only %} 
+    {{ closeSection()|raw }}
+
+     {{ openSection(0,4)|raw }}
+        {% include 'components/molecules/shopping-box/shopping-box.twig' with greyBox only %} 
+    {{ closeSection()|raw }}
+
+    {{ openSection(0,4) | raw }}
+    <div class="discoveryCardMainContainer">
+        <div class="discoveryCardMainRow">
+
+    {% for item in offerCards %}
+        {% include 'components/molecules/discovery-card/discovery-card.twig' with {item: item} only %}
+    {% endfor %}
+
+        </div>
+    </div> 
+
+    {{ closeSection() | raw }}
+
+    {{ openSection(0,4)|raw }}
+    {% include 'components/molecules/featured-car-models/featured-car-models.twig' with {'theme_url':theme_url, sliderFamily} only %}
+    {{ closeSection()|raw }}
+    
+    {{ openSection(0,4)|raw }}
+        {% include 'components/molecules/discovery-card-small/discovery-card-small.twig' with offerBox only %} 
+    {{ closeSection()|raw }}
+
+    {{ openSection(0,4)|raw }}
+    {% include 'components/molecules/quotation-cars/quotation-cars.twig' with offerCard only %} 
+
+    {{ closeSection()|raw }}
+
+
+
+    
+<style>
+@media screen and (max-width:1280px) {
+    /* .slide__link {
+        margin-top:40px;
+    } */
+    .m-hero-slider .slide__title {
+        height:auto;    
+    }
+}
+
+</style>
+

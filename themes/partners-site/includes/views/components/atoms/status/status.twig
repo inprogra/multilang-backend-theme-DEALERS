@@ -1,0 +1,12 @@
+<div class="{{ additionalClass|e('html_attr') }} a-status{% if type %} a-status--{{ type }}{% endif %}">
+	<span class="a-status__icon">
+		{% if type == 'error' %}
+			{{ getSVG('errorIcon')|raw }}
+		{%  elseif type == 'warning' %}
+			{{ getSVG('warningIcon')|raw }}
+		{% else %}
+			{{ getSVG('successIcon')|raw }}
+		{% endif %}
+	</span>
+	<span class="a-status__text">{{ message|raw }}</span>
+</div>

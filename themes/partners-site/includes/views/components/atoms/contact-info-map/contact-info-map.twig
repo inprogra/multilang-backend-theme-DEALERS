@@ -1,0 +1,11 @@
+<div class="{{ additionalClass|e('html_attr') }} a-contact-info-map">
+    <a class="a-contact-info-map__icon" href="{{ link }}" target="_blank" rel="noopener noreferrer nofollow">
+        {{ getSVG('compass')|raw }}
+    </a>
+    <div class="a-contact-info-map__content">
+        <p>{{ name|trim }}</p>
+        <p>{{ street|trim }}</p>
+        <p>{{ city|trim }}</p>
+        <p><a href="tel:{{ phone|replace({' ': ''}) }}">{{ phone|trim }}</a></p>
+    </div>
+</div>

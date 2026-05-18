@@ -1,0 +1,10 @@
+<picture>
+    {% for source in sources %}
+        <source media="{{ source.media }}" srcset="{{ source.src }}">
+    {% endfor %}
+    <img class="{{ additionalClass|e('html_attr') }}" src="{{ image.src }}" alt="{{ alt }}"
+    {% if style %}
+    style="{{ style|raw }}"
+    {% endif %}
+    >
+</picture>

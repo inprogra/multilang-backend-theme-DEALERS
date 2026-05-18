@@ -1,0 +1,85 @@
+<?php
+
+namespace Controllers;
+
+use Classes\Cache;
+use \Classes\Controller;
+use Classes\ImageBuilder;
+use Classes\Lead;
+use Classes\MultisiteFixer;
+use Classes\Showroom;
+
+class SideFormController extends Controller
+{
+    public function render()
+    {
+        //  TODO: Remove global variable, add additional layer for header+content+footer
+        global $disableSideForm;
+        if ($disableSideForm) {
+            return false;
+        }
+
+        $source = Lead::getPostSource();
+        $destination = Lead::getPostDestination();
+        $options = getBasicOptions(0);
+       
+        $message_0 = 'Odezwiemy się do Ciebie w ciągu 2 godzin';
+        $message_1 = 'Wszystko poszło zgodnie z planem. Nasz pracownik skontaktuje się z Tobą w ciągu 2 godzin.';
+       
+       
+        switch_to_blog(MultisiteFixer::getCurrentBlogId());
+        $phoneNumber = get_field('phone-number', 'options-dealer');
+        $partnerName = get_field('name', 'options-dealer');
+        $chat_group = get_fields('options-dealer')['chat-group'];
+        $chat_enable = $chat_group['chat_enable'];
+        $chat_code = $chat_group['chat-code'];
+        $settings = get_fields('options-dealer')['footer-group'];
+
+        $home_phoneNumber = $settings['field_homepage_phone'];
+        $home_homepage_text = $settings['homepage_text'];
+        $newcars_text = $settings['homepage_newcars'];
+        $newcars_phone = $settings['field_newcars_phone'] ;
+        $usedcars_phone = $settings['field_usedcars_phone'];
+        $usercars_text = $settings['field_usedcars'];
+        $service_text = $settings['service_text'];
+        $service_phone =  $settings['field_service_phone'];
+        $showrooms = false;
+        if (Showroom::isMultiShowroomAndService()) {
+            $showrooms = [];
+            $showroomsIds = Showroom::getShowroomsAndServices();
+            foreach ($showroomsIds as $id) {
+                $showrooms[$id] = get_field('name', $id);
+            }
+        }
+        restore_current_blog();
+
+        switch_to_blog(1);
+        $globalFormOptions = get_field('form', 'options-global');
+
+
+
+       
+        $image = new ImageBuilder($globalFormOptions['thank-you-image']);
+        $image->addSize([397, null]);
+        $image->addSize([794, null]);
+        $image->addSize([1191, null]);
+
+        $image->addMediaQuery(null, '397px', true);
+        restore_current_blog();
+
+        return $this->view('layouts/side-form/side-form', [
+            'phoneNumber' => $phoneNumber,
+            'isFrontPage' => is_front_page(),
+            'footerSetup' => $settings,
+            'source' => $source,
+            'destination' => $destination,
+            'chat_enable' => $chat_enable,
+            'chat_code' => $chat_code,
+            'showrooms' => $showrooms,
+            'partnerName' => $partnerName,
+            'thankyouImage' => $image->get(),
+            'message_0' => $message_0,
+            'message_1' => $message_1
+        ]);
+    }
+}

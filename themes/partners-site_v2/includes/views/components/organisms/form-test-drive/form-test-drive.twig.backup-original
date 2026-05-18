@@ -1,0 +1,182 @@
+<div class="{{ additionalClass|e('html_attr') }} o-form o-form--test-drive gtm-form-test-drive js-form-test-drive">
+    <div class="o-form__loading">
+        {% include 'components/atoms/spinner/spinner.twig' %}
+    </div>
+    <form class="o-form__form form js-sticky" data-sticky-media-query="(min-width: 768px)" data-sticky-mode="bottom" novalidate>
+        <input type="hidden" name="source" value="{{ source }}">
+        <input type="hidden" name="origin" value="test-drive">
+        <input type="hidden" name="destination" value="{{ destination }}">
+        <input type="hidden" name="preferred_models" value="">
+        <div class="form__content">
+            {% if showrooms %}
+                {% include 'components/atoms/showroom-filter/showroom-filter.twig' with {
+                    additionalClass: 'form__showroom-filter js-contact-search__showroom-filter',
+                    filters: showrooms
+                } %}
+            {% endif %}
+            <fieldset class="form__content-section">
+                <p class="form__content-subtitle">Preferowana data:</p>
+                <div class="form__datetime datetime">
+                    {% include 'components/atoms/input-date/input-date.twig' with {
+                        additionalClass: 'datetime__date',
+                        name: 'preferred_date',
+                        label: 'Przed 15:00',
+                        value: suggestedDate
+                    } only %}
+                    {% include 'components/atoms/checkbox/checkbox.twig' with {
+                        additionalClass: 'datetime__time',
+                        name: 'preferred_time[]',
+                        label: 'Przed 15:00',
+                        value: 'Przed 15:00'
+                    } only %}
+                    {% include 'components/atoms/checkbox/checkbox.twig' with {
+                        additionalClass: 'datetime__time',
+                        name: 'preferred_time[]',
+                        label: 'Po 15:00',
+                        value: 'Po 15:00'
+                    } only %}
+                    <p class="datetime__text">Skontaktujemy się z Tobą w ciągu 12 h w celu ustalenia konkretnego terminu jazdy próbnej</p>
+                </div>
+            </fieldset>
+            <fieldset class="form__content-section">
+                <p class="form__content-subtitle">Dane kontaktowe:</p>
+                {% include 'components/atoms/input/input.twig' with {
+                    additionalClass: 'form__content-field',
+                    label: 'Imię',
+                    name: 'name',
+                    mandatory: true,
+                } only %}
+                {% include 'components/atoms/error/error.twig' with {
+                    for: 'name',
+                } only %}
+                {% include 'components/atoms/input/input.twig' with {
+                    additionalClass: 'form__content-field',
+                    label: 'Nazwisko',
+                    name: 'surname',
+                    mandatory: true,
+                } only %}
+                {% include 'components/atoms/error/error.twig' with {
+                    for: 'surname',
+                } only %}
+                {% include 'components/atoms/input/input.twig' with {
+                    additionalClass: 'form__content-field',
+                    label: 'Numer telefonu',
+                    name: 'phoneNumber',
+                    mandatory: true,
+                } only %}
+                {% include 'components/atoms/error/error.twig' with {
+                    for: 'phoneNumber',
+                } only %}
+                {% include 'components/atoms/input/input.twig' with {
+                    additionalClass: 'form__content-field',
+                    label: 'E-mail',
+                    name: 'email',
+                    mandatory: true,
+                } only %}
+                {% include 'components/atoms/error/error.twig' with {
+                    for: 'email',
+                } only %}
+                {% include 'components/atoms/textarea/textarea.twig' with {
+                    additionalClass: 'form__content-field',
+                    label: 'Wiadomość',
+                    name: 'message',
+                } only %}
+                <div class="form__content-consents">
+                    {% include 'components/atoms/checkbox/checkbox.twig' with {
+                        additionalClass: 'form__content-field',
+                        name: 'dataProcessingConsent',
+                        mandatory: true,
+                        label: 'Wyrażam zgodę na przetwarzanie moich danych osobowych, w tym danych kontaktowych, danych historii zakupów produktów i usług Volvo oraz danych dotyczących korzystania z serwisów volvocars.com przez Volvo Car Poland sp. z o.o. w celu marketingu bezpośredniego produktów i usług marki Volvo.',
+                        detailsLabel: 'Jeżeli wyrazi Pan/Pani zgodę, Pana/Pani dane osobowe będą przetwarzane przez administratora - Volvo Car Poland sp. z o.o., Warszawa (02-884), ul. Puławska 558/560 (VCP), na podstawie art. 6 ust. 1 pkt a) ogólnego rozporządzenia o ochronie danych osobowych (RODO), w celu marketingu bezpośredniego produktów i usług marki Volvo, takich jak samochody, części i akcesoria, usługi Volvo Car Financial Services oraz inne usługi dostępne w sieci Volvo. Informujemy, że: podanie danych jest dobrowolne, może Pan/Pani w każdej chwili wycofać zgodę (w tym przy użyciu danych kontaktowych administratora lub inspektora ochrony danych), wycofanie zgody nie wpływa na zgodność z prawem przetwarzania, którego dokonano na podstawie zgody przed jej wycofaniem, z inspektorem ochrony danych VCP może się Pan/Pani skontaktować przy użyciu adresu mailowego: globdpo@volvocars.com, odbiorcami Pana/Pani danych osobowych będą podmioty świadczące usługi na rzecz VCP, w tym: dostawcy usług marketingowych i IT, autoryzowani dealerzy Volvo, podmioty z grupy kapitałowej Volvo oraz partnerzy oferujący produkty Volvo Car Financial Services (np. kredyty, leasingi i ubezpieczenia), dane osobowe będą przechowywane nie dłużej niż przez 30 lat, przysługuje Panu/Pani prawo dostępu do treści danych osobowych oraz prawo ich sprostowania, usunięcia, ograniczenia przetwarzania i przeniesienia (wniosek o realizację tych uprawnień można złożyć pod adresem: <a href="https://www.volvocars.com/pl/subject-rights-request-form" target="_blank">https://www.volvocars.com/pl/subject-rights-request-form</a>), a także prawo do wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych, Pana/Pani dane osobowe będą przetwarzane również w formie profilowania online i profilowania społecznościowego, które będzie polegało na zbieraniu i agregowaniu Pana/Pani danych w celu stworzenia profilu klienta i przedstawiania materiałów reklamowych i ofert lepiej dostosowanych do Pana/Pani potrzeb. Więcej informacji o przetwarzaniu danych osobowych w sieci Volvo zamieściliśmy na stronie: <a href="https://www.volvocars.com/pl/legal/privacy/privacy-customer-privacy-policy" target="_blank">polityka prywatności</a>'
+                    } only %}
+                    {% include 'components/atoms/error/error.twig' with {
+                        for: 'dataProcessingConsent',
+                    } only %}
+                    {% include 'components/atoms/checkbox/checkbox.twig' with {
+                        additionalClass: 'form__content-field',
+                        name: 'tradeContactConsent',
+                        label: 'Wyrażam zgodę na kontakt telefoniczny.',
+                        detailsLabel: 'Wyrażam zgodę na prowadzenie przez Volvo Car Poland sp. z o.o. (ul. Puławska 558/560, 02-884 Warszawa), lub na jej zlecenie marketingu bezpośredniego produktów i usług marki Volvo, takich jak samochody, części i akcesoria, usługi Volvo Car Financial Services oraz inne usługi dostępne w sieci Volvo, poprzez kontakt głosowy na podany przeze mnie numer telefonu, w tym przy użyciu automatycznych systemów wywołujących. Zgoda jest dobrowolna i może być w każdej chwili wycofana (w tym przy użyciu danych kontaktowych wskazanych powyżej lub w wiadomości e-mail wysłanej na adres inspektora ochrony danych: globdpo@volvocars.com). Wycofanie zgody nie wpływa na zgodność z prawem przetwarzania, którego dokonano na podstawie zgody przed jej wycofaniem. Pozostałe informacje dotyczące przetwarzania danych w celach marketingowych znajdziesz w powyższej klauzuli zgody na przetwarzanie danych osobowych w celach marketingowych lub na stronie <a href="https://www.volvocars.com/pl/legal/privacy/privacy-customer-privacy-policy" target="_blank">polityka prywatności</a>.'
+                    } only %}
+                    {% include 'components/atoms/checkbox/checkbox.twig' with {
+                        additionalClass: 'form__content-field',
+                        name: 'marketingContactConsent',
+                        label: 'Wyrażam zgodę na kontakt mailowy.',
+                        detailsLabel: 'Wyrażam zgodę na prowadzenie przez Volvo Car Poland sp. z o.o. (ul. Puławska 558/560, 02-884 Warszawa) lub na jej zlecenie marketingu bezpośredniego produktów i usług marki Volvo, takich jak samochody, części i akcesoria, usługi Volvo Car Financial Services oraz inne usługi dostępne w sieci Volvo, poprzez przesyłanie informacji handlowych za pomocą środków komunikacji elektronicznej, w szczególności za pomocą poczty elektronicznej, a także za pomocą wiadomości SMS, na podany przeze mnie adres e-mail lub numer telefonu komórkowego. Zgoda jest dobrowolna i może być w każdej chwili wycofana (w tym przy użyciu danych kontaktowych wskazanych powyżej lub w wiadomości e-mail wysłanej na adres inspektora ochrony danych: globdpo@volvocars.com). Wycofanie zgody nie wpływa na zgodność z prawem przetwarzania, którego dokonano na podstawie zgody przed jej wycofaniem. Pozostałe informacje dotyczące przetwarzania danych w celach marketingowych znajdziesz w powyższej klauzuli zgody na przetwarzanie danych osobowych w celach marketingowych lub na stronie <a href="https://www.volvocars.com/pl/legal/privacy/privacy-customer-privacy-policy" target="_blank">polityka prywatności</a>.'
+                    } only %}
+                </div>
+            </fieldset>
+            <div class="form__content-annotation">
+                <p>* Dane konieczne do podania w celu umożliwienia kontaktu i przedstawienia oferty, przy czym
+                    spośród danych: numer telefonu i adres e-mail wystarczy podanie tylko jednej z tych danych
+                    wraz
+                    z zaznaczeniem odpowiedniej zgody poniżej (druga zgoda jest zgodą na kontakt telefoniczny,
+                    zaś
+                    trzecia zgoda jest zgodą na kontakt mailowy). Pierwsza z poniższych zgód jest konieczna do
+                    zaznaczenia w celu umożliwienia kontaktu i przedstawienia oferty, niezależnie od tego, czy
+                    podany zostanie numer telefonu czy adres e-mail.</p>
+            </div>
+        </div>
+        <div class="form__footer js-sticky__element">
+            {% include 'components/atoms/button/button.twig' with {
+                additionalClass: 'form__footer-button',
+                type: 'submit',
+                text: 'Wyślij wiadomość'
+            } only %}
+        </div>
+    </form>
+
+    <div class="o-form__thanks thanks">
+        {% include 'components/atoms/close/close.twig' with {
+            additionalClass: 'thanks__close ' ~ closeAdditionalClass,
+        } only %}
+        <div class="thanks__inner">
+            <img class="thanks__image" src="{{ thankyouImage }}" alt=""/>
+            <h2 class="thanks__title h3">Dealer {{ partnerName }} otrzymał&nbsp;twoją&nbsp;wiadomość</h2>
+            {% include 'components/atoms/status/status.twig' with {
+                additionalClass: 'thanks__status',
+                message: 'Wszystko poszło zgodnie z planem. Nasz pracownik skontaktuje się z Tobą w ciągu 24 godzin'
+            } only %}
+        </div>
+    </div>
+</div>
+
+{# wp pixel #}
+<script type="text/javascript">
+var pageTitle = document.title;
+window.onload = function() {
+    document.querySelector('.form__footer-button').addEventListener('click', function() {    
+        if (typeof wph !== 'undefined') {      
+      wph('track', 'ViewContent', { 'content_type': { content_name: pageTitle }, 'content_name': 'TestDrive' }) 
+        }
+    });
+};
+</script>
+{# end wp pixel #}
+
+<script type="text/javascript">
+var thanks_code = '{{ thanksCode | json_encode | raw }}'
+if (thanks_code) {
+$(document).ready(function($) {
+
+    $('.default-form, .l-test-drive__aside .o-form__form').submit(function() {
+        let lead = $('.lead-type-data select option:selected').val();
+        if (lead == 'Samochody nowe') {
+            let status = 'form_sent';
+        } else if ( lead == 'Samochody używane') {
+            let status = 'form_sent_used';
+        } else {
+            let status = 'form_sent_service';
+        }
+          let inter = setInterval(function() {
+            if ($('.thanks__title.h3').is(":visible") && $('.thankscode_req').length == 0) {
+                $('body').append('<div class="thankscode_req">'+thanks_code+'</div>');
+                
+            }
+        },100);
+      
+      
+    })
+})
+}
+</script>

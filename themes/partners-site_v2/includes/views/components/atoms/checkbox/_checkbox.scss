@@ -1,0 +1,119 @@
+.a-checkbox {
+  display: flex;
+  width: 100%;
+  color: #0A0A0A imo !important;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+   
+
+  input {
+    display: none;
+  }
+
+  &__icon {
+    position: relative;
+    flex: 0 0 auto;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 16px;
+    height: 16px;
+    border: solid 1px $grey-400;
+    border-radius: $border-radius;
+    margin: 0.25rem 0.75rem 0 0;
+    transition: background-color $transition-base;
+    cursor: pointer;
+
+    &:before {
+      content: '';
+      position: absolute;
+      opacity: 0;
+      top: 50%;
+      left: 50%;
+      width: 12px;
+      height: 10px;
+      mask-image: url('../../../../../assets/private/img/checkmark.svg');
+      background-color: $white;
+      transform: translate(-50%, -50%);
+      transition: opacity $transition-base;
+    }
+  }
+
+  &__label {
+    flex: 1 1 auto;
+
+    &-main {
+      display: inline;
+      cursor: pointer;
+    }
+
+    &-details {
+      display: inline;
+
+      .details {
+        &__text {
+          display: block;
+          overflow: hidden;
+          max-height: 0;
+          margin-top: 0;
+          transition: max-height .5s $transition-function, margin .5s $transition-function;
+
+          &-inner {
+            display: block;
+          }
+        }
+
+        &__trigger {
+          color: $black;
+          cursor: pointer;
+          white-space: nowrap;
+          transition: color $transition-base;
+
+          &.is-hidden {
+            display: none;
+          }
+
+          &:hover {
+            color: $blue;
+          }
+        }
+      }
+
+      &.is-expanded {
+        .details {
+          &__text {
+            margin-top: 1rem;
+          }
+        }
+      }
+    }
+  }
+
+  &.is-active {
+    .a-checkbox {
+      font-weight: 500;
+
+      &__icon {
+        border-color: $blue-light;
+        background-color: $blue-light;
+
+        &:before {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &.has-error {
+    .a-checkbox {
+      &__icon {
+        border-width: 2px;
+        border-color: $red-error;
+        background: #FCE5E3;
+      }
+    }
+  }
+}
+.a-checkbox__label-details .details__trigger{
+  font-weight: 500;
+}

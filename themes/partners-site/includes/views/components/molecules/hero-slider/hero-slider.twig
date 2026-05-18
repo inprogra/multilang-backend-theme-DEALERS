@@ -1,0 +1,70 @@
+<div class="m-hero-slider js-hero-gallery{{ isServiceVariation ? ' m-hero-slider--service' : '' }}">
+    <div class="m-hero-slider__swiper swiper-container">
+        <div class="swiper-wrapper">
+            {% for slide in slides %}
+                <article class="m-hero-slider__slide slide swiper-slide">
+                    <div class="slide__inner">
+                        <div class="slide__content">
+                            <a class="slide__link" href="{{ slide.link.url }}" {% if slide.link.nofollow %} rel="noopener noreferrer nofollow"{% endif %} {% if slide.link.target == '_blank' %} target="_blank" {% endif %}>
+                                <h2 class="slide__subtitle">{{ slide.subtitle|trim }}</h2>
+                                <h1 class="slide__title">{{ slide.title|trim }}</h1>
+                                <p class="slide__cta">
+                                    {{ slide.link.text|trim }}
+                                </p>
+                            </a>
+                        </div>
+                        {% include 'components/atoms/image/image.twig' with slide.image|merge({
+                            additionalClass: 'slide__img',
+                            preventLazyLoading: true
+                        }) %}
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+        {% include 'components/atoms/slider-button/slider-button.twig' with {
+            additionalClass: 'm-hero-slider__button m-hero-slider__button--prev js-hero-gallery__button--prev',
+            direction: 'prev'
+        } %}
+        {% include 'components/atoms/slider-button/slider-button.twig' with {
+            additionalClass: 'm-hero-slider__button m-hero-slider__button--next js-hero-gallery__button--next',
+            direction: 'next'
+        } %}
+    </div>
+    <ul class="m-hero-slider__pagination pagination--desktop">
+        {% for slide in slides %}
+            <li class="pagination__item js-hero-gallery__paginationItem {{ loop.first ? 'is-active' : '' }}">
+                <div class="pagination__item-inner">
+                    <div class="pagination__item-img">
+                        {% include 'components/atoms/image/image.twig' with slide.thumbnail|merge({
+                            preventLazyLoading: true
+                        }) only %}
+                    </div>
+                    <div class="pagination__item-content">
+                        <span class="pagination__item-title">{{ slide.title|trim }}</span>
+                        <span class="pagination__item-subtitle">{{ slide.link.text|trim }}</span>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    {% if isServiceVariation %}
+        <ul class="m-hero-slider__pagination pagination--mobile">
+            {% for slide in slides %}
+                <li class="pagination__item">
+                    <a class="pagination__item-inner" href="{{ slide.link.url }}" {% if slide.link.nofollow %} rel="noopener noreferrer nofollow"{% endif %} {% if slide.link.target == '_blank' %} target="_blank" {% endif %}>
+                        <div class="pagination__item-img">
+                            {% include 'components/atoms/image/image.twig' with slide.thumbnail|merge({
+                                additionalClass: 'pagination__item-img',
+                                preventLazyLoading: true
+                            }) %}
+                        </div>
+                        <div class="pagination__item-content">
+                            <span class="pagination__item-title">{{ slide.title|trim }}</span>
+                            <span class="pagination__item-subtitle">{{ slide.linkText|trim }}</span>
+                        </div>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>

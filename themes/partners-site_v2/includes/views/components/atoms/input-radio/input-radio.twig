@@ -1,0 +1,5 @@
+<div class="a-input-radio {{ additionalClass|e('html_attr') }}" {% if hide %} style="display:none;" {% endif %}>
+    {% set id =  'input-' ~ uniqueID() %}
+    <input type="radio" id="{{ id }}" name="{{ name }}" value="{{ value }}"{{ checked ? ' checked' }}>
+    <label for="{{ id }}" class="a-input-radio__label"><span>{{ label|trim }}</span></label>
+</div>

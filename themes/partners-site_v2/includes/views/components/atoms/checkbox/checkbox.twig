@@ -1,0 +1,51 @@
+<div class="{{ additionalClass|e('html_attr') }} a-checkbox 
+            {% if checked == 'on' %} is-active {% endif %} 
+            {% if group %} js-consent-group {% endif %}" 
+     data-field-name="{{ name }}">
+    
+    <input type="checkbox" name="{{ name }}" 
+           {{ value ? ('value="' ~ value ~ '"')|raw : '' }} 
+           {% if checked == 'on' %} checked='checked' {% endif %}/>
+    
+    <span class="a-checkbox__icon"></span>
+    
+    <div class="a-checkbox__label">
+        <label class="a-checkbox__label-main">
+            <sup class="checkbox-counter">{{ checkboxCounter }}</sup>{{ label|raw }}
+
+        </label>
+
+        {% if detailsLabel %}
+            <div class="a-checkbox__label-details details">
+                <span class="details__trigger details__trigger-expand">{{ __('Więcej &rsaquo;') }}</span>
+                <span class="details__text">
+                    <span class="details__text-inner">
+                        <span>{{ detailsLabel|trim|raw }}</span>
+                        <span class="details__trigger details__trigger-shrink">Mniej &lsaquo;</span>
+                    </span>
+                </span>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+{% if group %}
+    {% include 'components/atoms/error/error.twig' with {
+        for: 'contactConsentGroup',
+        defaultText: 'Zaznacz formę kontaktu'
+    } only %}
+{% else %}
+    {% include 'components/atoms/error/error.twig' with {
+        for: name,
+        defaultText: 'To pole jest obowiązkowe'
+    } only %}
+{% endif %}
+
+<style>
+sup {
+    font-size: 12px; 
+    vertical-align: super;
+    top: -0.2em;
+    margin-right: 3px;
+}
+</style>

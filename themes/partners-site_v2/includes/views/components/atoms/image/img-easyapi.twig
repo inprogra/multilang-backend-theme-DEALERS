@@ -1,0 +1,25 @@
+
+
+
+<div class="{{ additionalClass|e('html_attr') }} a-image" style="--width: {{ sizes.0.width }};--height: {{ sizes.0.height }};{{ style|raw }}">
+	{% set url= sizes.0.src %}
+	{% set noprotocol = url|split('//')[1] ?: url %}
+	{% set domains = noprotocol|split('/')[0] ?: noprotocol %}
+	{% if domains|split('.')[2] is defined %}
+		{% set subdomain = domains|split('.')[0] %}
+		{% set domain = domains|split('.')[1] %}
+		{% set tld = domains|split('.')[2] %}
+	{% else %}
+		{% set subdomain = '' %}
+		{% set domain = domains|split('.')[0] %}
+		{% set tld = domains|split('.')[1] %}
+	{% endif %} 
+	{% set path = noprotocol|replace({(subdomain ? subdomain ~ '.' : '') ~ (domain) ~'.' ~ (tld) :''})%}
+
+	<img  src="{{image.sizes.0.src}}" width="{{ image.0.width }}" height="{{ image.0.height }}" alt="{{ alt }}" class="a-image__img">
+</div>
+<style>
+body:not(.single-model) .o-stock-cars-slider .a-image {
+	height:auto;
+}
+</style>

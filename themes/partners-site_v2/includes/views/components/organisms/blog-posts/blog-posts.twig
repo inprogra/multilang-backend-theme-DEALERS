@@ -1,0 +1,114 @@
+{% if title_1 %}
+    <div class="a-site-heading">
+        <div class="container heading_container">
+            <h1 class="h1 a-site-heading__heading">
+                {{ title_1 }}
+            </h1>
+            <p class="a-site-heading__description">
+                {{ title_2 }}
+            </p>
+
+        </div>
+    </div>
+
+{% endif %}
+
+<div class="o-offer-cards">
+    <div class="container">
+        {{ openSection(false,3,false)|raw }}
+        {% include 'components/atoms/section-heading/section-heading.twig' with {
+            additionalClass: 'o-stock-cars-slider__heading',
+            grey: heading,
+        } %}
+        {{ closeSection(false)|raw }}
+        <div class="o-offer-cards__list">
+            {% for post in posts %}
+                <a href="{{ post.link.url }}" class="o-offer-cards__item item" {% if post.link.nofollow %} rel="noopener noreferrer nofollow" {% endif %} {% if post.link.target == '_blank' %} target="_blank" {% endif %}>
+                    <div class="item__inner">
+                        <div class="item__header">
+                            {% include 'components/atoms/image/image.twig' with post.image|merge({
+                                additionalClass: 'item__header-image'
+                            }) %}
+                        </div>
+                        <div class="item__content">
+                            <span class="item_date">
+                                Data publikacji:
+                                {{ post.date }}
+                            </span>
+                            <h3 class="item__heading">
+                                {{ post.heading|trim }}
+                            </h3>
+                            <p class="item__description">
+                                {{ post.blog_desc|trim }}
+                            </p>
+                            <div class="blog_lower_part">
+
+                                <span class="cta_button">
+                                    {{ post.ctaText|trim }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div id="blog_pagination" class="l-stock__pagination js-stock__pagination">
+    <input type="hidden" name="page" class="js-stock__currentPage" value="{{ pagination.currentPage }}">
+        <input type="hidden" name="resetPagination" class="js-stock__resetPagination" value="1">
+            {% if pagination.maxPages > 1 %}
+                {% include 'components/atoms/pagination/pagination.twig' with {
+            currentPage: pagination.currentPage,
+            maxPages: pagination.maxPages,
+        } only %}
+            {% endif %}
+        </div>
+
+        <style>
+    .heading__grey {
+        color: #707070;
+    }
+
+    .blog_lower_part {
+        padding-top: 1rem;
+        border-top: 0!important;
+        margin: auto 0 0;
+        line-height: 24px;
+    }
+    span.item_date {
+        color:#0A0A0A;
+        font-weight:350;
+        font-size:12px;
+        line-height:20px;
+    }
+    .o-offer-cards__item .item__inner {
+        background:#FAFAFA;
+    }
+    .blog_lower_part > span.cta_button {       
+        line-height: 24px;
+        font-size: 14px;
+        font-weight: 600;
+        text-align: right;
+        text-transform: uppercase;
+        color: #141414;
+        float:left;
+    }
+    @media screen and (min-width:1680px) {
+    .heading_container {
+             max-width: 1645px;
+             text-align:unset;
+    }
+        .o-offer-cards .container {
+            width:1668px;
+            max-width:unset;
+        }
+        .o-offer-cards__item {
+            width:521px;
+            max-width:521px;
+        }
+    }
+</style>
+        

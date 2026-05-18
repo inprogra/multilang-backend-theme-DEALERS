@@ -1,0 +1,43 @@
+.a-contact-info-map {
+  position: relative;
+  display: inline-flex;
+
+  &__icon {
+    position: relative;
+    width: 3.5rem;
+    border-radius: $border-radius 0 0 $border-radius;
+    background-color: $primary;
+    color: $white;
+    transition: background-color $transition-base;
+
+    &:hover {
+      background-color: $secondary;
+      color: $white;
+    }
+
+    svg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+  }
+
+  &__content {
+    display: inline-block;
+    margin: 0 0 0 1.5rem;
+    font-size: 12px;
+    line-height: 1.5;
+    color: $grey-400;
+
+    p {
+      margin: 0;
+
+      &:first-child {
+        font-size: 14px;
+        line-height: 18px;
+        font-weight: $font-weight-medium;
+      }
+    }
+  }
+}

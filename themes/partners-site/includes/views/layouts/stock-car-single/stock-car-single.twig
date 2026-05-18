@@ -1,0 +1,54 @@
+<div class="l-stock-car-single js-stock-car-single" data-offer-id="{{ car.offerNumber }}">
+    {{ openSection(1, 3)|raw }}
+        {{ openSection(false, 2, false)|raw }}
+            {% include 'components/atoms/site-heading/site-heading.twig' with {
+                heading: siteHeading.heading,
+                description: siteHeading.description
+            } only %}
+        {{ closeSection(false)|raw }}
+        {% include 'components/organisms/stock-car/stock-car.twig' with car|merge({
+            preventLazyLoadingFirstSlide: true,
+            preventLazyLoadingThumbs: true,
+            hasAccordion: accordion ? true : false
+        }) only %}
+    {{ closeSection()|raw }}
+    {{ openSection(false, false)|raw }}
+        {% include 'components/organisms/accordion-section/accordion-section.twig' with {
+            additionalClass: 'l-stock-car-single__accordion-section js-stock-car-single__accordion-section',
+            heading: {
+                grey: accordionHeading
+            },
+            accordion: accordion,
+
+        } only %}
+        {% include 'components/organisms/gallery/gallery.twig' with {
+            gallery: gallery,
+            additionalClass: 'l-stock-car-single__gallery'
+        } only %}
+    <div class="container">
+        <p class="stock-car-single-rules">
+            Informacje umieszczone na stronie internetowej służą jedynie celom informacyjnym. Ogłoszenia, cenniki i inne informacje zawarte na stronie internetowej nie stanowią oferty w rozumieniu art. 66 § 1 Kodeksu Cywilnego. Sprzedający nie odpowiada za ewentualne błędy lub nieaktualność ogłoszenia. 
+        </p>
+        <style>
+            .stock-car-single-rules {
+                margin-bottom:32px;
+                margin-top:-48px;
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 18px;
+                color: #000;
+
+            }
+        </style>
+    </div>
+    {{ closeSection()|raw }}
+    {% if featuredCars.cars|length > 0 %}
+        {{ openSection(false,1)|raw }}
+        {% include 'components/organisms/stock-cars-slider/stock-cars-slider.twig' with {
+            additionalClass: '',
+            heading: featuredCars.heading,
+            cars: featuredCars.cars,
+        } only %}
+        {{ closeSection()|raw }}
+    {% endif %}
+</div>

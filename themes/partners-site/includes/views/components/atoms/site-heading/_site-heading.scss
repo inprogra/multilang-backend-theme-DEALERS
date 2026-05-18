@@ -1,0 +1,47 @@
+.a-site-heading {
+
+  &__heading {
+    margin-bottom: .5rem;
+
+    @include media-breakpoint-up(lg) {
+      display: inline;
+      margin-bottom: 0;
+    }
+  }
+
+  &__description {
+    margin-top: .5rem;
+    font-size: 14px;
+    line-height: 24px;
+    color: $grey-400;
+
+    @include media-breakpoint-up(lg) {
+      margin-top: 0;
+      margin-left: 1rem;
+      display: inline;
+    }
+  }
+
+  .container {
+    display: flex;
+    align-items: baseline;
+    flex-direction: column;
+
+    .tags-container {
+      p {
+        background: #ebebeb;
+        padding: 4px 16px;
+        border-radius: 12px;
+        color: #707070;
+      }
+
+      @include media-breakpoint-up(lg) {
+        margin-left: auto;
+      }
+    }
+
+    @include media-breakpoint-up(lg) {
+      flex-direction: row;
+    }
+  }
+}

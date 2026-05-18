@@ -1,0 +1,80 @@
+<div class="{{ additionalClass|e('html_attr') }} o-stock-cars-slider" style="display:none;">
+    <div class="o-stock-cars-slider__container container">
+        {{ openSection(false,3,false)|raw }}
+            {% include 'components/atoms/section-heading/section-heading.twig' with {
+                additionalClass: 'o-stock-cars-slider__heading',
+                grey: heading,
+            } %}
+        {{ closeSection(false)|raw }}
+        <div class="stock-cars-offer ">
+            {% for car in cars %}
+                <div class="stock-cars-single-offer">
+                <a href="{{ car.url }}" class="o-stock-cars-slider__item o-stock-cars-slider__item--car car">
+                    <div class="stock-cars-single-image">
+                            {% include 'components/atoms/image/image-not-lazy.twig' with car.image|merge({
+                            additionalClass: 'car__img'
+                        }) only %}
+                    </div>
+                     <span class="car__category">{{ car.category }}</span>
+                    <h3 class="car__name">{{ car.model }}</h3>
+                    <div class="car__details">
+                        <span class="car__engine">{{ car.engine }}</span>
+                        <span class="car__price">{{ car.price|number_format(0, '.', '&nbsp;')|raw }}&nbsp;zł</span>
+                    </div>
+                    <div class="car__bottom">
+                        <span class="car__button">Zobacz auto <img style="margin-bottom:0; margin-top:-2px;" src="/img/icon_after.svg" /></span>
+                    </div>
+                </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+
+
+<style>
+.stock-cars-offer {
+    display:flex;
+}
+.stock-cars-offer > div {
+    width:288px;
+    margin-right:24px;
+}
+.stock-cars-offer img {
+    margin-bottom:16px;
+}
+.stock-cars-offer .car__category {
+    margin-bottom:4px;
+    display:none!important;
+}
+.stock-cars-offer .car_name {
+    font-size:16px;
+    margin-bottom:4px;
+}
+.o-stock-cars-slider .car__details {
+    display:block;
+}
+.stock-cars-offer .car__engine {
+    display:block;
+    margin-bottom:4px;
+    width:100%;
+    font-size:16px;
+}
+.stock-cars-offer .car__price {
+    font-size:12px;
+    font-weight:400;
+}
+.car__bottom {
+    border:0!important;
+    text-align:left!important;
+    justify-content:flex-start!important;
+}
+.car__bottom span {
+    color: #000!important;
+    font-weight:600!important;
+    text-transform:none!important;
+    font-size:16px!important;;
+}
+</style>

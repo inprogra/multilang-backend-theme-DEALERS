@@ -1,0 +1,70 @@
+.o-header {
+  &__bar {
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: $grey-100;
+    overflow: hidden;
+
+    body.admin-bar & {
+      @media (min-width: 783px) {
+        margin-top: 32px;
+      }
+    }
+  }
+
+  .bar {
+    &__container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: $header-height;
+      max-width: 1920px;
+      padding: 0 2rem;
+      border-bottom: solid 1px #f5f4f4;
+      margin: 0 auto;
+
+      @include media-breakpoint-up(lg) {
+        padding: 0 3rem;
+      }
+    }
+
+    &__logo {
+      height: 100%
+    }
+
+    &__nav {}
+  }
+
+  &__side-nav {
+    z-index: 1100;
+  }
+
+  &__backdrop {
+    z-index: 990;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: $black;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity $transition-base;
+
+    @include media-breakpoint-up(lg) {
+      z-index: 1010;
+    }
+  }
+
+  &.is-active {
+    .o-header {
+      &__backdrop {
+        opacity: 0.8;
+        pointer-events: all;
+      }
+    }
+  }
+}

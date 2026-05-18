@@ -1,0 +1,482 @@
+<?php
+
+namespace Classes;
+
+use function Env\env;
+use Classes\YouLead;
+
+class Lead
+{
+
+	private $isTest = true;
+	private $disable_dol;
+	public function __construct()
+	{
+		if ($GLOBALS['disable_dol']) {
+			$this->disable_dol = true;
+		}
+		if (env('WP_ENV') === 'production') {
+			$this->isTest = false;
+		}
+	}
+	public static function getGlobalHtml()
+	{
+		$currentPost = get_queried_object();
+
+
+
+		switch_to_blog(MultisiteFixer::getCurrentBlogId());
+
+		$globalHtml = get_field('globalHtml', $currentPost->ID);
+
+		restore_current_blog();
+
+
+		return $globalHtml;
+	}
+	public static function getHeadCampaingCode() {
+		$currentPost = get_queried_object();
+		
+		//switch_to_blog(MultisiteFixer::getCurrentBlogId());
+		$HeadJsCode = get_field('field_thankyou_code_js_head', $currentPost->ID);
+		
+		if (!$HeadJsCode) {
+			$HeadJsCode = false;
+		}
+		//field_thankyou_code_js_head
+		return $HeadJsCode;
+	}
+	public static function getThanksCodeJs(): string {
+		$currentPost = get_queried_object();
+		if (MultisiteFixer::isPageGlobal()) {
+			switch_to_blog(1);
+		}
+		switch_to_blog(MultisiteFixer::getCurrentBlogId());
+		$thanksJsCode = get_field('field_thankyou_code_js', $currentPost->ID);
+	
+
+		if (!$thanksJsCode) {
+			$thanksJsCode = false;
+		}
+		
+		// //var_dump($thanksCode);
+		$thanksJsCode = str_replace('||time||', time(), $thanksJsCode);
+		//$thanksJsCode = json_encode($thanksJsCode);
+		restore_current_blog();
+
+		if (!$thanksJsCode) {
+			return false;
+		}
+		return $thanksJsCode;
+	}
+	public static function getThanksCode(): string
+	{
+		$currentPost = get_queried_object();
+		if (MultisiteFixer::isPageGlobal()) {
+			switch_to_blog(1);
+		}
+		switch_to_blog(MultisiteFixer::getCurrentBlogId());
+		$thanksJsCode = get_field('field_thankyou_code_js', $currentPost->ID);
+		$thanksCode = get_field('field_thankyou_code', $currentPost->ID);
+
+		if (!$thanksCode) {
+			$thanksCode = (get_field('field_thankyou_code', 'options-dealer') ? get_field('field_thankyou_code', 'options-dealer') : null);
+		}
+		// //var_dump($thanksCode);
+		$thanksCode = str_replace('||time||', time(), $thanksCode);
+		restore_current_blog();
+
+		if (!$thanksCode) {
+			return false;
+		}
+		return $thanksCode;
+	}
+	public static function getDoubleOpt()
+	{
+		$currentPost = get_queried_object();
+		switch_to_blog(MultisiteFixer::getCurrentBlogId());
+		$doubleOpt = get_field('double_opt', $currentPost->ID);
+		restore_current_blog();
+
+		return $doubleOpt;
+	}
+	public static function getPostSource(): string
+	{
+		$currentPost = get_queried_object();
+
+		if (MultisiteFixer::isPageGlobal()) {
+			switch_to_blog(1);
+		}
+
+		$source = get_field('source', $currentPost->ID);
+
+		if (!$source || $source == '') {
+			$source = $currentPost->post_name;
+		}
+
+		if (!$source && $_GET['utm_campaign']) {
+			$source = $_GET['utm_campaign'];
+		}
+		if (ms_is_switched()) {
+			restore_current_blog();
+		}
+		if (!$source) {
+			$source = '';
+		}
+
+		return $source;
+	}
+
+	public static function getPostDestination(): string
+	{
+		$currentPost = get_queried_object();
+		if (MultisiteFixer::isPageGlobal()) {
+			switch_to_blog(1);
+		}
+		$destination = get_field('destination', $currentPost->ID);
+
+		if (ms_is_switched()) {
+			restore_current_blog();
+		}
+		$destination_local = get_field('destination', $currentPost->ID);
+		if ($destination_local !== $destination) {
+			$destination = $destination_local;
+		}
+		if (! $destination) {
+			$destinationField = get_field_object('field_6062dsa3bd29');
+			$destination      = array_key_first($destinationField['choices']);
+		}
+
+		return $destination;
+	}
+
+	public function create($data)
+	{
+		$title = 'online';
+		if ($this->disable_dol) {
+			$title = 'offline';
+		}
+
+		$default = array(
+			'post_title'			  => $title,
+			'origin'                  => 'default',
+			'destination'             => 'new-cars',
+			'originUrl'               => '',
+			'status'                  => 'saved',
+			'source'                  => '',
+			'name'                    => '',
+			'surname'                 => '',
+			'phoneNumber'             => '',
+			'email'                   => '',
+			'referrer'                => '',
+			'message'                 => '',
+			'vin'                     => '',
+			'productionYear'          => '',
+			'model'                   => '',
+			'services'                => '',
+			'preferred_models',
+			'preferred_date',
+			'preferred_time',
+			'remote_address'		  => '',
+			'dataProcessingConsent'   => false,
+			'tradeContactConsent'     => false,
+			'marketingContactConsent' => false,
+			'youLeadData'             => '',
+		);
+
+		if ($data['origin'] === 'service' && !array_key_exists('salon', $data)) {
+			$showrooms           = Showroom::getServices();
+			$default['showroom'] = $showrooms[0];
+		} else {
+			$showrooms           = Showroom::getShowroomsAndServices();
+			$default['showroom'] = $showrooms[0];
+		}
+		//var_dump($data);
+		//var_dump($data);
+		$data['remote_address'] = $_SERVER["REMOTE_ADDR"];
+		$leadId = wp_insert_post(
+			array(
+				'post_type'   => 'lead',
+				'post_status' => 'publish',
+				'meta_input'  => array_merge($default, $data),
+			)
+		);
+
+		return $leadId;
+	}
+
+	private function changeStatus($leadId, $status = '')
+	{
+		switch_to_blog(MultisiteFixer::getCurrentBlogId());
+		if (in_array($status, array('saved', 'sent'))) {
+			update_field('status', $status, $leadId);
+		} else {
+			// TODO handle error
+		}
+		restore_current_blog();
+	}
+
+	private function getDefaultLeadMessage($leadId): string
+	{
+		$meta = $this->getMetaFields($leadId, array('message', 'originUrl'));
+
+		return $meta['message'] . ' '
+			. 'Informacje dodatkowe: '
+			. 'Adres formularza: ' . $meta['originUrl'];
+	}
+
+	private function getTestDriveLeadMessage($leadId): string
+	{
+		switch_to_blog(MultisiteFixer::getCurrentBlogId());
+		$meta = $this->getMetaFields($leadId, array('preferred_models', 'preferred_date', 'preferred_time'));
+		restore_current_blog();
+
+		$message = $this->getDefaultLeadMessage($leadId);
+
+		if (! empty($meta['preferred_models'])) {
+			$message .= ' Wybrane modele: ' . $meta['preferred_models'];
+		}
+		if (! empty($meta['preferred_date'])) {
+			$message .= ' Preferowana data: ' . $meta['preferred_date'];
+		}
+		if (! empty($meta['preferred_time'])) {
+			$message .= ' Preferowany czas: ' . $meta['preferred_time'];
+		}
+
+		return $message;
+	}
+
+	private function getServiceLeadMessage($leadId): string
+	{
+		switch_to_blog(MultisiteFixer::getCurrentBlogId());
+		$meta = $this->getMetaFields($leadId, array('vin', 'productionYear', 'model', 'services'));
+		restore_current_blog();
+
+		$message = $this->getDefaultLeadMessage($leadId);
+
+		if (! empty($meta['vin'])) {
+			$message .= ' VIN: ' . $meta['vin'];
+		}
+		if (! empty($meta['productionYear'])) {
+			$message .= ' Rok produkcji: ' . $meta['productionYear'];
+		}
+		if (! empty($meta['model'])) {
+			$message .= ' Model samochodu: ' . $meta['model'];
+		}
+		if (! empty($meta['services'])) {
+			$message .= ' Wybrane usługi: ' . join(', ', $meta['services']);
+		}
+
+		return $message;
+	}
+
+	private function prepareNewCarsLead($leadId, $message): array
+	{
+		switch_to_blog(MultisiteFixer::getCurrentBlogId());
+		$meta       = $this->getMetaFields($leadId, array('name', 'surname', 'phoneNumber', 'email', 'showroom', 'source', 'dataProcessingConsent', 'tradeContactConsent', 'marketingContactConsent','remote_address'));
+		$showroomId = get_field('showroomId', $meta['showroom']);
+		restore_current_blog();
+		$check = get_field('originUrl', $leadId);
+		$parts = parse_url($check);
+		
+		parse_str($parts['query'], $query);
+	
+		return array(
+			'name'                    => $meta['name'],
+			'surname'                 => $meta['surname'],
+			'phoneNumber'             => $meta['phoneNumber'],
+			'email'                   => $meta['email'],
+			'dataProcessingConsent'   => ! ! $meta['dataProcessingConsent'],
+			'tradeContactConsent'     => ! ! $meta['tradeContactConsent'],
+			'marketingContactConsent' => ! ! $meta['marketingContactConsent'],
+			'source'                  => $meta['source'],
+			'provider'                => strpos($showroomId, '#') !== false ? substr($showroomId, 0, strpos($showroomId, '#')) : $showroomId,
+			'remoteAddress'			  => $meta['remote_address'],
+			'showroomId'              => $showroomId,
+			'request'                 => $message,
+			'utm_campaign'            => (array_key_exists('utm_campaign', $query) ? $query['utm_campaign'] : ''),
+			'utm_medium'              => (array_key_exists('utm_medium', $query) ? $query['utm_medium'] : ''),
+			'utm_source'              => (array_key_exists('utm_source', $query) ? $query['utm_source'] : ''),
+			'utm_content'             => (array_key_exists('utm_content', $query) ? $query['utm_content'] : ''),
+		);
+	}
+
+	private function prepareUsedCarsLead($leadId, $message): array
+	{
+		switch_to_blog(MultisiteFixer::getCurrentBlogId());
+		$meta       = $this->getMetaFields($leadId, array('name', 'surname', 'phoneNumber', 'email', 'showroom', 'source', 'dataProcessingConsent', 'tradeContactConsent', 'marketingContactConsent'));
+		$showroomId = get_field('showroomId', $meta['showroom']);
+		restore_current_blog();
+		$check = get_field('originUrl', $leadId);
+		$parts = parse_url($check);
+	
+			parse_str($parts['query'], $query);
+		
+
+		return array(
+			'name'                    => $meta['name'],
+			'surname'                 => $meta['surname'],
+			'phoneNumber'             => $meta['phoneNumber'],
+			'email'                   => $meta['email'],
+			'dataProcessingConsent'   => ! ! $meta['dataProcessingConsent'],
+			'tradeContactConsent'     => ! ! $meta['tradeContactConsent'],
+			'marketingContactConsent' => ! ! $meta['marketingContactConsent'],
+			'remoteAddress'			  => $_SERVER["REMOTE_ADDR"],
+			'source'                  => $meta['source'],
+			'dealerId'                => strpos($showroomId, '#') !== false ? substr($showroomId, 0, strpos($showroomId, '#')) : $showroomId,
+			'request'                 => $message,
+			'utm_campaign'            => (array_key_exists('utm_campaign', $query) ? $query['utm_campaign'] : ''),
+			'utm_medium'              => (array_key_exists('utm_medium', $query) ? $query['utm_medium'] : ''),
+			'utm_source'              => (array_key_exists('utm_source', $query) ? $query['utm_source'] : ''),
+			'utm_content'             => (array_key_exists('utm_content', $query) ? $query['utm_content'] : ''),
+		);
+	}
+
+	private function prepareServiceLead($leadId, $message): array
+	{
+		switch_to_blog(MultisiteFixer::getCurrentBlogId());
+		$meta       = $this->getMetaFields($leadId, array('name', 'surname', 'phoneNumber', 'email', 'vin', 'showroom', 'source', 'dataProcessingConsent', 'tradeContactConsent', 'marketingContactConsent'));
+		$showroomId = get_field('showroomId', $meta['showroom']);
+		if (!$showroomId) {
+			$showroomId = $meta['showroom'];
+		}
+		restore_current_blog();
+
+		$check = get_field('originUrl', $leadId);
+		$parts = parse_url($check);
+		
+			parse_str($parts['query'], $query);
+			
+		return array(
+			'name'                    => $meta['name'],
+			'surname'                 => $meta['surname'],
+			'phoneNumber'             => $meta['phoneNumber'],
+			'email'                   => $meta['email'],
+			'dataProcessingConsent'   => ! ! $meta['dataProcessingConsent'],
+			'tradeContactConsent'     => ! ! $meta['tradeContactConsent'],
+			'marketingContactConsent' => ! ! $meta['marketingContactConsent'],
+			'remoteAddress'			  => $_SERVER["REMOTE_ADDR"],
+			'source'                  => $meta['source'],
+			'vin'					  => $meta['vin'],
+			'dealerId'                => strpos($showroomId, '#') !== false ? substr($showroomId, 0, strpos($showroomId, '#')) : $showroomId,
+			'request'                 => $message,
+			'utm_campaign'            => (array_key_exists('utm_campaign', $query) ? $query['utm_campaign'] : ''),
+			'utm_medium'              => (array_key_exists('utm_medium', $query) ? $query['utm_medium'] : ''),
+			'utm_source'              => (array_key_exists('utm_source', $query) ? $query['utm_source'] : ''),
+			'utm_content'             => (array_key_exists('utm_content', $query) ? $query['utm_content'] : ''),
+		);
+	}
+
+	public function send($leadId)
+	{
+		if ($this->disable_dol) {
+			return true;
+		}
+		$responseDol = $this->sendDol($leadId);
+
+		if ($responseDol !== 'success') {
+			return $responseDol;
+		}
+
+		$responseYouLead = $this->sendYouLead($leadId);
+
+		return $responseYouLead;
+	}
+
+	private function sendDol($leadId): string
+	{
+
+		switch_to_blog(MultisiteFixer::getCurrentBlogId());
+		$origin      = get_field('origin', $leadId);
+		$destination = get_field('destination', $leadId);
+		restore_current_blog();
+
+		if ($origin === 'default') {
+			$message = $this->getDefaultLeadMessage($leadId);
+		} elseif ($origin === 'test-drive') {
+			$message = $this->getTestDriveLeadMessage($leadId);
+		} elseif ($origin === 'service') {
+			$message = $this->getServiceLeadMessage($leadId);
+		} else {
+			return 'origin error';
+		}
+
+		if ($destination === 'new-cars') {
+			$dataToSend = $this->prepareNewCarsLead($leadId, $message);
+		} elseif ($destination === 'used-cars') {
+			$dataToSend = $this->prepareUsedCarsLead($leadId, $message);
+		} elseif ($destination === 'service') {
+			$dataToSend = $this->prepareServiceLead($leadId, $message);
+		} else {
+			return 'destination error';
+		}
+		if (strpos($dataToSend['email'], 'test@test.pl') !== false) {
+			$this->isTest = true;
+		}
+		$apiKey = '3bhupKFlkKKxsh39Ns1EMYaJUYxkVIUN6g5SXBl6SO4NFEke7.b06e6c60-c8c8-4508-84f3-6a186c48abf7';
+		if ($this->isTest) {
+			$apiKey = '3bhupKFlkKKxsh39Ns1EMYaJUYxkVIUN6g5SXBl6SO4NFEke7.e328d726-b51f-47c6-adeb-af5c32d22bfc';
+		}
+
+		$domain = 'volvo-dealer.pl';
+		if ($this->isTest) {
+			$domain = 'test.volvo-dealer.pl';
+		}
+		$header  = array(
+			'Accept: application/json',
+			'Content-Type: application/json;charset=UTF-8',
+			'ApiKey: ' . $apiKey,
+		);
+		$options = array(
+			'http' => array(
+				'header'        => implode("\r\n", $header),
+				'method'        => 'POST',
+				'content'       => json_encode($dataToSend),
+				'ignore_errors' => true,
+			),
+		);
+
+
+
+		$endpoint = 'lead-candidates';
+		if ($destination === 'used-cars') {
+			$endpoint = 'used-car-lead-candidates';
+		} elseif ($destination === 'service') {
+			$endpoint = 'service-requests';
+		}
+
+		$context  = stream_context_create($options);
+		$response = file_get_contents('https://' . $domain . '/api/' . $endpoint, false, $context);
+		preg_match('{HTTP\/\S*\s(\d{3})}', $http_response_header[0], $match);
+		$responseCode = $match[1];
+		
+
+		$filename = date('Y-d-m-h:m');
+		file_put_contents('/var/www/volvocars-partner.pl/partners-site/web/wikicars/lead-'.$filename, json_encode($dataToSend));
+		if ($responseCode === '200' || $responseCode === '201') {
+			// $response = $dataToSend;
+			
+			
+			$this->changeStatus($leadId, 'sent');
+			return 'success';
+		} else {
+			// TODO hanlde error
+			return 'error';
+		}
+	}
+
+	private function sendYouLead($leadId)
+	{
+		return YouLead::sendLead($leadId);
+	}
+
+	private function getMetaFields($leadId, $fields = array()): array
+	{
+		$meta = array();
+		foreach ($fields as $key => $value) {
+			$meta[$value] = get_field($value, $leadId);
+		}
+
+		return $meta;
+	}
+}

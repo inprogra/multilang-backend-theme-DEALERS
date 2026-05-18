@@ -1,0 +1,47 @@
+
+
+
+<div class="{{ additionalClass|e('html_attr') }} a-image" style="--width: {{ sizes.0.width }};--height: {{ sizes.0.height }};{{ style|raw }}">
+	{% set url= sizes.0.src %}
+	{% set noprotocol = url|split('//')[1] ?: url %}
+	{% set domains = noprotocol|split('/')[0] ?: noprotocol %}
+	{% if domains|split('.')[2] is defined %}
+		{% set subdomain = domains|split('.')[0] %}
+		{% set domain = domains|split('.')[1] %}
+		{% set tld = domains|split('.')[2] %}
+	{% else %}
+		{% set subdomain = '' %}
+		{% set domain = domains|split('.')[0] %}
+		{% set tld = domains|split('.')[1] %}
+	{% endif %} 
+	{% set path = noprotocol|replace({(subdomain ? subdomain ~ '.' : '') ~ (domain) ~'.' ~ (tld) :''})%}
+
+	<img {% if preventLazyLoading %} src="https://image-render.cloud/api/renderImage?image={{ sizes.0.src }}&size=700" srcset="
+				            {% for size in sizes %}
+				                https://image-render.cloud/api/renderImage?image={{ size.src }}&size={{size.width}} {{ size.width ~ 'w' }},
+				            {% endfor %}
+				            " sizes="
+				            {% for mediaQuery in mediaQueries %}
+				                {% if mediaQuery.mediaQuery %}
+				                  {{ mediaQuery.mediaQuery }} {{ mediaQuery.size }},
+				                {% endif %}
+				            {% endfor %}
+				            {{ defaultMediaQuery.size }}
+				            " {% else %} loading="lazy" data-src="https://image-render.cloud/api/renderImage?image={{ sizes.0.src }}&size=1500" data-srcset="
+				            {% for size in sizes %}
+				                https://image-render.cloud/api/renderImage?image={{ size.src }}&size=1500 {{ size.width ~ 'w' }},
+				            {% endfor %}
+				            " data-sizes="
+				            {% for mediaQuery in mediaQueries %}
+				                {% if mediaQuery.mediaQuery %}
+				                  {{ mediaQuery.mediaQuery }} {{ mediaQuery.size }},
+				                {% endif %}
+				            {% endfor %}
+				            {{ defaultMediaQuery.size }}
+				            " {% endif %} width="{{ sizes.0.width }}" height="{{ sizes.0.height }}" alt="{{ alt }}" class="a-image__img{% if not preventLazyLoading %} js-lazyload{% endif %}">
+</div>
+<style>
+body:not(.single-model) .o-stock-cars-slider .a-image {
+	height:auto;
+}
+</style>

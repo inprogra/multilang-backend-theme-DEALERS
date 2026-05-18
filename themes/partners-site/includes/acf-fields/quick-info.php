@@ -1,0 +1,110 @@
+<?php
+
+
+if ( function_exists( 'acf_add_local_field_group' ) ) :
+	acf_add_local_field_group(
+		array(
+			'key'                   => 'group_quickinfo',
+			'title'                 => 'quickinfo',
+			'fields'                => array(
+
+				array(
+					'key'               => 'field_quicknotes',
+					'label'             => 'Ciekawostki',
+					'name'              => 'items',
+					'type'              => 'repeater',
+					'instructions'      => '',
+					'required'          => 0,
+					'conditional_logic' => 0,
+					'wrapper'           => array(
+						'width' => '',
+						'class' => '',
+						'id'    => '',
+					),
+					'collapsed'         => '',
+					'min'               => 2,
+					'max'               => 3,
+					'layout'            => 'block',
+					'button_label'      => '',
+					'sub_fields'        => array(
+						array(
+							'key'               => 'field_uptitle',
+							'label'             => 'Tytuł górny',
+							'name'              => 'field_uptitle',
+							'type'              => 'text',
+							'instructions'      => '',
+							'required'          => 1,
+							'conditional_logic' => 0,
+							'wrapper'           => array(
+								'width' => '',
+								'class' => '',
+								'id'    => '',
+							),
+							'default_value'     => '',
+							'placeholder'       => '',
+							'maxlength'         => '25',
+							'rows'              => '',
+							'new_lines'         => '',
+						),
+						array(
+							'key'               => 'field_midtitle',
+							'label'             => 'Środkowy tytuł',
+							'name'              => 'field_midtitle',
+							'type'              => 'text',
+							'instructions'      => '',
+							'required'          => 1,
+							'conditional_logic' => 0,
+							'wrapper'           => array(
+								'width' => '',
+								'class' => '',
+								'id'    => '',
+							),
+							'default_value'     => '',
+							'placeholder'       => '',
+							'maxlength'         => '15',
+							'rows'              => '',
+							'new_lines'         => '',
+						),
+						array(
+							'key'               => 'field_lowtitle',
+							'label'             => 'Dolny tytuł',
+							'name'              => 'field_lowtitle',
+							'type'              => 'text',
+							'instructions'      => '',
+							'required'          => 1,
+							'conditional_logic' => 0,
+							'wrapper'           => array(
+								'width' => '',
+								'class' => '',
+								'id'    => '',
+							),
+							'default_value'     => '',
+							'placeholder'       => '',
+							'maxlength'         => '25',
+							'rows'              => '',
+							'new_lines'         => '',
+						),
+
+					),
+				),
+			),
+			'location'              => array(
+				array(
+					array(
+						'param'    => 'block',
+						'operator' => '==',
+						'value'    => 'acf/quick-info',
+					),
+				),
+			),
+			'menu_order'            => 0,
+			'position'              => 'normal',
+			'style'                 => 'default',
+			'label_placement'       => 'top',
+			'instruction_placement' => 'label',
+			'hide_on_screen'        => '',
+			'active'                => true,
+			'description'           => '',
+		)
+	);
+endif;

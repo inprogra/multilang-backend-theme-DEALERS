@@ -1,0 +1,62 @@
+@import "photoSwipe/main";
+@import "photoSwipe/default-skin/default-skin";
+
+.pswp {
+  body.admin-bar & {
+    @media (min-width: 783px) {
+      top: 32px;
+      height: calc(100% - 32px);
+    }
+  }
+
+  &__button {
+    opacity: 1;
+
+    &--close {
+      background-image: none !important;
+
+      .a-close {
+        pointer-events: none; //  required so event.target is always parent of this element
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &--arrow--left, &--arrow--right {
+      &:before, svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      svg {
+        pointer-events: none;
+      }
+
+      &:before {
+        width: 4rem;
+        height: 4rem;
+        background: rgba($white, 0.7);
+        background-image: none !important;
+        border-radius: 50%;
+      }
+    }
+
+    &--arrow--left {
+      svg {
+        transform: translate(-50%, -50%) rotate(180deg);
+      }
+    }
+  }
+
+  &__counter {
+    top: auto;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,18 @@
+<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clipnewsletter)">
+<path d="M11.3006 7.89258H7.10059V8.79258H11.3006V7.89258Z" fill="currentColor"/>
+<path d="M16.9006 3.0918H7.10059V3.9918H16.9006V3.0918Z" fill="currentColor"/>
+<path d="M11.3006 10.3926H7.10059V11.2926H11.3006V10.3926Z" fill="currentColor"/>
+<path d="M11.3006 12.9922H7.10059V13.8922H11.3006V12.9922Z" fill="currentColor"/>
+<path d="M16.9006 15.5918H7.10059V16.4918H16.9006V15.5918Z" fill="currentColor"/>
+<path d="M16.9006 18.0918H7.10059V18.9918H16.9006V18.0918Z" fill="currentColor"/>
+<path d="M16.9006 20.6914H7.10059V21.5914H16.9006V20.6914Z" fill="currentColor"/>
+<path d="M17.1008 13.8926H12.3008V7.89258H17.1008V13.8926ZM13.3008 12.9926H16.3008V8.79258H13.3008V12.9926Z" fill="currentColor"/>
+<path d="M20.6004 24.4922H3.40039V0.492188H20.7004L20.6004 24.4922ZM4.30039 23.4922H19.8004V1.29219H4.30039V23.4922Z" fill="currentColor"/>
+</g>
+<defs>
+<clipPath id="clipnewsletter">
+<rect width="24" height="24" fill="white" transform="translate(0 0.392578)"/>
+</clipPath>
+</defs>
+</svg>

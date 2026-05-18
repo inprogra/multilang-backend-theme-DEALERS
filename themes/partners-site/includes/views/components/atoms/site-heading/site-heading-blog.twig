@@ -1,0 +1,73 @@
+
+<div class="a-site-heading">
+<div class="container go_back" style="margin-bottom:0!important;margin-top:0!important;">
+	<span class="go_back">
+						<a onClick="history.back();" href="#">
+							<img style="margin-right:6px;" src="/app/themes/partners-site/assets/public/icon_arrow_left.png"/> Powrót
+						</a>
+					</span>
+		</div>
+	<div class="container blog">
+	
+		<h{{ header_type }} class="h1 a-site-heading__heading">{{ heading|trim }}</h{{ header_type }}>
+		<p class="a-site-heading__description">{{ description|trim }}</p>
+		<div class="tags-container">
+			{% for tag in tags %}
+				<span>
+					{{ tag.name }}
+				</span>
+			{% endfor %}
+		</div>
+	</div>
+	<div class="container blog date">
+	<span class="item_date">Data publikacji: {{ date }}</span></div>
+</div>
+<style>
+.container.blog {
+	margin-top:8px;
+	margin-bottom:-5px!important;
+}
+.container.blog span {
+	font-size:14px;
+	line-height:20px;
+	font-weight:400;
+}
+.tags-container {
+	display:flex;
+}
+.tags-container span {
+	background: #ebebeb;
+	padding: 4px 16px;
+	border-radius: 12px;
+	color: #707070;
+	display:inline-block;
+	margin-bottom:6px;
+	margin-right:6px;
+}
+.go_back a img {
+	margin-top:-3px;
+}
+.go_back a {
+	text-transform:uppercase;
+	font-weight:500;
+	font-size:14px;
+	line-height:20px;
+}
+.item_date {
+	color:#6D6D6D;
+}
+@media screen and (max-width:968px) {
+	.container.blog {
+		position:relative;
+	}
+	.tags-container {
+		position:absolute;
+		left:12px;
+		bottom:-70px;;
+	}
+	.container.blog.date {
+		margin-top:10px;
+		padding-bottom:48px;
+	}
+}
+</style>

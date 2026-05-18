@@ -1,0 +1,59 @@
+<div class="l-models__desktop-tabs desktop-tabs js-desktop-tabs">
+    <ul class="desktop-tabs__sidebar">
+        {% for key, category in categories %}
+            <li class="desktop-tabs__sidebar-item sidebar-item">
+                <button class="sidebar-item__button js-desktop-tabs__button{% if category.isDesktopActive %} is-active{% endif %}"
+                        data-category="{{ key }}">
+                    <span class="h3 sidebar-item__heading">{{ category.heading }}</span>
+                    <span class="sidebar-item__subheading">{{ category.subheading }}</span>
+                </button>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="desktop-tabs__content">
+        {% for key, category in categories %}
+            <div class="desktop-tabs__category category js-desktop-tabs__category{% if category.isDesktopActive %} is-active{% endif %}"
+                 data-category="{{ key }}">
+                {% for carType in category.carTypes %}
+                    {% if carType.name %}
+                        <h3 class="category__cars-type">{{ carType.name }}</h3>
+                    {% endif %}
+                    <ul class="category__cars">
+                        {% for car in carType.cars %}
+                            <li class="category__car car">
+                                <a href="{{ car.url }}" class="car__link">
+                                    <div class="car__details">
+                                        <h4 class="car__name">
+                                        {% if car.short_name %}
+                                             {{car.short_name}}
+                                        {% else %}
+                                             {{ car.name }}
+                                        {% endif %}
+                                        </h4>
+                                        
+                                        {% if car.price and car.hide_price != 'on' %}
+                                            <p class="car__price">Już
+                                                od {{ car.price|number_format(0, '.', '&nbsp;')|raw }}&nbsp;zł</p>
+                                        {% endif %}
+                                    </div>
+                                    <img data-src="{{ car.imageDesktop.sizes.0.src }}"
+                                         width="{{ car.imageDesktop.sizes.0.width }}"
+                                         height="{{ car.imageDesktop.sizes.0.height }}"
+                                         data-srcset="
+                                            {{ car.imageDesktop.sizes.0.src }},
+                                            {{ car.imageDesktop.sizes.1.src }} 2x,
+                                            {{ car.imageDesktop.sizes.2.src }} 3x,
+                                         "
+                                         alt="{{ car.imageDesktop.alt }}"
+                                         class="car__img js-lazyload"
+                                         loading="lazy"
+                                    >
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+</div>

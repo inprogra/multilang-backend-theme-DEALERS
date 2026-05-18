@@ -1,0 +1,14 @@
+# CORS Headers for Vue theme static files
+<IfModule mod_headers.c>
+    <FilesMatch "\.(js|css|json|svg|png|jpg|jpeg|gif|woff|woff2|ttf|eot)$">
+        Header set Access-Control-Allow-Origin "*"
+        Header set Access-Control-Allow-Methods "GET, OPTIONS"
+        Header set Access-Control-Allow-Headers "Content-Type"
+    </FilesMatch>
+</IfModule>
+
+# Enable rewrite engine
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+</IfModule>

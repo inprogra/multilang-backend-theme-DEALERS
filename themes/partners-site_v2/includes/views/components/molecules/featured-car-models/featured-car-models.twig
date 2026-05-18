@@ -1,0 +1,69 @@
+<div class="featuredCarModeltitlesMainContainer">
+    <div class="featuredCarModeltitlesMainRow">
+        <div class="featuredCarModeltitlesMainColumn">
+            <h2>
+                {{ sliderFamily.title|raw }}
+            </h2>
+        </div>
+    </div>
+</div>
+
+<div class="featuredCarModelsMainContainer">
+    <div class="featuredCarModelsMainRow">
+        <div class="featuredCarModelsMainColumn owl-carousel owl-carousel-feuteredCar">
+
+            {% for item in sliderFamily.items %}
+
+                <div class="featuredCarModelsBox">
+                    <div class="featuredCarModelsImage">
+                        {% if item.image %}
+                                            {% include 'components/atoms/image/image-query.twig' with {
+                                    additionalClass: '',
+                                    image: item.image
+                                } %}
+                        {% endif %}
+
+                        <div class="featuredCarModelsTitleMainRow">
+                            <div class="featuredCarModelsTitleMainColumn">
+                                <div class="featuredCarModelsTitle">
+                                    <h2>
+                                        {{ item.option }}
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="featuredCarModelsDescription">
+                            <div class="featuredCarModelName">
+                                <h3>
+                                    {{ item.model }}
+                                </h3>
+                            </div>
+                            <div class="featuredCarModelPrice">
+                                <p>
+                                    Zakup od
+                                    {{ item.price }}
+                                    zł
+                                </p>
+                            </div>
+                            <div class="sliderBtnContainer">
+                                <div class="btnBody">
+                                    <a href="{{ item.link.url }}">
+                                        Poznaj
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<style>
+.owl-dots{
+  display: flex !important; 
+}
+</style>
+

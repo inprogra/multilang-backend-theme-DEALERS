@@ -1,0 +1,320 @@
+<div class="l-service js-service {% if result %}hideCars{% endif %}">
+	{% if result %}
+		<div class="container">
+			<div class="back-to-results">
+				<a href="/serwis"><img src="/app/themes/partners-site_v2/static/back-to-results.png"/>
+					Powrót</a>
+			</div>
+			<div class="title {{subclass}}">
+				<h2 style="text:align:center;">{{messageHeader|raw}}
+					<br/>
+					{{messageHeader1}}</h2>
+					{% if messageHeader2 != '' %}
+					<div class="o-form-service__wrap grey_box_container">
+						<div class="container">
+							{{messageHeader2|raw}}
+						</div>
+					</div>
+					{% endif %}
+			</div>
+			
+			</div>
+			<div class="nav-overlay">
+			<div class="vinomat-results">
+				{% for record in result %}
+					{% if record.desc and record.desc != '' %}
+					<div class="vinomat-box">
+						
+						{{ getSVG(record.icon)|raw }}
+						
+						<p>{{record.title}}</p>
+						
+						<span>{{record.desc|raw}} {% if record.link %} <a href="{{record.link}}" target="_blank">więcej</a>{% endif %}</span>
+
+
+					</div>
+					{% endif %}
+				{% endfor %}
+			
+			</div>
+				{% if result %}
+				<div class="navigation">
+					<span class="goLeft"><img src="/app/themes/partners-site_v2/static/navl.png" /></span>
+					<span class="goRight"><img src="/app/themes/partners-site_v2/static/narv.png" /></span>
+				</div>
+				<div class="dots_navigation">
+						{% for record in result %}
+						
+							<span class="dot {% if loop.index == 1 %}active{% endif %}"></span>
+						{% endfor %}
+				</div>
+			{% endif %}
+			</div>
+		</div>
+		<style>
+		.title h2 {
+			
+		}
+		.grey_box_container {
+			
+			
+			width:100%;
+			padding-bottom:32px;
+			margin-bottom:16px;
+
+		}
+		.grey_box_container > div {
+			max-width:840px;
+		}
+		.grey_box_container > div > ul {
+			font-size:14px;
+			color:#6D6D6D;
+			padding:0;
+			
+		}
+		.grey_box_container > div > ul li {
+			
+			line-height:20px;
+			list-style:none;
+			padding-left:30px;
+			background: url('/app/themes/partners-site_v2/assets/img/service-offer.png') left center no-repeat;
+		}
+		.grey_box_container > div > ul li:not(:last-child) {
+			margin-bottom:20px;
+		}
+		.dots_navigation {
+			display:none;
+			margin:0 auto;
+			text-align:center;
+		}
+		.dots_navigation .dot {
+			width:12px;
+			height:12px;
+			border-radius:100%;
+			background:#ccc;
+			opacity:0.5;
+			display:inline-block;
+			margin:0 2px;
+		}
+		.dots_navigation .dot.active {
+			background:#000;
+		}
+		.vinomat-box img {
+			max-width:32px;
+			max-height:208px;
+
+		}
+			.nav-overlay .navigation {
+				display:none;
+			}
+			.vinomat-results {
+				display: flex;
+				margin-left:auto;
+				margin-right:auto;
+				margin-bottom: -40px;
+				justify-content:center;
+				max-width: 1221px;
+				flex-wrap: wrap;
+
+			}
+			
+			.vinomat-results .vinomat-box p {
+				font-weight: 600;
+				font-size: 16px;
+				line-height: 24px;
+				margin-top: 10px;
+				margin-bottom: 8px;
+			}
+			.vinomat-results .vinomat-box span {
+				font-weight: 400;
+				font-size: 14px;
+				line-height: 20px;
+				color: #6D6D6D;
+			}
+			.vinomat-results .vinomat-box {
+				width: 391px;
+				height: 244px;
+				background: #FAFAFA;
+				margin-bottom: 24px;
+				padding: 64px;
+			}
+			.vinomat-results .vinomat-box:nth-child(3n + 2) {
+				margin-left: 24px;
+				margin-right: 24px;
+			}
+			.hideCars .back-to-results {
+				margin-bottom: 32px;
+				margin-top: 32px;
+			}
+			.back-to-results img {
+				margin-right: 8px;
+			}
+			.hideCars .title h2 {
+				font-weight: 600;
+				margin-bottom: 32px;
+				font-size: 32px;
+   			 line-height: 36px;  
+				text-align: center;
+			}
+			
+			.o-form-service__heading {
+				color: #000;
+			}
+			.heading_more {
+				width: 100%;
+				text-align: center;
+				color: #707070;
+			}
+			.moreWidth {
+				padding: 0;
+				width: 100%;
+				box-sizing: border-box;
+				max-width: 1230px;
+			}
+			@media screen and (max-width:568px) {
+				.dots_navigation {
+					display:block;
+				}
+					.nav-overlay .navigation {
+						display:block;
+					}
+				.nav-overlay {
+					position:relative;
+				}
+				.nav-overlay .navigation span:first-child {
+					position:absolute;
+					left:8px;
+					top:50%;
+					transform:translateY(-50%);
+				}
+				.nav-overlay .navigation span:last-child {
+					position:absolute;
+					right:8px;
+					top:50%;
+					transform:translateY(-50%);
+				}
+				.nav-overlay .navigation span:hover {
+					cursor:pointer;
+				}
+				.hideCars .container {
+					padding:0;
+				}
+				.hideCars .back-to-results {
+					margin:16px 24px;
+				}
+				.vinomat-results {
+					min-height:244px;
+					flex-direction: column;
+					margin-bottom:0;
+				}
+				.vinomat-box img {
+					height:35px;
+				}
+				.vinomat-results .vinomat-box {
+					min-height:244px;
+					width:100%;
+					margin:0 0 16px 0;
+
+				}
+				.vinomat-results .vinomat-box:not(:first-child) {
+					display:none;
+				}
+				.vinomat-results .vinomat-box:nth-child(3n+2) {
+					margin: 0 0 16px 0;
+				}
+				.goLeft img {
+					
+				}
+			}
+		</style>
+		<script type="text/javascript">	
+		$(document).ready(function() {
+			$('.goRight').on('click', function() {
+				if ($('.vinomat-box:visible').next('div').length > 0) {
+					$('.vinomat-box:visible').hide().next('div').show()
+					$('.dots_navigation .active').removeClass('active').next('span').addClass('active');
+				} else {
+					$('.vinomat-box:visible').hide();
+					$('.vinomat-box:eq(0)').show();
+					$('.dots_navigation .active').removeClass('active');
+					$('.dots_navigation span:eq(0)').addClass('active');
+				}
+			})
+			$('.goLeft').on('click', function() {
+				if ($('.vinomat-box:visible').prev('div').length > 0) {
+					$('.vinomat-box:visible').hide().prev('div').show()
+					$('.dots_navigation .active').removeClass('active').prev('span').addClass('active');
+				} else {
+					$('.vinomat-box:visible').hide();
+					$('.vinomat-box:last').show();
+					$('.dots_navigation .active').removeClass('active')
+					$('.dots_navigation span:last').addClass('active');
+				}
+			})
+		})
+
+		</script>
+	{% else %}
+		{{ openSection(2,1)|raw }}
+		{{ openSection(false,1,false)|raw }}
+		{% include 'components/atoms/site-heading/site-heading.twig' with {
+                heading: 'Umów się do serwisu',
+                description: 'Zadbaj o swoje auto'
+            } only %}
+		{{ closeSection(false)|raw }}
+		{{ closeSection()|raw }}
+		{{ openSection(3)|raw }}
+		{{countNews}}
+		{% include 'components/molecules/vinomat-boxes/boxes.twig' with {
+            news: newsBox,
+			newsCount: newsCount,
+        } only %}
+		{% include 'components/molecules/vinomat-boxes/_partials/search.twig'  %}
+	{% endif %}
+
+
+	{{ closeSection()|raw }}
+	{% if formService %}
+		{{ openSection()|raw }}
+		{% if result %}
+			<div class="hideCarsOnForms">
+			{% endif %}
+			{% include 'components/organisms/form-service/form-vinomat-service.twig' with formService %}
+			{% if result %}
+			</div>
+		{% endif %}
+		{{ closeSection()|raw }}
+	{% endif %}
+	{% if accordionSection.accordion %}
+		{{ openSection()|raw }}
+		{% include 'components/organisms/accordion-section/accordion-section.twig' with accordionSection|merge({
+                additionalClass: 'js-service__accordion-section'
+            }) only %}
+		{{ closeSection()|raw }}
+	{% endif %}
+	{{ openSection(3,4)|raw }}
+	<div class="l-service__contacts contacts">
+		<div class="contacts__container container">
+			<h1 class="contacts__heading">{{ contactSection.heading }}</h1>
+			<ul class="contacts__inner">
+				{% for contact in contactSection.contacts %}
+					<li class="contacts__item">
+						{% include 'components/atoms/contact-info/contact-info.twig' with {
+                                additionalClass: 'contacts__info',
+                                name: contact.employee.name ~ ' ' ~ contact.employee.surname,
+                                position: contact.employee.position,
+                                phone: contact.employee.phone,
+                                email: contact.employee.email
+                            } only %}
+						<ul class="contacts__positions">
+							{% for specialization in contact.specializations %}
+								<li class="contacts__positions-item">{{ specialization.name }}</li>
+							{% endfor %}
+						</ul>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+	{{ closeSection()|raw }}
+</div>

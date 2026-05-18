@@ -1,0 +1,26 @@
+.twoImagesMaincontainer{
+  width: 100%;
+  height: auto;
+  display: flex; 
+  justify-content: center; 
+
+  .twoImagesMainRow{
+    max-width: 1609px;
+    width: 95%;
+    height: 100%;
+    display: flex; 
+    justify-content: space-between;
+
+    .twoImagesMainColumn{
+      width: 49%;
+     
+      background: grey;
+
+      img{
+        width: 100%; 
+        height: auto;
+        object-fit: contain; 
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+<div class="a-error is-active" 
+     data-error-for="{{ for }}" 
+     data-default-text="{{ defaultText|e }}">
+    {{ getSVG('errorIcon')|raw }}
+    <span class="a-error__text">
+        {{ defaultText|default('') }}
+    </span>
+</div>

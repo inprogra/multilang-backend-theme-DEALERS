@@ -1,0 +1,42 @@
+<div class="discoveryCardSmallMainContainer">
+    <div class="discoveryCardSmallMainHeadTitleRow">
+        <div class="discoveryCardSmallMainHeatTitleColumn">
+            <h2>{{ mainHeading | raw }}</h2>
+        </div>
+    </div>
+
+    <div class="discoveryCardSmallMainRow">
+        {% for item in items %}
+    {% if item.title and item.description and item.image and item.link %}
+        <div class="discoveryCardSmallMainColumn">
+            <a href="{{ item.link.url }}" class="smalCardHref">
+                <div class="dicoveryCardSmallMainBox">
+                    <div class="discoveryCardSmallImageContainer">
+                    {% if item.image %}
+                        {% include 'components/atoms/image/image-query.twig' with {
+                        additionalClass: '',
+                        image: item.image
+                    } %}
+                        {% endif %}
+                    </div>
+                    <div class="discoveryCardSmallDescriptionContainer">
+                        <div class="discoveryCardSmallTitleHeadContainer">
+                            <div class="discoveryCardSmallTitle">
+                                <h3>{{ item.title }}</h3>
+                            </div>
+                            <div class="discoveryCardSmallIcon">
+                                <span class="a-arrow a-arrow--secondary"></span>
+                            </div>
+                        </div>
+                        <div class="discoveryCardSmallDescription">
+                            <p>{{ item.description | raw }}</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    {% endif %}
+{% endfor %}
+
+    </div>
+</div>

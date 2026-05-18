@@ -1,0 +1,120 @@
+<?php
+
+if ( function_exists( 'acf_add_local_field_group' ) ) :
+	acf_add_local_field_group(
+		array(
+			'key'                   => 'group_605c7d6136c23',
+			'title'                 => 'Zdjęcie banner',
+			'fields'                => array(
+				array(
+					'key'               => 'field_605c7d71b7cae',
+					'label'             => 'Zdjęcie',
+					'name'              => 'img',
+					'type'              => 'image',
+					'instructions'      => '(min. szerokość: 1224px, Zalecana szerokość: 3672px)<br>(min. wysokość: 574px, Zalecana wysokość: 1344px)',
+					'required'          => 1,
+					'conditional_logic' => 0,
+					'wrapper'           => array(
+						'width' => '50',
+						'class' => '',
+						'id'    => '',
+					),
+					'return_format'     => 'id',
+					'preview_size'      => 'medium',
+					'library'           => 'all',
+					'min_width'         => '',
+					'min_height'        => '',
+					'min_size'          => '',
+					'max_width'         => '',
+					'max_height'        => '',
+					'max_size'          => '',
+					'mime_types'        => '',
+				),
+				array(
+					'key'               => 'field_crop',
+					'label'             => 'Przycinając zdjęcie zachowaj',
+					'name'              => 'field_crop',
+					'type'              => 'radio',
+					'instructions'      => '',
+					'required'          => 0,
+					'conditional_logic' => 0,
+					'choices'           => array(
+						'crop-top' => 'Góra',
+						'crop-center' => 'Środek',
+						'crop-left' => 'Lewą stronę',
+						'crop-right' => 'Prawą stronę',
+						'crop-bottom' => 'Dół',
+
+					), 
+					'allow_null'        => 'true',
+					'multiple'          => false,
+					'wrapper'           => array(
+						'width' => '50',
+						'class' => '',
+						'id'    => '',
+					),
+					'default_value'     => 'standard',
+					'placeholder'       => '',
+				),
+				array(
+					'key'               => 'field_opis_wiekszy',
+					'label'             => 'Opis większy',
+					'name'              => 'bigDescription',
+					'type'              => 'text',
+					'instructions'      => 'Wpisz główny nagłówek bannera',
+					'required'          => 0,
+					'wrapper' => array(
+						'width' => '100',
+						'class' => '',
+						'id'    => '',
+					),
+				),
+				array(
+					'key'               => 'field_opis_mniejszy',
+					'label'             => 'Opis mniejszy',
+					'name'              => 'smallDescription',
+					'type'              => 'text',
+					'instructions'      => 'Wpisz podtytuł lub dodatkowy opis bannera',
+					'required'          => 0,
+					'wrapper' => array(
+						'width' => '100',
+						'class' => '',
+						'id'    => '',
+					)
+				),
+				array( 
+					'key'               => 'field_dark_overlay',
+					'label'             => 'Delikatnie przyciemnić tło?',
+					'name'              => 'darkOverlay',
+					'type'              => 'true_false',
+					'instructions'      => 'Zaznacz, jeśli chcesz dodać delikatne przyciemnienie tła',
+					'message'           => 'Tak, przyciemnij tło',
+					'default_value'     => 0,
+					'ui'                => 0,
+					'wrapper' => array(
+						'width' => '100',
+						'class' => '',
+						'id'    => '',
+					)
+				),
+			),
+			'location'              => array(
+				array(
+					array(
+						'param'    => 'block',
+						'operator' => '==',
+						'value'    => 'acf/hero-image',
+					),
+				),
+			),
+			'menu_order'            => 0,
+			'position'              => 'normal',
+			'style'                 => 'default',
+			'label_placement'       => 'top',
+			'instruction_placement' => 'label',
+			'hide_on_screen'        => '',
+			'active'                => true,
+			'description'           => '',
+		)
+	);
+endif;

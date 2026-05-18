@@ -1,0 +1,40 @@
+<div class="{{ additionalClass|e('html_attr')}} m-side-nav">
+    <div class="m-side-nav__top">
+        <div class="m-side-nav__top-container container">
+            {% include 'components/atoms/logo/logo.twig' with logo only %}
+            {% include 'components/atoms/hamburger/hamburger.twig' with hamburger %}
+        </div>
+    </div>
+    <nav class="m-side-nav__menu">
+        <ul class="m-side-nav__menu-list m-side-nav__menu-list--mobile-only">
+            {% for item in menuItems %}
+            {% if   'samochody-elektryfikacja' not in item.url %}
+                <li class="m-side-nav__menu-item">
+            
+                    <a class="m-side-nav__menu-link" href="{% if item.title|trim == 'Konfigurator' %}https://www.volvocars.com/pl/build{% else %}{{ item.url }}{% endif %}" {% if item.nofollow %} rel="noopener noreferrer nofollow"{% endif %} {% if item.target == '_blank' %} target="_blank" {% endif %}>{{ item.title|trim }}</a>
+                </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+        <ul class="m-side-nav__menu-list">
+            {% for item in sideNavMenuItems %}
+            {% if   'samochody-elektryfikacja' not in item.url %}
+           
+                <li class="m-side-nav__menu-item">
+                    <a class="m-side-nav__menu-link" href="{% if item.title|trim == 'Konfigurator' %}https://www.volvocars.com/pl/build{% else %}{{ item.url }}{% endif %}" {% if item.nofollow %} rel="noopener noreferrer nofollow"{% endif %} {% if item.target == '_blank' %} target="_blank" {% endif %}>{{ item.title|trim }}</a>
+                </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </nav>
+    <div class="m-side-nav__footer">
+        <a href="https://www.volvocars.com/pl" rel="noopener noreferrer nofollow" target="_blank" class="m-side-nav__footer-link">
+            Volvo Car Poland
+            <span class="a-arrow"></span>
+        </a>
+        {% include 'components/atoms/social-media-links/social-media-links.twig' with {
+            'additionalClass': 'm-side-nav__social-media-links',
+            items: socialMedia
+        } only %}
+    </div>
+</div>

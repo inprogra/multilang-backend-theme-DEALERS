@@ -1,0 +1,913 @@
+<{{tag|default('div')}} class="o-stock-car {% if singleView %}o-stock-car--single-view {% endif %}js-stock-car" {% if not singleView %} data-model-name="{{ model }}, {{ engine }}, {{ version }}" data-price="{{ discountPrice|number_format(0, '.', ' ')|trim|raw }} zł" {% if showroomId %} data-showroom-id="{{ showroomId }}" {% endif %} {% if dealer %} data-dealer="{{ dealer }}" {% endif %} {% endif %}>
+<script type="text/javascript">
+	
+	function changeActual(el) {
+		console.log(el);
+	}
+	function format(number, decimals = 2, decimalSeparator = '.', thousandsSeparator = ',') {
+				const roundedNumber = number.toFixed(decimals);
+				let integerPart = '',
+					fractionalPart = '';
+				if (decimals == 0) {
+					integerPart = roundedNumber;
+					decimalSeparator = '';
+				} else {
+					let numberParts = roundedNumber.split('.');
+					integerPart = numberParts[0];
+					fractionalPart = numberParts[1];
+				}
+				integerPart = integerPart.replace(/(\d)(?=(\d{3})+(?!\d))/g, `$1${thousandsSeparator}`);
+				return `${integerPart}${decimalSeparator}${fractionalPart}`;
+	}
+</script>
+	<div class="o-stock-car__container container" id="looper_{{loop.index}}">
+		<div class="o-stock-car__column-slider">
+			{% include 'components/molecules/car-gallery-slider/car-gallery-slider.twig' with {
+                additionalClass: 'o-stock-car__slider',
+                gallery: gallery,
+                preventLazyLoadingFirstSlide: preventLazyLoadingFirstSlide,
+                preventLazyLoadingThumbs: preventLazyLoadingThumbs,
+                stockVariant: true
+            } %}
+		</div>
+		<div class="o-stock-car__column-details column-details">
+
+			<div class="step_{{loop.index}}_a" id="finansowanie" style="display:none;">
+				{% if singleView %}
+					<span class="go_back">
+						<a href="/dostepne-na-miejscu">
+							<img src="/app/themes/partners-site/assets/public/icon_arrow_left.png"/>Powrót
+						</a>
+					</span>
+
+				{% endif %}
+
+				<span class="o-stock-car__name">
+					{{ model }},
+					{{ engine }},
+					{{ version }}
+					{% if versionDescription %}
+						{% include 'components/atoms/tooltip/tooltip.twig' with {
+                            additionalClass: 'o-stock-car__name-tooltip',
+                            content: versionDescription
+                        } only %}
+					{% endif %}
+				</span>
+				<p class="o-stock-car__offer-number">Nr oferty:.
+					{{ offerNumber|trim }} {% if eurocode %}- ({{eurocode}}) {% endif %}</p>
+					{% if singleView %}
+					<input type="hidden" name="income" id="income" value="{{income_leasing}}" />
+					<input type="hidden" name="income_najem" id="income_najem" value="{{income_najem}}" />
+					<input type="hidden" name="eurocode" id="eurocode" value="{{eurocode}}" />
+					<input type="hidden" name="leasing_id" id="leasing_id" value="{{leasing_id}}" />
+					<input type="hidden" name="najem_id" id="najem_id" value="{{najem_id}}" />
+					{% endif %}
+				<div class="tabs">
+					<ul class="form_tabs">
+						{% if najem and najem != 0 and eurocode %}
+							<li data-id="najem" class="{% if lease == null or lease == 0 %} active_tab {% endif %}js-leasing-endpoint">Najem</li>
+						{% else %}
+							{% set najem = false %}
+						{% endif %}
+						{% if lease and lease != 0  and eurocode %}
+							<li data-id="leasing" class="active_tab js-leasing-endpoint">Leasing</li>
+						{% else %}
+							{% set lease = false %}
+						{% endif %}
+
+						<li data-id="basic_form" {% if lease == false and najem == false %} class="active_tab" {% endif %}>Gotówka</li>
+					</ul>
+					<div class="tabs_container">
+						{% if najem and najem != 0 and eurocode  and singleView %}													
+						<div id="najem" class="tab_0" {% if lease == null or lease == 0 %} style="display:block;" {% else %} style="display:none;" {% endif %}>
+							<div class="slide__combo">
+								<label>Liczba miesięcy najmu</label>
+								<div class="slide__combo_inner" id="hireMonth">
+									<div class="js-leasing-endpoint">24</div>
+									<div class="combo__selected js-leasing-endpoint">36</div>
+									<div class="js-leasing-endpoint">48</div>
+
+								</div>
+							</div>
+							<div class="slide__combo">
+								<label>Opłata wstępna
+									{% if hasDiscountPrice %}
+									
+										{% if najem_type == 'brutto' %}
+											{% set calculatedPrice = regularPrice - discountPrice %}
+											{% set max_fee = 0.2 * price_discount_with_tax %}
+										{% else %}
+										
+											{% set calculatedPrice = price_without_tax - price_discount_without_tax %}
+											{% set max_fee = 0.2 * discountPrice %}
+										{% endif %}
+									{% else %}
+								
+										{% if najem_type == 'netto' %}
+											{% set max_fee = 0.2 * regularPrice %}
+											{% set regularPrice = price_without_tax  %}
+											
+										{% else %}
+											{% set max_fee = 0.2 * price_with_tax %}
+											{% set regularPrice = price_with_tax  %}
+											
+										{% endif %}
+
+									{% endif %}
+									<span class="price__combo" data-type="{{najem_type}}" id="max_fee">{{ max_fee|number_format(0,'.','') }}
+										zł
+										{{najem_type}}</span>
+								</label>
+								<div class="slide__combo_inner" id="hireFee">
+									<div class="js-leasing-endpoint">1%</div>
+									<div class="js-leasing-endpoint">10%</div>
+									<div class="combo__selected js-leasing-endpoint">20%</div>
+								</div>
+							</div>
+							<div class="slide__combo">
+								<label>Przebieg roczny (tys. km)</label>
+								<div class="slide__combo_inner" id="hireMileage">
+									<div class="combo__selected js-leasing-endpoint">10</div>
+									<div class="js-leasing-endpoint">20</div>
+									<div class="js-leasing-endpoint">30</div>
+								</div>
+							</div>
+							<div class="form-check form-switch form-spacer">
+								<label class="switch">
+									<input id="hireAssistance" type="checkbox" checked>
+									<span class="slider round"></span>
+								</label>
+								<div class="info_label">
+									Assistance
+								</div>
+								<div class="info_label last">
+									0 zł/mies.
+								</div>
+							</div>
+							<div class="summary">
+								<label id="najem_version" data-type="{{najem_type}}">Wartość samochodu
+									{{najem_type}}
+
+									{% if najem_type == 'brutto' %}
+										{% if hasDiscountPrice %}
+											{% set calculatedPrice = price_with_tax - price_discount_with_tax %}
+
+											<span class="price__combo">
+												<span style="float:none;" data-price="{{ price_discount_with_tax|number_format(0, '.', '')|trim|raw }}" id="final_price_najem">{{ price_discount_with_tax|number_format(0, '.', '&nbsp;')|trim|raw }}</span>
+												zł</span>
+										{% else %}
+										
+											<span class="price__combo">
+												<span style="float:none;" data-price="{{ price_with_tax|number_format(0, '.', '')|trim|raw }}"  id="final_price_najem">{{ price_with_tax|number_format(0, '.', '&nbsp;')|trim|raw }}</span>
+												zł</span>
+										{% endif %}
+									{% else %}
+										{% if hasDiscountPrice %}
+
+											{% set calculatedPrice = price_without_tax - price_discount_without_tax %}
+
+											<span class="price__combo">
+												<span style="float:none;" data-price="{{ price_discount_with_tax|number_format(0, '.', '')|trim|raw }}"  id="final_price_najem">{{ price_discount_without_tax|number_format(0, '.', '&nbsp;')|trim|raw }}</span>
+												zł</span>
+										{% else %}
+
+											<span class="price__combo">
+												<span style="float:none;" data-price="{{ price_with_tax|number_format(0, '.', '')|trim|raw }}"  id="final_price_najem">{{ price_without_tax|number_format(0, '.', '&nbsp;')|trim|raw }}</span>
+												zł</span>
+										{% endif %}
+									{% endif %}
+								</label>
+
+								<label>Rata miesięczna
+									{{najem_type}}
+									<span class="price__combo big" id="hireFinalPrice"></span>
+								</label>
+								<div class="line__element"></div>
+							</div>
+							{% if dealer %}
+							<p class="o-stock-car__contact contact">
+								<span class="contact__label">Dealer:</span>
+								<span class="contact__value">{{ dealer }}</span>
+							</p>
+							{% endif %}
+							{% include 'components/atoms/button/button-link.twig' with {
+                            
+                                'additionalClass': 'o-stock-car__button show_details',
+                                'text': 'SZCZEGÓŁY TECHNICZNE',
+                                'secondary': true,
+                            } only %}
+							{% include 'components/atoms/button/button-link.twig' with {
+                            
+                            'additionalClass': 'o-stock-car__button blueone js-open-side-form js-open-extra-fields',
+                            'text': 'ZAPYTAJ O FINANSOWANIE',
+                            'secondary': true,
+                        } only %}
+						</div>
+						{% else %}
+							{% set najem = false %}
+						{% endif %}
+
+						{% if lease and lease != 0 and eurocode and singleView %}
+						<div id="leasing" class="tab_1" {% if lease and lease != 0 %} style="display:block;" {% else %} style="display:none;" {% endif %}>
+							
+							<div class="tab__wrapper">
+								<div class="tab__wrapper-inner">
+									<div class="slide__combo">
+										<label>Liczba miesięcy leasingu</label> 
+										<div class="slide__combo_inner" id="leasingMonth">
+											{% for rate in rates_leasing %}
+												<div data-rate-id="{{rate}}" class="{% if rate == default_installment %} combo__selected {% endif %}js-leasing-endpoint"  {% if installments_leasing[rate] > 24 %} onClick="changePrice(1)" {% else %} onClick="changePrice(19)" {% endif %} >{{installments_leasing[rate]}}</div>
+											{% endfor %}
+											
+										</div>
+									</div>
+									<div class="slide__combo">
+										<label>Opłata wstępna
+											{% if hasDiscountPrice %}
+												{% if lease_type == 'brutto' %}
+													{% set calculatedPrice = regularPrice - discountPrice %}
+													{% set max_fee = 0.2 * price_discount_with_tax %}
+													{% set regularPrice = price_with_tax  %}
+												{% else %}
+													{% set calculatedPrice = price_without_tax - price_discount_without_tax %}
+													{% set max_fee = 0.2 * discountPrice %}
+												{% endif %}
+											{% else %}
+												{% if lease_type == 'netto' %}
+													{% set regularPrice = price_without_tax  %}
+												{% endif %}
+												{% set max_fee = 0.2 * regularPrice %}
+											{% endif %}
+
+											<span class="price__combo" data-version="{{lease_type}}" id="leasing_max_installment">{{ max_fee|round }}
+												zł
+												{{lease_type}}</span>
+										</label>
+										<div class="slide__combo_inner" id="leasingFee">
+											 {% for fee in leasing_fees %}
+												<div data-fee="{{fee}}" class="{%if fee == default_leasing_fee %} combo__selected {% endif %} js-leasing-endpoint">{{fee}}%</div>	
+											 {% endfor %}											
+										</div>
+									</div>
+									<div class="slide__combo">
+										<label>Wykup
+											{% if hasDiscountPrice %}
+												{% if lease_type == 'brutto' %}
+													{% set calculatedPrice = regularPrice - discountPrice %}
+													{% set max_fee = 0.2 * price_discount_with_tax %}
+												{% else %}
+													{% set calculatedPrice = price_without_tax - price_discount_without_tax %}
+													{% set max_fee = 0.2 * price_discount_without_tax %}
+												{% endif %}
+											{% else %}
+												{% if lease_type == 'netto' %}
+													{% set regularPrice = price_without_tax  %}
+												{% endif %}
+												{% set max_fee = 0.2 * regularPrice %}
+											{% endif %}
+
+											<span class="price__combo" data-version="{{lease_type}}" id="leasing_max_fee">{{ max_fee|round }}
+												zł
+												{{lease_type}}</span>
+										</label>
+										<div class="slide__combo_inner" id="leasingPurchase">
+											{% for res in residalValues %}
+											
+													<div id="res_{{loop.index}}" class="{% if loop.index == 1 %} combo__selected {% endif %} js-leasing-endpoint" >{{res}}%</div>
+											{% endfor %}
+											
+										</div>
+									</div>
+									<div class="form-check form-switch form-spacer">
+										<label class="switch">
+											<input id="leasingAssistance" type="checkbox" checked>
+											<span class="slider round"></span>
+										</label>
+										<div class="info_label">
+											Assistance
+										</div>
+										<div class="info_label last">
+											0 zł/mies.
+										</div>
+									</div>
+									<div class="summary">
+
+										<label id="lease_version" data-type="{{lease_type}}">Wartość samochodu 
+											{{lease_type}}
+											{% if lease_type == 'brutto' %}
+												{% if hasDiscountPrice %}
+
+													{% set calculatedPrice = regularPrice - discountPrice %}
+
+													<span class="price__combo">
+														<span style="float:none;" data-price="{{ price_discount_with_tax|number_format(0, '.', '')|trim|raw }}" id="final_price_leasing">{{ price_discount_with_tax|number_format(0, '.', '&nbsp;')|trim|raw }}</span>
+														zł</span>
+														
+												{% else %}
+												
+													<span class="price__combo">
+														<span style="float:none;" data-price="{{ price_with_tax|number_format(0, '.', '')|trim|raw }}" id="final_price_leasing">{{ price_with_tax|number_format(0, '.', '&nbsp;')|trim|raw }}</span>
+														zł</span>
+												{% endif %}
+											{% else %}
+												{% if hasDiscountPrice %}
+													{% set calculatedPrice = price_without_tax - price_discount_without_tax %}
+
+													<span class="price__combo">
+														<span style="float:none;" data-price="{{ price_discount_with_tax|number_format(0, '.', '')|trim|raw }}" id="final_price_leasing">{{ price_discount_without_tax|number_format(0, '.', '&nbsp;')|trim|raw }}</span>
+														zł</span>
+												{% else %}
+													<span class="price__combo">
+														<span style="float:none;" data-price="{{ price_with_tax|number_format(0, '.', '')|trim|raw }}" id="final_price_leasing">{{ price_without_tax|number_format(0, '.', '&nbsp;')|trim|raw }}</span>
+														zł</span>
+												{% endif %}
+											{% endif %}
+										</label>
+
+										<label>Rata miesięczna
+											{{lease_type}}
+											<span class="price__combo big" id="leasingFinalPrice"></span>
+										</label>
+										<div class="line__element"></div>
+									</div>
+								</div>
+								<p class="o-stock-car__contact contact">
+								
+								</p>
+								{% include 'components/atoms/button/button-link.twig' with {
+                                
+                                    'additionalClass': 'o-stock-car__button show_details',
+                                    'text': 'SZCZEGÓŁY TECHNICZNE',
+                                    'secondary': true,
+                                } only %}
+								{% if car_state == 'nowy' %}
+								{% include 'components/atoms/button/button-link.twig' with {
+                                
+                                'additionalClass': 'o-stock-car__button blueone js-open-side-form js-open-extra-fields',
+                                'text': 'ZAPYTAJ O FINANSOWANIE',
+                                'secondary': true,
+                            } only %}
+							{% endif %}
+							</div>
+						</div>
+						{% endif %}
+					
+						<div id="basic_form" class="tab_2" {% if lease == false and najem == false %} style="display:block;" {% endif %}>
+							<p class="summary_title">Wartość samochodu brutto:</p>
+							<p class="summary_price">
+								{% if hasDiscountPrice %}
+									{% set calculatedPrice = price_with_tax - price_discount_with_tax %}
+									<span style="float:none;" id="final_price_najem">{{ price_discount_with_tax|number_format(0, '.', '&nbsp;')|trim|raw }}</span>
+								{% else %}
+									<span style="float:none;" id="final_price_najem">{{ price_with_tax|number_format(0, '.', '&nbsp;')|trim|raw }}</span>
+								{% endif %}
+
+								zł</p>
+							{% if singleView %}
+							<form class="o-form__form form" novalidate>
+								<input type="hidden" name="source" value="{{ source }}">
+								<input type="hidden" name="showroomId" value="{{ showroomId }}" class="js-form__showroomId-field">
+								<input type="hidden" name="lastViewedCar" class="js-form__last-viewed-car-field">
+								<div class="form__header">
+									<h2 class="form__header-text">Dane kontaktowe:</h2>
+
+								</div>
+								<div class="form__content">
+
+												<fieldset class="form__content-section">
+													{% include 'components/atoms/input/input.twig' with {
+								additionalClass: 'form__content-field',
+								label: 'Imię',
+								name: 'name',
+								mandatory: true,
+							} only %}
+													{% include 'components/atoms/error/error.twig' with {
+								for: 'name',
+							} only %}
+													{% include 'components/atoms/input/input.twig' with {
+								additionalClass: 'form__content-field',
+								label: 'Nazwisko',
+								name: 'surname',
+								mandatory: true,
+							} only %}
+													{% include 'components/atoms/error/error.twig' with {
+								for: 'surname',
+							} only %}
+													{% include 'components/atoms/input/input.twig' with {
+								additionalClass: 'form__content-field',
+								label: 'Numer telefonu',
+								name: 'phoneNumber',
+								mandatory: true,
+							} only %}
+													{% include 'components/atoms/error/error.twig' with {
+								for: 'phoneNumber',
+							} only %}
+													{% include 'components/atoms/input/input.twig' with {
+								additionalClass: 'form__content-field',
+								label: 'E-mail',
+								name: 'email',
+								mandatory: true,
+							} only %}
+													{% include 'components/atoms/error/error.twig' with {
+								for: 'email',
+							} only %}
+													{% include 'components/atoms/textarea/textarea.twig' with {
+								additionalClass: 'form__content-field',
+								label: 'Wiadomość',
+								name: 'message',
+							} only %}
+													<div class="form__content-consents">
+														{% include 'components/atoms/checkbox/checkbox.twig' with {
+									additionalClass: 'form__content-field mb_1',
+									name: 'dataProcessingConsent',
+									mandatory: true,
+									label: 'Wyrażam zgodę na przetwarzanie moich danych osobowych, w tym danych kontaktowych, danych historii zakupów produktów i usług Volvo oraz danych dotyczących korzystania z serwisów volvocars.com przez Volvo Car Poland sp. z o.o. w celu marketingu bezpośredniego produktów i usług marki Volvo.',
+									detailsLabel: 'Jeżeli wyrazi Pan/Pani zgodę, Pana/Pani dane osobowe będą przetwarzane przez administratora - Volvo Car Poland sp. z o.o., Warszawa (02-884), ul. Puławska 558/560 (VCP), na podstawie art. 6 ust. 1 pkt a) ogólnego rozporządzenia o ochronie danych osobowych (RODO), w celu marketingu bezpośredniego produktów i usług marki Volvo, takich jak samochody, części i akcesoria, usługi Volvo Car Financial Services oraz inne usługi dostępne w sieci Volvo. Informujemy, że: podanie danych jest dobrowolne, może Pan/Pani w każdej chwili wycofać zgodę (w tym przy użyciu danych kontaktowych administratora lub inspektora ochrony danych), wycofanie zgody nie wpływa na zgodność z prawem przetwarzania, którego dokonano na podstawie zgody przed jej wycofaniem, z inspektorem ochrony danych VCP może się Pan/Pani skontaktować przy użyciu adresu mailowego: globdpo@volvocars.com, odbiorcami Pana/Pani danych osobowych będą podmioty świadczące usługi na rzecz VCP, w tym: dostawcy usług marketingowych i IT, autoryzowani dealerzy Volvo, podmioty z grupy kapitałowej Volvo oraz partnerzy oferujący produkty Volvo Car Financial Services (np. kredyty, leasingi i ubezpieczenia), dane osobowe będą przechowywane nie dłużej niż przez 30 lat, przysługuje Panu/Pani prawo dostępu do treści danych osobowych oraz prawo ich sprostowania, usunięcia, ograniczenia przetwarzania i przeniesienia (wniosek o realizację tych uprawnień można złożyć pod adresem: <a href="https://www.volvocars.com/pl/subject-rights-request-form" target="_blank">https://www.volvocars.com/pl/subject-rights-request-form</a>), a także prawo do wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych, Pana/Pani dane osobowe będą przetwarzane również w formie profilowania online i profilowania społecznościowego, które będzie polegało na zbieraniu i agregowaniu Pana/Pani danych w celu stworzenia profilu klienta i przedstawiania materiałów reklamowych i ofert lepiej dostosowanych do Pana/Pani potrzeb. Więcej informacji o przetwarzaniu danych osobowych w sieci Volvo zamieściliśmy na stronie: <a href="https://www.volvocars.com/pl/legal/privacy/privacy-customer-privacy-policy" target="_blank">polityka prywatności</a>'
+								} only %}
+														{% include 'components/atoms/error/error.twig' with {
+									for: 'dataProcessingConsent',
+								} only %}
+														{% include 'components/atoms/checkbox/checkbox.twig' with {
+									additionalClass: 'form__content-field',
+									name: 'tradeContactConsent',
+									label: 'Wyrażam zgodę na kontakt telefoniczny.',
+									detailsLabel: 'Wyrażam zgodę na prowadzenie przez Volvo Car Poland sp. z o.o. (ul. Puławska 558/560, 02-884 Warszawa), lub na jej zlecenie marketingu bezpośredniego produktów i usług marki Volvo, takich jak samochody, części i akcesoria, usługi Volvo Car Financial Services oraz inne usługi dostępne w sieci Volvo, poprzez kontakt głosowy na podany przeze mnie numer telefonu, w tym przy użyciu automatycznych systemów wywołujących. Zgoda jest dobrowolna i może być w każdej chwili wycofana (w tym przy użyciu danych kontaktowych wskazanych powyżej lub w wiadomości e-mail wysłanej na adres inspektora ochrony danych: globdpo@volvocars.com). Wycofanie zgody nie wpływa na zgodność z prawem przetwarzania, którego dokonano na podstawie zgody przed jej wycofaniem. Pozostałe informacje dotyczące przetwarzania danych w celach marketingowych znajdziesz w powyższej klauzuli zgody na przetwarzanie danych osobowych w celach marketingowych lub na stronie <a href="https://www.volvocars.com/pl/legal/privacy/privacy-customer-privacy-policy" target="_blank">polityka prywatności</a>.'
+								} only %}
+														{% include 'components/atoms/checkbox/checkbox.twig' with {
+									additionalClass: 'form__content-field',
+									name: 'marketingContactConsent',
+									label: 'Wyrażam zgodę na kontakt mailowy.',
+									detailsLabel: 'Wyrażam zgodę na prowadzenie przez Volvo Car Poland sp. z o.o. (ul. Puławska 558/560, 02-884 Warszawa) lub na jej zlecenie marketingu bezpośredniego produktów i usług marki Volvo, takich jak samochody, części i akcesoria, usługi Volvo Car Financial Services oraz inne usługi dostępne w sieci Volvo, poprzez przesyłanie informacji handlowych za pomocą środków komunikacji elektronicznej, w szczególności za pomocą poczty elektronicznej, a także za pomocą wiadomości SMS, na podany przeze mnie adres e-mail lub numer telefonu komórkowego. Zgoda jest dobrowolna i może być w każdej chwili wycofana (w tym przy użyciu danych kontaktowych wskazanych powyżej lub w wiadomości e-mail wysłanej na adres inspektora ochrony danych: globdpo@volvocars.com). Wycofanie zgody nie wpływa na zgodność z prawem przetwarzania, którego dokonano na podstawie zgody przed jej wycofaniem. Pozostałe informacje dotyczące przetwarzania danych w celach marketingowych znajdziesz w powyższej klauzuli zgody na przetwarzanie danych osobowych w celach marketingowych lub na stronie <a href="https://www.volvocars.com/pl/legal/privacy/privacy-customer-privacy-policy" target="_blank">polityka prywatności</a>.'
+								} only %}
+													</div>
+												</fieldset>
+
+												<div class="line__element"></div>
+												<div class="form__content-annotation">
+													<p>* Dane konieczne do podania w celu umożliwienia kontaktu i przedstawienia oferty, przy czym
+																																																																																					spośród danych: numer telefonu i adres e-mail wystarczy podanie tylko jednej z tych danych
+																																																																																					wraz
+																																																																																					z zaznaczeniem odpowiedniej zgody poniżej (druga zgoda jest zgodą na kontakt telefoniczny,
+																																																																																					zaś
+																																																																																					trzecia zgoda jest zgodą na kontakt mailowy). Pierwsza z poniższych zgód jest konieczna do
+																																																																																					zaznaczenia w celu umożliwienia kontaktu i przedstawienia oferty, niezależnie od tego, czy
+																																																																													                    podany zostanie numer telefonu czy adres e-mail.</p>
+									</div>
+								</div>
+								<div class="form__footer">
+									<div class="summary">
+
+										{% include 'components/atoms/button/button-link.twig' with {
+                                
+                                'additionalClass': 'o-stock-car__button blueone',
+                                'text': 'ZAPYTAJ O OFERTĘ',
+                                'secondary': true,
+                                'url': button.permalink
+                            } only %}
+									</div>
+								</div>
+							</form>
+							{% endif %}	
+						</div>
+					</div>
+					
+				</div>
+
+
+			</div>
+			<div class="column-details__top step_{{loop.index}}" style="height:auto;">
+				<div class="o-stock-car__header">
+					<h1 class="o-stock-car__name">
+						<span class="o-stock-car__name-text">
+							{{ model }},
+							{{ engine }},
+							{{ version }}
+							{% if versionDescription %}
+								{% include 'components/atoms/tooltip/tooltip.twig' with {
+                                    additionalClass: 'o-stock-car__name-tooltip',
+                                    content: versionDescription
+                                } only %}
+							{% endif %}
+						</span>
+					</h1>
+					<p class="o-stock-car__offer-number">Nr oferty:  
+						{{ offerNumber|trim }} {% if eurocode %}-  ({{eurocode}}) {% endif %}</p> 
+				</div>
+				
+				<dl class="o-stock-car__prices prices {% if hasDiscountPrice  and regularPrice != discountPrice %}omnibus_view{% endif %}" data-index="{{loop.index}}" data-loop="looper_{{loop.index}}">
+					{% if hasDiscountPrice  and regularPrice != discountPrice %}
+						<dt style="color:#000;" class="prices__label prices__label--primary">Cena promocyjna:</dt>
+						<dd style="color:#000;"  class="prices__total-value prices__total-value--primary">
+							<span class="prices__value">{{ discountPrice|number_format(0, '.', '&nbsp;')|trim|raw }}</span>&nbsp;zł&nbsp;brutto
+						</dd>
+						<dt class="prices__label">Cena regularna:</dt>
+						<dd class="prices__total-value">						
+							<span class="prices__value">{{ regularPriceDefault|number_format(0, '.', '&nbsp;')|trim|raw }}</span>&nbsp;zł&nbsp;brutto
+						</dd>
+						<dt style="color:#000;"  class="prices__label">Zyskujesz:</dt>
+						{% set calculatedPrice = regularPrice - discountPrice %}
+						<dd style="color:#000;"  class="prices__total-value">
+							<span class="prices__value">{{ calculatedPrice|number_format(0, '.', '&nbsp;')|trim|raw }}</span>&nbsp;zł&nbsp;brutto
+						</dd>
+					{% else %}
+						<dt class="prices__label prices__label--primary prices__label--no-margin">Cena regularna:</dt>
+						<dd class="prices__total-value prices__total-value--primary prices__total-value--no-margin">
+							<span class="prices__value">{{ regularPriceDefault|number_format(0, '.', '&nbsp;')|trim|raw }}</span>&nbsp;zł&nbsp;brutto
+						</dd>
+					{% endif %}
+					{% if lease != false and car_state == 'nowy' and simulation %}
+						<dt  style="color:#000;margin-top:2px;"  class="leasing prices__label prices__label--primary prices__label--no-margin">Przykładowa rata:</dt>
+						<dd style="color:#000;margin-top:2px;"  class="leasing prices__total-value prices__total-value--primary prices__total-value--no-margin">
+							<span class="prices__value show-form">{{ simulation|number_format(0, '.', '&nbsp;')|trim|raw }}
+							</span>
+							<span class="blue_inline">&nbsp;zł&nbsp;brutto</span>
+						</dd>
+					{% endif %}
+					{% if hasDiscountPrice  and regularPrice != discountPrice %}
+							<dt class="omnibus_box leasing  prices__label--primary prices__label--no-margin">
+							<div class="omnibus_container left_omnibus">
+								<span class="mobile_view">Najniższa cena:</span>
+								<span class="desktop_view">Najniższa cena z 30 dni przed obniżką:</span></div>
+							<div class="omnibus_container right_omnibus">
+								{% if omnibus %}
+								{{ discountPrice|number_format(0, '.', '&nbsp;')|trim|raw }}
+								{% else %}
+							<span class=" omnibus show-form">
+								{{ regularPrice|number_format(0, '.', '&nbsp;')|trim|raw }}
+							{% endif %}
+							</span>
+							<span class="blue_inline">&nbsp;zł&nbsp;brutto</span>
+							</div>
+							</dt>
+					{% endif %}
+				</dl>
+				
+				<div class="o-stock-car__technical-details technical-details {% if hasDiscountPrice  and regularPrice != discountPrice %}omnibus_view{% endif %} {% if not singleView %}js-stock-car__details{% else %}technical-details--single-view{% endif %}">
+					<div class="technical-details__top-wrapper">
+						<div class="technical-details__top{% if not hasDiscountPrice %} technical-details__top--large-margin{% endif %}{% if not singleView %} js-stock-car__details-top{% endif %}">
+							<h2 class="technical-details__heading">Podstawowe dane techniczne:</h2>
+						</div>
+					</div>
+					<div class="technical-details__bottom {% if not singleView %}js-stock-car__details-bottom{% endif %}">
+						<div class="technical-details__bottom-inner {% if not singleView %}js-stock-car__details-bottom-inner{% endif %}">
+							<dl class="technical-details__list">
+								<dt class="technical-details__label">Rodzaj paliwa:</dt>
+								<dd class="technical-details__value">{{ fuelType }}</dd>
+								<dt class="technical-details__label">Silnik:</dt>
+								<dd class="technical-details__value">{{ engine }}</dd>
+								<dt class="technical-details__label">Moc maksymalna (KM):</dt>
+								<dd class="technical-details__value">{{ maxPowerText|trim }}</dd>
+								<dt class="technical-details__label">Przyśpieszenie 0-100km/h:</dt>
+								<dd class="technical-details__value">{{ acceleration|trim }}&nbsp;s</dd>
+								<dt class="technical-details__label">{% if fuelType == 'Elektryczny' %}Zużycie energii:{% else %}Śr. spalanie:{% endif %}{% include 'components/atoms/tooltip/tooltip.twig' with {
+									additionalClass: 'o-stock-car__name-tooltip',
+									content: 'Zużycie paliwa/energii elektrycznej (cykl mieszany)'
+								} only %}									
+								</dt>
+								<dd class="technical-details__value">{{ fuelConsumption|trim }}
+									{{ fuelConsumptionUnit }}</dd>
+								<dt class="technical-details__label">Prędkość maksymalna:</dt>
+								<dd class="technical-details__value">{{ maxSpeed|trim }}&nbsp;km/h</dd>
+								
+							</dl>
+							<dl class="technical-details__list">
+								<dt class="technical-details__label">Pojemność bagażnika:</dt>
+								<dd class="technical-details__value">{{ cargoCapacity|trim }}&nbsp;l</dd>
+								<dt class="technical-details__label">Przebieg:</dt>
+								<dd class="technical-details__value">
+									{% if car_state == 'new' %}Nowe auto
+									{% else %}
+										{% if distance != '' %}
+											{{distance}}&nbsp;km
+										{% else %}
+											-
+										{% endif %}
+									{% endif %}
+								</dd>
+								<dt class="technical-details__label">Kolor:</dt>
+								<dd class="technical-details__value">{{ color|trim }}</dd>
+								<dt class="technical-details__label">Wersja:</dt>
+								<dd class="technical-details__value">{{ version|trim }}</dd>
+								<dt class="technical-details__label">Rocznik:</dt>
+								<dd class="technical-details__value">{{ productionYear|trim }}</dd>
+								{% if erange %}
+									<dt class="technical-details__label">Zasięg na silniku elektr.: </dt>
+								<dd class="technical-details__value">{{ erange|trim }}&nbsp;km</dd>
+								{% else %}
+										<dt class="technical-details__label">Zasięg na silniku elektr.: </dt>
+								<dd class="technical-details__value">-</dd>
+								{% endif %}
+								
+								
+							</dl>
+						</div>
+					</div>
+					{% if singleView and hasAccordion %}
+						<div class="technical-details__see-more">
+							<button class="technical-details__see-more-button js-scroll-to" data-scroll-to-element=".js-stock-car-single__accordion-section">
+								Zobacz pełne dane techniczne
+							</button>
+						</div>
+					{% endif %}
+				</div>
+			</div>
+			<div class="column-details__bottom  step_{{loop.index}}">
+				{% if hasDiscountPrice is empty %}
+					<p class="o-stock-car__contact contact" style="text-align:center;">
+						<span class="contact__label">Zadzwoń:</span>
+						<a style="font-size: 12px;color: #141414;font-weight: 500;" href="tel:{{ salesPhone|replace({' ': ''}) }}" class="contact__phone">{{ salesPhone|trim }}</a>
+					</p>
+				{% endif %}
+			
+				<div class="o-stock-car__bottom" data-index="{{loop.index}}" data-loop="looper_{{loop.index}}">
+					{% if button %}
+						{% if button.permalink %}
+							{% include 'components/atoms/button/button-link.twig' with {
+                                
+                                'additionalClass': 'o-stock-car__button',
+                                'text': button.text,
+                                'secondary': true,
+                                'url': button.permalink
+                            } only %}
+							{% if singleView %}
+							{% if car_state == 'nowy' and eurocode and ((lease and lease != 0) or (najem and najem != 0)) %}
+								{% include 'components/atoms/button/button-link.twig' with {
+                                
+                                'additionalClass': 'o-stock-car__button blueone activate_payment',
+                                'text': 'SPRAWDŹ FINANSOWANIE DLA FIRM',
+                                'secondary': true,
+                                'url': url_link ~ '#finansowanie'
+                            } only %}
+							{% endif %}
+							{% else %}
+							
+							{% if car_state == 'nowy' and eurocode and ((lease and lease != 0) or (najem and najem != 0)) %}  
+								{% include 'components/atoms/button/button-link.twig' with {
+                                
+                                'additionalClass': 'o-stock-car__button blueone',
+                                'text': 'SPRAWDŹ FINANSOWANIE DLA FIRM',
+                                'secondary': true,
+                                'url': button.permalink ~ '#finansowanie'
+                            } only %}
+							{% endif %}
+							{% endif %}
+						{% else %}
+							{% if singleView %}
+								{% set buttonClasses = 'js-open-side-form o-stock-car__button' %}
+							{% else %}
+								{% set buttonClasses = 'o-stock-car__button' %}
+							{% endif %}
+							{% include 'components/atoms/button/button.twig' with {
+                                    'additionalClass': 'o-stock-car__button a-button--disabled',
+                                    'text': 'SZCZEGÓŁY TECHNICZNE',
+                                    'secondary': true,
+                                } only %}
+							{% if car_state == 'nowy' and eurocode and ((lease and lease != 0) or (najem and najem != 0)) %} 
+							{% include 'components/atoms/button/button.twig' with {
+                                    'additionalClass': 'o-stock-car__button show_form js-leasing-endpoint',
+                                    'text': 'SPRAWDŹ FINANSOWANIE DLA FIRM',
+                                } only %}
+							{% endif %}
+						{% endif %}
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		
+			$('#reset__filters').on('click',function() {
+				console.log('test');
+				top.location.href = '/dostepne-na-miejscu';
+			})
+	})
+	</script>
+	{% if singleView %}
+	<script type="text/javascript">
+		function changePrice(e) {
+		//	document.getElementById('active_change').innerText = e+'%';
+		}
+		
+		$(document).ready(function() {
+			$('.single-stock-car .blueone.activate_payment').click(function() {
+				$('#finansowanie').show();
+				$('.column-details__top.step_').hide();
+				$('.column-details__bottom.step_').hide();
+			})
+			if ($('#leasingMonth').length > 0) {
+				$('#leasingMonth .combo__selected.js-leasing-endpoint').click();
+			}
+
+			if ($('.form_tabs li[data-id="najem"]').length > 0 && $('.form_tabs li[data-id="leasing"]').length == 0) {
+				var hireMonth = $('#hireMonth .combo__selected').text();
+				var hireFee = $('#hireFee .combo__selected').text();
+				var hireMileage = $('#hireMileage .combo__selected').text();
+				var price = $('#final_price_najem').attr('data-price');
+				var income = $('#income_najem').val();
+				var najemId = $('#najem_id').val();
+				var data = "token=a2959f53a5c1e618e01066f52d6afa&type=najem&najem_par1=" + hireMonth + "&najem_par2=" + hireFee + "&najem_par3=" + hireMileage+'&income='+document.getElementById('income_najem').value+'&type=najem&price='+price+'&eurocode='+document.getElementById('eurocode').value+'&najemId='+najemId;
+				$.post('https://volvo.easyapi.space/',data).done(function(response) {
+					var r = JSON.parse(response);
+					if ($('#najem #max_fee').attr('data-type') == 'brutto') {
+							r[1].first_pay = Math.round(r[1].first_pay * (1 + 23 /100));
+							r[1].car_price = Math.round(r[1].car_price * (1 + 23 /100));
+							
+						} 
+					$('#najem #max_fee').text(format(r[1].first_pay,0,'.',' ')+' zł '+$('#max_fee').attr('data-type'))
+					$('#hireFinalPrice').text(format(r[1].car_price,0,'.',' ')+' zł');
+				})
+			}
+			if ($('.form_tabs li[data-id="leasing"]').length > 0) {
+				 var leasingMonth = document.getElementById('leasingMonth');
+				 var lPar1 = leasingMonth.querySelector('.combo__selected').innerHTML;
+				 var leasingFee = document.getElementById('leasingFee');
+				 var lPar2 = leasingFee.querySelector('.combo__selected').innerHTML.replace('%','');
+				 var leasingPurchase = document.getElementById('leasingPurchase');
+				 var lPar3 = leasingPurchase.querySelector('.combo__selected').innerHTML.replace('%','');
+				 var income = $('#income').val();
+				
+				 var data = "token=a2959f53a5c1e618e01066f52d6afa&leasing_par1=" + lPar1 + "&leasing_par2=" + lPar2 + "&leasing_par3=" + lPar3+"&type=leasing&price="+document.getElementById('final_price_leasing').dataset.price+'&income='+income+'&eurocode='+document.getElementById('eurocode').value+'&leasingId='+document.getElementById('leasing_id').value;
+				$.post('https://volvo.easyapi.space/',data).done(function(response) {
+					var r = JSON.parse(response);
+					if (r[0].update_leasing) {
+						if ($('#leasing #lease_version').attr('data-type') == 'brutto') {
+							r[0].first_pay = Math.round(r[0].first_pay * (1 + 23 /100));
+							r[0].car_price = Math.round(r[0].car_price * (1 + 23 /100));
+							//r[0].residal_value = Math.round(r[0].residal_value/(1+23/100));
+							r[0].ending_fee = Math.round(r[0].ending_fee/(1+23/100));
+						} 
+						   document.getElementById('leasing_max_installment').innerHTML = format(r[0].first_pay,0,'.',' ')+' zł '+ document.getElementById('leasing_max_installment').dataset.version
+						   document.getElementById('leasing_max_fee').innerHTML = format(r[0].ending_fee,0,'.',' ')+' zł '+ document.getElementById('leasing_max_fee').dataset.version
+						   leasingFinalPrice.innerHTML = format(r[0].car_price,0,'.',' ') + ' zł';
+						   let test = document.getElementById('leasingPurchase').innerHTML = r[0].residal_value;
+						   let setActive = el => {
+						     [...el.parentElement.children].forEach(sib => sib.classList.remove('combo__selected'));
+						     el.classList.add('combo__selected')
+						     }
+						   let spans = [...document.body.querySelectorAll('#leasingPurchase > div')];
+						     spans.forEach(el => el.addEventListener('click', e => {
+						       setActive(el);
+						       document.querySelectorAll("#leasingFee > .combo__selected").forEach(el=>el.click())
+						       }))
+							
+						   }
+				})
+			}
+			//var data = 'token=1';
+			//$.post('https://volvo.easyapi.space/',data).done(function(response) {});
+
+			$('#leasing .js-leasing-endpoint,li[data-id="leasing"]').on('click',function() {
+				 var leasingMonth = document.getElementById('leasingMonth');
+				 var lPar1 = leasingMonth.querySelector('.combo__selected').innerHTML;
+				 var leasingFee = document.getElementById('leasingFee');
+				 var lPar2 = leasingFee.querySelector('.combo__selected').innerHTML.replace('%','');;
+				
+				 var leasingPurchase = document.getElementById('leasingPurchase');
+				 var lPar3 = leasingPurchase.querySelector('.combo__selected').innerHTML.replace('%','');;
+				 var income = $('#income').val();
+				 var data = "token=a2959f53a5c1e618e01066f52d6afa&leasing_par1=" + lPar1 + "&leasing_par2=" + lPar2 + "&leasing_par3=" + lPar3+"&type=leasing&price="+document.getElementById('final_price_leasing').dataset.price+'&income='+income+'&eurocode='+document.getElementById('eurocode').value+'&leasingId='+document.getElementById('leasing_id').value;
+				
+				$.post('https://volvo.easyapi.space/',data).done(function(response) {
+					var r = JSON.parse(response);
+					if (r[0].update_leasing) {
+						if ($('#leasing #lease_version').attr('data-type') == 'brutto') {
+							r[0].first_pay = Math.round(r[0].first_pay * (1 + 23 /100));
+							r[0].car_price = Math.round(r[0].car_price * (1 + 23 /100));
+							//r[0].residal_value = Math.round(r[0].residal_value/(1+23/100));
+							r[0].ending_fee = Math.round(r[0].ending_fee * (1 + 23 /100));
+						} 
+						   document.getElementById('leasing_max_installment').innerHTML = format(r[0].first_pay,0,'.',' ')+' zł '+ document.getElementById('leasing_max_installment').dataset.version
+						   document.getElementById('leasing_max_fee').innerHTML = format(r[0].ending_fee,0,'.',' ')+' zł '+ document.getElementById('leasing_max_fee').dataset.version
+						   leasingFinalPrice.innerHTML = format(r[0].car_price,0,'.',' ') + ' zł';
+						   let test = document.getElementById('leasingPurchase').innerHTML = r[0].residal_value;
+						   let setActive = el => {
+						     [...el.parentElement.children].forEach(sib => sib.classList.remove('combo__selected'));
+						     el.classList.add('combo__selected')
+						     }
+						   let spans = [...document.body.querySelectorAll('#leasingPurchase > div')];
+						     spans.forEach(el => el.addEventListener('click', e => {
+						       setActive(el);
+						       document.querySelectorAll("#leasingFee > .combo__selected").forEach(el=>el.click())
+						       }))
+							
+						   }
+				})
+			})
+
+			$('#najem .js-leasing-endpoint,li[data-id="najem"]').on('click',function() {
+				var hireMonth = $('#hireMonth .combo__selected').text();
+				var hireFee = $('#hireFee .combo__selected').text();
+				var hireMileage = $('#hireMileage .combo__selected').text();
+				var price = $('#final_price_najem').attr('data-price');
+				var income = $('#income_najem').val();
+				var najemId = $('#najem_id').val();
+				var data = "token=a2959f53a5c1e618e01066f52d6afa&type=najem&najem_par1=" + hireMonth + "&najem_par2=" + hireFee + "&najem_par3=" + hireMileage+'&income='+document.getElementById('income_najem').value+'&type=najem&price='+price+'&eurocode='+document.getElementById('eurocode').value+'&najemId='+najemId;
+				$.post('https://volvo.easyapi.space/',data).done(function(response) {
+					var r = JSON.parse(response);
+					if ($('#najem #max_fee').attr('data-type') == 'brutto') {
+							r[1].first_pay = Math.round(r[1].first_pay * (1 + 23 /100));
+							r[1].car_price = Math.round(r[1].car_price * (1 + 23 /100));
+							
+						} 
+					$('#najem #max_fee').text(format(r[1].first_pay,0,'.',' ')+' zł '+$('#max_fee').attr('data-type'))
+					$('#hireFinalPrice').text(format(r[1].car_price,0,'.',' ')+' zł');
+				})
+			})
+
+
+
+
+
+
+
+
+
+
+
+
+
+		})
+	</script>
+	{% endif %}
+	<style>
+		.column-details__top,
+		#finansowanie {
+			position: relative;
+		}
+		.go_back {
+			display: none;
+		}
+		@media screen and(min-width:997px) {
+			.go_back {
+				display: block;
+				position: absolute;
+				left: 0;
+				top: -50px;
+				text-transform: uppercase;
+				font-weight: 500;
+			}
+			.go_back img {
+				margin-right: 8px;
+			}
+		}
+		.omnibus_view {
+			margin-top:8px;
+		}
+		.omnibus_view .prices__label.prices__label--primary,
+		.omnibus_view .prices__total-value.prices__total-value--primary {
+			margin-bottom:8px;
+		}
+		.omnibus_view .technical-details__heading  {
+			margin-bottom:8px;
+		}
+		.omnibus_box  {
+			width:100%;
+		}
+		.omnibus {
+			font-size:12px!important;
+			font-weight:400!important;
+			line-height:18px!important;
+			color:#6D6D6D;
+		}
+		.omnibus_box {
+			width:100%;
+			font-size:12px!important;
+			font-weight:400!important;
+			line-height:18px!important;
+			color:#6D6D6D;
+		}
+		.omnibus_container {
+			display:inline-block;
+			
+
+		}
+		.omnibus_container.left_omnibus {
+			text-align:left;
+			float:left;
+		}
+		.omnibus_container.right_omnibus {
+			text-align:right;
+			float:right;
+		}
+		.omnibus_view.o-stock-car__prices {
+			margin-bottom:12px;
+		}
+		@media screen and (min-width:997px) {
+			.desktop_view {
+				display:block;
+			}
+			.mobile_view {
+				display:none;
+			}
+		}
+		@media screen and (max-width:997px) {
+			.desktop_view {
+				display:none;
+			}
+			.mobile_view {
+				display:block;
+			}
+		}
+	</style>
+</{{tag|default('div')}}>

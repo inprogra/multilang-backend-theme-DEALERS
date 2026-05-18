@@ -1,0 +1,10 @@
+{% set id =  'input-' ~ uniqueID() %}
+{% if not type %}
+    {% set type = 'text' %}
+{% endif %}
+<div class="{{ additionalClass|e('html_attr') }} a-input js-input" data-field-name="{{ name }}">
+    <input id="{{ id }}" name="{{ name }}" type="{{ type }}" class="a-input__field js-input__field" value="{{ value }}" autocomplete="off" />
+    {% if label %}
+        <label for="{{ id }}" class="a-input__label js-input__label">{{ label|trim }}{% if mandatory %}*{% endif %}</label>
+    {% endif %}
+</div>

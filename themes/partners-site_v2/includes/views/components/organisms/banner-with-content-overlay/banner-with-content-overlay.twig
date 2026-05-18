@@ -1,0 +1,40 @@
+{% if format %} <div class="container"> {% endif %}
+<div class="o-banner-with-content-overlay">
+        {% include 'components/atoms/image/image-query.twig' with {
+        additionalClass: 'o-banner-with-content-overlay__img',
+        image: image
+        } %}
+    
+    <div class="o-banner-with-content-overlay__container container bigBanner">
+        <div class="o-banner-with-content-overlay__content content">
+            <div class="content__inner">
+                {% if heading %}
+                    <h2 class="h2 content__heading">{{ heading|trim }}</h2>
+                {% endif %}
+                {% if description %}
+                    <div class="content__description">
+                        <p>
+                            {{ description|trim }}
+                        </p>
+                    </div>
+                {% endif %}
+                {% if hasButton %}
+                    {% include 'components/atoms/button/button-link.twig' with button|merge({
+                        additionalClass: 'content__button'
+                    }) only %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% if format %} </div> {% endif %}
+
+<style>
+.o-banner-with-content-overlay__img{
+    --height: auto !important; 
+}
+.o-banner-with-content-overlay{
+    margin-left: auto;
+    margin-right: auto; 
+}
+</style>

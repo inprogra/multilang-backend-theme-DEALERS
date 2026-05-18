@@ -1,0 +1,121 @@
+.manualsteps_inner {
+    width: 100%;
+    height: 96px;
+    background: #FAFAFA;
+
+}
+
+.steps {
+    display: flex;
+    justify-content: center;
+    margin-top: 90px;
+    padding-top: 50px;
+    margin-bottom: 90px;
+}
+
+.steps .do {
+    align-self: center;
+    width: 20px;
+    height: 20px;
+    border: 0px solid #D5D5D5;
+    border-radius: 100%;
+    position: relative;
+}
+
+.steps .do .inner_do {
+
+    width: 8px;
+    height: 8px;
+    background: #707070;
+    border-radius: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.steps .do.active {
+    background: #284E80;
+}
+
+.steps .do.active::before {
+    color: #284E80;
+    font-weight: 500;
+}
+
+.steps .do.active .inner_do {
+    background: #fff;
+}
+
+.steps .do.done {
+    background: url('/img/ready_step.png') center center no-repeat;
+}
+
+.steps .do.done .inner_do {
+    display: none;
+}
+
+#prevStep.disabled {
+    opacity: 0.5;
+}
+
+.steps .progressbar {
+    align-self: center;
+    height: 4px;
+    background: #EBEBEB;
+    width: 170px;
+}
+
+.steps .progressbar.filled {
+    background: #284E80;
+}
+
+.stepContent:not(:first-child) {
+    display: none;
+}
+
+.do::before {
+    position: absolute;
+    bottom: 30px;
+    left: -46px;
+    width: 170px;
+    color: #141414;
+}
+
+.step_1::before {
+    content: "1. Model pojazdu";
+}
+
+.step_2::before {
+    content: "2. Pierwsza rejestracja";
+    left: -70px;
+}
+
+.step_3::before {
+    content: "3. Silnik";
+    left: -25px;
+}
+
+.step_4::before {
+    content: "4. Wyposażenie";
+}
+
+.step_5::before {
+    content: "5. Informacje ogólne";
+}
+
+.step_6::before {
+    content: "6. Dane kontaktowe";
+}
+
+.footer_nav {
+    padding-left: 200px;
+}
+
+.footer_nav_block {
+    padding-left: 90px;
+}
+
+.footer_nav_block a:first-child {
+    margin-right: 40px;
+}

@@ -1,0 +1,10 @@
+<div class="btnContainer">
+<a href="{{ url|replace({'#mailto':'mailto'}) }}" class="{{ additionalClass|e('html_attr') }} a-button{% if secondary %} a-button--secondary{%  endif %}" {% if nofollow %} rel="noopener noreferrer nofollow"{% endif %} {% if target == '_blank' %} target="_blank" {% endif %}>
+    {{ text|trim }}
+</a>
+</div>
+<style>
+.btnContainer a{
+text-decoration: none !important;
+}
+</style> 

@@ -1,0 +1,21 @@
+<div class="{{ additionalClass|e('html_attr') }} a-select js-select">
+    <div class="a-select__input a-input">
+        <input id="{{ id }}" name="{{ name }}" type="text" class="a-input__field" value="{{ value }}"/>
+        {% if label %}
+            <label class="a-input__label">{{ label|trim }}{% if mandatory %}*{% endif %}</label>
+        {% endif %}
+    </div>
+    <div class="a-select__list list">
+        <ul class="list__items">
+            {% for item in items %}
+                <li class="list__item" data-value="{{ item.value }}">
+                    <span class="list__item-checkbox"></span>
+                    <span class="list__item-label">{{ item.label|trim }}</span>
+                </li>
+                <input type="hidden" name="{{ name }}[]" value="amet" />
+
+
+            {% endfor %}
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,127 @@
+.m-car-gallery-slider {
+
+  &--stock {
+    .m-car-gallery-slider {
+      &__preview {
+        .slide {
+          &__img {
+            padding-top: calc(453 / 808 * 100%);
+          }
+        }
+      }
+    }
+  }
+
+  &__preview {
+    position: relative;
+    .slide {
+      &__img {
+        display: block;
+        width: 100%;
+        cursor: zoom-in;
+      }
+    }
+  }
+
+  .preview {
+    &__button {
+      position: absolute;
+      top: 50%;
+      z-index: 2;
+
+      &--prev {
+        left: 0;
+        transform: translate(-50%, -50%);
+
+        @include media-breakpoint-up(lg) {
+          left: 16px;
+          transform: translate(0, -50%);
+        }
+      }
+
+      &--next {
+        right: 0;
+        transform: translate(50%, -50%);
+
+        @include media-breakpoint-up(lg) {
+          right: 16px;
+          transform: translate(0, -50%);
+        }
+      }
+
+      &.is-hidden {
+        display: none;
+      }
+    }
+  }
+
+
+
+  &__thumbs {
+    display: none;
+
+    @include media-breakpoint-up(lg) {
+      display: block;
+      margin-top: 2rem;
+      width: 100%;
+    }
+  }
+
+  .thumbs {
+
+    &__slide {
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 8px;
+        background-color: $black;
+        transform: translateY(100%);
+        transition: transform $transition-base;
+      }
+
+      &.swiper-slide-thumb-active {
+        &::after {
+          transform: translateY(0);
+        }
+      }
+    }
+
+    .slide {
+      &__img {
+        width: 100%;
+        display: block;
+      }
+    }
+
+    &__button {
+      position: absolute;
+      top: 50%;
+      z-index: 2;
+
+      &--prev {
+        @include media-breakpoint-up(lg) {
+          left: 8px;
+          transform: translate(0, -50%);
+        }
+      }
+
+      &--next {
+        @include media-breakpoint-up(lg) {
+          right: 8px;
+          transform: translate(0, -50%);
+        }
+      }
+
+      &.is-hidden {
+        display: none;
+      }
+    }
+  }
+}

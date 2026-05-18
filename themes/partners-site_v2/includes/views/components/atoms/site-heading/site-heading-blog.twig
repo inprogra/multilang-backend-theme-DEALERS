@@ -1,0 +1,91 @@
+
+<div class="a-site-heading">
+<div class="container go_back" style="margin-bottom:30px!important;margin-top:0!important;">
+
+	{% if current_blog_id == 15 or current_blog_id == 16 %}
+        {% set type = 'artykuły' %}
+        {% set type_link = '/artykuly' %}
+        {% else %}
+        {% set type = 'blog' %}
+        {% set type_link = '/blog' %}
+    {% endif %}
+
+
+{% include 'components/atoms/breadcrumbs/breadcrumbs.twig' with {
+type: type,
+type_link: type_link,
+path: heading,
+link: true,
+href: false, 
+} %}
+</div>
+	<div class="container blog">
+	
+		<h{{ header_type }} class="h1 a-site-heading__heading">{{ heading|trim }}</h{{ header_type }}>
+	
+		<div class="tags-container">
+			{% for tag in tags %}
+				<span>
+					{{ tag.name }}
+				</span>
+			{% endfor %}
+		</div>
+	</div>
+	<div class="container blog date">
+	<span class="item_date">Data publikacji: {{ date }}</span></div>
+</div>
+<style>
+.container.blog {
+	display: grid;
+	margin-top: 16px;
+	margin-bottom:-5px!important;
+	justify-content: center;
+}
+
+.blog h1{
+	font-size: 40px;
+}
+.container.blog span {
+	font-size: 20px;
+	line-height:20px;
+	font-weight:400;
+}
+.tags-container {
+	display:flex;
+}
+.tags-container span {
+	background: #ebebeb;
+	padding: 4px 16px;
+	border-radius: 12px;
+	color: #707070;
+	display:inline-block;
+	margin-bottom:6px;
+	margin-right:6px;
+}
+.go_back a img {
+	margin-top:-3px;
+}
+.go_back a {
+	text-transform:uppercase;
+	font-weight:600;
+	font-size:14px;
+	line-height:20px;
+}
+.item_date {
+	color:#6D6D6D;
+}
+@media screen and (max-width:968px) {
+	.container.blog {
+		position:relative;
+	}
+	.tags-container {
+		position:absolute;
+		left:12px;
+		bottom:-70px;;
+	}
+	.container.blog.date {
+		margin-top:10px;
+		padding-bottom:48px;
+	}
+}
+</style>

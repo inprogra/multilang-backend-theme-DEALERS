@@ -1,0 +1,27 @@
+<div class="{{ additionalClass|e('html_attr') }} a-select a-select--multi js-select-multi" data-field-name="{{ name }}[]">
+    <select name="{{ name }}[]" multiple>
+        {% for item in items %}
+            <option value="{{ item.value }}" {{ item.value in selected ? 'selected' : '' }}>{{ item.label }}</option>
+        {% endfor %}
+    </select>
+
+    <div class="a-select__input a-input js-select-multi__input">
+        <div class="a-input__field js-select-multi__field"></div>
+        {% if label %}
+            <label class="a-input__label">{{ label }}{% if mandatory %}*{% endif %}</label>
+        {% endif %}
+        <div class="a-select__input-arrow a-arrow a-arrow--bottom"></div>
+    </div>
+    <div class="a-select__list list js-select-multi__list">
+        <div class="list__expandable js-select-multi__expandable">
+            <ul class="list__items js-select-multi__items">
+                {% for item in items %}
+                    <li class="list__item item js-select-multi__item" data-value="{{ item.value }}">
+                        <span class="item__icon"></span>
+                        <span class="item__label">{{ item.label }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>

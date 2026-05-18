@@ -1,0 +1,51 @@
+{% if onepage == 'on' %}
+<style>
+    body > div > footer {
+        display:none!important;
+    }
+    body > div > header .bar__nav.m-main-nav {
+        display:none!important;
+    }
+</style>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.bar__logo.a-logo').click(function(e) {
+        e.preventDefault();
+
+        return false;
+    });
+})
+</script>
+{% endif %}
+{% if sideform == 'on' %}
+<div class="l-campaign__container container">
+<div class="l-campaign__content content">
+{% endif %}
+{{ content|raw }}
+{% if additionalContent %}
+    {{ additionalContent|raw }}
+{% endif %}
+<div>
+    {{ openSection(3,3)|raw }}
+    {% include 'components/organisms/text-editor/text-editor.twig' with {
+        content: legalInfoContent
+    } only %}
+    {{ closeSection()|raw }}
+</div>
+{% if sideform == 'on' %}
+</div>
+<div id="migrate_target" class="l-campaign__aside aside">
+
+</div>
+</div>
+<input type="hidden" name="sideform_status" id="sideform_status" value="{{sideform}}" />
+
+<style>
+.l-campaign__content.content {
+    max-width:884px;
+}
+.l-side-form__bar.bar {
+    display:none;
+}
+</style>
+{% endif %}

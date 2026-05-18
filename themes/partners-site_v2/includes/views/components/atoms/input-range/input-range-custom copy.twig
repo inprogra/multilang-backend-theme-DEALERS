@@ -1,0 +1,48 @@
+<div class="{{ additionalClass|e('html_attr') }} a-input-range js-input-range" data-selected-min="{{ selected.min }}" data-selected-max="{{ selected.max }}">
+    <div class="slider_labels">
+    <span class="range_label_left">
+        Autostrada
+    </span> 
+    <span class="range_label_right">
+        Miasto
+    </span> 
+    </div>
+    <div class="slidecontainer range_slider">
+        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+    </div>
+</div>
+<style>
+.range_slider input {
+    width:100%;
+}
+.slider_labels {
+    position:relative;
+    height:20px;
+    padding-top:33px;
+    color:#6d6d6d;
+    font-size:14px;
+    font-weight:400;
+}
+.slider_labels .range_label_left {
+    position:absolute;
+    left:0;
+    top:10px;
+}
+.slider_labels .range_label_right {
+    position:absolute;
+    right:0;
+    top:10px;
+}
+.range_slider input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  
+}
+@media screen and (min-width:998px) {
+	.a-input-range__slider {
+		width: calc(100% - 59px);
+	}
+}
+</style>

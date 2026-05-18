@@ -1,0 +1,20 @@
+<div class="l-side-form js-side-form">
+	
+<div class="l-side-form__aside">
+	{% include 'components/organisms/form/form.twig' with {
+            additionalClass: 'l-side-form__form',
+            closeAdditionalClass:'js-side-form__close',
+            heading: 'Zapytaj o szczegóły',
+			message_0: message_0,
+			message_1: message_1,
+            source: source,
+            destination: destination,
+            showrooms: showrooms,
+            partnerName: partnerName,
+            thankyouImage: thankyouImage,
+            thankYouCodeJS: thankYouCodeJS,
+			thankYouCode: thankYouCode
+        } only %}
+</div>
+</div>
+ 

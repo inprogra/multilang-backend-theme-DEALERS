@@ -1,0 +1,138 @@
+<div class="{{ additionalClass|e('html_attr') }} o-stock-cars-slider hidden">
+    <div class="o-stock-cars-slider__container container">
+
+        <div class="l-section custom_margin_section">
+            <h2 class="o-stock-cars-slider__heading h2 a-section-heading">
+                <span class="a-section-heading__grey">
+                    <strong>
+                        Nie tego szukałeś?
+                    </strong>
+                    <br/>
+                    Przejrzyj podobne w&nbsp;naszym salonie
+                </span>
+
+            </h2>
+        </div>
+
+        <div class="o-stock-cars-slider__slider slider js-stock-cars-slider custom_car_slider" style="position:relative;">
+            <div class="swiper-container js-stock-cars-slider__slider">
+                <div class="swiper-wrapper owl-carousel">
+                    {% for car in cars %}
+                        <div class="o-stock-cars-slider__slide swiper-slide">
+                            <a href="{{ car.url }}" class="o-stock-cars-slider__item o-stock-cars-slider__item--car car">
+                                <div class="car__img-wrapper">
+                                              
+                                    {% include 'components/atoms/image/image-query.twig' with{
+                                        additionalClass: 'car__img',
+                                        preventLazyLoading: true,
+                                        style: '',
+                                        image: car.image
+                                    } only %}
+                                </div>
+                                <span class="car__category">{{ car.category }}</span>
+                                <h3 class="car__name">{{ car.model }}</h3>
+                                <div class="car__details">
+                                    <span class="car__engine">{{ car.engine }}</span>
+                                    <span class="car__price">{{ car.price|number_format(0, '.', '&nbsp;')|raw }}&nbsp;zł</span>
+                                </div>
+                                <div class="car__bottom">
+                                    <span class="car__button">Zobacz auto</span>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                    {% if excerpt %}
+                        <div class="o-stock-cars-slider__slide swiper-slide">
+                            <a href="{{ excerpt.link.url }}" {% if excerpt.link.nofollow %} rel="noopener noreferrer nofollow"{% endif %} {% if excerpt.link.target == '_blank' %} target="_blank" {% endif %} class="o-stock-cars-slider__item o-stock-cars-slider__item--excerpt excerpt">
+                                <div class="excerpt__content">
+                                    {% if excerpt.heading %}
+                                        <h3 class="excerpt__heading">{{ excerpt.heading }}</h3>
+                                    {% endif %}
+                                    {% if excerpt.description %}
+                                        <p class="excerpt__description">{{ excerpt.description }}</p>
+                                    {% endif %}
+                                </div>
+                                <div class="excerpt__bottom">
+                                    {% if excerpt.link.text %}
+                                        <span class="excerpt__button">{{ excerpt.link.text }}</span>
+                                    {% endif %}
+                                </div>
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        
+        </div>
+    </div>
+</div>
+
+<style>
+.hidden {
+    display:none;
+}
+.stock-cars-offer {
+    display:flex;
+}
+.stock-cars-offer > div {
+    width:288px;
+    margin-right:24px;
+
+}
+.stock-cars-offer img {
+    margin-bottom:16px;
+}
+.stock-cars-offer .car__category {
+    margin-bottom:4px;
+    display:none!important;
+}
+}
+.stock-cars-offer .car__engine {
+    display:block;
+    margin-bottom:4px;
+    width:100%;
+    font-size:16px;
+}
+.stock-cars-offer .car__price {
+    font-size:12px;
+    font-weight:400;
+}
+.car__bottom {
+    border:0!important;
+    text-align:left!important;
+    justify-content:flex-start!important;
+}
+.car__bottom span {
+    color: #000!important;
+    font-weight:600!important;
+    text-transform:none!important;
+    font-size:16px!important;;
+}
+.owl-stage-outer {
+    width:100%!important;
+}
+</style>
+<script src="/app/themes/partners-site_v2/node_modules/owl.carousel/dist/owl.carousel.js"></script>
+<script type="text/javascript">
+$('.owl-carousel').owlCarousel({
+loop:true,
+margin:15,
+nav:false,
+responsiveClass:true,
+autoplay:false,
+autoplayTimeout:2500,
+responsive:{
+    0:{
+        items:1,
+    },
+    600:{
+        items:2
+    },
+    1000:{
+        items:5
+    }
+}
+});
+  
+
+</script>

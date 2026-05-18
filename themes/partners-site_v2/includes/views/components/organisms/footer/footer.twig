@@ -1,0 +1,320 @@
+
+<footer class="{{ additionalClass }} o-footer">
+    <div class="o-footer__container container">
+        {% if menuItems %}
+            <nav class="o-footer__nav nav">
+                <ul class="nav__list">
+                    {% for item in menuItems %}
+                        <li class="nav__item">
+                            <a href="{{ item.url }}" class="nav__link" {% if item.nofollow %} rel="noopener noreferrer nofollow"{% endif %} {% if item.target == '_blank' %} target="_blank" {% endif %}>{{ item.title|trim }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        {% endif %}
+        {% if addresses or socialMedia %}
+            <div class="o-footer__centre">
+                {% if addresses %}
+                    <div class="o-footer__contacts">
+                        {% for address in addresses %}
+                            {% include 'components/atoms/contact-info-map/contact-info-map.twig' with {
+                                additionalClass: 'o-footer__contacts-item',
+                                name: address.name,
+                                street: address.street,
+                                city: address.city,
+                                phone: address.phone,
+                                link: address.link
+                            } only %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                
+                {% if socialMedia %}
+                    {% include 'components/atoms/social-media-links/social-media-links.twig' with {
+                        additionalClass: 'o-footer__social-media-links',
+                        items: socialMedia
+                    } only %}
+                {% endif %}
+            </div>
+        {% endif %}
+        <div class="o-footer__copyright">
+            <p class="o-footer__copyright-text">Copyright &copy; {{ currentYear }} Volvo Car Corporation (lub firmy stowarzyszone bądź licencjodawcy).</p>
+        </div>
+    </div>
+</footer>
+
+{% if globalHtml %}
+    <div class="custom-html-code">
+        {{ globalHtml|raw }}  
+    </div>
+{% endif %}
+
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        var x = 0;
+     
+        var mapCont = $('.activeMap');
+        $('#map:gt(0)').removeAttr('id');
+       
+       
+    })
+</script>
+<script type="text/javascript" src="/js/markerclusterer.js"></script>
+<script type="text/javascript" src="/app/themes/partners-site_v2/includes/views/components/organisms/electricmap/electricmap.js"></script>
+<script type="text/javascript">
+  function triggerClick() {
+    $('#selectEngine4  ul li').on('click',function () { 
+                                        
+                    $('#selectEngine4 .is-active').removeClass('is-active');
+                    $(this).addClass('is-active');
+                    $('.a-select__input.a-input.js-select-multi__input').addClass('is-active').find('> div:eq(0)').text($(this).find('span:eq(1)').text());
+                    $('#selectEngine4').click();
+                })  
+  }
+  $('.versions-slider__slide').click(function() {
+            setTimeout(function() {
+            let active = $('.versions-slider__slide.is-active').attr('data-index');
+          
+          //  $('select[name="version-type"] option:selected').removeAttr('selected');
+          //  $('select[name="version-type"] option:eq('+active+')').attr('selected','selected');
+          //  $('select[name="version-type"]').trigger('change');
+          //  active = $('.versions-slider__slide.is-active').attr('data-index');
+            
+             if ($('.l-model-single__version.is-active .gmap').length == 0) {
+                 $('.gmap.header.container').parent().insertAfter($('.l-model-single__version.is-active section:last'));
+                 $('#selectEngine4 select option').remove();
+                 $('#selectEngine4 select').append($('.l-model-single__version.is-active .switch_engine').clone().html());
+                 $('#selectEngine4 li:gt(0)').remove();
+                 $('#selectEngine4 ul').append($('.l-model-single__version.is-active .switch_engine_li').clone().html());
+            }
+            triggerClick();
+            },500)
+            
+        })
+        
+$(document).ready(function() {
+  
+     $('select[name="version-type"]').on('change',function() {
+      ///      $('.l-model-single__version.is-active .activeMap').removeClass('activeMap');
+       //    $('.l-model-single__version.is-active #map').addClass('activeMap').html(mapCont);
+            if ($('.l-model-single__version.is-active .gmap').length == 0) {
+                 $('.gmap.header.container').parent().insertAfter($('.l-model-single__version.is-active section:last'));
+                 $('#selectEngine4 select option').remove();
+                 $('#selectEngine4 select').append($('.l-model-single__version.is-active .switch_engine').clone().html());
+                 $('#selectEngine4 li:gt(0)').remove();
+                 $('#selectEngine4 ul').append($('.l-model-single__version.is-active .switch_engine_li').clone().html());
+                 $('#selectEngine4').click(function() {
+                    alert('bbb');
+                 })
+                  
+            }
+        })
+               
+})
+</script>
+		<link rel="stylesheet" href="/app/themes/partners-site_v2/includes/views/components/organisms/electricmap/electricmap.css" type="text/css">
+{% if isHomePage %}
+{{ homepageCode|raw }}
+{% endif %}
+
+<style>
+@media screen and (max-width:997px) {
+    .nostyles {
+        position: absolute;
+        top: 19px;
+        right: 22px;
+    
+    }
+}
+</style>
+{% if blog_id != 12 and blog_id != 1 and blog_id != 22 and blog_id != 13 and blog_id != 2 and blog_id != 17 and blog_id != 16 and blog_id != 15 and blog_id != 36 and blog_id != 9 and blog_id != 10 and blog_id != 3 and blog_id != 4 and blog_id != 5 and blog_id != 6 and blog_id != 8 and blog_id != 11 and blog_id != 14 and blog_id != 18 and blog_id != 19 and blog_id != 20 and blog_id != 21 and blog_id != 23 and blog_id != 24 and blog_id != 25 and blog_id != 26 and blog_id != 27 and blog_id != 28 and blog_id != 29 and blog_id != 30 and blog_id != 31 and blog_id != 32 and blog_id != 33 and blog_id != 34 and blog_id != 35 and blog_id != 38 %}
+
+
+
+{% endif %}
+
+<style>
+
+.o-footer .nav__link{
+    text-decoration: none !important; 
+}
+.o-footer .nav__list{
+    margin-left: auto !important;
+    margin-right: auto !important; 
+}
+ body#blog-1 header nav {
+    display:none!important;
+ }
+.results_container {
+    max-width:664px;
+    padding:0;
+    margin-bottom:42px;
+}
+.result-entry {
+    max-width:380px;
+}
+.result-entry p {
+    font-size:14px;
+    line-height:20px;
+    font-weight:400;
+    font-family:"Volvo Centum";
+}
+.horizontal_line {
+    position:absolute;
+    right:43px; 
+    top:7px;
+}
+.clear_results {
+    position:absolute;
+    right:54px; 
+    top:7px;
+}
+.clr {
+    clear:both;
+    float:none;
+}
+.result {
+    width:664px;
+    margin-top:42px;
+    display:flex;
+}
+.result-entry {
+    text-align:left;
+    margin-left:20px;
+}
+.result-entry h2 {
+    font-size: 20px;
+    line-height:28px;
+    font-weight:600;
+    
+}
+.result-entry h2 a {
+    color:#000;
+}
+.result .result-image {
+    width:180px;
+    height:102px;
+    display:inline-block;
+    border: 1px solid #D5D5D5;
+    display: flex;
+    justify-content: center;
+    overflow:hidden;
+}
+.result-entry {
+    display:inline-block;
+}
+.result .result-image picture {
+    width: 100%;
+    height: 100%;es/partners-site_v2/includes
+}
+.result .result-image img {
+    min-height: 100%;
+}
+.search_results_for {
+    text-align:center;
+    margin-top:32px;
+    font-size:14px;
+    font-weight:400;
+}
+.search_button {
+    background:none;
+    box-shadow:none;
+    border:0;
+    position:absolute;
+    right:9px; 
+    top:7px;
+}
+.search_form {
+    padding-top:32px;
+    margin:0 auto;
+    text-align: center;
+    position:relative;  
+}
+.search_form form {
+     display:inline-block;
+     position:relative;
+
+}
+.search_input {
+    width:470px;
+    height:40px;
+    border-radius:40px;
+    box-shadow:none;es/partners-site_v2/includes
+    border: 1px solid #d5d5d5;
+    padding:0 40px 0 16px;
+    background: #fafafa;
+}
+/* czatercall */
+.l-side-form__bar {
+    z-index: 1001!important;  
+}
+#cc-button-iframe{
+    z-index: 99 !important;
+}
+#czatercall-teaser{
+    z-index: 99 !important;
+}
+#czater-contener{
+    z-index: 99 !important;
+}
+.l-side-form__backdrop{
+    z-index: 100 !important; 
+}
+@media screen and (max-width:997px) {
+    .a-video::before {
+        padding-bottom:0!important;
+    }
+    #CookiebotWidget {
+        bottom:90px!important;
+    }
+    .nostyles {
+        position: absolute;
+        top: 19px;
+        right: 22px;
+    }
+    .search_input {
+        width:100%;
+    }
+    .result {
+        width:100%;
+        padding:0 16px;
+    }
+    .result .result-image {
+        min-width:102px;
+        width: 102px;
+    }
+    .image_Container .descriptionHeroImage h2 {
+        font-size: 9vw;
+    }
+}
+#CybotCookiebotDialogFooter .CybotCookiebotDialogBodyButton,
+#CybotCookiebotDialogFooter #CybotCookiebotDialogBodyLevelButtonCustomize, #CybotCookiebotDialogFooter #CybotCookiebotDialogBodyLevelButtonLevelOptinAllowallSelection,
+#CookiebotWidget #CookiebotWidget-buttons #CookiebotWidget-btn-withdraw {
+    border-color:#000!important;
+}
+#CybotCookiebotDialogFooter #CybotCookiebotDialogBodyButtonAccept, #CybotCookiebotDialogFooter #CybotCookiebotDialogBodyLevelButtonAccept, #CybotCookiebotDialogFooter #CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll,
+#CookiebotWidget #CookiebotWidget-buttons #CookiebotWidget-btn-change {
+    background-color:#000!important;
+    border-color:#000!important;
+}
+
+@media screen and (max-width: 600px) {
+    .image_Container .descriptionHeroImage h2 {
+        font-size: 10vw;
+    }
+    .image_Container .descriptionHeroImage h2 span{
+        font-size: 4vw;
+    }
+}
+</style>
+
+
+
+
+
+
+
+
+

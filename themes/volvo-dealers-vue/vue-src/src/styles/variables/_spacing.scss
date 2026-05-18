@@ -1,0 +1,73 @@
+// Volvo Spacing - Matching partners_site_v2
+
+// Spacing Scale
+$spacer: 1rem;
+$spacer-xs: $spacer * 0.25;   // 4px
+$spacer-sm: $spacer * 0.5;    // 8px
+$spacer-md: $spacer;          // 16px
+$spacer-lg: $spacer * 1.5;    // 24px
+$spacer-xl: $spacer * 2;      // 32px
+$spacer-2xl: $spacer * 3;     // 48px
+$spacer-3xl: $spacer * 4;     // 64px
+$spacer-4xl: $spacer * 6;     // 96px
+
+// Section Padding
+$section-padding-y: $spacer-4xl;
+$section-padding-y-sm: $spacer-3xl;
+$section-padding-y-xs: $spacer-2xl;
+
+// Container
+$container-max-width: 1440px;
+$container-padding-x: $spacer-lg;
+$container-padding-x-sm: $spacer-md;
+
+// Grid
+$grid-columns: 12;
+$grid-gutter-width: $spacer-lg;
+$grid-gutter-width-sm: $spacer-md;
+
+// Breakpoints
+$breakpoint-xs: 0;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-2xl: 1400px;
+
+// Header
+$header-height: 80px;
+$header-height-mobile: 60px;
+$header-padding-x: $spacer-lg;
+
+// Footer
+$footer-padding-y: $spacer-3xl;
+$footer-padding-y-sm: $spacer-2xl;
+
+// Cards
+$card-padding: $spacer-lg;
+$card-padding-sm: $spacer-md;
+$card-border-radius: 0;
+$card-gap: $spacer-lg;
+
+// Buttons
+$btn-padding-y: $spacer-sm;
+$btn-padding-x: $spacer-lg;
+$btn-padding-y-sm: $spacer-xs;
+$btn-padding-x-sm: $spacer-md;
+
+// Forms
+$input-padding-y: $spacer-sm;
+$input-padding-x: $spacer-md;
+$input-height: 48px;
+
+// Navigation
+$nav-item-spacing: $spacer-lg;
+$nav-dropdown-padding: $spacer-md;
+
+// Hero
+$hero-min-height: 600px;
+$hero-min-height-mobile: 400px;
+
+// Car Models
+$car-model-card-width: 280px;
+$car-model-card-gap: $spacer-lg;

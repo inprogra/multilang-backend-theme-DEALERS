@@ -1,0 +1,85 @@
+<div class="container short-notes-container">
+<div class="short-notes-all short-notes-boxes">
+{% set x = 1 %}
+{% for item in items %}
+   <div class="short-notes short-box-{{x}}" >
+        <div class="number-short-notes"> {{x}} </div>
+        <div class="short-notes-description">
+            <h2>{{item.field_notetitle}}</h2>       
+            <p>{{item.field_notesdesc}}</p>             
+        </div>
+   </div>
+
+{% set x = x + 1 %}
+{% endfor %} 
+</div> 
+</div>
+<style>
+.short-notes-container{
+    width: 95%;
+    max-width: 1608px;
+    padding: 0px;
+}   
+.short-notes-all.short-notes-boxes {
+    display:flex;
+    margin:80px 0px;
+    justify-content: center;
+
+
+     
+}
+.short-notes {
+    max-width:333px;
+    width:100%;
+    height: auto;
+    margin: 0 12px;
+    display: flex; 
+
+}
+.number-short-notes{
+    min-width: 45px;
+    color: #616161;
+    font-size: 56px; 
+    padding-right: 10px;
+}
+.short-notes h2 {
+    font-weight: 600;
+    color: #0A0A0A;
+    font-size: 20px;
+    margin-bottom: 16px;
+}
+.short-notes-description{
+    padding-top: 10px;
+}
+.short-notes p {
+    font-weight:350;
+    font-size:16px;
+    line-height:24px;
+    color: #616161;
+    
+   
+}
+@media screen and (max-width:1024px) {
+    .short-notes-all.short-notes-boxes {
+        flex-wrap: wrap;   
+    }    
+    .short-notes {
+        width: 46%;
+        max-width: 500px;
+        margin: 32px 12px;
+    }
+
+}
+
+@media screen and (max-width:632px) {
+    .short-notes {
+        width: 90%;
+        margin: 16px 0px;
+    }
+    .short-notes h2 {
+        margin-bottom: 4px;
+    }
+}
+
+
+</style>

@@ -1,0 +1,44 @@
+<?php
+
+namespace Controllers;
+
+use Classes\Cache;
+use \Classes\Controller;
+use \Classes\MultisiteFixer;
+
+class OfferBoxesController extends Controller
+{
+    public function render()
+    {
+        $backendPreview = get_field('backendPreview');
+        if ($backendPreview) {
+            $img = Cache::getAsset('offerBoxes.png');
+            return '<img src="' . $img . '" >';
+        }
+
+        $layout = get_field('layout');
+
+        $items = [];
+
+        $offerBoxesItems = get_field('items');
+
+        if (array_filter($offerBoxesItems)) {
+            foreach ($offerBoxesItems as $box) {
+                $hasButton = !empty($box['link']);
+
+                $items[] = [
+                    'icon' => $box['icon'],
+                    'heading' => $box['heading'],
+                    'description' => $box['description'],
+                    'hasButton' => $hasButton,
+                    'link' => $hasButton ? MultisiteFixer::buildLink($box['link']) : null
+                ];
+            }
+        }
+
+        return $this->blockView('components/organisms/offer-boxes/offer-boxes', [
+            'layout' => $layout,
+            'items' => $items
+        ]);
+    }
+}

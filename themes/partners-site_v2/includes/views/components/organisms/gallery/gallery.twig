@@ -1,0 +1,48 @@
+<div class="{{ additionalClass|e('html_attr') }} o-gallery js-gallery">
+    <div class="container bigContainerGallery">
+        <div class="o-gallery__mobile-slider mobile-slider js-full-size-gallery">
+            <div class="swiper-container mobile-slider__slider js-gallery__slider">
+                <div class="swiper-wrapper">
+                    {% for galleryItem in gallery %}
+                   
+                        <div class="swiper-slide mobile-slider__slide slide js-full-size-gallery__trigger"
+                             data-gallery-image="{{ galleryItem.desktopImage.0.src }}"
+                             data-gallery-width="{{ galleryItem.desktopImage.0.width }}"
+                             data-gallery-height="{{ galleryItem.desktopImage.0.height }}"
+                             data-gallery-index="{{ loop.index0 }}"
+                        >
+                        {% include 'components/atoms/image/image-query.twig' with {
+                        additionalClass: 'a-image__img js-lazyload',
+                        image: galleryItem.desktopImage
+                    } %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% include 'components/atoms/slider-button/slider-button.twig' with {
+                additionalClass: 'mobile-slider__button mobile-slider__button--prev js-gallery__button js-gallery__button--prev',
+                direction: 'prev'
+            } only %}
+            {% include 'components/atoms/slider-button/slider-button.twig' with {
+                additionalClass: 'mobile-slider__button mobile-slider__button--next js-gallery__button js-gallery__button--next',
+                direction: 'next'
+            } only %}
+        </div>
+        <div class="o-gallery__desktop js-full-size-gallery">
+            {% for galleryItem in gallery %}
+           
+                <div class="o-gallery__desktop-item js-full-size-gallery__trigger"
+                     data-gallery-image="{{ galleryItem.desktopImage.0.src }}"
+                     data-gallery-width="1980"
+                     data-gallery-height="1020"
+                     data-gallery-index="{{ loop.index0 }}"
+                >
+                    {% include 'components/atoms/image/image-query.twig' with {
+                    additionalClass: 'a-image__img js-lazyload',
+                    image: galleryItem.desktopImage
+                } %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

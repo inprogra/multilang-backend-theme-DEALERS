@@ -1,0 +1,168 @@
+<?php
+
+namespace Classes;
+
+use Twig\Loader\FilesystemLoader;
+use Twig\Environment;
+use Twig\Extension\DebugExtension;
+
+class Controller {
+
+	private static $loader;
+	private static $twig;
+
+
+	public function __construct() {
+		//if ( ! self::$loader ) {
+			self::$loader = new FilesystemLoader( __DIR__ . '/../views/' );
+			self::$twig   = new Environment( self::$loader, array( 'debug' => true ) );
+			self::$twig->addExtension( new DebugExtension() );
+
+			$customFunctions[] = new \Twig\TwigFunction(
+				'openSection',
+				function ( $marginTop = null, $marginBottom = null, $isSection = true ) {
+					return self::openSection( $marginTop, $marginBottom, $isSection );
+				}
+			);
+			$customFunctions[] = new \Twig\TwigFunction(
+				'closeSection',
+				function ( $isSection = true ) {
+					return self::closeSection( $isSection );
+				}
+			);
+			$customFunctions[] = new \Twig\TwigFunction(
+				'getSVG',
+				function ( $name ) {
+					return getSVG( $name );
+				}
+			);
+			$customFunctions[] = new \Twig\TwigFunction(
+				'uniqueID',
+				function () {
+					return uniqueID();
+				}
+			);
+
+
+		// Add translation functions for Twig templates
+		$customFunctions[] = new \Twig\TwigFunction(
+			'__',
+			function ( $text, $domain = 'partners-site_v2' ) {
+				return __( $text, $domain );
+			}
+		);
+		
+		$customFunctions[] = new \Twig\TwigFunction(
+			'trans',
+			function ( $text, $domain = 'partners-site_v2' ) {
+				return __( $text, $domain );
+			}
+		);
+			foreach ( $customFunctions as $customFunction ) {
+				self::$twig->addFunction( $customFunction );
+			}
+		//}
+	}
+	public function render() {
+		if ( ! self::$loader ) {
+			self::$loader = new FilesystemLoader( __DIR__ . '/../views/' );
+			self::$twig   = new Environment( self::$loader, array( 'debug' => true ) );
+			self::$twig->addExtension( new DebugExtension() );
+
+			$customFunctions[] = new \Twig\TwigFunction(
+				'openSection',
+				function ( $marginTop = null, $marginBottom = null, $isSection = true ) {
+					return self::openSection( $marginTop, $marginBottom, $isSection );
+				}
+			);
+			$customFunctions[] = new \Twig\TwigFunction(
+				'closeSection',
+				function ( $isSection = true ) {
+					return self::closeSection( $isSection );
+				}
+			);
+			$customFunctions[] = new \Twig\TwigFunction(
+				'getSVG',
+				function ( $name ) {
+					return getSVG( $name );
+				}
+			);
+			$customFunctions[] = new \Twig\TwigFunction(
+				'uniqueID',
+				function () {
+					return uniqueID();
+
+		// Add translation functions for Twig templates
+		$customFunctions[] = new \Twig\TwigFunction(
+			'__',
+			function ( $text, $domain = 'partners-site_v2' ) {
+				return __( $text, $domain );
+			}
+		);
+		
+		$customFunctions[] = new \Twig\TwigFunction(
+			'trans',
+			function ( $text, $domain = 'partners-site_v2' ) {
+				return __( $text, $domain );
+			}
+		);
+				}
+			);
+
+			foreach ( $customFunctions as $customFunction ) {
+				self::$twig->addFunction( $customFunction );
+			}
+		}
+	}
+    public function getYouleadOptions() {
+		$data = [];
+		switch_to_blog(get_current_blog_id());
+		$dealerOptions = get_fields('options-dealer');
+		$yl_client = $dealerOptions['you-lead']['client-id'];;
+		
+		$data['client_id'] = $yl_client;
+		restore_current_blog();
+		
+		return $data;
+	}
+	public static function openSection( $marginTop = null, $marginBottom = null, $isSection = true ): string {
+		$tag = 'section';
+		if ( ! $isSection ) {
+			$tag = 'div';
+		}
+
+		if ( $marginTop === null ) {
+			$marginTop = get_field( 'margin-top' ) ?? 3;
+		}
+
+		if ( $marginBottom === null ) {
+			$marginBottom = get_field( 'margin-bottom' ) ?? 3;
+		}
+
+		$classes = 'l-section ';
+		if ( $marginTop !== false ) {
+			$classes .= 'l-section--mt-' . $marginTop . ' ';
+		}
+		if ( $marginBottom !== false ) {
+			$classes .= 'l-section--mb-' . $marginBottom;
+		}
+
+		return '<' . $tag . ' class="' . $classes . '">';
+	}
+
+	public static function closeSection( $isSection = true ): string {
+		if ( $isSection ) {
+			return '</section>';
+		} else {
+			return '</div>';
+		}
+	}
+
+	public function view( $path, $context ) {
+		return self::$twig->render( $path . '.twig', $context );
+	}
+
+	public function blockView( $path, $context ) {
+		return self::openSection() . $this->view( $path, $context ) . self::closeSection();
+	}
+}

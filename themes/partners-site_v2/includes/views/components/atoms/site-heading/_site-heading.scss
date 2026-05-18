@@ -1,0 +1,122 @@
+.a-site-heading {
+
+  &__heading {
+    //margin-bottom: .5rem;
+
+    @include media-breakpoint-up(lg) {
+      display: inline;
+      margin-bottom: 0;
+      max-width: 1300px;
+      @include media-breakpoint-down(lg) {
+        max-width: 95%;
+      }
+    }
+  } 
+
+  &__description {
+    margin-top: 0px;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 350;
+    color: #0A0A0A;
+    margin-bottom: 0px;
+    max-width: 500px;
+    text-align: end; 
+
+    @include media-breakpoint-down(lg) {
+      font-size: 16px;
+      line-height: 24px;
+      max-width: 312px;
+    }
+    @include media-breakpoint-down(sm) {
+      font-size: 14px;
+      line-height: 22px;
+      max-width: 590px;
+      width: 95%
+    }
+
+    // @include media-breakpoint-up(lg) {
+    //   margin-top: 0;
+    //   margin-left: 1rem;
+    //   display: inline;
+    // } 
+  }
+
+  .container {
+    display: flex;
+    align-items: baseline;
+
+    @include media-breakpoint-down(sm) {
+      flex-direction: column;
+    }
+
+    .tags-container {
+      display: none; 
+      p {
+        background: #ebebeb;
+        padding: 4px 16px;
+        border-radius: 12px;
+        color: #707070;
+      }
+
+      @include media-breakpoint-up(lg) {
+        margin-left: auto;
+      }
+      
+    }
+  }
+}
+.heading_container{
+  width: 100%;
+  max-width: 1336px;
+  padding-left: 16px;
+  padding-right: 16px;
+  display: flex;
+  justify-content: space-between;
+  @media screen and (min-width:1680px) {
+    max-width: 1610px;
+    padding:0;
+  }
+  @include media-breakpoint-down(lg) {
+    max-width: 850px;
+  }
+  @include media-breakpoint-down(sm) {
+    max-width: 590px; 
+  }
+  h1 {
+    @include media-breakpoint-down(xs) {
+      font-size:26px;
+    }
+  }
+
+}
+// .l-section--mb-4{
+//   margin-bottom: 96px;
+//   @include media-breakpoint-down(lg) {
+//     margin-bottom: 80px;
+//   }
+//   @include media-breakpoint-down(sm) {
+//     margin-bottom: 64px;
+//   }
+// }
+// .l-section--mt-4{
+//   margin-top: 96px;
+//   @include media-breakpoint-down(lg) {
+//     margin-top: 80px;
+//   }
+//   @include media-breakpoint-down(sm) {
+//     margin-top: 64px;
+//   }
+// }
+// .l-section--mb-3{
+//   margin-bottom: 48px;
+// }
+// .l-section--mt-3{
+//   margin-top: 48px;
+// }
+// .l-section--mb-2{
+//   margin-bottom: 28px;
+// }
+// .l-section--mt-2{
+//   margin-top: 28px;
+// }

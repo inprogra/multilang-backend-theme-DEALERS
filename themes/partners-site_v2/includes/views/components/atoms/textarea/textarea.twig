@@ -1,0 +1,16 @@
+{% set id =  'input-' ~ uniqueID() %}
+
+<div class="{{ additionalClass|e('html_attr') }} a-textarea js-textarea{{ value ? ' is-active' }}" data-field-name="{{ name }}">
+    <div class="a-textarea__inner">
+        <textarea 
+            id="{{ id }}" 
+            class="a-textarea__field js-textarea__field" 
+            name="{{ name }}" 
+            rows="2">{{ value }}</textarea>
+        {% if label %}
+            <label for="{{ id }}" class="a-textarea__label js-textarea__label">
+                {{ label|trim }}{% if mandatory %}*{% endif %}
+            </label>
+        {% endif %}
+    </div>
+</div>

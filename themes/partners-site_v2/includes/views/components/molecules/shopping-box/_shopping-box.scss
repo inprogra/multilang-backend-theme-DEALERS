@@ -1,0 +1,145 @@
+.mainContainerShoppingBox {
+  width: 100%;
+  height: auto;
+  padding: 48px 0px;
+  
+  .mainRowShoppingBox{
+    width: 95%;
+    max-width: 1609px;
+    margin: auto;
+    height: auto; 
+    display: flex;
+    justify-content: space-between;
+
+    @include media-breakpoint-down(lg) {
+      flex-wrap: wrap;
+      
+    }
+
+    @include media-breakpoint-down(md) {
+      flex-wrap: wrap;
+    }
+
+    @include media-breakpoint-down(xs) {
+      max-width: 327px;
+      flex-wrap: wrap; 
+    }
+
+    .columnBoxShoppingBox{
+      width: 384px;
+      min-height: 140px;
+      height: auto;
+      background: #FAFAFA;
+      position: relative;
+      padding: 24px;
+      margin: 0px 12px 0px 0px;
+      transition: 0.4s;
+
+      &:last-child{
+        margin: 0px 0px 0px 12px;
+      }
+      &:hover{
+        background: #F0F0F0;
+        transition: 0.4s; 
+      }
+
+      @include media-breakpoint-down(lg) {
+        flex-basis: 46%;
+        overflow: none;
+        margin: 12px 0px 12px 0px !important; 
+      }
+
+      @include media-breakpoint-down(md) {
+        width: 46%;
+        margin: 12px 0px 12px 0px !important; 
+        min-height: 56px;
+        height: 56px;
+        overflow: hidden;
+        padding: 16px;
+        flex-basis: auto;
+      }
+
+      @include media-breakpoint-down(xs) {
+        min-height: 56px;
+        height: 56px;
+        overflow: hidden;
+        margin: 8px 0px !important;
+        padding: 16px;
+        width: 375px;
+      }
+
+      .shoppimgBoxHref{
+        text-decoration: none;
+        display: block; 
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        left: 0px;
+        position: relative;
+        z-index: 2;
+
+        @include media-breakpoint-down(xs) {
+          bottom: 0px;
+          top: auto;
+          height: 60%;
+          display: none;
+        }
+        
+      }
+      .titleShoppingBoxContainer{
+        width: 100%;
+        height: auto;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+
+        .titleHeader{
+          width: 80%;
+          min-width: 208px; 
+          height: auto;
+
+          h3{
+            font-size: 20px;
+            color: #000000F5;
+            margin-bottom: 0px;
+            @include media-breakpoint-down(xs) {
+              font-size: 16px;
+            }
+          }
+        }
+        .iconTitle{
+          width: 16px;
+          height: 16px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: 0.4s;
+          span{
+            color: #000000F5;
+            width: 12px;
+            height: 12px;
+          }
+          .a-arrow--secondary::before {
+            border-top-color: #000000F5;
+            border-right-color: #000000F5;
+          }
+        }
+      }
+      .descriptionShoppingBoxcontainer{
+        padding-top: 16px;
+
+
+        @include media-breakpoint-down(xs) {
+          height: 85px;
+        }
+        p{
+          font-size: 16px;
+          color: #000000A3;
+          line-height: 24px;
+        }
+      }
+    }
+  }
+}

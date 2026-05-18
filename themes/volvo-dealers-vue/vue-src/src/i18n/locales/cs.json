@@ -1,0 +1,82 @@
+{
+  "nav": {
+    "models": "Naše modely",
+    "offers": "Nabídky",
+    "available": "Dostupné na místě",
+    "used": "Použité Selekt",
+    "tradeIn": "Oceněte své Volvo",
+    "service": "Servis",
+    "testDrive": "Testovací jízda",
+    "blog": "Blog",
+    "financing": "Financování",
+    "configurator": "Konfigurátor",
+    "accessories": "Příslušenství",
+    "events": "Události",
+    "jewelry": "pARTs Jewelry",
+    "showroom": "Volvo Showroom",
+    "travel": "Cestuji Volvo",
+    "contact": "Kontakt",
+    "career": "Kariéra",
+    "whistleblowers": "Whistleblowers",
+    "search": "Hledat"
+  },
+  "hero": {
+    "learnMore": "Zjistit více",
+    "from": "Již od",
+    "monthly": "netto měsíčně"
+  },
+  "carModels": {
+    "title": "Objevte řadu",
+    "titleBold": "modelů Volvo",
+    "category": {
+      "suv": "SUV",
+      "wagon": "Kombi",
+      "electric": "Elektrické"
+    },
+    "price": {
+      "from": "Od",
+      "currency": "PLN"
+    },
+    "cta": "Objevit"
+  },
+  "shoppingBox": {
+    "polestar": {
+      "title": "Volvo Polestar",
+      "description": "Nové emoce ve vašem starším autě."
+    },
+    "battery": {
+      "title": "Baterie Volvo",
+      "description": "Zkontrolujte."
+    },
+    "service": {
+      "title": "Servis rostoucích slev",
+      "description": "Čím starší vaše auto, tím větší slevy."
+    },
+    "wallbox": {
+      "title": "Wallbox Volvo",
+      "description": "Energie, kterou vám Volvo dává."
+    }
+  },
+  "discovery": {
+    "category": "nabídka",
+    "cta": "Zkontrolovat"
+  },
+  "footer": {
+    "volvoPoland": "Volvo Car Poland",
+    "social": {
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn",
+      "youtube": "YouTube"
+    }
+  },
+  "common": {
+    "close": "Zavřít",
+    "open": "Otevřít",
+    "readMore": "Číst více",
+    "submit": "Odeslat",
+    "loading": "Načítání...",
+    "error": "Došlo k chybě",
+    "notFound": "Nenalezeno"
+  }
+}

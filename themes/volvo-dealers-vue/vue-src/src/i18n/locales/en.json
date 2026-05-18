@@ -1,0 +1,82 @@
+{
+  "nav": {
+    "models": "Our Models",
+    "offers": "Offers",
+    "available": "Available Now",
+    "used": "Used Selekt",
+    "tradeIn": "Value Your Volvo",
+    "service": "Service",
+    "testDrive": "Test Drive",
+    "blog": "Blog",
+    "financing": "Financing",
+    "configurator": "Configurator",
+    "accessories": "Accessories",
+    "events": "Events",
+    "jewelry": "pARTs Jewelry",
+    "showroom": "Volvo Showroom",
+    "travel": "I Travel Volvo",
+    "contact": "Contact",
+    "career": "Career",
+    "whistleblowers": "Whistleblowers",
+    "search": "Search"
+  },
+  "hero": {
+    "learnMore": "Learn More",
+    "from": "From",
+    "monthly": "net per month"
+  },
+  "carModels": {
+    "title": "Discover the",
+    "titleBold": "Volvo range",
+    "category": {
+      "suv": "SUV",
+      "wagon": "Wagon",
+      "electric": "Electric"
+    },
+    "price": {
+      "from": "From",
+      "currency": "PLN"
+    },
+    "cta": "Discover"
+  },
+  "shoppingBox": {
+    "polestar": {
+      "title": "Volvo Polestar",
+      "description": "New emotions in your older car."
+    },
+    "battery": {
+      "title": "Volvo Battery",
+      "description": "Check it out."
+    },
+    "service": {
+      "title": "Growing Discounts Service",
+      "description": "The older your car, the bigger the discounts."
+    },
+    "wallbox": {
+      "title": "Volvo Wallbox",
+      "description": "Energy that Volvo gives you."
+    }
+  },
+  "discovery": {
+    "category": "offer",
+    "cta": "Check"
+  },
+  "footer": {
+    "volvoPoland": "Volvo Car Poland",
+    "social": {
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn",
+      "youtube": "YouTube"
+    }
+  },
+  "common": {
+    "close": "Close",
+    "open": "Open",
+    "readMore": "Read More",
+    "submit": "Submit",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "notFound": "Not Found"
+  }
+}

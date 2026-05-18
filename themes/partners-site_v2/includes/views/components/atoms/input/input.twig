@@ -1,0 +1,38 @@
+{% if id %}
+
+{% else %}
+{% set id =  'input-' ~ uniqueID() %}
+{% endif %}
+{% if not type %}
+    {% set type = 'text' %}
+{% endif %}
+
+<div class="{{ additionalClass|e('html_attr') }} a-input js-input" data-field-name="{{ name }}">
+    <input id="{{ id }}" name="{{ name }}" {% if name == 'email' %} pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" 
+   type="email" {% else %}type="{{ type }}"{% endif %} {% if name == "phoneNumber" %} ondrop="return false;" onpaste="return false;"
+onkeypress="return event.charCode>=48 && event.charCode<=57"  {% endif %} class="a-input__field js-input__field {{ name }}" value="{{ value }}" autocomplete="off" placeholder="" {% if disabled %}disabled{% endif %} {% if currency %} data-currency="{{currency}}" {% endif %}/>
+    {% if label %}
+        <label for="{{ id }}" class="a-input__label js-input__label">{{ label|trim }}{% if mandatory %}*{% endif %}</label>
+    {% endif %}
+</div>
+{% if name == 'email' %}
+<style>
+input.phoneNumber.has-error {
+    border:1px solid red;
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function($) { 
+    $('form').on('submit', function() {
+      /*  let mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        let validateMail = $('input[type="email"]').val();
+        if (!validateMail.match(mailFormat)) {
+             $('input[type="email"]').parent().addClass('has-error');
+             $('input[type="email"]').parent().next('div').addClass('is-visible').find('span').text('Adres email jest nieprawidłowy');
+             return false;
+        }*/
+        
+    });
+})
+</script>
+{% endif %}

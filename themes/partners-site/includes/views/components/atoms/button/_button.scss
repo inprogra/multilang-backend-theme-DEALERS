@@ -1,0 +1,40 @@
+.a-button {
+  display: inline-block;
+  padding: 1.125rem 2rem;
+  border: 1px solid $primary;
+  border-radius: 4px;
+  background-color: $primary;
+  font-weight: $font-weight-medium;
+  font-size: 14px;
+  line-height: 20px;
+  text-transform: uppercase;
+  text-align: center;
+  color: $white;
+  transition: background 0.3s ease-out, border-color 0.3s ease-out, color 0.3s ease-out;
+
+  &:hover {
+    color: $white;
+    background-color: $hover;
+    border-color: $hover;
+  }
+
+  @include media-breakpoint-up(lg) {
+    min-width: 246px;
+  }
+
+  &--secondary {
+    background-color: transparent;
+    color: $primary;
+
+    &:hover {
+      color: $white;
+      background-color: $primary;
+      border-color: $primary;
+    }
+  }
+
+  &.disabled {
+    background-color: #527198;
+    cursor: unset;
+  }
+}

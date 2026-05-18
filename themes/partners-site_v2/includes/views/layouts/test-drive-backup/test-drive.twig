@@ -1,0 +1,57 @@
+<div class="l-test-drive js-test-drive">
+    <div class="l-test-drive__container container">
+        <div class="l-test-drive__wrapper">
+            <div class="l-test-drive__main main js-sticky" data-sticky-media-query="(min-width: 992px)">
+                <div class="main__inner js-sticky__element">
+                    <div class="main__header">
+                        <h1 class="main__heading">Jazda testowa</h1>
+                        <h2 class="main__subheading">{{ __('Wskaż samochód') }}</h2>
+                    </div>
+                    <div class="main__content">
+                        <div class="main__groups js-test-drive__models">
+                            {% for group in groups %}
+                                <div class="main__groups-item">
+                                    {% for model in group %}
+                                        <label class="main__model model js-test-drive__model">
+                                            <input type="checkbox" name="models" value="{{ model.name }}"/>
+                                            <div class="model__label">
+                                                <span class="model__label-icon"></span>
+                                                <p class="model__label-text">{{ model.name }}</p>
+                                            </div>
+                                            <div class="model__image">
+                                                <img data-src="{{ model.image.sizes.0.src }}"
+                                                     width="{{ model.image.sizes.0.width }}"
+                                                     height="{{ model.image.sizes.0.height }}"
+                                                     data-srcset="
+                                                        {{ model.image.sizes.0.src }},
+                                                        {{ model.image.sizes.1.src }} 2x,
+                                                        {{ model.image.sizes.2.src }} 3x,
+                                                     "
+                                                     alt="{{ model.image.alt }}"
+                                                     class="model__image-inner js-lazyload"
+                                                     loading="lazy"
+                                                >
+                                            </div>
+                                        </label>
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="l-test-drive__aside aside">
+               {% include 'components/organisms/form-test-drive/form-test-drive.twig' with {
+                    additionalClass: 'l-test-drive__form js-test-drive__form',
+                    source: source,
+                    destination: destination,
+                    showrooms: showrooms,
+                    partnerName: partnerName,
+                    thanksCode: thanksCode,
+                    thankyouImage: thankyouImage,
+                    suggestedDate: todayDate
+                } %}
+            </div>
+        </div>
+    </div>
+</div>

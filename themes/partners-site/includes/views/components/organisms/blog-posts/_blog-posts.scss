@@ -1,0 +1,7 @@
+.o-offer-cards {
+    .o-offer-cards__list {
+        @include media-breakpoint-up(xl) {
+            justify-content: left;
+        }
+    }
+}

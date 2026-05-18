@@ -1,0 +1,20 @@
+<aside class="o-cookies js-cookies">
+    <div class="o-cookies__form form">
+        <div class="form__inner">
+            {% include 'components/atoms/logo/logo.twig' with logo|merge ({
+                additionalClass: 'form__logo',
+            }) only %}
+            <div class="form__description">{{ description }}</div>
+            {% include 'components/atoms/button/button.twig' with {
+                additionalClass: 'form__button js-cookies__accept-all',
+                text: __('Zaakceptuj wszystkie')
+            } only %}
+            {% include 'components/atoms/button/button.twig' with {
+                additionalClass: 'form__button js-cookies__accept-mandatory',
+                secondary: true,
+                text: __('Zaakceptuj tylko wymagane')
+            } only %}
+        </div>
+    </div>
+    <div class="o-cookies__backdrop"></div>
+</aside>

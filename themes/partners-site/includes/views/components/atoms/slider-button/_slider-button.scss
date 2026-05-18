@@ -1,0 +1,25 @@
+.a-slider-button {
+  position: relative;
+  display: block;
+  width: 32px;
+  height: 32px;
+  background-color: rgba($white, .7);
+  border-radius: 50%;
+  border: none;
+  color: $grey-400;
+
+  svg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 9px;
+    height: 15px;
+    transform: translate(-50%, -50%);
+  }
+
+  &--prev {
+    svg {
+      transform: translate(-50%, -50%) rotate(180deg);
+    }
+  }
+}

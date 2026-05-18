@@ -1,0 +1,7 @@
+body.block-editor-page .editor-post-publish-button {
+  display: none;
+
+  &.is-validation-added {
+    display: block;
+  }
+}

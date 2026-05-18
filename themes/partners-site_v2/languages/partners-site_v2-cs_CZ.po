@@ -1,0 +1,608 @@
+# Czech translation for Partners Site V2 theme.
+# Copyright (C) 2026 Volvo Car Poland
+# This file is distributed under the same license as the Partners Site V2 theme.
+msgid ""
+msgstr ""
+"Project-Id-Version: Partners Site V2 1.0.0\n"
+"Report-Msgid-Bugs-To: https://volvotest.pl\n"
+"POT-Creation-Date: 2026-02-03 12:00+0000\n"
+"PO-Revision-Date: 2026-02-04 14:30+0000\n"
+"Last-Translator: Volvo Team <dev@volvotest.pl>\n"
+"Language-Team: Czech\n"
+"Language: cs_CZ\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
+"X-Generator: Manual\n"
+
+#: functions.php:10
+msgid "Primary Menu"
+msgstr "Hlavní menu"
+
+#: functions.php:11
+msgid "Footer Menu"
+msgstr "Menu zápatí"
+
+#: page-dostepne-na-miejscu.php:5
+msgid "Available Cars"
+msgstr "Dostupné vozy"
+
+#: includes/acf-fields.php:10
+msgid "Car Details"
+msgstr "Detaily vozu"
+
+#: includes/acf-fields.php:15
+msgid "Model"
+msgstr "Model"
+
+#: includes/acf-fields.php:16
+msgid "Enter car model"
+msgstr "Zadejte model vozu"
+
+#: includes/acf-fields.php:20
+msgid "Version"
+msgstr "Verze"
+
+#: includes/acf-fields.php:21
+msgid "Enter car version"
+msgstr "Zadejte verzi vozu"
+
+#: includes/acf-fields.php:25
+msgid "Year"
+msgstr "Rok"
+
+#: includes/acf-fields.php:26
+msgid "Production year"
+msgstr "Rok výroby"
+
+#: includes/acf-fields.php:30
+msgid "Price"
+msgstr "Cena"
+
+#: includes/acf-fields.php:31
+msgid "Car price in PLN"
+msgstr "Cena vozu v PLN"
+
+#: includes/acf-fields.php:35
+msgid "Mileage"
+msgstr "Ujetá vzdálenost"
+
+#: includes/acf-fields.php:36
+msgid "Car mileage in kilometers"
+msgstr "Ujetá vzdálenost vozu v kilometrech"
+
+#: includes/acf-fields.php:40
+msgid "Fuel Type"
+msgstr "Typ paliva"
+
+#: includes/acf-fields.php:41
+msgid "Select fuel type"
+msgstr "Vyberte typ paliva"
+
+#: includes/acf-fields.php:45
+msgid "Transmission"
+msgstr "Převodovka"
+
+#: includes/acf-fields.php:46
+msgid "Select transmission type"
+msgstr "Vyberte typ převodovky"
+
+#: includes/acf-fields.php:50
+msgid "Color"
+msgstr "Barva"
+
+#: includes/acf-fields.php:51
+msgid "Exterior color"
+msgstr "Vnější barva"
+
+#: includes/acf-fields.php:55
+msgid "Interior"
+msgstr "Interiér"
+
+#: includes/acf-fields.php:56
+msgid "Interior color and material"
+msgstr "Barva a materiál interiéru"
+
+#: includes/acf-fields.php:60
+msgid "VIN"
+msgstr "VIN"
+
+#: includes/acf-fields.php:61
+msgid "Vehicle Identification Number"
+msgstr "Identifikační číslo vozidla"
+
+#: includes/acf-fields.php:65
+msgid "Dealer"
+msgstr "Prodejce"
+
+#: includes/acf-fields.php:66
+msgid "Select dealer"
+msgstr "Vyberte prodejce"
+
+#: includes/acf-fields.php:70
+msgid "Images"
+msgstr "Obrázky"
+
+#: includes/acf-fields.php:71
+msgid "Upload car images"
+msgstr "Nahrát obrázky vozu"
+
+#: includes/acf-fields.php:75
+msgid "Financing Options"
+msgstr "Možnosti financování"
+
+#: includes/acf-fields.php:80
+msgid "Leasing Available"
+msgstr "Leasing k dispozici"
+
+#: includes/acf-fields.php:81
+msgid "Enable leasing option"
+msgstr "Povolit možnost leasingu"
+
+#: includes/acf-fields.php:85
+msgid "Rent Available"
+msgstr "Pronájem k dispozici"
+
+#: includes/acf-fields.php:86
+msgid "Enable rent option"
+msgstr "Povolit možnost pronájmu"
+
+#: includes/acf-fields.php:90
+msgid "Monthly Rate"
+msgstr "Měsíční splátka"
+
+#: includes/acf-fields.php:91
+msgid "Estimated monthly rate"
+msgstr "Odhadovaná měsíční splátka"
+
+#: header.php:10
+msgid "Skip to content"
+msgstr "Přejít k obsahu"
+
+#: footer.php:10
+msgid "All rights reserved"
+msgstr "Všechna práva vyhrazena"
+
+#: footer.php:15
+msgid "Privacy Policy"
+msgstr "Zásady ochrany osobních údajů"
+
+#: footer.php:16
+msgid "Terms of Service"
+msgstr "Podmínky služby"
+
+#: footer.php:17
+msgid "Contact"
+msgstr "Kontakt"
+
+# Sellcar Steps - Step 2
+#: includes/views/layouts/sellcar/steps/step2.twig
+msgid "Krok 2/6"
+msgstr "Krok 2/6"
+
+msgid "Pierwsza rejestracja"
+msgstr "První registrace"
+
+msgid "Kiedy pojazd został zarejestrowany?"
+msgstr "Kdy bylo vozidlo registrováno?"
+
+msgid "Wybierz datę rejestracji"
+msgstr "Vyberte datum registrace"
+
+msgid "Generacja"
+msgstr "Generace"
+
+msgid "Wiadomość"
+msgstr "Zpráva"
+
+msgid "Jaka jest wersja nadwozia?"
+msgstr "Jaká je verze karoserie?"
+
+# Sellcar Steps - Step 3
+#: includes/views/layouts/sellcar/steps/step3.twig
+msgid "Krok 3/6"
+msgstr "Krok 3/6"
+
+msgid "Silnik"
+msgstr "Motor"
+
+msgid "Jaka wersja silnika jest w pojeździe?"
+msgstr "Jaká verze motoru je ve vozidle?"
+
+msgid "Jaka wersja napędu jest w pojeździe?"
+msgstr "Jaká verze pohonu je ve vozidle?"
+
+# Sellcar Steps - Step 4
+#: includes/views/layouts/sellcar/steps/step4.twig
+msgid "Krok 4/6"
+msgstr "Krok 4/6"
+
+msgid "Wyposażenie"
+msgstr "Výbava"
+
+msgid "Jaka skrzynia biegów jest w pojeździe?"
+msgstr "Jaká převodovka je ve vozidle?"
+
+msgid "Jaka jest wersja wyposażenia w pojeździe?"
+msgstr "Jaká je verze výbavy ve vozidle?"
+
+msgid "Ile miejsc zawiera pojazd?"
+msgstr "Kolik míst má vozidlo?"
+
+# Sellcar Steps - Step 5
+#: includes/views/layouts/sellcar/steps/step5.twig
+msgid "Krok 5/6"
+msgstr "Krok 5/6"
+
+msgid "Informacje ogólne"
+msgstr "Obecné informace"
+
+msgid "Wyceniasz pojazd jako osoba prywatna czy firma?"
+msgstr "Oceňujete vozidlo jako soukromá osoba nebo firma?"
+
+msgid "Osoba prywatna"
+msgstr "Soukromá osoba"
+
+msgid "Firma"
+msgstr "Firma"
+
+msgid "Jaka była forma sprzedaży pojazdu?"
+msgstr "Jaká byla forma prodeje vozidla?"
+
+msgid "Faktura VAT"
+msgstr "Faktura DPH"
+
+msgid "Umowa kupna sprzedaży"
+msgstr "Kupní smlouva"
+
+msgid "Przebieg auta w km"
+msgstr "Ujetá vzdálenost vozu v km"
+
+msgid "Przebieg auta"
+msgstr "Ujetá vzdálenost vozu"
+
+msgid "Wskaż łączną liczbę właścicieli"
+msgstr "Uveďte celkový počet vlastníků"
+
+msgid "Liczba właścicieli"
+msgstr "Počet vlastníků"
+
+msgid "Czy pojazd był serwisowany w ASO?"
+msgstr "Bylo vozidlo servisováno v autorizovaném servisu?"
+
+msgid "Tak"
+msgstr "Ano"
+
+msgid "Nie"
+msgstr "Ne"
+
+msgid "Gdzie został zakupiony pojazd?"
+msgstr "Kde bylo vozidlo zakoupeno?"
+
+msgid "W Polsce"
+msgstr "V Polsku"
+
+msgid "Za granicą"
+msgstr "V zahraničí"
+
+# Sellcar Steps - Step 6
+#: includes/views/layouts/sellcar/steps/step6.twig
+msgid "Krok 6/6"
+msgstr "Krok 6/6"
+
+msgid "Dane kontaktowe"
+msgstr "Kontaktní údaje"
+
+msgid "Twoje dane*"
+msgstr "Vaše údaje*"
+
+msgid "Imię"
+msgstr "Jméno"
+
+msgid "Nazwisko"
+msgstr "Příjmení"
+
+msgid "Numer telefonu"
+msgstr "Telefonní číslo"
+
+msgid "Email"
+msgstr "E-mail"
+
+msgid "Interesuje mnie*"
+msgstr "Zajímá mě*"
+
+msgid "zakup nowego pojazdu"
+msgstr "nákup nového vozidla"
+
+msgid "zakup używanego pojazdu"
+msgstr "nákup ojetého vozidla"
+
+msgid "wyłącznie sprzedaż pojazdu używanego"
+msgstr "pouze prodej ojetého vozidla"
+
+msgid "Administratorem Twoich danych osobowych będzie Volvo Car Poland sp. z o.o. z siedzibą w Warszawie, ul. Puławska 558/560, 02-884 Warszawa (dalej jako: \\\"Volvo Car Poland\\\")."
+msgstr "Správcem vašich osobních údajů bude Volvo Car Poland sp. z o.o. se sídlem ve Varšavě, ul. Puławska 558/560, 02-884 Varšava (dále jako: \\\"Volvo Car Poland\\\")."
+
+msgid "więcej &gt;"
+msgstr "více &gt;"
+
+msgid "Zaznacz wszystkie zgody."
+msgstr "Zaškrtněte všechny souhlasy."
+
+msgid "Jeżeli wyrazisz poniższe zgody, będziemy mogli dokonać wstępnej wyceny Twojego samochodu, a autoryzowany dealer marki Volvo będzie mógł się z Tobą skontaktować w celu dokonania dokładnej wyceny Twojego samochodu i przedstawienia oferty jego wykupu"
+msgstr "Pokud udělíte níže uvedené souhlasy, budeme moci provést předběžné ocenění vašeho vozu a autorizovaný prodejce značky Volvo vás bude moci kontaktovat za účelem provedení přesného ocenění vašeho vozu a předložení nabídky na jeho výkup"
+
+msgid "* Zapoznałam/em się z treścią"
+msgstr "* Seznámil/a jsem se s obsahem"
+
+msgid "regulaminu"
+msgstr "pravidel"
+
+msgid "i akceptuję jego treść."
+msgstr "a akceptuji jeho obsah."
+
+msgid "* Wyrażam zgodę na udostępnienie moich danych osobowych przez Volvo Car Poland sp. z o.o., ul. Puławska 558/560, Warszawa (02-884) do"
+msgstr "* Souhlasím se sdílením mých osobních údajů společností Volvo Car Poland sp. z o.o., ul. Puławska 558/560, Varšava (02-884) s"
+
+msgid "w celu przedstawienia mi przez"
+msgstr "za účelem předložení nabídky společností"
+
+msgid "dokładnej wyceny i oferty wykupu mojego samochodu marki Volvo."
+msgstr "přesného ocenění a nabídky výkupu mého vozu značky Volvo."
+
+msgid "Jestem świadoma/y, że powyższe zgody mogę wycofać w każdej chwili, jednakże wycofanie danej zgody nie wpływa na zgodność z prawem przetwarzania, którego dokonano na podstawie zgody przed jej wycofaniem. Zgodę możesz wycofać za pomocą formularza dostępnego na stronie:"
+msgstr "Jsem si vědom/a, že výše uvedené souhlasy mohu kdykoli odvolat, avšak odvolání daného souhlasu nemá vliv na zákonnost zpracování provedeného na základě souhlasu před jeho odvoláním. Souhlas můžete odvolat pomocí formuláře dostupného na stránce:"
+
+msgid "Jeżeli wyrazisz poniższe zgody, będziemy mogli przesyłać do Ciebie informacje o produktach i usługach marki Volvo"
+msgstr "Pokud udělíte níže uvedené souhlasy, budeme vám moci zasílat informace o produktech a službách značky Volvo"
+
+msgid "Wyrażam zgody marketingowe na oba poniższe kanały kontaktu."
+msgstr "Souhlasím s marketingovými sděleními prostřednictvím obou níže uvedených komunikačních kanálů."
+
+msgid "kontakt głosowy, na podany przeze mnie numer telefonu, w tym przy użyciu automatycznych systemów wywołujących"
+msgstr "hlasový kontakt na mnou uvedené telefonní číslo, včetně použití automatických volacích systémů"
+
+msgid "SMS/e-mail, na podany przeze mnie numer telefonu, w tym przy użyciu automatycznych systemów wywołujących"
+msgstr "SMS/e-mail na mnou uvedené telefonní číslo, včetně použití automatických volacích systémů"
+
+# Cookies
+#: includes/views/components/organisms/cookies/cookies.twig
+msgid "Zaakceptuj wszystkie"
+msgstr "Přijmout vše"
+
+msgid "Zaakceptuj tylko wymagane"
+msgstr "Přijmout pouze požadované"
+
+# Auto-generated translations
+
+msgid "Krok 1/6"
+msgstr "Krok 1/6"
+
+msgid "E-mail"
+msgstr "E-mail"
+
+msgid "Telefon"
+msgstr "Telefon"
+
+msgid "Adres"
+msgstr "Adresa"
+
+msgid "Miasto"
+msgstr "Město"
+
+msgid "Kod pocztowy"
+msgstr "PSČ"
+
+msgid "Model Pojazdu"
+msgstr "Model vozidla"
+
+msgid "Przebieg"
+msgstr "Ujetá vzdálenost"
+
+msgid "Skrzynia biegów"
+msgstr "Převodovka"
+
+msgid "Paliwo"
+msgstr "Palivo"
+
+msgid "Kolor"
+msgstr "Barva"
+
+msgid "Wnętrze"
+msgstr "Interiér"
+
+msgid "Cena"
+msgstr "Cena"
+
+msgid "Rok produkcji"
+msgstr "Rok výroby"
+
+msgid "Wybierz"
+msgstr "Vyberte"
+
+msgid "Wyślij"
+msgstr "Odeslat"
+
+msgid "Wyślij wiadomość"
+msgstr "Odeslat zprávu"
+
+msgid "Zapisz"
+msgstr "Uložit"
+
+msgid "Anuluj"
+msgstr "Zrušit"
+
+msgid "Zamknij"
+msgstr "Zavřít"
+
+msgid "Otwórz"
+msgstr "Otevřít"
+
+msgid "Zobacz"
+msgstr "Zobrazit"
+
+msgid "Zobacz więcej"
+msgstr "Zobrazit více"
+
+msgid "Czytaj więcej"
+msgstr "Číst více"
+
+msgid "Wstecz"
+msgstr "Zpět"
+
+msgid "Dalej"
+msgstr "Další"
+
+msgid "Zakończ"
+msgstr "Dokončit"
+
+msgid "Potwierdź"
+msgstr "Potvrdit"
+
+msgid "Pola obowiązkowe"
+msgstr "Povinná pole"
+
+msgid "To pole jest obowiązkowe"
+msgstr "Toto pole je povinné"
+
+msgid "Wybierz datę"
+msgstr "Vyberte datum"
+
+msgid "Wybierz kategorię"
+msgstr "Vyberte kategorii"
+
+msgid "Wybierz opcję"
+msgstr "Vyberte možnost"
+
+msgid "Automatyczna"
+msgstr "Automatická"
+
+msgid "Manualna"
+msgstr "Manuální"
+
+msgid "Wyrażam zgodę"
+msgstr "Souhlasím"
+
+msgid "Zapoznałem się"
+msgstr "Seznámil jsem se"
+
+msgid "Zapoznałam się"
+msgstr "Seznámila jsem se"
+
+msgid "Polityka prywatności"
+msgstr "Zásady ochrany osobních údajů"
+
+msgid "Regulamin"
+msgstr "Podmínky"
+
+msgid "Zgoda"
+msgstr "Souhlas"
+
+msgid "Zgody"
+msgstr "Souhlasy"
+
+msgid "Zaznacz wszystkie zgody"
+msgstr "Zaškrtněte všechny souhlasy"
+
+msgid "Ustawienia cookies"
+msgstr "Nastavení cookies"
+
+msgid "Wpisz swoje imię"
+msgstr "Zadejte své jméno"
+
+msgid "Wpisz swoje nazwisko"
+msgstr "Zadejte své příjmení"
+
+msgid "Wpisz swój numer telefonu"
+msgstr "Zadejte své telefonní číslo"
+
+msgid "Wpisz prawidłowy adres e-mail"
+msgstr "Zadejte platnou e-mailovou adresu"
+
+msgid "Nieprawidłowy format"
+msgstr "Neplatný formát"
+
+msgid "Jaki posiadasz model pojazdu?"
+msgstr "Jaký model vozidla máte?"
+
+msgid "Kontakt"
+msgstr "Kontakt"
+
+msgid "O nas"
+msgstr "O nás"
+
+msgid "Strona główna"
+msgstr "Domovská stránka"
+
+msgid "Modele"
+msgstr "Modely"
+
+msgid "Kampanie"
+msgstr "Kampaně"
+
+msgid "Samochody"
+msgstr "Vozidla"
+
+msgid "Nowe"
+msgstr "Nové"
+
+msgid "Używane"
+msgstr "Použité"
+
+msgid "Szczegóły"
+msgstr "Podrobnosti"
+
+msgid "Opis"
+msgstr "Popis"
+
+msgid "Specyfikacja"
+msgstr "Specifikace"
+
+msgid "Galeria"
+msgstr "Galerie"
+
+msgid "Zdjęcia"
+msgstr "Fotografie"
+
+msgid "Wideo"
+msgstr "Video"
+
+msgid "Pobierz"
+msgstr "Stáhnout"
+
+msgid "Drukuj"
+msgstr "Tisk"
+
+msgid "Udostępnij"
+msgstr "Sdílet"
+
+msgid "Szukaj"
+msgstr "Hledat"
+
+msgid "Filtruj"
+msgstr "Filtrovat"
+
+msgid "Sortuj"
+msgstr "Seřadit"
+
+msgid "Wszystkie"
+msgstr "Všechny"
+
+msgid "Żadne"
+msgstr "Žádné"
+
+msgid "Data"
+msgstr "Datum"
+
+msgid "Godzina"
+msgstr "Čas"
+
+msgid "Dzień"
+msgstr "Den"
+
+msgid "Miesiąc"
+msgstr "Měsíc"
+
+msgid "Rok"
+msgstr "Rok"

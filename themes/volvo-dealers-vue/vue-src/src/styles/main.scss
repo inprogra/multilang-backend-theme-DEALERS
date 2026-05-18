@@ -1,0 +1,200 @@
+// Volvo Dealers Vue Theme - Main Styles
+// Matching partners_site_v2 design
+
+// Variables
+@import 'variables';
+
+// Base Styles
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: $font-family-base;
+  font-size: $body-font-size;
+  font-weight: $body-font-weight;
+  line-height: $body-line-height;
+  color: $body-color;
+  background-color: $body-bg;
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-heading;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  color: $primary;
+  margin-bottom: $spacer-md;
+}
+
+h1 { font-size: $h1-font-size; }
+h2 { font-size: $h2-font-size; }
+h3 { font-size: $h3-font-size; }
+h4 { font-size: $h4-font-size; }
+h5 { font-size: $h5-font-size; }
+h6 { font-size: $h6-font-size; }
+
+p {
+  margin-bottom: $spacer-md;
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $link-hover-color;
+  }
+}
+
+// Container
+.container {
+  width: 100%;
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding-left: $container-padding-x;
+  padding-right: $container-padding-x;
+
+  @media (max-width: $breakpoint-md) {
+    padding-left: $container-padding-x-sm;
+    padding-right: $container-padding-x-sm;
+  }
+}
+
+// Grid
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -($grid-gutter-width / 2);
+  margin-right: -($grid-gutter-width / 2);
+}
+
+.col {
+  flex: 1;
+  padding-left: $grid-gutter-width / 2;
+  padding-right: $grid-gutter-width / 2;
+}
+
+// Buttons
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $btn-padding-y $btn-padding-x;
+  font-size: $btn-font-size;
+  font-weight: $btn-font-weight;
+  line-height: $btn-line-height;
+  letter-spacing: $btn-letter-spacing;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &--primary {
+    background-color: $btn-primary-bg;
+    color: $btn-primary-color;
+
+    &:hover {
+      background-color: $btn-primary-hover;
+      color: $btn-primary-color;
+    }
+  }
+
+  &--secondary {
+    background-color: $btn-secondary-bg;
+    color: $btn-secondary-color;
+    border: 1px solid $btn-secondary-border;
+
+    &:hover {
+      background-color: $btn-secondary-border;
+      color: $white;
+    }
+  }
+}
+
+// Cards
+.card {
+  background-color: $card-bg;
+  border: 1px solid $card-border;
+  box-shadow: $card-shadow;
+  padding: $card-padding;
+
+  @media (max-width: $breakpoint-md) {
+    padding: $card-padding-sm;
+  }
+}
+
+// Section
+.section {
+  padding-top: $section-padding-y;
+  padding-bottom: $section-padding-y;
+
+  @media (max-width: $breakpoint-lg) {
+    padding-top: $section-padding-y-sm;
+    padding-bottom: $section-padding-y-sm;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding-top: $section-padding-y-xs;
+    padding-bottom: $section-padding-y-xs;
+  }
+}
+
+// Utility Classes
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.d-flex { display: flex; }
+.d-block { display: block; }
+.d-none { display: none; }
+
+.justify-content-center { justify-content: center; }
+.justify-content-between { justify-content: space-between; }
+.align-items-center { align-items: center; }
+
+.w-100 { width: 100%; }
+.h-100 { height: 100%; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: $spacer-xs; }
+.mb-2 { margin-bottom: $spacer-sm; }
+.mb-3 { margin-bottom: $spacer-md; }
+.mb-4 { margin-bottom: $spacer-lg; }
+.mb-5 { margin-bottom: $spacer-xl; }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: $spacer-xs; }
+.mt-2 { margin-top: $spacer-sm; }
+.mt-3 { margin-top: $spacer-md; }
+.mt-4 { margin-top: $spacer-lg; }
+.mt-5 { margin-top: $spacer-xl; }
+
+// Vue App
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+// Responsive Utilities
+@media (max-width: $breakpoint-md) {
+  .d-md-none { display: none; }
+  .d-md-block { display: block; }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .d-sm-none { display: none; }
+  .d-sm-block { display: block; }
+}

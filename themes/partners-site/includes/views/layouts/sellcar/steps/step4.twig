@@ -1,0 +1,38 @@
+<div class="stepContent" data-step="step4">
+    <div class="stepHeader">
+        <span class="stepNumber">Krok 4/6</span>
+        <h3>Wyposażenie</h3>
+         <div class="formFields">           
+              <div class="singleField gearbox carsell-type-data hidden">
+                <label for="model">Jaka skrzynia biegów jest w pojeździe?</label> 
+                {% set select_field = '<option value="Automatyczna">Automatyczna</option><option value="Manualna">Manualna</option>' %}             
+                  {% include 'components/atoms/select/select-form-year.twig' with {
+                    additionalClass: 'form__content-field always-active js-input carsell-type-data',
+                    label: 'Wiadomość',
+                    name: 'car_gearbox',       
+                    select_field: false            
+                } only %}
+            </div>
+             <div class="singleField trim carsell-type-data hidden">
+                <label for="model">Jaka jest wersja wyposażenia w pojeździe?</label>
+                 {% include 'components/atoms/select/select-form-year.twig' with {
+                    additionalClass: 'form__content-field always-active js-input carsell-type-data',
+                    label: 'Wiadomość',
+                    name: 'car_version',       
+                    select_field: false
+                } only %}
+            </div>
+            <div class="singleField carsell-seats-data hidden">
+                <label for="seats">Ile miejsc zawiera pojazd?</label> 
+                {% set select_field = '<option value="5">5</option><option value="7">7</option>' %}             
+                  {% include 'components/atoms/select/select-form-year.twig' with {
+                    additionalClass: 'form__content-field always-active js-input carsell-type-data',
+                    label: 'Wiadomość',
+                    name: 'car_seats',       
+                    select_field: select_field            
+                } only %}
+            </div>
+        </div>
+    </div>
+
+</div>

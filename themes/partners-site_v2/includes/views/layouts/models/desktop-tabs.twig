@@ -1,0 +1,61 @@
+<div class="l-models__desktop-tabs desktop-tabs js-desktop-tabs">
+    <ul class="desktop-tabs__sidebar">
+        {% for key, category in categories %}
+            <li class="desktop-tabs__sidebar-item sidebar-item">
+                <button class="sidebar-item__button js-desktop-tabs__button{% if category.isDesktopActive %} is-active{% endif %}"
+                        data-category="{{ key }}">
+                    <span class="h3 sidebar-item__heading">{{ category.heading }}</span>
+                    <span class="sidebar-item__subheading">{{ category.subheading }}</span>
+                </button>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="desktop-tabs__content">
+        {% for key, category in categories %}
+            <div class="desktop-tabs__category category js-desktop-tabs__category{% if category.isDesktopActive %} is-active{% endif %}"
+                 data-category="{{ key }}">
+                {% for carType in category.carTypes %}
+                    {% if carType.name %}
+                        <h3 class="category__cars-type test">{{ carType.name }}</h3>
+                    {% endif %}
+                    <ul class="category__cars">
+                        {% for car in carType.cars %}
+                            <li class="category__car car">
+                                <a href="{{ car.url }}" class="car__link">
+                                    <div class="imageContainer">
+                                    {% include 'components/atoms/image/image-query.twig' with {
+                                    additionalClass: 'item__header-image',
+                                    image: car.imageDesktop
+                                } %}
+                                    </div>
+                                    <div class="car__details">
+                                        <h4 class="car__name">
+                                        {% if car.short_name %}
+                                             {{car.short_name}}
+                                        {% else %}
+                                             {{ car.name }}
+                                        {% endif %}
+                                        </h4>
+                                        
+                                        {% if car.price and car.hide_price != 'on' %}
+                                            <p class="car__price">Zakup
+                                                od {{ car.price|number_format(0, '.', '&nbsp;')|raw }}&nbsp;zł</p>
+                                        {% endif %}
+                                    </div>
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<style>
+.l-models__container{
+    max-width: 1920px;
+    width: 100%;
+}
+
+
+</style>

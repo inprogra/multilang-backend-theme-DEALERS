@@ -1,0 +1,120 @@
+$font-url-regular: '../fonts/Volvo Novum-Regular';
+@font-face {
+  font-family: 'Volvo Novum';
+  src: url('#{$font-url-regular}.eot'); /* IE9 Compat Modes */
+  src: url('#{$font-url-regular}.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('#{$font-url-regular}.woff2') format('woff2'), /* Super Modern Browsers */
+  url('#{$font-url-regular}.woff') format('woff'), /* Pretty Modern Browsers */
+  url('#{$font-url-regular}.ttf') format('truetype'); /* Safari, Android, iOS */
+  font-weight: normal;
+  font-style: normal;    
+} 
+
+$font-url-medium: '../fonts/Volvo Novum-Medium';
+@font-face {
+  font-family: 'Volvo Novum';
+  src: url('#{$font-url-medium}.eot'); /* IE9 Compat Modes */
+  src: url('#{$font-url-medium}.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('#{$font-url-medium}.woff2') format('woff2'), /* Super Modern Browsers */
+  url('#{$font-url-medium}.woff') format('woff'), /* Pretty Modern Browsers */
+  url('#{$font-url-medium}.ttf') format('truetype'); /* Safari, Android, iOS */
+  font-weight: $font-weight-medium;
+  font-style: normal;
+}
+
+$font-url-regular: '../fonts/VolvoCentum_Rg';
+@font-face {
+  font-family: 'Volvo Centum';
+  src: url('#{$font-url-regular}.eot'); /* IE9 Compat Modes */
+  src: url('#{$font-url-regular}.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('#{$font-url-regular}.woff2') format('woff2'), /* Super Modern Browsers */
+  url('#{$font-url-regular}.woff') format('woff'), /* Pretty Modern Browsers */
+  url('#{$font-url-regular}.ttf') format('truetype'); /* Safari, Android, iOS */ 
+  font-weight: normal;
+  font-style: normal;
+}
+$font-url-medium: '../fonts/VolvoCentum_SBd';
+@font-face {
+  font-family: 'Volvo Centum';
+  src: url('#{$font-url-medium}.eot'); /* IE9 Compat Modes */
+  src: url('#{$font-url-medium}.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('#{$font-url-medium}.woff2') format('woff2'), /* Super Modern Browsers */
+  url('#{$font-url-medium}.woff') format('woff'), /* Pretty Modern Browsers */
+  url('#{$font-url-medium}.ttf') format('truetype'); /* Safari, Android, iOS */
+  font-weight: $font-weight-medium;
+  font-style: normal;
+}
+
+
+$font-headings-regular: '../fonts/VolvoBroadPro';
+@font-face {
+  font-family: 'Volvo Broad Pro';
+  src: url('#{$font-headings-regular}.eot'); /* IE9 Compat Modes */
+  src: url('#{$font-headings-regular}.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('#{$font-headings-regular}.woff2') format('woff2'), /* Super Modern Browsers */
+  url('#{$font-headings-regular}.woff') format('woff'), /* Pretty Modern Browsers */
+  url('#{$font-headings-regular}.ttf') format('truetype'); /* Safari, Android, iOS */
+  font-weight: $font-url-regular;
+  font-style: normal;
+}
+
+//
+// Headings
+//
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  margin-bottom: $headings-margin-bottom;
+  font-family: $headings-font-family;
+  font-weight: $headings-font-weight;
+  line-height: $headings-line-height;
+  color: $headings-color;
+}
+
+h1, .h1 {
+  font-size: $h1-font-size-mobile;
+
+  @include media-breakpoint-up(xl) {
+    font-size: $h1-font-size
+  }
+}
+
+h2, .h2 {
+  font-size: $h2-font-size-mobile;
+
+  @include media-breakpoint-up(xl) {
+    font-size: $h2-font-size;
+  }
+}
+h3, .h3 {
+  font-size: $h3-font-size-mobile;
+
+  @include media-breakpoint-up(xl) {
+    font-size: $h3-font-size;
+  }
+}
+h4, .h4 { font-size: $h4-font-size }
+h5, .h5 { font-size: $h5-font-size }
+h6, .h6 { font-size: $h6-font-size }
+
+//
+// Horizontal rules
+//
+
+hr {
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+  border: 0;
+  border-top: 1px solid $black;
+}
+
+
+//
+// Emphasis
+//
+
+small,
+.small {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-normal;
+}

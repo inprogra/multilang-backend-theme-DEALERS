@@ -1,0 +1,58 @@
+<div class="mainContainerShoppingBox">
+    <div class="mainRowShoppingBox">
+
+{% for item in items|slice(0, 4) %}
+    {% if item.title and item.description and item.link and item.link.url %}
+        <div class="columnBoxShoppingBox"> 
+            <div class="titleShoppingBoxContainer">
+                <div class="titleHeader"> 
+                    <h3>{{ item.title|trim }}</h3> 
+                </div>
+                <div class="iconTitle">
+                    <span class="a-arrow a-arrow--secondary"></span>
+                </div>
+            </div>
+            <a href="{{ item.link.url }}" class="shoppimgBoxHref">
+                <div class="descriptionShoppingBoxcontainer">
+                    <p>{{ item.description | raw }}</p> 
+                </div>
+            </a>
+        </div>
+    {% endif %}
+{% endfor %}
+
+    
+    </div>
+</div>
+
+<script>
+$(document).ready(function(){
+    let windowWidth = $('body').width();    
+
+    if (windowWidth < 992){
+
+        $('.columnBoxShoppingBox').click(function() {
+            if ($(this).hasClass('opened')) {
+         
+                $(this).removeClass('opened').animate({ height: '56' }, 300, function() {
+                $(this).find('.shoppimgBoxHref').css('display', 'none');
+                $(this).find('.titleShoppingBoxContainer').find('.iconTitle').removeAttr('style');
+
+            });
+
+            } else {
+              
+                $(this).addClass('opened').animate({ height: '140' }, 300);
+                $(this).find('.shoppimgBoxHref').css('display', 'block');
+                $(this).find('.titleShoppingBoxContainer').find('.iconTitle').css('transform','rotate(-90deg)');
+            }
+        });
+
+
+
+    }
+})
+
+</script>
+
+

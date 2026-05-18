@@ -1,0 +1,23 @@
+<div class="stepContent" data-step="step1">
+    <div class="stepHeader">
+        <span class="stepNumber">{{ __('Krok 1/6') }}</span>
+        <h3>{{ __('Model Pojazdu') }}</h3>
+        <div class="formFields">
+            <div class="carmodel singleField carsell-type-data">
+                <label for="model">{{ __('Jaki posiadasz model pojazdu?') }}</label>
+                   
+                   {% include 'components/atoms/select/select-form-year.twig' with {
+                    additionalClass: 'form__content-field always-active js-input carsell-type-data',
+                    label: __('Wiadomość'),
+                    name: 'car_model',       
+                    select_field: true            
+                } only %}
+             
+            </div>
+            
+        </div>    </div>
+
+</div>
+<script type="text/javascript">
+
+</script>

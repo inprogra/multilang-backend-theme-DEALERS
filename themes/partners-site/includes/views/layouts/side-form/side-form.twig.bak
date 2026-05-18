@@ -1,0 +1,134 @@
+<div class="l-side-form js-side-form">
+	<div class="l-side-form__bar bar">
+		<div class="bar__container container">
+			<div class="bar__text">
+					{% if isFrontPage %}								
+				{{footerSetup['homepage_text']}}
+				<a href="tel:{{ footerSetup['field_homepage_phone']|replace({' ': ''}) }}">{{  footerSetup['field_homepage_phone'] }}</a>
+				{% else %}
+				Nie znalazłeś wymarzonego auta? Napisz do nas lub zadzwoń
+				<a href="tel:{{ phoneNumber|replace({' ': ''}) }}">{{ phoneNumber }}</a>
+				{% endif %}
+			</div>
+			{% include 'components/atoms/button/button-link.twig' with {
+                additionalClass: 'bar__button js-side-form__open',
+                text: 'Skontaktuj się z nami'
+            } only %}
+
+	
+    {% if chat_enable %}
+		
+        
+   		<div class="chatter">
+				<div class="cloud_popup" id="close_popup">
+					<div class="close_box" id="close_chatter">
+						<img src="/app/themes/partners-site/assets/public/close.png"/>
+					</div>
+					Rozpocznij rozmowę
+				</div>
+				<img id="start_chat" src="/app/themes/partners-site/assets/public/chatter.png"/>
+			</div>
+		
+		<style>
+			.bar__container.container {
+				position: relative;
+			}
+			.l-side-form .bar__button {
+				margin-right: 30px;
+			}
+			.chatter {
+				position: absolute;
+				right: 0;
+				top: 6px;
+			}
+			.cloud_popup {
+				font-family: 'Volvo Novum';
+				font-style: normal;
+				font-weight: 400;
+				font-size: 14px;
+				line-height: 96px;
+				color: #707070;
+				text-align: center;
+				position: absolute;
+				right: 0;
+				bottom: 20px;
+				width: 236px;
+				height: 106px;
+				background: url('/app/themes/partners-site/assets/public/cloud.png');
+
+			}
+			.cloud_popup .close_box {
+				position: absolute;
+				right: 12px;
+				top: 12px;
+				line-height: 17px;
+				height: 17px;
+			}
+			.close_box:hover {
+				cursor: pointer;
+			}
+			#start_chat:hover {
+				cursor: pointer;
+			}
+			#czater-contener {
+				bottom:70px!important;
+			}
+		</style>
+	
+   
+	<script type="text/javascript">
+	    document.getElementById('close_chatter').onclick = function() {
+			 document.getElementById('close_popup').style.display = "none";			       
+	    }
+		window.onload = function() {
+		setTimeout(function() {
+			document.getElementById('close_popup').style.display = "none";		
+			},2000);
+	
+	
+		var chat_status = false;
+	    document.getElementById('start_chat').onclick = function(x) {
+	
+		if (!chat_status) {
+			chat_status = true;
+			console.log('open');	
+			$czaterMethods.main();
+			$czaterMethods.showChat()
+			
+			document.getElementById('czater-contener').style.display = 'block';
+			
+			
+			} else {
+				chat_status = false;
+				console.log('close');
+				document.getElementById('czater-contener').style.display = 'none';
+				
+				
+			}				
+        
+			
+    
+	}
+}
+
+</script>
+
+ {% endif %}
+</div>
+	</div>
+
+<div class="l-side-form__aside">
+	{% include 'components/organisms/form/form.twig' with {
+            additionalClass: 'l-side-form__form',
+            closeAdditionalClass:'js-side-form__close',
+            heading: 'Zapytaj o szczegóły',
+			message_0: message_0,
+			message_1: message_1,
+            source: source,
+            destination: destination,
+            showrooms: showrooms,
+            partnerName: partnerName,
+            thankyouImage: thankyouImage
+        } only %}
+</div>
+<div class="l-side-form__backdrop js-side-form__backdrop"></div></div>

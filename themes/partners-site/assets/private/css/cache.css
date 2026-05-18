@@ -1,0 +1,33 @@
+#wp-admin-bar-purge-cache > .ab-item {
+  color: #ff6c6c !important;
+}
+
+#cache-notice {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: -moz-max-content;
+  width: max-content;
+  padding: 1rem 2rem;
+  border-left: solid 4px green;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+  background: #32373c;
+  color: #eee;
+  transform: translate(-50%);
+  animation: showCacheNotice 0.2s ease-in-out;
+  transition: opacity 0.4s ease-in-out;
+}
+#cache-notice.is-hidden {
+  opacity: 0;
+}
+
+@keyframes showCacheNotice {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -100%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}/*# sourceMappingURL=cache.css.map */

@@ -1,0 +1,43 @@
+.o-text-editor {
+
+  &__content {
+    width: 100%;
+    max-width: 808px;
+    margin: 0 auto;
+
+    h2 {
+      font-size: 16px;
+      line-height: 24px;
+      color: $black;
+      font-weight: $font-weight-medium;
+      margin-bottom: 0;
+
+      @include media-breakpoint-up(lg) {
+        font-size: 20px;
+        line-height: 28px;
+        margin-bottom: 1rem;
+      }
+    }
+
+    p {
+      font-size: 12px;
+      line-height: 18px;
+      color: $grey-400;
+      margin-bottom: 3rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      @include media-breakpoint-up(lg) {
+        font-size: 14px;
+        line-height: 24px;
+        margin-bottom: 4rem;
+      }
+    }
+
+    a {
+      transition: color $transition-base;
+    }
+  }
+}

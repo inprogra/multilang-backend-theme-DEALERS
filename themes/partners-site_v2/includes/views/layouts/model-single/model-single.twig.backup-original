@@ -1,0 +1,1134 @@
+<link	href="/app/themes/partners-site_v2/node_modules/video.js/dist/video-js.css"	rel="stylesheet" />
+<div	class="l-model-single js-model-single">
+	<div	class="container breadcrumbs_template">
+		<div	class="breadcrumbs">
+			<a	href="/">
+				Strona Główna
+			</a>
+			<span>
+				/
+			</span>
+			<a	href="/modele">
+				Modele
+			</a>
+			<span>
+				/
+			</span>
+			<a	href="{{ slug_url }}">
+				{{ heading }}
+			</a>
+		</div>
+	</div>
+	{{ openSection(1, 2, false)|raw }}
+	{% include 'components/atoms/site-heading/site-heading.twig' with {
+            heading: heading,
+			description: ''
+        } only %}
+	{{ closeSection(false)|raw }}
+	<div	class="l-model-single__versions-slider versions-slider js-model-single__versions-slider slides-{{ versions|length }}">
+		<div	class="versions-slider__container container mainContainerSlider">
+
+			<div	class="versions-slider__slider js-versions-slider__slider"	{% if versions|length > 3 %}	data-allow-navigation="true"	{% endif %}>
+				<div	class="swiper-container versions-slider__swiper-container horizontalScroll">
+					<div	class="swiper-wrapper ">
+						{% for key,version in versions %}
+							{% set class = ['versions-slider__slide', 'slide', 'swiper-slide',] %}
+
+							{% if key == 0 %}
+								{% set class = class|merge(['is-active']) %}
+							{% endif %}
+
+							{% if versions|length == 1 %}
+								{% set class = class|merge(['versions-slider__slide--one-in-row']) %}
+							{% elseif versions|length == 2 %}
+								{% set class = class|merge(['versions-slider__slide--two-in-row']) %}
+							{% elseif versions|length == 3 %}
+								{% set class = class|merge(['versions-slider__slide--three-in-row']) %}
+							{% endif %}
+
+							<div	class="{{ class|join(' ') }}"	data-index="{{ key }}">
+								<div	class="slide__img-wrapper">
+									<img	style="width:100%;"	src="https://image-render.cloud/api/renderImage?image={{ version.featuredImage }}&size=500" />
+								</div>
+								<div	class="slide__content">
+									<h3	class="slide__heading">
+										{{ heading }}
+										<span	style="color:#616161;">
+											{{ version.name }}
+										</span>
+									</h3>
+									{% if version.hide_price != 'on' %}
+										<p	class="slide__price">
+											Od
+											<strong>
+												{{ version.price|number_format(0, '.', '&nbsp;')|raw }}
+												zł
+											</strong>
+										</p>
+									{% endif %}
+									<div	class="slide__description">
+										{{ version.description|raw }}
+									</div>
+									<div	class="colors_container">
+										<div	class="car_colors">
+											<span	class="colors_label">
+												Kolory
+											</span>
+
+											{% set counter = 1 %}
+											{% for colors in  version.colors['cards'] %}
+												{% set image = colors['version_gallery'][0] %}
+												{% set gallery_type = colors['gallery_type'] %}
+												{% for color in colors['version_color_tags'] %}
+
+													{% if gallery_type == 'inside' %}
+														<img	data-img="https://image-render.cloud/api/renderImage?image={{ image }}&size=500"	class="car_hover image_color el_{{ counter }}"	src="{{ color.icon['url'] }}"	alt="{{ color.name }}"	title="{{ color.name }}" />
+													{% endif %}
+													{% set counter = counter + 1 %}
+												{% endfor %}
+
+											{% endfor %}
+										</div>
+										<div	class="interrior_colors">
+											<span	class="colors_label">
+												Wnętrza
+											</span>
+											{% set counter = 1 %}
+											{% for color in version.colors['version_interrior_color_tags'] %}
+												<img	class="image_color el_{{ counter }}"	src="{{ color.icon.url }}"	alt="{{ color.name }}"	title="{{ color.name }}" />
+												{% set counter = counter + 1 %}
+											{% endfor %}
+										</div>
+									</div>
+									<div	class="technical_data_link">
+										<a	href="#{{ version.name|replace({' ':'_'}) }}"	class="showDetails"	data-version="{{ version.name }}"	data-version-key="{{ key }}">
+											Parametry i wyposażenie
+											<img	style="margin:-3px 0 0 3px;"	src="/app/themes/partners-site_v2/images/technical_data_link.svg" />
+										</a>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+					<div	class="swiper-pagination"></div>
+				</div>
+				{% include 'components/atoms/slider-button/slider-button.twig' with {
+                    additionalClass: 'versions-slider__button versions-slider__button--prev js-versions-slider__button--prev',
+                    direction: 'prev'
+                } %}
+				{% include 'components/atoms/slider-button/slider-button.twig' with {
+                    additionalClass: 'versions-slider__button versions-slider__button--next js-versions-slider__button--next',
+                    direction: 'next'
+                } %}
+			</div>
+		</div>
+	</div>
+
+	<div	class="l-model-single__versions-wrapper"	style="">
+
+		{% for key,version in versions %}
+			<section	class="show_on_version l-model-single__version version js-model-single__version{% if key == 0 %} is-active{% endif %}"	data-version="{{ key }}">
+				<section	class="version__top top container"	style="display:none;">
+					<h2	style="font-size:32px;">
+						Specyfikacja i szczegóły modelu
+					</h2>
+					<h5	style="font-size:16px;font-weight:350;color:#616161;">
+						Opcje układu napędowego. Kluczowe wymiary. Standardowe funkcje i aktualizacje.
+					</h5>
+					<div	class="top__inner">
+						<div	class="top__column top__column--slider">
+							{% include 'components/molecules/car-gallery-slider/car-gallery-slider-new-model.twig' with {
+                                additionalClass: 'top__slider',
+                                gallery: version.gallery,
+								gallery_thumbs: version.gallery_thumbs,
+                                preventLazyLoadingFirstSlide: true,
+								disableSrc: true
+                            } %}
+						</div>
+					</div>
+					<div	class="top__inner">
+						<div	class="top__column top__column--data">
+							<div	class="top__data data">
+
+								<dl	class="data__prices prices move_to_header"	style="display:none;">
+									{% if version.hide_price != 'on' %}
+										<dt	class="prices__label"></dt>
+										<dd	class="prices__total-value">
+											<span	class="prices__value">
+												{{ version.price|number_format(0, '.', '&nbsp;')|raw }}
+											</span>
+											&nbsp;zł&nbsp;brutto
+										</dd>
+									{% endif %}
+								</dl>
+
+								<div	class="data__lists">
+									<dl	class="data__list">
+										<div>
+											<dt	class="data__label">
+												Rodzaj paliwa:
+											</dt>
+											<dd	class="data__value">
+												{{ version.technicalData.fuelType }}
+											</dd>
+										</div>
+										<div>
+											<dt	class="data__label">
+												Silnik:
+											</dt>
+											<dd	class="data__value">
+												{{ version.technicalData.engine }}
+											</dd>
+										</div>
+										<div>
+											<dt	class="data__label">
+												Moc maksymalna (KM):
+											</dt>
+											<dd	class="data__value">
+												{{ version.technicalData.maxPowerText }}
+											</dd>
+										</div>
+										<div>
+											<dt	class="data__label">
+												Czas przyspieszenia:
+											</dt>
+											<dd	class="data__value">
+												{{ version.technicalData.acceleration }}
+												&nbsp;s
+											</dd>
+										</div>
+
+									</dl>
+									<dl	class="data__list">
+										<div>
+											<dt	class="data__label">
+												{% if fuelType == 'Elektryczny' %}
+													Zużycie energii:
+												{% else %}
+													Śr. spalanie:
+												{% endif %}
+											</dt>
+											<dd	class="data__value">
+												{{ version.technicalData.fuelConsumption }}
+												&nbsp;l/100km
+											</dd>
+										</div>
+										<div>
+											<dt	class="data__label">
+												Prędkość maksymalna:
+											</dt>
+											<dd	class="data__value">
+												{{ version.technicalData.maxSpeed }}
+												&nbsp;km/h
+											</dd>
+										</div>
+										<div>
+											<dt	class="data__label">
+												Pojemność bagażnika:
+											</dt>
+											<dd	class="data__value">
+												{{ version.technicalData.cargoCapacity }}
+												&nbsp;l
+											</dd>
+										</div>
+										<div>
+											<dt	class="data__label">
+												Miejsc:
+											</dt>
+											<dd	class="data__value">
+												{{ version.technicalData.seats }}
+											</dd>
+										</div>
+									</dl>
+									<dl	class="data__list">
+
+										<div>
+											<dt	class="data__label">
+												Wysokość:
+											</dt>
+											<dd	class="data__value">
+												{{ version.technicalData.height }}
+												&nbsp;cm
+											</dd>
+										</div>
+										<div>
+											<dt	class="data__label">
+												Długość:
+											</dt>
+											<dd	class="data__value">
+												{{ version.technicalData.length }}
+												&nbsp;cm
+											</dd>
+										</div>
+										<div>
+											<dt	class="data__label">
+												Szerokość z lusterkami
+											</dt>
+											<dd	class="data__value">
+												{{ version.technicalData.width }}
+												&nbsp;cm
+											</dd>
+										</div>
+
+										{% if version.technicalData.erange %}
+											<div>
+												<dt	class="data__label">
+													Zasięg na silniku elektr.:
+												</dt>
+												<dd	class="data__value">
+													{{ version.technicalData.erange }}
+												</dd>
+											</div>
+										{% endif %}
+									</dl>
+								</div>
+								<div	class="sub_content_margin">
+									{% include 'components/organisms/two-column-content-component/two-column-content-component_new_car.twig' with {
+									buttons: [
+									{
+									additionalClass:'black',
+									url: version.twoColumnContentComponent.testDriveLink,
+									text: 'Umów Jazdę testową',
+									},
+									{
+									additionalClass:'no-min-width',
+									url: version.fullTechnicalDataLink.url,
+									target: version.twoColumnContentComponent.link.target,
+									nofollow: version.twoColumnContentComponent.link.nofollow,
+									text: 'Pokaż pełną specyfikację'
+									}
+									],
+								} only %}
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</section>
+
+				{{ openSection(false, 2)|raw }}
+
+				{% include 'components/organisms/two-column-content-component/two-column-content-component_new_car.twig' with {
+                    additionalClass: 'version__two-column-content-component',
+                    equalColumns: true,
+					leftContent: version.content,
+                    reverse: true,
+                    heading: 'To co dla Ciebie najważniejsze',
+                    content: 'Poznaj Volvo bliżej – umów się na jazdę testową i poczuj różnicę. A jeśli już wiesz, czego szukasz, odwiedź nasz konfigurator i stwórz Volvo idealne dla siebie.',
+                    buttons: [
+                        {
+                            url: version.twoColumnContentComponent.testDriveLink,
+                            text: 'Jazda testowa',
+                        },
+                        {
+                            url: version.twoColumnContentComponent.link.url,
+                            target: version.twoColumnContentComponent.link.target,
+                            nofollow: version.twoColumnContentComponent.link.nofollow,
+                            text: 'Konfigurator'
+                        }
+                    ],
+                    image: version.twoColumnContentComponent.image,
+					sizes: version.twoColumnContentComponent.sizes,
+                    video: version.twoColumnContentComponent.video,
+					custom_video: version.twoColumnContentComponent.custom_video
+                } only %}
+
+				{{ closeSection()|raw }}
+				{% set counter = 0 %}
+				<div	class="full_content"	style="display:none">
+
+					{% for content_widget in version.content %}
+						{% if counter > 0 %}
+							{{ content_widget|raw }}
+						{% endif %}
+						{% set counter = counter + 1 %}
+					{% endfor %}
+
+					<div	class="temp container-fluid container">
+						<h2	style="font-size:32px;">
+							Opcje kolorystyczne nadwozia
+							{{ heading }}
+						</h2>
+						<h5	style="font-size:16px;font-weight:350;color:#616161;">
+							Odcienie, colorktóre rozpoczynają rozmowy.
+						</h5>
+						<div	class="gallery_images">
+							<div	class="gallery_panel_container">
+								<div	class="gallery_icons">
+									{% set inside = false %}
+									{% set outside = false %}
+									{% for colors in  version.colors['cards'] %}
+										{% set gallery_type = colors['gallery_type'] %}
+										{% for color in colors['version_color_tags'] %}
+											{% if gallery_type == 'inside' %}
+												{% set inside = true %}
+												<div>
+													<img	data-img="{{ image }}"	class="car_hover image_color el_{{ counter }}"	src="{{ color.icon['url'] }}"	alt="{{ color.name }}"	title="{{ color.name }}" />
+												</div>
+											{% elseif gallery_type == 'auto' %}
+												{% set outside = true %}
+											{% endif %}
+											{% set counter = counter + 1 %}
+										{% endfor %}
+
+									{% endfor %}
+								</div>
+								<div	class="gallery_type">
+									<div	class="active"	data-type="inside">
+										<img	src="/images/garage.svg" />
+									</div>
+									{% if outside == true %}
+										<div	data-type="auto">
+											<img	src="/images/mountains.svg" />
+										</div>
+									{% endif %}
+								</div>
+							</div>
+							<div	class="galleries">
+
+								{% for colors in  version.colors['cards'] %}
+									{% set x = 0 %}
+									{% for gallery_image in colors['version_gallery'] %}
+										{% if colors['gallery_type'] == 'inside' %}
+
+											{% if x > 0 %}
+												<div	class="image"	data-version="{{ colors['version_color_tags'][0].name }}"	data-gallery-type="{{ colors['gallery_type'] }}">
+													<img	{% if x > 0 %}	{% endif %}	data-offline-src="https://image-render.cloud/api/renderImage?image={{ gallery_image }}&width=1024" />
+												</div>
+											{% endif %}
+											{% set x = x + 1 %}
+										{% else %}
+
+											{% if 'mp4' in gallery_image %}
+												<div	class="image"	data-version="{{ colors['version_color_tags'][0].name }}"	data-gallery-type="{{ colors['gallery_type'] }}">
+													<video	id="my-video"	class="video-js"	controls	preload="auto"	width="100%"	height="100%"	poster=""	data-setup="{}">
+														<source	src="{{ gallery_image }}"	type="video/mp4" />
+
+														<p	class="vjs-no-js">
+															To view this video please enable JavaScript, and consider upgrading to a
+															web browser that
+															<a	href="https://videojs.com/html5-video-support/"	target="_blank">
+																supports HTML5 video
+															</a>
+														</p>
+													</video>
+
+												</div>
+											{% else %}
+												<div	{% if x > 0 %}	{% endif %}	class="image"	data-version="{{ colors['version_color_tags'][0].name }}"	data-gallery-type="{{ colors['gallery_type'] }}">
+													<img	data-offline-src="https://image-render.cloud/api/renderImage?image={{ gallery_image }}&width=1024" />
+												</div>
+											{% endif %}
+										{% endif %}
+									{% endfor %}
+								{% endfor %}
+							</div>
+							<div	class="gallery_nav">
+								<div	class="prev_image">
+									<svg	width="7"	height="12"	viewBox="0 0 7 12"	fill="none"	xmlns="http://www.w3.org/2000/svg">
+										<path	d="M1 0.667969L6.33333 6.0013L1.23188 11.3346"	stroke="currentColor"	stroke-linecap="round"	stroke-linejoin="round"></path>
+									</svg>
+								</div>
+								<div	class="next_image">
+									<svg	width="7"	height="12"	viewBox="0 0 7 12"	fill="none"	xmlns="http://www.w3.org/2000/svg">
+										<path	d="M1 0.667969L6.33333 6.0013L1.23188 11.3346"	stroke="currentColor"	stroke-linecap="round"	stroke-linejoin="round"></path>
+									</svg>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					{{ version.overrideContent|raw }}
+
+					<style>
+.custom_temp {
+
+margin-top:60px;
+h2 {
+margin-bottom:30px;
+}
+.stock-cars-offer {
+display:flex;
+}
+.stock-cars-offer > div {
+width:288px;
+margin-right:24px;
+}
+.stock-cars-offer img {
+margin-bottom:16px;
+}
+.stock-cars-offer .car__category {
+margin-bottom:4px;
+display:none!important;
+}
+.stock-cars-offer .car_name {
+font-size:16px;
+margin-bottom:4px;
+}
+.o-stock-cars-slider .car__details {
+display:block;
+}
+.stock-cars-offer .car__engine {
+display:block;
+margin-bottom:4px;
+width:100%;
+font-size:16px;
+}
+.stock-cars-offer .car__price {
+font-size:12px;
+font-weight:400;
+}
+.car__bottom {
+border:0!important;
+text-align:left!important;
+justify-content:flex-start!important;
+}
+.car__bottom span {
+color: #000!important;
+font-weight:600!important;
+text-transform:none!important;
+font-size:16px!important;;
+}
+}
+</style>
+
+				</div>
+			</section>
+		{% endfor %}
+	</div>
+	{{ openSection(2,1)|raw }}
+	{% include 'components/organisms/stock-cars-slider/stock-cars-single.twig' with {
+	additionalClass: '',
+	heading: featuredCars.heading,
+	cars: featuredCars.cars,
+} only %}
+	{{ closeSection()|raw }}
+</div>
+{% if versions|length != 1 %}{% endif %}
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {  
+$('.breadcrumbs a[href="#"]').click(function() {
+		
+});
+$('.car_hover').hover(function() {
+let img = $(this).attr('data-img');
+
+$(this).parentsUntil('.versions-slider__slide').siblings('.slide__img-wrapper').find('img').attr('src',img).css('width','100%').removeAttr('srcset');
+});
+$('#map:gt(0)').remove();
+$('.data__prices.prices .prices__label').html($('.version_hide > div'));
+$('select[name="version-type"]').on('change',function() {
+
+
+$('.versions-slider__slide:eq('+$(this).find('option:selected').val()+')').click();
+$('select[name="version-type"] option:selected').removeAttr('selected');
+$('select[name="version-type"] option[value='+$(this).find('option:selected').val()+']').attr('selected','selected');
+
+$('.gmap_map.container:visible').append($('#map'));    
+})
+$('.versions-slider__slide').click(function() {
+$('select[name="version-type"] option:selected').removeAttr('selected');
+$('select[name="version-type"] option[value='+$(this).index()+']').attr('selected','selected');
+});
+
+$('.showDetails').click(function() {
+	var versionName = $(this).attr('data-version');
+	if($('.breadcrumbs a').length == 3) {
+		$('.breadcrumbs').append('<span>/</span><a href="#'+versionName+'">'+versionName+'</a>')
+	}
+	
+	$('.l-model-single__versions-slider').hide();
+	$('.l-model-single__versions-slider').next('div').hide();
+	$('.version__two-column-content-component').hide();
+	$('.hidden').removeClass('hidden');
+	var key = $(this).attr('data-version-key');
+	console.log(key);
+	$('.show_on_version').removeClass('is-active');
+	$('.show_on_version[data-version="'+key+'"]').addClass('is-active');
+	$('.show_on_version[data-version="'+key+'"]').find('> section').show().parent().parent().show();
+	$('.a-site-heading__description').html('<span style="color:#000;font-weight:350;">Zakup od:</span>').append('<span style="font-weight:600;color:#000;">'+$('.show_on_version[data-version="'+key+'"] .move_to_header').text()+'</span>');
+	$('.show_on_version[data-version="'+key+'"]').find('img[data-offline-src]').each(function() {
+		$(this).addClass('Lazy').attr('src',$(this).attr('data-offline-src'));
+	});
+	$('.show_on_version[data-version="'+key+'"]').find('.galleries .image:eq(0)').addClass('active');
+	$('.show_on_version[data-version="'+key+'"]').find('.content__description').hide();
+	$('.show_on_version[data-version="'+key+'"]').find('.full_content').show();
+	$('.show_on_version[data-version="'+key+'"]').find('.full_content ul li:gt(3)').remove();
+	
+	//$('.new_model_image_box_static .content__buttons').css('margin-top','80px');
+	$('section.is-active .gallery_type').css('left',($('section.is-active .gallery_images').width() / 2) + $('section.is-active .gallery_icons').width());
+	
+	$('.show_on_version[data-version="'+key+'"] .gallery_icons img').on('click',function() {
+	$('section.is-active .gallery_icons div').removeClass('selected');
+	let image_type = $('section.is-active .gallery_type div.active').attr('data-type');
+	let color = $(this).attr('title');
+	$(this).parent().addClass('selected');
+	$('section.is-active .galleries .image:visible').removeClass('active');
+	let count = $('section.is-active .image[data-version="'+color+'"][data-gallery-type="'+image_type+'"]').length
+	//let choose = Math.floor(Math.random() * count);
+
+
+	$('.show_on_version[data-version="'+key+'"] .image[data-version="'+color+'"][data-gallery-type="'+image_type+'"]:eq(0)').addClass('active');
+})
+var choosen_version;
+
+setTimeout(function() {
+$('.show_on_version[data-version="'+key+'"] .gallery_icons > div:eq(0)').addClass('selected');
+},1500);
+if ($('section.is-active .gallery_icons div.selected').length == 0) {
+		$('section.is-active .gallery_icons div:eq(0)').addClass('selected');
+	}
+$('.show_on_version[data-version="'+key+'"] .gallery_type div').on('click',function() {
+
+	
+	$('section.is-active .gallery_type div').removeClass('active');
+	$(this).addClass('active');
+	$('section.is-active .galleries .image.active').removeClass('active');
+	let showImages = $(this).attr('data-type');
+	let car_color = $('section.is-active .gallery_icons div.selected img').attr('title');
+	let count = $('section.is-active .image[data-version="'+car_color+'"][data-gallery-type="'+showImages+'"]').length
+	
+	$('section.is-active .image[data-version="'+car_color+'"][data-gallery-type="'+showImages+'"]:eq(0)').addClass('active');
+});
+$('.show_on_version[data-version="'+key+'"] .gallery_nav .next_image').click(function() {
+	let car_color = $('section.is-active .galleries .image:visible').attr('data-version');
+	let image_type = $('section.is-active .galleries .image:visible').attr('data-gallery-type');
+	if ($('section.is-active .galleries .image:visible').next('.image[data-version="'+car_color+'"][data-gallery-type="'+image_type+'"]').length == 0) {
+		$('section.is-active .galleries .image:visible').removeClass('active');
+		$('section.is-active .image[data-version="'+car_color+'"][data-gallery-type="'+image_type+'"]:eq(0)').addClass('active');
+	} else {
+		$('section.is-active .galleries .image:visible').removeClass('active').next('section.is-active .image[data-version="'+car_color+'"][data-gallery-type="'+image_type+'"]:eq(0)').addClass('active');
+	}
+});
+$('.show_on_version[data-version="'+key+'"] .gallery_nav .prev_image').click(function() {
+	let car_color = $('section.is-active .galleries .image:visible').attr('data-version');
+	let image_type = $('section.is-active .galleries .image:visible').attr('data-gallery-type');
+	if ($('section.is-active .galleries .image.active').prev('.image[data-version="'+car_color+'"][data-gallery-type="'+image_type+'"]:eq(0)').length > 0) {
+	$('section.is-active .galleries .image.active').removeClass('active').prev('.image[data-version="'+car_color+'"][data-gallery-type="'+image_type+'"]:eq(0)').addClass('active');
+	}
+	
+
+});
+
+});
+
+
+if (window.location.hash) {
+
+
+
+
+/*if($('.breadcrumbs a').length == 3) {
+$('.breadcrumbs').append('<span>/</span><a href="#'+versionName+'">'+versionName+'</a>')
+}
+
+$('.l-model-single__versions-slider').hide();
+$('.l-model-single__versions-slider').next('div').hide();
+$('.version__two-column-content-component').hide();
+$('.hidden').removeClass('hidden');
+
+
+$('.show_on_version[data-version="'+key+'"]').find('> section').show().parent().parent().show();
+$('.a-site-heading__description').html('<span style="color:#000;font-weight:350;">Zakup od:</span>').append('<span style="font-weight:500;color:#000;">'+$('.show_on_version[data-version="'+key+'"] .move_to_header').text()+'</span>');
+$('.show_on_version[data-version="'+key+'"]').find('img[data-offline-src]').each(function() {
+$(this).addClass('Lazy').attr('src',$(this).attr('data-offline-src'));
+});
+$('.show_on_version[data-version="'+key+'"]').find('.galleries .image:eq(0)').addClass('active');
+$('.show_on_version[data-version="'+key+'"]').find('.content__description').hide();
+$('.show_on_version[data-version="'+key+'"]').find('.full_content').show();
+$('.show_on_version[data-version="'+key+'"]').find('.full_content ul li:gt(3)').remove();
+
+//$('.new_model_image_box_static .content__buttons').css('margin-top','80px');
+$('section.is-active .gallery_type').css('left',($('section.is-active .gallery_images').width() / 2) + $('section.is-active .gallery_icons').width());
+
+$('.show_on_version[data-version="'+key+'"] .gallery_icons img').on('click',function() {
+$('section.is-active .gallery_icons div').removeClass('selected');
+let image_type = $('section.is-active .gallery_type div.active').attr('data-type');
+let color = $(this).attr('title');
+$(this).parent().addClass('selected');
+$('section.is-active .galleries .image:visible').removeClass('active');
+let count = $('section.is-active .image[data-version="'+color+'"][data-gallery-type="'+image_type+'"]').length
+//let choose = Math.floor(Math.random() * count);
+
+
+$('.show_on_version[data-version="'+key+'"] .image[data-version="'+color+'"][data-gallery-type="'+image_type+'"]:eq(0)').addClass('active');
+})
+var choosen_version;
+
+setTimeout(function() {
+$('.show_on_version[data-version="'+key+'"] .gallery_icons > div:eq(0)').addClass('selected');
+},1500);
+if ($('section.is-active .gallery_icons div.selected').length == 0) {
+$('section.is-active .gallery_icons div:eq(0)').addClass('selected');
+}
+$('.show_on_version[data-version="'+key+'"] .gallery_type div').on('click',function() {
+
+
+$('section.is-active .gallery_type div').removeClass('active');
+$(this).addClass('active');
+$('section.is-active .galleries .image.active').removeClass('active');
+let showImages = $(this).attr('data-type');
+let car_color = $('section.is-active .gallery_icons div.selected img').attr('title');
+let count = $('section.is-active .image[data-version="'+car_color+'"][data-gallery-type="'+showImages+'"]').length
+
+$('section.is-active .image[data-version="'+car_color+'"][data-gallery-type="'+showImages+'"]:eq(0)').addClass('active');
+});
+$('.show_on_version[data-version="'+key+'"] .gallery_nav .next_image').click(function() {
+let car_color = $('section.is-active .galleries .image:visible').attr('data-version');
+let image_type = $('section.is-active .galleries .image:visible').attr('data-gallery-type');
+if ($('section.is-active .galleries .image:visible').next('.image[data-version="'+car_color+'"][data-gallery-type="'+image_type+'"]').length == 0) {
+$('section.is-active .galleries .image:visible').removeClass('active');
+$('section.is-active .image[data-version="'+car_color+'"][data-gallery-type="'+image_type+'"]:eq(0)').addClass('active');
+} else {
+$('section.is-active .galleries .image:visible').removeClass('active').next('section.is-active .image[data-version="'+car_color+'"][data-gallery-type="'+image_type+'"]:eq(0)').addClass('active');
+}
+});
+$('.show_on_version[data-version="'+key+'"] .gallery_nav .prev_image').click(function() {
+let car_color = $('section.is-active .galleries .image:visible').attr('data-version');
+let image_type = $('section.is-active .galleries .image:visible').attr('data-gallery-type');
+if ($('section.is-active .galleries .image.active').prev('.image[data-version="'+car_color+'"][data-gallery-type="'+image_type+'"]:eq(0)').length > 0) {
+$('section.is-active .galleries .image.active').removeClass('active').prev('.image[data-version="'+car_color+'"][data-gallery-type="'+image_type+'"]:eq(0)').addClass('active');
+}
+
+
+});*/
+
+}
+});
+$(document).ready(function() {
+		
+})
+</script>
+<style>
+	.galleries .image.active {
+		display:block;
+	}
+	.a-image__img {
+	-o-object-fit: contain;
+	object-fit: contain;
+	}
+	.full_content .l-section--mt-3 {
+		margin-top:0!important;
+	}
+	.full_content .l-section--mb-3 {
+		
+	}
+	.full_content section > .o-text-editor-extended,
+	.full_content .js-gallery {
+		display:none!important;
+	}
+	.versions-slider__button {
+		display: block !important; 
+		top: auto !important; 
+		bottom: -13%;
+	}
+	@media screen and (max-width:768px) {
+		.o-preview-component.o-preview-component--reverse {
+			display:flex;
+			flex-direction: column-reverse;
+			flex-wrap: wrap;
+		}
+		.versions-slider__button {
+		display: block !important; 
+		top: 50% !important; 
+		bottom: unset!important;
+		
+		}
+		.l-model-single .versions-slider__button--next {
+			right:15px;							
+		}
+		.l-model-single .versions-slider__button--prev {
+			right:unset!important;
+			left: 15px;
+		}
+	}
+	.mainContainerSlider{
+		width: 96%; 
+		max-width: 1608px; 
+	}
+
+	.horizontalScroll {
+		overflow-x: scroll;
+		scrollbar-gutter: stable;
+		
+		scrollbar-width: thin;
+		scrollbar-color: #888 #f1f1f1;
+	}
+
+	.horizontalScroll::-webkit-scrollbar {
+		height: 10px;
+		background: #f1f1f1;
+	}
+
+	.horizontalScroll::-webkit-scrollbar-thumb {
+		background: #888;
+		border-radius: 5px;
+	}
+
+
+
+	.top__data data .new_model_image_box_static {
+		margin-left:0;
+	}
+	.o-two-column-content-component__inner {
+							
+	.o-two-column-content-component__column--img {
+		
+		max-height:unset
+		
+	}
+	}
+	@media screen and (min-width:1680px) {
+	.custom_temp {
+		.o-stock-cars-slider {
+			max-width:1610px;
+			margin: 0 auto;
+		}
+	}
+	.sub_content_margin > div > div,
+	.temp.container-fluid  {
+	  max-width:1610px;
+	}
+	.o-two-column-content-component .content__description {
+	    font-size:14px;
+	}
+	.heading_container {
+		max-width:1610px;
+	}
+	.l-model-single .slides-1 .versions-slider__slide--one-in-row {
+		justify-content:center;
+	}
+	
+		
+		.versions-slider__container.container {
+			max-width:1608px;
+		}
+		.l-model-single .versions-slider__slide {
+		background:#FAFAFA;		
+		margin:0 24px;
+		padding-left: 20px;
+		padding-right: 20px;
+		padding-top:0;
+		padding-bottom:24px;
+		}
+		
+		.l-model-single .slides-1 .versions-slider__slide {
+		padding:90px 60px!important;
+	}
+		.slide__img-wrapper {
+			height:237px;
+			.slide__img {
+				height:100%;
+				--height: 100%!important;
+				.a-image__img {
+					
+					height:auto;
+					object-fit:unset;
+					left:50%;
+					transform:translateX(-50%);
+					
+				}
+			}
+		}
+		.slides-1 {
+		.slide__img-wrapper {
+		height:100%;
+		width:870px!important;
+		.slide__img {
+			height:100%;
+			--height: 100%!important;
+			.a-image__img {
+				
+			height: 380px;
+			object-fit: unset;
+			left: 40%;
+			transform: translateX(-50%);
+			width: auto;
+	
+				
+			}
+		}
+	}
+		}
+		.l-model-single .version__two-column-content-component {
+			max-width:1600px;
+			> div {
+				max-width:1600px;
+			}
+			
+		}
+		.l-model-single__version .custom_flex {
+			padding:64px 96px 64px 96px;
+			.container {
+				padding:0;
+				.box__inner {
+					text-align:left;
+					width:100%!important;
+					max-width:100%!important;
+				}
+			}
+
+		}
+		.l-model-single__version .new_model_image_box_static {
+				max-width:46%;
+				display:flex;
+				flex-direction:column;
+				align-self: center;
+				
+		}
+		.o-two-column-content-component__column--img {
+			
+			.content__buttons {
+			  
+			}
+		}
+		.l-model-single__version .custom_flex {
+				max-width:760px;
+		}
+	}
+	.versions-slider__slide {
+		flex-wrap: wrap;
+	}
+	.l-model-single .versions-slider .slide__arrow {
+		left: 50% !important;
+	}
+	.l-model-single .versions-slider__slide--one-in-row .slide__content {
+
+		padding-top: 10px;
+		width: 100%;
+
+	}
+	.l-model-single .slides-1 .versions-slider__slide--one-in-row .slide__content {
+
+		padding-top: 10px;
+		width: auto!important;
+
+	}
+	.slide__description ul {
+		margin: 8px 0 0 0;
+		padding: 0;
+		list-style:none;
+		
+		
+	}
+	.slide__description ul li {
+		font-size: 14px;
+		margin-bottom: 8px;
+		padding:0 16px 0 18px;
+		color:#000;
+		background: url('/app/themes/partners-site_v2/images/model_detail_li.svg') 0 49% no-repeat;
+	}
+	.a-site-heading .container {
+		justify-content: space-between;
+	}
+	.a-site-heading__description {
+		font-size:20px;
+		font-weight:350;
+		
+	}
+	.l-model-single .version .top .data__list {
+		width:100%;
+		flex:unset;
+	}
+	.l-model-single__versions-wrapper {
+	.new_model_img {
+				img {
+					height:100%;
+				}
+		}
+	}
+	.full_container {
+    
+      p {
+        font-size:24px;
+		margin-top:20px;
+      }
+      ul {
+        display: flex;
+        margin: 30px;
+		list-style:none;
+		flex-wrap: wrap;
+
+        li {
+          width:50%;
+          font-size:20px;
+		  box-sizing: border-box;    
+		  margin-bottom:30px;      
+		  padding: 0 10px 0 30px;
+          background-image: url('/app/themes/partners-site_v2/images/model_detail_li.svg');
+		  background-repeat:no-repeat;
+		  background-position:  0 49%;
+		  background-size:24px;
+		 
+
+        }
+      }
+    }
+	@media screen and (min-width:1680px) {
+	.l-model-single__version .new_model_image_box_static {
+		padding-left:0;
+	}
+    .sub_content_margin > div {
+      width:100%;
+      max-width:100%;
+    }
+  
+    .full_container {
+      width:1554px;
+      margin: 0 auto;
+      p {
+        font-size:24px;
+		margin-top:20px;
+      }
+      ul {
+        display: flex;
+        margin: 30px auto 45px auto!important;
+		list-style:none;
+		flex-wrap: wrap;
+		max-width:1230px;
+		margin:0 auto;
+
+        li {
+          width:50%;
+          font-size:20px;
+		  box-sizing: border-box;    
+		  margin-bottom:50px;      
+		  padding: 10px 30px 10px 30px;
+          background-image: url('/app/themes/partners-site_v2/images/technical_data_link.svg');
+		  background-repeat:no-repeat;
+		  background-position:  0 11px;
+		  background-size:24px;
+		 
+
+
+        }
+      }
+    }
+    
+  }
+	@media screen and (max-width:1599px) {
+	.l-model-single .versions-slider__slide { 
+	max-width:392px;
+	}
+	
+	.l-model-single .versions-slider__slide {
+		background:#FAFAFA;
+		
+		margin:0 24px;
+		padding-left: 20px;
+		padding-right: 20px;
+		padding-top:0;
+		padding-bottom:24px;
+		.slide__img-wrapper {
+			height:165px;
+			.slide__img {
+				height:100%;
+				--height: 165!important;
+				.a-image__img {
+					
+					height:auto;
+					object-fit:unset;
+					left:50%;
+					transform:translateX(-50%);
+					
+				}
+			}
+		}
+	}
+	}
+	.l-model-single .versions-slider__slider {
+		width: 100%;
+	}
+	.a-input__label {
+		font-size: 12px;
+		top: 6px;
+	}
+	.prices__label {
+		width: 220px;
+	}
+	select[name="version-type"] {
+		width: 220px;
+	}
+	@media screen and(max-width: 997px) {
+		.top__data.data .data__prices.prices {
+			flex-direction: column;
+		}
+		.prices__label {
+			width: 100%;
+		}
+		select[name="version-type"] {
+			margin-bottom: 16px;
+		}
+		.l-model-single .version .top .data .prices__total-value {
+			text-align: left;
+			width: 100%;it();ex
+		}
+	}
+
+	@media screen and (max-width:1024px) {
+	.o-preview-component .content__heading {
+		font-size:20px;
+	}
+		.single-model .o-two-column-content-component__inner{
+			flex-wrap: wrap;
+			
+		}
+		.single-model .o-two-column-content-component__column{
+			width: 48%;
+			max-width: 100%;
+			padding-left: 2%;
+			padding-right: 2%;
+			
+		}
+		.o-two-column-content-component .content__buttons-link{
+			min-width: auto;     
+		}
+		.o-two-column-content-component .content__buttons-item{
+			display: inline;
+		}
+		.o-two-column-content-component .content__buttons{
+			display: block;
+		}
+	}
+	@media screen and (max-width:768px) {
+	
+	.single-model .o-two-column-content-component__column{
+		width: 100%;
+		max-width: 100%;
+	
+		}
+	}
+	@media screen and (max-width:500px) {
+		.single-model .o-two-column-content-component__column{
+			
+			padding-left: 5%;
+			padding-right: 5%;
+		}
+		.l-model-single__version .custom_flex{
+			padding: 40px;
+		}
+	}
+</style>
+<script src="/app/themes/partners-site_v2/node_modules/video.js/dist/video.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+
+});
+if (window.location.hash) {
+	
+	
+	
+
+	
+}
+
+document.addEventListener('DOMContentLoaded', () => { 
+console.log("DOM fully loaded and parsed");
+	let v = window.location.hash.replaceAll('%20','_');
+	//$('a[href="'+v+'"]').parent().find('.showDetails').click();	
+	let versionName = $('a[href="'+v+'"]').attr('data-version');
+	let key = $('a[href="'+v+'"]').attr('data-version-key');
+	
+	$('a[data-version-key="'+key+'"]').trigger('click');
+	});
+</script>

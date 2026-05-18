@@ -1,0 +1,159 @@
+class SelectMulti {
+    constructor(el) {
+        let self = this
+        this.el = el;
+        this.selectOptions = el.querySelectorAll('select option');
+        this.input = el.querySelector('.js-select-multi__input');
+        this.field = el.querySelector('.js-select-multi__field');
+        this.list = el.querySelector('.js-select-multi__list');
+        this.expandable = el.querySelector('.js-select-multi__expandable');
+        this.itemsEl = el.querySelector('.js-select-multi__items');
+        this.items = el.querySelectorAll('.js-select-multi__item');
+
+        this.updateSelectedText();
+
+        this.items.forEach((item) => {
+            Array.from(this.selectOptions)
+                .filter(option => option.value === item.dataset.value)
+                .map(option => {
+                    if (option.selected) {
+                        item.classList.toggle('is-active')
+                        if (document.querySelectorAll('[data-element="'+option.value+'"]').length == 0) {
+                        var elem = document.createElement('li');
+                        elem.setAttribute('data-element',option.value);
+                        elem.appendChild(document.createTextNode(option.value));   
+                        var remove_elem = '<span onclick="initDelete(this)" class="remove_filter"><img src="/app/themes/partners-site_v2/assets/public/close_x.svg"/></span>';
+                        elem.insertAdjacentHTML('beforeend', remove_elem);                                                                    
+                        document.getElementById('active_filters').appendChild(elem);
+                    }
+                    }
+                });
+        })
+
+        this.input.addEventListener('click', () => {
+            
+            this.toggle()
+        })
+
+        document.addEventListener('click', (event) => {
+            if (event.target.closest('.js-select-multi') !== this.el) {
+                if (this.close()) {
+                    dispatchEvent('field-blur');
+                }
+            }
+        });
+
+        this.items.forEach((item) => {
+         
+           if (item.classList.contains('is-active')) {
+
+            // var elem = document.createElement('li');
+            // elem.setAttribute('data-elem',item.getAttribute('data-value'));
+            // elem.appendChild(document.createTextNode(item.getAttribute('data-value')));                        
+            // document.getElementById('active_filters').appendChild(elem);
+
+            
+            }
+            item.addEventListener('click', (event) => {
+                let target = event.target.closest('.js-select-multi__item')
+                
+                
+                target.classList.toggle('is-active')
+
+                Array.from(this.selectOptions)
+                    .filter(option => option.value === target.dataset.value)
+                    .map(option => {
+                        option.selected = !option.selected;
+                        dispatchEvent('field-change');
+                        if (option.selected) {
+                        var elem = document.createElement('li');
+
+                        elem.setAttribute('data-element',option.value);
+                        elem.appendChild(document.createTextNode(option.value));   
+                        var remove_elem = '<span onclick="initDelete(this)" class="remove_filter"><img src="/app/themes/partners-site_v2/assets/public/close_x.svg"/></span>';
+                        elem.insertAdjacentHTML('beforeend', remove_elem);                        
+                                            
+                        document.getElementById('active_filters').appendChild(elem);
+                        } else {
+                            document.querySelectorAll('[data-elem="'+option.value+'"]').forEach(e => e.remove());
+                            document.querySelectorAll('[data-element="'+option.value+'"]').forEach(e => e.remove());
+
+                        }
+
+                        this.updateSelectedText();
+                    });
+            });
+        });
+
+        function dispatchEvent(name) {
+            let event = new CustomEvent(name, {
+                detail: {
+                    value: self.getSelectedOptions()
+                }
+            });
+            self.el.dispatchEvent(event);
+        }
+    }
+
+    toggle() {
+        if (this.el.classList.contains('is-expanded')) {
+            this.close()
+        } else {
+            this.open();
+        }
+    }
+
+    open() {
+        this.el.classList.add('is-expanded');
+        this.expandable.style.maxHeight = this.itemsEl.offsetHeight + 'px';
+    }
+
+    close() {
+        let closed = false;
+        if (this.el.classList.contains('is-expanded')) {
+            closed = true;
+        }
+
+        this.el.classList.remove('is-expanded');
+        this.expandable.style.removeProperty('max-height');
+
+        return closed;
+    }
+
+    updateSelectedText() {
+        let labels = this.getSelectedOptionLabels();
+        if (labels.length) {
+            this.input.classList.add('is-active');
+        } else {
+            this.input.classList.remove('is-active');
+        }
+        this.field.innerText = labels.join(', ');
+    }
+
+    getSelectedOptions() {
+        return Array.from(this.selectOptions)
+            .filter(option => !!option.selected)
+            .map(option => ({value: option.value, label: option.innerText}));
+    }
+
+    getSelectedOptionValues() {
+        return this.getSelectedOptions()
+            .map(option => option.value);
+    }
+
+    getSelectedOptionLabels() {
+        return this.getSelectedOptions()
+            .map(option => option.label);
+    }
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+   console.log('init multi');
+    let elements = document.querySelectorAll('.js-select-multi')
+    elements.forEach((el) => {
+        new SelectMulti(el);
+    })
+
+});
+

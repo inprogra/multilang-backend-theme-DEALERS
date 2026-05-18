@@ -1,0 +1,160 @@
+.m-two-column-list {
+
+  &__container {
+    max-width: 1070px;
+  }
+
+  &__inner {
+    max-height: 0;
+    background-color: $grey-100;
+    overflow: hidden;
+    transition: max-height .5s $transition-function;
+
+    @include media-breakpoint-up(md) {
+      max-height: unset;
+      background-color: transparent;
+      padding: 0;
+      display: flex;
+      margin: 3rem -1.5rem 0;
+    }
+  }
+
+  &__column {
+    padding: 3rem 4rem;
+
+    @include media-breakpoint-down(sm) {
+      &:first-child {
+        padding-bottom: 0;
+      }
+
+      &:last-child {
+        padding-top: 0;
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      width: 50%;
+      padding: 4rem 5rem;
+      border-style: solid;
+      border-width: 0 1.5rem;
+      border-color: transparent;
+      background: $grey-100;
+      background-clip: padding-box;
+    }
+
+    @include media-breakpoint-up(lg) {
+      padding: 5rem 10rem;
+    }
+  }
+
+  &__top {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__description {
+    max-width: 808px;
+    margin: 0 auto;
+    font-size: 12px;
+    line-height: 18px;
+    color: $grey-400;
+    text-align: center;
+
+    @include media-breakpoint-up(md) {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+
+  &__more {
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    padding: 1rem;
+    border: none;
+    margin-left: -1rem;
+    background: transparent;
+    font-size: 12px;
+    line-height: 1;
+    color: $secondary;
+
+    @include media-breakpoint-up(md) {
+      display: none;
+    }
+
+    span {
+      margin-right: 1rem;
+    }
+
+    svg {
+      transform: rotate(90deg);
+      transition: transform $transition-base;
+    }
+  }
+
+  &__list {
+
+    &-inner {
+      list-style: none;
+      overflow: hidden;
+      opacity: 0;
+      padding: 0;
+      margin: 0;
+      transition: opacity $transition-base;
+
+      @include media-breakpoint-up(md) {
+        opacity: 1;
+      }
+    }
+
+    &-item {
+      display: flex;
+      margin-bottom: 1rem;
+      font-size: 12px;
+      line-height: 24px;
+      color: $grey-400;
+
+      @include media-breakpoint-up(md) {
+        font-size: 14px;
+      }
+
+      &:before {
+        content: '';
+        display: inline-block;
+        flex: 0 0 auto;
+        width: 12px;
+        height: 10px;
+        margin-top: 1rem;
+        margin-right: 1rem;
+        background-color: $secondary;
+        // TODO: replace with list-checkmark.svg
+        mask-image: url('../../../../../assets/private/img/checkmark.svg');
+      }
+    }
+  }
+
+  &.is-expanding {
+    .m-two-column-list {
+      &__inner {
+        height: 9999px;
+      }
+    }
+  }
+
+  &.is-expanded {
+    .m-two-column-list {
+      &__more {
+        svg {
+          transform: rotate(-90deg);
+        }
+      }
+      &__list {
+        max-height: unset;
+
+        &-inner {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+.l-stock-car-single {
+  $carGalleryImageHeightMobile: 164;
+  $carGalleryImageHeightDesktop: 248;
+
+  &__accordion-section {
+    margin-top: 4rem;
+    padding-bottom: $carGalleryImageHeightMobile / 16 + 6rem;
+
+    @include media-breakpoint-up(lg) {
+      margin-top: 8rem;
+      padding-bottom: $carGalleryImageHeightDesktop / 16 + 6rem;
+    }
+  }
+
+  &__gallery {
+    transform: translateY(-50%);
+    margin-bottom: -$carGalleryImageHeightMobile / 16 + 3rem;
+
+    @include media-breakpoint-up(lg) {
+      margin-bottom: -$carGalleryImageHeightDesktop / 16 + 15rem;
+    }
+  }
+
+}

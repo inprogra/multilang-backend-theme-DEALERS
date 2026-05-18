@@ -1,0 +1,301 @@
+<div class="container calc-flex">
+	<div class="additional_info">
+		<div class="additonal_info_1">
+			<h2>{{additional_info[0]['title']}}</h2>
+			<p>{{additional_info[0]['desc']|raw}}</p>
+		</div>
+		<div class="additonal_info_2">
+			<h2>{{additional_info[1]['title']}}</h2>
+			<p>{{additional_info[1]['desc']|raw}}</p>
+		</div>
+	</div>
+	<div class="cost-calculator">
+
+		<div class="header" style="display:none;">
+			<h2>Kalkulator ładowania</h2>
+		</div>
+		<div class="form-section split-2">
+
+			{% if selectedModel %}
+				<div style="display:none" class="content__item split-2" id="selectCar11">
+					<input type="hidden" value="{{selectedModel}}" id='cost-selected-model' name="carmodel">
+				{% else %}
+					<div class="content__item split-2" id="selectCar11">
+						{% include 'components/atoms/select/select-multi.twig' with {
+                        label: 'Wybierz model',
+                        name: 'carmodel',
+                        items: models,
+                        multiple: 'false',
+                    } %}
+					{% endif %}
+				</div>
+				<div class="content__item split-2 selectEngineX" id="selectEngine100">
+					{% include 'components/atoms/select/select-multi.twig' with {
+                label: 'Rodzaj napędu',
+                name: 'carengine',
+                items: engine,
+                selected: null,
+                single: false,
+                multiple: 'false'
+            } %}
+				</div>
+			</div>
+			<div class="small-header">
+				<h3>Rodzaj ładowarki</h3>
+			</div>
+			<div class="form-section split-3">
+				{% for charge in chargers %}
+					<div class="element" data-times="{{charge['times'][0]}}" data-value="{{charge['value']}}">{{charge['text']}}</div>
+				{% endfor %}
+			</div>
+			<div class="small-header">
+				<h3>Poziom naładowania (%)</h3>
+			</div>
+			<div class="range-battery">
+
+
+				<div class="content__item content__item--range">
+					{% include 'components/atoms/input-range/input-range-calculator.twig' with {
+                                        label: 'Rodzaj napędu',
+                                        name: 'engine',
+                                        min: 0,
+                                        max: 100,
+                                        selected: null,
+                                        currency: '%'
+                                    } %}
+				</div>
+			</div>
+			<div class="small-header">
+				<h3>Czas ładowania</h3>
+			</div>
+			<div class="timecount ">
+				<span class="hours">-</span>
+				godz.
+				<span class="minutes">-</span>
+				min.
+			</div>
+			<div class="small-header">
+				<h3>Koszt ładowania</h3>
+			</div>
+			<div class="content__item content__item--range price-range-el split_css">
+				{% include 'components/atoms/input-range/input-range-single.twig' with {
+                                        label: 'Rodzaj napędu',
+                                        name: 'engine',
+                                        items: ['XC40 Recharge'],
+                                        selected: null,
+                                        disabled: true,
+                                        min_price: 0,
+                                        max_price: 100
+                                    } %}
+			</div>
+			<div class="global-price">
+				<div class="total-price">
+					<span>-</span>
+					PLN*
+				</div>
+				<div class="price-per d-none" style="display:none;">
+					<span>x,xx</span>
+					PLN / 100 km
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="legal-info-container">
+		<p class="legal-info calculator-legal">
+			{{charger_legal|raw}}
+		</p>
+	</div>
+	<style></style>
+	<script type="text/javascript">
+		var dataSet = JSON.parse('{{ dataset|json_encode|raw }}');
+var ranges_par = JSON.parse('{{ ranges_calc|json_encode|raw }}');
+var ranges_cost = JSON.parse('{{ ranges_cost|json_encode|raw }}');
+
+function timeConvert(n) {
+var num = n;
+var hours = (num / 60);
+var rhours = Math.floor(hours);
+var minutes = (hours - rhours) * 60;
+var rminutes = Math.round(minutes);
+return [rhours, rminutes];
+}
+$(document).ready(function () {
+
+$('.selectEngineX ul li.is-active').removeClass('is-active');
+$('#selectCar11 ul li.is-active').removeClass('is-active');
+$('.selectEngineX .a-input__field').text('');
+$('#selectCar11 .a-input__field').text('');
+var model = '';
+var engine = ''
+var range = ''
+$('.myRange').on('change', function () {
+console.log($(this));
+// range = $(this).val();
+//$(this).parent().find('.fakeprogress').css('width', ($(this).val() - 2) + '%');
+$('.gmap.options button').click();
+
+});
+$('#reset__filters').on('click', function () {
+radiuses.forEach((radius) => {
+radius.setMap(null)
+})
+markerspoints.forEach((marker) => {
+marker.setMap(null);
+});
+$('.range-container').addClass('no-active');
+$('#citysearch').val('')
+
+
+$('.selectEngineX ul li.is-active').removeClass('is-active');
+$('#selectCar11 ul li.is-active').removeClass('is-active');
+$('#selectCar11 .a-input__field').text('');
+$('.selectEngineX .a-input__field').text('');
+});
+
+
+$('.form-section .element').on('click', function () {
+if ($('#selectCar11 li.is-active').length == 0 && $('#cost-selected-model') === undefined) {
+$('#selectCar11 .a-input__field.js-select-multi__field').css('border', '1px solid red');
+return false;
+} else {
+$('#selectCar11 .a-input__field.js-select-multi__field').removeAttr('style');
+}
+if ($('#selectEngine100 li.is-active').length == 0) {
+$('#selectEngine100 .a-input__field.js-select-multi__field').css('border', '1px solid red');
+return false;
+} else {
+$('#selectEngine100 .a-input__field.js-select-multi__field').removeAttr('style');
+}
+if ($(this).hasClass('is-active')) { // return false;
+} else {
+$('.form-section .element').removeClass('is-active');
+$(this).addClass('is-active');
+}
+var engine = $.trim($('#selectEngine100 li.is-active').text()).replace(/ /g, '_');
+var car = $.trim($('#selectCar11 .a-input__field').text()).replace(/ /g, '_');
+
+if (! car) {
+car = $.trim($('#cost-selected-model').val()).replace(/ /g, '_');
+}
+
+var charge_time = $(this).attr('data-value');
+
+let part_index = (car + '_' + engine + '_' + charge_time).replace('"', '').replace(/ /g, '_');
+
+if (ranges_cost[part_index]) {
+let time = ranges_cost[part_index].replace(/,/g, '.');
+if (! time.includes('|')) {
+let range = $('#price-range-max').val() - $('#price-range-min').val();
+let count = range * time
+let minutes = Math.floor(count / 60);
+let stats = timeConvert(minutes);
+$('.timecount').addClass('is-active');
+$('.timecount .hours').text(stats[0]);
+$('.timecount .minutes').text(stats[1]);
+let price = $('#kw-price').val().replace(' PLN', '') * (range / 100) * ranges_par[car + '_' + engine].dataset.battery;
+
+$('.total-price').addClass('active').find('span').text(parseFloat(price).toFixed(2));
+$('.price-per').removeAttr('style').find('span').text(parseFloat(dataSet[engine] * $('#kw-price').val().replace(' PLN', '')).toFixed(2));
+} else {
+var time1 = 0;
+var time2 = 0;
+var time3 = 0;
+var time4 = 0;
+
+let ranges = time.split('|');
+if (35 - $('#price-range-min').val() >= 0 && $('#price-range-max').val() >= 35) {
+	var time1 = (35 - $('#price-range-min').val() > 0 ? 35 - $('#price-range-min').val() : 0);
+} else if (35 - $('#price-range-min').val() > 0 && $('#price-range-max').val() < 35) {
+	var time1 = $('#price-range-max').val() - $('#price-range-min').val();
+} 
+
+if ($('#price-range-max').val() < 75) {
+	
+	var time2 = $('#price-range-max').val() - 35;
+}  else {
+	if ($('#price-range-min').val() < 75) {
+		var time2 = ($('#price-range-max').val() >= 75 && $('#price-range-min').val() <= 35 ? 40 : 75 - ($('#price-range-max').val() - $('#price-range-min').val()) );
+	} else {
+		var time2 = 0;
+	}
+}
+if ($('#price-range-max').val() > 75 && $('#price-range-max').val() < 90) {
+	var time3 = 15 - (90 - $('#price-range-max').val());
+} else if ($('#price-range-max').val() >= 90) {
+	if ($('#price-range-min').val() < 75) {
+		var time3 = 15;
+	} else {
+		var time3 = 90 - $('#price-range-min').val();
+	}
+	
+} else {
+	var time3 = 0;
+}
+if ($('#price-range-max').val() > 90 && $('#price-range-min').val() < 90) {
+	var time4 = 10 - (100 - $('#price-range-max').val());
+} else if ($('#price-range-max').val() > 90 && $('#price-range-min').val() >= 90) {
+	var time4 = $('#price-range-max').val() - $('#price-range-min').val();
+} else if ($('#price-range-max').val() < 90)  {
+	var time4 = 0;
+}
+if (time2 < 0) {
+	time2 = 0;
+	}
+if (time3 < 0) {
+	time3 = 0;
+	}
+if (time4 < 0) {
+	time4 = 0;
+	}
+// wrong let time2 = (75 - $('#price-range-max').val() > 35  ? 75 - $('#price-range-max').val() : 0);
+//let time3 = 0;
+
+//let time3 = (90 - $('#price-range-max').val() > 75 ? 90 - $('#price-range-max').val() : 0);
+//let time4 = (100 - $('#price-range-max').val() > 0 ? 100 - $('#price-range-max').val() : 0);
+
+
+//let time2 = $('#price-range-max').val() - $('#price-range-min').val() - time1 - time3;
+let totalTime = time2 + time3 + time1 + time3 + time4;
+let totalPercent = totalTime / 100;
+console.log('time1 '+time1);
+console.log(ranges[0]);
+console.log('time2 '+time2);
+console.log(ranges[1]);
+console.log('time3 '+time3);
+console.log(ranges[2]);
+console.log('time4 '+time4);
+console.log(ranges[3]);
+console.log(ranges[4]);
+
+let count = ($('#price-range-min').val() < 35 ? time1 * ranges[0] : 0) + ($('#price-range-min').val() < 75 ? time2 * ranges[1] : 0) + time3 * ranges[2] + time4 * ranges[3];
+console.log('count '+ count);
+let minutes = Math.floor(count / 60);
+
+let stats = timeConvert(minutes);
+$('.timecount').addClass('is-active');
+$('.timecount .hours').text(stats[0]);
+$('.timecount .minutes').text(stats[1]);
+let price = ($('#kw-price').val().replace(' PLN', '') * (totalPercent) * ranges_par[car + '_' + engine].dataset.battery);
+$('.total-price').addClass('active').find('span').text(parseFloat(price).toFixed(2));
+$('.price-per').removeAttr('style').find('span').text(parseFloat(dataSet[engine] * $('#kw-price').val().replace(' PLN', '')).toFixed(2));
+
+
+}
+} else {
+$('.total-price').addClass('active').find('span').text('-');
+$('.price-per').removeAttr('style').find('span').text('-');
+}
+
+
+})
+$('#slider-1,#slider-2,#myRange').on('change', function () {
+$('.form-section .element.is-active').trigger('click');
+})
+$('.price-range-el input[type="range"]').on('change', function (e) {
+$('#kw-price').val($(this).val() + ' PLN');
+$('.form-section .element.is-active').trigger('click');
+})
+
+});
+	</script>
+	<link rel="stylesheet" href="/app/themes/partners-site_v2/includes/views/components/organisms/costmap/costmap.css" type="text/css">

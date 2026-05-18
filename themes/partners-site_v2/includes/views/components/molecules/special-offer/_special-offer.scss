@@ -1,0 +1,101 @@
+.specialOfferMainContainer{
+    background: black; 
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    z-index: 99;
+    left: 0px;
+    opacity: 0;
+
+    .specialOfferMainRow{ 
+        width: 100%;
+        max-width: 1224px;
+        height: auto;
+        padding: 16px 28px;
+        display: flex;
+        justify-content: center;
+        position: relative;
+
+        @include media-breakpoint-down(sm) {
+            justify-content: flex-start;
+          }
+
+        .specialOfferDescriptionContainer{
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+            width: auto;
+
+            @include media-breakpoint-down(md) {
+                width: 100%;
+                justify-content: space-around;
+                padding-right: 20px;
+                
+              }
+
+              @include media-breakpoint-down(sm) {
+                width: 100%;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+              }
+            .specialOfferDescription{
+                width: auto;
+                height: auto;
+                margin: 0px 8px;
+
+                @include media-breakpoint-down(sm) {
+                    margin-bottom: 0px;
+                }
+                p{
+                    font-size: 16px;
+                    color: #fff;
+                    font-weight: 350;
+                    margin-bottom: 0px;
+                }
+            }
+            .specialOfferLinks{
+                width: auto;
+                height: auto;
+                margin: 0px 8px;
+                a{
+                    font-size: 16px;
+                    font-weight: 600;
+                    color: #fff;
+                    text-decoration: underline;
+                }
+            }
+        } 
+        .specialOfferCloseContainer{
+            width: 24px;
+            height: 24px;
+            display: flex;
+            justify-content: center;
+            position: absolute;
+            left: auto;
+            right: 0px;
+            cursor: pointer;  
+
+            @include media-breakpoint-down(lg) {
+                right: 24px;
+              }
+
+            .closeOfferBtn{
+                width: 16px;
+                height: 16px;
+                
+                svg{
+                    width: 100%;
+                    height: 100%;
+
+                    path{
+                        fill: #fff;
+                    }
+                }
+            }
+
+
+        }
+    }
+}

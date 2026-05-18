@@ -1,0 +1,115 @@
+<div>
+	{{content|raw}}
+
+	<div class="container">
+		<div class="SellContainer">
+			<div class="sellContainerInner">
+				<div class="slideContainer">
+					<div class="leftSideSlide">
+						<h2>
+							Wybierz wygodę! Poznaj program<br/>
+							Odkupu Volvo Selekt.
+						</h2>
+						<p>
+							Myślisz o sprzedaży swojego Volvo? A może chcesz wymienić je na nowszy model? Zostaw to nam! Podaj tylko dane samochodu, a my przygotujemy dla Ciebie bezpłatną<span class="mobile_only">...</span><span class="hide_on_mobile"> i niezobowiązującą wycenę, a następnie skontaktujemy się z Tobą, by jak najbardziej spersonalizować ofertę. Dzięki temu cały proces przebiegnie szybko i wygodnie. My zajmiemy się wyceną, wszystkimi formalnościami i poszukiwaniem nowego właściciela dla samochodu, a Ty zyskasz spokojną głowę.</span>
+						</p>
+						<p class="mobile_only show_more_text">Rozwiń treść</p>
+					</div>
+					<div class="rightSideSlide" style="background-image:url('https://image-render.cloud/api/renderImage?image=https://main.volvocars-partner.pl/img/car_sell/rightSideSlide.jpeg&size=500')"></div>
+				</div>
+			</div>
+		</div>
+		<div class="sellContainer">
+			<div class="sellContainerInner">
+				<h2 class="h2">Przejdź do wyceny</h2>
+				<form action="" id="search-for-vin">
+					<input type="text" name="vin" class="enterVin" onkeyup="validateVIN(this)" minlength="17" maxlength="17" placeholder="Wprowadź numer VIN" value="" required/>
+					<span class="legend">
+						&#9432;	Numer VIN zawiera 17 znaków</span>
+					<button class="content__submit-button a-button getVinData" disabled type="submit">Wyszukaj</button>
+				</form>
+				<p class="text-center">
+					<a href="#" class="startManual">Nie znam numeru VIN</a>
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="manualForm">
+		
+			
+			 <div class="manualsteps_inner">
+				{% include 'layouts/sellcar/sellcar_nav.twig' %}
+			</div>
+			<div class="stepsOuter">
+				<div class="leftSideSteps">
+					<div class="bg_div">
+						<h2>Wybrane parametry<span class="only_desktop">:</span></h2>
+						<span class="info">W tym miejscu pojawią się wybrane przez Ciebie parametry pojazdu.</span>
+						<div class="stage_1 stage">
+							<span>Model
+								<span data-edit="1" style="float:right;display:none!important;">Edytuj</span>
+							</span>
+							<p></p>
+						</div>
+						<div class="stage_2 stage">
+							<span>Pierwsza rejestracja
+								<span data-edit="2" style="float:right;display:none!important;">Edytuj</span>
+							</span>
+							<p></p>
+						</div>
+						<div class="stage_3 stage">
+							<span>Silnik
+								<span data-edit="3" style="float:right;display:none!important;">Edytuj</span>
+							</span>
+							<p></p>
+						</div>
+						<div class="stage_4 stage">
+							<span>Wyposażenie
+								<span data-edit="4" style="float:right;display:none!important;">Edytuj</span>
+							</span>
+							<p></p>
+						</div>
+						<div class="stage_5 stage">
+							<span>Informacje ogólne
+								<span data-edit="5" style="float:right;display:none!important;">Edytuj</span>
+							</span>
+							<p></p>
+						</div>
+					</div>
+				</div>
+				<div class="stepsContainer container">
+
+					<div class="global_info"></div>
+					<div class="global_warning"></div>
+					<div class="global_error"></div>
+					<form action=" " name="pricing_form" id="pricing_form">
+						
+						{% include 'layouts/sellcar/steps/step1.twig' %}
+						{% include 'layouts/sellcar/steps/step2.twig' %}
+						{% include 'layouts/sellcar/steps/step3.twig' %}
+						{% include 'layouts/sellcar/steps/step4.twig' %}
+						{% include 'layouts/sellcar/steps/step5.twig' %}
+						{% include 'layouts/sellcar/steps/step6.twig' %}
+
+					</form>
+				</div>
+				<div class="footer_nav container">
+					{% include 'layouts/sellcar/sellcar_footer_nav.twig' %}
+				</div>
+			</div>
+			<div class="thankYou container">
+				<div class="thankYou_content text-center">
+					<img src="/mailing/thankyou_page.png"/>
+					<p class="first_el">Dziękujemy za przesłanie formularza.</p>
+					<p>Po potwierdzeniu adresu e-mail otrzymasz szacunkową wycenę.</p>
+					<a href="/" class="content__submit-button a-button">Przejdź na stronę główną</a>
+				</div>
+				<div></div>
+			</div>
+		</div>
+		 <script src="https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.4.3/popup.min.js"></script>
+		 <script type="text/javascript" src="/app/themes/partners-site_v2/includes/views/layouts/sellcar/sellcar.js"/></script>
+		<link rel="stylesheet" href="/app/themes/partners-site_v2/includes/views/layouts/sellcar/sellcar_nav.css"/>
+		<link rel="stylesheet" href="/app/themes/partners-site_v2/includes/views/layouts/sellcar/sellcar.css"/>
+		<link rel="stylesheet" href="/app/themes/partners-site_v2/includes/views/layouts/sellcar/sellcar_mobile.css"/>

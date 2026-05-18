@@ -1,0 +1,58 @@
+<div class="l-homepage">
+    {{ openSection(0,4)|raw }}
+        {% include 'components/molecules/hero-slider/hero-slider.twig' with heroSlider only %}
+    {{ closeSection()|raw }}
+    {{ openSection(false,3)|raw }}
+        <div class="l-homepage__offers offers">
+            {{ openSection(false,2,false)|raw }}
+                <div class="container offers__container">
+                    {% include 'components/atoms/section-heading/section-heading.twig' with {
+                        additionalClass: 'offers__heading',
+                        grey: offers.heading
+                    } %}
+                </div>
+            {{ closeSection(false)|raw }}
+            {% if offers.showPreviewComponent %}
+                {{ openSection(false,1,false)|raw }}
+                    {% include 'components/organisms/preview-component/preview-component.twig' with offers.previewComponent|merge({
+                        additionalClass: 'offers__preview-component'
+                    }) only %}
+                {{ closeSection(false)|raw }}
+            {% endif %}
+            {{ openSection(1,false,false)|raw }}
+                {% include 'components/organisms/offer-boxes/offer-boxes-homepage.twig' with offers.offerBoxes only %}
+            {{ closeSection(false)|raw }}
+        </div>
+    {{ closeSection()|raw }}
+    {% if stockCarsSlider.cars %}
+        {{ openSection(false,5)|raw }}
+            {% include 'components/organisms/stock-cars-slider/stock-cars-slider.twig' with {
+                additionalClass: 'l-homepage__stock-cars-slider',
+                heading: stockCarsSlider.heading,
+                cars: stockCarsSlider.cars,
+                excerpt: stockCarsSlider.excerpt
+            } only %}
+        {{ closeSection()|raw }}
+    {% endif %}
+    {% if bottomImage %}
+          <div class="l-homepage__bottom-image bottom-image">
+                {% include 'components/atoms/image/image_background.twig' with bottomImage|merge({
+                    additionalClass: 'bottom-image__img',
+                    bottomImageMobile: mobileImage
+                }) %}
+            </div>
+         
+    {% endif %}
+</div>
+<style>
+@media screen and (max-width:1280px) {
+    .slide__link {
+        margin-top:40px;
+    }
+    .m-hero-slider .slide__title {
+        height:auto;    
+    }
+}
+
+</style>
+

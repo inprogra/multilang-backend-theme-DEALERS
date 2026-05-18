@@ -1,0 +1,10 @@
+<div class="{{ additionalClass|e('html_attr') }} a-video js-video">
+    <div class="a-video__icon">
+        {{ getSVG('play')|raw }}
+    </div>
+    {% include 'components/atoms/image/image.twig' with image|merge({
+        additionalClass: 'a-video__img'
+    }) only %}
+    <iframe data-src="https://www.youtube.com/embed/{{ video }}?autoplay=1&rel=0"
+            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>

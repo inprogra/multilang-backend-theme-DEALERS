@@ -1,0 +1,249 @@
+<div class="l-model-single js-model-single">
+	{{ openSection(1, 2, false)|raw }}
+	{% include 'components/atoms/site-heading/site-heading.twig' with {
+            heading: heading
+        } only %}
+	{{ closeSection(false)|raw }}
+	<div class="l-model-single__versions-slider versions-slider js-model-single__versions-slider">
+		<div class="versions-slider__container container">
+
+
+			<div class="versions-slider__slider js-versions-slider__slider" {% if versions|length > 3 %} data-allow-navigation="true" {% endif %}>
+				<div class="swiper-container versions-slider__swiper-container">
+					<div class="swiper-wrapper">
+						{% for key,version in versions %}
+							{% set class = ['versions-slider__slide', 'slide', 'swiper-slide',] %}
+
+							{% if key == 0 %}
+								{% set class = class|merge(['is-active']) %}
+							{% endif %}
+
+							{% if versions|length == 1 %}
+								{% set class = class|merge(['versions-slider__slide--one-in-row']) %}
+							{% elseif versions|length <= 3 %}
+								{% set class = class|merge(['versions-slider__slide--three-in-row']) %}
+							{% endif %}
+
+							<div class="{{ class|join(' ') }}" data-index="{{ key }}">
+								<div class="slide__img-wrapper">
+									{% include 'components/atoms/image/image.twig' with version.featuredImage|merge({
+                                        additionalClass: 'slide__img',
+                                        preventLazyLoading: true
+                                    }) %}
+								</div>
+								<div class="slide__content">
+									<h3 class="slide__heading">{{ version.name }}</h3>
+									{% if version.hide_price != 'on' %}
+										<p class="slide__price">Od
+											<strong>{{ version.price|number_format(0, '.', '&nbsp;')|raw }}
+												zł</strong>
+										</p>
+									{% endif %}
+									<div class="slide__description">
+										{{ version.description|raw }}
+									</div>
+									<div class="slide__arrow">
+										{{ getSVG('arrow')|raw }}
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+				{% include 'components/atoms/slider-button/slider-button.twig' with {
+                    additionalClass: 'versions-slider__button versions-slider__button--prev js-versions-slider__button--prev',
+                    direction: 'prev'
+                } %}
+				{% include 'components/atoms/slider-button/slider-button.twig' with {
+                    additionalClass: 'versions-slider__button versions-slider__button--next js-versions-slider__button--next',
+                    direction: 'next'
+                } %}
+			</div>
+		</div>
+	</div>
+
+	<div class="l-model-single__versions-wrapper" style="">
+		{% for key,version in versions %}
+			<section class="l-model-single__version version js-model-single__version{% if key == 0 %} is-active{% endif %}" data-version="{{ key }}">
+				<section class="version__top top container">
+					<div class="top__inner">
+						<div class="top__column top__column--slider">
+							{% include 'components/molecules/car-gallery-slider/car-gallery-slider.twig' with {
+                                additionalClass: 'top__slider',
+                                gallery: version.gallery,
+                                preventLazyLoadingFirstSlide: true
+                            } %}
+						</div>
+						<div class="top__column top__column--data">
+							<div class="top__data data">
+
+								<dl class="data__prices prices">
+									{% if version.hide_price != 'on' %}
+										<dt class="prices__label"></dt>
+										<dd class="prices__total-value">
+											<span class="prices__value">{{ version.price|number_format(0, '.', '&nbsp;')|raw }}</span>&nbsp;zł&nbsp;brutto
+										</dd>
+									{% endif %}
+								</dl>
+								<h2 class="data__heading">Podstawowe dane techniczne:</h2>
+								<div class="data__lists">
+									<dl class="data__list">
+										<dt class="data__label">Rodzaj paliwa:</dt>
+										<dd class="data__value">{{ version.technicalData.fuelType }}</dd>
+										<dt class="data__label">Silnik:</dt>
+										<dd class="data__value">{{ version.technicalData.engine }}</dd>
+										<dt class="data__label">Moc maksymalna (KM):</dt>
+										<dd class="data__value">{{ version.technicalData.maxPowerText }}</dd>
+										<dt class="data__label">Czas przyspieszenia:</dt>
+										<dd class="data__value">{{ version.technicalData.acceleration }}&nbsp;s</dd>
+										<dt class="data__label">
+											{% if fuelType == 'Elektryczny' %}Zużycie energii:{% else %}Śr. spalanie:
+											{% endif %}
+										</dt>
+										<dd class="data__value">{{ version.technicalData.fuelConsumption }}&nbsp;l/100km</dd>
+										<dt class="data__label">Prędkość maksymalna:</dt>
+										<dd class="data__value">{{ version.technicalData.maxSpeed }}&nbsp;km/h</dd>
+
+									</dl>
+									<dl class="data__list">
+										<dt class="data__label">Pojemność bagażnika:</dt>
+										<dd class="data__value">{{ version.technicalData.cargoCapacity }}&nbsp;l</dd>
+										<dt class="data__label">Miejsc:</dt>
+										<dd class="data__value">{{ version.technicalData.seats }}</dd>
+										<dt class="data__label">Wysokość:</dt>
+										<dd class="data__value">{{ version.technicalData.height }}&nbsp;cm</dd>
+										<dt class="data__label">Długość:</dt>
+										<dd class="data__value">{{ version.technicalData.length }}&nbsp;cm</dd>
+										<dt class="data__label">Szerokość z lusterkami
+											
+											</dt>
+										<dd class="data__value">{{ version.technicalData.width}}&nbsp;cm</dd>
+
+										{% if version.technicalData.erange %}
+										<dt class="data__label">Zasięg na silniku elektr.:
+											</dt>										
+											<dd class="data__value">{{ version.technicalData.erange }}</dd>
+										{% endif %}
+									</dl>
+								</div>
+								<div class="data__see-more">
+									<a class="data__see-more-button" href="{{ version.fullTechnicalDataLink.url }}" {% if version.fullTechnicalDataLink.nofollow %} rel="noopener noreferrer nofollow" {% endif %} {% if version.fullTechnicalDataLink.target == '_blank' %} target="_blank" {% endif %}>Zobacz pełne dane techniczne</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				{{ openSection(false, 2)|raw }}
+				{% include 'components/organisms/two-column-content-component/two-column-content-component.twig' with {
+                    additionalClass: 'version__two-column-content-component',
+                    equalColumns: true,
+                    reverse: true,
+                    heading: version.twoColumnContentComponent.heading,
+                    content: version.twoColumnContentComponent.content,
+                    buttons: [
+                        {
+                            url: version.twoColumnContentComponent.testDriveLink,
+                            text: 'Jazda testowa',
+                        },
+                        {
+                            url: version.twoColumnContentComponent.link.url,
+                            target: version.twoColumnContentComponent.link.target,
+                            nofollow: version.twoColumnContentComponent.link.nofollow,
+                            text: 'Konfigurator'
+                        }
+                    ],
+                    image: version.twoColumnContentComponent.image,
+                    video: version.twoColumnContentComponent.video
+                } only %}
+				{{ closeSection()|raw }}
+				{{ version.content|raw }}
+				{{ version.overrideContent|raw }}
+			</section>
+		{% endfor %}
+	</div>
+</div>
+{% if versions|length != 1 %}
+	<div class="version_hide" style="display:none;">
+		{% include 'components/atoms/select_new/select-form-model.twig' with {
+                                    versions: versions
+                                }%}
+	</div>
+{% endif %}
+ <script type="text/javascript">
+$(document).ready(function() {
+    
+    $('#map:gt(0)').remove();
+    $('.data__prices.prices .prices__label').html($('.version_hide > div'));
+    $('select[name="version-type"]').on('change',function() {
+
+        
+        $('.versions-slider__slide:eq('+$(this).find('option:selected').val()+')').click();
+        $('select[name="version-type"] option:selected').removeAttr('selected');
+        $('select[name="version-type"] option[value='+$(this).find('option:selected').val()+']').attr('selected','selected');
+       
+        $('.gmap_map.container:visible').append($('#map'));    
+    })
+    $('.versions-slider__slide').click(function() {
+        $('select[name="version-type"] option:selected').removeAttr('selected');
+        $('select[name="version-type"] option[value='+$(this).index()+']').attr('selected','selected');
+    });
+      
+})
+
+</script>
+<style>
+	.versions-slider__slide {
+		flex-wrap: wrap;
+	}
+	.l-model-single .versions-slider .slide__arrow {
+		left: 50% !important;
+	}
+	.l-model-single .versions-slider__slide--one-in-row .slide__content {
+
+		padding-top: 10px;
+		width: 100%;
+
+	}
+	.slide__description ul {
+		margin: 0;
+		padding: 0 16px;
+	}
+	.slide__description ul li {
+		font-size: 14px;
+		margin-bottom: 8px;
+	}
+	.l-model-single .versions-slider__slide {
+		width: 346px;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	.l-model-single .versions-slider__slider {
+		width: 100%;
+	}
+	.a-input__label {
+		font-size: 12px;
+		top: 6px;
+	}
+	.prices__label {
+		width: 220px;
+	}
+	select[name="version-type"] {
+		width: 220px;
+	}
+	@media screen and(max-width: 997px) {
+		.top__data.data .data__prices.prices {
+			flex-direction: column;
+		}
+		.prices__label {
+			width: 100%;
+		}
+		select[name="version-type"] {
+			margin-bottom: 16px;
+		}
+		.l-model-single .version .top .data .prices__total-value {
+			text-align: left;
+			width: 100%;
+		}
+	}
+</style>

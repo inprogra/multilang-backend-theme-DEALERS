@@ -1,0 +1,24 @@
+.a-error {
+  display: none;
+  align-items: center;
+  font-size: 12px;
+  line-height: 20px;
+  color: $red-error;
+
+  svg {
+    display: flex;
+    width: 12px;
+    height: 12px;
+    margin-right: 0.75rem;
+  }
+
+  &__text {}
+
+  &.is-visible {
+    display: flex;
+  }
+}
+
+.a-checkbox + .a-error {
+  margin-left: 3.25rem;
+}

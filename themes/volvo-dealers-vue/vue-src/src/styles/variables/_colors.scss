@@ -1,0 +1,61 @@
+// Volvo Color Palette - Matching partners_site_v2
+
+// Base Colors
+$white: #fff;
+$black: #141414;
+
+// Brand Colors
+$blue: #284E80;
+$blue-light: #1C6BBA;
+
+// Semantic Colors
+$primary: $black;
+$secondary: $blue-light;
+$hover: #527198;
+$disabled: #91a4bd;
+
+// Status Colors
+$red-error: #BF2012;
+$orange: #BE834A;
+$green: #69875C;
+
+// Grey Scale
+$grey-100: #FAFAFA;
+$grey-200: #EBEBEB;
+$grey-300: #D5D5D5;
+$grey-400: #707070;
+
+// Body
+$body-color: $black;
+$body-bg: $white;
+
+// Links
+$link-color: $blue-light;
+$link-hover-color: $hover;
+
+// Header
+$header-bg: $white;
+$header-border: $grey-200;
+
+// Navigation
+$nav-link-color: $black;
+$nav-link-hover: $blue-light;
+
+// Buttons
+$btn-primary-bg: $blue-light;
+$btn-primary-color: $white;
+$btn-primary-hover: $hover;
+
+$btn-secondary-bg: transparent;
+$btn-secondary-color: $black;
+$btn-secondary-border: $black;
+
+// Cards
+$card-bg: $white;
+$card-border: $grey-200;
+$card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+// Footer
+$footer-bg: $grey-100;
+$footer-color: $black;
+$footer-border: $grey-200;

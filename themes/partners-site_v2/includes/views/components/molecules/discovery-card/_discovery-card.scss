@@ -1,0 +1,195 @@
+.discoveryCardMainContainer{
+  width: 100%;
+  height: auto;
+  padding: 48px 0px;
+  background: $white;
+  
+  .discoveryCardMainRow{
+    width: 95%;
+    max-width: 1609px;
+    height: auto;  
+    margin-left: auto;
+    margin-right: auto; 
+    display: flex;
+    justify-content: space-between;
+
+    @include media-breakpoint-down(lg) {
+      flex-wrap: wrap;
+      width: 96%;
+    }
+
+    @include media-breakpoint-down(xs){
+      justify-content: center;
+    } 
+
+    .discoveryCardMainColumn{
+      width: 48%;
+      max-width: 792px;
+      height: auto;
+      background: #FAFAFA;
+      position: relative;
+      padding-bottom: 70px;
+
+
+      @include media-breakpoint-down(lg) {
+        width: 480px;
+        margin: 0px;
+        
+
+      }
+
+      @include media-breakpoint-down(md) {
+        width: 48%;
+        padding-bottom: 32px;
+
+      }
+
+      @include media-breakpoint-down(xs) {
+        width: 327px;
+        padding-bottom: 32px;
+        margin-bottom: 16px;
+      }
+      
+      .discoveryCardBox{
+        width: 100%;
+        height: 100%;
+
+        .discoveryCardImageContainer{
+          width: 100%;
+          height: 25vw;
+          background: grey;
+          overflow: hidden;
+
+          
+          
+          img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+          // @include media-breakpoint-down(md) {
+          //   height: 197px;
+          // }
+
+          @include media-breakpoint-down(xs) {
+            height: 184px;
+          }
+        }
+        .discoveryCardDescriptionContainer{
+          width: 100%;
+          height: auto;
+          padding: 48px 48px 0px 48px;
+
+          @include media-breakpoint-down(md) {
+            padding: 32px 20px 0px 20px;
+          }
+          @include media-breakpoint-down(sm) {
+            padding: 32px 32px 0px 32px;
+          }
+
+          .discoveryCardCategory{
+            width: 100%;
+            height: 24px;
+            margin-bottom: 8px;
+
+            span{
+              font-size: 16px;
+              font-weight: 350;
+              color: #616161;
+              text-transform: capitalize;
+            } 
+
+          }
+          .discoveryCardTitle{
+            width: 100%;
+            height: auto;
+            min-height: 40px;
+            margin: 8px 0px;
+
+            h3{
+              color: #0A0A0A; 
+              font-size: 32px;
+              font-weight: 500;
+              
+              @include media-breakpoint-down(lg) {
+                font-size: 30px;
+              }
+              @include media-breakpoint-down(md) {
+                font-size: 28px;
+              }
+
+              @include media-breakpoint-down(xs) {
+                font-size: 24px;
+                line-height: 32px;
+              }
+            }
+
+          }
+          .discoveryCardDescription{
+            width: 100%;
+            height: 48px;
+            margin: 8px 0px;
+            
+
+            @include media-breakpoint-down(md) {
+              height: auto;
+            }
+
+            p{
+              font-size: 16px;
+              font-weight: 350;
+              color: #616161; 
+              margin-bottom: 0px;
+            }
+
+          }
+        }
+        .buttonContainer{
+          width: 100%;
+          height: 48px;
+          margin-top: 16px;
+          padding-left: 48px;
+
+          @include media-breakpoint-down(xs) {
+            height: auto;
+            padding-left: 32px;
+          }
+
+          .btnBody{
+            width: 115px;
+            height: 48px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #0A0A0A;
+            border-radius: 4px;
+            background: transparent;
+            position: relative;
+            transition: 0.4s;
+
+            &:hover{
+              background: #0A0A0A;
+              transition: 0.4s;
+            }
+
+            &:hover .buttonHref{
+              color: #FAFAFA;
+              transition: 0.4s;
+            }
+
+            .buttonHref{
+              display: block;
+              text-align: center;
+              text-decoration: none;
+              width: 100%;
+              height: 100%;
+              color: #0A0A0A;
+              font-size: 16px;
+              font-weight: 500;
+              padding: 12px 24px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

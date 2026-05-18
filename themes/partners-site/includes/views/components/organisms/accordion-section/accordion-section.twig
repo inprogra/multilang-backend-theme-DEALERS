@@ -1,0 +1,46 @@
+<div class="{{ additionalClass|e('html_attr') }} o-accordion-section">
+    <div class="o-accordion-section__container container">
+        {% if heading %}
+            <h2 class="h2 o-accordion-section__heading heading">
+                {% if heading.black %}
+                    <span class="heading__black">{{ heading.black|trim|raw }}</span>
+                {% endif %}
+                {% if heading.grey %}
+                    <span class="heading__grey">{{ heading.grey|trim|raw }}</span>
+                {% endif %}
+            </h2>
+        {% endif %}
+        <ul class="o-accordion-section__accordion accordion js-accordion">
+            {% for accordionItem in accordion %}
+                {% if accordionItem.items or accordionItem.description %}
+                    <li class="accordion__item item js-accordion__item">
+                        <div class="item__top js-accordion__item-top">
+                            <h3 class="item__heading">
+                               {% if accordionItem.heading  == 'Usługi serwisowe 4+' %}
+                                    Serwis rosnących rabatów (Program 4+)
+                                            {% else %}  
+                                      {{ accordionItem.heading|trim }}
+                                            {% endif %}
+                          
+                            </h3>
+                        </div>
+                        <div class="item__bottom js-accordion__item-bottom">
+                            <div class="item__bottom-inner js-accordion__item-bottom-inner">
+                                {% if accordionItem.items %}
+                                    <ul class="item__list">
+                                        {% for item in accordionItem.items %}
+                                            <li class="item__list-item">{{ item|trim|raw }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                                {% if accordionItem.description %}
+                                    <div class="item__description">{{ accordionItem.description|trim|raw }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>

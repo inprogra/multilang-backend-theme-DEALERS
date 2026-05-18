@@ -1,0 +1,347 @@
+{% set header_type = '1' %}
+<div class="l-stock js-stock">
+	{{ openSection(1, 2, false)|raw }}
+	{% include 'components/atoms/breadcrumbs/breadcrumbs.twig' with {
+		type: 'Dostępne na miejscu',
+		type_link: '#',
+		path: ''
+	} %}
+	<div class="stock_cars_heading">
+	{% include 'components/atoms/site-heading/site-heading.twig' with {
+			header_type: header_type,
+            heading: 'Dostępne na|| miejscu',
+            description: 'Chcesz mieć auto już niedługo? Zapoznaj się z naszą ofertą'
+        } %}
+	</div>
+	{{ closeSection(false)|raw }}
+	<form class="l-stock__form js-stock__form">
+		<div class="l-stock__filters filters container">
+			<div class="filters__top top">
+				<h2 class="h4 top__heading">{{ __('Znajdź auto dla siebie:') }}</h2>
+				{% if showroomFilters.filters %}
+					{% include 'components/atoms/showroom-filter/showroom-filter.twig' with {
+                    additionalClass: 'top__showroom-filter',
+                    showAllButton: true,
+                    filters: showroomFilters.filters,
+                    selected: showroomFilters.selected
+                } %}
+				{% endif %}
+			</div>
+			<div class="filters__content content">
+				{% for filterName, filter in mainFilters %}
+					<div class="content__item">
+						{% include 'components/atoms/select/select-multi.twig' with {
+                            label: filter.label,
+                            name: filterName,
+                            items: filter.values,
+                            selected: filter.selected
+                        } %}
+					</div>
+				{% endfor %}
+
+				<div class="content__row" id="rest__fields">
+
+					<div class="content__additional-filters additional-filters js-stock__filters-more">
+						<div class="additional-filters__inner js-stock__filters-more-inner">
+
+
+							{% for filterName, filter in secondaryFilters %}
+								{% if filterName != 'gearbox' and filterName != 'production-year' and filterName != 'distance' and 'radio' not in filterName %}
+
+									<div class="content__item">
+										{% include 'components/atoms/select/select-multi.twig' with {
+                                        label: filter.label,
+                                        name: filterName,
+                                        items: filter.values,
+                                        selected: filter.selected
+                                    } %}
+									</div>
+								{% endif %}
+							{% endfor %}
+							
+							{% for filterName, filter in secondaryFilters %}
+								{% if filterName == 'production-year' %}
+
+									<div class="content__item">
+										{% include 'components/atoms/select/select-multi.twig' with {
+                                        label: filter.label,
+                                        name: filterName,
+                                        items: filter.values,
+                                        selected: filter.selected
+                                    } %}
+									</div>
+								{% endif %}
+							{% endfor %}
+							{% for filterName, filter in secondaryFilters %}
+								{% if filterName == 'distance'  %}
+
+									<div class="content__item">
+										{% include 'components/atoms/select/select-multi.twig' with {
+                                        label: filter.label,
+                                        name: filterName,
+                                        items: filter.values,
+                                        selected: filter.selected
+                                    } %}
+									</div>
+								{% endif %}
+							{% endfor %}
+							<div class="content__item content__item--range">
+								{% include 'components/atoms/input-range/input-range.twig' with {
+                                    additionalClass: 'content__input-range',
+                                    label: priceRangeFilter.label,
+                                    name: priceRangeFilter.name,
+                                    min: priceRangeFilter.min,
+                                    max: priceRangeFilter.max,
+                                    selected: priceRangeFilter.selected
+                                } %}
+							</div>
+							{% for filterName, filter in secondaryFilters %}
+								{% if 'radio' in filterName %}
+									<div class="content__item">
+										{% include 'components/atoms/radio/radio.twig' with {
+                                        label: filter.label,
+                                        name: filterName,
+                                        items: filter.values,
+                                        selected: filter.selected
+                                    } %}
+									</div>
+								{% endif %}
+							{% endfor %}
+							
+							
+						</div>
+
+					</div>
+
+				</div>
+
+				<div id="mobile_fields"></div>
+				<div class="content__bottom">
+					<button type="button" class="content__additional-filters-button js-stock__filters-more-button" data-more="Więcej filtrów" data-less="Mniej filtrów">Więcej filtrów</button>
+				</div>
+				
+
+				<div class="content__submit">
+					<div class="selected__options">
+						<div>Wybrane opcje:</div>
+						<ul id="active_filters" class="active_layers">
+
+							
+						</ul>
+						<div class="clear"></div>
+					</div>
+					<div class="clearout__filters" id="reset__filters" >Wyczyść filtry</div>
+
+					{% include 'components/atoms/button/button.twig' with {
+                        'text': 'Wyszukaj',
+                        'additionalClass': 'content__submit-button',
+                        'type': 'submit'
+                    } %}
+				</div>
+			</div>
+		</div>
+		<div class="l-stock__cars-wrapper js-stock__cars-wrapper">
+			{% include 'layouts/stock/stock-cars.twig' with {
+				phoneJs: phoneJs,
+                cars: cars,
+                carsCount: carsCount,
+                carsCountText: carsCountText,
+                pagination: pagination,
+                featuredCars: featuredCars
+            } only %}
+		</div>
+	</form>
+</div>
+<style>
+	@media screen and (min-width:1680px) {
+		.o-stock-cars-slider__container.container {
+			max-width:1600px;
+		}
+	}
+	  .l-stock .filters .content__submit {
+        border-top: 1px solid #D5D5D5;
+        padding:0;
+    }
+	.clearout__filters {
+		margin-right: 24px;
+		color: #1C6BBA;
+		font-size: 14px;
+		line-height: 40px;
+	}
+	.remove_filter img {
+		height: 8px;
+		margin-top: -1px;
+		margin-left: 2px;
+	}
+	.clearout__filters:hover {
+		cursor: pointer;
+	}
+	.content__submit {
+		position: relative;
+		
+	}
+	.selected__options {
+		position: absolute;
+		left: 0;
+		top: 16px;
+		font-size: 14px;
+		width: 100%;
+		max-width: 880px;
+	}
+	.selected__options > div:not(.clear) {
+		float: left;
+		height: }
+	.active_layers {
+		max-width: 880px;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.active_layers li {
+		position: relative;
+		display: inline-block;
+		background: #ebebeb;
+		font-size: 12px;
+		color: #707070;
+		padding: 2px 12px 4px;
+		border-radius: 12px;
+		margin-left: 8px;
+		margin-bottom: 8px;
+	}
+	.active_layers li span:hover {
+		cursor: pointer;
+	}
+	.tippy-box {
+		white-space: pre-wrap!important;
+	}
+	.tipsy-content {
+		text-align:left!important;
+		font-size:12px;
+		line-height:18px;
+	}
+
+	@media screen and (min-width:998px) {
+		
+		.content__submit {
+				max-width: 100%;
+				margin: 0 auto;
+				padding-top: 6rem !important;
+				
+		}
+		.l-stock .filters .content__submit {
+			margin-top:1.4rem;
+		}
+
+	}
+	@media screen and(max-width:997px) {
+		
+		.selected__options {
+			display: none;
+		}
+		.clearout__filters {
+			display: none;
+		}
+	}
+	@media screen and (max-width:991px) {
+		#reset__filters,
+		.selected__options {
+			display:none!important;
+		}
+
+	}
+
+.radio-list {
+    padding:12px 0 0 8px;
+     display:flex;
+}
+.radio-el {
+   position: relative;
+   margin-right:14px;
+   flex-grow:1;
+   }
+.js-radio label {
+    font-size:14px;
+    line-height:20px;   
+    display:inline;
+    padding-left:5px;
+
+.js-radio label:hover {
+    cursor:pointer;
+}
+.js-radio input {
+    opacity:0;
+    position:absolute;
+    width:20px;
+    height:20px;
+    left:0;
+    top:0;
+    margin-right:4px;
+}
+.checkmark {
+    position:absolute;
+    left:0;
+    top:0;
+    width:20px;
+    height:20px;
+    background:#fff;
+    border:1px solid #707070;
+    border-radius:100%;
+}
+.radio-el:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.checkmark input:checked ~ .checkmark:after {
+  display: block;
+}
+.js-radio span {
+
+}
+.radio-el input:checked ~ .checkmark {
+    border: 6px solid #1C6BBA;
+    background:#fff;
+}
+.radio-el input:checked ~ .checkmark::after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: yellow;
+}
+@media screen and (max-width:997px) {
+
+    .radio-list {
+        padding: 16px 12px 16px 14px;
+        justify-content:center;
+        
+    }
+
+}
+
+</style>
+<script type="text/javascript">
+
+	function initDelete(e) {
+		e.parentNode.parentNode.removeChild(e.parentNode);
+		document.querySelectorAll('[data-elem="'+e.parentNode.getAttribute('data-element')+'"]').forEach(x => x.remove());
+	
+	    var event = new Event('click');
+		document.querySelector('[data-value="'+e.parentNode.getAttribute('data-element')+'"]').dispatchEvent(event);
+		
+}
+const elements = document.querySelector('select');
+document.addEventListener('field-change', (event) => {
+	console.log(event);
+});
+var p = 0;
+document.querySelectorAll('.content__item').forEach(s => {
+	s.setAttribute('id','form_block_'+p);
+	p++;
+})
+
+</script>

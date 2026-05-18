@@ -1,0 +1,24 @@
+<div class="o-hero-image">
+    <div class="o-hero-image__container container image_Container">
+    <div class="descriptionHeroImage">
+    <h2><span>{{smallDescription|raw  }}</span></h2>
+        <h2>{{ bigDescription|raw  }}</h2>   
+    </div> 
+
+    {% if darkOverlay %}
+    <div class="darkCurtain"></div>
+     {% endif %}
+        {% include 'components/atoms/image/image.twig' with image|merge({
+            additionalClass: 'o-hero-image__img'
+        }) %}
+    
+        {% include 'components/atoms/image/image-query.twig' with {
+            additionalClass: 'o-hero-image__img',
+            image: image 
+        } %}
+    </div> 
+
+</div>
+
+
+

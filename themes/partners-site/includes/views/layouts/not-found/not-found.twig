@@ -1,0 +1,22 @@
+<div class="l-not-found">
+    <div class="container">
+        <div class="l-not-found__top">
+            {% include 'components/atoms/logo/logo.twig' with logo|merge({
+                'additionalClass': 'l-not-found__logo'
+            }) only %}
+        </div>
+        <div class="l-not-found__content content">
+            <div class="content__text-wrapper">
+                <p class="content__text">404</p>
+                <img src="{{ img }}" alt="" class="content__img">
+            </div>
+        </div>
+        <div class="l-not-found__bottom">
+            <h1 class="h2 l-not-found__heading">
+                <span>Strony nie znaleziono</span>
+                <br>
+                <a href="{{ logo.url }}">Przejdź na stronę główną</a>
+            </h1>
+        </div>
+    </div>
+</div>

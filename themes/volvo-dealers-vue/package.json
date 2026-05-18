@@ -1,0 +1,30 @@
+{
+  "name": "volvo-dealers-vue-theme",
+  "version": "1.0.0",
+  "description": "WordPress theme for Volvo car dealerships built with Vue.js 3",
+  "main": "index.php",
+  "scripts": {
+    "info": "echo 'Theme works without building! See README.md for details.'",
+    "install-deps": "cd vue-src && npm install --no-optional",
+    "dev": "cd vue-src && npm run dev",
+    "build": "cd vue-src && npm run build",
+    "preview": "cd vue-src && npm run preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/volvo-dealers-vue"
+  },
+  "keywords": [
+    "wordpress",
+    "theme",
+    "vue",
+    "volvo",
+    "car-dealership"
+  ],
+  "author": "BlackBoxAI",
+  "license": "GPL-2.0-or-later",
+  "bugs": {
+    "url": "https://github.com/your-org/volvo-dealers-vue/issues"
+  },
+  "homepage": "https://volvocarwarszawa.pl"
+}

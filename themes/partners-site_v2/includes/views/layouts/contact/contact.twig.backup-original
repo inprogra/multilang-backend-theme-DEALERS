@@ -1,0 +1,172 @@
+<div class="l-contact js-contact">
+    <div class="l-contact__header">
+        {{ openSection(1, 2)|raw }}
+        {% include 'components/atoms/site-heading/site-heading.twig' with {
+            heading: siteHeading.heading,
+            description: siteHeading.description
+        } only %}
+        {{ closeSection()|raw }}
+    </div>
+    <div class="l-contact__container container">
+        <div class="l-contact__wrapper">
+            <div class="l-contact__main main">
+                {% for showroom in showrooms %}
+                    <section class="main__showroom-info showroom-info js-showroom-info{% if not showroom.map %} showroom-info--has-no-map{% endif %}">
+                        <div class="showroom-info__inner">
+                            {% if showroom.map %}
+                                <div class="showroom-info__map">
+                                    {% include 'components/atoms/map/map.twig' with {
+                                        additionalClass: 'showroom-info__map-inner',
+                                        lat: showroom.map.lat,
+                                        lng: showroom.map.lng,
+                                        pin: showroom.mapPin
+                                    } only %}
+                                </div>
+                            {% endif %}
+                            <div class="showroom-info__content content">
+                                <h1 class="content__title">{{ showroom.title|raw }}</h1>
+                                <div class="content__columns">
+                                    <div class="content__column">
+                                        <div class="content__contact">
+                                            <p>{{ showroom.street }}</p>
+                                            <p>{{ showroom.zipcode }} {{ showroom.city }}</p>
+                                            <p><a href="tel:{{ showroom.phone|replace({' ': ''}) }}">{{ showroom.phone }}</a></p>
+                                        </div>
+                                    </div>
+                                    <div class="content__column content__column--opening-hours">
+                                        {% if showroom.showroomOpeningHours %}
+                                            <div class="content__opening-hours">
+                                                <h2 class="content__subtitle">Godziny otwarcia salonu</h2>
+                                                {% if showroom.showroomOpeningHours.week.from %}
+                                                    <p>Poniedziałek - Piątek
+                                                        <strong>{{ (showroom.showroomOpeningHours.week.from|date('H:i') ~ '&#8209;' ~ showroom.showroomOpeningHours.week.to|date('H:i'))|raw }}</strong>
+                                                    </p>
+                                                {% endif %}
+                                                {% if showroom.showroomOpeningHours.saturday.from %}
+                                                    <p>Sobota
+                                                        <strong>{{ showroom.showroomOpeningHours.saturday.from|date('H:i') ~ '-' ~ showroom.showroomOpeningHours.saturday.to|date('H:i') }}</strong>
+                                                    </p>
+                                                {% endif %}
+                                                {% if showroom.showroomOpeningHours.additionalInfo %}
+                                                    <p class="content__additional-info">{{ getSVG('warningIcon')|raw }}{{ showroom.showroomOpeningHours.additionalInfo }}</p>
+                                                {% endif %}
+                                            </div>
+                                        {% endif %}
+                                        {% if showroom.serviceOpeningHours %}
+                                            <div class="content__opening-hours">
+                                                <h2 class="content__subtitle">Godziny otwarcia serwisu</h2>
+                                                {% if showroom.serviceOpeningHours.week.from %}
+                                                    <p>Poniedziałek - Piątek
+                                                        <strong>{{ (showroom.serviceOpeningHours.week.from|date('H:i') ~ '&#8209;' ~ showroom.serviceOpeningHours.week.to|date('H:i'))|raw }}</strong>
+                                                    </p>
+                                                {% endif %}
+                                                {% if showroom.serviceOpeningHours.saturday.from %}
+                                                    <p>Sobota
+                                                        <strong>{{ showroom.serviceOpeningHours.saturday.from|date('H:i') ~ '-' ~ showroom.serviceOpeningHours.saturday.to|date('H:i') }}</strong>
+                                                    </p>
+                                                {% endif %}
+                                                {% if showroom.serviceOpeningHours.additionalInfo %}
+                                                    <p class="content__additional-info">{{ showroom.serviceOpeningHours.additionalInfo }}</p>
+                                                {% endif %}
+                                            </div>
+                                        {% endif %}
+                                        {% if showroom.customerServiceOfficeOpeningHours %}
+                                            <div class="content__opening-hours">
+                                                <h2 class="content__subtitle">Biuro obsługi klienta</h2>
+                                                {% if showroom.customerServiceOfficeOpeningHours.week.from %}
+                                                    <p>Poniedziałek - Piątek
+                                                        <strong>{{ (showroom.customerServiceOfficeOpeningHours.week.from|date('H:i') ~ '&#8209;' ~ showroom.customerServiceOfficeOpeningHours.week.to|date('H:i'))|raw }}</strong>
+                                                    </p>
+                                                {% endif %}
+                                                {% if showroom.customerServiceOfficeOpeningHours.saturday.from %}
+                                                    <p>Sobota
+                                                        <strong>{{ showroom.customerServiceOfficeOpeningHours.saturday.from|date('H:i') ~ '-' ~ showroom.customerServiceOfficeOpeningHours.saturday.to|date('H:i') }}</strong>
+                                                    </p>
+                                                {% endif %}
+                                                {% if showroom.customerServiceOfficeOpeningHours.additionalInfo %}
+                                                    <p class="content__additional-info">{{ showroom.customerServiceOfficeOpeningHours.additionalInfo }}</p>
+                                                {% endif %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="showroom-info__see-employees js-showroom-info__see-employees js-scroll-to"
+                                data-scroll-to-element=".js-contact__employees"
+                                data-showroom-name="{{ showroom.name }}">Zobacz dane kontaktowe
+                        </button>
+                    </section>
+                {% endfor %}
+                <section class="main__employees employees js-contact__employees">
+                    <h2 class="h2 employees__heading">Pracownicy dealerstwa</h2>
+                    <form class="employees__form form js-contact-search" novalidate>
+                        {% include 'components/atoms/input/input.twig' with {
+                            additionalClass: 'form__input js-contact-search__input',
+                            name: 'employee-name',
+                            label: 'Wpisz nazwisko, imię pracownika...'
+                        } %}
+                        {% if showroomFilters %}
+                            {% include 'components/atoms/showroom-filter/showroom-filter.twig' with {
+                                additionalClass: 'form__showroom-filter js-contact-search__showroom-filter',
+                                filters: showroomFilters,
+                                selectFirst: true
+                            } %}
+                        {% endif %}
+                    </form>
+                    {% set iterator = 0 %}
+                    {% for key,showroom in employeesShowrooms %}
+                        {% if showroom.categories|length > 0 %}
+                        <div class="employees__showroom js-contact-showroom{% if iterator == 0 %} is-active{% endif %}"
+                             data-showroom="{{ key }}">
+                            {% if employeesShowrooms|length > 1 %}
+                                <h3 class="employees__not-found js-contact-showroom-not-found">Nie znaleziono takiego pracownika. Sprawdź, czy nie znajdziesz go w innym dealerstwie.</h3>
+                            {% else %}
+                                <h3 class="employees__not-found js-contact-showroom-not-found">Nie znaleziono takiego pracownika.</h3>
+                            {% endif %}
+                            {% for category in showroom.categories %}
+                                <div class="employees__category category js-contact-category is-active">
+                                    <h3 class="category__heading">{{ category.name|raw }}:</h3>
+                                    <ul class="category__list">
+                                        {% for employee in category.employees %}
+                                            <li class="category__list-item js-contact-employee is-active"
+                                                data-name="{{ employee.name }}" data-phone="{{ employee.phone }}">
+                                                {% include 'components/atoms/contact-info/contact-info.twig' with {
+                                                    name: employee.name,
+                                                    position: employee.position,
+                                                    phone: employee.phone,
+                                                    email: employee.email
+                                                } %}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endfor %}
+                            </div>{% set iterator = iterator + 1 %}
+                        {% endif %}
+                    {% endfor %}
+                </section>
+            </div>
+            <div class="l-contact__aside aside js-contact__aside js-sticky" data-sticky-media-query="(min-width: 992px)">
+                {% include 'components/organisms/form/form.twig' with {
+                    additionalClass: 'aside__form js-contact__form js-sticky__element',
+                    closeAdditionalClass:'js-contact__close',
+                    heading: 'Skontaktuj się z nami',
+                    source: source,
+                    destination: 'allvalues',
+                    partnerName: partnerName,
+                    showrooms: formShowrooms,
+                    thankyouImage: thankyouImage,
+                     thankYouCode: thankYouCode
+                } only %}
+                <div class="aside__bar">
+                    {% include 'components/atoms/button/button.twig' with {
+                        additionalClass: 'aside__bar-button js-contact__aside-open',
+                        text: 'Wyślij wiadomość'
+                    } only %}
+                </div>
+                <div class="aside__backdrop js-contact__close"></div>
+            </div>
+        </div>
+    </div>
+</div>

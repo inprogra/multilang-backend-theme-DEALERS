@@ -1,0 +1,16 @@
+{{ openSection(3,3,false)|raw }}
+    {% include 'components/organisms/text-editor/text-editor.twig' with {
+        content: "<p style=\"text-align:center;\">{{ __('Twoja zgoda dotyczy następujących domen: #{url}') }}</p>"
+    } only %}
+{{ closeSection(false)|raw }}
+{{ openSection(3,3,false)|raw }}
+<div  class="container" style="text-align: center">
+    {% include 'components/atoms/button/button-link.twig' with {
+        additionalClass: 'js-cookies-open-form',
+        secondary: true,
+        text: 'Zmień ustawienia cookie',
+        url: '/cookies?flushcookies=1'
+
+    } only %}
+</div>
+{{ closeSection(false)|raw }}

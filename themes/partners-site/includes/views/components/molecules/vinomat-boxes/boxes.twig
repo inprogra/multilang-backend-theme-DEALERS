@@ -1,0 +1,138 @@
+<div class="container">
+    <div class="vinomat_news_box">
+    
+    {% for single_news in news %}
+        <div class="vinomat_single_box">
+                <img src="{{single_news.image}}" />
+                <div class="vinomat_spacer">
+                <h2>{{ single_news.title }}</h2>
+                <span>{{ single_news.desc }}</span>
+                </div>
+                {% if single_news.link  %}
+                <div class="vinomat_link">
+                    <a href="{{single_news.link.url}}" target="_blank">Przeczytaj</a>
+                </div>
+                {% endif %}
+        </div>
+    {% endfor %}
+    {% if newsCount != 0 %}
+    {% for i in 1..newsCount %}
+           <div class="vinomat_single_box grey">
+
+           </div>
+    {% endfor %}
+    {% endif %}
+    </div>
+</div>
+<style>
+.vinomat_single_box.grey {
+    background:#FAFAFA;
+    box-shadow:none;
+}
+.vinomat_news_box {
+    display:flex;
+    margin-bottom:48px;
+    
+}
+.vinomat_news_box img {
+    width:100%;
+    max-height:200px;
+    border-radius:5px 5px 0 0;
+
+}
+.vinomat_news_box > div {
+    max-width:392px;
+    width:100%;
+    -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+    border-radius:0 0 4px 4px;
+}
+.vinomat_news_box > div:nth-of-type(odd) {
+    margin:0 24px;
+}
+.vinomat_news_box h2 {
+    font-size:14px;
+    line-height:20px;
+    font-weight:500;
+    margin:0;
+}
+.vinomat_news_box span {
+    font-size:14px;
+    line-height:20px;
+    font-weight:400;
+    color:#6D6D6D;
+}
+.vinomat_news_box > div > div.vinomat_spacer {
+    margin:8px 24px;
+    padding-bottom:24px;
+    border-bottom:1px solid #D5D5D5;
+}
+.vinomat_link {
+    text-align:right;
+    font-size:14px;
+    line-height:24px;
+    margin:0 24px 8px 24px;
+    font-weight:500;
+}
+
+@media screen and (max-width:568px) {
+    .vinomat_news_box {
+        flex-direction: column;
+        margin-bottom:24px;
+    }
+    .vinomat_news_box > div:nth-of-type(2n+1) {
+        margin:0;
+    }
+    .vinomat_news_box > div {
+        background-color:rgba(213, 213, 213, 0.3);
+        width:100%;
+        margin-left:0;
+        margin-right:0;
+        margin-bottom:16px!important;
+        max-width:100%;
+    }
+    .vinomat-form input[type="text"] {
+        margin-right:0;
+        margin-bottom:16px;
+    }
+    .vinomat-form input[type="submit"] {
+        width:100%!important;
+    }
+    .vinomat-search-inner h2 {
+        font-size:20px!important;
+        line-height:28px!important;
+    }
+    .vinomat_news_box h2 {
+        margin-left:96px;
+    }
+    .vinomat_news_box span { 
+        display:none;
+    }
+    .vinomat_news_box > div {
+        padding:12px;
+    }
+    .vinomat_news_box > div > div.vinomat_spacer {
+        border:0;
+        margin:0 0 8px 12px;
+        padding:0;
+    }
+    .vinomat_news_box img {
+        float:left;
+        border-radius:4px;
+        width:96px;
+    }
+    .vinomat_news_box .vinomat_link {
+        margin-bottom:0;
+    }
+    .vinomat_news_box a {
+        font-weight:400;
+        text-transform:uppercase;
+    }
+    .vinomat_link {
+        text-align:left;
+        margin-left:108px;
+    }
+   
+}
+</style>

@@ -1,0 +1,54 @@
+<div class="container">
+	<article class="{{ additionalClass|e('html_attr') }} o-blog-post-footer">
+		<div class="o-blog-post-footer__col">
+			<div class="o-blog-post-footer__content content o-blog-post-footer__author">
+            <div>
+                <h1 class="content__heading">AUTOR ARTYKUŁU:</h1>
+				{% include 'components/atoms/contact-info/contact-info.twig' with author|merge ({
+                                    additionalClass: 'content__contact-info',
+                                }) only %}
+                                </div>
+			</div>
+		</div>
+
+		{% if image and image.src is not empty %}
+<div class="o-blog-post-footer__col o-blog-post-footer__img-container">
+    {% include 'components/atoms/image/image.twig' with image|merge({
+        additionalClass: 'o-blog-post-footer__img'
+    }) only %}
+</div>
+<div class="o-blog-post-footer__col">
+    <div class="o-blog-post-footer__content content">
+        <div>
+            <h1 class="content__heading">{{ heading|trim }}</h1>
+            {% if content %}
+                {% for contentItem in content %}
+                    {% if contentItem.acf_fc_layout == 'description' %}
+                        <div class="content__description">
+                            <p>{{ contentItem.description|raw }}</p>
+                        </div>
+                    {% elseif contentItem.acf_fc_layout == 'link' %}
+                        {% if contentItem.buttonAction == 'form' %}
+                            {% include 'components/atoms/button/button.twig' with {
+                                additionalClass: 'content__button js-open-side-form',
+                                secondary: true,
+                                text: contentItem.buttonText
+                            } only %}
+                        {% elseif contentItem.link %}
+                            {% include 'components/atoms/button/button-link.twig' with contentItem.link|merge({
+                                additionalClass: 'content__button',
+                                secondary: true
+                            }) only %}
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+		
+	</article>
+</div>

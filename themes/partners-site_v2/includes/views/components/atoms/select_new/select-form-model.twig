@@ -1,0 +1,43 @@
+<div class="{{ additionalClass|e('html_attr') }} ">
+  <div class="a-select__input  is-active lead-type">
+  
+  <label for="lead-type" class="a-input__label js-input__label">Cena podstawowej wersji:</label>
+  <div class="a-select__input-arrow a-arrow a-arrow--bottom"></div>
+    <select name="version-type" id="lead-type" required>
+    {% for key,version in versions %}
+         <option value="{{key}}">{{version.name}}</option>
+    {% endfor %}     
+    </select>
+  </div>
+</div>
+</div>
+<style>
+  .always-active .a-input__label {
+    top: 6px;
+    font-size: 12px;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  #lead-type:focus {
+    outline: none;
+}
+  #lead-type {    
+    box-shadow: none;
+    width: 100%;
+    background: #fff;
+    height: 44px;
+    border: 1px solid #cccc;
+    border-radius: 4px;
+    padding: 2.5rem 2rem 0.8rem 2rem;
+    font-size:14px;
+  }
+  #lead-type option {
+    font-size:14px;
+  }
+  #lead-type  {
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+}
+</style>
+

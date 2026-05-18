@@ -1,0 +1,119 @@
+<?php
+
+if ( function_exists( 'acf_add_local_field_group' ) ) :
+	acf_add_local_field_group(
+		array(
+			'key'                   => 'group_6062c89279958',
+			'title'                 => 'Odstępy',
+			'fields'                => array(
+				array(
+					'key'               => 'field_6062ccff17095',
+					'label' => __( 'Odstępy', 'partners-site_v2' ),
+					'name'              => '',
+					'type'              => 'accordion',
+					'instructions'      => '',
+					'required'          => 0,
+					'conditional_logic' => 0,
+					'wrapper'           => array(
+						'width' => '',
+						'class' => '',
+						'id'    => '',
+					),
+					'open'              => 0,
+					'multi_expand'      => 0,
+					'endpoint'          => 0,
+				),
+				array(
+					'key'               => 'field_6062c8b4904c4',
+					'label' => __( 'Odstęp górny', 'partners-site_v2' ),
+					'name'              => 'margin-top',
+					'type'              => 'select',
+					'instructions'      => '',
+					'required'          => 0,
+					'conditional_logic' => 0,
+					'wrapper'           => array(
+						'width' => '',
+						'class' => '',
+						'id'    => '',
+					),
+					'choices'           => array(
+						1 => 'XS',
+						2 => 'S',
+						3 => 'M',
+						4 => 'L',
+						5 => 'XL',
+					),
+					'default_value'     => 3,
+					'allow_null'        => 0,
+					'multiple'          => 0,
+					'ui'                => 0,
+					'return_format'     => 'value',
+					'ajax'              => 0,
+					'placeholder'       => '',
+				),
+				array(
+					'key'               => 'field_6062c8cd904c5',
+					'label' => __( 'Odstęp dolny', 'partners-site_v2' ),
+					'name'              => 'margin-bottom',
+					'type'              => 'select',
+					'instructions' => __( 'Odstępy pomiędzy blokami nie sumują się. <br>Odstęp będzie równy większej wartości odstępu z sąsiadujących bloków.', 'partners-site_v2' ),
+					'required'          => 0,
+					'conditional_logic' => 0,
+					'wrapper'           => array(
+						'width' => '',
+						'class' => '',
+						'id'    => '',
+					),
+					'choices'           => array(
+						1 => 'XS',
+						2 => 'S',
+						3 => 'M',
+						4 => 'L',
+						5 => 'XL',
+					),
+					'default_value'     => 3,
+					'allow_null'        => 0,
+					'multiple'          => 0,
+					'ui'                => 0,
+					'return_format'     => 'value',
+					'ajax'              => 0,
+					'placeholder'       => '',
+				),
+				array(
+					'key'               => 'field_6062cd670fb9d',
+					'label'             => 'End',
+					'name'              => '',
+					'type'              => 'accordion',
+					'instructions'      => '',
+					'required'          => 0,
+					'conditional_logic' => 0,
+					'wrapper'           => array(
+						'width' => '',
+						'class' => '',
+						'id'    => '',
+					),
+					'open'              => 0,
+					'multi_expand'      => 0,
+					'endpoint'          => 1,
+				),
+			),
+			'location'              => array(
+				array(
+					array(
+						'param'    => 'block',
+						'operator' => '==',
+						'value'    => 'all',
+					),
+				),
+			),
+			'menu_order'            => 10,
+			'position'              => 'normal',
+			'style'                 => 'default',
+			'label_placement'       => 'top',
+			'instruction_placement' => 'label',
+			'hide_on_screen'        => '',
+			'active'                => true,
+			'description'           => '',
+		)
+	);
+endif;

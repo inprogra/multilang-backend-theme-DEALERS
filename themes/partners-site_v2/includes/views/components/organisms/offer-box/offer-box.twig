@@ -1,0 +1,54 @@
+<div class="o-stock-cars-slider">
+	<div class="o-stock-cars-slider__container container offerCardNewWidth">
+		{{ openSection(false,3,false)|raw }}
+		{% include 'components/atoms/section-heading/section-heading.twig' with {
+                additionalClass: 'o-stock-cars-slider__heading',
+                grey: heading,
+            } %}
+		{{ closeSection(false)|raw }}
+		<div class="o-stock-cars-slider__slider slider js-stock-cars-slider" style="position:relative;">
+			<div class="swiper-container js-stock-cars-slider__slider">
+				<div class="swiper-wrapper">
+					{% for box in offerBoxes %}
+						<div class="o-stock-cars-slider__slide swiper-slide">
+							<a href="{{ box.carUrl }}" class="o-stock-cars-slider__item o-stock-cars-slider__item--car car">
+								<div class="car__img-wrapper">
+                              
+									{% include 'components/atoms/image/image-box.twig' with {
+                                        image: box.image, 
+                                        additionalClass: 'car__img'
+                                    } only %}
+								</div>
+								<span class="car__category">{{ box.category }}</span>
+								<h3 class="car__name">{{ box.widget_model  }}</h3>
+								<div class="car__details">
+									<span class="car__engine">{{ box.engine}}</span>
+									<span class="car__price ">{{ box.price|number_format(0, '.', '&nbsp;')|raw }}&nbsp;zł</span>
+								</div>
+								<div class="car__bottom">
+									<span class="car__button">Zobacz auto</span>
+								</div>
+							</a>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+.o-stock-cars-slider .car__bottom{
+	justify-content: flex-start;
+	border: none;
+}
+
+.car__button{
+	color: #141414 !important;
+}
+.offerCardNewWidth{
+	max-width: 1608px;
+	width: 96%;
+}
+</style>
+

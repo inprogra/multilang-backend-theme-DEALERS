@@ -1,0 +1,30 @@
+<div class="l-multishowroom-homepage">
+    {{ openSection(2,2,false)|raw }}
+        <div class="container l-multishowroom-homepage__container">
+            {% include 'components/atoms/section-heading/section-heading.twig' with {
+                additionalClass: 'l-multishowroom-homepage__heading',
+                grey: 'Wybierz swój salon <strong>' ~ dealerName ~'</strong>'
+            } %}
+            <ul class="l-multishowroom-homepage__items">
+                {% for showroom in showrooms %}
+                    <li class="l-multishowroom-homepage__item item">
+                        <a href="{{ showroom.url }}" class="item__box">
+                            <h2 class="item__heading">{{ showroom.name }}</h2>
+                            <img class="item__img" src="https://image-render.cloud/api/renderImage?image={{showroom.image}}&size=600&height=660&fit=max&flip=1" />
+                          
+                        </a>
+                        <div class="item__bottom">
+                            <a href="{{ showroom.url }}" class="item__link">Wybierz</a>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {{ closeSection(false)|raw }}
+    <style>
+        .item__img {
+            width:100%;
+            height:auto!important;
+        }
+    </style>
+</div>

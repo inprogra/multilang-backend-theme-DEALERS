@@ -1,0 +1,35 @@
+<div class="m-two-column-list js-two-column-list">
+    <div class="m-two-column-list__container container">
+        {% include 'components/atoms/section-heading/section-heading.twig' with {
+            additionalClass: 'm-two-column-list__heading',
+            grey: heading
+        } %}
+        <div class="m-two-column-list__description">
+            {{ description|trim|raw }}
+        </div>
+        <div class="m-two-column-list__top js-two-column-list__top">
+            <button class="m-two-column-list__more js-two-column-list__more">
+                <span>{{ moreText|trim }}</span>{{ getSVG('chevron')|raw }}</button>
+        </div>
+        <div class="m-two-column-list__inner js-two-column-list__inner">
+            <div class="m-two-column-list__column js-two-column-list__column">
+                <div class="m-two-column-list__list">
+                    <ul class="m-two-column-list__list-inner">
+                        {% for item in list1 %}
+                            <li class="m-two-column-list__list-item">{{ item|trim }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="m-two-column-list__column js-two-column-list__column">
+                <div class="m-two-column-list__list">
+                    <ul class="m-two-column-list__list-inner">
+                        {% for item in list2 %}
+                            <li class="m-two-column-list__list-item">{{ item|trim }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

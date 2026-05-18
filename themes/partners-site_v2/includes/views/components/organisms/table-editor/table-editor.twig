@@ -1,0 +1,308 @@
+
+{% if content["caption"] %}
+	<div class="caption-title table-title-container">
+		{{ content["caption"]}}
+	</div>
+{% endif %}
+{% if blocked_column %}
+	
+		{% endif %}	
+	
+<div class="container color-variant-{{color}} {% if blocked_column %}custom_table{% endif %} table-container"  data-simplebar>
+	
+	<div class="virtual_table table-{{size}}"  id="table_slider">
+	
+		<div class="table_header" style="position:relative;">
+		
+			{% for s in content["header"] %}
+			
+				<div class="header_cell {% if loop.index == 1 %} {% if blocked_column %}static{% endif %} active {% endif %}">				
+					{{s["c"]}}
+				</div>
+			{% endfor %}
+		</div>
+		<div class="table_body ">
+			{% for s in content["body"] %}
+				<div class="table_row {% if loop.index == 1 %}{% if blocked_column %}{% endif %}{% endif %}" style="position:relative;">
+					{% for c in s %}
+						<div class="table_cell {% if loop.index == 1 %}{% if blocked_column %}static{% endif %} active {% endif %}">
+							{{ c["c"]|replace({"||" : "<br/>"})|raw }}
+						</div>
+					{% endfor %}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+	<div class="navigation_dots_table">
+		{% for s in content["header"] %}			
+						<div class="dot {% if blocked_column and loop.index == 1 %}static{% endif %} {% if loop.index == 1 %} active {% endif %}">							
+						</div>			
+		{% endfor %}
+	</div>
+</div>
+<style>
+	.fake_column {
+		width:30%;
+	}
+	.color-variant-1 .fake_column_header_cell:not(.static),
+.color-variant-1 .table_header > div {
+		background:#6d6d6d!important;
+		color:#fff!important;
+		font-size:14px;
+		line-height:20px;
+		text-transform:uppercase;
+	}
+	.color-variant-0 .fake_column_header_cell,
+	.color-variant-0 .table_header > div {
+		background:#000!important;
+		color:#fff!important;
+		font-size:14px;
+		line-height:20px;
+		text-transform:uppercase;
+	}
+	.navigation_dots_table {
+		margin:0 auto;
+		width:100%;
+		text-align:center;
+	}
+	.custom_table .navigation_dots_table {
+		padding-left:30%;
+	}
+	div.dot {
+		margin-top:18px;
+		width:12px;
+		height:12px;
+		border-radius:100%;
+		border:1px solid #d5d5d5;
+		display:inline-block;
+		margin-right:8px;
+	}
+	div.dot.active {
+		background:#6d6d6d;
+		border:1px solid #6d6d6d;
+	}
+	.caption-title {
+		text-align:center;
+		width:100%;
+		font-weight:600;
+		font-size:16px;
+		line-height:24px;
+
+	}
+	.table-container {
+		padding-top:12px;
+	}
+	.virtual_table {
+		border-top: 1px solid #C4C4C4;
+		border-bottom: 1px solid #C4C4C4;
+		border-left: 1px solid #C4C4C4;
+		border-right: 1px solid #C4C4C4;
+		margin: 0 auto;
+	}
+	.table-2 {
+		width: 677px;
+	}
+	.virtual_table:not(.table-2) {
+		width: 100%;
+	}
+	.table_header > *,
+	.table-3 .table_header > *,
+	.table-4 .table_header > *,
+	.table-5 .table_header > * {
+		flex: 1;
+	}
+	.table_body .table_row > div,
+	.table_header .header_cell {
+		border-right: 0!important;
+	}
+.virtual_table .table_header > div.static {
+	text-align:center;
+	border-right:0;
+}
+
+	.fake_column_header_cell,
+.virtual_table .table_header > div:not(.static) {
+		font-size: 14px;
+		font-weight: 600;
+		line-height: 20px;
+		text-align: center;
+		border-bottom: 1px solid #C4C4C4;
+
+	}
+	.virtual_table .table_header,
+	.virtual_table .table_body .table_row {
+		width: 100%;
+		display: flex;
+	}
+	.fake_column_header_cell,
+	.virtual_table .table_header .header_cell {
+		padding: 12px 0;
+		background: #D5D5D5;
+	}
+	.virtual_table .table_body .table_row {
+		display: flex;
+	}
+	.virtual_table .table_body .table_row:nth-child(even) {
+		background:#ebebeb;
+	}
+	.fake_column_table_cell,
+	.virtual_table .table_body .table_row > div {
+		border-bottom: 1px solid #C4C4C4;
+		text-align: center;
+		font-size: 14px;
+		line-height: 20px;
+		padding: 8px 0;
+		flex: 1;
+	}
+	.virtual_table .table_body .table_row:last-child > div {
+		border-bottom: 0 solid #C4C4C4;
+	}
+	.dot.static {
+		display:none!important;
+	}
+
+    /**
+    * Reinstate scrolling for non-JS clients
+    */
+    .simplebar-content-wrapper {
+      scrollbar-width: auto;
+      -ms-overflow-style: auto;
+    }
+
+    .simplebar-content-wrapper::-webkit-scrollbar,
+    .simplebar-hide-scrollbar::-webkit-scrollbar {
+      display: initial;
+      width: initial;
+      height: initial;
+    }
+	@media screen and (max-width:468px) {
+		.simplebar-track.simplebar-horizontal { 
+			max-width:90%;
+			border-right:1px solid #D9D9D9;
+		}
+
+	}
+
+	@media screen and (min-width:768px) { 
+		.simplebar-track.simplebar-horizontal { 
+			max-width:96%;
+			border-right:1px solid #D9D9D9;
+		}
+		
+	}
+	@media screen and (min-width:568px) { 
+		.simplebar-track.simplebar-horizontal { 
+			max-width:94%;
+			border-right:1px solid #D9D9D9;
+		}
+
+	}
+	@media screen and (min-width:1281px) {
+		.navigation_dots_table {
+			display:none!important;
+		}
+	}
+	@media screen and (max-width:1280px) {
+		#table_slider {
+			
+		}
+		.table-container .table_cell:not(.active),
+		.table-container .table_header > div:not(.active) {
+			display:none;
+		}
+		.caption-title {
+			padding-bottom:12px;
+		}
+		.simplebar-content {
+			padding-top:16px!important;
+		}
+		.simplebar-track.simplebar-horizontal {
+			left:16px!important;
+			border-radius:0;
+			top: 0!important;
+			height:6px!important;
+			background:#D9D9D9;
+			
+		}
+		.simplebar-scrollbar::before {
+			background:#fff!important;
+			border-radius:0!important;
+			border:0px solid #D9D9D9;
+			opacity:1!important;
+			top: 1px!important;
+			bottom: 1px!important;
+			left: 1px!important;
+			right: 1px!important;
+			width:200px;
+		}
+		.simplebar-track.simplebar-horizontal .simplebar-scrollbar {
+			max-width:24px;
+		}
+		.table_header {
+			
+		}
+		.table-container {
+			overflow-x: hidden;
+			position: relative;
+			
+		}
+		.virtual_table:not(.table-2) {
+			
+		}
+		.virtual_table.table-2 {
+			width:100%;
+		}
+
+		
+		.virtual_table .table_header > div:not(.static) {
+			font-size: 14px;
+			font-weight: 600;
+			line-height: 20px;
+			text-align: center;
+			border-bottom: 1px solid #C4C4C4;
+
+		}
+		.static {
+			/*position: absolute;*/
+  			display: block!important;
+  			top: 0;
+  			width: 30%;
+  			left: 0;
+			border-right:1px solid #d9d9d9!important;
+		}
+		.custom_table .active:not(.dot) {
+			padding-left:20px!important;
+		}
+	
+	}
+</style>
+
+<!-- or -->
+
+<script type="text/javascript">
+	$(document).ready(function() {
+	//	$('.table_header .static').parent().addClass('static');
+	if ($(window).width() < 1280) {
+			$('.dot:eq(1)').click();
+		}
+	})
+	
+	$(window).resize(function() {
+		if ($(window).width() < 1280) {
+			$('.dot:eq(1)').click();
+		}
+	})
+	$('.dot').click(function() {
+		if ($(this).hasClass('active')) {
+			return false;
+		}
+		let el =$(this).index();
+		$('.dot.active').removeClass('active');
+		$('.header_cell.active ,.table_body .active').removeClass('active');
+		$('.header_cell:eq('+el+')').addClass('active');
+		$('.table_row').each(function() {
+			 $(this).find('.table_cell:eq('+el+')').addClass('active');
+		})
+		$(this).addClass('active');
+	})
+</script>

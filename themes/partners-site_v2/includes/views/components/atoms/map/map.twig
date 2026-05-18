@@ -1,0 +1,8 @@
+<div
+        class="{{ additionalClass|e('html_attr') }} a-map js-map"
+        data-map-lat="{{ lat }}"
+        data-map-lng="{{ lng }}"
+        data-pin="{{ pin }}"
+>
+    <div class="a-map__pin js-map__pin">{{ getSVG('pin')|raw }}</div>
+</div>

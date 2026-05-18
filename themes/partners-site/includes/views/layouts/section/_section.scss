@@ -1,0 +1,42 @@
+.l-section {
+  $desktop: (
+          1: 2rem,
+          2: 3rem,
+          3: 6rem,
+          4: 8rem,
+          5: 11rem
+  );
+
+
+  $mobile: (
+          1: 1rem,
+          2: 2rem,
+          3: 3rem,
+          4: 4rem,
+          5: 6rem
+  );
+
+  &--mt {
+    @for $i from 1 through 5 {
+      &-#{$i} {
+        margin-top: map-get($mobile, $i);
+
+        @include media-breakpoint-up(lg) {
+          margin-top: map-get($desktop, $i);
+        }
+      }
+    }
+  }
+
+  &--mb {
+    @for $i from 1 through 5 {
+      &-#{$i} {
+        margin-bottom: map-get($mobile, $i);
+
+        @include media-breakpoint-up(lg) {
+          margin-bottom: map-get($desktop, $i);
+        }
+      }
+    }
+  }
+}

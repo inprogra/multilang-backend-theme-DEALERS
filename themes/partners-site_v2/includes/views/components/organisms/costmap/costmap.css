@@ -1,0 +1,485 @@
+p.legal-info.calculator-legal {
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400;
+    margin-top: 16px;
+
+}
+
+.legal-info-container {
+    display: flex;
+    order: 3;
+    width: 100%;
+}
+
+/***** Chrome, Safari, Opera, and Edge Chromium *****/
+input[type="range"]::-webkit-slider-runnable-track {
+    background: #D5D5D5;
+    height: 0.5rem;
+    border-radius: 2px;
+}
+
+/******** Firefox ********/
+input[type="range"]::-moz-range-track {
+    background: #D5D5D5;
+    height: 0.5rem;
+    border-radius: 2px;
+}
+
+/*Chrome*/
+
+/** FF*/
+input[type="range"]::-moz-range-progress {
+    background-color: #1c6bba;
+    margin-right: 3px;
+}
+
+input[type="range"]::-moz-range-track {
+    background-color: #D5D5D5;
+}
+
+/* IE*/
+input[type="range"]::-ms-fill-lower {
+    background-color: #284E80;
+}
+
+input[type="range"]::-ms-fill-upper {
+    background-color: #D5D5D5;
+}
+
+/***** Focus Styles *****/
+/* Removes default focus */
+input[type="range"]:focus {
+    outline: none;
+}
+
+/***** Thumb Styles *****/
+/***** Firefox *****/
+input[type="range"]::-moz-range-thumb {
+    border: 0;
+    outline: 6px solid #1c6bba;
+    outline-offset: 0rem;
+    width: 6px;
+    height: 6px;
+}
+
+/***** Chrome, Safari, Opera, and Edge Chromium *****/
+input[type="range"]:focus::-webkit-slider-thumb {
+    border: 0;
+    outline: 6px solid #284E80 !important;
+    outline-offset: 0rem;
+    width: 5px;
+    height: 5px;
+}
+
+/******** Firefox ********/
+input[type="range"]:focus::-moz-range-thumb {
+    border: 0;
+    outline: 6px solid #284E80 !important;
+    outline-offset: 0rem;
+    width: 5px;
+    height: 5px;
+    background: #fff;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 300px;
+    height: 5px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    background: #fff;
+    margin-top: -2px;
+    outline: 6px solid #1c6bba;
+    outline-offset: 0.1rem;
+    position: relative;
+}
+
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ccc;
+}
+
+
+
+
+
+
+
+
+.total-price {
+    font-size: 20px;
+    line-height: 28px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    width: 292px;
+    background: #fafafa;
+    height: 52px;
+    line-height: 52px;
+    margin-top: 24px;
+    color: #d5d5d5;
+    border-radius: 5px;
+}
+
+.global-price {
+    display: flex;
+}
+
+.total-price.active {
+    background: rgba(2, 170, 39, 0.15);
+    color: #02AA27;
+}
+
+.price-per {
+    margin-top: 24px;
+    width: 292px;
+    height: 52px;
+    background: rgba(2, 170, 39, 0.15);
+    color: #02AA27;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    text-align: center;
+    line-height: 52px;
+    font-weight: 500;
+    border-radius: 5px;
+    margin-left: 16px;
+
+}
+
+.timecount {
+    margin-left: 16px;
+    margin-bottom: 24px;
+    font-size: 32px;
+    line-height: 36px;
+    color: #d5d5d5;
+    font-weight: 500;
+}
+
+.timecount.is-active {
+    color: #284E80;
+
+}
+
+.calc-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.calc-flex > * {
+    max-width: calc(50% - 12px);
+}
+
+.cost-calculator {
+    order: 1;
+}
+
+.additional_info {
+    order: 2;
+    margin-left: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.additional_info>div {
+    background: #FAFAFA;
+    padding: 64px 104px 64px 104px;
+    min-height: 260px;
+}
+
+.additional_info>div:first-child {
+    margin-bottom: 16px;
+}
+
+.additional_info>div h2 {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.additional_info>div ul,
+.additional_info>div li {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    color: #6D6D6D;
+
+    margin: 0;
+}
+
+.additional_info>div p {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    color: #6D6D6D;
+}
+
+.form-section.split-2 {
+    display: flex;
+}
+
+.cost-calculator .content__item.split-2 {
+    width: 50%;
+}
+
+.cost-calculator .content__item.split-2:first-child {
+    margin-right: 16px;
+}
+
+.cost-calculator h2 {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    font-family: "Volvo Novum";
+    text-align: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #d5d5d5;
+    margin-bottom: 16px;
+}
+
+.cost-calculator h3 {
+    margin-top: 24px;
+    font-weight: 400;
+    padding-left: 16px;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 16px;
+}
+
+.cost-calculator .form-section.split-3 {
+    display: flex;
+}
+
+.cost-calculator .form-section.split-3 .element {
+    width: 200px;
+    height: 44px;
+    border: 1px solid #d5d5d5;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 44px;
+    color: #D5D5D5;
+}
+
+.cost-calculator .form-section.split-3 .element:nth-child(2) {
+    margin: 0 16px;
+}
+
+.element:hover {
+    cursor: pointer;
+}
+
+.element.is-active {
+    border-color: #284E80 !important;
+    color: #284E80 !important;
+}
+
+.cost-calculator .custom-single-range input[type="range"]::-webkit-slider-runnable-track {
+    background: #D5D5D5 !important;
+    height: 0.5rem !important;
+    border-radius: 2px !important;
+}
+
+/******** Firefox ********/
+.cost-calculator .custom-single-range input[type="range"]::-moz-range-track {
+    background: #D5D5D5 !important;
+    height: 0.5rem !important;
+    border-radius: 2px !important;
+}
+
+/*Chrome*/
+
+/** FF*/
+.cost-calculator .custom-single-range input[type="range"]::-moz-range-progress {
+    background-color: #284E80 !important;
+    margin-right: 3px;
+}
+
+.cost-calculator .custom-single-range input[type="range"]::-moz-range-track {
+    background-color: #D5D5D5 !important;
+}
+
+/* IE*/
+.cost-calculator .custom-single-range input[type="range"]::-ms-fill-lower {
+    background-color: #284E80 !important;
+}
+
+.cost-calculator .custom-single-range input[type="range"]::-ms-fill-upper {
+    background-color: #D5D5D5 !important;
+}
+
+/***** Focus Styles *****/
+/* Removes default focus */
+.cost-calculator .custom-single-range input[type="range"]:focus {
+    outline: none;
+}
+
+/***** Thumb Styles *****/
+/***** Firefox *****/
+.cost-calculator .custom-single-range input[type="range"]::-moz-range-thumb {
+    border: 0;
+    outline: 6px solid #284E80 !important;
+    outline-offset: 0rem;
+    width: 6px;
+    height: 6px;
+}
+
+/***** Chrome, Safari, Opera, and Edge Chromium *****/
+.cost-calculator .custom-single-range input[type="range"]::-webkit-slider-thumb {
+    border: 0;
+    outline: 6px solid #284E80 !important;
+    outline-offset: 0rem;
+    width: 5px;
+    height: 5px;
+}
+
+.cost-calculator .custom-single-range input[type="range"]:focus::-webkit-slider-thumb {
+    border: 0;
+    outline: 6px solid #284E80 !important;
+    outline-offset: 0rem;
+    width: 5px;
+    height: 5px;
+}
+
+/******** Firefox ********/
+.cost-calculator .custom-single-range input[type="range"]:focus::-moz-range-thumb {
+    border: 0;
+    outline: 6px solid #007aff;
+    outline-offset: 0rem;
+    width: 5px;
+    height: 5px;
+    background: #fff;
+}
+
+.cost-calculator .custom-single-range input[type=range] {
+    -webkit-appearance: none;
+}
+
+.cost-calculator .custom-single-range input[type=range]::-webkit-slider-runnable-track {
+    width: 300px;
+    height: 5px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+}
+
+.cost-calculator .custom-single-range input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    background: #fff;
+    margin-top: -2px;
+    outline: 6px solid #007aff;
+    outline-offset: 0.1rem;
+    position: relative;
+}
+
+
+.cost-calculator .custom-single-range input[type=range]:focus {
+    outline: none;
+}
+
+.cost-calculator .custom-single-range input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ccc;
+}
+
+@media screen and (max-width:1201px) {
+    .calc-flex {
+        flex-direction: column;
+    }
+
+    .calc-flex > *  {
+        max-width: 100%;
+    }
+
+    .additional_info {
+        margin-top: 32px;
+        margin-bottom: 24px;
+        margin-left: 8px;
+    }
+
+    .additional_info>div {
+        padding: 32px 41px 44px 41px;
+        min-height: auto;
+    }
+
+    .global-price,
+    .custom-single-range,
+    .cost-calculator.a-input-range,
+    .form-section.split-2 {
+        display: block;
+    }
+
+    .form-section.split-2>div {
+        width: 100% !important;
+        margin-bottom: 16px;
+        margin-left: 0 !important;
+    }
+
+    .wrapper-box {
+        width: 100% !important;
+    }
+
+    .wrapper-box .container {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+    .timecount {
+        text-align: center;
+    }
+
+    .cost-calculator #myRange {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 36px;
+    }
+
+    .total-price {
+        width: 100%;
+
+    }
+
+    .price-per {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .cost-calculator .a-input-range__inputs {
+        margin-left: 0;
+    }
+}
+
+.cost-calculator .fakeprogress {
+    position: absolute;
+    height: 3px;
+    background: #284E80;
+    width: 0%;
+    bottom: 36px;
+    left: 0;
+}
+
+.range_slider {
+    position: relative;
+}

@@ -1,0 +1,27 @@
+.l-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: $header-height;
+
+  &__main {
+    flex: 1 1 auto;
+  }
+
+  .o-footer {
+  }
+
+  &--has-side-form {
+    padding-bottom: 64px; //height of .o-side-form__bar
+  }
+
+  &--header-footer-hidden {
+    padding: 0;
+
+    .o-footer,
+    .o-header,
+    .l-side-form {
+      display: none;
+    }
+  }
+}

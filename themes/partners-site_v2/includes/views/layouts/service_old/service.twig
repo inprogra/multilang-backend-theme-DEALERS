@@ -1,0 +1,59 @@
+<div class="l-service js-service">
+    {{ openSection(2,1)|raw }}
+        {{ openSection(false,1,false)|raw }}
+            {% include 'components/atoms/site-heading/site-heading.twig' with {
+                heading: 'Umów się do serwisu',
+                description: 'Zadbaj o swoje auto'
+            } only %}
+        {{ closeSection(false)|raw }}
+        {% include 'components/molecules/hero-slider/hero-slider.twig' with heroSlider|merge({
+            isServiceVariation: true
+        }) only %}
+    {{ closeSection()|raw }}
+    {{ openSection(3)|raw }}
+        {% include 'components/molecules/two-column-list/two-column-list.twig' with towColumnsList only %}
+        <div class="container">
+            {% include 'components/atoms/button/button.twig' with {
+                additionalClass: 'l-service__go-to-accordion-button js-service__go-to-accordion-button',
+                text: 'Sprawdź usługi serwisowe'
+            } only %}
+        </div>
+    {{ closeSection()|raw }}
+    {% if formService %}
+        {{ openSection()|raw }}
+            {% include 'components/organisms/form-service/form-service.twig' with formService only %}
+        {{ closeSection()|raw }}
+    {% endif %}
+    {% if accordionSection.accordion %}
+        {{ openSection()|raw }}
+            {% include 'components/organisms/accordion-section/accordion-section.twig' with accordionSection|merge({
+                additionalClass: 'js-service__accordion-section'
+            }) only %}
+        {{ closeSection()|raw }}
+    {% endif %}
+    {{ openSection(3,4)|raw }}
+        <div class="l-service__contacts contacts">
+            <div class="contacts__container container">
+                <h1 class="contacts__heading">{{ contactSection.heading }}</h1>
+                <ul class="contacts__inner">
+                    {% for contact in contactSection.contacts %}
+                        <li class="contacts__item">
+                            {% include 'components/atoms/contact-info/contact-info.twig' with {
+                                additionalClass: 'contacts__info',
+                                name: contact.employee.name ~ ' ' ~ contact.employee.surname,
+                                position: contact.employee.position,
+                                phone: contact.employee.phone,
+                                email: contact.employee.email
+                            } only %}
+                            <ul class="contacts__positions">
+                                {% for specialization in contact.specializations %}
+                                    <li class="contacts__positions-item">{{ specialization.name }}</li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {{ closeSection()|raw }}
+</div>
