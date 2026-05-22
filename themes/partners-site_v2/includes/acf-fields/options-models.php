@@ -4,11 +4,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_604f7b39ab9b1',
-			'title'                 => 'Opcje modeli',
+			'title'                 => __('Models options', 'partners-site_v2'),
 			'fields'                => array(
 				array(
 					'key'               => 'field_604f7b4d2d05c',
-					'label' => __( 'Domyślnie wyświetlone kategorie modeli na mobile', 'partners-site_v2' ),
+					'label' => __('Default model categories displayed on mobile', 'partners-site_v2'),
 					'name'              => 'show-mobile',
 					'type'              => 'taxonomy',
 					'instructions'      => '',
@@ -30,7 +30,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_604f7bbc2d05d',
-					'label' => __( 'Domyślnie wyświetlona kategoria modeli na desktop', 'partners-site_v2' ),
+					'label' => __('Default model category displayed on desktop', 'partners-site_v2'),
 					'name'              => 'show-desktop',
 					'type'              => 'taxonomy',
 					'instructions'      => '',
@@ -52,7 +52,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_6ds6b86089290',
-					'label'             => 'Popup',
+					'label'             => __('Popup', 'partners-site_v2'),
 					'name'              => 'popup',
 					'type'              => 'group',
 					'instructions'      => '',
@@ -67,7 +67,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'sub_fields'        => array(
 						array(
 							'key'               => 'field_602das1e83b313d2',
-							'label' => __( 'Nagłówek', 'partners-site_v2' ),
+							'label' => __( 'Header', 'partners-site_v2' ),
 							'name'              => 'heading',
 							'type'              => 'text',
 							'instructions'      => '',
@@ -86,7 +86,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_602ce1ds313d2',
-							'label'             => 'Opis',
+							'label'             => __( 'Description', 'partners-site_v2' ),
 							'name'              => 'description',
 							'type'              => 'textarea',
 							'instructions'      => '',
@@ -105,7 +105,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_603cfbdsf3360',
-							'label'             => 'Link',
+							'label'             => __( 'Link', 'partners-site_v2' ),
 							'name'              => 'link',
 							'type'              => 'link',
 							'instructions'      => '',

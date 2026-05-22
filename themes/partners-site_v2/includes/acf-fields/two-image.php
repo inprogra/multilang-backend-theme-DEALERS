@@ -4,11 +4,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'twoImage',
-			'title'                 => 'Dwa zdjecia',
+			'title'                 => __('Two photos', 'partners-site_v2'),
 			'fields'                => array(
                 array(
                     'key'               => 'firstPicture',
-                    'label' => __( 'Zdjęcie 1', 'partners-site_v2' ),
+                    'label'             => sprintf(__('Photo %s', 'partners-site_v2'), 1),
                     'name'              => 'firstPicture',
                     'type'              => 'image',
                     'instructions'      => '',
@@ -32,7 +32,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
                 ),
                 array(
                     'key'               => 'secondPicture',
-                    'label' => __( 'Zdjęcie 2', 'partners-site_v2' ),
+                    'label'             => sprintf(__('Photo %s', 'partners-site_v2'), 2),
                     'name'              => 'secondPicture',
                     'type'              => 'image',
                     'instructions'      => '',

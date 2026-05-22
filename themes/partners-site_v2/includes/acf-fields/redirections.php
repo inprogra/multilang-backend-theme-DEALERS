@@ -5,11 +5,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	
 		array(
 			'key'                   => 'group_60794d9a78fe6',
-			'title'                 => 'Przekierowania',
+			'title'                 => __('Redirects', 'partners-site_v2'),
 			'fields'                => array(
 					array(
 						'key'               => 'field_redirections_csv',
-						'label'             => 'Przekierowania w postaci CSV',
+						'label'             => __('Redirects in CSV format', 'partners-site_v2'),
 						'name'              => 'field_redirections_csv',
 						'type'              => 'file',
 						'instructions'      => '',
@@ -28,17 +28,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					),
 				array(
 					'key'               => 'field_60794dacf7a95',
-					'label'             => 'Przekierowania',
+					'label'             => __('Redirects', 'partners-site_v2'),
 					'name'              => 'redirections',
 					'type'              => 'repeater',
-					'instructions'      => '<strong>UWAGA!</strong><br><br>
-Przekierowanie 302: wykorzystywane do tymczasowego przekierowania adresu (krótki okres np. miesiąc) bądź testowania przekierowania przed zmianą na 301<br>
-Przekierowanie 301: stałe zapisywane lokalnie na urządzeniach użytkowników. Nie powinny nigdy być zmieniane. Ewentualne zmiany lub usunięcie go zajmują bardzo dużo czasu<br><br>
-<strong>Należy najpierw dodać przekierowanie typu 302, przetestestować je dokładnie i posiadając absolutną pewnność że linki przekierowania się nie zmienią oraz przekierowanie funkcjonuje poprawnie - można zmienić je na typ 301</strong>
-<br/>
-<br/>
-<button class="removeRows" type="button">Usuń wybrane wiersze</button>
-',
+					'instructions'      => __( '<strong>WARNING!</strong><br><br>302 Redirect: used for temporary redirects (short-term, e.g., one month) or for testing redirects before switching to a 301 redirect<br>301 Redirect: permanent, stored locally on users\' devices. They should never be changed. Any changes or removal take a very long time<br><br><strong>First, add a 302 redirect, test it thoroughly, and once you are absolutely certain that the redirect links will not change and the redirect is functioning correctly, you can change it to a 301 redirect</strong><br/ ><br/><button class=\“removeRows\” type="button">Remove selected rows</button>', 'partners-site_v2' ),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => array(
@@ -54,7 +47,7 @@ Przekierowanie 301: stałe zapisywane lokalnie na urządzeniach użytkowników. 
 					'sub_fields'        => array(
 						array(
 							'key'               => 'field_60794e2af7a96',
-							'label'             => 'Typ',
+							'label'             => __('Type', 'partners-site_v2'),
 							'name'              => 'code',
 							'type'              => 'select',
 							'instructions'      => '',
@@ -79,7 +72,7 @@ Przekierowanie 301: stałe zapisywane lokalnie na urządzeniach użytkowników. 
 						),
 						array(
 							'key'               => 'field_60794e64f7a97',
-							'label' => __( 'Url źródłowy', 'partners-site_v2' ),
+							'label' => __('Source URL', 'partners-site_v2'),
 							'name'              => 'source',
 							'type'              => 'url',
 							'instructions'      => '',
@@ -95,7 +88,7 @@ Przekierowanie 301: stałe zapisywane lokalnie na urządzeniach użytkowników. 
 						),
 						array(
 							'key'               => 'field_60794f3af7a99',
-							'label'             => 'Adres docelowy',
+							'label'             => __('Destination URL', 'partners-site_v2'),
 							'name'              => 'target',
 							'type'              => 'url',
 							'instructions'      => '',
@@ -112,7 +105,7 @@ Przekierowanie 301: stałe zapisywane lokalnie na urządzeniach użytkowników. 
 
 						array(
 							'key' => 'field_66742938f4473',
-							'label' => 'Post id',
+							'label' => __('Post ID', 'partners-site_v2'),
 							'name' => 'post_id',
 							'type' => 'number',
 							'instructions' => '',

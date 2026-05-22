@@ -27,11 +27,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_vinomat',
-			'title'                 => 'Ustawienia',
+			'title'                 => __( 'Settings', 'partners-site_v2' ),
 			'fields'                => array(
 				array(
 					'key'               => 'vinomat_news',
-					'label'             => 'Vinomat boks informacyjny',
+					'label'             => __('Vinomat information box', 'partners-site_v2'),
 					'name'              => 'vinomat_news',
 					'type'              => 'repeater',
 					'instructions'      => '',
@@ -50,7 +50,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 					'sub_fields'        => array(
 						array(
 							'key'               => 'vinomat_news_title',
-							'label' => __( 'Tytuł', 'partners-site_v2' ),
+							'label' => __( 'Title', 'partners-site_v2' ),
 							'name'              => 'vinomat_news_title',
 							'type'              => 'text',
 							'instructions'      => '',
@@ -69,7 +69,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'vinomat_news_desc',
-							'label'             => 'Opis',
+							'label'             => __( 'Description', 'partners-site_v2' ),
 							'name'              => 'vinomat_news_desc',
 							'type'              => 'textarea',
 							'instructions'      => '',
@@ -88,7 +88,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'vinomat_news_image',
-							'label' => __( 'Zdjęcie', 'partners-site_v2' ),
+							'label' => __( 'Photo', 'partners-site_v2' ),
 							'name'              => 'vinomat_news_image',
 							'type'              => 'image',
 							'instructions'      => '',
@@ -112,7 +112,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'vinomat_box_link',
-							'label'             => 'Link do kampani',
+							'label'             => __('Link to campaign', 'partners-site_v2'),
 							'name'              => 'slides',
 							'type'              => 'repeater',
 							'instructions'      => '',
@@ -127,11 +127,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 							'min'               => 1,
 							'max'               => 1,
 							'layout'            => 'row',
-							'button_label'      => 'Dodaj kampanię',
+							'button_label'      => __('Add a campaign', 'partners-site_v2'),
 							'sub_fields'        => array(
 								array(
 									'key'               => 'vinomat_box_link_type',
-									'label'             => 'Typ kampanii',
+									'label'             => __('Campaign type', 'partners-site_v2'),
 									'name'              => 'type',
 									'type'              => 'select',
 									'instructions'      => '',
@@ -143,8 +143,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 										'id'    => '',
 									),
 									'choices'           => array(
-										'local'  => 'Kampania lokalna',
-										'global' => 'Kampania globalna',
+										'local'  => __( 'Local campaign', 'partners-site_v2' ),
+										'global' => __( 'Global campaign', 'partners-site_v2' ),
 									),
 									'default_value'     => false,
 									'allow_null'        => 0,
@@ -156,7 +156,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								),
 								array(
 									'key'               => 'vinomat_box_link_type_1',
-									'label'             => 'Kampania',
+									'label'             => __( 'Campaign', 'partners-site_v2' ),
 									'name'              => 'local-campaign',
 									'type'              => 'post_object',
 									'instructions'      => '',
@@ -186,7 +186,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								),
 								array(
 									'key'               => 'vinomat_box_link_type_2',
-									'label'             => 'Kampania',
+									'label'             => __( 'Campaign', 'partners-site_v2' ),
 									'name'              => 'global-campaign',
 									'type'              => 'network_post_object',
 									'instructions'      => '',
@@ -220,7 +220,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 				),
 				array(
 					'key'               => 'vinomat_box_templates',
-					'label'             => 'Vinomat boks szablony',
+					'label'             => __('Vinomat template box', 'partners-site_v2'),
 					'name'              => 'vinomat_box_templates',
 					'type'              => 'repeater',
 					'instructions'      => '',
@@ -239,7 +239,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 					'sub_fields'        => array(	
 						array(
 							'key'               => 'vinomat_box_template',
-							'label'             => 'Wybierz oferty',
+							'label'             => __('Select offers', 'partners-site_v2'),
 							'name'              => 'vinomat_box_template',
 							'type'              => 'select',
 							'instructions'      => '',
@@ -261,7 +261,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),					
 						array(
 							'key'               => 'vinomat_box_title_template',
-							'label' => __( 'Tytuł', 'partners-site_v2' ),
+							'label' => __( 'Title', 'partners-site_v2' ),
 							'name'              => 'vinomat_box_title_template',
 							'type'              => 'text',
 							'instructions'      => '',
@@ -280,7 +280,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'vinomat_box_desc_template',
-							'label'             => 'Opis',
+							'label'             => __( 'Description', 'partners-site_v2' ),
 							'name'              => 'vinomat_desc_template',
 							'type'              => 'textarea',
 							'instructions'      => '',
@@ -303,7 +303,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 				),
 				array(
 					'key'               => 'vinomat_box',
-					'label'             => 'Vinomat boks ofertowy',
+					'label'             => __('Vinomat offer box', 'partners-site_v2'),
 					'name'              => 'vinomat_box',
 					'type'              => 'repeater',
 					'instructions'      => '',
@@ -322,7 +322,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 					'sub_fields'        => array(
 						array(
 							'key'               => 'vinomat_box_years',
-							'label'             => 'Wiek auta',
+							'label'             => __('Car age', 'partners-site_v2'),
 							'name'              => 'vinomat_box_years',
 							'type'              => 'select',
 							'instructions'      => '',
@@ -344,7 +344,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'vinomat_box_title',
-							'label' => __( 'Tytuł', 'partners-site_v2' ),
+							'label' => __( 'Title', 'partners-site_v2' ),
 							'name'              => 'vinomat_box_title',
 							'type'              => 'text',
 							'instructions'      => '',
@@ -363,7 +363,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'vinomat_box_desc',
-							'label'             => 'Opis 1',
+							'label'             => sprintf(__( 'Description %s', 'partners-site_v2' ), 1),
 							'name'              => 'vinomat_desc_desc',
 							'type'              => 'textarea',
 							'instructions'      => '',
@@ -382,7 +382,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 					array(
 							'key'               => 'vinomat_box_desc_1',
-							'label'             => 'Opis 2',
+							'label'             => sprintf(__( 'Description %s', 'partners-site_v2' ), 2),
 							'name'              => 'vinomat_desc_desc_1',
 							'type'              => 'textarea',
 							'instructions'      => '',
@@ -402,7 +402,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						array(
 
 							'key'               => 'vinomat_box_link',
-							'label'             => 'Link',
+							'label'             => __( 'Link', 'partners-site_v2' ),
 							'name'              => 'vinomat_box_link',
 							'type'              => 'link',
 							'instructions'      => '',
@@ -422,7 +422,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						array(
 
 							'key'               => 'vinomat_box_image',
-							'label'             => 'Ikona',
+							'label'             => __('Icon', 'partners-site_v2'),
 							'name'              => 'vinomat_box_image',
 							'type'              => 'icon_select',
 							'instructions'      => '',

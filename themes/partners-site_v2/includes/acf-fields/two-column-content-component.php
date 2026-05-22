@@ -4,14 +4,14 @@
 if (function_exists('acf_add_local_field_group')) :
     acf_add_local_field_group(array(
         'key' => 'group_603cee7231e0c',
-        'title' => 'TwoColumnContentComponent',
+        'title' => __('TwoColumnContentComponent', 'partners-site_v2'),
         'fields' => array(
             array(
                 'key' => 'field_603cee7eb259a',
-                'label' => __( 'Zdjęcie', 'partners-site_v2' ),
+                'label' => __( 'Photo', 'partners-site_v2' ),
                 'name' => 'img',
                 'type' => 'image',
-                'instructions' => __( 'Należy sprawdzić czy wysokość treści nie przewyższa wysokości obrazka<br>(min. szerokość 959px, Zalecana szerokość: 2877px)', 'partners-site_v2' ),
+                'instructions' => __('Please ensure that the content height does not exceed the image height<br>(min. width 959px, Recommended width: 2877px)', 'partners-site_v2'),
                 'required' => 0,
                 'conditional_logic' => 0,
                 'wrapper' => array(
@@ -32,10 +32,10 @@ if (function_exists('acf_add_local_field_group')) :
             ),
             array(
                 'key' => 'field_603ceef6167bd',
-                'label' => 'Video',
+                'label' => __('Video', 'partners-site_v2'),
                 'name' => 'video',
                 'type' => 'text',
-                'instructions' => 'Link do filmu w serwisie youtube.com<br> Np. https://www.youtube.com/watch?v=LXb3EKWsInQ&t=4s',
+                'instructions' => __( 'Link to the video on youtube.com<br> e.g., https://www.youtube.com/watch?v=LXb3EKWsInQ&t=4s', 'partners-site_v2' ),
                 'required' => 0,
                 'conditional_logic' => 0,
                 'wrapper' => [
@@ -51,7 +51,7 @@ if (function_exists('acf_add_local_field_group')) :
             ),
             array(
                 'key' => 'field_6074604797816',
-                'label' => __( 'Szerokość obrazka', 'partners-site_v2' ),
+                'label' => __('Image width', 'partners-site_v2'),
                 'name' => 'image-width',
                 'type' => 'radio',
                 'instructions' => '',
@@ -75,7 +75,7 @@ if (function_exists('acf_add_local_field_group')) :
             ),
             array(
                 'key' => 'field_6074609197817',
-                'label' => 'Pozycja obrazka',
+                'label' => __('Image position', 'partners-site_v2'),
                 'name' => 'image-position',
                 'type' => 'radio',
                 'instructions' => '',
@@ -87,9 +87,9 @@ if (function_exists('acf_add_local_field_group')) :
                     'id' => '',
                 ),
                 'choices' => array(
-                    'left' => 'Lewo',
-                    'right' => 'Prawo',
-                    'offline' => 'Wyłącz zdjęcie',
+                    'left' => __( 'Left', 'partners-site_v2' ),
+                    'right' => __( 'Right', 'partners-site_v2' ),
+                    'offline' => __( 'Hide the photo', 'partners-site_v2' ),
                 ),
                 'allow_null' => 0,
                 'other_choice' => 0,
@@ -100,7 +100,7 @@ if (function_exists('acf_add_local_field_group')) :
             ),
             array(
                 'key' => 'field_603ceec1b259c',
-                'label' => __( 'Podtytuł', 'partners-site_v2' ),
+                'label' => __( 'Subtitle', 'partners-site_v2' ),
                 'name' => 'subheading',
                 'type' => 'text',
                 'instructions' => '',
@@ -119,7 +119,7 @@ if (function_exists('acf_add_local_field_group')) :
             ),
             array(
                 'key'               => 'headingTag',
-                'label'             => 'Typ nagłówka',
+                'label'             => __('Header type', 'partners-site_v2'),
                 'name'              => 'heading_tag',
                 'type'              => 'select',
                 'instructions'      => '',
@@ -146,7 +146,7 @@ if (function_exists('acf_add_local_field_group')) :
             ),
             array(
                 'key' => 'field_603ceec9b259d',
-                'label' => __( 'Nagłówek', 'partners-site_v2' ),
+                'label' => __( 'Header', 'partners-site_v2' ),
                 'name' => 'heading',
                 'type' => 'text',
                 'instructions' => '',
@@ -165,7 +165,7 @@ if (function_exists('acf_add_local_field_group')) :
             ),
             array(
                 'key' => 'single_opt_column',
-                'label' => __( 'Zawartość pojedyńczej kolumny (lewa)', 'partners-site_v2' ),
+                'label' => __('Single-column content (left)', 'partners-site_v2'),
                 'name' => 'single_opt_column',
                 'type' => 'flexible_content',
                 'instructions' => '',
@@ -180,12 +180,12 @@ if (function_exists('acf_add_local_field_group')) :
                     'single_opt_properties' => array(
                         'key' => 'single_opt_property',
                         'name' => 'list',
-                        'label' => 'Lista zalet',
+                        'label' => __('List of benefits', 'partners-site_v2'),
                         'display' => 'block',
                         'sub_fields' => array(
                             array(
                                 'key' => 'single_opt_property',
-                                'label' => 'Lista zalet',
+                                'label' => __('List of benefits', 'partners-site_v2'),
                                 'name' => 'single_opt_property',
                                 'type' => 'repeater',
                                 'instructions' => '',
@@ -204,7 +204,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'sub_fields' => array(
                                     array(
                                         'key' => 'single_property_value',
-                                        'label' => __( 'Wartość', 'partners-site_v2' ),
+                                        'label' => __('Value', 'partners-site_v2'),
                                         'name' => 'single_property_value',
                                         'type' => 'text',
                                         'instructions' => '',
@@ -223,7 +223,7 @@ if (function_exists('acf_add_local_field_group')) :
                                     ),
                                     array(
                                         'key' => 'single_property_label',
-                                        'label' => 'Jednostka',
+                                        'label' => __('Unit', 'partners-site_v2'),
                                         'name' => 'single_property_label',
                                         'type' => 'text',
                                         'instructions' => '',
@@ -242,7 +242,7 @@ if (function_exists('acf_add_local_field_group')) :
                                     ),
                                     array(
                                         'key' => 'single_property_desc',
-                                        'label' => 'Dodatkowy tekst',
+                                        'label' => __('Additional text', 'partners-site_v2'),
                                         'name' => 'single_property_desc',
                                         'type' => 'text',
                                         'instructions' => '',
@@ -266,13 +266,13 @@ if (function_exists('acf_add_local_field_group')) :
                         'max' => '',
                     ),
                 ],
-                'button_label' => 'Dodaj zawartość',
+                'button_label' => __( 'Add Content', 'partners-site_v2' ),
                 'min' => '',
                 'max' => '',
             ),
             array(
                 'key' => 'field_605de527d4054',
-                'label' => __( 'Zawartość pojedyńczej kolumny', 'partners-site_v2' ),
+                'label' => __('Single-column content', 'partners-site_v2'),
                 'name' => 'content',
                 'type' => 'flexible_content',
                 'instructions' => '',
@@ -287,12 +287,12 @@ if (function_exists('acf_add_local_field_group')) :
                     'layout_new_title' => array(
                     'key' => 'layout_new_title',
                     'name' => 'title',
-                    'label' => __( 'Tytuł', 'partners-site_v2' ),
+                    'label' => __( 'Title', 'partners-site_v2' ),
                     'display' => 'block',
                     'sub_fields' => array(
                         array(
                             'key' => 'field_title',
-                            'label' => __( 'Tytuł', 'partners-site_v2' ),
+                            'label' => __( 'Title', 'partners-site_v2' ),
                             'name' => 'title',
                             'type' => 'text',
                             'instructions' => '',
@@ -316,12 +316,12 @@ if (function_exists('acf_add_local_field_group')) :
                     'layout_605de535462fa' => array(
                         'key' => 'layout_605de535462fa',
                         'name' => 'description',
-                        'label' => 'Opis',
+                        'label' => __( 'Description', 'partners-site_v2' ),
                         'display' => 'block',
                         'sub_fields' => array(
                             array(
                                 'key' => 'field_605de542d4055',
-                                'label' => 'Opis',
+                                'label' => __( 'Description', 'partners-site_v2' ),
                                 'name' => 'description',
                                 'type' => 'textarea',
                                 'instructions' => '',
@@ -345,12 +345,12 @@ if (function_exists('acf_add_local_field_group')) :
                     'layout_605de54bd4056' => array(
                         'key' => 'layout_605de54bd4056',
                         'name' => 'contact-info',
-                        'label' => 'Osoba kontaktowa',
+                        'label' => __( 'Contact person', 'partners-site_v2' ),
                         'display' => 'block',
                         'sub_fields' => array(
                             array(
                                 'key' => 'field_605de569d4057',
-                                'label' => 'Osoba kontaktowa',
+                                'label' => __( 'Contact person', 'partners-site_v2' ),
                                 'name' => 'contact-info',
                                 'type' => 'post_object',
                                 'instructions' => '',
@@ -377,13 +377,13 @@ if (function_exists('acf_add_local_field_group')) :
                     'layout_605de587d4058' => array(
                         'key' => 'layout_605de587d4058',
                         'name' => 'list',
-                        'label' => 'Lista zalet',
+                        'label' => __('List of benefits', 'partners-site_v2'),
                         'display' => 'block',
                         'sub_fields' => array(
 
                             array(
                                 'key' => 'listView',
-                                'label' => 'Widok listy',
+                                'label' => __('List view', 'partners-site_v2'),
                                 'name' => 'listView',
                                 'type' => 'radio',
                                 'instructions' => '',
@@ -395,8 +395,8 @@ if (function_exists('acf_add_local_field_group')) :
                                     'id' => '',
                                 ),
                                 'choices' => array(
-                                    '1column' => '1 kolumna',
-                                    '2column' => '2 kolumny',
+                                    '1column' => __( '1 column', 'partners-site_v2' ),
+                                    '2column' => __( '2 columns', 'partners-site_v2' ),
                                 ),
                                 'allow_null' => 0,
                                 'other_choice' => 0,
@@ -408,7 +408,7 @@ if (function_exists('acf_add_local_field_group')) :
                             
                             array(
                                 'key' => 'field_605de5a1d4059',
-                                'label' => 'Lista zalet',
+                                'label' => __('List of benefits', 'partners-site_v2'),
                                 'name' => 'list',
                                 'type' => 'repeater',
                                 'instructions' => '',
@@ -427,7 +427,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'sub_fields' => array(
                                     array(
                                         'key' => 'field_605de5acd405a',
-                                        'label' => 'Tekst',
+                                        'label' => __('Text', 'partners-site_v2'),
                                         'name' => 'text',
                                         'type' => 'text',
                                         'instructions' => '',
@@ -453,12 +453,12 @@ if (function_exists('acf_add_local_field_group')) :
                     'layout_605de5b2d405b' => array(
                         'key' => 'layout_605de5b2d405b',
                         'name' => 'link',
-                        'label' => 'Przycisk',
+                        'label' => __( 'Button', 'partners-site_v2' ),
                         'display' => 'block',
                         'sub_fields' => array(
                             array(
                                 'key' => 'field_605de5c1d405d',
-                                'label' => 'Akcja przycisku',
+                                'label' => __( 'Button action', 'partners-site_v2' ),
                                 'name' => 'buttonAction',
                                 'type' => 'select',
                                 'instructions' => '',
@@ -470,8 +470,8 @@ if (function_exists('acf_add_local_field_group')) :
                                     'id' => '',
                                 ],
                                 'choices' => [
-                                    'link' => 'Link',
-                                    'form' => 'Formularz',
+                                    'link' => __( 'Link', 'partners-site_v2' ),
+                                    'form' => __( 'Form', 'partners-site_v2' ),
                                 ],
                                 'default_value' => false,
                                 'allow_null' => 0,
@@ -483,7 +483,7 @@ if (function_exists('acf_add_local_field_group')) :
                             ),
                             array(
                                 'key' => 'field_605de5c1d405e',
-                                'label' => 'Tekst przycisku',
+                                'label' => __( 'Button Text', 'partners-site_v2' ),
                                 'name' => 'buttonText',
                                 'type' => 'text',
                                 'instructions' => '',
@@ -506,13 +506,13 @@ if (function_exists('acf_add_local_field_group')) :
                                 'placeholder' => '',
                                 'prepend' => '',
                                 'append' => '',
-                                'button_label' => 'Dodaj zawartość',
+                                'button_label' => __( 'Add Content', 'partners-site_v2' ),
                                 'min' => '',
                                 'max' => '', 'maxlength' => 30,
                             ),
                             array(
                                 'key' => 'field_605de5c1d405c',
-                                'label' => 'Link',
+                                'label' => __( 'Link', 'partners-site_v2' ),
                                 'name' => 'link',
                                 'type' => 'link',
                                 'instructions' => '',
@@ -540,12 +540,12 @@ if (function_exists('acf_add_local_field_group')) :
                     'layout_605de5d5d405d' => array(
                         'key' => 'layout_605de5d5d405d',
                         'name' => 'table',
-                        'label' => 'Tabela',
+                        'label' => __( 'Table', 'partners-site_v2' ),
                         'display' => 'block',
                         'sub_fields' => array(
                             array(
                                 'key' => 'field_605de5dbd405e',
-                                'label' => 'Tabela',
+                                'label' => __( 'Table', 'partners-site_v2' ),
                                 'name' => 'table',
                                 'type' => 'repeater',
                                 'instructions' => '',
@@ -564,7 +564,7 @@ if (function_exists('acf_add_local_field_group')) :
                                 'sub_fields' => array(
                                     array(
                                         'key' => 'field_605de5e4d405f',
-                                        'label' => 'Etykieta',
+                                        'label' => __('Label', 'partners-site_v2'),
                                         'name' => 'label',
                                         'type' => 'text',
                                         'instructions' => '',
@@ -583,7 +583,7 @@ if (function_exists('acf_add_local_field_group')) :
                                     ),
                                     array(
                                         'key' => 'field_605de65fd4060',
-                                        'label' => __( 'Wartość', 'partners-site_v2' ),
+                                        'label' => __('Value', 'partners-site_v2'),
                                         'name' => 'value',
                                         'type' => 'text',
                                         'instructions' => '',
@@ -609,12 +609,12 @@ if (function_exists('acf_add_local_field_group')) :
 						'layout_price_from' => array(
 							'key' => 'layout_price_from',
 							'name' => 'price_from',
-							'label' => 'Cena od',
+							'label' => __('Price from', 'partners-site_v2'),
 							'display' => 'block',
 							'sub_fields' => array(
 								array(
 									'key' => 'price_from_group',
-									'label' => 'Cena od',
+									'label' => __('Price from', 'partners-site_v2'),
 									'name' => 'price_from_group',
 									'type' => 'repeater',
 									'instructions' => '',
@@ -633,7 +633,7 @@ if (function_exists('acf_add_local_field_group')) :
 									'sub_fields' => array(
 										array(
 											'key' => 'price_from_text',
-											'label' => 'Tekst',
+											'label' => __('Text', 'partners-site_v2'),
 											'name' => 'price_from_text',
 											'type' => 'text',
 											'instructions' => '',
@@ -652,7 +652,7 @@ if (function_exists('acf_add_local_field_group')) :
 										),
 										array(
 											'key' => 'field_price',
-											'label' => 'Cena',
+											'label' => __('Price', 'partners-site_v2'),
 											'name' => 'field_price',
 											'type' => 'text',
 											'instructions' => '',
@@ -676,7 +676,7 @@ if (function_exists('acf_add_local_field_group')) :
 							'max' => 1,
 						),
                 ),
-                'button_label' => 'Dodaj zawartość',
+                'button_label' => __( 'Add Content', 'partners-site_v2' ),
                 'min' => '',
                 'max' => '',
             ),

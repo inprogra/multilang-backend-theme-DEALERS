@@ -4,14 +4,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'threeBoxWidzet',
-			'title'                 => 'Trzy boksy',
+			'title'                 => __('Three boxes', 'partners-site_v2'),
 			'fields'                => array(
 				array(
 					'key'               => 'mainTitleBox',
-					'label'             => 'Naglowek',
+					'label'             => __( 'Header', 'partners-site_v2' ),
 					'name'              => 'mainHeading',
 					'type'              => 'text',
-					'instructions' => __( 'Domyślnie tekst jest koloru ciemnego, jeżeli jakaś część ma być wyróżniona na szaro, należy ją otoczyć tagami <strong></strong>.', 'partners-site_v2' ),
+					'instructions' => __('By default, the text is dark; if any part is to be highlighted in gray, surround it with &lt;strong&gt;&lt;/strong&gt; tags', 'partners-site_v2'),
 					'required'          => 1,
 					'conditional_logic' => 0,
 					'wrapper'           => array(
@@ -29,7 +29,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 
 				array(
 					'key'               => 'offerThreeBox1',
-					'label'             => 'Box 1',
+					'label'             => sprintf(__('Box %s', 'partners-site_v2'), 1),
 					'name'              => 'offerBox1',
 					'type'              => 'group',
 					'instructions'      => '',
@@ -47,10 +47,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 
 						array(
 							'key'               => 'imageBox',
-							'label' => __( 'Zdjęcie', 'partners-site_v2' ),
+							'label' => __( 'Photo', 'partners-site_v2' ),
 							'name'              => 'imageBox',
 							'type'              => 'image',
-							'instructions' => __( 'Dodaj zdjęcie', 'partners-site_v2' ),
+							'instructions' => __('Add photo', 'partners-site_v2'),
 							'required'          => 0,
 							'conditional_logic' => 0,
 							'wrapper'           => array(
@@ -71,7 +71,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'titleBox',
-							'label' => __( 'Tytuł', 'partners-site_v2' ),
+							'label' => __( 'Title', 'partners-site_v2' ),
 							'name'              => 'heading',
 							'type'              => 'text',
 							'instructions'      => '',
@@ -91,7 +91,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'descriptionBox',
-							'label'             => 'Opis',
+							'label'             => __( 'Description', 'partners-site_v2' ),
 							'name'              => 'description',
 							'type'              => 'textarea',
 							'instructions'      => '',
@@ -110,7 +110,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'linksBox',
-							'label'             => 'Link',
+							'label'             => __( 'Link', 'partners-site_v2' ),
 							'name'              => 'link',
 							'type'              => 'link',
 							'instructions'      => '',
@@ -128,7 +128,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'offerThreeBox2',
-					'label'             => 'Box 2',
+					'label'             => sprintf(__('Box %s', 'partners-site_v2'), 2),
 					'name'              => 'offerBox2',
 					'type'              => 'group',
 					'instructions'      => '',
@@ -146,10 +146,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 
 						array(
 							'key'               => 'imageBox2',
-							'label' => __( 'Zdjęcie', 'partners-site_v2' ),
+							'label' => __( 'Photo', 'partners-site_v2' ),
 							'name'              => 'imageBox2',
 							'type'              => 'image',
-							'instructions' => __( 'Dodaj zdjęcie', 'partners-site_v2' ),
+							'instructions' => __('Add photo', 'partners-site_v2'),
 							'required'          => 0,
 							'conditional_logic' => 0,
 							'wrapper'           => array(
@@ -170,7 +170,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'titleBox2',
-							'label' => __( 'Tytuł', 'partners-site_v2' ),
+							'label' => __( 'Title', 'partners-site_v2' ),
 							'name'              => 'heading2',
 							'type'              => 'text',
 							'instructions'      => '',
@@ -190,7 +190,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'descriptionBox2',
-							'label'             => 'Opis',
+							'label'             => __( 'Description', 'partners-site_v2' ),
 							'name'              => 'description2',
 							'type'              => 'textarea',
 							'instructions'      => '',
@@ -209,7 +209,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'linksBox2',
-							'label'             => 'Link',
+							'label'             => __( 'Link', 'partners-site_v2' ),
 							'name'              => 'link2',
 							'type'              => 'link',
 							'instructions'      => '',
@@ -227,7 +227,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'offerThreeBox3',
-					'label'             => 'Box 3',
+					'label'             => sprintf(__('Box %s', 'partners-site_v2'), 3),
 					'name'              => 'offerBox3',
 					'type'              => 'group',
 					'instructions'      => '',
@@ -245,10 +245,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 
 						array(
 							'key'               => 'imageBox3',
-							'label' => __( 'Zdjęcie', 'partners-site_v2' ),
+							'label' => __( 'Photo', 'partners-site_v2' ),
 							'name'              => 'imageBox3',
 							'type'              => 'image',
-							'instructions' => __( 'Dodaj zdjęcie', 'partners-site_v2' ),
+							'instructions' => __('Add photo', 'partners-site_v2'),
 							'required'          => 0,
 							'conditional_logic' => 0,
 							'wrapper'           => array(
@@ -269,7 +269,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'titleBox3',
-							'label' => __( 'Tytuł', 'partners-site_v2' ),
+							'label' => __( 'Title', 'partners-site_v2' ),
 							'name'              => 'heading3',
 							'type'              => 'text',
 							'instructions'      => '',
@@ -289,7 +289,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'descriptionBox3',
-							'label'             => 'Opis',
+							'label'             => __( 'Description', 'partners-site_v2' ),
 							'name'              => 'description3',
 							'type'              => 'textarea',
 							'instructions'      => '',
@@ -308,7 +308,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'linksBox3',
-							'label'             => 'Link',
+							'label'             => __( 'Link', 'partners-site_v2' ),
 							'name'              => 'link3',
 							'type'              => 'link',
 							'instructions'      => '',

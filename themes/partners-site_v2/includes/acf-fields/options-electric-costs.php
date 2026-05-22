@@ -9,11 +9,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_electric_costs',
-			'title'                 => 'Ustawienia',
+			'title'                 => __( 'Settings', 'partners-site_v2' ),
 			'fields'                => array(
 				array(
 					'key'               => 'form_title',
-					'label' => __( 'Tytuł na belce dolnej (Na stronach elektryfikacja)', 'partners-site_v2' ),
+					'label' => __('Header on the bottom bar (On the Electrification pages)', 'partners-site_v2'),
 					'name'              => 'form_title',
 					'type'              => 'text',
 					'instructions'      => '',
@@ -32,7 +32,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 				),
 				array(
 					'key'               => 'min_price_kw',
-					'label'             => 'Cena minimalna za 1 KW',
+					'label'             => __('Minimum price per 1 kW', 'partners-site_v2'),
 					'name'              => 'min_price_kw',
 					'type'              => 'text',
 					'instructions'      => '',
@@ -51,7 +51,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 				),
 				array(
 					'key'               => 'max_price_kw',
-					'label'             => 'Cena maksymalna za 1 KW',
+					'label'             => __('Maximum price per 1 kW', 'partners-site_v2'),
 					'name'              => 'max_price_kw',
 					'type'              => 'text',
 					'instructions'      => '',
@@ -70,7 +70,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 				),
 				array(
 					'key'               => 'kw_add_info_title',
-					'label' => __( 'Tytuł pierwszy', 'partners-site_v2' ),
+					'label' => __('First heading', 'partners-site_v2'),
 					'name'              => 'kw_add_info_title',
 					'type'              => 'text',
 					'instructions'      => '',
@@ -89,7 +89,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 				),
 				array(
 					'key'               => 'kw_add_info_desc',
-					'label'             => 'Opis pierwszy',
+					'label'             => __('First description', 'partners-site_v2'),
 					'name'              => 'kw_add_info_desc',
 					'type'              => 'wysiwyg',
 					'instructions'      => '',
@@ -110,7 +110,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 				),
 				array(
 					'key'               => 'kw_add_info_title_2',
-					'label' => __( 'Tytuł drugi', 'partners-site_v2' ),
+					'label' => __('Second heading', 'partners-site_v2'),
 					'name'              => 'kw_add_info_title_2',
 					'type'              => 'text',
 					'instructions'      => '',
@@ -129,7 +129,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 				),
 				array(
 					'key'               => 'kw_add_info_desc_2',
-					'label'             => 'Opis drugi',
+					'label'             => __('Second description', 'partners-site_v2'),
 					'name'              => 'kw_add_info_desc_2',
 					'type'              => 'wysiwyg',
 					'instructions'      => '',
@@ -150,7 +150,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 				),
 				array(
 					'key'               => 'max_price_kw',
-					'label'             => 'Cena maksymalna za 1 KW',
+					'label'             => __('Maximum price per 1 kW', 'partners-site_v2'),
 					'name'              => 'max_price_kw',
 					'type'              => 'text',
 					'instructions'      => '',
@@ -169,7 +169,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 				),
 				array(
 					'key'               => 'charger_disclaimer',
-					'label'             => 'Informacja pod kalkulatorem',
+					'label'             => __('Information below the calculator', 'partners-site_v2'),
 					'name'              => 'charger_disclaimer',
 					'type'              => 'textarea',
 					'instructions'      => '',
@@ -190,7 +190,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 				),
 				array(
 					'key'               => 'field_electric',
-					'label'             => 'Elektryfikacja konfiguracja',
+					'label'             => __('Electrification configuration', 'partners-site_v2'),
 					'name'              => 'electric',
 					'type'              => 'repeater',
 					'instructions'      => '',
@@ -209,7 +209,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 					'sub_fields'        => array(
 						array(
 							'key'               => 'electric_model',
-							'label'             => 'Model auta',
+							'label'             => __('Car model', 'partners-site_v2'),
 							'name'              => 'electric_model',
 							'type'              => 'select',
 							'instructions'      => '',
@@ -231,7 +231,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'electric_engine',
-							'label'             => 'Slinik',
+							'label'             => __('Engine', 'partners-site_v2'),
 							'name'              => 'electric_engine',
 							'type'              => 'select',
 							'instructions'      => '',
@@ -253,7 +253,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'high_wltp',
-							'label'             => 'High WLTP',
+							'label'             => __('High WLTP', 'partners-site_v2'),
 							'name'              => 'high_wltp',
 							'type'              => 'text',
 							'instructions'      => '',
@@ -272,7 +272,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'low_wltp',
-							'label'             => 'LOW WLTP',
+							'label'             => __('Low WLTP', 'partners-site_v2'),
 							'name'              => 'low_wltp',
 							'type'              => 'text',
 							'instructions'      => '',
@@ -291,7 +291,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'electric_capacity',
-							'label' => __( 'Pojemność baterii', 'partners-site_v2' ),
+							'label' => __('Battery capacity', 'partners-site_v2'),
 							'name'              => 'electric_capacity',
 							'type'              => 'text',
 							'instructions'      => '',
@@ -312,10 +312,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 				),
 				array(
 					'key'               => 'field_engines_in_versions',
-					'label' => __( 'Wyklucz silniki dla wersji wyposażenia', 'partners-site_v2' ),
+					'label' => __('Exclude engines for trim level', 'partners-site_v2'),
 					'name'              => 'engines_in_versions',
 					'type'              => 'repeater',
-					'instructions' => __( 'Zaznaczone silniki nie występują dla danej wersji wyposażenia', 'partners-site_v2' ),
+					'instructions' => __('Selected engines are not available for this trim level', 'partners-site_v2'),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => array(
@@ -331,7 +331,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 					'sub_fields'        => array(
 						array(
 							'key' => 'model_ev',
-							'label' => 'Model auta',
+							'label' => __('Car model', 'partners-site_v2'),
 							'name' => 'model_ev',
 							'aria-label' => '',
 							'type' => 'select',
@@ -354,7 +354,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key' => 'version',
-							'label' => __( 'Wersja wyposażenia', 'partners-site_v2' ),
+							'label' => __( 'Equipment Version', 'partners-site_v2' ),
 							'name' => 'version',
 							'aria-label' => '',
 							'type' => 'select',
@@ -377,7 +377,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key' => 'excluded_engines',
-							'label' => 'Wykluczone silniki',
+							'label' => __('Excluded engines', 'partners-site_v2'),
 							'name' => 'excluded_engines',
 							'aria-label' => '',
 							'type' => 'checkbox',
@@ -401,7 +401,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 				),
 				array(
 					'key'               => 'calculator_chargers',
-					'label' => __( 'Wartości ładowarek kalkulator', 'partners-site_v2' ),
+					'label' => __('Charger values calculator', 'partners-site_v2'),
 					'name'              => 'calculator_chargers',
 					'type'              => 'repeater',
 					'instructions'      => '',
@@ -420,7 +420,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 					'sub_fields'        => array(
 						array(
 							'key'               => 'electric_model_charge',
-							'label'             => 'Model auta',
+							'label'             => __('Car model', 'partners-site_v2'),
 							'name'              => 'electric_model_charge',
 							'type'              => 'select',
 							'instructions'      => '',
@@ -442,7 +442,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'electric_engine_charge',
-							'label'             => 'Slinik',
+							'label'             => __('Engine', 'partners-site_v2'),
 							'name'              => 'electric_engine_charge',
 							'type'              => 'select',
 							'instructions'      => '',
@@ -464,7 +464,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'calculator_charger_address',
-							'label' => __( 'Wartość Ładowania', 'partners-site_v2' ),
+							'label' => __('Charging value', 'partners-site_v2'),
 							'name'              => 'calculator_charger_address',
 							'type'              => 'text',
 							'instructions'      => '',
@@ -485,7 +485,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'calculator_charger_text',
-							'label'             => 'Tekst na przycisku',
+							'label'             => __('Button text', 'partners-site_v2'),
 							'name'              => 'calculator_charger_text',
 							'type'              => 'text',
 							'instructions'      => '',
@@ -506,7 +506,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'calculator_charger_time',
-							'label' => __( 'Czas ładowania', 'partners-site_v2' ),
+							'label' => __('Charging time', 'partners-site_v2'),
 							'name'              => 'calculator_charger_time',
 							'type'              => 'text',
 							'instructions'      => '',

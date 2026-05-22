@@ -4,14 +4,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_6076ac56e6af1',
-			'title'                 => 'Opcje formularza',
+			'title'                 => __( 'Form options', 'partners-site_v2' ),
 			'fields'                => array(
 				array(
 					'key'               => 'field_6076ac63aafd1',
-					'label'             => 'Pole source',
+					'label'             => __( 'Source field', 'partners-site_v2' ),
 					'name'              => 'source',
 					'type'              => 'text',
-					'instructions' => __( 'Pole source wysyłane do systemu DOL', 'partners-site_v2' ),
+					'instructions' 		=> __( 'Source field sent to the DOL system', 'partners-site_v2' ),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => array(
@@ -27,7 +27,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'one_page',
-					'label' => __( 'Wyświetlaj kampanię jako landing page', 'partners-site_v2' ),
+					'label' 			=> __( 'Display the campaign as a landing page', 'partners-site_v2' ),
 					'name'              => 'one_page',
 					'type'              => 'radio',
 					'instructions'      => '',
@@ -39,8 +39,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						'id'    => '',
 					),
 					'choices'           => array(
-						'off'  => 'Nie',
-						'on' => 'Tak'
+						'off'  => __( 'No', 'partners-site_v2' ),
+						'on' => __( 'Yes', 'partners-site_v2' )
 					),
 					'default_value'     => '',
 					'allow_null'        => 0,
@@ -52,7 +52,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'side_form',
-					'label'             => 'Formularz po prawej stronie',
+					'label'             => __( 'Form on the right', 'partners-site_v2' ),
 					'name'              => 'side_form',
 					'type'              => 'radio',
 					'instructions'      => '',
@@ -64,8 +64,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						'id'    => '',
 					),
 					'choices'           => array(
-						'off'  => 'Nie',
-						'on' => 'Tak'
+						'off'  => __( 'No', 'partners-site_v2' ),
+						'on' => __( 'Yes', 'partners-site_v2' )
 					),
 					'default_value'     => '',
 					'allow_null'        => 0,
@@ -77,7 +77,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'double_opt',
-					'label' => __( 'Włącz dla formularza double opt-in', 'partners-site_v2' ),
+					'label' 			=> __( 'Turn on double opt-in in the form', 'partners-site_v2' ),
 					'name'              => 'double_opt',
 					'type'              => 'radio',
 					'instructions'      => '',
@@ -89,8 +89,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						'id'    => '',
 					),
 					'choices'           => array(
-						'off'  => 'Nie',
-						'on' => 'Tak'
+						'off'   => __( 'No', 'partners-site_v2' ),
+						'on' 	=> __( 'Yes', 'partners-site_v2' )
 					),
 					'default_value'     => '',
 					'allow_null'        => 0,
@@ -102,7 +102,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key' => 'disable_choose_cat',
-					'label' => __( 'Wymusić jedną kategorię tego formularza?', 'partners-site_v2' ),
+					'label' => __( 'Force a single category for this form?', 'partners-site_v2' ),
 					'name' => 'disable_choose_cat',
 					'type' => 'true_false',
 					'instructions' => '',
@@ -118,7 +118,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_6062dsa3bd29',
-					'label'             => 'Cel formularza',
+					'label'             => __( 'Form goal', 'partners-site_v2' ),
 					'name'              => 'destination',
 					'type'              => 'select',
 					'instructions'      => '',
@@ -130,10 +130,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						'id'    => '',
 					),
 					'choices'           => array(
-						'allvalues' => 'Użytkownik może wybrać',
-						'new-cars'  => 'Auta nowe',
-						'used-cars' => 'Auta używane',
-						'service'   => 'Serwis'
+						'allvalues' => __( 'The user can select', 'partners-site_v2' ),
+						'new-cars'  => __( 'New cars', 'partners-site_v2' ),
+						'used-cars' => __( 'Used cars', 'partners-site_v2' ),
+						'service'   => __( 'Service', 'partners-site_v2' )
 						
 					),
 					'default_value'     => 'allvalues',
@@ -146,10 +146,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_thankyou_code_js',
-					'label' => __( 'Dodatkowy kod javascript na podstronie z podziękowaniem', 'partners-site_v2' ),
+					'label' 			=> __( 'Additional JavaScript code on the thank-you page', 'partners-site_v2' ),
 					'name'              => 'field_thankyou_code_js',
 					'type'              => 'textarea',
-					'instructions'      => 'Dynamiczna zmienna ||time||',
+					'instructions'      => __( 'Dynamic variable ||time||', 'partners-site_v2' ),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => array(
@@ -165,10 +165,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_thankyou_code',
-					'label' => __( 'Dodatkowy kod html podstronie z podziękowaniem', 'partners-site_v2' ),
+					'label' 			=> __( 'Additional HTML code on the thank-you page', 'partners-site_v2' ),
 					'name'              => 'field_thankyou_code',
 					'type'              => 'textarea',
-					'instructions'      => 'Dynamiczna zmienna ||time||',
+					'instructions'      => __( 'Dynamic variable ||time||', 'partners-site_v2' ),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => array(
@@ -184,7 +184,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'globalHtml',
-					'label'             => 'Dodatkowy kod na podstronie',
+					'label'             => __( 'Additional code on the page', 'partners-site_v2' ),
 					'name'              => 'globalHtml',
 					'type'              => 'textarea',
 					'instructions'      => '',
@@ -202,7 +202,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'maxlength'         => '',
 				),
 			),
-			'location'              => array(
+			'location'             => array(
 				array(
 					array(
 						'param'    => 'post_type',

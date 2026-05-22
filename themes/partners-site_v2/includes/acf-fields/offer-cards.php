@@ -4,14 +4,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_60c35b6629903',
-			'title'                 => 'Karta ofertowa',
+			'title'                 => __('Offer card', 'partners-site_v2'),
 			'fields'                => array(
 				array(
 					'key'               => 'field_60c35b81d02d9',
-					'label' => __( 'Tytuł', 'partners-site_v2' ),
+					'label' => __( 'Title', 'partners-site_v2' ),
 					'name'              => 'heading',
 					'type'              => 'text',
-					'instructions' => __( 'Domyślnie tekst nagłówka jest w kolorze szarym. Aby dana fraza była w kolorze czarnym, proszę umieścić ją pomiędzy &lt;strong>&lt;/strong&gt; , np. &lt;strong>TEKST&lt;/strong&gt;', 'partners-site_v2' ),
+					'instructions' => __( 'By default, the header text is gray. To make a specific phrase black, please place it between &lt;strong&gt;&lt;/strong&gt;, <br>e.g., &lt;strong&gt;TEXT&lt;/strong&gt;', 'partners-site_v2' ),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => array(
@@ -27,7 +27,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_60c35bfcd02da',
-					'label'             => 'Karty',
+					'label'             => __('Tabs', 'partners-site_v2'),
 					'name'              => 'cards',
 					'type'              => 'repeater',
 					'instructions'      => '',
@@ -46,7 +46,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'sub_fields'        => array(
 						array(
 							'key'               => 'field_60c35c47d02db',
-							'label'             => 'Link',
+							'label'             => __( 'Link', 'partners-site_v2' ),
 							'name'              => 'link',
 							'type'              => 'link',
 							'instructions'      => '',
@@ -61,7 +61,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_60c35c6bd02dc',
-							'label' => __( 'Zdjęcie', 'partners-site_v2' ),
+							'label' => __( 'Photo', 'partners-site_v2' ),
 							'name'              => 'image',
 							'type'              => 'image',
 							'instructions'      => '',
@@ -85,7 +85,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_60c35d0bd02dd',
-							'label' => __( 'Nagłówek', 'partners-site_v2' ),
+							'label' => __( 'Header', 'partners-site_v2' ),
 							'name'              => 'heading',
 							'type'              => 'text',
 							'instructions'      => '',
@@ -104,7 +104,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_60c35d27d02de',
-							'label'             => 'Opis',
+							'label'             => __( 'Description', 'partners-site_v2' ),
 							'name'              => 'description',
 							'type'              => 'textarea',
 							'instructions'      => '',
@@ -123,7 +123,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_60c35d67d02df',
-							'label'             => 'Tekst CTA',
+							'label'             => __('CTA text', 'partners-site_v2'),
 							'name'              => 'cta-text',
 							'type'              => 'select',
 							'instructions'      => '',
@@ -135,9 +135,9 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								'id'    => '',
 							),
 							'choices'           => array(
-								'Przeczytaj'         => 'Przeczytaj',
-								'Dowiedz się więcej' => 'Dowiedz się więcej',
-								'Sprawdź'            => 'Sprawdź',
+								'Przeczytaj'         => __( 'Read', 'partners-site_v2' ),
+								'Dowiedz się więcej' => __( 'Learn more', 'partners-site_v2' ),
+								'Sprawdź'            => __( 'Check it out', 'partners-site_v2' ),
 							),
 							'default_value'     => false,
 							'allow_null'        => 0,

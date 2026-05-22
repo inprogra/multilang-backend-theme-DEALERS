@@ -4,11 +4,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_6034db6763083',
-			'title'                 => 'SiteHeading',
+			'title'                 => __('SiteHeading', 'partners-site_v2'),
 			'fields'                => array(
 				array(
 					'key'               => 'field_6034db833e95b',
-					'label' => __( 'Nagłówek', 'partners-site_v2' ),
+					'label' => __( 'Header', 'partners-site_v2' ),
 					'name'              => 'heading',
 					'type'              => 'text',
 					'instructions'      => '',
@@ -27,7 +27,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key' => 'field_669a1d0b0f227',
-					'label' => __( 'Typ Nagłówka', 'partners-site_v2' ),
+					'label' => __('Heading Type', 'partners-site_v2'),
 					'name' => 'header_type',
 					'aria-label' => '',
 					'type' => 'select',
@@ -56,7 +56,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_6034db8c3e95c',
-					'label'             => 'Opis',
+					'label'             => __( 'Description', 'partners-site_v2' ),
 					'name'              => 'description',
 					'type'              => 'text',
 					'instructions'      => '',
@@ -75,16 +75,16 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_quick_header',
-					'label' => __( 'Rodzaj nagłówka', 'partners-site_v2' ),
+					'label' => __('Kind of header', 'partners-site_v2'),
 					'name'              => 'field_quick_header',
 					'type'              => 'radio',
 					'instructions'      => '',
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'choices'           => array(
-						'tak' => 'Szary nagłówek',
-						'blog' => 'Nagłówek blogowy',
-						'standard' => 'Nagłówek standardowy',
+						'tak' => __( 'Gray header', 'partners-site_v2' ),
+						'blog' => __( 'Blog header', 'partners-site_v2' ),
+						'standard' => __( 'Standard header', 'partners-site_v2' ),
 
 					), 
 					'allow_null'        => true,

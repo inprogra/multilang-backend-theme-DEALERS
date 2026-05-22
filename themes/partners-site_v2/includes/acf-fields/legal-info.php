@@ -3,7 +3,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_60bddece5b13b',
-			'title'                 => 'Informacje prawne',
+			'title'                 => __('Legal Information', 'partners-site_v2'),
 			'fields'                => array(
 				array(
 					'key'               => 'field_60bddee594ff1',

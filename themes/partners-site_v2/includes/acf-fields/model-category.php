@@ -4,11 +4,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_604f725bbfef4',
-			'title'                 => 'ModelCategory',
+			'title'                 => __('ModelCategory', 'partners-site_v2'),
 			'fields'                => array(
 				array(
 					'key'               => 'field_604f7271a82d4',
-					'label'             => 'Opis',
+					'label'             => __( 'Description', 'partners-site_v2' ),
 					'name'              => 'description',
 					'type'              => 'text',
 					'instructions'      => '',

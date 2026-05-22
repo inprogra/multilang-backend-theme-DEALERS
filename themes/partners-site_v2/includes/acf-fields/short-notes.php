@@ -5,11 +5,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_shortnotes',
-			'title'                 => 'shortnotes',
+			'title'                 => __('Short notes', 'partners-site_v2'),
 			'fields'                => array(
 				array(
 					'key'               => 'field_shortnotes',
-					'label' => __( 'Krótkie notatki', 'partners-site_v2' ),
+					'label' => __('Short notes', 'partners-site_v2'),
 					'name'              => 'items',
 					'type'              => 'repeater',
 					'instructions'      => '',
@@ -28,7 +28,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'sub_fields'        => array(
 						array(
 							'key'               => 'field_notetitle',
-							'label' => __( 'Tytuł', 'partners-site_v2' ),
+							'label' => __( 'Title', 'partners-site_v2' ),
 							'name'              => 'field_notetitle',
 							'type'              => 'text',
 							'instructions'      => '',
@@ -47,7 +47,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_notesdesc',
-							'label'             => 'Opis',
+							'label'             => __( 'Description', 'partners-site_v2' ),
 							'name'              => 'field_notesdesc',
 							'type'              => 'textarea',
 							'instructions'      => '',

@@ -4,14 +4,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'anchor',
-			'title'                 => 'Kotwica',
+			'title'                 => __('Anchor', 'partners-site_v2'),
 			'fields'                => array(
 				array(
 					'key'               => 'anchor',
-					'label'             => 'Kotwica',
+					'label'             => __('Anchor', 'partners-site_v2'),
 					'name'              => 'anchor',
 					'type'              => 'text',
-					'instructions' => __( '(max. 46 znaków)', 'partners-site_v2' ),
+					'instructions' 		=> sprintf( __('(max. %s chars)', 'partners-site_v2'), 46),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => array(

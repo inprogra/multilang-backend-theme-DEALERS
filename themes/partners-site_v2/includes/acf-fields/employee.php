@@ -4,11 +4,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_6050d3cf430c2',
-			'title'                 => 'Employee',
+			'title'                 => __( 'Employee', 'partners-site_v2' ),
 			'fields'                => array(
 				array(
 					'key'               => 'field_6050d3d92bb33',
-					'label' => __( 'Imię', 'partners-site_v2' ),
+					'label' 			=> __( 'First Name', 'partners-site_v2' ),
 					'name'              => 'name',
 					'type'              => 'text',
 					'instructions'      => '',
@@ -27,7 +27,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_6050d3ea2bb34',
-					'label'             => 'Nazwisko',
+					'label'             => __( 'Last Name', 'partners-site_v2' ),
 					'name'              => 'surname',
 					'type'              => 'text',
 					'instructions'      => '',
@@ -46,7 +46,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_6050d3f32bb35',
-					'label'             => 'Stanowisko',
+					'label'             => __( 'Position', 'partners-site_v2' ),
 					'name'              => 'position',
 					'type'              => 'text',
 					'instructions'      => '',
@@ -65,7 +65,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_6050d3fa2bb36',
-					'label'             => 'Nr telefonu',
+					'label'             => __( 'Phone Number', 'partners-site_v2' ),
 					'name'              => 'phone',
 					'type'              => 'text',
 					'instructions'      => '',
@@ -84,7 +84,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_6050d4052bb37',
-					'label'             => 'Adres e-mail',
+					'label'             => __( 'Email Address', 'partners-site_v2' ),
 					'name'              => 'email',
 					'type'              => 'text',
 					'instructions'      => '',
@@ -103,7 +103,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_6050d4132bb38',
-					'label' => __( 'Dział', 'partners-site_v2' ),
+					'label' 			=> __( 'Department', 'partners-site_v2' ),
 					'name'              => 'category',
 					'type'              => 'network_taxonomy',
 					'instructions'      => '',
@@ -125,7 +125,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'                             => 'field_6050d42b2bb39',
-					'label'                           => 'Salon',
+					'label'                           => __( 'Showroom', 'partners-site_v2' ),
 					'name'                            => 'showroom',
 					'type'                            => 'post_object',
 					'instructions'                    => '',

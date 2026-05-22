@@ -4,11 +4,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_60d99a7eced16',
-			'title'                 => 'Ustawienia globalne',
+			'title'                 => __('Global settings', 'partners-site_v2'),
 			'fields'                => array(
 				array(
 					'key'               => 'field_60d99a8a6e31c',
-					'label'             => 'Ustawienia formularzy',
+					'label'             => __('Form settings', 'partners-site_v2'),
 					'name'              => '',
 					'type'              => 'tab',
 					'instructions'      => '',
@@ -24,7 +24,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_60d99aa26e31d',
-					'label'             => 'Ustawienia formularzy',
+					'label'             => __('Form settings', 'partners-site_v2'),
 					'name'              => 'form',
 					'type'              => 'group',
 					'instructions'      => '',
@@ -39,7 +39,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'sub_fields'        => array(
 						array(
 							'key'               => 'field_60d99aca6e31e',
-							'label' => __( 'Zdjęcie widoczne w podziękowaniu po wysłaniu formularza', 'partners-site_v2' ),
+							'label' => __('Image displayed in the thank-you message after submitting the form', 'partners-site_v2'),
 							'name'              => 'thank-you-image',
 							'type'              => 'image',
 							'instructions'      => '',
@@ -65,7 +65,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_60fe6b65eb300',
-					'label'             => 'Samochody podobne',
+					'label'             => __('Similar cars', 'partners-site_v2'),
 					'name'              => '',
 					'type'              => 'tab',
 					'instructions'      => '',
@@ -81,7 +81,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_60fe6b6eeb301',
-					'label'             => 'Samochody podobne',
+					'label'             => __('Similar cars', 'partners-site_v2'),
 					'name'              => 'featured-cars',
 					'type'              => 'group',
 					'instructions'      => '',
@@ -96,7 +96,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'sub_fields'        => array(
 						array(
 							'key'               => 'field_60fe6b98eb302',
-							'label' => __( 'Nagłówek na stronie wszystkich samochodów', 'partners-site_v2' ),
+							'label' => __('Header on the all cars page', 'partners-site_v2'),
 							'name'              => 'all-cars-heading',
 							'type'              => 'text',
 							'instructions'      => '',
@@ -115,7 +115,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_60fe6baeeb303',
-							'label' => __( 'Nagłówek na stronie wszystkich samochodów w przypadku nieznalezienia wyników wyszukiwania', 'partners-site_v2' ),
+							'label' => __('Header on the all cars page if no search results are found', 'partners-site_v2'),
 							'name'              => 'not-found-heading',
 							'type'              => 'text',
 							'instructions'      => '',
@@ -134,7 +134,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_60fe6bc8eb304',
-							'label' => __( 'Nagłówek na stronie pojedynczego samochodu', 'partners-site_v2' ),
+							'label' => __('Header on the single car page', 'partners-site_v2'),
 							'name'              => 'single-car-heading',
 							'type'              => 'text',
 							'instructions'      => '',

@@ -7,11 +7,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_map_generator',
-			'title'                 => 'Mapa zasięgu',
+			'title'                 => __( 'Coverage map', 'partners-site_v2' ),
 			'fields'                => array(
 				array(
 					'key'               => 'google_map',
-					'label' => __( 'Mapa zasięgu', 'partners-site_v2' ),
+					'label' 			=> __( 'Coverage map', 'partners-site_v2' ),
 					'name'              => 'google_map',
 					'type'              => 'text',
 					'instructions'      => '',
@@ -22,7 +22,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						'class' => '',
 						'id'    => '',
 					),
-					'default_value'     => 'Mapa google',
+					'default_value'     => __( 'Google Map', 'partners-site_v2' ),
 					'disabled'          => true,
 					'placeholder'       => '',
 					'prepend'           => '',
@@ -30,10 +30,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key' => 'electrification-map-show',
-					'label' => __( 'Ukryć mapę?', 'partners-site_v2' ),
+					'label' => __( 'Hide map?', 'partners-site_v2' ),
 					'name' => 'electrification-map-show',
 					'type' => 'true_false',
-					'instructions' => __( 'Na każdej stronie nowego modelu może być uruchomiona tylko jedna instancja mapy', 'partners-site_v2' ),
+					'instructions' => __( 'Only one instance of the map can be displayed on each page of the new model', 'partners-site_v2' ),
 					'required' => 0,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -46,7 +46,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'electrification-map-model',
-					'label'             => 'Model',
+					'label'             => __( 'Model', 'partners-site_v2' ),
 					'name'              => 'electrification-map-model',
 					'type'              => 'select',
 					'instructions'      => '',
@@ -68,7 +68,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key' => 'electrification-map-version',
-					'label' => __( 'Wersja wyposażenia', 'partners-site_v2' ),
+					'label' => __( 'Equipment Version', 'partners-site_v2' ),
 					'name' => 'electrification-map-version',
 					'aria-label' => '',
 					'type' => 'select',

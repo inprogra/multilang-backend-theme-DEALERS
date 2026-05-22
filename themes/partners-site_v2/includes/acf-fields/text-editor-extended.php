@@ -4,11 +4,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_5682666dsrf3',
-			'title'                 => 'Text editor extended',
+			'title'                 => __('Extended Text Editor', 'partners-site_v2'),
 			'fields'                => array(
 				array(
 					'key'               => 'group_5682666dsrf3a',
-					'label'             => 'Tekst',
+					'label'             => __('Text', 'partners-site_v2'),
 					'name'              => 'content',
 					'type'              => 'wysiwyg',
 					'instructions'      => '',

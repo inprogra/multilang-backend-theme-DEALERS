@@ -4,11 +4,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_604a1c922f8ed',
-			'title'                 => 'Modele',
+			'title'                 => __('Models', 'partners-site_v2'),
 			'fields'                => array(
 				array(
 					'key'               => 'field_604a1c9f94d09',
-					'label'             => 'Typ',
+					'label'             => __('Type', 'partners-site_v2'),
 					'name'              => 'type',
 					'type'              => 'select',
 					'instructions'      => '',
@@ -20,12 +20,12 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						'id'    => '',
 					),
 					'choices'           => array(
-						'suv'           => 'Suv',
-						'crossover'         => 'Crossover',
-						'sedan'         => 'Sedan',
+						'suv'           => __( 'SUV', 'partners-site_v2' ),
+						'crossover'         => __( 'Crossover', 'partners-site_v2' ),
+						'sedan'         => __( 'Sedan', 'partners-site_v2' ),
 						
-						'kombi'         => 'Kombi',
-						'cross-country' => 'Cross Country',
+						'kombi'         => __( 'Station wagon', 'partners-site_v2' ),
+						'cross-country' => __( 'Cross Country', 'partners-site_v2' ),
 						
 					),
 					'default_value'     => false,
@@ -38,7 +38,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 				),
 				array(
 					'key'               => 'field_604a20569d149',
-					'label'             => 'Nazwa modelu',
+					'label'             => __('Model Name', 'partners-site_v2'),
 					'name'              => 'name',
 					'type'              => 'text',
 					'instructions'      => '',
@@ -57,7 +57,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 				),
 				array(
 					'key'               => 'testDrive',
-					'label'             => 'Czy samochód ma być dostępny w opcji "jazda testowa"?',
+					'label'             => __('Should the car be available for a "test drive"?', 'partners-site_v2'),
 					'name'              => 'testDrive',
 					'type'              => 'true_false',
 					'instructions'      => '',
@@ -76,7 +76,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 				), 
 				array(
 					'key'               => 'short_name_list',
-					'label' => __( 'Krótka nazwa modelu na liście aut', 'partners-site_v2' ),
+					'label' => __('Model Short Name in the Car List', 'partners-site_v2'),
 					'name'              => 'short_name_list',
 					'type'              => 'text',
 					'instructions'      => '',
@@ -95,7 +95,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 				),
 				array(
 					'key'               => 'field_604a20569d140',
-					'label' => __( 'Krótka nazwa modelu', 'partners-site_v2' ),
+					'label' => __('Model Short Name', 'partners-site_v2'),
 					'name'              => 'short-name',
 					'type'              => 'text',
 					'instructions'      => '',
@@ -114,10 +114,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 				),
 				array(
 					'key'               => 'field_604a20939d141',
-					'label' => __( 'Zdjęcie miniatura w menu', 'partners-site_v2' ),
+					'label' => __('Thumbnail Image in the Menu', 'partners-site_v2'),
 					'name'              => 'thumbnail',
 					'type'              => 'image',
-					'instructions' => __( '(Zalecana minimalna szerokość: 420px)', 'partners-site_v2' ),
+					'instructions' => __('(Recommended minimum width: 420px)', 'partners-site_v2'),
 					'required'          => 1,
 					'conditional_logic' => 0,
 					'wrapper'           => array(
@@ -138,7 +138,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 				),
 				array(
 					'key'               => 'menu_price',
-					'label' => __( 'Cena pojazdu na miniaturce w zakładce modele', 'partners-site_v2' ),
+					'label' => __('Vehicle price on the thumbnail in the models tab', 'partners-site_v2'),
 					'name'              => 'menu_price',
 					'type'              => 'text',
 					'instructions'      => '',
@@ -157,7 +157,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 				),
 				array(
 					'key'               => 'field_version_colors',
-					'label'             => 'Warianty kolorystyczne',
+					'label'             => __('Color variants', 'partners-site_v2'),
 					'name'              => '',
 					'type'              => 'tab',
 					'instructions'      => '',
@@ -173,7 +173,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 				),
 				array(
 					'key'               => 'field_version_colors_content',
-					'label'             => 'Wiarianty kolorystyczne',
+					'label'             => __('Color variants', 'partners-site_v2'),
 					'name'              => 'field_version_colors_content',
 					'type'              => 'group',
 					'instructions'      => '',
@@ -188,7 +188,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 					'sub_fields'        => array(
 						array(
 							'key' => 'version_interrior_color_tags',
-							'label' => __( 'Wybierz kolor wnętrza', 'partners-site_v2' ),
+							'label' => __('Select interior color', 'partners-site_v2'),
 							'name' => 'version_interrior_color_tags',
 							'aria-label' => '',
 							'type' => 'taxonomy',
@@ -213,7 +213,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key' => 'version_default_gallery',
-							'label' => __( 'Domyślna galeria pojazdu', 'partners-site_v2' ),
+							'label' => __('Default vehicle gallery', 'partners-site_v2'),
 							'name' => 'version_default_gallery',
 							'aria-label' => '',
 							'type' => 'taxonomy',
@@ -238,7 +238,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 					array(
 					'key'               => 'field_gallery_cards',
-					'label'             => 'Karty',
+					'label'             => __('Tabs', 'partners-site_v2'),
 					'name'              => 'cards',
 					'type'              => 'repeater',
 					'instructions'      => '',
@@ -257,7 +257,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 					'sub_fields'        => array(
 						array(
 							'key' => 'version_color_tags',
-							'label' => 'Wybierz kolor',
+							'label' => __('Select color', 'partners-site_v2'),
 							'name' => 'version_color_tags',
 							'aria-label' => '',
 							'type' => 'taxonomy',
@@ -282,7 +282,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'gallery_type',
-							'label'             => 'Rodzaj galleri',
+							'label'             => __('Gallery type', 'partners-site_v2'),
 							'name'              => 'gallery_type',
 							'type'              => 'select',
 							'instructions'      => '',
@@ -294,8 +294,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								'id'    => '',
 							),
 							'choices'           => [
-								'auto' => 'auto',
-								'inside' => 'wnętrze'
+								'auto' => __( 'Gallery_Car', 'partners-site_v2' ),
+								'inside' => __( 'Gallery_interior', 'partners-site_v2' )
 							],
 							'default_value'     => false,
 							'allow_null'        => 0,
@@ -307,7 +307,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'version_gallery',
-							'label' => __( 'Zdjęcia wersji kolorystycznej', 'partners-site_v2' ),
+							'label' => __('Photos of the color variant', 'partners-site_v2'),
 							'name'              => 'version_gallery',
 							'type'              => 'gallery',
 							'instructions'      => '',
