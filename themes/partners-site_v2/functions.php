@@ -466,7 +466,14 @@ add_action('network_admin_menu', 'rudr_network_settings_pages');
 function rudr_network_settings_pages()
 {
 
-    add_menu_page('Eventy', 'Eventy', 'manage_network_options', 'event-page', 'event_cb', 'dashicons-airplane');
+    add_menu_page(
+        __( 'Eventy', 'partners-site_v2'),
+        __( 'Eventy', 'partners-site_v2'),
+        'manage_network_options',
+        'event-page',
+        'event_cb',
+        'dashicons-airplane'
+    );
 
     //add_submenu_page( 'themes.php', 'More settings', 'More settings', 'manage_network_options', 'more-settings', 'more_settings_cb' );
 
@@ -1944,8 +1951,8 @@ function my_blog_custom_dashboard_widget_display()
             echo '<td>' . esc_html(get_the_title()) . '</td>';
             echo '<td></td>';
             echo '<td>' . get_the_date() . '</td>';
-            echo '<td><a target="_blank" href="' . get_edit_post_link() . '">Edytuj</a></td>';
-            echo '<td><a target="_blank" href="' . get_permalink() . '">Zobacz</a></td>';
+            echo '<td><a target="_blank" href="' . get_edit_post_link() . '">' . __('Edit', 'partners-site_v2') . '</a></td>';
+            echo '<td><a target="_blank" href="' . get_permalink() . '">' . __('View', 'partners-site_v2') . '</a></td>';
             echo '</tr>';
         }
         echo '</table>';
@@ -1970,8 +1977,8 @@ function my_lead_custom_dashboard_widget_display()
             echo '<td>' . get_field('originUrl') . '</td>';
             echo '<td>' . get_field('source') . '</td>';
             echo '<td>' . get_the_date() . '</td>';
-            echo '<td><a target="_blank" href="' . get_edit_post_link() . '">Edytuj</a></td>';
-            // echo '<td><a target="_blank" href="' . get_permalink() . '">Zobacz</a></td>';
+            echo '<td><a target="_blank" href="' . get_edit_post_link() . '">' . __('Edit', 'partners-site_v2') . '</a></td>';
+            // echo '<td><a target="_blank" href="' . get_permalink() . '">' . __('View', 'partners-site_v2') . '</a></td>';
             echo '</tr>';
         }
         echo '</table>';
@@ -1994,8 +2001,8 @@ function my_campaign_custom_dashboard_widget_display()
             echo '<tr>';
             $latest_stock->the_post();
             echo '<td>' . esc_html(get_the_title()) . '</td>';
-            echo '<td><a target="_blank" href="' . get_edit_post_link() . '">Edytuj</a></td>';
-            echo '<td><a target="_blank" href="' . get_permalink() . '">Zobacz</a></td>';
+            echo '<td><a target="_blank" href="' . get_edit_post_link() . '">' . __('Edit', 'partners-site_v2') . '</a></td>';
+            echo '<td><a target="_blank" href="' . get_permalink() . '">' . __('View', 'partners-site_v2') . '</a></td>';
             echo '</tr>';
         }
         echo '</table>';
@@ -2018,8 +2025,8 @@ function my_stock_cars_custom_dashboard_widget_display()
             echo '<tr>';
             $latest_stock->the_post();
             echo '<td>' . esc_html(get_the_title()) . '</td>';
-            echo '<td><a target="_blank" href="' . get_edit_post_link() . '">Edytuj</a></td>';
-            echo '<td><a target="_blank" href="' . get_permalink() . '">Zobacz</a></td>';
+            echo '<td><a target="_blank" href="' . get_edit_post_link() . '">' . __('Edit', 'partners-site_v2') . '</a></td>';
+            echo '<td><a target="_blank" href="' . get_permalink() . '">' . __('View', 'partners-site_v2') . '</a></td>';
             echo '</tr>';
         }
         echo '</table>';
@@ -2065,13 +2072,13 @@ function my_show_extra_profile_fields($user)
     <table class="form-table">
         <tr>
             <th><label for="phone">Numer telefonu</label><?php if (!get_the_author_meta('phone', $user->ID)) {
-                                                                echo '<div style="color:red;">POLE WYMAGANE</div>';
+                                                                echo '<div style="color:red;">' . mb_strtoupper(__('Required field', 'partners-site_v2')) . '</div>';
                                                             } ?></th>
             <td>
                 <input type="text" name="phone" id="phone"
                     value="<?php echo esc_attr(get_the_author_meta('phone', $user->ID)); ?>" class="regular-text"
                     required /><br />
-                <span class="description">Podaj numer telefonu.</span>
+                <span class="description"><?php _e('Enter your phone number.', 'partners-site_v2'); ?></span>
             </td>
         </tr>
     </table>
