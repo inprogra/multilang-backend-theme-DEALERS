@@ -3359,6 +3359,26 @@ msgstr "Elektrická singl"
 msgid "Events"
 msgstr "Akce"
 
+#: functions.php:522
+msgid "Search"
+msgstr "Hledat"
+
+#: functions.php:958
+msgid "An error has occurred. Please try logging in again."
+msgstr "Došlo k chybě. Zkuste se prosím přihlásit znovu."
+
+#: functions.php:1916
+msgid "Recent 10 modified vehicles"
+msgstr "Posledních 10 upravených vozidel"
+
+#: functions.php:1921
+msgid "Recent Campaigns"
+msgstr "Poslední kampaně"
+
+#: functions.php:1926
+msgid "Recent Leads"
+msgstr "Poslední poptávky"
+
 #: functions.php:1947
 #: functions.php:1980
 #: functions.php:2004
@@ -3369,12 +3389,44 @@ msgstr "Akce"
 msgid "Edit"
 msgstr "Upravit"
 
+#: functions.php:2121
+msgid "Your one-time code to log in to the website"
+msgstr "Váš jednorázový kód pro přihlášení na webové stránky"
+
 #: functions.php:1948
 #: functions.php:1981
 #: functions.php:2005
 #: functions.php:2029
 msgid "View"
 msgstr "Zobrazit"
+
+#: functions.php:2261
+msgid "File not found."
+msgstr "Soubor nebyl nalezen."
+
+#: functions.php:2357
+msgid "Regenerate HTML"
+msgstr "Znovu vygenerovat HTML"
+
+#: functions.php:2357
+msgid "Regenerate static HTML files for all pages"
+msgstr "Znovu vygenerovat statické soubory HTML pro všechny stránky"
+
+#: functions.php:2383
+msgid "A regeneration job has been scheduled for all dealers in the background"
+msgstr "Plánované generování pro všechny prodejce na pozadí"
+
+#: functions.php:2390
+msgid "%d pages generated, errors: %d"
+msgstr "Vygenerováno %d stránek, chyby: %d"
+
+#: functions.php:2577
+msgid "Information"
+msgstr "Informace"
+
+#: functions.php:2578
+msgid "This campaign slot has been set globally by the administrator"
+msgstr "Tento časový slot pro kampaň byl nastaven globálně správcem"
 
 #: functions.php:2075
 msgid "Required field"
@@ -3384,10 +3436,17 @@ msgstr "Povinné pole"
 msgid "Enter your phone number."
 msgstr "Zadejte své telefonní číslo."
 
+#: functions.php:2416
+msgid "Are you sure you want to regenerate the static HTML files?"
+msgstr "Opravdu chcete obnovit statické soubory HTML?"
 
+#: functions.php:2416
+msgid "Regenerating..."
+msgstr "Regenerační..."
 
-##########################
-
+#: functions.php:2434
+msgid "An error occurred during regeneration"
+msgstr "Při regeneraci došlo k chybě"
 
 #: includes/controllers/EventController.class.php:36
 #: includes/controllers/EventController.class.php:37

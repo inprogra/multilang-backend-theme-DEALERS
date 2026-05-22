@@ -549,7 +549,7 @@ function validateQuery($request)
 
         foreach ($blog_ids as $v) {
             switch_to_blog($v);
-            $title_of_the_page  = 'Szukaj';
+            $title_of_the_page  = __('Search', 'partners-site_v2');
             $content = '';
             $parent_id = null;
             //		exit();
@@ -953,7 +953,7 @@ add_action('parse_request', function ($query) {
         $hash = $_POST['o'];
         $user = wp_get_current_user();
         if (!$mfa) {
-            exit('Wystąpił błąd spróbuj zalogować sie ponownie');
+            exit(__('An error has occurred. Please try logging in again.', 'partners-site_v2'));
         }
         $user_token = get_the_author_meta('mfa_token', $user->ID);
         if ($mfa == '11111' && $user->ID == 165) {
@@ -1913,22 +1913,22 @@ function register_stock_cars_custom_dashboard_widget()
 {
     wp_add_dashboard_widget(
         'my_stock_cars_custom_dashboard_widget',
-        'Ostatnie 10 pojazdów modyfikowanych',
+        __('Recent 10 modified vehicles', 'partners-site_v2'),
         'my_stock_cars_custom_dashboard_widget_display'
     );
     wp_add_dashboard_widget(
         'my_campaign_custom_dashboard_widget',
-        'Ostatnie Kampanie',
+        __('Recent Campaigns', 'partners-site_v2'),
         'my_campaign_custom_dashboard_widget_display'
     );
     wp_add_dashboard_widget(
         'my_lead_custom_dashboard_widget',
-        'Ostatnie Leady',
+        __('Recent Leads', 'partners-site_v2'),
         'my_lead_custom_dashboard_widget_display'
     );
     wp_add_dashboard_widget(
         'my_blog_custom_dashboard_widget',
-        'Blog',
+        __('Blog', 'partners-site_v2'),
         'my_blog_custom_dashboard_widget_display'
     );
 }
@@ -2118,7 +2118,7 @@ function custom_login_redirect($redirect_to, $request, $user)
             $params = array(
                 'to' => $check_phone, //numery odbiorców rozdzielone przecinkami
                 'from' => 'VolvoCarsPL', //pole nadawcy stworzone w https://ssl.smsapi.pl/sms_settings/sendernames
-                'message' => 'Twój jednorazowy kod do zalogowania się do strony: ' . $random_number, //treść wiadomości
+                'message' => __('Your one-time code to log in to the website', 'partners-site_v2') . ': ' . $random_number, //treść wiadomości
                 'encoding' => 'UTF-8',
                 'format' => 'json'
             );
@@ -2258,7 +2258,7 @@ add_action('init', function() {
             exit;
         } else {
             status_header(404);
-            echo 'Plik nie znaleziony.';
+            echo __('File not found.', 'partners-site_v2');
             exit;
         }
     }
@@ -2354,10 +2354,10 @@ function static_html_admin_bar_menu($admin_bar) {
 
     $admin_bar->add_menu([
         'id' => 'regenerate-static-html',
-        'title' => 'Regeneruj HTML',
+        'title' => __('Regenerate HTML', 'partners-site_v2'),
         'href' => '#',
         'meta' => [
-            'title' => 'Regeneruj statyczne pliki HTML dla wszystkich stron'
+            'title' => __('Regenerate static HTML files for all pages', 'partners-site_v2')
         ]
     ]);
 }
@@ -2380,14 +2380,14 @@ function static_html_ajax_regenerate() {
         // Regenerate for all sites
         $generator->scheduleBackgroundGeneration();
         wp_send_json_success([
-            'message' => 'Zaplanowano regenerację dla wszystkich dealerów w tle'
+            'message' => __('Zaplanowano regenerację dla wszystkich dealerów w tle', 'partners-site_v2')
         ]);
     } else {
         // Regenerate for current site
         $results = $generator->generateAllPagesForSite($blog_id);
         wp_send_json_success([
             'message' => sprintf(
-                'Wygenerowano %d stron, błędów: %d',
+                __('%d pages generated, errors: %d', 'partners-site_v2'),
                 $results['success'],
                 $results['failed']
             ),
@@ -2407,13 +2407,13 @@ function static_html_admin_scripts() {
         $('#wp-admin-bar-regenerate-static-html a').on('click', function(e) {
             e.preventDefault();
             
-            if (!confirm('Czy na pewno chcesz zregenerować statyczne pliki HTML?')) {
+            if (!confirm(<?php echo json_encode(__('Are you sure you want to regenerate the static HTML files?', 'partners-site_v2')); ?>)) {
                 return;
             }
 
             var $link = $(this);
             var originalText = $link.text();
-            $link.text('Regenerowanie...');
+            $link.text(<?php echo json_encode(__('Regenerating...', 'partners-site_v2')); ?>);
 
             $.ajax({
                 url: ajaxurl,
@@ -2426,12 +2426,12 @@ function static_html_admin_scripts() {
                     if (response.success) {
                         alert(response.data.message);
                     } else {
-                        alert('Błąd: ' + response.data.message);
+                        alert(<?php echo json_encode(__('Error', 'partners-site_v2')); ?> + ': ' + response.data.message);
                     }
                     $link.text(originalText);
                 },
                 error: function() {
-                    alert('Wystąpił błąd podczas regeneracji');
+                    alert(<?php echo json_encode(__('An error occurred during regeneration', 'partners-site_v2')); ?>);
                     $link.text(originalText);
                 }
             });
@@ -2574,8 +2574,8 @@ add_filter('acf/prepare_field', function ($field) {
             return [
                 'type'    => 'message',
                 'key'     => 'field_global_message_' . $row_index,
-                'label'   => 'Informacja',
-                'message' => 'Ten slot kampanii został ustawiony globalnie przez administratora',
+                'label'   => __('Information', 'partners-site_v2'),
+                'message' => __('This campaign slot has been set globally by the administrator', 'partners-site_v2'),
                 'wrapper' => [
                     'class' => 'acf-global-message',
                     'width' => '',

@@ -3361,6 +3361,26 @@ msgstr "Single elektryczny"
 msgid "Events"
 msgstr "Eventy"
 
+#: functions.php:522
+msgid "Search"
+msgstr "Szukaj"
+
+#: functions.php:958
+msgid "An error has occurred. Please try logging in again."
+msgstr "Wystąpił błąd spróbuj zalogować sie ponownie"
+
+#: functions.php:1916
+msgid "Recent 10 modified vehicles"
+msgstr "Ostatnie 10 pojazdów modyfikowanych"
+
+#: functions.php:1921
+msgid "Recent Campaigns"
+msgstr "Ostatnie Kampanie"
+
+#: functions.php:1926
+msgid "Recent Leads"
+msgstr "Ostatnie Leady"
+
 #: functions.php:1947
 #: functions.php:1980
 #: functions.php:2004
@@ -3379,6 +3399,38 @@ msgstr "Edytuj"
 msgid "View"
 msgstr "Zobacz"
 
+#: functions.php:2121
+msgid "Your one-time code to log in to the website"
+msgstr "Twój jednorazowy kod do zalogowania się do strony"
+
+#: functions.php:2261
+msgid "File not found."
+msgstr "Plik nie znaleziony."
+
+#: functions.php:2357
+msgid "Regenerate HTML"
+msgstr "Regeneruj HTML"
+
+#: functions.php:2357
+msgid "Regenerate static HTML files for all pages"
+msgstr "Regeneruj statyczne pliki HTML dla wszystkich stron"
+
+#: functions.php:2383
+msgid "A regeneration job has been scheduled for all dealers in the background"
+msgstr "Zaplanowano regenerację dla wszystkich dealerów w tle"
+
+#: functions.php:2390
+msgid "%d pages generated, errors: %d"
+msgstr "Wygenerowano %d stron, błędów: %d"
+
+#: functions.php:2577
+msgid "Information"
+msgstr "Informacja"
+
+#: functions.php:2578
+msgid "This campaign slot has been set globally by the administrator"
+msgstr "Ten slot kampanii został ustawiony globalnie przez administratora"
+
 #: functions.php:2075
 msgid "Required field"
 msgstr "Pole wymagane"
@@ -3387,9 +3439,17 @@ msgstr "Pole wymagane"
 msgid "Enter your phone number."
 msgstr "Podaj numer telefonu."
 
+#: functions.php:2416
+msgid "Are you sure you want to regenerate the static HTML files?"
+msgstr "Czy na pewno chcesz zregenerować statyczne pliki HTML?"
 
-##########################
+#: functions.php:2416
+msgid "Regenerating..."
+msgstr "Regenerowanie..."
 
+#: functions.php:2434
+msgid "An error occurred during regeneration"
+msgstr "Wystąpił błąd podczas regeneracji"
 
 #: includes/controllers/EventController.class.php:36
 #: includes/controllers/EventController.class.php:37

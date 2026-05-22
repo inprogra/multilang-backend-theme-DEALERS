@@ -3359,6 +3359,26 @@ msgstr ""
 msgid "Events"
 msgstr ""
 
+#: functions.php:522
+msgid "Search"
+msgstr ""
+
+#: functions.php:958
+msgid "An error has occurred. Please try logging in again."
+msgstr ""
+
+#: functions.php:1916
+msgid "Recent 10 modified vehicles"
+msgstr ""
+
+#: functions.php:1921
+msgid "Recent Campaigns"
+msgstr ""
+
+#: functions.php:1926
+msgid "Recent Leads"
+msgstr ""
+
 #: functions.php:1947
 #: functions.php:1980
 #: functions.php:2004
@@ -3376,6 +3396,38 @@ msgstr ""
 msgid "View"
 msgstr ""
 
+#: functions.php:2121
+msgid "Your one-time code to log in to the website"
+msgstr ""
+
+#: functions.php:2261
+msgid "File not found."
+msgstr ""
+
+#: functions.php:2357
+msgid "Regenerate HTML"
+msgstr ""
+
+#: functions.php:2357
+msgid "Regenerate static HTML files for all pages"
+msgstr ""
+
+#: functions.php:2383
+msgid "A regeneration job has been scheduled for all dealers in the background"
+msgstr ""
+
+#: functions.php:2390
+msgid "%d pages generated, errors: %d"
+msgstr ""
+
+#: functions.php:2577
+msgid "Information"
+msgstr ""
+
+#: functions.php:2578
+msgid "This campaign slot has been set globally by the administrator"
+msgstr ""
+
 #: functions.php:2075
 msgid "Required field"
 msgstr ""
@@ -3384,9 +3436,17 @@ msgstr ""
 msgid "Enter your phone number."
 msgstr ""
 
+#: functions.php:2416
+msgid "Are you sure you want to regenerate the static HTML files?"
+msgstr ""
 
-##########################
+#: functions.php:2416
+msgid "Regenerating..."
+msgstr ""
 
+#: functions.php:2434
+msgid "An error occurred during regeneration"
+msgstr ""
 
 #: includes/controllers/EventController.class.php:36
 #: includes/controllers/EventController.class.php:37
