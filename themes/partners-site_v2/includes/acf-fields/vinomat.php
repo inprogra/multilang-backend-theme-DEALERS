@@ -9,11 +9,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_5c18f89ca825f',
-			'title'                 => 'Ustawienia',
+			'title'                 => __( 'Settings', 'partners-site_v2' ),
 			'fields'                => array(
 				array(
 					'key'               => 'field_pno_csv',
-					'label'             => 'Mapa pno => eurocode',
+					'label'             => __('Pno map => Eurocode', 'partners-site_v2'),
 					'name'              => 'pno-eurocode',
 					'type'              => 'file',
 					'instructions'      => '',
@@ -32,7 +32,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 				),
 				array(
 					'key'               => 'field_5c18f8a29941c',
-					'label'             => 'Leasing',
+					'label'             => __('Leasing', 'partners-site_v2'),
 					'name'              => 'leasing',
 					'type'              => 'repeater',
 					'instructions'      => '',
@@ -51,7 +51,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 					'sub_fields'        => array(
 						array(
 							'key'               => 'leasing_description',
-							'label' => __( 'Opis dla dealerów', 'partners-site_v2' ),
+							'label' => __('Description for dealers', 'partners-site_v2'),
 							'name'              => 'leasing_description',
 							'type'              => 'textarea',
 							'instructions'      => '',
@@ -70,7 +70,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'leasing_pricing',
-							'label'             => 'Cena bazowa',
+							'label'             => __('Base price', 'partners-site_v2'),
 							'name'              => 'leasing_pricing',
 							'type'              => 'select',
 							'instructions'      => '',
@@ -82,8 +82,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								'id'    => '',
 							),
 							'choices'           => array(
-								'brutto' => 'brutto',
-								'netto'  => 'netto',
+								'brutto' => __( 'gross', 'partners-site_v2' ),
+								'netto'  => __( 'net', 'partners-site_v2' ),
 							),
 							'default_value'     => false,
 							'allow_null'        => 0,
@@ -95,7 +95,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'leasing_offer',
-							'label'             => 'Oferta mleasingu',
+							'label'             => __('mLeasing offer', 'partners-site_v2'),
 							'name'              => 'leasing_offer',
 							'type'              => 'select',
 							'instructions'      => '',
@@ -119,7 +119,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 				),
 				array(
 					'key'               => 'najem',
-					'label'             => 'Najem',
+					'label'             => __('Rental', 'partners-site_v2'),
 					'name'              => 'najem',
 					'type'              => 'repeater',
 					'instructions'      => '',
@@ -138,7 +138,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 					'sub_fields'        => array(
 						array(
 							'key'               => 'najem_description',
-							'label' => __( 'Opis dla dealerów', 'partners-site_v2' ),
+							'label' => __('Description for dealers', 'partners-site_v2'),
 							'name'              => 'najem_description',
 							'type'              => 'textarea',
 							'instructions'      => '',
@@ -157,7 +157,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'najem_pricing',
-							'label'             => 'Cena bazowa',
+							'label'             => __('Base price', 'partners-site_v2'),
 							'name'              => 'najem_pricing',
 							'type'              => 'select',
 							'instructions'      => '',
@@ -182,7 +182,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'najem_offer',
-							'label'             => 'Oferta mleasingu',
+							'label'             => __('mLeasing offer', 'partners-site_v2'),
 							'name'              => 'najem_offer',
 							'type'              => 'select',
 							'instructions'      => '',

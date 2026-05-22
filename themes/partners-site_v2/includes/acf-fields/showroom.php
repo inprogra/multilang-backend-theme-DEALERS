@@ -4,11 +4,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_6051cd52bb16f',
-			'title'                 => 'Salon',
+			'title'                 => __( 'Showroom', 'partners-site_v2' ),
 			'fields'                => array(
 				array(
 					'key'               => 'field_6051cfffc4f4e',
-					'label'             => 'Informacje podstawowe',
+					'label'             => __( 'Basic Information', 'partners-site_v2' ),
 					'name'              => '',
 					'type'              => 'tab',
 					'instructions'      => '',
@@ -24,10 +24,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_6051cd9117f12',
-					'label'             => 'ID salonu',
+					'label'             => __('Showroom ID', 'partners-site_v2'),
 					'name'              => 'showroomId',
 					'type'              => 'text',
-					'instructions' => __( 'Pełne showroomId dealerstwa np. <strong>PL100#1</strong>', 'partners-site_v2' ),
+					'instructions' => __('Full dealership showroom ID, e.g., <strong>PL100#1</strong>', 'partners-site_v2'),
 					'required'          => 1,
 					'conditional_logic' => 0,
 					'wrapper'           => array(
@@ -44,7 +44,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_60b4d37267g4d',
-					'label'             => 'Posiada salon',
+					'label'             => __('Has a showroom', 'partners-site_v2'),
 					'name'              => 'has-showroom',
 					'type'              => 'true_false',
 					'instructions'      => '',
@@ -63,7 +63,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_60b4d37267f4d',
-					'label'             => 'Posiada serwis',
+					'label'             => __('Has a service center', 'partners-site_v2'),
 					'name'              => 'has-service',
 					'type'              => 'true_false',
 					'instructions'      => '',
@@ -82,7 +82,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_60b4d37267f4f',
-					'label' => __( 'Posiada Biuro Obsługi Klienta', 'partners-site_v2' ),
+					'label' => __('Has a Customer Service Office', 'partners-site_v2'),
 					'name'              => 'has-customer-service-office',
 					'type'              => 'true_false',
 					'instructions'      => '',
@@ -101,7 +101,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_6051cd8117f12',
-					'label'             => 'Nazwa salonu',
+					'label'             => __('Showroom name', 'partners-site_v2'),
 					'name'              => 'name',
 					'type'              => 'text',
 					'instructions'      => '',
@@ -121,7 +121,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_6051cd8c17f13',
-					'label'             => 'Adres',
+					'label'             => __( 'Address', 'partners-site_v2' ),
 					'name'              => 'address',
 					'type'              => 'group',
 					'instructions'      => '',
@@ -136,7 +136,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'sub_fields'        => array(
 						array(
 							'key'               => 'field_6051cda717f14',
-							'label'             => 'Ulica',
+							'label'             => __('Street', 'partners-site_v2'),
 							'name'              => 'street',
 							'type'              => 'text',
 							'instructions'      => '',
@@ -155,7 +155,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_6051cdb317f15',
-							'label'             => 'Kod pocztowy',
+							'label'             => __('Zip code', 'partners-site_v2'),
 							'name'              => 'zip-code',
 							'type'              => 'text',
 							'instructions'      => '',
@@ -174,7 +174,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_6051ce5217f16',
-							'label'             => 'Miasto',
+							'label'             => __( 'City', 'partners-site_v2' ),
 							'name'              => 'city',
 							'type'              => 'text',
 							'instructions'      => '',
@@ -193,7 +193,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_6051ce6317f17',
-							'label'             => 'Nr telefonu',
+							'label'             => __( 'Phone Number', 'partners-site_v2' ),
 							'name'              => 'phone',
 							'type'              => 'text',
 							'instructions'      => '',
@@ -214,7 +214,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_6051cf3117f20',
-					'label'             => 'Pozycja na mapie',
+					'label'             => __('Location on map', 'partners-site_v2'),
 					'name'              => 'map-position',
 					'type'              => 'google_map',
 					'instructions'      => '',
@@ -232,10 +232,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_6051cd8117f22',
-					'label' => __( 'Miejscowość salonu', 'partners-site_v2' ),
+					'label' => __('Showroom city', 'partners-site_v2'),
 					'name'              => 'showroom-location',
 					'type'              => 'text',
-					'instructions' => __( 'Miejscowość salonu, która będzie użyta na stronie odreki.poznajvolvo.pl', 'partners-site_v2' ),
+					'instructions' => __('Showroom city to be used on the website odreki.poznajvolvo.pl', 'partners-site_v2'),
 					'required'          => 1,
 					'conditional_logic' => 0,
 					'wrapper'           => array(
@@ -252,7 +252,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_6051d00bc4f4f',
-					'label'             => 'Godziny otwarcia salonu',
+					'label'             => __('Showroom hours', 'partners-site_v2'),
 					'name'              => '',
 					'type'              => 'tab',
 					'instructions'      => '',
@@ -276,7 +276,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_6051ce7917f18',
-					'label'             => 'Godziny otwarcia salonu',
+					'label'             => __('Showroom hours', 'partners-site_v2'),
 					'name'              => 'showroom-open-hours',
 					'type'              => 'group',
 					'instructions'      => '',
@@ -299,7 +299,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'sub_fields'        => array(
 						array(
 							'key'               => 'field_6051ce9c17f19',
-							'label' => __( 'Poniedziałek-piątek', 'partners-site_v2' ),
+							'label' => __('Monday-Friday', 'partners-site_v2'),
 							'name'              => 'monday-friday',
 							'type'              => 'group',
 							'instructions'      => '',
@@ -314,7 +314,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							'sub_fields'        => array(
 								array(
 									'key'               => 'field_6051fa1a6ee2b',
-									'label'             => 'Od',
+									'label'             => __('From', 'partners-site_v2'),
 									'name'              => 'from',
 									'type'              => 'time_picker',
 									'instructions'      => '',
@@ -330,7 +330,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key'               => 'field_6051fa2f6ee2c',
-									'label'             => 'Do',
+									'label'             => __('To', 'partners-site_v2'),
 									'name'              => 'to',
 									'type'              => 'time_picker',
 									'instructions'      => '',
@@ -348,7 +348,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_6051fa426ee2d',
-							'label'             => 'Sobota',
+							'label'             => __('Saturday', 'partners-site_v2'),
 							'name'              => 'saturday',
 							'type'              => 'group',
 							'instructions'      => '',
@@ -363,7 +363,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							'sub_fields'        => array(
 								array(
 									'key'               => 'field_6051fa426ee2e',
-									'label'             => 'Od',
+									'label'             => __('From', 'partners-site_v2'),
 									'name'              => 'from',
 									'type'              => 'time_picker',
 									'instructions'      => '',
@@ -379,7 +379,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key'               => 'field_6051fa426ee2f',
-									'label'             => 'Do',
+									'label'             => __('To', 'partners-site_v2'),
 									'name'              => 'to',
 									'type'              => 'time_picker',
 									'instructions'      => '',
@@ -397,10 +397,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_6051cee517f1b',
-							'label'             => 'Dodatkowe informacje',
+							'label'             => __('Additional information', 'partners-site_v2'),
 							'name'              => 'additional-info',
 							'type'              => 'textarea',
-							'instructions' => __( '(max. 100 znaków)', 'partners-site_v2' ),
+							'instructions' 		=> sprintf(__( '(max. %s chars)', 'partners-site_v2' ), 100),
 							'required'          => 0,
 							'conditional_logic' => 0,
 							'wrapper'           => array(
@@ -418,7 +418,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_6051d018c4f50',
-					'label'             => 'Godziny otwarcia serwisu',
+					'label'             => __('Service center opening hours', 'partners-site_v2'),
 					'name'              => '',
 					'type'              => 'tab',
 					'instructions'      => '',
@@ -442,7 +442,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_6051fa4c6ee30',
-					'label'             => 'Godziny otwarcia serwisu',
+					'label'             => __('Service center opening hours', 'partners-site_v2'),
 					'name'              => 'service-open-hours',
 					'type'              => 'group',
 					'instructions'      => '',
@@ -465,7 +465,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'sub_fields'        => array(
 						array(
 							'key'               => 'field_6051fa4c6ee31',
-							'label' => __( 'Poniedziałek-piątek', 'partners-site_v2' ),
+							'label' => __('Monday-Friday', 'partners-site_v2'),
 							'name'              => 'monday-friday',
 							'type'              => 'group',
 							'instructions'      => '',
@@ -480,7 +480,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							'sub_fields'        => array(
 								array(
 									'key'               => 'field_6051fa4c6ee32',
-									'label'             => 'Od',
+									'label'             => __('From', 'partners-site_v2'),
 									'name'              => 'from',
 									'type'              => 'time_picker',
 									'instructions'      => '',
@@ -496,7 +496,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key'               => 'field_6051fa4c6ee33',
-									'label'             => 'Do',
+									'label'             => __('To', 'partners-site_v2'),
 									'name'              => 'to',
 									'type'              => 'time_picker',
 									'instructions'      => '',
@@ -514,7 +514,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_6051fa4c6ee34',
-							'label'             => 'Sobota',
+							'label'             => __('Saturday', 'partners-site_v2'),
 							'name'              => 'saturday',
 							'type'              => 'group',
 							'instructions'      => '',
@@ -529,7 +529,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							'sub_fields'        => array(
 								array(
 									'key'               => 'field_6051fa4c6ee35',
-									'label'             => 'Od',
+									'label'             => __('From', 'partners-site_v2'),
 									'name'              => 'from',
 									'type'              => 'time_picker',
 									'instructions'      => '',
@@ -545,7 +545,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key'               => 'field_6051fa4c6ee36',
-									'label'             => 'Do',
+									'label'             => __('To', 'partners-site_v2'),
 									'name'              => 'to',
 									'type'              => 'time_picker',
 									'instructions'      => '',
@@ -563,10 +563,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_6051fa4c6ee37',
-							'label'             => 'Dodatkowe informacje',
+							'label'             => __('Additional information', 'partners-site_v2'),
 							'name'              => 'additional-info',
 							'type'              => 'textarea',
-							'instructions' => __( '(max. 100 znaków)', 'partners-site_v2' ),
+							'instructions' 		=> sprintf(__( '(max. %s chars)', 'partners-site_v2' ), 100),
 							'required'          => 0,
 							'conditional_logic' => 0,
 							'wrapper'           => array(
@@ -584,7 +584,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_6051d018c4f51',
-					'label' => __( 'Godziny otwarcia Biura Obsługi Klienta', 'partners-site_v2' ),
+					'label' => __('Customer Service Office opening hours', 'partners-site_v2'),
 					'name'              => '',
 					'type'              => 'tab',
 					'instructions'      => '',
@@ -608,7 +608,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_6051d018c4f52',
-					'label' => __( 'Godziny otwarcia Biura Obsługi Klienta', 'partners-site_v2' ),
+					'label' => __('Customer Service Office opening hours', 'partners-site_v2'),
 					'name'              => 'customer-service-office-open-hours',
 					'type'              => 'group',
 					'instructions'      => '',
@@ -631,7 +631,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'sub_fields'        => array(
 						array(
 							'key'               => 'field_6051d018c4f53',
-							'label' => __( 'Poniedziałek-piątek', 'partners-site_v2' ),
+							'label' => __('Monday-Friday', 'partners-site_v2'),
 							'name'              => 'monday-friday',
 							'type'              => 'group',
 							'instructions'      => '',
@@ -646,7 +646,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							'sub_fields'        => array(
 								array(
 									'key'               => 'field_6051d018c4f54',
-									'label'             => 'Od',
+									'label'             => __('From', 'partners-site_v2'),
 									'name'              => 'from',
 									'type'              => 'time_picker',
 									'instructions'      => '',
@@ -662,7 +662,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key'               => 'field_6051d018c4f55',
-									'label'             => 'Do',
+									'label'             => __('To', 'partners-site_v2'),
 									'name'              => 'to',
 									'type'              => 'time_picker',
 									'instructions'      => '',
@@ -680,7 +680,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_6051d018c4f56',
-							'label'             => 'Sobota',
+							'label'             => __('Saturday', 'partners-site_v2'),
 							'name'              => 'saturday',
 							'type'              => 'group',
 							'instructions'      => '',
@@ -695,7 +695,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							'sub_fields'        => array(
 								array(
 									'key'               => 'field_6051d018c4f57',
-									'label'             => 'Od',
+									'label'             => __('From', 'partners-site_v2'),
 									'name'              => 'from',
 									'type'              => 'time_picker',
 									'instructions'      => '',
@@ -711,7 +711,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key'               => 'field_6051d018c4f58',
-									'label'             => 'Do',
+									'label'             => __('To', 'partners-site_v2'),
 									'name'              => 'to',
 									'type'              => 'time_picker',
 									'instructions'      => '',
@@ -729,10 +729,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_6051d018c4f59',
-							'label'             => 'Dodatkowe informacje',
+							'label'             => __('Additional information', 'partners-site_v2'),
 							'name'              => 'additional-info',
 							'type'              => 'textarea',
-							'instructions' => __( '(max. 100 znaków)', 'partners-site_v2' ),
+							'instructions' 		=> sprintf(__( '(max. %s chars)', 'partners-site_v2' ), 100),
 							'required'          => 0,
 							'conditional_logic' => 0,
 							'wrapper'           => array(
@@ -750,7 +750,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_showroom_departments_hours_tab',
-					'label'             => 'Godziny otwarcia działów',
+					'label'             => __('Department opening hours', 'partners-site_v2'),
 					'name'              => '',
 					'type'              => 'tab',
 					'placement'         => 'top',
@@ -758,20 +758,20 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key' => 'field_departments_hours',
-					'label' => 'Godziny działów',
+					'label' => __('Department hours', 'partners-site_v2'),
 					'name' => 'departments_hours',
 					'type' => 'group',
 					'layout' => 'block',
 					'sub_fields' => array(
 						array(
 							'key' => 'field_department_0_title',
-							'label' => 'Business Development Center',
+							'label' => __('Business Development Center', 'partners-site_v2'),
 							'name' => 'department_0_title',
 							'type' => 'message',
 						),
 						array(
 							'key' => 'field_department_0_name',
-							'label' => 'Business Development Center',
+							'label' => __('Business Development Center', 'partners-site_v2'),
 							'name' => 'department_0_name',
 							'type' => 'text',
 							'default_value' => 'business_development_center',
@@ -779,14 +779,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key' => 'field_department_hours_business_development_center',
-							'label' => 'Godziny',
+							'label' => __('Hours', 'partners-site_v2'),
 							'name' => 'department_hours_business_development_center',
 							'type' => 'group',
 							'layout' => 'block',
 							'sub_fields' => array(
 								array(
 									'key' => 'field_week_hours_business_development_center',
-									'label' => 'Poniedziałek - Piątek',
+									'label' => __('Monday - Friday', 'partners-site_v2'),
 									'name' => 'week',
 									'type' => 'group',
 									'layout' => 'row',
@@ -794,7 +794,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_week_open_business_development_center',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -803,7 +803,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_week_close_business_development_center',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -814,7 +814,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key' => 'field_sat_hours_business_development_center',
-									'label' => 'Sobota',
+									'label' => __('Saturday', 'partners-site_v2'),
 									'name' => 'saturday',
 									'type' => 'group',
 									'layout' => 'row',
@@ -822,7 +822,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_sat_open_business_development_center',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -831,7 +831,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_sat_close_business_development_center',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -844,13 +844,13 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key' => 'field_department_1_title',
-							'label' => 'Assistance',
+							'label' => __('Assistance', 'partners-site_v2'),
 							'name' => 'department_1_title',
 							'type' => 'message',
 						),
 						array(
 							'key' => 'field_department_1_name',
-							'label' => 'Assistance',
+							'label' => __('Assistance', 'partners-site_v2'),
 							'name' => 'department_1_name',
 							'type' => 'text',
 							'default_value' => 'assistance', 
@@ -858,14 +858,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						
 						array(
 							'key' => 'field_department_hours_assistance',
-							'label' => 'Godziny',
+							'label' => __('Hours', 'partners-site_v2'),
 							'name' => 'department_hours_assistance',
 							'type' => 'group',
 							'layout' => 'block',
 							'sub_fields' => array(
 								array(
 									'key' => 'field_week_hours_assistance',
-									'label' => 'Poniedziałek - Piątek',
+									'label' => __('Monday - Friday', 'partners-site_v2'),
 									'name' => 'week',
 									'type' => 'group',
 									'layout' => 'row',
@@ -873,7 +873,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_week_open_assistance',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -882,7 +882,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_week_close_assistance',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -893,7 +893,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key' => 'field_sat_hours_assistance',
-									'label' => 'Sobota',
+									'label' => __('Saturday', 'partners-site_v2'),
 									'name' => 'saturday',
 									'type' => 'group',
 									'layout' => 'row',
@@ -901,7 +901,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_sat_open_assistance',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -910,7 +910,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_sat_close_assistance',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -923,27 +923,27 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key' => 'field_department_2_title',
-							'label' => 'Ubezpieczenia komunikacyjne',
+							'label' => __('Auto Insurance', 'partners-site_v2'),
 							'name' => 'department_2_title',
 							'type' => 'message',
 						),
 						array(
 							'key' => 'field_department_2_name',
-							'label' => 'Ubezpieczenia komunikacyjne',
+							'label' => __('Auto Insurance', 'partners-site_v2'),
 							'name' => 'department_2_name',
 							'type' => 'text',
 							'default_value' => 'ubezpieczenia_komunikacyjne', 
 						),
 						array(
 							'key' => 'field_department_hours_ubezpieczenia_komunikacyjne',
-							'label' => 'Godziny',
+							'label' => __('Hours', 'partners-site_v2'),
 							'name' => 'department_hours_ubezpieczenia_komunikacyjne',
 							'type' => 'group',
 							'layout' => 'block',
 							'sub_fields' => array(
 								array(
 									'key' => 'field_week_hours_ubezpieczenia_komunikacyjne',
-									'label' => 'Poniedziałek - Piątek',
+									'label' => __('Monday - Friday', 'partners-site_v2'),
 									'name' => 'week',
 									'type' => 'group',
 									'layout' => 'row',
@@ -951,7 +951,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_week_open_ubezpieczenia_komunikacyjne',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -960,7 +960,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_week_close_ubezpieczenia_komunikacyjne',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -971,7 +971,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key' => 'field_sat_hours_ubezpieczenia_komunikacyjne',
-									'label' => 'Sobota',
+									'label' => __('Saturday', 'partners-site_v2'),
 									'name' => 'saturday',
 									'type' => 'group',
 									'layout' => 'row',
@@ -979,7 +979,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_sat_open_ubezpieczenia_komunikacyjne',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -988,7 +988,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_sat_close_ubezpieczenia_komunikacyjne',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1001,27 +1001,27 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key' => 'field_department_3_title',
-							'label' => 'Samochody nowe',
+							'label' => __('New Cars', 'partners-site_v2'),
 							'name' => 'department_3_title',
 							'type' => 'message',
 						),
 						array(
 							'key' => 'field_department_3_name',
-							'label' => 'Samochody nowe',
+							'label' => __('New Cars', 'partners-site_v2'),
 							'name' => 'department_3_name',
 							'type' => 'text',
 							'default_value' => 'samochody_nowe', 
 						),
 						array(
 							'key' => 'field_department_hours_samochody_nowe',
-							'label' => 'Godziny',
+							'label' => __('Hours', 'partners-site_v2'),
 							'name' => 'department_hours_samochody_nowe',
 							'type' => 'group',
 							'layout' => 'block',
 							'sub_fields' => array(
 								array(
 									'key' => 'field_week_hours_samochody_nowe',
-									'label' => 'Poniedziałek - Piątek',
+									'label' => __('Monday - Friday', 'partners-site_v2'),
 									'name' => 'week',
 									'type' => 'group',
 									'layout' => 'row',
@@ -1029,7 +1029,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_week_open_samochody_nowe',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1038,7 +1038,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_week_close_samochody_nowe',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1049,7 +1049,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key' => 'field_sat_hours_samochody_nowe',
-									'label' => 'Sobota',
+									'label' => __('Saturday', 'partners-site_v2'),
 									'name' => 'saturday',
 									'type' => 'group',
 									'layout' => 'row',
@@ -1057,7 +1057,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_sat_open_samochody_nowe',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1066,7 +1066,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_sat_close_samochody_nowe',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1079,27 +1079,27 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key' => 'field_department_4_title',
-							'label' => 'Wadowscy Auto Detailing',
+							'label' => __('Wadowscy Auto Detailing', 'partners-site_v2'),
 							'name' => 'department_4_title',
 							'type' => 'message',
 						),
 						array(
 							'key' => 'field_department_4_name',
-							'label' => 'Wadowscy Auto Detailing',
+							'label' => __('Wadowscy Auto Detailing', 'partners-site_v2'),
 							'name' => 'department_4_name',
 							'type' => 'text',
 							'default_value' => 'wadowscy_auto_detailing', 
 						),
 						array(
 							'key' => 'field_department_hours_wadowscy_auto_detailing',
-							'label' => 'Godziny',
+							'label' => __('Hours', 'partners-site_v2'),
 							'name' => 'department_hours_wadowscy_auto_detailing',
 							'type' => 'group',
 							'layout' => 'block',
 							'sub_fields' => array(
 								array(
 									'key' => 'field_week_hours_wadowscy_auto_detailing',
-									'label' => 'Poniedziałek - Piątek',
+									'label' => __('Monday - Friday', 'partners-site_v2'),
 									'name' => 'week',
 									'type' => 'group',
 									'layout' => 'row',
@@ -1107,7 +1107,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_week_open_wadowscy_auto_detailing',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1116,7 +1116,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_week_close_wadowscy_auto_detailing',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1127,7 +1127,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key' => 'field_sat_hours_wadowscy_auto_detailing',
-									'label' => 'Sobota',
+									'label' => __('Saturday', 'partners-site_v2'),
 									'name' => 'saturday',
 									'type' => 'group',
 									'layout' => 'row',
@@ -1135,7 +1135,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_sat_open_wadowscy_auto_detailing',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1144,7 +1144,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_sat_close_wadowscy_auto_detailing',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1157,27 +1157,27 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key' => 'field_department_5_title',
-							'label' => 'Serwis',
+							'label' => __( 'Service', 'partners-site_v2' ),
 							'name' => 'department_5_title',
 							'type' => 'message',
 						),
 						array(
 							'key' => 'field_department_5_name',
-							'label' => 'Serwis',
+							'label' => __( 'Service', 'partners-site_v2' ),
 							'name' => 'department_5_name',
 							'type' => 'text',
 							'default_value' => 'serwis', 
 						),
 						array(
 							'key' => 'field_department_hours_serwis',
-							'label' => 'Godziny',
+							'label' => __('Hours', 'partners-site_v2'),
 							'name' => 'department_hours_serwis',
 							'type' => 'group',
 							'layout' => 'block',
 							'sub_fields' => array(
 								array(
 									'key' => 'field_week_hours_serwis',
-									'label' => 'Poniedziałek - Piątek',
+									'label' => __('Monday - Friday', 'partners-site_v2'),
 									'name' => 'week',
 									'type' => 'group',
 									'layout' => 'row',
@@ -1185,7 +1185,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_week_open_serwis',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1194,7 +1194,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_week_close_serwis',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1205,7 +1205,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key' => 'field_sat_hours_serwis',
-									'label' => 'Sobota',
+									'label' => __('Saturday', 'partners-site_v2'),
 									'name' => 'saturday',
 									'type' => 'group',
 									'layout' => 'row',
@@ -1213,7 +1213,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_sat_open_serwis',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1222,7 +1222,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_sat_close_serwis',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1235,27 +1235,27 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key' => 'field_department_6_title',
-							'label' => 'Części i akcesoria',
+							'label' => __('Parts and Accessories', 'partners-site_v2'),
 							'name' => 'department_6_title',
 							'type' => 'message',
 						),
 						array(
 							'key' => 'field_department_6_name',
-							'label' => 'Części i akcesoria',
+							'label' => __('Parts and Accessories', 'partners-site_v2'),
 							'name' => 'department_6_name',
 							'type' => 'text',
 							'default_value' => 'czesci_i_akcesoria', 
 						),
 						array(
 							'key' => 'field_department_hours_czesci_i_akcesoria',
-							'label' => 'Godziny',
+							'label' => __('Hours', 'partners-site_v2'),
 							'name' => 'department_hours_czesci_i_akcesoria',
 							'type' => 'group',
 							'layout' => 'block',
 							'sub_fields' => array(
 								array(
 									'key' => 'field_week_hours_czesci_i_akcesoria',
-									'label' => 'Poniedziałek - Piątek',
+									'label' => __('Monday - Friday', 'partners-site_v2'),
 									'name' => 'week',
 									'type' => 'group',
 									'layout' => 'row',
@@ -1263,7 +1263,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_week_open_czesci_i_akcesoria',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1272,7 +1272,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_week_close_czesci_i_akcesoria',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1283,7 +1283,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key' => 'field_sat_hours_czesci_i_akcesoria',
-									'label' => 'Sobota',
+									'label' => __('Saturday', 'partners-site_v2'),
 									'name' => 'saturday',
 									'type' => 'group',
 									'layout' => 'row',
@@ -1291,7 +1291,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_sat_open_czesci_i_akcesoria',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1300,7 +1300,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_sat_close_czesci_i_akcesoria',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1313,27 +1313,27 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key' => 'field_department_7_title',
-							'label' => 'Sprzedaż internetowa części i akcesoriów',
+							'label' => __('Online Sales of Parts and Accessories', 'partners-site_v2'),
 							'name' => 'department_7_title',
 							'type' => 'message',
 						),
 						array(
 							'key' => 'field_department_7_name',
-							'label' => 'Sprzedaż internetowa części i akcesoriów',
+							'label' => __('Online Sales of Parts and Accessories', 'partners-site_v2'),
 							'name' => 'department_7_name',
 							'type' => 'text',
 							'default_value' => 'sprzedaz_internetowa_czesci_i_akcesoriow', 
 						),
 						array(
 							'key' => 'field_department_hours_sprzedaz_internetowa_czesci_i_akcesoriow',
-							'label' => 'Godziny',
+							'label' => __('Hours', 'partners-site_v2'),
 							'name' => 'department_hours_sprzedaz_internetowa_czesci_i_akcesoriow',
 							'type' => 'group',
 							'layout' => 'block',
 							'sub_fields' => array(
 								array(
 									'key' => 'field_week_hours_sprzedaz_internetowa_czesci_i_akcesoriow',
-									'label' => 'Poniedziałek - Piątek',
+									'label' => __('Monday - Friday', 'partners-site_v2'),
 									'name' => 'week',
 									'type' => 'group',
 									'layout' => 'row',
@@ -1341,7 +1341,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_week_open_sprzedaz_internetowa_czesci_i_akcesoriow',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1350,7 +1350,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_week_close_sprzedaz_internetowa_czesci_i_akcesoriow',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1361,7 +1361,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key' => 'field_sat_hours_sprzedaz_internetowa_czesci_i_akcesoriow',
-									'label' => 'Sobota',
+									'label' => __('Saturday', 'partners-site_v2'),
 									'name' => 'saturday',
 									'type' => 'group',
 									'layout' => 'row',
@@ -1369,7 +1369,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_sat_open_sprzedaz_internetowa_czesci_i_akcesoriow',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1378,7 +1378,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_sat_close_sprzedaz_internetowa_czesci_i_akcesoriow',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1391,27 +1391,27 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key' => 'field_department_8_title',
-							'label' => 'Sprzedaż flotowa',
+							'label' => __('Fleet Sales', 'partners-site_v2'),
 							'name' => 'department_8_title',
 							'type' => 'message',
 						),
 						array(
 							'key' => 'field_department_8_name',
-							'label' => 'Sprzedaż flotowa',
+							'label' => __('Fleet Sales', 'partners-site_v2'),
 							'name' => 'department_8_name',
 							'type' => 'text',
 							'default_value' => 'sprzedaz_flotowa', 
 						),
 						array(
 							'key' => 'field_department_hours_sprzedaz_flotowa',
-							'label' => 'Godziny',
+							'label' => __('Hours', 'partners-site_v2'),
 							'name' => 'department_hours_sprzedaz_flotowa',
 							'type' => 'group',
 							'layout' => 'block',
 							'sub_fields' => array(
 								array(
 									'key' => 'field_week_hours_sprzedaz_flotowa',
-									'label' => 'Poniedziałek - Piątek',
+									'label' => __('Monday - Friday', 'partners-site_v2'),
 									'name' => 'week',
 									'type' => 'group',
 									'layout' => 'row',
@@ -1419,7 +1419,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_week_open_sprzedaz_flotowa',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1428,7 +1428,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_week_close_sprzedaz_flotowa',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1439,7 +1439,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key' => 'field_sat_hours_sprzedaz_flotowa',
-									'label' => 'Sobota',
+									'label' => __('Saturday', 'partners-site_v2'),
 									'name' => 'saturday',
 									'type' => 'group',
 									'layout' => 'row',
@@ -1447,7 +1447,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_sat_open_sprzedaz_flotowa',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1456,7 +1456,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_sat_close_sprzedaz_flotowa',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1469,27 +1469,27 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key' => 'field_department_9_title',
-							'label' => 'Volvo Service Club',
+							'label' => __('Volvo Service Club', 'partners-site_v2'),
 							'name' => 'department_9_title',
 							'type' => 'message',
 						),
 						array(
 							'key' => 'field_department_9_name',
-							'label' => 'Volvo Service Club',
+							'label' => __('Volvo Service Club', 'partners-site_v2'),
 							'name' => 'department_9_name',
 							'type' => 'text',
 							'default_value' => 'volvo_service_club', 
 						),
 						array(
 							'key' => 'field_department_hours_volvo_service_club',
-							'label' => 'Godziny',
+							'label' => __('Hours', 'partners-site_v2'),
 							'name' => 'department_hours_volvo_service_club',
 							'type' => 'group',
 							'layout' => 'block',
 							'sub_fields' => array(
 								array(
 									'key' => 'field_week_hours_volvo_service_club',
-									'label' => 'Poniedziałek - Piątek',
+									'label' => __('Monday - Friday', 'partners-site_v2'),
 									'name' => 'week',
 									'type' => 'group',
 									'layout' => 'row',
@@ -1497,7 +1497,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_week_open_volvo_service_club',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1506,7 +1506,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_week_close_volvo_service_club',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1517,7 +1517,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key' => 'field_sat_hours_volvo_service_club',
-									'label' => 'Sobota',
+									'label' => __('Saturday', 'partners-site_v2'),
 									'name' => 'saturday',
 									'type' => 'group',
 									'layout' => 'row',
@@ -1525,7 +1525,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_sat_open_volvo_service_club',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1534,7 +1534,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_sat_close_volvo_service_club',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1547,27 +1547,27 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key' => 'field_department_10_title',
-							'label' => 'Serwis blacharsko-lakierniczy',
+							'label' => __('Bodywork and Paint Service', 'partners-site_v2'),
 							'name' => 'department_10_title',
 							'type' => 'message',
 						),
 						array(
 							'key' => 'field_department_10_name',
-							'label' => 'Serwis blacharsko-lakierniczy',
+							'label' => __('Bodywork and Paint Service', 'partners-site_v2'),
 							'name' => 'department_10_name',
 							'type' => 'text',
 							'default_value' => 'serwis_blacharsko_lakierniczy', 
 						),
 						array(
 							'key' => 'field_department_hours_serwis_blacharsko_lakierniczy',
-							'label' => 'Godziny',
+							'label' => __('Hours', 'partners-site_v2'),
 							'name' => 'department_hours_serwis_blacharsko_lakierniczy',
 							'type' => 'group',
 							'layout' => 'block',
 							'sub_fields' => array(
 								array(
 									'key' => 'field_week_hours_serwis_blacharsko_lakierniczy',
-									'label' => 'Poniedziałek - Piątek',
+									'label' => __('Monday - Friday', 'partners-site_v2'),
 									'name' => 'week',
 									'type' => 'group',
 									'layout' => 'row',
@@ -1575,7 +1575,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_week_open_serwis_blacharsko_lakierniczy',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1584,7 +1584,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_week_close_serwis_blacharsko_lakierniczy',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1595,7 +1595,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key' => 'field_sat_hours_serwis_blacharsko_lakierniczy',
-									'label' => 'Sobota',
+									'label' => __('Saturday', 'partners-site_v2'),
 									'name' => 'saturday',
 									'type' => 'group',
 									'layout' => 'row',
@@ -1603,7 +1603,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_sat_open_serwis_blacharsko_lakierniczy',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1612,7 +1612,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_sat_close_serwis_blacharsko_lakierniczy',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1625,27 +1625,27 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key' => 'field_department_11_title',
-							'label' => 'Samochody używane',
+							'label' => __('Used cars', 'partners-site_v2'),
 							'name' => 'department_11_title',
 							'type' => 'message',
 						),
 						array(
 							'key' => 'field_department_11_name',
-							'label' => 'Samochody używane',
+							'label' => __('Used cars', 'partners-site_v2'),
 							'name' => 'department_11_name',
 							'type' => 'text',
 							'default_value' => 'samochody_uzywane', 
 						),
 						array(
 							'key' => 'field_department_hours_samochody_uzywane',
-							'label' => 'Godziny',
+							'label' => __('Hours', 'partners-site_v2'),
 							'name' => 'department_hours_samochody_uzywane',
 							'type' => 'group',
 							'layout' => 'block',
 							'sub_fields' => array(
 								array(
 									'key' => 'field_week_hours_samochody_uzywane',
-									'label' => 'Poniedziałek - Piątek',
+									'label' => __('Monday - Friday', 'partners-site_v2'),
 									'name' => 'week',
 									'type' => 'group',
 									'layout' => 'row',
@@ -1653,7 +1653,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_week_open_samochody_uzywane',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1662,7 +1662,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_week_close_samochody_uzywane',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1673,7 +1673,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key' => 'field_sat_hours_samochody_uzywane',
-									'label' => 'Sobota',
+									'label' => __('Saturday', 'partners-site_v2'),
 									'name' => 'saturday',
 									'type' => 'group',
 									'layout' => 'row',
@@ -1681,7 +1681,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_sat_open_samochody_uzywane',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1690,7 +1690,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_sat_close_samochody_uzywane',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1703,27 +1703,27 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key' => 'field_department_12_title',
-							'label' => 'Finansowanie i ubezpieczenia',
+							'label' => __('Financing and Insurance', 'partners-site_v2'),
 							'name' => 'department_12_title',
 							'type' => 'message',
 						),
 						array(
 							'key' => 'field_department_12_name',
-							'label' => 'Finansowanie i ubezpieczeniae',
+							'label' => __('Financing and Insurance', 'partners-site_v2'),
 							'name' => 'department_12_name',
 							'type' => 'text',
 							'default_value' => 'finansowanie_i_ubezpieczenia', 
 						),
 						array(
 							'key' => 'field_department_hours_finansowanie_i_ubezpieczenia',
-							'label' => 'Godziny',
+							'label' => __('Hours', 'partners-site_v2'),
 							'name' => 'department_hours_finansowanie_i_ubezpieczenia',
 							'type' => 'group',
 							'layout' => 'block',
 							'sub_fields' => array(
 								array(
 									'key' => 'field_week_hours_finansowanie_i_ubezpieczenia',
-									'label' => 'Poniedziałek - Piątek',
+									'label' => __('Monday - Friday', 'partners-site_v2'),
 									'name' => 'week',
 									'type' => 'group',
 									'layout' => 'row',
@@ -1731,7 +1731,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_week_open_finansowanie_i_ubezpieczenia',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1740,7 +1740,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_week_close_finansowanie_i_ubezpieczenia',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1751,7 +1751,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key' => 'field_sat_hours_finansowanie_i_ubezpieczenia',
-									'label' => 'Sobota',
+									'label' => __('Saturday', 'partners-site_v2'),
 									'name' => 'saturday',
 									'type' => 'group',
 									'layout' => 'row',
@@ -1759,7 +1759,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_sat_open_finansowanie_i_ubezpieczenia',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1768,7 +1768,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_sat_close_finansowanie_i_ubezpieczenia',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1781,27 +1781,27 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key' => 'field_department_13_title',
-							'label' => 'Volvo Personal Service',
+							'label' => __('Volvo Personal Service', 'partners-site_v2'),
 							'name' => 'department_13_title',
 							'type' => 'message',
 						),
 						array(
 							'key' => 'field_department_13_name',
-							'label' => 'Volvo Personal Service',
+							'label' => __('Volvo Personal Service', 'partners-site_v2'),
 							'name' => 'department_13_name',
 							'type' => 'text',
 							'default_value' => 'volvo_personal_service', 
 						),
 						array(
 							'key' => 'field_department_hours_volvo_personal_service',
-							'label' => 'Godziny',
+							'label' => __('Hours', 'partners-site_v2'),
 							'name' => 'department_hours_volvo_personal_service',
 							'type' => 'group',
 							'layout' => 'block',
 							'sub_fields' => array(
 								array(
 									'key' => 'field_week_hours_volvo_personal_service',
-									'label' => 'Poniedziałek - Piątek',
+									'label' => __('Monday - Friday', 'partners-site_v2'),
 									'name' => 'week',
 									'type' => 'group',
 									'layout' => 'row',
@@ -1809,7 +1809,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_week_open_volvo_personal_service',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1818,7 +1818,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_week_close_volvo_personal_service',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1829,7 +1829,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key' => 'field_sat_hours_volvo_personal_service',
-									'label' => 'Sobota',
+									'label' => __('Saturday', 'partners-site_v2'),
 									'name' => 'saturday',
 									'type' => 'group',
 									'layout' => 'row',
@@ -1837,7 +1837,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_sat_open_volvo_personal_service',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1846,7 +1846,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_sat_close_volvo_personal_service',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1859,27 +1859,27 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key' => 'field_department_14_title',
-							'label' => 'Recepcja',
+							'label' => __('Reception', 'partners-site_v2'),
 							'name' => 'department_14_title',
 							'type' => 'message',
 						),
 						array(
 							'key' => 'field_department_14_name',
-							'label' => 'Recepcja',
+							'label' => __('Reception', 'partners-site_v2'),
 							'name' => 'department_14_name',
 							'type' => 'text',
 							'default_value' => 'recepcja', 
 						),
 						array(
 							'key' => 'field_department_hours_recepcja',
-							'label' => 'Godziny',
+							'label' => __('Hours', 'partners-site_v2'),
 							'name' => 'department_hours_recepcja',
 							'type' => 'group',
 							'layout' => 'block',
 							'sub_fields' => array(
 								array(
 									'key' => 'field_week_hours_recepcja',
-									'label' => 'Poniedziałek - Piątek',
+									'label' => __('Monday - Friday', 'partners-site_v2'),
 									'name' => 'week',
 									'type' => 'group',
 									'layout' => 'row',
@@ -1887,7 +1887,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_week_open_recepcja',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1896,7 +1896,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_week_close_recepcja',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1907,7 +1907,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key' => 'field_sat_hours_recepcja',
-									'label' => 'Sobota',
+									'label' => __('Saturday', 'partners-site_v2'),
 									'name' => 'saturday',
 									'type' => 'group',
 									'layout' => 'row',
@@ -1915,7 +1915,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_sat_open_recepcja',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1924,7 +1924,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_sat_close_recepcja',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1937,27 +1937,27 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key' => 'field_department_15_title',
-							'label' => 'Sekretariat',
+							'label' => __('Administrative Office', 'partners-site_v2'),
 							'name' => 'department_15_title',
 							'type' => 'message',
 						),
 						array(
 							'key' => 'field_department_15_name',
-							'label' => 'Sekretariat',
+							'label' => __('Administrative Office', 'partners-site_v2'),
 							'name' => 'department_15_name',
 							'type' => 'text',
 							'default_value' => 'sekretariat', 
 						),
 						array(
 							'key' => 'field_department_hours_sekretariat',
-							'label' => 'Godziny',
+							'label' => __('Hours', 'partners-site_v2'),
 							'name' => 'department_hours_sekretariat',
 							'type' => 'group',
 							'layout' => 'block',
 							'sub_fields' => array(
 								array(
 									'key' => 'field_week_hours_sekretariat',
-									'label' => 'Poniedziałek - Piątek',
+									'label' => __('Monday - Friday', 'partners-site_v2'),
 									'name' => 'week',
 									'type' => 'group',
 									'layout' => 'row',
@@ -1965,7 +1965,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_week_open_sekretariat',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1974,7 +1974,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_week_close_sekretariat',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -1985,7 +1985,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key' => 'field_sat_hours_sekretariat',
-									'label' => 'Sobota',
+									'label' => __('Saturday', 'partners-site_v2'),
 									'name' => 'saturday',
 									'type' => 'group',
 									'layout' => 'row',
@@ -1993,7 +1993,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_sat_open_sekretariat',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -2002,7 +2002,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_sat_close_sekretariat',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -2015,27 +2015,27 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key' => 'field_department_16_title',
-							'label' => 'Marketing i PR',
+							'label' => __('Marketing and PR', 'partners-site_v2'),
 							'name' => 'department_16_title',
 							'type' => 'message',
 						),
 						array(
 							'key' => 'field_department_16_name',
-							'label' => 'Marketing i PR',
+							'label' => __('Marketing and PR', 'partners-site_v2'),
 							'name' => 'department_16_name',
 							'type' => 'text',
 							'default_value' => 'marketing_i_pr', 
 						),
 						array(
 							'key' => 'field_department_hours_marketing_i_pr',
-							'label' => 'Godziny',
+							'label' => __('Hours', 'partners-site_v2'),
 							'name' => 'department_hours_marketing_i_pr',
 							'type' => 'group',
 							'layout' => 'block',
 							'sub_fields' => array(
 								array(
 									'key' => 'field_week_hours_marketing_i_pr',
-									'label' => 'Poniedziałek - Piątek',
+									'label' => __('Monday - Friday', 'partners-site_v2'),
 									'name' => 'week',
 									'type' => 'group',
 									'layout' => 'row',
@@ -2043,7 +2043,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_week_open_marketing_i_pr',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -2052,7 +2052,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_week_close_marketing_i_pr',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -2063,7 +2063,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key' => 'field_sat_hours_marketing_i_pr',
-									'label' => 'Sobota',
+									'label' => __('Saturday', 'partners-site_v2'),
 									'name' => 'saturday',
 									'type' => 'group',
 									'layout' => 'row',
@@ -2071,7 +2071,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_sat_open_marketing_i_pr',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -2080,7 +2080,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_sat_close_marketing_i_pr',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -2093,27 +2093,27 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key' => 'field_department_17_title',
-							'label' => 'Inspektor Ochrony Danych Osobowych',
+							'label' => __('Data Protection Officer', 'partners-site_v2'),
 							'name' => 'department_17_title',
 							'type' => 'message',
 						),
 						array(
 							'key' => 'field_department_17_name',
-							'label' => 'Inspektor Ochrony Danych Osobowych',
+							'label' => __('Data Protection Officer', 'partners-site_v2'),
 							'name' => 'department_17_name',
 							'type' => 'text',
 							'default_value' => 'inspektor_ochrony_danych_osobowych', 
 						),
 						array(
 							'key' => 'field_department_hours_inspektor_ochrony_danych_osobowych',
-							'label' => 'Godziny',
+							'label' => __('Hours', 'partners-site_v2'),
 							'name' => 'department_hours_inspektor_ochrony_danych_osobowych',
 							'type' => 'group',
 							'layout' => 'block',
 							'sub_fields' => array(
 								array(
 									'key' => 'field_week_hours_inspektor_ochrony_danych_osobowych',
-									'label' => 'Poniedziałek - Piątek',
+									'label' => __('Monday - Friday', 'partners-site_v2'),
 									'name' => 'week',
 									'type' => 'group',
 									'layout' => 'row',
@@ -2121,7 +2121,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_week_open_inspektor_ochrony_danych_osobowych',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -2130,7 +2130,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_week_close_inspektor_ochrony_danych_osobowych',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -2141,7 +2141,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key' => 'field_sat_hours_inspektor_ochrony_danych_osobowych',
-									'label' => 'Sobota',
+									'label' => __('Saturday', 'partners-site_v2'),
 									'name' => 'saturday',
 									'type' => 'group',
 									'layout' => 'row',
@@ -2149,7 +2149,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_sat_open_inspektor_ochrony_danych_osobowych',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -2158,7 +2158,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_sat_close_inspektor_ochrony_danych_osobowych',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -2171,27 +2171,27 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key' => 'field_department_18_title',
-							'label' => 'Kadry',
+							'label' => __('Human Resources', 'partners-site_v2'),
 							'name' => 'department_18_title',
 							'type' => 'message',
 						),
 						array(
 							'key' => 'field_department_18_name',
-							'label' => 'Kadry',
+							'label' => __('Human Resources', 'partners-site_v2'),
 							'name' => 'department_18_name',
 							'type' => 'text',
 							'default_value' => 'kadry', 
 						),
 						array(
 							'key' => 'field_department_hours_kadry',
-							'label' => 'Godziny',
+							'label' => __('Hours', 'partners-site_v2'),
 							'name' => 'department_hours_kadry',
 							'type' => 'group',
 							'layout' => 'block',
 							'sub_fields' => array(
 								array(
 									'key' => 'field_week_hours_kadry',
-									'label' => 'Poniedziałek - Piątek',
+									'label' => __('Monday - Friday', 'partners-site_v2'),
 									'name' => 'week',
 									'type' => 'group',
 									'layout' => 'row',
@@ -2199,7 +2199,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_week_open_kadry',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -2208,7 +2208,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_week_close_kadry',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -2219,7 +2219,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key' => 'field_sat_hours_kadry',
-									'label' => 'Sobota',
+									'label' => __('Saturday', 'partners-site_v2'),
 									'name' => 'saturday',
 									'type' => 'group',
 									'layout' => 'row',
@@ -2227,7 +2227,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_sat_open_kadry',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -2236,7 +2236,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_sat_close_kadry',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -2249,27 +2249,27 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key' => 'field_department_19_title',
-							'label' => 'Tourist & Diplomat sales',
+							'label' => __('Tourist & Diplomat Sales', 'partners-site_v2'),
 							'name' => 'department_19_title',
 							'type' => 'message',
 						),
 						array(
 							'key' => 'field_department_19_name',
-							'label' => 'Tourist & Diplomat sales',
+							'label' => __('Tourist & Diplomat Sales', 'partners-site_v2'),
 							'name' => 'department_19_name',
 							'type' => 'text',
 							'default_value' => 'tourist_&_diplomat_sales', 
 						),
 						array(
 							'key' => 'field_department_hours_tourist_&_diplomat-sales',
-							'label' => 'Godziny',
+							'label' => __('Hours', 'partners-site_v2'),
 							'name' => 'department_hours_tourist_&_diplomat_sales',
 							'type' => 'group',
 							'layout' => 'block',
 							'sub_fields' => array(
 								array(
 									'key' => 'field_week_hours_tourist_&_diplomat-sales',
-									'label' => 'Poniedziałek - Piątek',
+									'label' => __('Monday - Friday', 'partners-site_v2'),
 									'name' => 'week',
 									'type' => 'group',
 									'layout' => 'row',
@@ -2277,7 +2277,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_week_open_tourist_&_diplomat-sales',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -2286,7 +2286,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_week_close_tourist_&_diplomat-sales',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -2297,7 +2297,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key' => 'field_sat_hours_tourist_&_diplomat-sales',
-									'label' => 'Sobota',
+									'label' => __('Saturday', 'partners-site_v2'),
 									'name' => 'saturday',
 									'type' => 'group',
 									'layout' => 'row',
@@ -2305,7 +2305,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_sat_open_tourist_&_diplomat-sales',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -2314,7 +2314,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_sat_close_tourist_&_diplomat-sales',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -2327,27 +2327,27 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key' => 'field_department_20_title',
-							'label' => 'Akcesoria',
+							'label' => __('Accessories', 'partners-site_v2'),
 							'name' => 'department_20_title',
 							'type' => 'message',
 						),
 						array(
 							'key' => 'field_department_20_name',
-							'label' => 'Akcesoria',
+							'label' => __('Accessories', 'partners-site_v2'),
 							'name' => 'department_20_name',
 							'type' => 'text',
 							'default_value' => 'akcesoria', 
 						),
 						array(
 							'key' => 'field_department_hours_akcesoria',
-							'label' => 'Godziny',
+							'label' => __('Hours', 'partners-site_v2'),
 							'name' => 'department_hours_akcesoria',
 							'type' => 'group',
 							'layout' => 'block',
 							'sub_fields' => array(
 								array(
 									'key' => 'field_week_hours_akcesoria',
-									'label' => 'Poniedziałek - Piątek',
+									'label' => __('Monday - Friday', 'partners-site_v2'),
 									'name' => 'week',
 									'type' => 'group',
 									'layout' => 'row',
@@ -2355,7 +2355,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_week_open_akcesoria',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -2364,7 +2364,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_week_close_akcesoria',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -2375,7 +2375,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key' => 'field_sat_hours_akcesoria',
-									'label' => 'Sobota',
+									'label' => __('Saturday', 'partners-site_v2'),
 									'name' => 'saturday',
 									'type' => 'group',
 									'layout' => 'row',
@@ -2383,7 +2383,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_sat_open_akcesoria',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -2392,7 +2392,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_sat_close_akcesoria',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -2405,27 +2405,27 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key' => 'field_department_21_title',
-							'label' => 'Części',
+							'label' => __('Parts', 'partners-site_v2'),
 							'name' => 'department_20_title',
 							'type' => 'message',
 						),
 						array(
 							'key' => 'field_department_21_name',
-							'label' => 'Części',
+							'label' => __('Parts', 'partners-site_v2'),
 							'name' => 'department_21_name',
 							'type' => 'text',
 							'default_value' => 'czesci', 
 						),
 						array(
 							'key' => 'field_department_hours_czesci',
-							'label' => 'Godziny',
+							'label' => __('Hours', 'partners-site_v2'),
 							'name' => 'department_hours_czesci',
 							'type' => 'group',
 							'layout' => 'block',
 							'sub_fields' => array(
 								array(
 									'key' => 'field_week_hours_czesci',
-									'label' => 'Poniedziałek - Piątek',
+									'label' => __('Monday - Friday', 'partners-site_v2'),
 									'name' => 'week',
 									'type' => 'group',
 									'layout' => 'row',
@@ -2433,7 +2433,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_week_open_czesci',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -2442,7 +2442,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_week_close_czesci',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -2453,7 +2453,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key' => 'field_sat_hours_czesci',
-									'label' => 'Sobota',
+									'label' => __('Saturday', 'partners-site_v2'),
 									'name' => 'saturday',
 									'type' => 'group',
 									'layout' => 'row',
@@ -2461,7 +2461,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields' => array(
 										array(
 											'key' => 'field_sat_open_czesci',
-											'label' => 'Godzina otwarcia',
+											'label' => __('Opening time', 'partners-site_v2'),
 											'name' => 'open',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',
@@ -2470,7 +2470,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key' => 'field_sat_close_czesci',
-											'label' => 'Godzina zamknięcia',
+											'label' => __('Closing time', 'partners-site_v2'),
 											'name' => 'close',
 											'type' => 'time_picker',
 											'display_format' => 'H:i:s',

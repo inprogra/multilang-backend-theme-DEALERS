@@ -69,16 +69,19 @@ add_action('init', function() {
 add_theme_support('title-tag');
 add_theme_support('post-thumbnails');
 
-// Load theme text domain for translations - must be called early
-load_theme_textdomain('partners-site_v2', get_template_directory() . '/languages');
+add_action('after_setup_theme', function() {
+    // Load theme text domain for translations - must be called early
+    load_theme_textdomain('partners-site_v2', get_template_directory() . '/languages');
 
-register_nav_menus(
-    array(
-        'header' => 'Menu Główne',
-        'side-nav' => 'Menu boczne',
-        'footer' => 'Menu w stopce',
-    )
-);
+    register_nav_menus(
+        array(
+            'header' => __('Primary Menu', 'partners-site_v2'),
+            'side-nav' => __('Side Menu', 'partners-site_v2'),
+            'footer' => __('Footer Menu', 'partners-site_v2'),
+        )
+    );
+});
+
 add_action('acf/input/admin_footer', function() {
     if (!is_admin()) {
     return;

@@ -6,11 +6,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_603cfb36c8877',
-			'title'                 => 'OfferBoxes',
+			'title'                 => __('OfferBoxes', 'partners-site_v2'),
 			'fields'                => array(
 				array(
 					'key'               => 'field_605ce9505becc',
-					'label'             => 'Layout',
+					'label'             => __('Layout', 'partners-site_v2'),
 					'name'              => 'layout',
 					'type'              => 'select',
 					'instructions'      => '',
@@ -22,8 +22,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						'id'    => '',
 					),
 					'choices'           => array(
-						'three-in-row' => 'Trzy w rzędzie',
-						'two-in-row'   => 'Dwa w rzędzie',
+						'three-in-row' => __( 'Three in row', 'partners-site_v2' ),
+						'two-in-row'   => __( 'Two in row', 'partners-site_v2' ),
 					),
 					'default_value'     => 'three-in-row',
 					'allow_null'        => 0,
@@ -35,14 +35,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'pull_up',
-					'label' => __( 'Kafelki nachodzące na banner?', 'partners-site_v2' ),
+					'label' => __('Tiles overlapping the banner?', 'partners-site_v2'),
 					'name'              => 'pull_up',
 					'type'              => 'checkbox',
 					'instructions'      => '',
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'choices'           => array(
-						'tak' => 'tak',
+						'tak' => __( 'yes', 'partners-site_v2' ),
 
 					),
 					'allow_null'        => true,
@@ -57,14 +57,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'iconView',
-					'label'             => 'Widoczne ikony i tekst wyrownany do lewej strony',
+					'label'             => __('Visible icons and text aligned to the left', 'partners-site_v2'),
 					'name'              => 'iconview',
 					'type'              => 'checkbox', 
 					'instructions'      => '',
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'choices'           => array(
-						'tak' => 'tak', 
+						'tak' => __( 'yes', 'partners-site_v2' ), 
 
 					),
 					'allow_null'        => true,
@@ -79,7 +79,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_603cfb40f335c',
-					'label'             => 'Elementy',
+					'label'             => __('Elements', 'partners-site_v2'),
 					'name'              => 'items',
 					'type'              => 'repeater',
 					'instructions'      => '',
@@ -98,7 +98,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'sub_fields'        => array(
 						array(
 							'key'               => 'field_605f69b30f61f',
-							'label'             => 'Ikona',
+							'label'             => __('Icon', 'partners-site_v2'),
 							'name'              => 'icon',
 							'type'              => 'icon_select',
 							'instructions'      => '',
@@ -120,7 +120,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_603cfb61f335e',
-							'label' => __( 'Nagłówek', 'partners-site_v2' ),
+							'label' => __( 'Header', 'partners-site_v2' ),
 							'name'              => 'heading',
 							'type'              => 'text',
 							'instructions'      => '',
@@ -139,7 +139,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_603cfb6af335f',
-							'label'             => 'Opis',
+							'label'             => __( 'Description', 'partners-site_v2' ),
 							'name'              => 'description',
 							'type'              => 'textarea',
 							'instructions'      => '',
@@ -158,7 +158,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_603cfb72f33601',
-							'label'             => 'Link',
+							'label'             => __( 'Link', 'partners-site_v2' ),
 							'name'              => 'link',
 							'type'              => 'custom_link',
 							'instructions'      => '',

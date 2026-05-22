@@ -4,14 +4,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_604f1fe1dadef',
-			'title'                 => 'Model-Override',
+			'title'                 => __('Model-Override', 'partners-site_v2'),
 			'fields'                => array(
 				array(
 					'key'               => 'field_604f1fef287ca',
-					'label'             => 'Model',
+					'label'             => __( 'Model', 'partners-site_v2' ),
 					'name'              => 'model',
 					'type'              => 'network_post_object',
-					'instructions' => __( 'Model pod którym wyświetli się treść tej strony', 'partners-site_v2' ),
+					'instructions' => __('The model under which this page\'s content will be displayed', 'partners-site_v2'),
 					'required'          => 1,
 					'conditional_logic' => 0,
 					'wrapper'           => array(

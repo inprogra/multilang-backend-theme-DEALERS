@@ -4,11 +4,11 @@ if (function_exists('acf_add_local_field_group')):
     acf_add_local_field_group(
         array(
             'key' => 'group_60586610e9086',
-            'title' => 'Ustawienia Dealera',
+            'title' => __( 'Dealer Settings', 'partners-site_v2' ),
             'fields' => array(
                 array(
                     'key' => 'field_6058b8ba89298',
-                    'label' => 'Informacje podstawowe',
+                    'label' => __( 'Basic Information', 'partners-site_v2' ),
                     'name' => '',
                     'type' => 'tab',
                     'instructions' => '',
@@ -24,7 +24,7 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                     'key' => 'field_605866451313h',
-                    'label' => 'ID dealera',
+                    'label' => __( 'Dealer ID', 'partners-site_v2' ),
                     'name' => 'dealerId',
                     'type' => 'text',
                     'instructions' => '',
@@ -45,7 +45,7 @@ if (function_exists('acf_add_local_field_group')):
                       
                 array(
                     'key' => 'field_605866451313d',
-                    'label' => 'Nazwa Dealera',
+                    'label' => __( 'Dealer Name', 'partners-site_v2' ),
                     'name' => 'name',
                     'type' => 'text',
                     'instructions' => '',
@@ -64,10 +64,10 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                     'key' => 'field_605866451313c',
-                    'label' => 'Nr telefonu',
+                    'label' => __( 'Phone Number', 'partners-site_v2' ),
                     'name' => 'phone-number',
                     'type' => 'text',
-                    'instructions' => __( 'Nr telefonu wyświetlany na dolnej belce strony.', 'partners-site_v2' ),
+                    'instructions' => __( 'Phone number displayed in the footer of the page.', 'partners-site_v2' ),
                     'required' => 1,
                     'conditional_logic' => 0,
                     'wrapper' => array(
@@ -83,7 +83,7 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                     'key' => 'field_605866331313c',
-                    'label' => 'Klucz API Google Maps',
+                    'label' => __( 'Google Maps API Key', 'partners-site_v2' ),
                     'name' => 'google-maps-key',
                     'type' => 'text',
                     'instructions' => '',
@@ -102,10 +102,10 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                     'key' => 'field_6058j6331313c',
-                    'label' => 'ID Google Tag Manager',
+                    'label' => __( 'Google Tag Manager ID', 'partners-site_v2' ),
                     'name' => 'gtm',
                     'type' => 'text',
-                    'instructions' => 'np. "GTM-XXXXX"',
+                    'instructions' => __( 'e.g. "GTM-XXXXX"', 'partners-site_v2' ),
                     'required' => 0,
                     'conditional_logic' => 0,
                     'wrapper' => array(
@@ -121,10 +121,10 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                     'key' => 'event_instance',
-                    'label' => __( 'ID Instancji eventów', 'partners-site_v2' ),
+                    'label' => __( 'Event Instance ID', 'partners-site_v2' ),
                     'name' => 'event_instance',
                     'type' => 'text',
-                    'instructions' => __( 'Nie wprowadzaj żadnych zmian', 'partners-site_v2' ),
+                    'instructions' => __( 'Do not make any changes', 'partners-site_v2' ),
                     'required' => 0,
                     'conditional_logic' => 0,
                     'wrapper' => array(
@@ -140,7 +140,7 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                     'key' => 'field_additional_code',
-                    'label' => 'Dodatkowy kod do sekcji head',
+                    'label' => __( 'Additional code for the head section', 'partners-site_v2' ),
                     'name' => 'field_additional_code',
                     'type' => 'textarea',
                     'instructions' => '',
@@ -159,7 +159,7 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                     'key' => 'field_thankyou_code',
-                    'label' => __( 'Dodatkowy kod na podstronie z podziękowaniem', 'partners-site_v2' ),
+                    'label' => __( 'Additional code for the thank-you page', 'partners-site_v2' ),
                     'name' => 'field_thankyou_code',
                     'type' => 'textarea',
                     'instructions' => '',
@@ -178,7 +178,7 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                     'key' => 'code_test_drive',
-                    'label' => __( 'Dodatkowy kod na podstronie z podziękowaniem dla jazd testowych', 'partners-site_v2' ),
+                    'label' => __( 'Additional code on the thank-you page for test drives', 'partners-site_v2' ),
                     'name' => 'code_test_drive',
                     'type' => 'textarea',
                     'instructions' => '',
@@ -197,7 +197,7 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                     'key' => 'htmlCode',
-                    'label' => __( 'Dodatkowy kod html do strony głównej', 'partners-site_v2' ),
+                    'label' => __( 'Additional HTML code for the homepage', 'partners-site_v2' ),
                     'name' => 'htmlCode',
                     'type' => 'textarea',
                     'instructions' => '',
@@ -216,7 +216,7 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                     'key' => 'globalJs',
-                    'label' => __( 'Dodatkowy kod JavaScript na przycisku pokaż numer telefonu', 'partners-site_v2' ),
+                    'label' => __( 'Additional JavaScript code for the "Show Phone Number" button', 'partners-site_v2' ),
                     'name' => 'globalJs',
                     'type' => 'textarea',
                     'instructions' => '',
@@ -233,7 +233,7 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                   'key'               => 'gSecretKey', 
-                  'label'             => 'Klucz GA (Google Analytics)',
+                  'label'             => __( 'GA (Google Analytics) Key', 'partners-site_v2' ),
                   'name'              => 'gSecretKey',
                   'type'              => 'textarea',
                   'instructions'      => '',
@@ -250,7 +250,7 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                   'key'               => 'gId',
-                  'label'             => 'Identyfikator Uslugi (Google Analytics)',
+                  'label'             => __( 'Service ID (Google Analytics)', 'partners-site_v2' ),
                   'name'              => 'gId',
                   'type'              => 'text',
                   'instructions'      => '',
@@ -267,7 +267,7 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                     'key'               => 'wpPixelKey',
-                    'label'             => 'Klucz Wp Pixel',
+                    'label'             => __( 'WP Pixel Key', 'partners-site_v2' ),
                     'name'              => 'wpPixelKey',
                     'type'              => 'text',
                     'instructions'      => '',
@@ -284,7 +284,7 @@ if (function_exists('acf_add_local_field_group')):
                   ),
                 array(
                     'key' => 'wpPixel',
-                    'label' => __( 'skrypt WP PIXEL wł/wył', 'partners-site_v2' ),
+                    'label' => __( 'WP PIXEL script on/off', 'partners-site_v2' ),
                     'name' => 'wpPixel',
                     'type' => 'true_false',
                     'instructions' => '',
@@ -301,7 +301,7 @@ if (function_exists('acf_add_local_field_group')):
 
                 array(
                     'key' => 'field_6058b8b089297',
-                    'label' => 'Social Media',
+                    'label' => __( 'Social Media', 'partners-site_v2' ),
                     'name' => '',
                     'type' => 'tab',
                     'instructions' => '',
@@ -317,7 +317,7 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                     'key' => 'field_6058b86089290',
-                    'label' => 'Social media',
+                    'label' => __( 'Social media', 'partners-site_v2' ),
                     'name' => 'social-media',
                     'type' => 'group',
                     'instructions' => '',
@@ -332,7 +332,7 @@ if (function_exists('acf_add_local_field_group')):
                     'sub_fields' => array(
                         array(
                             'key' => 'field_6058b87189291',
-                            'label' => 'Facebook',
+                            'label' => __( 'Facebook', 'partners-site_v2' ),
                             'name' => 'facebook',
                             'type' => 'url',
                             'instructions' => '',
@@ -348,7 +348,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'field_6058b88989292',
-                            'label' => 'Instagram',
+                            'label' => __( 'Instagram', 'partners-site_v2' ),
                             'name' => 'instagram',
                             'type' => 'url',
                             'instructions' => '',
@@ -364,7 +364,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'field_6058b89389294',
-                            'label' => 'Linkedin',
+                            'label' => __( 'LinkedIn', 'partners-site_v2' ),
                             'name' => 'linkedin',
                             'type' => 'url',
                             'instructions' => '',
@@ -380,7 +380,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'field_6058b89b89295',
-                            'label' => 'YouTube',
+                            'label' => __( 'YouTube', 'partners-site_v2' ),
                             'name' => 'youtube',
                             'type' => 'url',
                             'instructions' => '',
@@ -396,7 +396,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'field_6058b8a689296',
-                            'label' => 'Twitter',
+                            'label' => __( 'Twitter', 'partners-site_v2' ),
                             'name' => 'twitter',
                             'type' => 'url',
                             'instructions' => '',
@@ -415,7 +415,7 @@ if (function_exists('acf_add_local_field_group')):
 
                 array(
                     'key' => 'field_6058d2b089297',
-                    'label' => 'Integracja YouLead',
+                    'label' => __( 'Integration YouLead', 'partners-site_v2' ),
                     'name' => '',
                     'type' => 'tab',
                     'instructions' => '',
@@ -432,7 +432,7 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                     'key' => 'field_6046b86089290',
-                    'label' => 'Integracja YouLead',
+                    'label' => __( 'Integration YouLead', 'partners-site_v2' ),
                     'name' => 'you-lead',
                     'type' => 'group',
                     'instructions' => '',
@@ -448,7 +448,7 @@ if (function_exists('acf_add_local_field_group')):
                     'sub_fields' => array(
                         array(
                             'key' => 'field_6058b298189291',
-                            'label' => 'Client ID',
+                            'label' => __( 'Client ID', 'partners-site_v2' ),
                             'name' => 'client-id',
                             'type' => 'text',
                             'instructions' => '',
@@ -464,7 +464,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'field_6058b87182691',
-                            'label' => 'App ID',
+                            'label' => __( 'App ID', 'partners-site_v2' ),
                             'name' => 'app-id',
                             'type' => 'text',
                             'instructions' => '',
@@ -480,7 +480,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'field_4158b87189291',
-                            'label' => 'App Secret Key',
+                            'label' => __( 'App Secret Key', 'partners-site_v2' ),
                             'name' => 'app-secret-key',
                             'type' => 'text',
                             'instructions' => '',
@@ -498,7 +498,7 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                     'key' => 'field_chatter',
-                    'label' => 'Integracja Chat',
+                    'label' => __( 'Chat Integration', 'partners-site_v2' ),
                     'name' => '',
                     'type' => 'tab',
                     'instructions' => '',
@@ -515,7 +515,7 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                     'key' => 'field_chatter_boxes',
-                    'label' => 'Integracja Chat',
+                    'label' => __( 'Chat Integration', 'partners-site_v2' ),
                     'name' => 'chat-group',
                     'type' => 'group',
                     'instructions' => '',
@@ -531,7 +531,7 @@ if (function_exists('acf_add_local_field_group')):
                     'sub_fields' => array(
                         array(
                             'key' => 'chat_code',
-                            'label' => 'Kod chatu',
+                            'label' => __( 'Chat code', 'partners-site_v2' ),
                             'name' => 'chat-code',
                             'type' => 'textarea',
                             'instructions' => '',
@@ -547,7 +547,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'chat_status',
-                            'label' => __( 'Chat wł/wył', 'partners-site_v2' ),
+                            'label' => __( 'Chat on/off', 'partners-site_v2' ),
                             'name' => 'chat_enable',
                             'type' => 'true_false',
                             'instructions' => '',
@@ -566,7 +566,7 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                     'key' => 'field_webpush',
-                    'label' => 'Integracja WEBPUSH',
+                    'label' => __( 'WEBPUSH Integration', 'partners-site_v2' ),
                     'name' => 'field_webpush',
                     'type' => 'tab',
                     'instructions' => '',
@@ -583,7 +583,7 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                     'key' => 'field_webpushhead',
-                    'label' => 'Pliki',
+                    'label' => __( 'Files', 'partners-site_v2' ),
                     'name' => 'field_webpushhead',
                     'type' => 'group',
                     'instructions' => '',
@@ -599,7 +599,7 @@ if (function_exists('acf_add_local_field_group')):
                     'sub_fields' => array(
                         array(
                             'key' => 'field_webpush_header',
-                            'label' => __( 'Kod do sekcji head (zawartość pliku manifest.json)', 'partners-site_v2' ),
+                            'label' => __( 'Code for the head section (contents of the manifest.json file)', 'partners-site_v2' ),
                             'name' => 'field_webpush_header-code',
                             'type' => 'textarea',
                             'instructions' => '',
@@ -615,7 +615,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'field_webpush_sw',
-                            'label' => __( 'Kod sw (zawartośc pliku sw)', 'partners-site_v2' ),
+                            'label' => __( 'SW Code (contents of the sw file)', 'partners-site_v2' ),
                             'name' => 'field_webpush_sw',
                             'type' => 'textarea',
                             'instructions' => '',
@@ -634,7 +634,7 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                     'key' => 'facebook_int',
-                    'label' => 'Integracja Facebook',
+                    'label' => __( 'Facebook Integration', 'partners-site_v2' ),
                     'name' => 'facebook_int',
                     'type' => 'tab',
                     'instructions' => '',
@@ -651,7 +651,7 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                     'key' => 'facebook_int_settings',
-                    'label' => 'Integracja Facebook',
+                    'label' => __( 'Facebook Integration', 'partners-site_v2' ),
                     'name' => 'facebook_int_settings',
                     'type' => 'group',
                     'instructions' => '',
@@ -667,7 +667,7 @@ if (function_exists('acf_add_local_field_group')):
                     'sub_fields' => array(
                         array(
                             'key' => 'fb_token',
-                            'label' => 'Access Token',
+                            'label' => __( 'Access Token', 'partners-site_v2' ),
                             'name' => 'fb_token',
                             'type' => 'text',
                             'instructions' => '',
@@ -683,7 +683,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'pixel_enable',
-                            'label' => __( 'Włącz facebook pixel na każdej podstronie', 'partners-site_v2' ),
+                            'label' => __( 'Enable Facebook Pixel on every subpage', 'partners-site_v2' ),
                             'name' => 'pixel_enable',
                             'type' => 'true_false',
                             'instructions' => '',
@@ -699,7 +699,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'fb_pixel',
-                            'label' => 'Pixel ID',
+                            'label' => __( 'Pixel ID', 'partners-site_v2' ),
                             'name' => 'fb_pixel',
                             'type' => 'text',
                             'instructions' => '',
@@ -717,7 +717,7 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                     'key' => 'field_footer_setup',
-                    'label' => 'Ustawienia belki dolnej',
+                    'label' => __( 'Bottom Bar Settings', 'partners-site_v2' ),
                     'name' => '',
                     'type' => 'tab',
                     'instructions' => '',
@@ -734,7 +734,7 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                     'key' => 'field_footer_settings',
-                    'label' => 'Ustawienia belki',
+                    'label' => __( 'Bar Settings', 'partners-site_v2' ),
                     'name' => 'footer-group',
                     'type' => 'group',
                     'instructions' => '',
@@ -750,7 +750,7 @@ if (function_exists('acf_add_local_field_group')):
                     'sub_fields' => array(
                         array(
                             'key' => 'field_homepage',
-                            'label' => __( 'Strona główna tekst', 'partners-site_v2' ),
+                            'label' => __( 'Homepage Text', 'partners-site_v2' ),
                             'name' => 'homepage_text',
                             'type' => 'text',
                             'instructions' => '',
@@ -766,7 +766,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'field_homepage_phone',
-                            'label' => __( 'Strona główna telefon', 'partners-site_v2' ),
+                            'label' => __( 'Homepage Phone', 'partners-site_v2' ),
                             'name' => 'field_homepage_phone',
                             'type' => 'text',
                             'instructions' => '',
@@ -782,7 +782,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'field_newcars',
-                            'label' => 'Nowe auta tekst',
+                            'label' => __( 'New Cars Text', 'partners-site_v2' ),
                             'name' => 'homepage_newcars',
                             'type' => 'text',
                             'instructions' => '',
@@ -798,7 +798,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'field_newcars_phone',
-                            'label' => 'Nowe auta telefon',
+                            'label' => __( 'New Cars Phone', 'partners-site_v2' ),
                             'name' => 'field_newcars_phone',
                             'type' => 'text',
                             'instructions' => '',
@@ -814,7 +814,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'field_usedcars',
-                            'label' => __( 'Używane auta tekst', 'partners-site_v2' ),
+                            'label' => __( 'Used Cars Text', 'partners-site_v2' ),
                             'name' => 'field_usedcars',
                             'type' => 'text',
                             'instructions' => '',
@@ -830,7 +830,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'field_usedcars_phone',
-                            'label' => __( 'Używane auta telefon', 'partners-site_v2' ),
+                            'label' => __( 'Used Cars Phone', 'partners-site_v2' ),
                             'name' => 'field_usedcars_phone',
                             'type' => 'text',
                             'instructions' => '',
@@ -846,7 +846,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'field_service',
-                            'label' => 'Serwis i akcesoria tekst',
+                            'label' => __( 'Service and Accessories Text', 'partners-site_v2' ),
                             'name' => 'service_text',
                             'type' => 'text',
                             'instructions' => '',
@@ -862,7 +862,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'field_service_phone',
-                            'label' => 'Serwis i akcesoria telefon',
+                            'label' => __( 'Service and Accessories Phone', 'partners-site_v2' ),
                             'name' => 'field_service_phone',
                             'type' => 'text',
                             'instructions' => '',
@@ -880,7 +880,7 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                     'key' => 'field_index_setup',
-                    'label' => 'Ustawienia wykluczen indexowania',
+                    'label' => __( 'Indexing Exclusion Settings', 'partners-site_v2' ),
                     'name' => '',
                     'type' => 'tab',
                     'instructions' => '',
@@ -897,7 +897,7 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                     'key' => 'field_index_settings',
-                    'label' => 'Ustawienia wykluczen z indexowania',
+                    'label' => __( 'Indexing Exclusion Settings', 'partners-site_v2' ),
                     'name' => 'index-group',
                     'type' => 'group',
                     'instructions' => '',
@@ -913,7 +913,7 @@ if (function_exists('acf_add_local_field_group')):
                     'sub_fields' => array(
                         array(
                             'key' => 'field_6672c847750d6',
-                            'label' => 'Dokladne adresy url do wykluczenia. Np. https://volvoweb.com/dontIndexMe',
+                            'label' => __( 'Exact URLs to exclude. E.g. https://volvoweb.com/dontIndexMe', 'partners-site_v2' ),
                             'name' => 'items-url',
                             'type' => 'repeater',
                             'instructions' => '',
@@ -932,7 +932,7 @@ if (function_exists('acf_add_local_field_group')):
                             'sub_fields' => array(
                                 array(
                                     'key' => 'field_6672c8ef750d7',
-                                    'label' => 'Wyklucz url:',
+                                    'label' => __( 'Exclude URL:', 'partners-site_v2' ),
                                     'name' => 'index-url',
                                     'type' => 'url',
                                     'instructions' => '',
@@ -953,10 +953,10 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'field_6672ccf4129d3',
-                            'label' => 'Slowa wystepujace w url do wykluczenia. Np. <b>test</b>, wykluczy takie adresy: <br> - https://volvoweb.com/<b>test</b> <br> - https://volvoweb.com/some/<b>test</b>url',
+                            'label' => __( 'Words appearing in the URL to exclude.', 'partners-site_v2' ),
                             'name' => 'items-word',
                             'type' => 'repeater',
-                            'instructions' => '',
+                            'instructions' => __( 'E.g. <b>test</b>, will exclude such addresses:<br> - https://volvoweb.com/<b>test</b> <br> - https://volvoweb.com/some/<b>test</b>url', 'partners-site_v2' ),
                             'required' => 0,
                             'conditional_logic' => 0,
                             'wrapper' => array(
@@ -972,7 +972,7 @@ if (function_exists('acf_add_local_field_group')):
                             'sub_fields' => array(
                                 array(
                                     'key' => 'field_6672ccf5129d4',
-                                    'label' => 'Slowa wystepujace w url do wykluczenia',
+                                    'label' => __( 'Words appearing in URLs to exclude', 'partners-site_v2' ),
                                     'name' => 'index-word',
                                     'type' => 'text',
                                     'instructions' => '',
@@ -995,7 +995,7 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                     'key' => 'indicata_setup',
-                    'label' => __( 'Wyceny pojazdów', 'partners-site_v2' ),
+                    'label' => __( 'Vehicle Quotes', 'partners-site_v2' ),
                     'name' => 'indicata_setup',
                     'type' => 'tab',
                     'instructions' => '',
@@ -1012,7 +1012,7 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                     'key' => 'indicata_setup_settings',
-                    'label' => 'Integracja Indicata',
+                    'label' => __( 'Indicat Integration', 'partners-site_v2' ),
                     'name' => 'indicata_setup_settings',
                     'type' => 'group',
                     'instructions' => '',
@@ -1028,7 +1028,7 @@ if (function_exists('acf_add_local_field_group')):
                     'sub_fields' => array(
                         array(
                             'key' => 'indicata_email',
-                            'label' => 'Adres email',
+                            'label' => __( 'Email Address', 'partners-site_v2' ),
                             'name' => 'indicata_email',
                             'type' => 'text',
                             'instructions' => '',
@@ -1044,7 +1044,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'indicata_address',
-                            'label' => __( 'Adres dołączany do wyceny', 'partners-site_v2' ),
+                            'label' => __( 'Address included in the offer', 'partners-site_v2' ),
                             'name' => 'indicata_address',
                             'type' => 'textarea',
                             'instructions' => '',
@@ -1066,7 +1066,7 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                     'key' => 'tab_setup_otomoto',
-                    'label' => 'Integracja Otomoto',
+                    'label' => __( 'Otomoto Integration', 'partners-site_v2' ),
                     'name' => 'tab_setup_otomoto',
                     'type' => 'tab',
                     'placement' => 'top',
@@ -1079,7 +1079,7 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                     'key' => 'otomoto_settings',
-                    'label' => 'Integracja Otomoto',
+                    'label' => __( 'Otomoto Integration', 'partners-site_v2' ),
                     'name' => 'otomoto_settings',
                     'type' => 'group',
                     'instructions' => '',
@@ -1095,7 +1095,7 @@ if (function_exists('acf_add_local_field_group')):
                     'sub_fields' => array(
                         array(
                             'key' => 'otomoto_enabled',
-                            'label' => 'Włącz integrację',
+                            'label' => __( 'Enable integration', 'partners-site_v2' ),
                             'name' => 'otomoto_enabled',
                             'type' => 'true_false',
                             'instructions' => '',
@@ -1113,7 +1113,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'otomoto_username',
-                            'label' => 'Nazwa użytkownika',
+                            'label' => __( 'Username', 'partners-site_v2' ),
                             'name' => 'otomoto_username',
                             'type' => 'text',
                             'instructions' => '',
@@ -1137,7 +1137,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'otomoto_password',
-                            'label' => 'Hasło',
+                            'label' => __( 'Password', 'partners-site_v2' ),
                             'name' => 'otomoto_password',
                             'type' => 'password',
                             'instructions' => '',
@@ -1161,7 +1161,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'otomoto_client_id',
-                            'label' => 'Client ID',
+                            'label' => __( 'Client ID', 'partners-site_v2' ),
                             'name' => 'otomoto_client_id',
                             'type' => 'text',
                             'instructions' => '',
@@ -1185,7 +1185,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'otomoto_client_secret',
-                            'label' => 'Client Secret',
+                            'label' => __( 'Client Secret', 'partners-site_v2' ),
                             'name' => 'otomoto_client_secret',
                             'type' => 'password',
                             'instructions' => '',
@@ -1209,7 +1209,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'otomoto_test_connection',
-                            'label' => 'Test połączenia',
+                            'label' => __( 'Connection test', 'partners-site_v2' ),
                             'name' => 'otomoto_test_connection',
                             'type' => 'message',
                             'instructions' => '',
@@ -1228,16 +1228,16 @@ if (function_exists('acf_add_local_field_group')):
                                 'class' => '',
                                 'id' => '',
                             ),
-                            'message' => '<button type="button" class="button" id="otomoto-test-connection">Testuj połączenie</button> <span id="otomoto-connection-status" style="margin-left:10px;"></span>',
+                            'message' => '<button type="button" class="button" id="otomoto-test-connection">' . __( 'Test connection', 'partners-site_v2' ) . '</button> <span id="otomoto-connection-status" style="margin-left:10px;"></span>',
                             'new_lines' => 'wpautop',
                             'esc_html' => 0,
                         ),
                         array(
                             'key' => 'otomoto_region_id',
-                            'label' => 'Region',
+                            'label' => __( 'Region', 'partners-site_v2' ),
                             'name' => 'otomoto_region_id',
                             'type' => 'select',
-                            'instructions' => 'Wybierz region',
+                            'instructions' => __( 'Select region', 'partners-site_v2' ),
                             'required' => 0,
                             'conditional_logic' => array(
                                 array(
@@ -1256,14 +1256,14 @@ if (function_exists('acf_add_local_field_group')):
                             'choices' => array(),
                             'default_value' => '',
                             'allow_null' => 1,
-                            'placeholder' => 'Wybierz region...',
+                            'placeholder' => __( 'Select region...', 'partners-site_v2' ),
                         ),
                         array(
                             'key' => 'otomoto_city_id',
-                            'label' => 'Miasto',
+                            'label' => __( 'City', 'partners-site_v2' ),
                             'name' => 'otomoto_city_id',
                             'type' => 'select',
-                            'instructions' => 'Wybierz miasto',
+                            'instructions' => __( 'Select city', 'partners-site_v2' ),
                             'required' => 0,
                             'conditional_logic' => array(
                                 array(
@@ -1282,14 +1282,14 @@ if (function_exists('acf_add_local_field_group')):
                             'choices' => array(),
                             'default_value' => '',
                             'allow_null' => 1,
-                            'placeholder' => 'Wybierz miasto...',
+                            'placeholder' => __( 'Select city...', 'partners-site_v2' ),
                         ),
                         array(
                             'key' => 'otomoto_district_id',
-                            'label' => 'Dzielnica',
+                            'label' => __( 'District', 'partners-site_v2' ),
                             'name' => 'otomoto_district_id',
                             'type' => 'select',
-                            'instructions' => 'Wybierz dzielnicę',
+                            'instructions' => __( 'Select district', 'partners-site_v2' ),
                             'required' => 0,
                             'conditional_logic' => array(
                                 array(
@@ -1308,14 +1308,14 @@ if (function_exists('acf_add_local_field_group')):
                             'choices' => array(),
                             'default_value' => '',
                             'allow_null' => 1,
-                            'placeholder' => 'Wybierz dzielnicę...',
+                            'placeholder' => __( 'Select district...', 'partners-site_v2' ),
                         ),
                         array(
                             'key' => 'otomoto_latitude',
-                            'label' => 'Szerokość geograficzna',
+                            'label' => __( 'Latitude', 'partners-site_v2' ),
                             'name' => 'otomoto_latitude',
                             'type' => 'number',
-                            'instructions' => 'Automatycznie uzupełniane po wyborze miasta',
+                            'instructions' => __( 'Automatically filled in after selecting a city', 'partners-site_v2' ),
                             'required' => 0,
                             'conditional_logic' => array(
                                 array(
@@ -1336,10 +1336,10 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'otomoto_longitude',
-                            'label' => 'Długość geograficzna',
+                            'label' => __( 'Longitude', 'partners-site_v2' ),
                             'name' => 'otomoto_longitude',
                             'type' => 'number',
-                            'instructions' => 'Automatycznie uzupełniana po wyborze miasta',
+                            'instructions' => __( 'Automatically filled in after selecting a city', 'partners-site_v2' ),
                             'required' => 0,
                             'conditional_logic' => array(
                                 array(
@@ -1360,10 +1360,10 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'otomoto_contact_person',
-                            'label' => 'Osoba kontaktowa',
+                            'label' => __( 'Contact person', 'partners-site_v2' ),
                             'name' => 'otomoto_contact_person',
                             'type' => 'text',
-                            'instructions' => 'Osoba kontaktowa wyświetlana w ogłoszeniu',
+                            'instructions' => __( 'Contact person displayed in the listing', 'partners-site_v2' ),
                             'required' => 0,
                             'conditional_logic' => array(
                                 array(
@@ -1386,7 +1386,7 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                     'key' => 'tab_setup_form',
-                    'label' => 'Zgody na formularzu',
+                    'label' => __( 'Consents on the form', 'partners-site_v2' ),
                     'name' => 'tab_setup_form',
                     'type' => 'tab',
                     'placement' => 'top',
@@ -1400,14 +1400,14 @@ if (function_exists('acf_add_local_field_group')):
 
                 array(
                     'key' => 'setup_form_settings',
-                    'label' => 'Zgody na formularzu',
+                    'label' => __( 'Consents on the form', 'partners-site_v2' ),
                     'name' => 'setup_form_settings',
                     'type' => 'group',
                     'layout' => 'block',
                     'sub_fields' => array(
                         array(
                             'key' => 'iod_email',
-                            'label' => 'Adres e-mail Inspektora Ochrony Danych Osobowych',
+                            'label' => __( 'Email address of the Data Protection Officer', 'partners-site_v2' ),
                             'name' => 'iod_email',
                             'type' => 'text',
                             'instructions' => '',
@@ -1423,7 +1423,7 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                     'key' => 'tab_booking_engine',
-                    'label' => 'Integracja Booking Engine',
+                    'label' => __( 'Booking Engine integration', 'partners-site_v2' ),
                     'name' => 'tab_booking_engine',
                     'type' => 'tab',
                     'placement' => 'top',
@@ -1436,7 +1436,7 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                     'key' => 'booking_engine_settings',
-                    'label' => 'Integracja Booking Engine',
+                    'label' => __( 'Booking Engine integration', 'partners-site_v2' ),
                     'name' => 'booking_engine_settings',
                     'type' => 'group',
                     'instructions' => '',
@@ -1451,7 +1451,7 @@ if (function_exists('acf_add_local_field_group')):
                     'sub_fields' => array(                       
                         array(
                             'key' => 'ttmsapikey',
-                            'label' => 'API Key',
+                            'label' => __( 'API Key', 'partners-site_v2' ),
                             'name' => 'ttmsapikey',
                             'type' => 'text',
                             'instructions' => '',
@@ -1471,7 +1471,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),          
                         array(
                             'key' => 'parmaPartnerCode',
-                            'label' => 'Partner Code',
+                            'label' => __( 'Partner Code', 'partners-site_v2' ),
                             'name' => 'parmaPartnerCode',
                             'type' => 'text',
                             'instructions' => '',
@@ -1491,7 +1491,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),          
                         array(
                             'key' => 'booking_partner_id',
-                            'label' => 'Partner ID',
+                            'label' => __( 'Partner ID', 'partners-site_v2' ),
                             'name' => 'partner_id',
                             'type' => 'text',
                             'instructions' => '',
@@ -1503,7 +1503,7 @@ if (function_exists('acf_add_local_field_group')):
                                 'id' => '',
                             ),
                             'default_value' => '',
-                            'placeholder' => 'np. 6PL301',
+                            'placeholder' => __( 'e.g. 6PL301', 'partners-site_v2' ),
                         ),
                     ),
                 ),

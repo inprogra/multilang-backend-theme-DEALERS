@@ -82,8 +82,8 @@ function registerCustomBlocks()
 		acf_register_block_type(
 			array(
 				'name' => 'preview-component',
-				'title' => __('Podgląd oferty'),
-				'description' => __('Podgląd oferty'),
+				'title' => __('Offer Preview', 'partners-site_v2'),
+				'description' => __('Offer Preview', 'partners-site_v2'),
 				'render_template' => 'includes/blocks/preview-component.php',
 				'category' => 'volvo',
 				'mode' => 'edit',
@@ -106,8 +106,8 @@ function registerCustomBlocks()
 		acf_register_block_type(
 			array(
 				'name' => 'site-heading',
-				'title' => __('Nagłówek strony'),
-				'description' => __(''),
+				'title' => __('Page Header', 'partners-site_v2'),
+				'description' => '',
 				'render_template' => 'includes/blocks/site-heading.php',
 				'category' => 'volvo',
 				'mode' => 'edit',
@@ -130,8 +130,8 @@ function registerCustomBlocks()
 		acf_register_block_type(
 			array(
 				'name' => 'two-column-content-component',
-				'title' => __('Dwie kolumny'),
-				'description' => __('Zdjęcie/film + tekst'),
+				'title' => __('Two-column layout', 'partners-site_v2'),
+				'description' => __('Photo/video + text', 'partners-site_v2'),
 				'render_template' => 'includes/blocks/two-column-content-component.php',
 				'category' => 'volvo',
 				'mode' => 'edit',
@@ -153,8 +153,8 @@ function registerCustomBlocks()
 		acf_register_block_type(
 			array(
 				'name' => 'html-code',
-				'title' => __('Kod HTML'),
-				'description' => __('Kod HTML'),
+				'title' => __('HTML code', 'partners-site_v2'),
+				'description' => __('HTML code', 'partners-site_v2'),
 				'render_template' => 'includes/blocks/html-code.php',
 				'category' => 'volvo',
 				'mode' => 'edit',
@@ -179,8 +179,8 @@ function registerCustomBlocks()
 		acf_register_block_type(
 			array(
 				'name' => 'offer-boxes',
-				'title' => __('Kafelki sprzedażowe'),
-				'description' => __('Kafelki sprzedażowe'),
+				'title' => __('Sales blocks', 'partners-site_v2'),
+				'description' => __('Sales blocks', 'partners-site_v2'),
 				'render_template' => 'includes/blocks/offer-boxes.php',
 				'category' => 'volvo',
 				'mode' => 'edit',
@@ -202,8 +202,8 @@ function registerCustomBlocks()
 		acf_register_block_type(
 			array(
 				'name' => 'offer-box',
-				'title' => __('Kafelki sprzedażowe aut'),
-				'description' => __('Kafelki sprzedażowe aut'),
+				'title' => __('Car sales tiles', 'partners-site_v2'),
+				'description' => __('Car sales tiles', 'partners-site_v2'),
 				'render_template' => 'includes/blocks/offer-box.php',
 				'category' => 'volvo',
 				'mode' => 'edit',
@@ -225,8 +225,8 @@ function registerCustomBlocks()
 		acf_register_block_type(
 			array(
 				'name' => 'offer-cards',
-				'title' => __('Karty ofertowe'),
-				'description' => __('3-kolumnowy układ kart ofertowych'),
+				'title' => __('Offer cards', 'partners-site_v2'),
+				'description' => __('3-column layout for offer cards', 'partners-site_v2'),
 				'render_template' => 'includes/blocks/offer-cards.php',
 				'category' => 'volvo',
 				'mode' => 'edit',
@@ -248,8 +248,8 @@ function registerCustomBlocks()
 		acf_register_block_type(
 			array(
 				'name' => 'two-image',
-				'title' => __('Dwa zdjęcia'),
-				'description' => __('Blok z dwoma obrazkami'),
+				'title' => __('Two photos', 'partners-site_v2'),
+				'description' => __('Block with two images', 'partners-site_v2'),
 				'render_template' => 'includes/blocks/two-image.php',
 				'category' => 'volvo',
 				'mode' => 'edit',
@@ -274,8 +274,8 @@ function registerCustomBlocks()
 		acf_register_block_type(
 			array(
 				'name' => 'banner-with-content-overlay',
-				'title' => __('Banner z opisem'),
-				'description' => __('Banner z opisem'),
+				'title' => __('Banner with description', 'partners-site_v2'),
+				'description' => __('Banner with description', 'partners-site_v2'),
 				'render_template' => 'includes/blocks/banner-with-content-overlay.php',
 				'category' => 'volvo',
 				'mode' => 'edit',
@@ -298,8 +298,8 @@ function registerCustomBlocks()
 		acf_register_block_type(
 			array(
 				'name' => 'hero-image',
-				'title' => __('Zdjęcie Banner'),
-				'description' => __('Zdjęcie Banner'),
+				'title' => __('Banner photo', 'partners-site_v2'),
+				'description' => __('Banner photo', 'partners-site_v2'),
 				'render_template' => 'includes/blocks/hero-image.php',
 				'category' => 'volvo',
 				'mode' => 'edit',
@@ -322,8 +322,8 @@ function registerCustomBlocks()
 		acf_register_block_type(
 			array(
 				'name' => 'gallery',
-				'title' => __('Galeria'),
-				'description' => __('Galeria'),
+				'title' => __('Gallery', 'partners-site_v2'),
+				'description' => __('Gallery', 'partners-site_v2'),
 				'render_template' => 'includes/blocks/gallery.php',
 				'category' => 'volvo',
 				'mode' => 'edit',
@@ -346,8 +346,8 @@ function registerCustomBlocks()
 		acf_register_block_type(
 			array(
 				'name' => 'text-editor',
-				'title' => __('Edytor tekstowy (Blogowy)'),
-				'description' => __('Edytor tekstowy (Blogowy)'),
+				'title' => __('Text editor (Blog)', 'partners-site_v2'),
+				'description' => __('Text editor (Blog)', 'partners-site_v2'),
 				'render_template' => 'includes/blocks/text-editor.php',
 				'category' => 'volvo',
 				'mode' => 'edit',
@@ -370,8 +370,8 @@ function registerCustomBlocks()
 		acf_register_block_type(
 			array(
 				'name' => 'text-editor-extended',
-				'title' => __('Edytor tekstowy (rozbudowany)'),
-				'description' => __('Edytor tekstowy stosowany do stron informacyjnych'),
+				'title' => __('Text editor (advanced)', 'partners-site_v2'),
+				'description' => __('Text editor for informational pages', 'partners-site_v2'),
 				'render_template' => 'includes/blocks/text-editor-extended.php',
 				'category' => 'volvo',
 				'mode' => 'edit',
@@ -394,8 +394,8 @@ function registerCustomBlocks()
 		acf_register_block_type(
 			array(
 				'name' => 'electrification-map',
-				'title' => __('Mapa zasięgu'),
-				'description' => __('Mapa zasięgu'),
+				'title' => __('Coverage map', 'partners-site_v2'),
+				'description' => __('Coverage map', 'partners-site_v2'),
 				'render_template' => 'includes/blocks/electrification-map.php',
 				'category' => 'volvo',
 				'mode' => 'edit',
@@ -418,8 +418,8 @@ function registerCustomBlocks()
 		acf_register_block_type(
 			array(
 				'name' => 'cost-map',
-				'title' => __('Kalkulator kosztów'),
-				'description' => __('Kalkulator kosztów'),
+				'title' => __('Cost Calculator', 'partners-site_v2'),
+				'description' => __('Cost Calculator', 'partners-site_v2'),
 				'render_template' => 'includes/blocks/cost-map.php',
 				'category' => 'volvo',
 				'mode' => 'edit',
@@ -447,8 +447,8 @@ function registerCustomBlocks()
 		acf_register_block_type(
 			array(
 				'name' => 'short-notes',
-				'title' => __('Krótkie notatki'),
-				'description' => __('Krótkie notatki'),
+				'title' => __('Short notes', 'partners-site_v2'),
+				'description' => __('Short notes', 'partners-site_v2'),
 				'render_template' => 'includes/blocks/short-notes.php',
 				'category' => 'volvo',
 				'mode' => 'edit',
@@ -470,8 +470,8 @@ function registerCustomBlocks()
 		acf_register_block_type(
 			array(
 				'name' => 'table-component',
-				'title' => __('Generator tabeli'),
-				'description' => __('Generator tabeli'),
+				'title' => __('Table Generator', 'partners-site_v2'),
+				'description' => __('Table Generator', 'partners-site_v2'),
 				'render_template' => 'includes/blocks/table-component.php',
 				'category' => 'volvo',
 				'mode' => 'edit',
@@ -493,8 +493,8 @@ function registerCustomBlocks()
 		acf_register_block_type(
 			array(
 				'name' => 'quick-info',
-				'title' => __('Ciekawostki'),
-				'description' => __('Ciekawostki'),
+				'title' => __('Interesting facts', 'partners-site_v2'),
+				'description' => __('Interesting facts', 'partners-site_v2'),
 				'render_template' => 'includes/blocks/quick-info.php',
 				'category' => 'volvo',
 				'mode' => 'edit',
@@ -516,8 +516,8 @@ function registerCustomBlocks()
 		acf_register_block_type(
 			array(
 				'name' => 'anchor',
-				'title' => __('Kotwica'),
-				'description' => __('Kotwica'),
+				'title' => __('Anchor', 'partners-site_v2', 'partners-site_v2'),
+				'description' => __('Anchor', 'partners-site_v2', 'partners-site_v2'),
 				'render_template' => 'includes/blocks/anchor.php',
 				'category' => 'volvo',
 				'mode' => 'edit',
@@ -574,8 +574,8 @@ function registerCustomBlocks()
 		acf_register_block_type(
 			array(
 				'name'            => 'blog-posts-component',
-				'title'           => __( 'Posty blogowe' ),
-				'description'     => __( 'Grid z postami' ),
+				'title'           => __('Blog posts', 'partners-site_v2'),
+				'description'     => __('Grid with posts', 'partners-site_v2'),
 				'render_template' => 'includes/blocks/blog-posts-component.php',
 				'category'        => 'volvo',
 				'mode'            => 'edit',
@@ -596,8 +596,8 @@ function registerCustomBlocks()
 		);
 		acf_register_block_type(array(
 			'name'            => 'three-boxes',
-			'title'           => __('Trzy boksy'),
-			'description'     => __('Blok z trzema polami tekstowo-obrazkowymi'),
+			'title'           => __('Three boxes', 'partners-site_v2'),
+			'description'     => __('Block with three text-and-image fields', 'partners-site_v2'),
 			'render_template' => 'includes/blocks/three-boxes.php',
 			'category'        => 'volvo',
 			'mode'            => 'edit',
@@ -612,8 +612,8 @@ function registerCustomBlocks()
 		acf_register_block_type(
 			array(
 				'name' => 'blog-post-footer',
-				'title' => __('Stopka blogowa'),
-				'description' => __('Autor'),
+				'title' => __('Blog footer', 'partners-site_v2'),
+				'description' => __('Author', 'partners-site_v2'),
 				'render_template' => 'includes/blocks/blog-post-footer.php',  
 				'category' => 'volvo',
 				'mode' => 'edit',
@@ -648,8 +648,8 @@ function register_network_settings_pages()
 
 	acf_add_options_page(
 		array(
-			'page_title' => 'Finansowanie',
-			'menu_title' => 'Finansowanie',
+			'page_title' => __('Financing', 'partners-site_v2'),
+			'menu_title' => __('Financing', 'partners-site_v2'),
 			'menu_slug' => 'options-leasing',
 			'post_id' => 'acf_network_options',
 			'capability' => 'manage_network_options',
@@ -659,8 +659,8 @@ function register_network_settings_pages()
 	);
 	acf_add_options_page(
 		array(
-			'page_title' => 'Mapa zasięgu',
-			'menu_title' => 'Mapa zasięgu',
+			'page_title' => __('Coverage map', 'partners-site_v2'),
+			'menu_title' => __('Coverage map', 'partners-site_v2'),
 			'menu_slug' => 'options-electric',
 			'post_id' => 'acf_network_options',
 			'capability' => 'manage_network_options',
@@ -670,8 +670,8 @@ function register_network_settings_pages()
 	);
 	acf_add_options_page(
 		array(
-			'page_title' => 'Elektryfikacja',
-			'menu_title' => 'Kalkulator kosztów',
+			'page_title' => __('Electrification', 'partners-site_v2'),
+			'menu_title' => __('Cost Calculator', 'partners-site_v2'),
 			'menu_slug' => 'options-electric-costs',
 			'post_id' => 'acf_network_options',
 			'capability' => 'manage_network_options',
@@ -680,8 +680,8 @@ function register_network_settings_pages()
 		)
 	);
 	acf_add_options_page([
-		'page_title' => 'Słowniki',
-		'menu_title' => 'Słowniki',
+		'page_title' => __('Dictionaries', 'partners-site_v2'),
+		'menu_title' => __('Dictionaries', 'partners-site_v2'),
 		'menu_slug' => 'options-taxonomy',
 		'post_id' => 'options-taxonomy',
 		'capability' => 'manage_network_options',
@@ -690,8 +690,8 @@ function register_network_settings_pages()
 	]);
 	acf_add_options_page(
 		array(
-			'page_title' => 'Vinomat',
-			'menu_title' => 'Vinomat',
+			'page_title' => __('Vinomat', 'partners-site_v2'),
+			'menu_title' => __('Vinomat', 'partners-site_v2'),
 			'menu_slug' => 'options-vinomat',
 			'post_id' => 'acf_network_options',
 			'capability' => 'manage_network_options',
@@ -706,8 +706,8 @@ function registerAcfOptionsPages()
 	if (function_exists('acf_add_options_page')) {
 		acf_add_options_page(
 			array(
-				'page_title' => 'Opcje Strony Głównej',
-				'menu_title' => 'Opcje Strony Głównej',
+				'page_title' => __('Homepage options', 'partners-site_v2'),
+				'menu_title' => __('Homepage options', 'partners-site_v2'),
 				'menu_slug' => 'options-homepage',
 				'post_id' => 'options-homepage',
 				'capability' => 'edit_posts',
@@ -717,8 +717,8 @@ function registerAcfOptionsPages()
 
 		acf_add_options_page(
 			array(
-				'page_title' => 'Serwis',
-				'menu_title' => 'Serwis',
+				'page_title' => __('Service', 'partners-site_v2'),
+				'menu_title' => __('Service', 'partners-site_v2'),
 				'menu_slug' => 'options-service',
 				'post_id' => 'options-service',
 				'capability' => 'edit_posts',
@@ -728,8 +728,8 @@ function registerAcfOptionsPages()
 
 		acf_add_options_page(
 			array(
-				'page_title' => 'Opcje modeli',
-				'menu_title' => 'Opcje modeli',
+				'page_title' => __('Models options', 'partners-site_v2'),
+				'menu_title' => __('Models options', 'partners-site_v2'),
 				'menu_slug' => 'options-models',
 				'post_id' => 'options-models',
 				'capability' => 'edit_posts',
@@ -739,8 +739,8 @@ function registerAcfOptionsPages()
 
 		acf_add_options_page(
 			array(
-				'page_title' => 'Ustawienia Dealera',
-				'menu_title' => 'Ustawienia Dealera',
+				'page_title' => __('Dealer Settings', 'partners-site_v2'),
+				'menu_title' => __('Dealer Settings', 'partners-site_v2'),
 				'menu_slug' => 'options-dealer',
 				'post_id' => 'options-dealer',
 				'capability' => 'edit_posts',
@@ -750,8 +750,8 @@ function registerAcfOptionsPages()
 
 		acf_add_options_page(
 			array(
-				'page_title' => 'Przekierowania',
-				'menu_title' => 'Przekierowania',
+				'page_title' => __('Redirects', 'partners-site_v2'),
+				'menu_title' => __('Redirects', 'partners-site_v2'),
 				'menu_slug' => 'options-redirects',
 				'post_id' => 'options-redirects',
 				'capability' => 'edit_posts',
@@ -761,8 +761,8 @@ function registerAcfOptionsPages()
 
 		acf_add_options_page(
 			array(
-				'page_title' => 'Opcje Jazdy testowej',
-				'menu_title' => 'Opcje Jazdy testowej',
+				'page_title' => __('Test drive options', 'partners-site_v2'),
+				'menu_title' => __('Test drive options', 'partners-site_v2'),
 				'menu_slug' => 'options-test-drive',
 				'post_id' => 'options-test-drive',
 				'capability' => 'administrator',
@@ -773,8 +773,8 @@ function registerAcfOptionsPages()
 
 		acf_add_options_page(
 			array(
-				'page_title' => 'Ustawienia globalne',
-				'menu_title' => 'Ustawienia globalne',
+				'page_title' => __('Global settings', 'partners-site_v2'),
+				'menu_title' => __('Global settings', 'partners-site_v2'),
 				'menu_slug' => 'options-global',
 				'post_id' => 'options-global',
 				'capability' => 'edit_posts',

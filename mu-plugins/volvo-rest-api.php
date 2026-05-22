@@ -11,6 +11,29 @@ if (!defined('ABSPATH')) {
 }
 
 /**
+ * Add CORS headers for volvo/v1 namespace
+ */
+add_filter('rest_pre_serve_request', function ($value, $result, $request, $server) {
+    $origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
+    
+    // Allow all *.volvotest.pl origins
+    if ($origin && preg_match('/\.volvotest\.pl$/', parse_url($origin, PHP_URL_HOST))) {
+        header('Access-Control-Allow-Origin: ' . $origin);
+        header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+        header('Access-Control-Allow-Credentials: true');
+        header('Access-Control-Allow-Headers: Authorization, Content-Type, X-WP-Domain, X-WP-Token, X-Requested-With');
+    }
+    
+    // Handle preflight OPTIONS requests
+    if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+        status_header(200);
+        exit;
+    }
+    
+    return $value;
+}, 10, 4);
+
+/**
  * Register custom REST API endpoints
  */
 add_action('rest_api_init', function () {

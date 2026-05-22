@@ -6,11 +6,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_6103f55455168',
-			'title'                 => 'Car Specification',
+			'title'                 => __( 'Car Specification', 'partners-site_v2' ),
 			'fields'                => array(
 				array(
 					'key'               => 'field_6103f56d78246',
-					'label'             => 'Model',
+					'label'             => __( 'Model', 'partners-site_v2' ),
 					'name'              => 'model',
 					'type'              => 'select',
 					'instructions'      => '',
@@ -32,7 +32,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_6103f56d78245',
-					'label'             => 'Kategoria',
+					'label'             => __( 'Category', 'partners-site_v2' ),
 					'name'              => 'category',
 					'type'              => 'select',
 					'instructions'      => '',
@@ -54,7 +54,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_6103f57378247',
-					'label' => __( 'Prędkość maksymalna (km/h)', 'partners-site_v2' ),
+					'label' 			=> __( 'Maximum speed (km/h)', 'partners-site_v2' ),
 					'name'              => 'max-speed',
 					'type'              => 'number',
 					'instructions'      => '',
@@ -75,7 +75,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_6103f58378248',
-					'label' => __( 'Pojemność bagażnika (litry)', 'partners-site_v2' ),
+					'label' 			=> __( 'Trunk capacity (liters)', 'partners-site_v2' ),
 					'name'              => 'cargo-capacity',
 					'type'              => 'number',
 					'instructions'      => '',
@@ -96,7 +96,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_6103f58b78249',
-					'label'             => 'Miejsc',
+					'label'             => __( 'Seats', 'partners-site_v2' ),
 					'name'              => 'seats',
 					'type'              => 'number',
 					'instructions'      => '',
@@ -117,10 +117,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_6103f5917824a',
-					'label' => __( 'Wysokość (cm)', 'partners-site_v2' ),
+					'label' 			=> __( 'Height (cm)', 'partners-site_v2' ),
 					'name'              => 'height',
 					'type'              => 'number',
-					'instructions' => __( '<strong>UWAGA! Wartość musi być podana w centymetrach</strong>', 'partners-site_v2' ),
+					'instructions' 		=> '<strong>' . __( 'NOTE! The value must be entered in centimeters', 'partners-site_v2' ) . '</strong>',
 					'required'          => 1,
 					'conditional_logic' => 0,
 					'wrapper'           => array(
@@ -138,10 +138,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_6103f5977824b',
-					'label' => __( 'Długość (cm)', 'partners-site_v2' ),
+					'label' 			=> __( 'Length (cm)', 'partners-site_v2' ),
 					'name'              => 'length',
 					'type'              => 'number',
-					'instructions' => __( '<strong>UWAGA! Wartość musi być podana w centymetrach</strong>', 'partners-site_v2' ),
+					'instructions' 		=> '<strong>' . __( 'NOTE! The value must be entered in centimeters', 'partners-site_v2' ) . '</strong>',
 					'required'          => 1,
 					'conditional_logic' => 0,
 					'wrapper'           => array(
@@ -159,10 +159,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_6103f5a07824c',
-					'label' => __( 'Szerokość z lusterkami (cm)', 'partners-site_v2' ),
+					'label' 			=> __( 'Width with mirrors (cm)', 'partners-site_v2' ),
 					'name'              => 'width',
 					'type'              => 'number',
-					'instructions' => __( '<strong>UWAGA! Wartość musi być podana w centymetrach</strong>', 'partners-site_v2' ),
+					'instructions' 		=> '<strong>' . __( 'NOTE! The value must be entered in centimeters', 'partners-site_v2' ) . '</strong>',
 					'required'          => 1,
 					'conditional_logic' => 0,
 					'wrapper'           => array(
@@ -178,10 +178,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_6103f5a87824d',
-					'label' => __( 'Prześwit (cm)', 'partners-site_v2' ),
+					'label' 			=> __( 'Ground clearance (cm)', 'partners-site_v2' ),
 					'name'              => 'ground-clearance',
 					'type'              => 'number',
-					'instructions' => __( '<strong>UWAGA! Wartość musi być podana w centymetrach</strong>', 'partners-site_v2' ),
+					'instructions' 		=> '<strong>' . __( 'NOTE! The value must be entered in centimeters', 'partners-site_v2' ) . '</strong>',
 					'required'          => 1,
 					'conditional_logic' => 0,
 					'wrapper'           => array(
@@ -199,7 +199,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_6110f503d8c8a',
-					'label'             => 'Wersje',
+					'label'             => __( 'Versions', 'partners-site_v2' ),
 					'name'              => 'versions',
 					'type'              => 'repeater',
 					'instructions'      => '',
@@ -218,7 +218,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'sub_fields'        => array(
 						array(
 							'key'               => 'field_6110f50ed8c8b',
-							'label'             => 'Wersja',
+							'label'             => __( 'Version', 'partners-site_v2' ),
 							'name'              => 'version',
 							'type'              => 'select',
 							'instructions'      => '',
@@ -240,7 +240,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_6110f521d8c8c',
-							'label' => __( 'Prędkość maksymalna (km/h)', 'partners-site_v2' ),
+							'label' 			=> __( 'Maximum speed (km/h)', 'partners-site_v2' ),
 							'name'              => 'max-speed',
 							'type'              => 'number',
 							'instructions'      => '',
@@ -261,7 +261,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_6110f52fd8c8d',
-							'label' => __( 'Pojemność bagażnika (litry)', 'partners-site_v2' ),
+							'label' 			=> __( 'Trunk capacity (liters)', 'partners-site_v2' ),
 							'name'              => 'cargo-capacity',
 							'type'              => 'number',
 							'instructions'      => '',
@@ -282,7 +282,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_6110f53ed8c8e',
-							'label'             => 'Miejsc',
+							'label'             => __( 'Seats', 'partners-site_v2' ),
 							'name'              => 'seats',
 							'type'              => 'number',
 							'instructions'      => '',
@@ -303,10 +303,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_6110f551d8c8f',
-							'label' => __( 'Wysokość (cm)', 'partners-site_v2' ),
+							'label' 			=> __( 'Height (cm)', 'partners-site_v2' ),
 							'name'              => 'height',
 							'type'              => 'number',
-							'instructions' => __( '<strong>UWAGA! Wartość musi być podana w centymetrach</strong>', 'partners-site_v2' ),
+							'instructions' 		=> '<strong>' . __( 'NOTE! The value must be entered in centimeters', 'partners-site_v2' ) . '</strong>',
 							'required'          => 1,
 							'conditional_logic' => 0,
 							'wrapper'           => array(
@@ -324,10 +324,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_6110f55cd8c90',
-							'label' => __( 'Długość (cm)', 'partners-site_v2' ),
+							'label' 			=> __( 'Length (cm)', 'partners-site_v2' ),
 							'name'              => 'length',
 							'type'              => 'number',
-							'instructions' => __( '<strong>UWAGA! Wartość musi być podana w centymetrach</strong>', 'partners-site_v2' ),
+							'instructions' 		=> '<strong>' . __( 'NOTE! The value must be entered in centimeters', 'partners-site_v2' ) . '</strong>',
 							'required'          => 1,
 							'conditional_logic' => 0,
 							'wrapper'           => array(
@@ -345,10 +345,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_6110f562d8c91',
-							'label' => __( 'Szerokość z lusterkami (cm)', 'partners-site_v2' ),
+							'label' 			=> __( 'Width with mirrors (cm)', 'partners-site_v2' ),
 							'name'              => 'width',
 							'type'              => 'number',
-							'instructions' => __( '<strong>UWAGA! Wartość musi być podana w centymetrach</strong>', 'partners-site_v2' ),
+							'instructions' 		=> '<strong>' . __( 'NOTE! The value must be entered in centimeters', 'partners-site_v2' ) . '</strong>',
 							'required'          => 1,
 							'conditional_logic' => 0,
 							'wrapper'           => array(
@@ -364,10 +364,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_6110f56bd8c92',
-							'label' => __( 'Prześwit (cm)', 'partners-site_v2' ),
+							'label'				=> __( 'Ground clearance (cm)', 'partners-site_v2' ),
 							'name'              => 'ground-clearance',
 							'type'              => 'number',
-							'instructions' => __( '<strong>UWAGA! Wartość musi być podana w centymetrach</strong>', 'partners-site_v2' ),
+							'instructions' 		=> '<strong>' . __( 'NOTE! The value must be entered in centimeters', 'partners-site_v2' ) . '</strong>',
 							'required'          => 1,
 							'conditional_logic' => 0,
 							'wrapper'           => array(

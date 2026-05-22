@@ -1,0 +1,3256 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-21 08:55+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.0\n"
+
+#: functions.php:77
+msgid "Primary Menu"
+msgstr ""
+
+#: functions.php:78
+msgid "Side Menu"
+msgstr ""
+
+#: functions.php:79
+msgid "Footer Menu"
+msgstr ""
+
+#: page-dostepne-na-miejscu.php:5
+msgid "Available Cars"
+msgstr ""
+
+#: includes/acf.php:519
+#: includes/acf.php:520
+#: includes/acf-fields/anchor.php:7
+#: includes/acf-fields/anchor.php:11
+msgid "Anchor"
+msgstr ""
+
+#: includes/acf-fields/anchor.php:14
+#: includes/acf-fields/banner-with-content-overlay.php:60
+#: includes/acf-fields/banner-with-content-overlay.php:79
+#: includes/acf-fields/blog.php:13
+#: includes/acf-fields/campaign.php:13
+#: includes/acf-fields/campaign.php:32
+#: includes/acf-fields/model-versions.php:97
+#: includes/acf-fields/model-versions.php:506
+#: includes/acf-fields/model-versions.php:525
+#: includes/acf-fields/options-service.php:250
+#: includes/acf-fields/options-service.php:288
+#: includes/acf-fields/options-service.php:522
+#: includes/acf-fields/options-service.php:634
+#: includes/acf-fields/options-service.php:269
+#: includes/acf-fields/options-service.php:326
+#: includes/acf-fields/options-service.php:366
+#: includes/acf-fields/showroom.php:403
+#: includes/acf-fields/showroom.php:569
+#: includes/acf-fields/showroom.php:735
+#: includes/acf-fields/stock-car.php:764
+msgid "(max. %s chars)"
+msgstr ""
+
+#: includes/acf-fields/banner-with-content-overlay.php:7
+msgid "BannerWithContentOverlay"
+msgstr ""
+
+#: includes/acf-fields/banner-with-content-overlay.php:11
+#: includes/acf-fields/blog-post-footer.php:11
+#: includes/acf-fields/blog.php:29
+#: includes/acf-fields/campaign.php:63
+#: includes/acf-fields/hero-image.php:11
+#: includes/acf-fields/homepage.php:743
+#: includes/acf-fields/homepage.php:976
+#: includes/acf-fields/homepage.php:1106
+#: includes/acf-fields/homepage.php:1307
+#: includes/acf-fields/homepage.php:1449
+#: includes/acf-fields/homepage.php:1548
+#: includes/acf-fields/homepage.php:1647
+#: includes/acf-fields/homepage.php:1766
+#: includes/acf-fields/model-category-colors.php:11
+#: includes/acf-fields/model-versions.php:558
+#: includes/acf-fields/offer-cards.php:64
+#: includes/acf-fields/options-service.php:897
+#: includes/acf-fields/options-test-drive.php:74
+#: includes/acf-fields/options-vinomat.php:91
+#: includes/acf-fields/preview-component.php:11
+#: includes/acf-fields/three-boxes.php:50
+#: includes/acf-fields/three-boxes.php:149
+#: includes/acf-fields/three-boxes.php:248
+#: includes/acf-fields/two-column-content-component.php:11
+msgid "Photo"
+msgstr ""
+
+#: includes/acf-fields/banner-with-content-overlay.php:14
+msgid "(min. width: 1920px, recommended width: 3840px)<br>(min. height: 556px)"
+msgstr ""
+
+#: includes/acf-fields/banner-with-content-overlay.php:35
+msgid "Banner in 16:9 aspect ratio?"
+msgstr ""
+
+#: includes/acf-fields/banner-with-content-overlay.php:42
+#: includes/acf-fields/offer-boxes.php:45
+#: includes/acf-fields/offer-boxes.php:67
+msgid "yes"
+msgstr ""
+
+#: includes/acf-fields/banner-with-content-overlay.php:57
+#: includes/acf-fields/blog-post-footer.php:35
+#: includes/acf-fields/cost-map.php:14
+#: includes/acf-fields/homepage.php:680
+#: includes/acf-fields/homepage.php:768
+#: includes/acf-fields/homepage.php:880
+#: includes/acf-fields/homepage.php:1239
+#: includes/acf-fields/homepage.php:1410
+#: includes/acf-fields/homepage.php:1790
+#: includes/acf-fields/homepage.php:1883
+#: includes/acf-fields/homepage.php:1918
+#: includes/acf-fields/offer-boxes.php:123
+#: includes/acf-fields/offer-cards.php:88
+#: includes/acf-fields/options-models.php:70
+#: includes/acf-fields/options-service.php:247
+#: includes/acf-fields/options-service.php:419
+#: includes/acf-fields/options-service.php:592
+#: includes/acf-fields/options-service.php:704
+#: includes/acf-fields/preview-component.php:87
+#: includes/acf-fields/site-heading.php:11
+#: includes/acf-fields/stock-car.php:953
+#: includes/acf-fields/three-boxes.php:11
+#: includes/acf-fields/two-column-content-component.php:149
+msgid "Header"
+msgstr ""
+
+#: includes/acf-fields/banner-with-content-overlay.php:76
+#: includes/acf-fields/blog-post-footer.php:69
+#: includes/acf-fields/blog-post-footer.php:74
+#: includes/acf-fields/blog.php:10
+#: includes/acf-fields/homepage.php:253
+#: includes/acf-fields/homepage.php:376
+#: includes/acf-fields/homepage.php:452
+#: includes/acf-fields/homepage.php:528
+#: includes/acf-fields/homepage.php:604
+#: includes/acf-fields/homepage.php:787
+#: includes/acf-fields/homepage.php:899
+#: includes/acf-fields/homepage.php:1051
+#: includes/acf-fields/homepage.php:1181
+#: includes/acf-fields/homepage.php:1493
+#: includes/acf-fields/homepage.php:1592
+#: includes/acf-fields/homepage.php:1691
+#: includes/acf-fields/homepage.php:1810
+#: includes/acf-fields/homepage.php:1937
+#: includes/acf-fields/model-category.php:11
+#: includes/acf-fields/model-versions.php:94
+#: includes/acf-fields/model-versions.php:522
+#: includes/acf-fields/offer-boxes.php:142
+#: includes/acf-fields/offer-cards.php:107
+#: includes/acf-fields/options-models.php:89
+#: includes/acf-fields/options-service.php:266
+#: includes/acf-fields/options-service.php:538
+#: includes/acf-fields/options-service.php:650
+#: includes/acf-fields/options-service.php:878
+#: includes/acf-fields/options-vinomat.php:72
+#: includes/acf-fields/options-vinomat.php:283
+#: includes/acf-fields/preview-component.php:121
+#: includes/acf-fields/preview-component.php:126
+#: includes/acf-fields/short-notes.php:50
+#: includes/acf-fields/site-heading.php:59
+#: includes/acf-fields/three-boxes.php:94
+#: includes/acf-fields/three-boxes.php:193
+#: includes/acf-fields/three-boxes.php:292
+#: includes/acf-fields/two-column-content-component.php:319
+#: includes/acf-fields/two-column-content-component.php:324
+msgid "Description"
+msgstr ""
+
+#: includes/acf-fields/banner-with-content-overlay.php:95
+#: includes/acf-fields/blog-post-footer.php:115
+#: includes/acf-fields/blog-post-footer.php:155
+#: includes/acf-fields/campaign.php:48
+#: includes/acf-fields/homepage.php:273
+#: includes/acf-fields/homepage.php:395
+#: includes/acf-fields/homepage.php:471
+#: includes/acf-fields/homepage.php:547
+#: includes/acf-fields/homepage.php:623
+#: includes/acf-fields/homepage.php:806
+#: includes/acf-fields/homepage.php:918
+#: includes/acf-fields/homepage.php:1070
+#: includes/acf-fields/homepage.php:1201
+#: includes/acf-fields/homepage.php:1371
+#: includes/acf-fields/homepage.php:1512
+#: includes/acf-fields/homepage.php:1611
+#: includes/acf-fields/homepage.php:1710
+#: includes/acf-fields/homepage.php:1829
+#: includes/acf-fields/homepage.php:1956
+#: includes/acf-fields/offer-boxes.php:161
+#: includes/acf-fields/offer-cards.php:49
+#: includes/acf-fields/options-models.php:108
+#: includes/acf-fields/options-vinomat.php:405
+#: includes/acf-fields/preview-component.php:249
+#: includes/acf-fields/preview-component.php:289
+#: includes/acf-fields/three-boxes.php:113
+#: includes/acf-fields/three-boxes.php:212
+#: includes/acf-fields/three-boxes.php:311
+#: includes/acf-fields/two-column-content-component.php:473
+#: includes/acf-fields/two-column-content-component.php:515
+msgid "Link"
+msgstr ""
+
+#: includes/acf-fields/block-margins.php:7
+#: includes/acf-fields/block-margins.php:11
+msgid "Spacing"
+msgstr ""
+
+#: includes/acf-fields/block-margins.php:28
+msgid "Top spacing"
+msgstr ""
+
+#: includes/acf-fields/block-margins.php:56
+msgid "Bottom spacing"
+msgstr ""
+
+#: includes/acf-fields/block-margins.php:59
+msgid "Spacing between blocks does not accumulate. <br>The spacing will be equal to the larger value of the spacing from the adjacent blocks."
+msgstr ""
+
+#: includes/acf-fields/block-margins.php:84
+msgid "End"
+msgstr ""
+
+#: includes/acf-fields/blog-post-footer.php:7
+msgid "Blog Footer"
+msgstr ""
+
+#: includes/acf-fields/blog-post-footer.php:14
+msgid "Please make sure the content height does not exceed the image height<br>(minimum image width: 944px, recommended width: 2832px)"
+msgstr ""
+
+#: includes/acf-fields/blog-post-footer.php:54
+#: includes/acf-fields/legal-info.php:10
+#: includes/acf-fields/preview-component.php:106
+msgid "Content"
+msgstr ""
+
+#: includes/acf-fields/blog-post-footer.php:98
+#: includes/acf-fields/preview-component.php:232
+#: includes/acf-fields/two-column-content-component.php:456
+msgid "Button"
+msgstr ""
+
+#: includes/acf-fields/blog-post-footer.php:103
+#: includes/acf-fields/preview-component.php:237
+#: includes/acf-fields/two-column-content-component.php:461
+msgid "Button action"
+msgstr ""
+
+#: includes/acf-fields/blog-post-footer.php:116
+#: includes/acf-fields/options-service.php:386
+#: includes/acf-fields/options-service.php:403
+#: includes/acf-fields/preview-component.php:250
+#: includes/acf-fields/two-column-content-component.php:472
+msgid "Form"
+msgstr ""
+
+#: includes/acf-fields/blog-post-footer.php:128
+#: includes/acf-fields/preview-component.php:262
+#: includes/acf-fields/two-column-content-component.php:486
+msgid "Button Text"
+msgstr ""
+
+#: includes/acf-fields/blog-post-footer.php:181
+#: includes/acf-fields/preview-component.php:384
+#: includes/acf-fields/two-column-content-component.php:269
+#: includes/acf-fields/two-column-content-component.php:509
+#: includes/acf-fields/two-column-content-component.php:679
+msgid "Add Content"
+msgstr ""
+
+#: includes/acf-fields/blog-posts-component.php:7
+msgid "Blog posts component"
+msgstr ""
+
+#: includes/acf-fields/blog-posts-component.php:11
+#: includes/acf-fields/blog-posts-component.php:31
+msgid "Title: Part %s"
+msgstr ""
+
+#: includes/acf-fields/blog-posts-component.php:15
+msgid "Black H2"
+msgstr ""
+
+#: includes/acf-fields/blog-posts-component.php:35
+msgid "Gray text in the title"
+msgstr ""
+
+#: includes/acf-fields/blog-posts-component.php:59
+msgid "Filter by tag"
+msgstr ""
+
+#: includes/acf-fields/blog-posts-component.php:63
+msgid "Show only posts with one of the tags"
+msgstr ""
+
+#: includes/acf-fields/blog-posts-component.php:84
+msgid "Limit posts per page"
+msgstr ""
+
+#: includes/acf-fields/blog.php:6
+msgid "Blog Content Settings"
+msgstr ""
+
+#: includes/acf-fields/blog.php:32
+#: includes/acf-fields/campaign.php:66
+msgid "(min. width: 1920px, Recommended width: 3840px)<br>(min. height: 807px)<br>The main campaign image used in various sliders on the website."
+msgstr ""
+
+#: includes/acf-fields/campaign-override.php:7
+msgid "Select a Global Campaign"
+msgstr ""
+
+#: includes/acf-fields/campaign-override.php:11
+#: includes/acf-fields/homepage.php:92
+#: includes/acf-fields/homepage.php:122
+#: includes/acf-fields/options-service.php:89
+#: includes/acf-fields/options-service.php:119
+#: includes/acf-fields/options-service.php:188
+#: includes/acf-fields/options-service.php:965
+#: includes/acf-fields/options-service.php:995
+#: includes/acf-fields/options-vinomat.php:159
+#: includes/acf-fields/options-vinomat.php:189
+msgid "Campaign"
+msgstr ""
+
+#: includes/acf-fields/campaign-override.php:14
+msgid "The campaign under which the content of this page will be displayed"
+msgstr ""
+
+#: includes/acf-fields/campaign.php:6
+msgid "Campaign fields on the slider"
+msgstr ""
+
+#: includes/acf-fields/campaign.php:10
+#: includes/acf-fields/homepage.php:356
+#: includes/acf-fields/homepage.php:432
+#: includes/acf-fields/homepage.php:508
+#: includes/acf-fields/homepage.php:584
+#: includes/acf-fields/homepage.php:1473
+#: includes/acf-fields/homepage.php:1572
+#: includes/acf-fields/homepage.php:1671
+#: includes/acf-fields/model-versions.php:503
+#: includes/acf-fields/offer-box.php:13
+#: includes/acf-fields/offer-cards.php:11
+#: includes/acf-fields/options-service.php:631
+#: includes/acf-fields/options-service.php:859
+#: includes/acf-fields/options-vinomat.php:53
+#: includes/acf-fields/options-vinomat.php:264
+#: includes/acf-fields/options-vinomat.php:347
+#: includes/acf-fields/short-notes.php:31
+#: includes/acf-fields/three-boxes.php:74
+#: includes/acf-fields/three-boxes.php:173
+#: includes/acf-fields/three-boxes.php:272
+#: includes/acf-fields/two-column-content-component.php:290
+#: includes/acf-fields/two-column-content-component.php:295
+msgid "Title"
+msgstr ""
+
+#: includes/acf-fields/campaign.php:29
+#: includes/acf-fields/two-column-content-component.php:103
+msgid "Subtitle"
+msgstr ""
+
+#: includes/acf-fields/campaign.php:51
+msgid "If no link is provided, the slide will link to the campaign page"
+msgstr ""
+
+#: includes/acf-fields/car-specification.php:9
+msgid "Car Specification"
+msgstr ""
+
+#: includes/acf-fields/car-specification.php:13
+#: includes/acf-fields/cost-map.php:34
+#: includes/acf-fields/electrification-map.php:49
+#: includes/acf-fields/lead.php:315
+#: includes/acf-fields/model-override.php:11
+#: includes/acf-fields/offer-box.php:51
+#: includes/acf-fields/options-test-drive.php:52
+#: includes/acf-fields/stock-car.php:485
+#: includes/acf-fields/stock-car.php:1446
+msgid "Model"
+msgstr ""
+
+#: includes/acf-fields/car-specification.php:35
+#: includes/acf-fields/stock-car.php:462
+msgid "Category"
+msgstr ""
+
+#: includes/acf-fields/car-specification.php:57
+#: includes/acf-fields/car-specification.php:243
+#: includes/acf-fields/model-versions.php:244
+#: includes/acf-fields/stock-car.php:781
+msgid "Maximum speed (km/h)"
+msgstr ""
+
+#: includes/acf-fields/car-specification.php:78
+#: includes/acf-fields/car-specification.php:264
+#: includes/acf-fields/model-versions.php:265
+#: includes/acf-fields/stock-car.php:823
+msgid "Trunk capacity (liters)"
+msgstr ""
+
+#: includes/acf-fields/car-specification.php:99
+#: includes/acf-fields/car-specification.php:285
+#: includes/acf-fields/model-versions.php:286
+#: includes/acf-fields/stock-car.php:600
+msgid "Seats"
+msgstr ""
+
+#: includes/acf-fields/car-specification.php:120
+#: includes/acf-fields/car-specification.php:306
+#: includes/acf-fields/model-versions.php:307
+#: includes/acf-fields/stock-car.php:1556
+msgid "Height (cm)"
+msgstr ""
+
+#: includes/acf-fields/car-specification.php:123
+#: includes/acf-fields/car-specification.php:144
+#: includes/acf-fields/car-specification.php:165
+#: includes/acf-fields/car-specification.php:184
+#: includes/acf-fields/car-specification.php:309
+#: includes/acf-fields/car-specification.php:330
+#: includes/acf-fields/car-specification.php:351
+#: includes/acf-fields/car-specification.php:370
+#: includes/acf-fields/stock-car.php:1559
+#: includes/acf-fields/stock-car.php:1581
+#: includes/acf-fields/stock-car.php:1603
+#: includes/acf-fields/stock-car.php:1623
+msgid "NOTE! The value must be entered in centimeters"
+msgstr ""
+
+#: includes/acf-fields/car-specification.php:141
+#: includes/acf-fields/car-specification.php:327
+#: includes/acf-fields/model-versions.php:328
+#: includes/acf-fields/stock-car.php:1578
+msgid "Length (cm)"
+msgstr ""
+
+#: includes/acf-fields/car-specification.php:162
+#: includes/acf-fields/car-specification.php:348
+#: includes/acf-fields/model-versions.php:349
+#: includes/acf-fields/stock-car.php:1600
+msgid "Width with mirrors (cm)"
+msgstr ""
+
+#: includes/acf-fields/car-specification.php:181
+#: includes/acf-fields/car-specification.php:367
+#: includes/acf-fields/model-versions.php:368
+#: includes/acf-fields/stock-car.php:1620
+msgid "Ground clearance (cm)"
+msgstr ""
+
+#: includes/acf-fields/car-specification.php:202
+msgid "Versions"
+msgstr ""
+
+#: includes/acf-fields/car-specification.php:221
+#: includes/acf-fields/stock-car.php:439
+#: includes/acf-fields/stock-car.php:1468
+msgid "Version"
+msgstr ""
+
+#: includes/acf-fields/cost-map.php:10
+#: includes/acf-fields/cost-map.php:25
+#: includes/acf-fields/cost-map.php:94
+msgid "Cost Calculator"
+msgstr ""
+
+#: includes/acf-fields/cost-map.php:56
+#: includes/acf-fields/electrification-map.php:71
+#: includes/acf-fields/model-versions.php:9
+#: includes/acf-fields/options-electric-costs.php:357
+msgid "Equipment Version"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:7
+msgid "Dealer Settings"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:11
+#: includes/acf-fields/showroom.php:11
+msgid "Basic Information"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:27
+msgid "Dealer ID"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:48
+msgid "Dealer Name"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:67
+#: includes/acf-fields/employee.php:68
+#: includes/acf-fields/showroom.php:196
+msgid "Phone Number"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:70
+msgid "Phone number displayed in the footer of the page."
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:86
+msgid "Google Maps API Key"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:105
+msgid "Google Tag Manager ID"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:108
+msgid "e.g. \"GTM-XXXXX\""
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:124
+msgid "Event Instance ID"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:127
+msgid "Do not make any changes"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:143
+msgid "Additional code for the head section"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:162
+#: includes/acf-fields/options-service.php:1062
+msgid "Additional code for the thank-you page"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:181
+msgid "Additional code on the thank-you page for test drives"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:200
+msgid "Additional HTML code for the homepage"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:219
+msgid "Additional JavaScript code for the \"Show Phone Number\" button"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:236
+msgid "GA (Google Analytics) Key"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:253
+msgid "Service ID (Google Analytics)"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:270
+msgid "WP Pixel Key"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:287
+msgid "WP PIXEL script on/off"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:304
+#: includes/acf-fields/dealer-options.php:320
+msgid "Social Media"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:335
+msgid "Facebook"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:351
+msgid "Instagram"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:367
+msgid "LinkedIn"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:383
+msgid "YouTube"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:399
+msgid "Twitter"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:418
+#: includes/acf-fields/dealer-options.php:435
+msgid "Integration YouLead"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:451
+#: includes/acf-fields/dealer-options.php:1164
+msgid "Client ID"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:467
+msgid "App ID"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:483
+msgid "App Secret Key"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:501
+#: includes/acf-fields/dealer-options.php:518
+msgid "Chat Integration"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:534
+msgid "Chat code"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:550
+msgid "Chat on/off"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:569
+msgid "WEBPUSH Integration"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:586
+msgid "Files"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:602
+msgid "Code for the head section (contents of the manifest.json file)"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:618
+msgid "SW Code (contents of the sw file)"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:637
+#: includes/acf-fields/dealer-options.php:654
+msgid "Facebook Integration"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:670
+msgid "Access Token"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:686
+msgid "Enable Facebook Pixel on every subpage"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:702
+msgid "Pixel ID"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:720
+msgid "Bottom Bar Settings"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:737
+msgid "Bar Settings"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:753
+msgid "Homepage Text"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:769
+msgid "Homepage Phone"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:785
+msgid "New Cars Text"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:801
+msgid "New Cars Phone"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:817
+msgid "Used Cars Text"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:833
+msgid "Used Cars Phone"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:849
+msgid "Service and Accessories Text"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:865
+msgid "Service and Accessories Phone"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:883
+#: includes/acf-fields/dealer-options.php:900
+msgid "Indexing Exclusion Settings"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:916
+msgid "Exact URLs to exclude. E.g. https://volvoweb.com/dontIndexMe"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:935
+msgid "Exclude URL:"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:956
+msgid "Words appearing in the URL to exclude."
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:959
+msgid "E.g. <b>test</b>, will exclude such addresses:<br> - https://volvoweb.com/<b>test</b><br> - https://volvoweb.com/some/<b>test</b>url"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:975
+msgid "Words appearing in URLs to exclude"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:998
+msgid "Vehicle Quotes"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:1015
+msgid "Indicat Integration"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:1031
+#: includes/acf-fields/employee.php:87
+msgid "Email Address"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:1047
+msgid "Address included in the offer"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:1069
+#: includes/acf-fields/dealer-options.php:1082
+msgid "Otomoto Integration"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:1098
+msgid "Enable integration"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:1116
+msgid "Username"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:1140
+msgid "Password"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:1188
+msgid "Client Secret"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:1212
+msgid "Connection test"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:1231
+msgid "Test connection"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:1237
+msgid "Region"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:1240
+msgid "Select region"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:1259
+msgid "Select region..."
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:1263
+#: includes/acf-fields/showroom.php:177
+msgid "City"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:1266
+msgid "Select city"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:1285
+msgid "Select city..."
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:1289
+msgid "District"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:1292
+msgid "Select district"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:1311
+msgid "Select district..."
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:1315
+msgid "Latitude"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:1318
+#: includes/acf-fields/dealer-options.php:1342
+msgid "Automatically filled in after selecting a city"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:1339
+msgid "Longitude"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:1363
+#: includes/acf-fields/preview-component.php:150
+#: includes/acf-fields/preview-component.php:155
+#: includes/acf-fields/two-column-content-component.php:348
+#: includes/acf-fields/two-column-content-component.php:353
+msgid "Contact person"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:1366
+msgid "Contact person displayed in the listing"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:1389
+#: includes/acf-fields/dealer-options.php:1403
+msgid "Consents on the form"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:1410
+msgid "Email address of the Data Protection Officer"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:1426
+#: includes/acf-fields/dealer-options.php:1439
+msgid "Booking Engine integration"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:1454
+msgid "API Key"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:1474
+msgid "Partner Code"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:1494
+msgid "Partner ID"
+msgstr ""
+
+#: includes/acf-fields/dealer-options.php:1506
+msgid "e.g. 6PL301"
+msgstr ""
+
+#: includes/acf-fields/electric-map.php:7
+#: includes/acf-fields/electrification-map.php:10
+#: includes/acf-fields/electrification-map.php:14
+#: includes/acf.php:397
+#: includes/acf.php:398
+#: includes/acf.php:662
+#: includes/acf.php:663
+msgid "Coverage map"
+msgstr ""
+
+#: includes/acf-fields/electric-map.php:11
+#: includes/acf-fields/preview-component.php:317
+#: includes/acf-fields/preview-component.php:322
+#: includes/acf-fields/table-component.php:11
+#: includes/acf-fields/two-column-content-component.php:543
+#: includes/acf-fields/two-column-content-component.php:548
+msgid "Table"
+msgstr ""
+
+#: includes/acf-fields/electric.php:14
+#: includes/acf-fields/leasing.php:12
+#: includes/acf-fields/options-electric-costs.php:12
+#: includes/acf-fields/options-vinomat.php:30
+#: includes/acf-fields/vinomat.php:12
+msgid "Settings"
+msgstr ""
+
+#: includes/acf-fields/electric.php:18
+msgid "Information below the maps"
+msgstr ""
+
+#: includes/acf-fields/electric.php:39
+msgid "Charger configuration"
+msgstr ""
+
+#: includes/acf-fields/electric.php:58
+msgid "Fast charger?"
+msgstr ""
+
+#: includes/acf-fields/electric.php:79
+msgid "Charger address"
+msgstr ""
+
+#: includes/acf-fields/electric.php:100
+msgid "Top description"
+msgstr ""
+
+#: includes/acf-fields/electric.php:121
+msgid "Chargers"
+msgstr ""
+
+#: includes/acf-fields/electric.php:142
+msgid "Business card"
+msgstr ""
+
+#: includes/acf-fields/electric.php:163
+#: includes/acf-fields/showroom.php:124
+msgid "Address"
+msgstr ""
+
+#: includes/acf-fields/electrification-map.php:25
+msgid "Google Map"
+msgstr ""
+
+#: includes/acf-fields/electrification-map.php:33
+msgid "Hide map?"
+msgstr ""
+
+#: includes/acf-fields/electrification-map.php:36
+msgid "Only one instance of the map can be displayed on each page of the new model"
+msgstr ""
+
+#: includes/acf-fields/employee.php:7
+#: includes/acf-fields/options-service.php:784
+msgid "Employee"
+msgstr ""
+
+#: includes/acf-fields/employee.php:11
+#: includes/acf-fields/lead.php:157
+msgid "First Name"
+msgstr ""
+
+#: includes/acf-fields/employee.php:30
+#: includes/acf-fields/lead.php:176
+msgid "Last Name"
+msgstr ""
+
+#: includes/acf-fields/employee.php:49
+msgid "Position"
+msgstr ""
+
+#: includes/acf-fields/employee.php:106
+msgid "Department"
+msgstr ""
+
+#: includes/acf-fields/employee.php:128
+#: includes/acf-fields/lead.php:25
+#: includes/acf-fields/showroom.php:7
+#: includes/acf-fields/stock-car.php:400
+msgid "Showroom"
+msgstr ""
+
+#: includes/acf-fields/form-options.php:7
+msgid "Form options"
+msgstr ""
+
+#: includes/acf-fields/form-options.php:11
+msgid "Source field"
+msgstr ""
+
+#: includes/acf-fields/form-options.php:14
+msgid "Source field sent to the DOL system"
+msgstr ""
+
+#: includes/acf-fields/form-options.php:30
+msgid "Display the campaign as a landing page"
+msgstr ""
+
+#: includes/acf-fields/form-options.php:42
+#: includes/acf-fields/form-options.php:67
+#: includes/acf-fields/form-options.php:92
+#: includes/acf-fields/leasing.php:50
+#: includes/acf-fields/leasing.php:323
+#: includes/acf-fields/model-version.php:60
+#: includes/acf-fields/stock-car.php:1377
+#: includes/acf-fields/stock-car.php:1404
+#: includes/acf-fields/table-component.php:41
+msgid "No"
+msgstr ""
+
+#: includes/acf-fields/form-options.php:43
+#: includes/acf-fields/form-options.php:68
+#: includes/acf-fields/form-options.php:93
+#: includes/acf-fields/leasing.php:49
+#: includes/acf-fields/leasing.php:322
+#: includes/acf-fields/model-version.php:61
+#: includes/acf-fields/stock-car.php:1378
+#: includes/acf-fields/stock-car.php:1405
+#: includes/acf-fields/table-component.php:42
+msgid "Yes"
+msgstr ""
+
+#: includes/acf-fields/form-options.php:55
+msgid "Form on the right"
+msgstr ""
+
+#: includes/acf-fields/form-options.php:80
+msgid "Turn on double opt-in in the form"
+msgstr ""
+
+#: includes/acf-fields/form-options.php:105
+msgid "Force a single category for this form?"
+msgstr ""
+
+#: includes/acf-fields/form-options.php:121
+#: includes/acf-fields/lead.php:108
+msgid "Form goal"
+msgstr ""
+
+#: includes/acf-fields/form-options.php:133
+msgid "The user can select"
+msgstr ""
+
+#: includes/acf-fields/form-options.php:134
+#: includes/acf-fields/lead.php:120
+#: includes/acf-fields/leasing.php:118
+#: includes/acf-fields/leasing.php:391
+#: includes/acf-fields/showroom.php:1004
+#: includes/acf-fields/showroom.php:1010
+msgid "New cars"
+msgstr ""
+
+#: includes/acf-fields/form-options.php:135
+#: includes/acf-fields/lead.php:95
+#: includes/acf-fields/lead.php:121
+#: includes/acf-fields/leasing.php:119
+#: includes/acf-fields/leasing.php:392
+#: includes/acf-fields/showroom.php:1628
+#: includes/acf-fields/showroom.php:1634
+msgid "Used cars"
+msgstr ""
+
+#: includes/acf-fields/form-options.php:136
+#: includes/acf-fields/lead.php:95
+#: includes/acf-fields/lead.php:122
+#: includes/acf-fields/options-service.php:9
+#: includes/acf-fields/showroom.php:1160
+#: includes/acf-fields/showroom.php:1166
+#: includes/acf.php:720
+#: includes/acf.php:721
+msgid "Service"
+msgstr ""
+
+#: includes/acf-fields/form-options.php:149
+msgid "Additional JavaScript code on the thank-you page"
+msgstr ""
+
+#: includes/acf-fields/form-options.php:152
+#: includes/acf-fields/form-options.php:171
+msgid "Dynamic variable ||time||"
+msgstr ""
+
+#: includes/acf-fields/form-options.php:168
+msgid "Additional HTML code on the thank-you page"
+msgstr ""
+
+#: includes/acf-fields/form-options.php:187
+msgid "Additional code on the page"
+msgstr ""
+
+#: includes/acf-fields/gallery.php:7
+#: includes/acf-fields/gallery.php:11
+#: includes/acf-fields/model-versions.php:429
+#: includes/acf-fields/model-versions.php:445
+#: includes/acf.php:325
+#: includes/acf.php:326
+msgid "Gallery"
+msgstr ""
+
+#: includes/acf-fields/gallery.php:14
+msgid "(max. 3 photos)<br>When opened, the gallery displays the photos in their original size, with the option to zoom in."
+msgstr ""
+
+#: includes/acf-fields/hero-image.php:7
+msgid "Banner image"
+msgstr ""
+
+#: includes/acf-fields/hero-image.php:14
+msgid "(min. width: 1224px, Recommended width: 3672px)<br>(min. height: 574px, Recommended height: 1344px)"
+msgstr ""
+
+#: includes/acf-fields/hero-image.php:35
+msgid "When cropping the image, keep"
+msgstr ""
+
+#: includes/acf-fields/hero-image.php:42
+msgid "Top"
+msgstr ""
+
+#: includes/acf-fields/hero-image.php:43
+msgid "Center"
+msgstr ""
+
+#: includes/acf-fields/hero-image.php:44
+msgid "Left side"
+msgstr ""
+
+#: includes/acf-fields/hero-image.php:45
+msgid "Right side"
+msgstr ""
+
+#: includes/acf-fields/hero-image.php:46
+msgid "Bottom"
+msgstr ""
+
+#: includes/acf-fields/hero-image.php:61
+msgid "Larger description"
+msgstr ""
+
+#: includes/acf-fields/hero-image.php:64
+msgid "Enter the main banner headline"
+msgstr ""
+
+#: includes/acf-fields/hero-image.php:74
+msgid "Shorter description"
+msgstr ""
+
+#: includes/acf-fields/hero-image.php:77
+msgid "Enter a subtitle or additional banner description"
+msgstr ""
+
+#: includes/acf-fields/hero-image.php:87
+msgid "Lightly darken the background?"
+msgstr ""
+
+#: includes/acf-fields/hero-image.php:90
+msgid "Check this box if you want to add a slight background darkening"
+msgstr ""
+
+#: includes/acf-fields/hero-image.php:91
+msgid "Yes, darken the background"
+msgstr ""
+
+
+
+##########################
+
+
+#: includes/acf-fields/homepage.php:9
+msgid "Homepage Option Fields"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:14
+#: includes/acf-fields/homepage.php:31
+msgid "Main Slider"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:47
+#: includes/acf-fields/options-service.php:169
+msgid "Campaigns displayed in the slider"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:50
+msgid "(up to 3 campaigns)"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:62
+#: includes/acf-fields/options-service.php:60
+#: includes/acf-fields/options-service.php:184
+#: includes/acf-fields/options-service.php:936
+#: includes/acf-fields/options-vinomat.php:130
+msgid "Add a campaign"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:67
+#: includes/acf-fields/options-service.php:64
+#: includes/acf-fields/options-service.php:940
+#: includes/acf-fields/options-vinomat.php:134
+msgid "Campaign type"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:79
+#: includes/acf-fields/option-service.php:76
+#: includes/acf-fields/option-service.php:952
+#: includes/acf-fields/option-vinomat.php:146
+msgid "Local campaign"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:80
+#: includes/acf-fields/option-service.php:77
+#: includes/acf-fields/option-service.php:953
+#: includes/acf-fields/option-vinomat.php:147
+msgid "Global campaign"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:152
+msgid "Replace campaigns"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:183
+msgid "Force this campaign?"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:183
+msgid "Selecting this option will enforce this campaign across all instances."
+msgstr ""
+
+#: includes/acf-fields/homepage.php:216
+msgid "Special offer"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:234
+msgid "Should this offer be displayed?"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:299
+msgid "Gray boxes"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:317
+msgid "Should global content be loaded?"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:337
+#: includes/acf-fields/homepage.php:413
+#: includes/acf-fields/homepage.php:489
+#: includes/acf-fields/homepage.php:565
+#: includes/acf-fields/homepage.php:1530
+#: includes/acf-fields/homepage.php:1431
+#: includes/acf-fields/homepage.php:1629
+#: includes/acf-fields/three-boxes.php:32
+#: includes/acf-fields/three-boxes.php:131
+#: includes/acf-fields/three-boxes.php:230
+msgid "Box %s"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:644
+#: includes/acf-fields/homepage.php:663
+msgid "Sales"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:683
+#: includes/acf-fields/homepage.php:1886
+#: includes/acf-fields/offer-box.php:16
+#: includes/acf-fields/offer-cards.php:14
+msgid "By default, the header text is gray. To make a specific phrase black, please place it between &lt;strong&gt;&lt;/strong&gt;, <br>e.g., &lt;strong&gt;TEXT&lt;/strong&gt;"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:700
+msgid "Enable Preview Component"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:719
+#: includes/acf-fields/preview-component.php:7
+msgid "Preview Component"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:746
+msgid "(min. width: 944px, Recommended width: 2832px)"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:823
+msgid "Sales blocks"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:839
+#: includes/acf-fields/offer-boxes.php:82
+#: includes/acf-fields/stock-car.php:1010
+msgid "Elements"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:858
+#: includes/acf-fields/offer-boxes.php:101
+#: includes/acf-fields/options-service.php:497
+#: includes/acf-fields/options-vinomat.php:425
+msgid "Icon"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:940
+msgid "Two-card listing"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:958
+#: includes/acf-fields/homepage.php:1088
+msgid "Offer card %s"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:979
+#: includes/acf-fields/homepage.php:1109
+msgid "Add a photo for the card."
+msgstr ""
+
+#: includes/acf-fields/homepage.php:1002
+#: includes/acf-fields/homepage.php:1132
+#: includes/acf-fields/homepage.php:1277
+msgid "Select an option"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:1005
+#: includes/acf-fields/homepage.php:1135
+#: includes/acf-fields/homepage.php:1280
+msgid "Select one of the available options."
+msgstr ""
+
+#: includes/acf-fields/homepage.php:1014
+#: includes/acf-fields/homepage.php:1044
+msgid "Warranty"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:1015
+#: includes/acf-fields/homepage.php:1045
+msgid "Safety"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:1016
+#: includes/acf-fields/homepage.php:1046
+#: includes/acf-fields/showroom.php:2330
+#: includes/acf-fields/showroom.php:2336
+msgid "Accessories"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:1017
+#: includes/acf-fields/homepage.php:1047
+#: includes/acf-fields/homepage.php:1731
+#: includes/acf-fields/homepage.php:1749
+msgid "Offer"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:1031
+#: includes/acf-fields/homepage.php:1161
+msgid "Card title"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:1221
+msgid "Volvo family"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:1242
+msgid "To make the text gray, place it between &lt;strong&gt;&lt;/strong&gt; tags"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:1259
+msgid "Slider Family Volvo"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:1289
+#: includes/acf-fields/model.php:23
+msgid "SUV"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:1290
+#: includes/acf-fields/model.php:25
+msgid "Sedan"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:1289
+#: includes/acf-fields/model.php:27
+msgid "Station wagon"
+msgstr ""
+
+#: includes/acf-fields/model.php:24
+msgid "Crossover"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:1289
+#: includes/acf-fields/model.php:28
+msgid "Cross Country"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:1289
+msgid "Electric_"
+msgstr "Electric"
+
+#: includes/acf-fields/homepage.php:1332
+msgid "Model Volvo"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:1352
+msgid "Car price"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:1391
+msgid "Three-box offer"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:1413
+#: includes/acf-fields/three-boxes.php:14
+msgid "By default, the text is dark; if any part is to be highlighted in gray, surround it with &lt;strong&gt;&lt;/strong&gt; tags"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:1452
+#: includes/acf-fields/homepage.php:1551
+#: includes/acf-fields/homepage.php:1650
+#: includes/acf-fields/three-boxes.php:53
+#: includes/acf-fields/three-boxes.php:152
+#: includes/acf-fields/three-boxes.php:251
+msgid "Add photo"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:1848
+#: includes/acf-fields/homepage.php:1866
+msgid "Available on site"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:1903
+msgid "Teaser"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:1976
+#: includes/acf-fields/homepage.php:2020
+msgid "Photo at the bottom of the homepage"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:1995
+#: includes/acf-fields/homepage.php:2046
+msgid "Mobile photo"
+msgstr ""
+
+#: includes/acf-fields/homepage.php:2023
+msgid "(min. width: 1920px, Recommended width: 3840px)"
+msgstr ""
+
+
+
+##########################
+
+
+#: includes/acf-fields/html-code.php:10
+#: includes/acf-fields/html-code.php:14
+#: includes/acf.php:156
+#: includes/acf.php:157
+msgid "HTML code"
+msgstr ""
+
+#: includes/acf-fields/html-code.php:17
+msgid "All tags except for the script tag will be removed"
+msgstr ""
+
+
+
+##########################
+
+
+
+#: includes/acf-fields/lead.php:21
+msgid "Lead's fields"
+msgstr ""
+
+#: includes/acf-fields/lead.php:48
+msgid "Lead source"
+msgstr ""
+
+#: includes/acf-fields/lead.php:64
+msgid "source"
+msgstr ""
+
+#: includes/acf-fields/lead.php:83
+msgid "Form source"
+msgstr ""
+
+#: includes/acf-fields/lead.php:95
+msgid "Default"
+msgstr ""
+
+#: includes/acf-fields/lead.php:98
+msgid "Test Drive"
+msgstr ""
+
+#: includes/acf-fields/lead.php:132
+msgid "Status"
+msgstr ""
+
+#: includes/acf-fields/lead.php:144
+msgid "Sent"
+msgstr ""
+
+#: includes/acf-fields/lead.php:145
+msgid "Saved"
+msgstr ""
+
+#: includes/acf-fields/lead.php:195
+msgid "Phone number"
+msgstr ""
+
+#: includes/acf-fields/lead.php:214
+msgid "Email"
+msgstr ""
+
+#: includes/acf-fields/lead.php:232
+msgid "referrer"
+msgstr ""
+
+#: includes/acf-fields/lead.php:248
+msgid "Message"
+msgstr ""
+
+#: includes/acf-fields/lead.php:267
+#: includes/acf-fields/stock-car.php:74
+msgid "VIN"
+msgstr ""
+
+#: includes/acf-fields/lead.php:291
+#: includes/acf-fields/stock-car.php:307
+msgid "Year of manufacture"
+msgstr ""
+
+#: includes/acf-fields/lead.php:341
+msgid "Categories"
+msgstr ""
+
+#: includes/acf-fields/lead.php:368
+msgid "Preferred models"
+msgstr ""
+
+#: includes/acf-fields/lead.php:395
+msgid "Preferred date"
+msgstr ""
+
+#: includes/acf-fields/lead.php:420
+msgid "Preferred time"
+msgstr ""
+
+#: includes/acf-fields/lead.php:447
+msgid "Consent to the processing of personal data"
+msgstr ""
+
+#: includes/acf-fields/lead.php:466
+msgid "Consent to contact by phone"
+msgstr ""
+
+#: includes/acf-fields/lead.php:485
+msgid "Consent to contact by email"
+msgstr ""
+
+#: includes/acf-fields/lead.php:504
+msgid "youLeadData"
+msgstr ""
+
+
+
+##########################
+
+
+
+#: includes/acf-fields/leasing.php:17
+#: includes/acf-fields/vinomat.php:35
+msgid "Leasing"
+msgstr ""
+
+#: includes/acf-fields/leasing.php:36
+#: includes/acf-fields/leasing.php:309
+msgid "Automatically include this offer"
+msgstr ""
+
+#: includes/acf-fields/leasing.php:63
+#: includes/acf-fields/leasing.php:336
+#: includes/acf-fields/vinomat.php:54
+#: includes/acf-fields/vinomat.php:141
+msgid "Description for dealers"
+msgstr ""
+
+#: includes/acf-fields/leasing.php:82
+#: includes/acf-fields/leasing.php:105
+#: includes/acf-fields/leasing.php:355
+#: includes/acf-fields/leasing.php:378
+msgid "Models excluded from the offer"
+msgstr ""
+
+#: includes/acf-fields/leasing.php:118
+msgid "All cars"
+msgstr ""
+
+#: includes/acf-fields/leasing.php:132
+#: includes/acf-fields/leasing.php:405
+msgid "Vehicle value"
+msgstr ""
+
+#: includes/acf-fields/leasing.php:144
+#: includes/acf-fields/leasing.php:417
+#: includes/acf-fields/vinomat.php:86
+msgid "net"
+msgstr ""
+
+#: includes/acf-fields/leasing.php:156
+#: includes/acf-fields/leasing.php:429
+msgid "Type of financing"
+msgstr ""
+
+#: includes/acf-fields/leasing.php:178
+#: includes/acf-fields/leasing.php:451
+msgid "Default incentive/commission"
+msgstr ""
+
+#: includes/acf-fields/leasing.php:200
+msgid "Default number of lease payments"
+msgstr ""
+
+#: includes/acf-fields/leasing.php:222
+#: includes/acf-fields/leasing.php:495
+msgid "Default down payment"
+msgstr ""
+
+#: includes/acf-fields/leasing.php:244
+#: includes/acf-fields/leasing.php:517
+msgid "Available down payments"
+msgstr ""
+
+#: includes/acf-fields/leasing.php:266
+#: includes/acf-fields/leasing.php:539
+msgid "Available number of installments"
+msgstr ""
+
+#: includes/acf-fields/leasing.php:290
+#: includes/acf-fields/vinomat.php:122
+msgid "Rental"
+msgstr ""
+
+#: includes/acf-fields/leasing.php:473
+msgid "Default number of rental installments"
+msgstr ""
+
+#: includes/acf-fields/leasing.php:561
+msgid "Available annual mileage"
+msgstr ""
+
+
+
+##########################
+
+
+
+#: includes/acf-fields/legal-info.php:6
+msgid "Legal Information"
+msgstr ""
+
+#: includes/acf-fields/model-category-colors.php:7
+msgid "ModelCategory Colors"
+msgstr ""
+
+#: includes/acf-fields/model-category.php:7
+msgid "ModelCategory"
+msgstr ""
+
+#: includes/acf-fields/model-override.php:7
+msgid "Model-Override"
+msgstr ""
+
+#: includes/acf-fields/model-override.php:14
+msgid "The model under which this page's content will be displayed"
+msgstr ""
+
+#: includes/acf-fields/model-versions.php:13
+#: includes/acf-fields/stock-car.php:38
+msgid "Basic data"
+msgstr ""
+
+#: includes/acf-fields/model-versions.php:29
+#: includes/acf-fields/options-service.php:457
+#: includes/acf-fields/options-service.php:519
+#: includes/acf-fields/options-taxonomy.php:61
+#: includes/acf-fields/options-taxonomy.php:133
+#: includes/acf-fields/options-taxonomy.php:225
+#: includes/acf-fields/options-taxonomy.php:297
+#: includes/acf-fields/options-taxonomy.php:369
+msgid "Name"
+msgstr ""
+
+#: includes/acf-fields/model-versions.php:48
+msgid "Hide price"
+msgstr ""
+
+#: includes/acf-fields/model-versions.php:73
+#: includes/acf-fields/two-column-content-component.php:655
+msgid "Price"
+msgstr ""
+
+#: includes/acf-fields/model-versions.php:113
+#: includes/acf-fields/model-versions.php:129
+msgid "Basic Technical Specifications"
+msgstr ""
+
+#: includes/acf-fields/model-versions.php:144
+#: includes/acf-fields/stock-car.php:662
+msgid "Fuel Type"
+msgstr ""
+
+#: includes/acf-fields/model-versions.php:163
+#: includes/acf-fields/options-electric-costs.php:234
+#: includes/acf-fields/options-electric-costs.php:445
+#: includes/acf-fields/stock-car.php:531
+#: includes/acf-fields/stock-car.php:1534
+msgid "Engine"
+msgstr ""
+
+#: includes/acf-fields/model-versions.php:185
+#: includes/acf-fields/stock-car.php:622
+msgid "Maximum Power (HP)"
+msgstr ""
+
+#: includes/acf-fields/model-versions.php:204
+#: includes/acf-fields/stock-car.php:715
+msgid "Acceleration time (s)"
+msgstr ""
+
+#: includes/acf-fields/model-versions.php:225
+msgid "Average fuel consumption (liters/100 km)"
+msgstr ""
+
+#: includes/acf-fields/model-versions.php:389
+#: includes/acf-fields/stock-car.php:802
+msgid "Electric range"
+msgstr ""
+
+#: includes/acf-fields/model-versions.php:412
+msgid "Link to full technical specifications"
+msgstr ""
+
+#: includes/acf-fields/model-versions.php:448
+#: includes/acf-fields/model-versions.php:561
+msgid "(Recommended minimum width: 2877px)"
+msgstr ""
+
+#: includes/acf-fields/model-versions.php:472
+#: includes/acf-fields/model-versions.php:488
+msgid "Test Drive and Configurator"
+msgstr ""
+
+#: includes/acf-fields/model-versions.php:541
+msgid "Link to configurator"
+msgstr ""
+
+#: includes/acf-fields/model-versions.php:582
+msgid "Video of the version"
+msgstr ""
+
+#: includes/acf-fields/model-versions.php:607
+#: includes/acf-fields/two-column-content-component.php:35
+msgid "Video"
+msgstr ""
+
+#: includes/acf-fields/model-versions.php:610
+msgid "Video ID on youtube.com"
+msgstr ""
+
+#: includes/acf-fields/model-versions.php:628
+#: includes/acf-fields/model-versions.php:644
+#: includes/acf-fields/model.php:160
+#: includes/acf-fields/model.php:176
+msgid "Color variants"
+msgstr ""
+
+#: includes/acf-fields/model-versions.php:659
+#: includes/acf-fields/model.php:191
+msgid "Select interior color"
+msgstr ""
+
+#: includes/acf-fields/model-versions.php:684
+#: includes/acf-fields/model.php:216
+msgid "Default vehicle gallery"
+msgstr ""
+
+#: includes/acf-fields/model-versions.php:709
+#: includes/acf-fields/model.php:241
+#: includes/acf-fields/offer-cards.php:30
+msgid "Tabs"
+msgstr ""
+
+#: includes/acf-fields/model-versions.php:728
+#: includes/acf-fields/model.php:260
+msgid "Select color"
+msgstr ""
+
+#: includes/acf-fields/model-versions.php:753
+#: includes/acf-fields/model.php:285
+msgid "Gallery type"
+msgstr ""
+
+#: includes/acf-fields/model-versions.php:764
+#: includes/acf-fields/model.php:279
+msgid "Gallery_Car"
+msgstr "car"
+
+#: includes/acf-fields/model-versions.php:764
+#: includes/acf-fields/model.php:280
+msgid "Gallery_interior"
+msgstr "interior"
+
+#: includes/acf-fields/model-versions.php:778
+#: includes/acf-fields/model.php:310
+msgid "Photos of the color variant"
+msgstr ""
+
+
+
+##########################
+
+
+
+#: includes/acf-fields/model.php:7
+#: includes/acf-fields/options-taxonomy.php:12
+#: includes/acf-fields/options-taxonomy.php:28
+#: includes/acf-fields/options-test-drive.php:33
+msgid "Models"
+msgstr ""
+
+#: includes/acf-fields/model.php:11
+#: includes/acf-fields/redirections.php:57
+msgid "Type"
+msgstr ""
+
+#: includes/acf-fields/model.php:41
+msgid "Model Name"
+msgstr ""
+
+#: includes/acf-fields/model.php:60
+msgid "Should the car be available for a \"test drive\"?"
+msgstr ""
+
+#: includes/acf-fields/model.php:79
+msgid "Model Short Name in the Car List"
+msgstr ""
+
+#: includes/acf-fields/model.php:98
+msgid "Model Short Name"
+msgstr ""
+
+#: includes/acf-fields/model.php:117
+msgid "Thumbnail Image in the Menu"
+msgstr ""
+
+#: includes/acf-fields/model.php:120
+msgid "(Recommended minimum width: 420px)"
+msgstr ""
+
+#: includes/acf-fields/model.php:141
+msgid "Vehicle price on the thumbnail in the models tab"
+msgstr ""
+
+#: includes/acf-fields/offer-box.php:9
+msgid "Offer Box"
+msgstr ""
+
+#: includes/acf-fields/offer-box.php:32
+msgid "Box"
+msgstr ""
+
+#: includes/acf-fields/offer-boxes.php:9
+msgid "OfferBoxes"
+msgstr ""
+
+#: includes/acf-fields/offer-boxes.php:13
+msgid "Layout"
+msgstr ""
+
+#: includes/acf-fields/offer-boxes.php:25
+msgid "Three in row"
+msgstr ""
+
+#: includes/acf-fields/offer-boxes.php:26
+msgid "Two in row"
+msgstr ""
+
+#: includes/acf-fields/offer-boxes.php:38
+msgid "Tiles overlapping the banner?"
+msgstr ""
+
+#: includes/acf-fields/offer-boxes.php:60
+msgid "Visible icons and text aligned to the left"
+msgstr ""
+
+#: includes/acf-fields/offer-cards.php:7
+msgid "Offer card"
+msgstr ""
+
+#: includes/acf-fields/offer-cards.php:126
+msgid "CTA text"
+msgstr ""
+
+#: includes/acf-fields/offer-cards.php:138
+msgid "Read"
+msgstr ""
+
+#: includes/acf-fields/offer-cards.php:139
+msgid "Learn more"
+msgstr ""
+
+#: includes/acf-fields/offer-cards.php:140
+msgid "Check it out"
+msgstr ""
+
+
+
+##########################
+
+
+
+#: includes/acf-fields/options-electric-costs.php:16
+msgid "Header on the bottom bar (On the Electrification pages)"
+msgstr ""
+
+#: includes/acf-fields/options-electric-costs.php:35
+msgid "Minimum price per 1 kW"
+msgstr ""
+
+#: includes/acf-fields/options-electric-costs.php:54
+#: includes/acf-fields/options-electric-costs.php:153
+msgid "Maximum price per 1 kW"
+msgstr ""
+
+#: includes/acf-fields/options-electric-costs.php:73
+msgid "First heading"
+msgstr ""
+
+#: includes/acf-fields/options-electric-costs.php:92
+msgid "First description"
+msgstr ""
+
+#: includes/acf-fields/options-electric-costs.php:113
+msgid "Second heading"
+msgstr ""
+
+#: includes/acf-fields/options-electric-costs.php:132
+msgid "Second description"
+msgstr ""
+
+#: includes/acf-fields/options-electric-costs.php:172
+msgid "Information below the calculator"
+msgstr ""
+
+#: includes/acf-fields/options-electric-costs.php:193
+msgid "Electrification configuration"
+msgstr ""
+
+#: includes/acf-fields/options-electric-costs.php:212
+#: includes/acf-fields/options-electric-costs.php:334
+#: includes/acf-fields/options-electric-costs.php:423
+msgid "Car model"
+msgstr ""
+
+#: includes/acf-fields/options-electric-costs.php:256
+msgid "High WLTP"
+msgstr ""
+
+#: includes/acf-fields/options-electric-costs.php:275
+msgid "Low WLTP"
+msgstr ""
+
+#: includes/acf-fields/options-electric-costs.php:294
+msgid "Battery capacity"
+msgstr ""
+
+#: includes/acf-fields/options-electric-costs.php:315
+msgid "Exclude engines for trim level"
+msgstr ""
+
+#: includes/acf-fields/options-electric-costs.php:318
+msgid "Selected engines are not available for this trim level"
+msgstr ""
+
+#: includes/acf-fields/options-electric-costs.php:380
+msgid "Excluded engines"
+msgstr ""
+
+#: includes/acf-fields/options-electric-costs.php:404
+msgid "Charger values calculator"
+msgstr ""
+
+#: includes/acf-fields/options-electric-costs.php:467
+msgid "Charging value"
+msgstr ""
+
+#: includes/acf-fields/options-electric-costs.php:488
+msgid "Button text"
+msgstr ""
+
+#: includes/acf-fields/options-electric-costs.php:509
+msgid "Charging time"
+msgstr ""
+
+#: includes/acf-fields/options-global.php:7
+#: includes/acf.php:776
+#: includes/acf.php:777
+msgid "Global settings"
+msgstr ""
+
+#: includes/acf-fields/options-global.php:11
+#: includes/acf-fields/options-global.php:27
+msgid "Form settings"
+msgstr ""
+
+#: includes/acf-fields/options-global.php:42
+msgid "Image displayed in the thank-you message after submitting the form"
+msgstr ""
+
+#: includes/acf-fields/options-global.php:68
+#: includes/acf-fields/options-global.php:84
+msgid "Similar cars"
+msgstr ""
+
+#: includes/acf-fields/options-global.php:99
+msgid "Header on the all cars page"
+msgstr ""
+
+#: includes/acf-fields/options-global.php:118
+msgid "Header on the all cars page if no search results are found"
+msgstr ""
+
+#: includes/acf-fields/options-global.php:137
+msgid "Header on the single car page"
+msgstr ""
+
+#: includes/acf-fields/options-models.php:7
+#: includes/acf.php:731
+#: includes/acf.php:732
+msgid "Models options"
+msgstr ""
+
+#: includes/acf-fields/options-models.php:11
+msgid "Default model categories displayed on mobile"
+msgstr ""
+
+#: includes/acf-fields/options-models.php:33
+msgid "Default model category displayed on desktop"
+msgstr ""
+
+#: includes/acf-fields/options-models.php:55
+msgid "Popup"
+msgstr ""
+
+
+
+##########################
+
+
+
+#: includes/acf-fields/options-service.php:13
+#: includes/acf-fields/options-service.php:29
+#: includes/acf-fields/options-service.php:153
+msgid "Slider"
+msgstr ""
+
+#: includes/acf-fields/options-service.php:45
+msgid "Campaigns displayed on the slider"
+msgstr ""
+
+#: includes/acf-fields/options-service.php:214
+#: includes/acf-fields/options-service.php:231
+#: includes/acf-fields/preview-component.php:182
+#: includes/acf-fields/preview-component.php:187
+#: includes/acf-fields/two-column-content-component.php:183
+#: includes/acf-fields/two-column-content-component.php:188
+#: includes/acf-fields/two-column-content-component.php:380
+#: includes/acf-fields/two-column-content-component.php:411
+msgid "List of benefits"
+msgstr ""
+
+#: includes/acf-fields/options-service.php:285
+msgid "Text for the button to expand lists on mobile devices"
+msgstr ""
+
+#: includes/acf-fields/options-service.php:304
+msgid "Items in the left column"
+msgstr ""
+
+#: includes/acf-fields/options-service.php:323
+#: includes/acf-fields/options-service.php:363
+#: includes/acf-fields/preview-component.php:206
+#: includes/acf-fields/text-editor-extended.php:11
+#: includes/acf-fields/text-editor.php:11
+#: includes/acf-fields/two-column-content-component.php:430
+#: includes/acf-fields/two-column-content-component.php:636
+msgid "Text"
+msgstr ""
+
+#: includes/acf-fields/options-service.php:344
+msgid "Items in the right column"
+msgstr ""
+
+#: includes/acf-fields/options-service.php:422
+msgid "By default, the header text is gray. <br>To make a phrase black, please place it between &lt;strong&gt;&lt;/strong&gt;,<br>e.g., &lt;strong&gt;TEXT&lt;/strong&gt;. <br>To add a line break, please add &lt;br&gt;, e.g., TEXT &lt;br&gt;TEXT"
+msgstr ""
+
+#: includes/acf-fields/options-service.php:438
+msgid "Models to choose from"
+msgstr ""
+
+#: includes/acf-fields/options-service.php:441
+msgid "All Volvo models available to select when filling out the form"
+msgstr ""
+
+#: includes/acf-fields/options-service.php:478
+#: includes/acf-fields/options-service.php:612
+msgid "Services"
+msgstr ""
+
+#: includes/acf-fields/options-service.php:481
+msgid "All services available to select when filling out the form"
+msgstr ""
+
+#: includes/acf-fields/options-service.php:561
+#: includes/acf-fields/options-service.php:577
+msgid "Service options"
+msgstr ""
+
+#: includes/acf-fields/options-service.php:673
+#: includes/acf-fields/options-service.php:689
+#: includes/acf-fields/options-service.php:825
+msgid "Service contact"
+msgstr ""
+
+#: includes/acf-fields/options-service.php:724
+msgid "Contact persons"
+msgstr ""
+
+#: includes/acf-fields/options-service.php:744
+msgid "Specializations"
+msgstr ""
+
+#: includes/acf-fields/options-service.php:747
+msgid "(up to 3 specializations)"
+msgstr ""
+
+#: includes/acf-fields/options-service.php:763
+msgid "Specialization name"
+msgstr ""
+
+#: includes/acf-fields/options-service.php:766
+msgid "(max. %s chars_)"
+msgstr "(max. %s chars)"
+
+#: includes/acf-fields/options-service.php:809
+msgid "Offer boxes"
+msgstr ""
+
+#: includes/acf-fields/options-service.php:840
+#: includes/acf-fields/options-vinomat.php:34
+msgid "Vinomat information box"
+msgstr ""
+
+#: includes/acf-fields/options-service.php:921
+#: includes/acf-fields/options-vinomat.php:115
+msgid "Link to campaign"
+msgstr ""
+
+#: includes/acf-fields/options-service.php:1031
+msgid "Additional settings"
+msgstr ""
+
+#: includes/acf-fields/options-service.php:1047
+msgid "Code for thank-you page"
+msgstr ""
+
+#: includes/acf-fields/options-taxonomy.php:8
+#: includes/acf.php:683
+#: includes/acf.php:684
+msgid "Dictionaries"
+msgstr ""
+
+#: includes/acf-fields/options-taxonomy.php:43
+msgid "Car models"
+msgstr ""
+
+#: includes/acf-fields/options-taxonomy.php:84
+#: includes/acf-fields/options-taxonomy.php:100
+msgid "Engines"
+msgstr ""
+
+#: includes/acf-fields/options-taxonomy.php:115
+msgid "Engine types"
+msgstr ""
+
+#: includes/acf-fields/options-taxonomy.php:152
+#: includes/acf-fields/stock-car.php:677
+msgid "Electric"
+msgstr ""
+
+#: includes/acf-fields/options-taxonomy.php:176
+#: includes/acf-fields/options-taxonomy.php:192
+msgid "Colors"
+msgstr ""
+
+#: includes/acf-fields/options-taxonomy.php:207
+msgid "Color types"
+msgstr ""
+
+#: includes/acf-fields/options-taxonomy.php:248
+msgid "Equipment"
+msgstr ""
+
+#: includes/acf-fields/options-taxonomy.php:264
+#: includes/acf-fields/options-taxonomy.php:279
+msgid "Equipment types"
+msgstr ""
+
+#: includes/acf-fields/options-taxonomy.php:320
+#: includes/acf-fields/stock-car.php:554
+#: includes/acf-fields/stock-car.php:1512
+msgid "Upholstery"
+msgstr ""
+
+#: includes/acf-fields/options-taxonomy.php:336
+#: includes/acf-fields/options-taxonomy.php:351
+msgid "Upholstery types"
+msgstr ""
+
+#: includes/acf-fields/options-test-drive.php:10
+#: includes/acf.php:764
+#: includes/acf.php:765
+msgid "Test drive options"
+msgstr ""
+
+#: includes/acf-fields/options-test-drive.php:14
+msgid "Model groups"
+msgstr ""
+
+#: includes/acf-fields/options-vinomat.php:223
+msgid "Vinomat template box"
+msgstr ""
+
+#: includes/acf-fields/options-vinomat.php:242
+msgid "Select offers"
+msgstr ""
+
+#: includes/acf-fields/options-vinomat.php:306
+msgid "Vinomat offer box"
+msgstr ""
+
+#: includes/acf-fields/options-vinomat.php:325
+msgid "Car age"
+msgstr ""
+
+#: includes/acf-fields/options-vinomat.php:366
+#: includes/acf-fields/options-vinomat.php:385
+msgid "Description %s"
+msgstr ""
+
+
+
+##########################
+
+
+
+#: includes/acf-fields/preview-component.php:14
+msgid "Please verify that the content height does not exceed the image height<br>(minimum image width: 944px, recommended width: 2832px)"
+msgstr ""
+
+#: includes/acf-fields/preview-component.php:35
+#: includes/acf-fields/two-column-content-component.php:78
+msgid "Image position"
+msgstr ""
+
+#: includes/acf-fields/preview-component.php:47
+#: includes/acf-fields/two-column-content-component.php:90
+msgid "Left"
+msgstr ""
+
+#: includes/acf-fields/preview-component.php:48
+#: includes/acf-fields/two-column-content-component.php:91
+msgid "Right"
+msgstr ""
+
+#: includes/acf-fields/preview-component.php:59
+#: includes/acf-fields/two-column-content-component.php:122
+msgid "Header type"
+msgstr ""
+
+#: includes/acf-fields/preview-component.php:341
+#: includes/acf-fields/two-column-content-component.php:567
+msgid "Label"
+msgstr ""
+
+#: includes/acf-fields/preview-component.php:360
+#: includes/acf-fields/two-column-content-component.php:207
+#: includes/acf-fields/two-column-content-component.php:586
+msgid "Value"
+msgstr ""
+
+#: includes/acf-fields/quick-info.php:8
+msgid "Quick info"
+msgstr ""
+
+#: includes/acf-fields/quick-info.php:13
+#: includes/acf.php:496
+#: includes/acf.php:497
+msgid "Interesting facts"
+msgstr ""
+
+#: includes/acf-fields/quick-info.php:32
+msgid "Top title"
+msgstr ""
+
+#: includes/acf-fields/quick-info.php:51
+msgid "Middle title"
+msgstr ""
+
+#: includes/acf-fields/quick-info.php:70
+msgid "Bottom title"
+msgstr ""
+
+#: includes/acf-fields/redirections.php:8
+#: includes/acf-fields/redirections.php:31
+#: includes/acf.php:753
+#: includes/acf.php:754
+msgid "Redirects"
+msgstr ""
+
+#: includes/acf-fields/redirections.php:12
+msgid "Redirects in CSV format"
+msgstr ""
+
+#: includes/acf-fields/redirections.php:24
+msgid "<strong>WARNING!</strong><br><br>302 Redirect: used for temporary redirects (short-term, e.g., one month) or for testing redirects before switching to a 301 redirect<br>301 Redirect: permanent, stored locally on users' devices. They should never be changed. Any changes or removal take a very long time<br><br><strong>First, add a 302 redirect, test it thoroughly, and once you are absolutely certain that the redirect links will not change and the redirect is functioning correctly, you can change it to a 301 redirect</strong><br/ ><br/><button class=\"removeRows\" type=\"button\">Remove selected rows</button>"
+msgstr ""
+
+#: includes/acf-fields/redirections.php:82
+msgid "Source URL"
+msgstr ""
+
+#: includes/acf-fields/redirections.php:98
+msgid "Destination URL"
+msgstr ""
+
+#: includes/acf-fields/redirections.php:115
+msgid "Post ID"
+msgstr ""
+
+#: includes/acf-fields/short-notes.php:8
+#: includes/acf-fields/short-notes.php:12
+#: includes/acf.php:450
+#: includes/acf.php:451
+msgid "Short notes"
+msgstr ""
+
+
+
+##########################
+
+
+
+#: includes/acf-fields/showroom.php:27
+msgid "Showroom ID"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:30
+msgid "Full dealership showroom ID, e.g., <strong>PL100#1</strong>"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:47
+msgid "Has a showroom"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:66
+msgid "Has a service center"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:85
+msgid "Has a Customer Service Office"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:104
+msgid "Showroom name"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:139
+msgid "Street"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:158
+msgid "Zip code"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:217
+msgid "Location on map"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:235
+msgid "Showroom city"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:238
+msgid "Showroom city to be used on the website odreki.poznajvolvo.pl"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:255
+#: includes/acf-fields/showroom.php:279
+msgid "Showroom hours"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:302
+#: includes/acf-fields/showroom.php:468
+#: includes/acf-fields/showroom.php:634
+msgid "Monday-Friday"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:317
+#: includes/acf-fields/showroom.php:366
+#: includes/acf-fields/showroom.php:483
+#: includes/acf-fields/showroom.php:532
+#: includes/acf-fields/showroom.php:649
+#: includes/acf-fields/showroom.php:698
+msgid "From"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:333
+#: includes/acf-fields/showroom.php:382
+#: includes/acf-fields/showroom.php:499
+#: includes/acf-fields/showroom.php:548
+#: includes/acf-fields/showroom.php:665
+#: includes/acf-fields/showroom.php:714
+msgid "To"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:351
+#: includes/acf-fields/showroom.php:517
+#: includes/acf-fields/showroom.php:683
+#: includes/acf-fields/showroom.php:817
+#: includes/acf-fields/showroom.php:896
+#: includes/acf-fields/showroom.php:974
+#: includes/acf-fields/showroom.php:1052
+#: includes/acf-fields/showroom.php:1130
+#: includes/acf-fields/showroom.php:1208
+#: includes/acf-fields/showroom.php:1286
+#: includes/acf-fields/showroom.php:1364
+#: includes/acf-fields/showroom.php:1442
+#: includes/acf-fields/showroom.php:1520
+#: includes/acf-fields/showroom.php:1598
+#: includes/acf-fields/showroom.php:1676
+#: includes/acf-fields/showroom.php:1754
+#: includes/acf-fields/showroom.php:1832
+#: includes/acf-fields/showroom.php:1910
+#: includes/acf-fields/showroom.php:1988
+#: includes/acf-fields/showroom.php:2066
+#: includes/acf-fields/showroom.php:2144
+#: includes/acf-fields/showroom.php:2222
+#: includes/acf-fields/showroom.php:2300
+#: includes/acf-fields/showroom.php:2378
+#: includes/acf-fields/showroom.php:2456
+msgid "Saturday"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:400
+#: includes/acf-fields/showroom.php:566
+#: includes/acf-fields/showroom.php:732
+msgid "Additional information"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:421
+#: includes/acf-fields/showroom.php:445
+msgid "Service center opening hours"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:587
+#: includes/acf-fields/showroom.php:611
+msgid "Customer Service Office opening hours"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:753
+msgid "Department opening hours"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:761
+msgid "Department hours"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:768
+#: includes/acf-fields/showroom.php:774
+msgid "Business Development Center"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:782
+#: includes/acf-fields/showroom.php:861
+#: includes/acf-fields/showroom.php:939
+#: includes/acf-fields/showroom.php:1017
+#: includes/acf-fields/showroom.php:1095
+#: includes/acf-fields/showroom.php:1173
+#: includes/acf-fields/showroom.php:1251
+#: includes/acf-fields/showroom.php:1329
+#: includes/acf-fields/showroom.php:1407
+#: includes/acf-fields/showroom.php:1485
+#: includes/acf-fields/showroom.php:1563
+#: includes/acf-fields/showroom.php:1641
+#: includes/acf-fields/showroom.php:1719
+#: includes/acf-fields/showroom.php:1797
+#: includes/acf-fields/showroom.php:1875
+#: includes/acf-fields/showroom.php:1953
+#: includes/acf-fields/showroom.php:2031
+#: includes/acf-fields/showroom.php:2109
+#: includes/acf-fields/showroom.php:2187
+#: includes/acf-fields/showroom.php:2265
+#: includes/acf-fields/showroom.php:2343
+#: includes/acf-fields/showroom.php:2421
+msgid "Hours"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:789
+#: includes/acf-fields/showroom.php:868
+#: includes/acf-fields/showroom.php:946
+#: includes/acf-fields/showroom.php:1024
+#: includes/acf-fields/showroom.php:1102
+#: includes/acf-fields/showroom.php:1180
+#: includes/acf-fields/showroom.php:1258
+#: includes/acf-fields/showroom.php:1336
+#: includes/acf-fields/showroom.php:1414
+#: includes/acf-fields/showroom.php:1492
+#: includes/acf-fields/showroom.php:1570
+#: includes/acf-fields/showroom.php:1648
+#: includes/acf-fields/showroom.php:1726
+#: includes/acf-fields/showroom.php:1804
+#: includes/acf-fields/showroom.php:1882
+#: includes/acf-fields/showroom.php:1960
+#: includes/acf-fields/showroom.php:2038
+#: includes/acf-fields/showroom.php:2116
+#: includes/acf-fields/showroom.php:2194
+#: includes/acf-fields/showroom.php:2272
+#: includes/acf-fields/showroom.php:2350
+#: includes/acf-fields/showroom.php:2428
+msgid "Monday - Friday"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:797
+#: includes/acf-fields/showroom.php:825
+#: includes/acf-fields/showroom.php:876
+#: includes/acf-fields/showroom.php:904
+#: includes/acf-fields/showroom.php:954
+#: includes/acf-fields/showroom.php:982
+#: includes/acf-fields/showroom.php:1032
+#: includes/acf-fields/showroom.php:1060
+#: includes/acf-fields/showroom.php:1110
+#: includes/acf-fields/showroom.php:1138
+#: includes/acf-fields/showroom.php:1188
+#: includes/acf-fields/showroom.php:1216
+#: includes/acf-fields/showroom.php:1266
+#: includes/acf-fields/showroom.php:1294
+#: includes/acf-fields/showroom.php:1344
+#: includes/acf-fields/showroom.php:1372
+#: includes/acf-fields/showroom.php:1422
+#: includes/acf-fields/showroom.php:1450
+#: includes/acf-fields/showroom.php:1500
+#: includes/acf-fields/showroom.php:1528
+#: includes/acf-fields/showroom.php:1578
+#: includes/acf-fields/showroom.php:1606
+#: includes/acf-fields/showroom.php:1656
+#: includes/acf-fields/showroom.php:1684
+#: includes/acf-fields/showroom.php:1734
+#: includes/acf-fields/showroom.php:1762
+#: includes/acf-fields/showroom.php:1812
+#: includes/acf-fields/showroom.php:1840
+#: includes/acf-fields/showroom.php:1890
+#: includes/acf-fields/showroom.php:1918
+#: includes/acf-fields/showroom.php:1968
+#: includes/acf-fields/showroom.php:1996
+#: includes/acf-fields/showroom.php:2046
+#: includes/acf-fields/showroom.php:2074
+#: includes/acf-fields/showroom.php:2124
+#: includes/acf-fields/showroom.php:2152
+#: includes/acf-fields/showroom.php:2202
+#: includes/acf-fields/showroom.php:2230
+#: includes/acf-fields/showroom.php:2280
+#: includes/acf-fields/showroom.php:2308
+#: includes/acf-fields/showroom.php:2358
+#: includes/acf-fields/showroom.php:2386
+#: includes/acf-fields/showroom.php:2436
+#: includes/acf-fields/showroom.php:2464
+msgid "Opening time"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:806
+#: includes/acf-fields/showroom.php:834
+#: includes/acf-fields/showroom.php:885
+#: includes/acf-fields/showroom.php:913
+#: includes/acf-fields/showroom.php:963
+#: includes/acf-fields/showroom.php:991
+#: includes/acf-fields/showroom.php:1041
+#: includes/acf-fields/showroom.php:1069
+#: includes/acf-fields/showroom.php:1119
+#: includes/acf-fields/showroom.php:1147
+#: includes/acf-fields/showroom.php:1197
+#: includes/acf-fields/showroom.php:1225
+#: includes/acf-fields/showroom.php:1275
+#: includes/acf-fields/showroom.php:1303
+#: includes/acf-fields/showroom.php:1353
+#: includes/acf-fields/showroom.php:1381
+#: includes/acf-fields/showroom.php:1431
+#: includes/acf-fields/showroom.php:1459
+#: includes/acf-fields/showroom.php:1509
+#: includes/acf-fields/showroom.php:1537
+#: includes/acf-fields/showroom.php:1587
+#: includes/acf-fields/showroom.php:1615
+#: includes/acf-fields/showroom.php:1665
+#: includes/acf-fields/showroom.php:1693
+#: includes/acf-fields/showroom.php:1743
+#: includes/acf-fields/showroom.php:1771
+#: includes/acf-fields/showroom.php:1821
+#: includes/acf-fields/showroom.php:1849
+#: includes/acf-fields/showroom.php:1899
+#: includes/acf-fields/showroom.php:1927
+#: includes/acf-fields/showroom.php:1977
+#: includes/acf-fields/showroom.php:2005
+#: includes/acf-fields/showroom.php:2055
+#: includes/acf-fields/showroom.php:2083
+#: includes/acf-fields/showroom.php:2133
+#: includes/acf-fields/showroom.php:2161
+#: includes/acf-fields/showroom.php:2211
+#: includes/acf-fields/showroom.php:2239
+#: includes/acf-fields/showroom.php:2289
+#: includes/acf-fields/showroom.php:2317
+#: includes/acf-fields/showroom.php:2367
+#: includes/acf-fields/showroom.php:2395
+#: includes/acf-fields/showroom.php:2445
+#: includes/acf-fields/showroom.php:2473
+msgid "Closing time"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:847
+#: includes/acf-fields/showroom.php:853
+msgid "Assistance"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:926
+#: includes/acf-fields/showroom.php:932
+msgid "Auto Insurance"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:1082
+#: includes/acf-fields/showroom.php:1088
+msgid "Wadowscy Auto Detailing"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:1238
+#: includes/acf-fields/showroom.php:1244
+msgid "Parts and Accessories"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:1316
+#: includes/acf-fields/showroom.php:1322
+msgid "Online Sales of Parts and Accessories"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:1394
+#: includes/acf-fields/showroom.php:1400
+msgid "Fleet Sales"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:1472
+#: includes/acf-fields/showroom.php:1478
+msgid "Volvo Service Club"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:1550
+#: includes/acf-fields/showroom.php:1556
+msgid "Bodywork and Paint Service"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:1706
+#: includes/acf-fields/showroom.php:1712
+msgid "Financing and Insurance"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:1784
+#: includes/acf-fields/showroom.php:1790
+msgid "Volvo Personal Service"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:1862
+#: includes/acf-fields/showroom.php:1868
+msgid "Reception"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:1940
+#: includes/acf-fields/showroom.php:1946
+msgid "Administrative Office"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:2018
+#: includes/acf-fields/showroom.php:2024
+msgid "Marketing and PR"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:2096
+#: includes/acf-fields/showroom.php:2102
+msgid "Data Protection Officer"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:2174
+#: includes/acf-fields/showroom.php:2180
+msgid "Human Resources"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:2252
+#: includes/acf-fields/showroom.php:2258
+msgid "Tourist & Diplomat Sales"
+msgstr ""
+
+#: includes/acf-fields/showroom.php:2408
+#: includes/acf-fields/showroom.php:2414
+msgid "Parts"
+msgstr ""
+
+
+
+##########################
+
+
+
+#: includes/acf-fields/site-heading.php:7
+msgid "SiteHeading"
+msgstr ""
+
+#: includes/acf-fields/site-heading.php:30
+msgid "Heading Type"
+msgstr ""
+
+#: includes/acf-fields/site-heading.php:78
+msgid "Kind of header"
+msgstr ""
+
+#: includes/acf-fields/site-heading.php:78
+msgid "Gray header"
+msgstr ""
+
+#: includes/acf-fields/site-heading.php:78
+msgid "Blog header"
+msgstr ""
+
+#: includes/acf-fields/site-heading.php:78
+msgid "Standard header"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:15
+msgid "StockCar"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:19
+msgid "Car in the archive"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:54
+msgid "Mark car as recommended"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:93
+msgid "CON"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:112
+msgid "PNO12"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:132
+msgid "Eurocode"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:151
+msgid "Condition"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:163
+msgid "new"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:164
+msgid "used"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:179
+msgid "Offer No."
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:198
+msgid "Salesperson's phone number"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:217
+msgid "Regular price (%s gross)"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:217
+msgid "currency"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:238
+msgid "Omnibus price"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:259
+msgid "Has a promotional price"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:278
+msgid "Promotional price (% gross)"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:328
+msgid "Mileage in kilometers"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:349
+msgid "Mileage"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:361
+msgid "0-20,000 km"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:362
+msgid "20,000-100,000 km"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:363
+msgid "100,000-200,000 km"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:387
+msgid "Ready for pickup within 2 weeks"
+msgstr "Do odbioru w ciągu 2 tygodni"
+
+#: includes/acf-fields/stock-car.php:388
+msgid "Ready for pickup tomorrow"
+msgstr "Do odbioru już jutro"
+
+#: includes/acf-fields/stock-car.php:375
+msgid "Available for pickup within..."
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:423
+msgid "Technical Specifications"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:508
+#: includes/acf-fields/stock-car.php:1490
+msgid "Color"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:577
+msgid "Transmission"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:625
+msgid "Car power; for hybrids, listed as e.g., 230+15. This field is displayed in the car’s technical specifications."
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:641
+msgid "Total maximum power (HP)"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:644
+msgid "Total vehicle power; this field is used to filter vehicles available immediately"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:674
+msgid "Diesel"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:675
+msgid "Gasoline"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:676
+msgid "Plug-in hybrid"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:688
+msgid "Drivetrain"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:700
+msgid "Front-wheel drive (FWD)"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:701
+msgid "Rear-wheel drive (RWD)"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:702
+msgid "All-wheel drive (AWD)"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:748
+msgid "l/100 km"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:749
+msgid "kWh/100 km"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:736
+msgid "Engine type"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:761
+msgid "Average fuel consumption"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:846
+#: includes/acf-fields/stock-car.php:885
+msgid "Photos"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:862
+msgid "Photo format 4:3"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:888
+#: includes/acf-fields/stock-car.php:915
+msgid "(min. width: 944px, Recommended width: 2877px)<br>(min. height: 453px)<br>When opened, the gallery displays the original photo size."
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:912
+msgid "Photo for product feeds"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:937
+#: includes/acf-fields/stock-car.php:972
+msgid "Detailed technical specifications"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:956
+msgid "By default, the header text is gray. <br>To make a specific phrase black, please place it between &lt;strong&gt;&lt;/strong&gt;, <br>e.g., &lt;strong&gt;TEXT&lt;/strong&gt; <br>(max. 166 characters)"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:991
+msgid "Section name"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:1029
+msgid "Element"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:1052
+#: includes/acf.php:651
+#: includes/acf.php:652
+msgid "Financing"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:1076
+msgid "Leasing offer"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:1106
+msgid "Rental offer"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:1136
+msgid "Attractiveness/commission - Leasing"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:1166
+msgid "Attractiveness/commission - Rental"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:1205
+#: includes/acf-fields/stock-car.php:1221
+msgid "Photos under detailed technical specifications"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:1224
+msgid "(3 photos required)<br>The gallery displays the original photo size when opened."
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:1249
+msgid "Energy labels"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:1273
+msgid "Summer tires"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:1292
+#: includes/acf-fields/stock-car.php:1329
+msgid "URL"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:1310
+msgid "Winter tires"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:1347
+msgid "Admin settings"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:1364
+msgid "Synchronization odreki"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:1379
+msgid "Waiting to be synchronized"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:1391
+msgid "Car from Active Motors"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:1417
+msgid "DOL Sync"
+msgstr ""
+
+#: includes/acf-fields/stock-car.php:1417
+msgid "Status not checked"
+msgstr "Status not checked"
+
+#: includes/acf-fields/stock-car.php:1417
+msgid "Data available in DOL"
+msgstr "Data available in DOL"
+
+#: includes/acf-fields/stock-car.php:1417
+msgid "Data not available in DOL"
+msgstr "Data not available in DOL"
+
+#: includes/acf-fields/stock-car.php:1417
+msgid "DOL Synchronized"
+msgstr "DOL Synchronized"
+
+#: includes/acf-fields/stock-car.php:1417
+msgid "Synchronization failed"
+msgstr "Synchronization failed"
+
+
+
+##########################
+
+
+
+#: includes/acf-fields/table-component.php:7
+msgid "Table Generator"
+msgstr ""
+
+#: includes/acf-fields/table-component.php:28
+msgid "Lock the first column?"
+msgstr ""
+
+#: includes/acf-fields/table-component.php:54
+msgid "Color scheme"
+msgstr ""
+
+#: includes/acf-fields/table-component.php:54
+msgid "Blue"
+msgstr ""
+
+#: includes/acf-fields/table-component.php:54
+msgid "Gray"
+msgstr ""
+
+#: includes/acf-fields/text-editor-extended.php:7
+msgid "Extended Text Editor"
+msgstr ""
+
+#: includes/acf-fields/text-editor.php:7
+msgid "Text Editor"
+msgstr ""
+
+#: includes/acf-fields/three-boxes.php:7
+#: includes/acf.php:599
+msgid "Three boxes"
+msgstr ""
+
+#: includes/acf-fields/two-column-content-component.php:7
+msgid "TwoColumnContentComponent"
+msgstr ""
+
+#: includes/acf-fields/two-column-content-component.php:14
+msgid "Please ensure that the content height does not exceed the image height<br>(min. width 959px, Recommended width: 2877px)"
+msgstr ""
+
+#: includes/acf-fields/two-column-content-component.php:54
+msgid "Link to the video on youtube.com<br> e.g., https://www.youtube.com/watch?v=LXb3EKWsInQ&t=4s"
+msgstr ""
+
+#: includes/acf-fields/two-column-content-component.php:54
+msgid "Image width"
+msgstr ""
+
+#: includes/acf-fields/two-column-content-component.php:92
+msgid "Hide the photo"
+msgstr ""
+
+#: includes/acf-fields/two-column-content-component.php:168
+msgid "Single-column content (left)"
+msgstr ""
+
+#: includes/acf-fields/two-column-content-component.php:226
+msgid "Unit"
+msgstr ""
+
+#: includes/acf-fields/two-column-content-component.php:245
+msgid "Additional text"
+msgstr ""
+
+#: includes/acf-fields/two-column-content-component.php:275
+msgid "Single-column content"
+msgstr ""
+
+#: includes/acf-fields/two-column-content-component.php:386
+msgid "List view"
+msgstr ""
+
+#: includes/acf-fields/two-column-content-component.php:397
+msgid "1 column"
+msgstr ""
+
+#: includes/acf-fields/two-column-content-component.php:398
+msgid "2 columns"
+msgstr ""
+
+#: includes/acf-fields/two-column-content-component.php:612
+#: includes/acf-fields/two-column-content-component.php:617
+msgid "Price from"
+msgstr ""
+
+#: includes/acf-fields/two-image.php:7
+#: includes/acf.php:251
+msgid "Two photos"
+msgstr ""
+
+#: includes/acf-fields/two-image.php:11
+#: includes/acf-fields/two-image.php:35
+msgid "Photo %s"
+msgstr ""
+
+#: includes/acf-fields/vinomat.php:16
+msgid "Pno map => Eurocode"
+msgstr ""
+
+#: includes/acf-fields/vinomat.php:73
+#: includes/acf-fields/vinomat.php:160
+msgid "Base price"
+msgstr ""
+
+#: includes/acf-fields/vinomat.php:85
+msgid "gross"
+msgstr ""
+
+#: includes/acf-fields/vinomat.php:98
+#: includes/acf-fields/vinomat.php:185
+msgid "mLeasing offer"
+msgstr ""
+
+
+##########################
+
+
+#: includes/acf.php:85
+#: includes/acf.php:86
+msgid "Offer Preview"
+msgstr ""
+
+#: includes/acf.php:109
+msgid "Page Header"
+msgstr ""
+
+#: includes/acf.php:133
+msgid "Two-column layout"
+msgstr ""
+
+#: includes/acf.php:134
+msgid "Photo/video + text"
+msgstr ""
+
+#: includes/acf.php:182
+#: includes/acf.php:183
+msgid "Sales tiles"
+msgstr ""
+
+#: includes/acf.php:205
+#: includes/acf.php:206
+msgid "Car sales tiles"
+msgstr ""
+
+#: includes/acf.php:228
+msgid "Offer cards"
+msgstr ""
+
+#: includes/acf.php:229
+msgid "3-column layout for offer cards"
+msgstr ""
+
+#: includes/acf.php:252
+msgid "Block with two images"
+msgstr ""
+
+#: includes/acf.php:277
+#: includes/acf.php:278
+msgid "Banner with description"
+msgstr ""
+
+#: includes/acf.php:301
+#: includes/acf.php:302
+msgid "Banner photo"
+msgstr ""
+
+#: includes/acf.php:349
+#: includes/acf.php:350
+msgid "Text editor (Blog)"
+msgstr ""
+
+#: includes/acf.php:373
+msgid "Text editor (advanced)"
+msgstr ""
+
+#: includes/acf.php:374
+msgid "Text editor for informational pages"
+msgstr ""
+
+#: includes/acf.php:421
+#: includes/acf.php:422
+#: includes/acf.php:674
+msgid "Cost calculator"
+msgstr ""
+
+#: includes/acf.php:473
+#: includes/acf.php:474
+msgid "Table generator"
+msgstr ""
+
+#: includes/acf.php:577
+msgid "Blog posts"
+msgstr ""
+
+#: includes/acf.php:578
+msgid "Grid with posts"
+msgstr ""
+
+#: includes/acf.php:600
+msgid "Block with three text-and-image fields"
+msgstr ""
+
+#: includes/acf.php:615
+msgid "Blog footer"
+msgstr ""
+
+#: includes/acf.php:616
+msgid "Author"
+msgstr ""
+
+#: includes/acf.php:673
+msgid "Electrification"
+msgstr ""
+
+#: includes/acf.php:693
+#: includes/acf.php:694
+msgid "Vinomat"
+msgstr ""
+
+#: includes/acf.php:709
+#: includes/acf.php:710
+msgid "Homepage options"
+msgstr ""
+
+#: includes/acf.php:742
+#: includes/acf.php:743
+msgid "Dealer settings"
+msgstr ""
+
+##########################
+
+
+

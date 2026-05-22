@@ -12,11 +12,11 @@ if (function_exists('acf_add_local_field_group')):
 	acf_add_local_field_group(
 		array(
 			'key' => 'group_602b8b955a3ee',
-			'title' => 'StockCar',
+			'title' => __('StockCar', 'partners-site_v2'),
 			'fields' => array(
 				array(
 					'key' => 'archive',
-					'label' => 'Auto w archiwum',
+					'label' => __('Car in the archive', 'partners-site_v2'),
 					'name' => 'archive',
 					'type' => 'true_false',
 					'instructions' => '',
@@ -35,7 +35,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b98e74c235',
-					'label' => 'Podstawowe dane',
+					'label' => __('Basic data', 'partners-site_v2'),
 					'name' => '',
 					'type' => 'tab',
 					'instructions' => '',
@@ -51,7 +51,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_60f9397eb3d12',
-					'label' => __( 'Oznacz samochód jako polecany', 'partners-site_v2' ),
+					'label' => __('Mark car as recommended', 'partners-site_v2'),
 					'name' => 'is-featured',
 					'type' => 'true_false',
 					'instructions' => '',
@@ -71,7 +71,7 @@ if (function_exists('acf_add_local_field_group')):
 
 				array(
 					'key' => 'field_602b972302941',
-					'label' => 'VIN',
+					'label' => __('VIN', 'partners-site_v2'),
 					'name' => 'vin',
 					'type' => 'text',
 					'instructions' => '',
@@ -90,7 +90,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b972302942',
-					'label' => 'CON',
+					'label' => __('CON', 'partners-site_v2'),
 					'name' => 'con',
 					'type' => 'text',
 					'instructions' => '',
@@ -109,7 +109,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_pno',
-					'label' => 'PNO12',
+					'label' => __('PNO12', 'partners-site_v2'),
 					'name' => 'pno',
 					'type' => 'text',
 					'instructions' => '',
@@ -129,7 +129,7 @@ if (function_exists('acf_add_local_field_group')):
 
 				array(
 					'key' => 'eurocode',
-					'label' => 'Eurokod',
+					'label' => __('Eurocode', 'partners-site_v2'),
 					'name' => 'eurocode',
 					'type' => 'text',
 					'instructions' => '',
@@ -148,7 +148,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_car_type',
-					'label' => 'Stan',
+					'label' => __('Condition', 'partners-site_v2'),
 					'name' => 'cartype',
 					'type' => 'select',
 					'instructions' => '',
@@ -160,8 +160,8 @@ if (function_exists('acf_add_local_field_group')):
 						'id' => '',
 					),
 					'choices' => array(
-						'nowy' => 'nowy',
-						'used' => 'używany',
+						'nowy' => __( 'new', 'partners-site_v2' ),
+						'used' => __( 'used', 'partners-site_v2' ),
 					),
 					'default_value' => false,
 					'allow_null' => 1,
@@ -176,7 +176,7 @@ if (function_exists('acf_add_local_field_group')):
 				
 				array(
 					'key' => 'field_602b972302487',
-					'label' => 'Nr Oferty',
+					'label' => __('Offer No.', 'partners-site_v2'),
 					'name' => 'offer-number',
 					'type' => 'text',
 					'instructions' => '',
@@ -195,7 +195,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b973702488',
-					'label' => 'Numer telefonu do handlowca',
+					'label' => __('Salesperson\'s phone number', 'partners-site_v2'),
 					'name' => 'sales-phone',
 					'type' => 'text',
 					'instructions' => '',
@@ -214,7 +214,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b976a02489',
-					'label' => __( 'Cena regularna (zł brutto)', 'partners-site_v2' ),
+					'label' => sprintf(__('Regular price (%s gross)', 'partners-site_v2'), __( 'currency', 'partners-site_v2' )),
 					'name' => 'regular-price',
 					'type' => 'number',
 					'instructions' => '',
@@ -235,7 +235,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'omnibus_price',
-					'label' => 'Cena ominibus',
+					'label' => __('Omnibus price', 'partners-site_v2'),
 					'name' => 'omnibus_price',
 					'type' => 'number',
 					'instructions' => '',
@@ -256,7 +256,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b97980248f',
-					'label' => __( 'Posiada cenę promocyjną', 'partners-site_v2' ),
+					'label' => __('Has a promotional price', 'partners-site_v2'),
 					'name' => 'has-discount-price',
 					'type' => 'true_false',
 					'instructions' => '',
@@ -275,7 +275,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b97980248a',
-					'label' => __( 'Cena promocyjna (zł brutto)', 'partners-site_v2' ),
+					'label' => sprintf(__( 'Cena promocyjna (%s brutto)', 'partners-site_v2' ), __( 'currency', 'partners-site_v2' )),
 					'name' => 'discount-price',
 					'type' => 'number',
 					'instructions' => '',
@@ -304,7 +304,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b97fd0248b',
-					'label' => 'Rok produkcji',
+					'label' => __('Year of manufacture', 'partners-site_v2'),
 					'name' => 'production-year',
 					'type' => 'number',
 					'instructions' => '',
@@ -325,7 +325,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'car-distance',
-					'label' => 'Przebieg w kilometrach',
+					'label' => __('Mileage in kilometers', 'partners-site_v2'),
 					'name' => 'car-distance',
 					'type' => 'text',
 					'instructions' => '',
@@ -346,7 +346,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_mileage',
-					'label' => 'Przebieg',
+					'label' => __('Mileage', 'partners-site_v2'),
 					'name' => 'mileage',
 					'type' => 'select',
 					'instructions' => '',
@@ -358,9 +358,9 @@ if (function_exists('acf_add_local_field_group')):
 						'id' => '',
 					),
 					'choices' => array(
-						'0-20000' => '0-20 tys. km',
-						'20001-100000' => '20-100 tys. km',
-						'100001-200000' => '100-200  tys. km',
+						'0-20000' => __( '0-20,000 km', 'partners-site_v2' ),
+						'20001-100000' => __( '20,000-100,000 km', 'partners-site_v2' ),
+						'100001-200000' => __( '20-100 tys. km', 'partners-site_v2' ),
 					),
 					'default_value' => false,
 					'allow_null' => 1,
@@ -372,7 +372,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b97fd02454c',
-					'label' => __( 'Do odbioru w ciągu...', 'partners-site_v2' ),
+					'label' => __('Available for pickup within...', 'partners-site_v2'),
 					'name' => 'pickup-time',
 					'type' => 'select',
 					'instructions' => '',
@@ -384,8 +384,8 @@ if (function_exists('acf_add_local_field_group')):
 						'id' => '',
 					),
 					'choices' => array(
-						'Do odbioru w ciągu 2 tygodni' => 'Do odbioru w ciągu 2 tygodni',
-						'Do odbioru już jutro' => 'Do odbioru już jutro',
+						'Do odbioru w ciągu 2 tygodni' => __( 'Ready for pickup within 2 weeks', 'partners-site_v2' ),
+						'Do odbioru już jutro' => __( 'Ready for pickup tomorrow', 'partners-site_v2' ),
 					),
 					'default_value' => false,
 					'allow_null' => 1,
@@ -397,7 +397,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_6034b4fa1e85g',
-					'label' => 'Salon',
+					'label' => __( 'Showroom', 'partners-site_v2' ),
 					'name' => 'showroom',
 					'type' => 'post_object',
 					'instructions' => '',
@@ -420,7 +420,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b98cc4c234',
-					'label' => 'Dane techniczne',
+					'label' => __('Technical Specifications', 'partners-site_v2'),
 					'name' => '',
 					'type' => 'tab',
 					'instructions' => '',
@@ -436,7 +436,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b9c5902ce8',
-					'label' => 'Wersja',
+					'label' => __( 'Version', 'partners-site_v2' ),
 					'name' => 'version',
 					'type' => 'select',
 					'instructions' => '',
@@ -459,7 +459,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b96dc02583',
-					'label' => 'Kategoria',
+					'label' => __( 'Category', 'partners-site_v2' ),
 					'name' => 'category',
 					'type' => 'select',
 					'instructions' => '',
@@ -482,7 +482,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b96dc02486',
-					'label' => 'Model',
+					'label' => __( 'Model', 'partners-site_v2' ),
 					'name' => 'model',
 					'type' => 'select',
 					'instructions' => '',
@@ -505,7 +505,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b992e02ce6',
-					'label' => 'Kolor',
+					'label' => __('Color', 'partners-site_v2'),
 					'name' => 'color',
 					'type' => 'select',
 					'instructions' => '',
@@ -528,7 +528,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b9baa02ce7',
-					'label' => 'Silnik',
+					'label' => __('Engine', 'partners-site_v2'),
 					'name' => 'engine',
 					'type' => 'select',
 					'instructions' => '',
@@ -551,7 +551,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b9cb202ce9',
-					'label' => 'Tapicerka',
+					'label' => __('Upholstery', 'partners-site_v2'),
 					'name' => 'inlay',
 					'type' => 'select',
 					'instructions' => '',
@@ -574,7 +574,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b9d1e02cea',
-					'label' => __( 'Skrzynia biegów', 'partners-site_v2' ),
+					'label' => __('Transmission', 'partners-site_v2'),
 					'name' => 'gearbox',
 					'type' => 'select',
 					'instructions' => '',
@@ -597,7 +597,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b9ee702cf2',
-					'label' => 'Miejsc',
+					'label' => __( 'Seats', 'partners-site_v2' ),
 					'name' => 'seats',
 					'type' => 'number',
 					'instructions' => '',
@@ -619,10 +619,10 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b9d5802ceb',
-					'label' => 'Moc maksymalna (KM)',
+					'label' => __('Maximum Power (HP)', 'partners-site_v2'),
 					'name' => 'max-power-text',
 					'type' => 'text',
-					'instructions' => __( 'Moc auta, w przypadku hybryd podawana np. 230+15. To pole jest wyświetlane w danych technicznych auta.', 'partners-site_v2' ),
+					'instructions' => __('Car power; for hybrids, listed as e.g., 230+15. This field is displayed in the car’s technical specifications.', 'partners-site_v2'),
 					'required' => 1,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -638,10 +638,10 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b9d7d02cec',
-					'label' => 'Moc maksymalna sumaryczna (KM)',
+					'label' => __('Total maximum power (HP)', 'partners-site_v2'),
 					'name' => 'max-power',
 					'type' => 'number',
-					'instructions' => __( 'Całkowita moc auta, to pole jest wykorzystywana do filtrowania aut dostępnych od ręki', 'partners-site_v2' ),
+					'instructions' => __('Total vehicle power; this field is used to filter vehicles available immediately', 'partners-site_v2'),
 					'required' => 1,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -659,7 +659,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b9db802ced',
-					'label' => 'Rodzaj paliwa',
+					'label' => __('Fuel Type', 'partners-site_v2'),
 					'name' => 'fuel-type',
 					'type' => 'select',
 					'instructions' => '',
@@ -671,10 +671,10 @@ if (function_exists('acf_add_local_field_group')):
 						'id' => '',
 					),
 					'choices' => array(
-						'Diesel' => 'Diesel',
-						'Benzyna' => 'Benzyna',
-						'Hybryda Plug-In' => 'Hybryda Plug-In',
-						'Elektryczny' => 'Elektryczny',
+						'Diesel' => __( 'Diesel', 'partners-site_v2' ),
+						'Benzyna' => __( 'Gasoline', 'partners-site_v2' ),
+						'Hybryda Plug-In' => __( 'Plug-in hybrid', 'partners-site_v2' ),
+						'Elektryczny' => __( 'Electric', 'partners-site_v2' ),
 
 					),
 					'default_value' => '',
@@ -685,7 +685,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b9db802ced_drive',
-					'label' => 'Napęd',
+					'label' => __('Drivetrain', 'partners-site_v2'),
 					'name' => 'driveType',
 					'type' => 'select',
 					'instructions' => '',
@@ -697,9 +697,9 @@ if (function_exists('acf_add_local_field_group')):
 						'id' => '',
 					),
 					'choices' => array(
-						'fwd' => 'Przedni (FWD)',
-						'rwd' => 'Tylni (RWD)',
-						'4x4' => '4x4 (AWD)',
+						'fwd' => __( 'Front-wheel drive (FWD)', 'partners-site_v2' ),
+						'rwd' => __( 'Rear-wheel drive (RWD)', 'partners-site_v2' ),
+						'4x4' => __( 'All-wheel drive (AWD)', 'partners-site_v2' ),
 					),
 					'default_value' => '',
 					'allow_null' => 1,
@@ -712,7 +712,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b9ddd02cee',
-					'label' => 'Czas przyspieszenia (s)',
+					'label' => __('Acceleration time (s)', 'partners-site_v2'),
 					'name' => 'acceleration',
 					'type' => 'number',
 					'instructions' => '',
@@ -733,7 +733,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b97fd02454d',
-					'label' => 'Jednostka spalania',
+					'label' => __('Engine type', 'partners-site_v2'),
 					'name' => 'fuel-consumption-unit',
 					'type' => 'select',
 					'instructions' => '',
@@ -745,8 +745,8 @@ if (function_exists('acf_add_local_field_group')):
 						'id' => '',
 					),
 					'choices' => array(
-						'l/100km' => 'l/100km',
-						'kWh/100km' => 'kWh/100km',
+						'l/100km' => __( 'l/100 km', 'partners-site_v2' ),
+						'kWh/100km' => __( 'kWh/100 km', 'partners-site_v2' ),
 					),
 					'default_value' => false,
 					'allow_null' => 1,
@@ -758,10 +758,10 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b9e2902cef',
-					'label' => __( 'Śr. spalanie', 'partners-site_v2' ),
+					'label' => __('Average fuel consumption', 'partners-site_v2'),
 					'name' => 'fuel-consumption',
 					'type' => 'text',
-					'instructions' => __( '(max. 5 znaków)', 'partners-site_v2' ),
+					'instructions' => sprintf(__( '(max. %s chars)', 'partners-site_v2' ), 5),
 					'required' => 1,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -778,7 +778,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b9e9102cf0',
-					'label' => __( 'Prędkość maksymalna (km/h)', 'partners-site_v2' ),
+					'label' => __( 'Maximum speed (km/h)', 'partners-site_v2' ),
 					'name' => 'max-speed',
 					'type' => 'number',
 					'instructions' => '',
@@ -799,7 +799,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_erange',
-					'label' => __( 'Zasięg na silniku elektrycznym', 'partners-site_v2' ),
+					'label' => __('Electric range', 'partners-site_v2'),
 					'name' => 'erange',
 					'type' => 'number',
 					'instructions' => '',
@@ -820,7 +820,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b9eb802cf1',
-					'label' => __( 'Pojemność bagażnika (litry)', 'partners-site_v2' ),
+					'label' => __( 'Trunk capacity (liters)', 'partners-site_v2' ),
 					'name' => 'cargo-capacity',
 					'type' => 'number',
 					'instructions' => '',
@@ -843,7 +843,7 @@ if (function_exists('acf_add_local_field_group')):
 
 				array(
 					'key' => 'field_602ba0d52720d',
-					'label' => __( 'Zdjęcia', 'partners-site_v2' ),
+					'label' => __('Photos', 'partners-site_v2'),
 					'name' => '',
 					'type' => 'tab',
 					'instructions' => '',
@@ -859,7 +859,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'picture_format',
-					'label' => __( 'Format zdjęć 4:3', 'partners-site_v2' ),
+					'label' => __('Photo format 4:3', 'partners-site_v2'),
 					'name' => 'picture_format',
 					'aria-label' => '',
 					'type' => 'true_false',
@@ -882,10 +882,10 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602ba0b52720c',
-					'label' => __( 'Zdjęcia', 'partners-site_v2' ),
+					'label' => __('Photos', 'partners-site_v2'),
 					'name' => 'images',
 					'type' => 'gallery',
-					'instructions' => __( '(min. szerokość: 944px, Zalecana szerokość: 2877px)<br>(min. wysokość: 453px)<br>Galeria po otwarciu wyświetla oryginalny rozmiar zdjęcia.', 'partners-site_v2' ),
+					'instructions' => __('(min. width: 944px, Recommended width: 2877px)<br>(min. height: 453px)<br>When opened, the gallery displays the original photo size.', 'partners-site_v2'),
 					'required' => 1,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -909,10 +909,10 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'social_image',
-					'label' => __( 'Zdjęcie do feedów produktowych', 'partners-site_v2' ),
+					'label' => __('Photo for product feeds', 'partners-site_v2'),
 					'name' => 'social_image',
 					'type' => 'gallery',
-					'instructions' => __( '(min. szerokość: 944px, Zalecana szerokość: 2877px)<br>(min. wysokość: 453px)<br>Galeria po otwarciu wyświetla oryginalny rozmiar zdjęcia.', 'partners-site_v2' ),
+					'instructions' => __('(min. width: 944px, Recommended width: 2877px)<br>(min. height: 453px)<br>When opened, the gallery displays the original photo size.', 'partners-site_v2'),
 					'required' => 0,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -934,7 +934,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_6033bfb3737ec',
-					'label' => __( 'Szczegółowe dane techniczne', 'partners-site_v2' ),
+					'label' => __('Detailed technical specifications', 'partners-site_v2'),
 					'name' => '',
 					'type' => 'tab',
 					'instructions' => '',
@@ -950,7 +950,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_6033bfbe737ed',
-					'label' => __( 'Nagłówek', 'partners-site_v2' ),
+					'label' => __( 'Header', 'partners-site_v2' ),
 					'name' => 'accordion-heading',
 					'type' => 'text',
 					'instructions' => __( 'Domyślnie tekst nagłówka jest w kolorze szarym. <br>Aby dana fraza była w kolorze czarnym, proszę umieścić ją pomiędzy &lt;strong>&lt;/strong&gt; , np. &lt;strong>TEKST&lt;/strong&gt; <br>(max. 166 znaki)', 'partners-site_v2' ),
@@ -969,7 +969,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_60ffe8e3d4294',
-					'label' => __( 'Szczegółowe dane techniczne', 'partners-site_v2' ),
+					'label' => __('Detailed technical specifications', 'partners-site_v2'),
 					'name' => 'accordion',
 					'type' => 'repeater',
 					'instructions' => '',
@@ -988,7 +988,7 @@ if (function_exists('acf_add_local_field_group')):
 					'sub_fields' => array(
 						array(
 							'key' => 'field_60ffe933d4297',
-							'label' => 'Nazwa sekcji',
+							'label' => __('Section name', 'partners-site_v2'),
 							'name' => 'name',
 							'type' => 'text',
 							'instructions' => '',
@@ -1007,7 +1007,7 @@ if (function_exists('acf_add_local_field_group')):
 						),
 						array(
 							'key' => 'field_60ffe93cd4298',
-							'label' => 'Elementy',
+							'label' => __('Elements', 'partners-site_v2'),
 							'name' => 'items',
 							'type' => 'repeater',
 							'instructions' => '',
@@ -1026,7 +1026,7 @@ if (function_exists('acf_add_local_field_group')):
 							'sub_fields' => array(
 								array(
 									'key' => 'field_60ffe95cd4299',
-									'label' => 'Element',
+									'label' => __('Element', 'partners-site_v2'),
 									'name' => 'name',
 									'type' => 'text',
 									'instructions' => '',
@@ -1049,7 +1049,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'leasing_field',
-					'label' => 'Finansowanie',
+					'label' => __('Financing', 'partners-site_v2'),
 					'name' => 'leasing_field',
 					'type' => 'tab',
 					'instructions' => '',
@@ -1073,7 +1073,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'lease_car',
-					'label' => 'Oferta leasingu',
+					'label' => __('Leasing offer', 'partners-site_v2'),
 					'name' => 'lease_car',
 					'type' => 'select',
 					'instructions' => '',
@@ -1103,7 +1103,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'najem_car',
-					'label' => 'Oferta najmu',
+					'label' => __('Rental offer', 'partners-site_v2'),
 					'name' => 'najem_car',
 					'type' => 'select',
 					'instructions' => '',
@@ -1133,7 +1133,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'income',
-					'label' => __( 'Atrakcyjność/prowizja Leasing', 'partners-site_v2' ),
+					'label' => __('Attractiveness/commission - Leasing', 'partners-site_v2'),
 					'name' => 'income',
 					'type' => 'select',
 					'instructions' => '',
@@ -1163,7 +1163,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'income_najem',
-					'label' => __( 'Atrakcyjność/prowizja Najem', 'partners-site_v2' ),
+					'label' => __('Attractiveness/commission - Rental', 'partners-site_v2'),
 					'name' => 'income_najem',
 					'type' => 'select',
 					'instructions' => '',
@@ -1202,7 +1202,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_6033bfb37594d',
-					'label' => __( 'Zdjęcia pod szczegółowymi danymi technicznymi', 'partners-site_v2' ),
+					'label' => __('Photos under detailed technical specifications', 'partners-site_v2'),
 					'name' => '',
 					'type' => 'tab',
 					'instructions' => '',
@@ -1218,10 +1218,10 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_6034b4fa1e81e',
-					'label' => __( 'Zdjęcia pod szczegółowymi danymi technicznymi', 'partners-site_v2' ),
+					'label' => __('Photos under detailed technical specifications', 'partners-site_v2'),
 					'name' => 'gallery',
 					'type' => 'gallery',
-					'instructions' => __( '(Wymagane 3 zdjęcia)<br>Galeria po otwarciu wyświetla oyrginalny rozmiar zdjęcia.', 'partners-site_v2' ),
+					'instructions' => __('(3 photos required)<br>The gallery displays the original photo size when opened.', 'partners-site_v2'),
 					'required' => 0,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -1246,7 +1246,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_6101ae2e80539',
-					'label' => 'Etykiety energetyczne',
+					'label' => __('Energy labels', 'partners-site_v2'),
 					'name' => '',
 					'type' => 'tab',
 					'instructions' => '',
@@ -1270,7 +1270,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_6101ae3d8053a',
-					'label' => 'Opony letnie',
+					'label' => __('Summer tires', 'partners-site_v2'),
 					'name' => 'summer-tyre-labels',
 					'type' => 'repeater',
 					'instructions' => '',
@@ -1289,7 +1289,7 @@ if (function_exists('acf_add_local_field_group')):
 					'sub_fields' => array(
 						array(
 							'key' => 'field_6101ae678053b',
-							'label' => 'Url',
+							'label' => __('URL', 'partners-site_v2'),
 							'name' => 'url',
 							'type' => 'url',
 							'instructions' => '',
@@ -1307,7 +1307,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_6101ae728053c',
-					'label' => 'Opony zimowe',
+					'label' => __('Winter tires', 'partners-site_v2'),
 					'name' => 'winter-tyre-labels',
 					'type' => 'repeater',
 					'instructions' => '',
@@ -1326,7 +1326,7 @@ if (function_exists('acf_add_local_field_group')):
 					'sub_fields' => array(
 						array(
 							'key' => 'field_6101ae728053d',
-							'label' => 'Url',
+							'label' => __('URL', 'partners-site_v2'),
 							'name' => 'url',
 							'type' => 'url',
 							'instructions' => '',
@@ -1344,7 +1344,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_stock_admin',
-					'label' => 'Ust. admin',
+					'label' => __('Admin settings', 'partners-site_v2'),
 					'name' => '',
 					'type' => 'tab',
 					'instructions' => '',
@@ -1361,7 +1361,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'odreki_sync',
-					'label' => 'Synchronizacja odreki',
+					'label' => __('Synchronization odreki', 'partners-site_v2'),
 					'name' => 'odreki_sync',
 					'aria-label' => '',
 					'type' => 'radio',
@@ -1374,9 +1374,9 @@ if (function_exists('acf_add_local_field_group')):
 						'id' => '',
 					),
 					'choices' => array(
-						0 => 'Nie',
-						1 => 'Tak',		
-						2 => 'Czeka na synchronizację'				
+						0 => __( 'No', 'partners-site_v2' ),
+						1 => __( 'Yes', 'partners-site_v2' ),		
+						2 => __( 'Waiting to be synchronized', 'partners-site_v2' )
 					),
 					'default_value' => 0,
 					'return_format' => 'value',
@@ -1388,7 +1388,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'activemotors',
-					'label' => 'Auto z active motors',
+					'label' => __('Car from Active Motors', 'partners-site_v2'),
 					'name' => 'activemotors',
 					'aria-label' => '',
 					'type' => 'radio',
@@ -1401,8 +1401,8 @@ if (function_exists('acf_add_local_field_group')):
 						'id' => '',
 					),
 					'choices' => array(
-						0 => 'Nie',
-						1 => 'Tak',						
+						0 => __( 'No', 'partners-site_v2' ),
+						1 => __( 'Yes', 'partners-site_v2' ),						
 					),
 					'default_value' => 0,
 					'return_format' => 'value',
@@ -1414,7 +1414,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_669a2a444fc5f',
-					'label' => 'DOL Sync',
+					'label' => __('DOL Sync', 'partners-site_v2'),
 					'name' => 'dol_sync',
 					'aria-label' => '',
 					'type' => 'radio',
@@ -1427,11 +1427,11 @@ if (function_exists('acf_add_local_field_group')):
 						'id' => '',
 					),
 					'choices' => array(
-						0 => 'Status not checked',
-						1 => 'Data available in DOL',
-						2 => 'Data not available in DOL',
-						3 => 'DOL Synchronized',
-						4 => 'Synchronization failed',
+						0 => __( 'Status not checked', 'partners-site_v2' ),
+						1 => __( 'Data available in DOL', 'partners-site_v2' ),
+						2 => __( 'Data not available in DOL', 'partners-site_v2' ),
+						3 => __( 'DOL Synchronized', 'partners-site_v2' ),
+						4 => __( 'Synchronization failed', 'partners-site_v2' ),
 					),
 					'default_value' => 0,
 					'return_format' => 'value',
@@ -1443,7 +1443,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'model_1',
-					'label' => 'Model',
+					'label' => __( 'Model', 'partners-site_v2' ),
 					'name' => 'model_1',
 					'type' => 'text',
 					'instructions' => '',
@@ -1465,7 +1465,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'version_1',
-					'label' => 'Wersja',
+					'label' => __( 'Version', 'partners-site_v2' ),
 					'name' => 'version_1',
 					'type' => 'text',
 					'instructions' => '',
@@ -1487,7 +1487,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'color_1',
-					'label' => 'Kolor',
+					'label' => __('Color', 'partners-site_v2'),
 					'name' => 'color_1',
 					'type' => 'text',
 					'instructions' => '',
@@ -1509,7 +1509,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'inlay_1',
-					'label' => 'Tapicerka',
+					'label' => __('Upholstery', 'partners-site_v2'),
 					'name' => 'inlay_1',
 					'type' => 'text',
 					'instructions' => '',
@@ -1531,7 +1531,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'engine_1',
-					'label' => 'Silnik',
+					'label' => __('Engine', 'partners-site_v2'),
 					'name' => 'engine_1',
 					'type' => 'text',
 					'instructions' => '',
@@ -1553,10 +1553,10 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b9efc02cf3',
-					'label' => __( 'Wysokość (cm)', 'partners-site_v2' ),
+					'label' => __( 'Height (cm)', 'partners-site_v2' ),
 					'name' => 'height',
 					'type' => 'number',
-					'instructions' => __( '<strong>UWAGA! Wartość musi być podana w centymetrach</strong>', 'partners-site_v2' ),
+					'instructions' => '<strong>' . __( 'NOTE! The value must be entered in centimeters', 'partners-site_v2' ) . '</strong>',
 					'required' => 0,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -1575,10 +1575,10 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b9f0c02cf4',
-					'label' => __( 'Długość (cm)', 'partners-site_v2' ),
+					'label' => __( 'Length (cm)', 'partners-site_v2' ),
 					'name' => 'length',
 					'type' => 'number',
-					'instructions' => __( '<strong>UWAGA! Wartość musi być podana w centymetrach</strong>', 'partners-site_v2' ),
+					'instructions' => '<strong>' . __( 'NOTE! The value must be entered in centimeters', 'partners-site_v2' ) . '</strong>',
 					'required' => 0,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -1597,10 +1597,10 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b9f1e02cf5',
-					'label' => __( 'Szerokość z lusterkami (cm)', 'partners-site_v2' ),
+					'label' => __( 'Width with mirrors (cm)', 'partners-site_v2' ),
 					'name' => 'width',
 					'type' => 'number',
-					'instructions' => __( '<strong>UWAGA! Wartość musi być podana w centymetrach</strong>', 'partners-site_v2' ),
+					'instructions' => '<strong>' . __( 'NOTE! The value must be entered in centimeters', 'partners-site_v2' ) . '</strong>',
 					'required' => 0,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -1617,10 +1617,10 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b9f2f02cf6',
-					'label' => __( 'Prześwit (cm)', 'partners-site_v2' ),
+					'label' => __( 'Ground clearance (cm)', 'partners-site_v2' ),
 					'name' => 'ground-clearance',
 					'type' => 'number',
-					'instructions' => __( '<strong>UWAGA! Wartość musi być podana w centymetrach</strong>', 'partners-site_v2' ),
+					'instructions' => '<strong>' . __( 'NOTE! The value must be entered in centimeters', 'partners-site_v2' ) . '</strong>',
 					'required' => 0,
 					'conditional_logic' => 0,
 					'wrapper' => array(

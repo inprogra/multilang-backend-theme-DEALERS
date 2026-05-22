@@ -6,11 +6,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_6062210c411fe',
-			'title'                 => 'Serwis',
+			'title'                 => __( 'Service', 'partners-site_v2' ),
 			'fields'                => array(
 				array(
 					'key'               => 'field_606222183bd26',
-					'label'             => 'Slider',
+					'label'             => __('Slider', 'partners-site_v2'),
 					'name'              => '',
 					'type'              => 'tab',
 					'instructions'      => '',
@@ -26,7 +26,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_606222213bd27',
-					'label'             => 'Slider',
+					'label'             => __('Slider', 'partners-site_v2'),
 					'name'              => 'service-slider',
 					'type'              => 'group',
 					'instructions'      => '',
@@ -42,7 +42,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'sub_fields'        => array(
 						array(
 							'key'               => 'field_606222353bd28',
-							'label' => __( 'Kampanie wyświetlane na sliderzeeeee', 'partners-site_v2' ), 
+							'label' => __('Campaigns displayed on the slider', 'partners-site_v2'), 
 							'name'              => 'slides',
 							'type'              => 'repeater',
 							'instructions'      => '',
@@ -57,11 +57,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							'min'               => 0,
 							'max'               => 3,
 							'layout'            => 'row',
-							'button_label'      => 'Dodaj kampanię',
+							'button_label'      => __('Add a campaign', 'partners-site_v2'),
 							'sub_fields'        => array(
 								array(
 									'key'               => 'field_606222543bd29',
-									'label'             => 'Typ kampanii',
+									'label'             => __('Campaign type', 'partners-site_v2'),
 									'name'              => 'type',
 									'type'              => 'select',
 									'instructions'      => '',
@@ -73,8 +73,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										'id'    => '',
 									),
 									'choices'           => array(
-										'local'  => 'Kampania lokalna',
-										'global' => 'Kampania globalna',
+										'local'  => __( 'Local campaign', 'partners-site_v2' ),
+										'global' => __( 'Global campaign', 'partners-site_v2' ),
 									),
 									'default_value'     => false,
 									'allow_null'        => 0,
@@ -86,7 +86,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key'               => 'field_606222863bd2a',
-									'label'             => 'Kampania',
+									'label'             => __( 'Campaign', 'partners-site_v2' ),
 									'name'              => 'local-campaign',
 									'type'              => 'post_object',
 									'instructions'      => '',
@@ -116,7 +116,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key'               => 'field_606222ac3bd2b',
-									'label'             => 'Kampania',
+									'label'             => __( 'Campaign', 'partners-site_v2' ),
 									'name'              => 'global-campaign',
 									'type'              => 'network_post_object',
 									'instructions'      => '',
@@ -150,7 +150,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_606222213bd273',
-					'label'             => 'Slider',
+					'label'             => __('Slider', 'partners-site_v2'),
 					'name'              => 'global-service-slider',
 					'type'              => 'group',
 					'instructions'      => '',
@@ -166,7 +166,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'sub_fields'        => array(
 						array(
 							'key'               => 'field_606222213bd274',
-							'label' => __( 'Kampanie wyświetlane na sliderze', 'partners-site_v2' ),
+							'label' => __( 'Campaigns displayed in the slider', 'partners-site_v2' ),
 							'name'              => 'slides',
 							'type'              => 'repeater',
 							'instructions'      => '',
@@ -181,11 +181,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							'min'               => 0,
 							'max'               => 3,
 							'layout'            => 'row',
-							'button_label'      => 'Dodaj kampanię',
+							'button_label'      => __('Add a campaign', 'partners-site_v2'),
 							'sub_fields'        => array(
 								array(
 									'key'               => 'field_606222213bd275',
-									'label'             => 'Kampania',
+									'label'             => __( 'Campaign', 'partners-site_v2' ),
 									'name'              => 'campaign',
 									'type'              => 'post_object',
 									'instructions'      => '',
@@ -211,7 +211,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_6062230f573c0',
-					'label'             => 'Lista zalet',
+					'label'             => __('List of benefits', 'partners-site_v2'),
 					'name'              => '',
 					'type'              => 'tab',
 					'instructions'      => '',
@@ -228,7 +228,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_60622319573c1',
-					'label'             => 'Lista zalet',
+					'label'             => __('List of benefits', 'partners-site_v2'),
 					'name'              => 'advantages-list',
 					'type'              => 'group',
 					'instructions'      => '',
@@ -244,10 +244,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'sub_fields'        => array(
 						array(
 							'key'               => 'field_6062232c573c2',
-							'label' => __( 'Nagłówek', 'partners-site_v2' ),
+							'label' => __( 'Header', 'partners-site_v2' ),
 							'name'              => 'heading',
 							'type'              => 'text',
-							'instructions' => __( '(max. 75 znaków)', 'partners-site_v2' ),
+							'instructions' 		=> sprintf(__( '(max. %s chars)', 'partners-site_v2' ), 75),
 							'required'          => 0,
 							'conditional_logic' => 0,
 							'wrapper'           => array(
@@ -263,10 +263,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_6062234f573c3',
-							'label'             => 'Opis',
+							'label'             => __( 'Description', 'partners-site_v2' ),
 							'name'              => 'description',
 							'type'              => 'textarea',
-							'instructions' => __( '(max. 160 znaków)', 'partners-site_v2' ),
+							'instructions' 		=> sprintf(__( '(max. %s chars)', 'partners-site_v2' ), 160),
 							'required'          => 0,
 							'conditional_logic' => 0,
 							'wrapper'           => array(
@@ -282,10 +282,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_6062232c573c3',
-							'label' => __( 'Tekst przycisku do rozwijania list na urządzeniach mobilnych', 'partners-site_v2' ),
+							'label' => __('Text for the button to expand lists on mobile devices', 'partners-site_v2'),
 							'name'              => 'more-text',
 							'type'              => 'text',
-							'instructions' => __( '(max. 75 znaków)', 'partners-site_v2' ),
+							'instructions' 		=> sprintf(__( '(max. %s chars)', 'partners-site_v2' ), 75),
 							'required'          => 0,
 							'conditional_logic' => 0,
 							'wrapper'           => array(
@@ -301,7 +301,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_60622380573c4',
-							'label'             => 'Punkty w lewej kolumnie',
+							'label'             => __('Items in the left column', 'partners-site_v2'),
 							'name'              => 'list1',
 							'type'              => 'repeater',
 							'instructions'      => '',
@@ -320,10 +320,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							'sub_fields'        => array(
 								array(
 									'key'               => 'field_60622389573c5',
-									'label'             => 'Tekst',
+									'label'             => __('Text', 'partners-site_v2'),
 									'name'              => 'text',
 									'type'              => 'textarea',
-									'instructions' => __( '(max. 160 znaków)', 'partners-site_v2' ),
+									'instructions' 		=> sprintf(__( '(max. %s chars)', 'partners-site_v2' ), 160),
 									'required'          => 0,
 									'conditional_logic' => 0,
 									'wrapper'           => array(
@@ -341,7 +341,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_60622380ad3c4',
-							'label'             => 'Punkty w prawej kolumnie',
+							'label'             => __('Items in the right column', 'partners-site_v2'),
 							'name'              => 'list2',
 							'type'              => 'repeater',
 							'instructions'      => '',
@@ -360,10 +360,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							'sub_fields'        => array(
 								array(
 									'key'               => 'field_60622389573c5',
-									'label'             => 'Tekst',
+									'label'             => __('Text', 'partners-site_v2'),
 									'name'              => 'text',
 									'type'              => 'textarea',
-									'instructions' => __( '(max. 160 znaków)', 'partners-site_v2' ),
+									'instructions' 		=> sprintf(__( '(max. %s chars)', 'partners-site_v2' ), 160),
 									'required'          => 0,
 									'conditional_logic' => 0,
 									'wrapper'           => array(
@@ -383,7 +383,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_606223ac573c6',
-					'label'             => 'Formularz',
+					'label'             => __( 'Form', 'partners-site_v2' ),
 					'name'              => '',
 					'type'              => 'tab',
 					'instructions'      => '',
@@ -400,7 +400,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_606223e8573c7',
-					'label'             => 'Formularz',
+					'label'             => __( 'Form', 'partners-site_v2' ),
 					'name'              => 'form',
 					'type'              => 'group',
 					'instructions'      => '',
@@ -416,7 +416,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'sub_fields'        => array(
 						array(
 							'key'               => 'field_606223fe573c8',
-							'label' => __( 'Nagłówek', 'partners-site_v2' ),
+							'label' => __( 'Header', 'partners-site_v2' ),
 							'name'              => 'heading',
 							'type'              => 'text',
 							'instructions' => __( 'Domyślnie tekst nagłówka jest w kolorze szarym. <br>Aby dana fraza była w kolorze czarnym, proszę umieścić ją pomiędzy &lt;strong>&lt;/strong&gt; , np. &lt;strong>TEKST&lt;/strong&gt;. <br>Aby dodać przejście do kolejnej lini proszę dodać &lt;br> np. TEKST &lt;br>TEKST', 'partners-site_v2' ),
@@ -435,10 +435,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_6062242c573c9',
-							'label'             => 'Modele do wyboru',
+							'label'             => __('Models to choose from', 'partners-site_v2'),
 							'name'              => 'models',
 							'type'              => 'repeater',
-							'instructions' => __( 'Wszystkie modele Volvo dostępne do wyboru przy wypełnianiu formularza', 'partners-site_v2' ),
+							'instructions' => __('All Volvo models available to select when filling out the form', 'partners-site_v2'),
 							'required'          => 0,
 							'conditional_logic' => 0,
 							'wrapper'           => array(
@@ -454,7 +454,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							'sub_fields'        => array(
 								array(
 									'key'               => 'field_60622460573ca',
-									'label'             => 'Nazwa',
+									'label'             => __('Name', 'partners-site_v2'),
 									'name'              => 'name',
 									'type'              => 'text',
 									'instructions'      => '',
@@ -475,10 +475,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_606224c3573cb',
-							'label' => __( 'Usługi', 'partners-site_v2' ),
+							'label' => __('Services', 'partners-site_v2'),
 							'name'              => 'services',
 							'type'              => 'repeater',
-							'instructions' => __( 'Wszystkie usługi dostępne do wyboru przy wypełnianiu formularza', 'partners-site_v2' ),
+							'instructions' => __('All services available to select when filling out the form', 'partners-site_v2'),
 							'required'          => 0,
 							'conditional_logic' => 0,
 							'wrapper'           => array(
@@ -494,7 +494,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							'sub_fields'        => array(
 								array(
 									'key'               => 'field_606224de573cc',
-									'label'             => 'Ikona',
+									'label'             => __('Icon', 'partners-site_v2'),
 									'name'              => 'icon',
 									'type'              => 'icon_select',
 									'instructions'      => '',
@@ -516,10 +516,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key'               => 'field_606224f2573cd',
-									'label'             => 'Nazwa',
+									'label'             => __('Name', 'partners-site_v2'),
 									'name'              => 'name',
 									'type'              => 'text',
-									'instructions' => __( '(max. 75 znaków)', 'partners-site_v2' ),
+									'instructions' 		=> sprintf(__( '(max. %s chars)', 'partners-site_v2' ), 75),
 									'required'          => 1,
 									'conditional_logic' => 0,
 									'wrapper'           => array(
@@ -535,7 +535,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key'               => 'field_60622500573ce',
-									'label'             => 'Opis',
+									'label'             => __( 'Description', 'partners-site_v2' ),
 									'name'              => 'description',
 									'type'              => 'textarea',
 									'instructions'      => '',
@@ -558,7 +558,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_606225ef573cf',
-					'label' => __( 'Usługi serwisowe', 'partners-site_v2' ),
+					'label' => __('Service options', 'partners-site_v2'),
 					'name'              => '',
 					'type'              => 'tab',
 					'instructions'      => '',
@@ -574,7 +574,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_60622604573d0',
-					'label' => __( 'Usługi serwisowe', 'partners-site_v2' ),
+					'label' => __('Service options', 'partners-site_v2'),
 					'name'              => 'services-section',
 					'type'              => 'group',
 					'instructions'      => '',
@@ -589,7 +589,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'sub_fields'        => array(
 						array(
 							'key'               => 'field_6062261c573d1',
-							'label' => __( 'Nagłówek', 'partners-site_v2' ),
+							'label' => __( 'Header', 'partners-site_v2' ),
 							'name'              => 'heading',
 							'type'              => 'text',
 							'instructions'      => '',
@@ -609,7 +609,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_6062262b573d2',
-							'label' => __( 'Usługi', 'partners-site_v2' ),
+							'label' => __('Services', 'partners-site_v2'),
 							'name'              => 'services',
 							'type'              => 'repeater',
 							'instructions'      => '',
@@ -628,10 +628,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							'sub_fields'        => array(
 								array(
 									'key'               => 'field_6062264a573d3',
-									'label' => __( 'Tytuł', 'partners-site_v2' ),
+									'label' => __( 'Title', 'partners-site_v2' ),
 									'name'              => 'heading',
 									'type'              => 'text',
-									'instructions' => __( '(max. 75 znaków)', 'partners-site_v2' ),
+									'instructions' 		=> sprintf(__( '(max. %s chars)', 'partners-site_v2' ), 75),
 									'required'          => 1,
 									'conditional_logic' => 0,
 									'wrapper'           => array(
@@ -647,7 +647,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key'               => 'field_60622659573d4',
-									'label'             => 'Opis',
+									'label'             => __( 'Description', 'partners-site_v2' ),
 									'name'              => 'description',
 									'type'              => 'wysiwyg',
 									'instructions'      => '',
@@ -670,7 +670,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_60622673573d5',
-					'label'             => 'Kontakt z serwisem',
+					'label'             => __('Service contact', 'partners-site_v2'),
 					'name'              => '',
 					'type'              => 'tab',
 					'instructions'      => '',
@@ -686,7 +686,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_60622681573d6',
-					'label'             => 'Kontakt z serwisem',
+					'label'             => __('Service contact', 'partners-site_v2'),
 					'name'              => 'contact-section',
 					'type'              => 'group',
 					'instructions'      => '',
@@ -701,7 +701,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'sub_fields'        => array(
 						array(
 							'key'               => 'field_6062268d573d7',
-							'label' => __( 'Nagłówek', 'partners-site_v2' ),
+							'label' => __( 'Header', 'partners-site_v2' ),
 							'name'              => 'heading',
 							'type'              => 'text',
 							'instructions'      => '',
@@ -721,7 +721,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_606226d4573d8',
-							'label'             => 'Osoby kontaktowe',
+							'label'             => __('Contact persons', 'partners-site_v2'),
 							'name'              => 'employees',
 							'type'              => 'repeater',
 							'instructions'      => '',
@@ -741,10 +741,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							'sub_fields'        => array(
 								array(
 									'key'               => 'field_60622708573d9',
-									'label'             => 'Specjalizacje',
+									'label'             => __('Specializations', 'partners-site_v2'),
 									'name'              => 'specializations',
 									'type'              => 'repeater',
-									'instructions'      => '(max. 3 specjalizacje)',
+									'instructions'      => __( '(up to 3 specializations)', 'partners-site_v2' ),
 									'required'          => 0,
 									'conditional_logic' => 0,
 									'wrapper'           => array(
@@ -760,10 +760,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'sub_fields'        => array(
 										array(
 											'key'          => 'field_6062273e573da',
-											'label'        => 'Nazwa specjalizacji',
+											'label'        => __('Specialization name', 'partners-site_v2'),
 											'name'         => 'name',
 											'type'         => 'text',
-											'instructions' => '(max. 22 znaki)',
+											'instructions' => sprintf(__( '(max. %s chars_)', 'partners-site_v2' ), 22),
 											'required'     => 0,
 											'conditional_logic' => 0,
 											'wrapper'      => array(
@@ -781,7 +781,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key'               => 'field_60622763573db',
-									'label'             => 'Pracownik',
+									'label'             => __( 'Employee', 'partners-site_v2' ),
 									'name'              => 'employee',
 									'type'              => 'post_object',
 									'instructions'      => '',
@@ -806,7 +806,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'vinomat_boxes',
-					'label'             => 'Boxy ofertowe',
+					'label'             => __('Offer boxes', 'partners-site_v2'),
 					'name'              => '',
 					'type'              => 'tab',
 					'instructions'      => '',
@@ -822,7 +822,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'vinomat_boxes_section',
-					'label'             => 'Kontakt z serwisem',
+					'label'             => __('Service contact', 'partners-site_v2'),
 					'name'              => 'vinomat-section',
 					'type'              => 'group',
 					'instructions'      => '',
@@ -837,7 +837,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'sub_fields'        => array(
 						array(
 							'key'               => 'vinomat_news_dealer',
-							'label'             => 'Vinomat boks informacyjny',
+							'label'             => __('Vinomat information box', 'partners-site_v2'),
 							'name'              => 'vinomat_news',
 							'type'              => 'repeater',
 							'instructions'      => '',
@@ -856,7 +856,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							'sub_fields'        => array(
 								array(
 									'key'               => 'vinomat_news_title',
-									'label' => __( 'Tytuł', 'partners-site_v2' ),
+									'label' => __( 'Title', 'partners-site_v2' ),
 									'name'              => 'vinomat_news_title',
 									'type'              => 'text',
 									'instructions'      => '',
@@ -875,7 +875,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key'               => 'vinomat_news_desc',
-									'label'             => 'Opis',
+									'label'             => __( 'Description', 'partners-site_v2' ),
 									'name'              => 'vinomat_news_desc',
 									'type'              => 'textarea',
 									'instructions'      => '',
@@ -894,7 +894,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key'               => 'vinomat_news_image',
-									'label' => __( 'Zdjęcie', 'partners-site_v2' ),
+									'label' => __( 'Photo', 'partners-site_v2' ),
 									'name'              => 'vinomat_news_image',
 									'type'              => 'image',
 									'instructions'      => '',
@@ -918,7 +918,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key'               => 'vinomat_box_link',
-									'label'             => 'Link do kampani',
+									'label'             => __('Link to campaign', 'partners-site_v2'),
 									'name'              => 'slides',
 									'type'              => 'repeater',
 									'instructions'      => '',
@@ -933,11 +933,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'min'               => 1,
 									'max'               => 1,
 									'layout'            => 'row',
-									'button_label'      => 'Dodaj kampanię',
+									'button_label'      => __('Add a campaign', 'partners-site_v2'),
 									'sub_fields'        => array(
 										array(
 											'key'          => 'vinomat_box_link_type',
-											'label'        => 'Typ kampanii',
+											'label'        => __('Campaign type', 'partners-site_v2'),
 											'name'         => 'type',
 											'type'         => 'select',
 											'instructions' => '',
@@ -949,8 +949,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 												'id'    => '',
 											),
 											'choices'      => array(
-												'local'  => 'Kampania lokalna',
-												'global' => 'Kampania globalna',
+												'local'  => __( 'Local campaign', 'partners-site_v2' ),
+												'global' => __( 'Global campaign', 'partners-site_v2' ),
 											),
 											'default_value' => false,
 											'allow_null'   => 0,
@@ -962,7 +962,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key'          => 'vinomat_box_link_type_1',
-											'label'        => 'Kampania',
+											'label'        => __( 'Campaign', 'partners-site_v2' ),
 											'name'         => 'local-campaign',
 											'type'         => 'post_object',
 											'instructions' => '',
@@ -992,7 +992,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										),
 										array(
 											'key'          => 'vinomat_box_link_type_2',
-											'label'        => 'Kampania',
+											'label'        => __( 'Campaign', 'partners-site_v2' ),
 											'name'         => 'global-campaign',
 											'type'         => 'network_post_object',
 											'instructions' => '',
@@ -1028,7 +1028,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key' => 'service_additional',
-					'label' => 'Dodatkowe ustawienia',
+					'label' => __('Additional settings', 'partners-site_v2'),
 					'name' => '',
 					'type' => 'tab',
 					'instructions' => '',
@@ -1044,7 +1044,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key' => 'service_additional_section',
-					'label' => __( 'Kod do podstrony z podziękowaniem', 'partners-site_v2' ),
+					'label' => __('Code for thank-you page', 'partners-site_v2'),
 					'name' => 'service-section',
 					'type' => 'group',
 					'instructions' => '',
@@ -1059,7 +1059,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'sub_fields' => array(
 						array(
 							'key' => 'field_thankyou_code',
-							'label' => __( 'Dodatkowy kod na podstronie z podziękowaniem', 'partners-site_v2' ),
+							'label' => __( 'Additional code for the thank-you page', 'partners-site_v2' ),
 							'name' => 'field_thankyou_code',
 							'type' => 'textarea',
 							'instructions' => '',

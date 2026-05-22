@@ -5,12 +5,12 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_quickinfo',
-			'title'                 => 'quickinfo',
+			'title'                 => __('Quick info', 'partners-site_v2'),
 			'fields'                => array(
 
 				array(
 					'key'               => 'field_quicknotes',
-					'label'             => 'Ciekawostki',
+					'label'             => __('Interesting facts', 'partners-site_v2'),
 					'name'              => 'items',
 					'type'              => 'repeater',
 					'instructions'      => '',
@@ -29,7 +29,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'sub_fields'        => array(
 						array(
 							'key'               => 'field_uptitle',
-							'label' => __( 'Tytuł górny', 'partners-site_v2' ),
+							'label' => __('Top title', 'partners-site_v2'),
 							'name'              => 'field_uptitle',
 							'type'              => 'text',
 							'instructions'      => '',
@@ -48,7 +48,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_midtitle',
-							'label' => __( 'Środkowy tytuł', 'partners-site_v2' ),
+							'label' => __('Middle title', 'partners-site_v2'),
 							'name'              => 'field_midtitle',
 							'type'              => 'text',
 							'instructions'      => '',
@@ -67,7 +67,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_lowtitle',
-							'label' => __( 'Dolny tytuł', 'partners-site_v2' ),
+							'label' => __('Bottom title', 'partners-site_v2'),
 							'name'              => 'field_lowtitle',
 							'type'              => 'text',
 							'instructions'      => '',

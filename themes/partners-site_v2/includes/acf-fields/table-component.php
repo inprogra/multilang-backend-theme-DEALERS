@@ -4,11 +4,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_table_generator',
-			'title'                 => 'Generator tabeli',
+			'title'                 => __('Table Generator', 'partners-site_v2'),
 			'fields'                => array(				
 				array(
 					'key'               => 'table_preview',
-					'label'             => 'Tabela',
+					'label'             => __( 'Table', 'partners-site_v2' ),
 					'name'              => 'table',
 					'type'              => 'table',
 					'instructions'      => '',
@@ -25,7 +25,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key' => 'static_header',
-					'label' => __( 'Zablokować pierwszą kolumnę?', 'partners-site_v2' ),
+					'label' => __('Lock the first column?', 'partners-site_v2'),
 					'name' => 'static_header',
 					'aria-label' => '',
 					'type' => 'radio',
@@ -38,8 +38,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						'id' => '',
 					),
 					'choices' => array(
-						0 => 'Nie',
-						1 => 'Tak',								
+						0 => __( 'No', 'partners-site_v2' ),
+						1 => __( 'Yes', 'partners-site_v2' ),								
 					),
 					'default_value' => 0,
 					'return_format' => 'value',
@@ -51,7 +51,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key' => 'table_color',
-					'label' => 'Wariant kolorystyczny',
+					'label' => __('Color scheme', 'partners-site_v2'),
 					'name' => 'table_color',
 					'aria-label' => '',
 					'type' => 'radio',
@@ -64,8 +64,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						'id' => '',
 					),
 					'choices' => array(
-						0 => 'Niebieski',
-						1 => 'Szary',								
+						0 => __( 'Blue', 'partners-site_v2' ),
+						1 => __( 'Gray', 'partners-site_v2' ),								
 					),
 					'default_value' => 0,
 					'return_format' => 'value',
