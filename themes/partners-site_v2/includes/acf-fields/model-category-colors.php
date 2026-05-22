@@ -4,11 +4,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'model_category_colors',
-			'title'                 => 'ModelCategory Colors',
+			'title'                 => __('ModelCategory Colors', 'partners-site_v2'),
 			'fields'                => array(
 				array(
 				'key'               => 'model_category_img',
-				'label' => __( 'Zdjęcie', 'partners-site_v2' ),
+				'label' => __( 'Photo', 'partners-site_v2' ),
 				'name'              => 'model_category_img',
 				'type'              => 'image',
 				'instructions'      => '',

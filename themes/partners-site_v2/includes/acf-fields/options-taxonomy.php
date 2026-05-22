@@ -5,11 +5,11 @@ use \Classes\IconsDictionary;
 if (function_exists('acf_add_local_field_group')) :
     acf_add_local_field_group(array(
         'key' => 'taxonomy',
-        'title' => 'Słowniki',
+        'title' => __('Dictionaries', 'partners-site_v2'),
         'fields' => array(
             array(
                 'key' => 'taxonomy_model',
-                'label' => 'Modele',
+                'label' => __('Models', 'partners-site_v2'),
                 'name' => '',
                 'type' => 'tab',
                 'instructions' => '',
@@ -25,7 +25,7 @@ if (function_exists('acf_add_local_field_group')) :
             ), 
             array(
                 'key' => 'taxonomy_models',
-                'label' => 'Modele',
+                'label' => __('Models', 'partners-site_v2'),
                 'name' => 'taxonomy_models',
                 'type' => 'group',
                 'instructions' => '',
@@ -40,7 +40,7 @@ if (function_exists('acf_add_local_field_group')) :
                 'sub_fields' => array(
                     array(
                         'key' => 'taxonomy_model_details',
-                        'label' => 'Modele aut',
+                        'label' => __('Car models', 'partners-site_v2'),
                         'name' => 'taxonomy_model_details',
                         'type' => 'repeater',
                         'instructions' => '',
@@ -58,7 +58,7 @@ if (function_exists('acf_add_local_field_group')) :
                         'sub_fields' => array(
                             array(
                                 'key' => 'taxonomy_model_engine',
-                                'label' => 'Nazwa',
+                                'label' => __('Name', 'partners-site_v2'),
                                 'name' => 'taxonomy_model_engine',
                                 'type' => 'text',
                                 'instructions' => '',
@@ -81,7 +81,7 @@ if (function_exists('acf_add_local_field_group')) :
             ),
             array(
                 'key' => 'taxonomy_engine',
-                'label' => 'Silniki',
+                'label' => __('Engines', 'partners-site_v2'),
                 'name' => '',
                 'type' => 'tab',
                 'instructions' => '',
@@ -97,7 +97,7 @@ if (function_exists('acf_add_local_field_group')) :
             ),
             array(
                 'key' => 'taxonomy_engines',
-                'label' => 'Silniki',
+                'label' => __('Engines', 'partners-site_v2'),
                 'name' => 'taxonomy_engines',
                 'type' => 'group',
                 'instructions' => '',
@@ -112,7 +112,7 @@ if (function_exists('acf_add_local_field_group')) :
                 'sub_fields' => array(
                     array(
                         'key' => 'taxonomy_engines_details',
-                        'label' => __( 'Typy silnikÓw', 'partners-site_v2' ),
+                        'label' => __('Engine types', 'partners-site_v2'),
                         'name' => 'taxonomy_engines_details',
                         'type' => 'repeater',
                         'instructions' => '',
@@ -130,7 +130,7 @@ if (function_exists('acf_add_local_field_group')) :
                         'sub_fields' => array(
                             array(
                                 'key' => 'taxonomy_single_engine',
-                                'label' => 'Nazwa',
+                                'label' => __('Name', 'partners-site_v2'),
                                 'name' => 'taxonomy_single_engine',
                                 'type' => 'text',
                                 'instructions' => '',
@@ -149,7 +149,7 @@ if (function_exists('acf_add_local_field_group')) :
                             ),
                             array(
                                 'key' => 'taxonomy_single_engine_is_electric',
-                                'label' => 'Elektryczny',
+                                'label' => __('Electric', 'partners-site_v2'),
                                 'name' => 'taxonomy_single_engine_is_electric',
                                 'aria-label' => '',
                                 'type' => 'true_false',
@@ -173,7 +173,7 @@ if (function_exists('acf_add_local_field_group')) :
             ),
             array(
                 'key' => 'taxonomy_color',
-                'label' => 'Kolory',
+                'label' => __('Colors', 'partners-site_v2'),
                 'name' => '',
                 'type' => 'tab',
                 'instructions' => '',
@@ -189,7 +189,7 @@ if (function_exists('acf_add_local_field_group')) :
             ), 
             array(
                 'key' => 'taxonomy_colors',
-                'label' => 'Kolory',
+                'label' => __('Colors', 'partners-site_v2'),
                 'name' => 'taxonomy_colors',
                 'type' => 'group',
                 'instructions' => '',
@@ -204,7 +204,7 @@ if (function_exists('acf_add_local_field_group')) :
                 'sub_fields' => array(
                     array(
                         'key' => 'taxonomy_color_details',
-                        'label' => __( 'Rodzaje kolorów', 'partners-site_v2' ),
+                        'label' => __('Color types', 'partners-site_v2'),
                         'name' => 'taxonomy_color_details',
                         'type' => 'repeater',
                         'instructions' => '',
@@ -222,7 +222,7 @@ if (function_exists('acf_add_local_field_group')) :
                         'sub_fields' => array(
                             array(
                                 'key' => 'taxonomy_single_color',
-                                'label' => 'Nazwa',
+                                'label' => __('Name', 'partners-site_v2'),
                                 'name' => 'taxonomy_single_color',
                                 'type' => 'text',
                                 'instructions' => '',
@@ -245,7 +245,7 @@ if (function_exists('acf_add_local_field_group')) :
             ),
             array(
                 'key' => 'taxonomy_version',
-                'label' => __( 'Wyposażenie', 'partners-site_v2' ),
+                'label' => __('Equipment', 'partners-site_v2'),
                 'name' => '',
                 'type' => 'tab',
                 'instructions' => '',
@@ -261,7 +261,7 @@ if (function_exists('acf_add_local_field_group')) :
             ),
             array(
                 'key' => 'taxonomy_versions',
-                'label' => __( 'Rodzaje wyposażenia', 'partners-site_v2' ),
+                'label' => __('Equipment types', 'partners-site_v2'),
                 'name' => 'taxonomy_versions',
                 'type' => 'group',
                 'instructions' => '',
@@ -276,7 +276,7 @@ if (function_exists('acf_add_local_field_group')) :
                 'sub_fields' => array(
                     array(
                         'key' => 'taxonomy_version_details',
-                        'label' => __( 'Rodzaje wyposażenia', 'partners-site_v2' ),
+                        'label' => __('Equipment types', 'partners-site_v2'),
                         'name' => 'taxonomy_version_details',
                         'type' => 'repeater',
                         'instructions' => '',
@@ -294,7 +294,7 @@ if (function_exists('acf_add_local_field_group')) :
                         'sub_fields' => array(
                             array(
                                 'key' => 'taxonomy_version_color',
-                                'label' => 'Nazwa',
+                                'label' => __('Name', 'partners-site_v2'),
                                 'name' => 'taxonomy_version_color',
                                 'type' => 'text',
                                 'instructions' => '',
@@ -317,7 +317,7 @@ if (function_exists('acf_add_local_field_group')) :
             ),
             array(
                 'key' => 'taxonomy_layout',
-                'label' => 'Tapicerka',
+                'label' => __('Upholstery', 'partners-site_v2'),
                 'name' => '',
                 'type' => 'tab',
                 'instructions' => '',
@@ -333,7 +333,7 @@ if (function_exists('acf_add_local_field_group')) :
             ),
             array(
                 'key' => 'taxonomy_layouts',
-                'label' => 'Rodzaje tapicerki',
+                'label' => __('Upholstery types', 'partners-site_v2'),
                 'name' => 'taxonomy_layouts',
                 'type' => 'group',
                 'instructions' => '',
@@ -348,7 +348,7 @@ if (function_exists('acf_add_local_field_group')) :
                 'sub_fields' => array(
                     array(
                         'key' => 'taxonomy_layouts_details',
-                        'label' => 'Rodzaje tapicerki',
+                        'label' => __('Upholstery types', 'partners-site_v2'),
                         'name' => 'taxonomy_layouts_details',
                         'type' => 'repeater',
                         'instructions' => '',
@@ -366,7 +366,7 @@ if (function_exists('acf_add_local_field_group')) :
                         'sub_fields' => array(
                             array(
                                 'key' => 'taxonomy_layouts_color',
-                                'label' => 'Nazwa',
+                                'label' => __('Name', 'partners-site_v2'),
                                 'name' => 'taxonomy_layouts_color',
                                 'type' => 'text',
                                 'instructions' => '',

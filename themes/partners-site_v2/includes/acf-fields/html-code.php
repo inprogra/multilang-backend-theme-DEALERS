@@ -7,14 +7,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'html_code',
-			'title'                 => 'Kod html',
+			'title'                 => __( 'HTML code', 'partners-site_v2' ),
 			'fields'                => array(
 				array(
 					'key'               => 'html_code_render',
-					'label'             => 'Kod HTML',
+					'label'             => __( 'HTML code', 'partners-site_v2' ),
 					'name'              => 'html_code_render',
 					'type'              => 'textarea',
-					'instructions' => __( 'Wszystkie tagi poza script będą usuwane', 'partners-site_v2' ),
+					'instructions' => __( 'All tags except for the script tag will be removed', 'partners-site_v2' ),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => array(

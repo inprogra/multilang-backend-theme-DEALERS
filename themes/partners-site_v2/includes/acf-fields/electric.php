@@ -11,11 +11,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_electric',
-			'title'                 => 'Ustawienia',
+			'title'                 => __( 'Settings', 'partners-site_v2' ),
 			'fields'                => array(
 				array(
 					'key'               => 'maps_disclaimer',
-					'label'             => 'Informacja pod mapami',
+					'label'             => __( 'Information below the maps', 'partners-site_v2' ),
 					'name'              => 'maps_disclaimer',
 					'type'              => 'textarea',
 					'instructions'      => '',
@@ -36,7 +36,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 				),
 				array(
 					'key'               => 'field_electric_address',
-					'label' => __( 'Ładowarki konfiguracja', 'partners-site_v2' ),
+					'label' 			=> __( 'Charger configuration', 'partners-site_v2' ),
 					'name'              => 'chargers',
 					'type'              => 'repeater',
 					'instructions'      => '',
@@ -55,14 +55,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 					'sub_fields'        => array(
 						array(
 							'key'               => 'super_charger',
-							'label' => __( 'Szybka ładowarka?', 'partners-site_v2' ),
+							'label' 			=> __( 'Fast charger?', 'partners-site_v2' ),
 							'name'              => 'super_charger',
 							'type'              => 'checkbox',
 							'instructions'      => '',
 							'required'          => 0,
 							'conditional_logic' => 0,
 							'choices'           => array(
-								'tak' => 'tak',
+								'tak' => __( 'yes', 'partners-site_v2' ),
 							),
 							'allow_null'        => true,
 							'multiple'          => false,
@@ -76,7 +76,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'charger_address',
-							'label' => __( 'Adres ładowarki', 'partners-site_v2' ),
+							'label' 			=> __( 'Charger address', 'partners-site_v2' ),
 							'name'              => 'charger_address',
 							'type'              => 'text',
 							'instructions'      => '',
@@ -97,7 +97,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'charger_title',
-							'label' => __( 'Górny opis', 'partners-site_v2' ),
+							'label' 			=> __( 'Top description', 'partners-site_v2' ),
 							'name'              => 'charger_title',
 							'type'              => 'text',
 							'instructions'      => '',
@@ -118,7 +118,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'charger_up',
-							'label' => __( 'Ładowarki', 'partners-site_v2' ),
+							'label' 			=> __( 'Chargers', 'partners-site_v2' ),
 							'name'              => 'charger_up',
 							'type'              => 'wysiwyg',
 							'instructions'      => '',
@@ -139,7 +139,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'charger_type',
-							'label' => __( 'Wizytówka', 'partners-site_v2' ),
+							'label' 			=> __( 'Business card', 'partners-site_v2' ),
 							'name'              => 'charger_type',
 							'type'              => 'wysiwyg',
 							'instructions'      => '',
@@ -160,7 +160,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'charger_hours',
-							'label'             => 'Adres',
+							'label'             => __( 'Address', 'partners-site_v2' ),
 							'name'              => 'charger_hours',
 							'type'              => 'wysiwyg',
 							'instructions'      => '',

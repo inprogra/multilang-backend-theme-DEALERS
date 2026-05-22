@@ -7,11 +7,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_cost_generator',
-			'title'                 => 'Kalkulator kosztów',
+			'title'                 => __( 'Cost Calculator', 'partners-site_v2' ),
 			'fields'                => array(
 				array(
 					'key'               => 'cost_calculator',
-					'label' => __( 'Nagłówek', 'partners-site_v2' ),
+					'label' 			=> __( 'Header', 'partners-site_v2' ),
 					'name'              => 'cost_calculator',
 					'type'              => 'text',
 					'instructions'      => '',
@@ -22,7 +22,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						'class' => '',
 						'id'    => '',
 					),
-					'default_value'     => 'Kalkulator kosztów',
+					'default_value'     => __( 'Cost Calculator', 'partners-site_v2' ),
 					'disabled'          => true,
 					'placeholder'       => '',
 					'prepend'           => '',
@@ -31,7 +31,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'cost-map-model',
-					'label'             => 'Model',
+					'label'             => __( 'Model', 'partners-site_v2' ),
 					'name'              => 'cost-map-model',
 					'type'              => 'select',
 					'instructions'      => '',
@@ -53,7 +53,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key' => 'cost-map-version',
-					'label' => __( 'Wersja wyposażenia', 'partners-site_v2' ),
+					'label' 			=> __( 'Equipment Version', 'partners-site_v2' ),
 					'name' => 'cost-map-version',
 					'aria-label' => '',
 					'type' => 'select',
@@ -91,7 +91,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 			'instruction_placement' => 'label',
 			'hide_on_screen'        => '',
 			'active'                => true,
-			'description'           => 'Kalkulator kosztów',
+			'description'           => __( 'Cost Calculator', 'partners-site_v2' ),
 			'show_in_rest'          => 0,
 		)
 	);

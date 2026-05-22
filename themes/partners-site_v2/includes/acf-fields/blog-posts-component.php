@@ -4,15 +4,15 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
 		array(
 		'key' => 'group_668ce0b523e0b',
-		'title' => 'Blog posts component',
+		'title' => __( 'Blog posts component', 'partners-site_v2' ),
 		'fields' => array(
 			array(
 				'key' => 'field_668d38d6cd64c',
-				'label' => __( 'Tytuł 1. część', 'partners-site_v2' ),
+				'label' => sprintf( __( 'Title: Part %s', 'partners-site_v2' ), 1),
 				'name' => 'title_1',
 				'aria-label' => '',
 				'type' => 'text',
-				'instructions' => 'Czarna H2',
+				'instructions' => __( 'Black H2', 'partners-site_v2' ),
 				'required' => 0,
 				'conditional_logic' => 0,
 				'wrapper' => array(
@@ -28,11 +28,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 			),
 			array(
 				'key' => 'field_668d3907cd64d',
-				'label' => __( 'Tytuł 2. część', 'partners-site_v2' ),
+				'label' => sprintf( __( 'Title: Part %s', 'partners-site_v2' ), 2),
 				'name' => 'title_2',
 				'aria-label' => '',
 				'type' => 'text',
-				'instructions' => __( 'Szara część tytułu', 'partners-site_v2' ),
+				'instructions' => __( 'Gray text in the title', 'partners-site_v2' ),
 				'required' => 0,
 				'conditional_logic' => array(
 					array(
@@ -56,11 +56,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 			),
 			array(
 				'key' => 'field_668ce0b550649',
-				'label' => 'Filtruj po tagu',
+				'label' => __( 'Filter by tag', 'partners-site_v2' ),
 				'name' => 'tags',
 				'aria-label' => '',
 				'type' => 'taxonomy',
-				'instructions' => __( 'Wyświetlaj tylko posty posiadające jeden z tagów', 'partners-site_v2' ),
+				'instructions' => __( 'Show only posts with one of the tags', 'partners-site_v2' ),
 				'required' => 0,
 				'conditional_logic' => 0,
 				'wrapper' => array(
@@ -81,7 +81,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 			),
 			array(
 				'key' => 'field_668ce1275064a',
-				'label' => __( 'Limit postów na stronę', 'partners-site_v2' ),
+				'label' => __( 'Limit posts per page', 'partners-site_v2' ),
 				'name' => 'limit',
 				'aria-label' => '',
 				'type' => 'number',

@@ -9,12 +9,12 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_5c18f89ca825f',
-			'title'                 => 'Ustawienia',
+			'title'                 => __( 'Settings', 'partners-site_v2' ),
 			'fields'                => array(
 				
 				array(
 					'key'               => 'field_5c18f8a29941c',
-					'label'             => 'Leasing',
+					'label'             => __('Leasing', 'partners-site_v2'),
 					'name'              => 'leasing',
 					'type'              => 'repeater',
 					'instructions'      => '',
@@ -33,7 +33,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 					'sub_fields'        => array(
 						array(
 							'key' => 'auto_enable',
-							'label' => __( 'Włączaj ofertę automatycznie', 'partners-site_v2' ),
+							'label' => __('Automatically include this offer', 'partners-site_v2'),
 							'name' => 'auto_enable',
 							'aria-label' => '',
 							'type' => 'radio',
@@ -46,8 +46,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								'id' => '',
 							),
 							'choices' => [
-								'enable' => 'Tak',
-								'disable' => 'Nie',
+								'enable' => __( 'Yes', 'partners-site_v2' ),
+								'disable' => __( 'No', 'partners-site_v2' ),
 								
 							],
 							'default_value' => 'disable',
@@ -60,7 +60,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'leasing_description',
-							'label' => __( 'Opis dla dealerów', 'partners-site_v2' ),
+							'label' => __('Description for dealers', 'partners-site_v2'),
 							'name'              => 'leasing_description',
 							'type'              => 'textarea',
 							'instructions'      => '',
@@ -79,7 +79,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key' => 'exclude_cars',
-							'label' => 'Modele wykluczone z oferty',
+							'label' => __('Models excluded from the offer', 'partners-site_v2'),
 							'name' => 'exclude_cars',
 							'aria-label' => '',
 							'type' => 'checkbox',
@@ -102,7 +102,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key' => 'exclude_state',
-							'label' => 'Modele wykluczone z oferty',
+							'label' => __('Models excluded from the offer', 'partners-site_v2'),
 							'name' => 'exclude_state',
 							'aria-label' => '',
 							'type' => 'radio',
@@ -115,9 +115,9 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								'id' => '',
 							),
 							'choices' => [
-								'nowy' => 'Nowe auta',
-								'used' => 'Używane auta',
-								'null' => 'Wszystkie auta'
+								'nowy' => __( 'New cars', 'partners-site_v2' ),
+								'used' => __( 'Used cars', 'partners-site_v2' ),
+								'null' => __( 'All cars', 'partners-site_v2' )
 							],
 							'default_value' => false,
 							'return_format' => 'value',
@@ -129,7 +129,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'leasing_pricing',
-							'label' => __( 'Wartość pojazdu', 'partners-site_v2' ),
+							'label' => __('Vehicle value', 'partners-site_v2'),
 							'name'              => 'leasing_pricing',
 							'type'              => 'select',
 							'instructions'      => '',
@@ -141,7 +141,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								'id'    => '',
 							),
 							'choices'           => array(
-								'netto'  => 'netto',
+								'netto'  => __( 'net', 'partners-site_v2' ),
 							),
 							'default_value'     => false,
 							'allow_null'        => 0,
@@ -153,7 +153,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'leasing_offer',
-							'label'             => 'Rodzaj finansowania',
+							'label'             => __('Type of financing', 'partners-site_v2'),
 							'name'              => 'leasing_offer',
 							'type'              => 'select',
 							'instructions'      => '',
@@ -175,7 +175,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'default_income_leasing',
-							'label' => __( 'Domyślna atrakcyjnośc/prowizja', 'partners-site_v2' ),
+							'label' => __('Default incentive/commission', 'partners-site_v2'),
 							'name'              => 'default_income_leasing',
 							'type'              => 'select',
 							'instructions'      => '',
@@ -197,7 +197,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'default_installment_leasing',
-							'label' => __( 'Domyślna ilość rat leasingu', 'partners-site_v2' ),
+							'label' => __('Default number of lease payments', 'partners-site_v2'),
 							'name'              => 'default_installment_leasing',
 							'type'              => 'select',
 							'instructions'      => '',
@@ -219,7 +219,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'default_fee_leasing',
-							'label' => __( 'Domyślna wpłata własna', 'partners-site_v2' ),
+							'label' => __('Default down payment', 'partners-site_v2'),
 							'name'              => 'default_fee_leasing',
 							'type'              => 'select',
 							'instructions'      => '',
@@ -241,7 +241,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'fee_leasing',
-							'label' => __( 'Dostępne wpłaty własne', 'partners-site_v2' ),
+							'label' => __('Available down payments', 'partners-site_v2'),
 							'name'              => 'fee_leasing',
 							'type'              => 'select',
 							'instructions'      => '',
@@ -263,7 +263,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'rates_leasing',
-							'label' => __( 'Dostępna ilość rat', 'partners-site_v2' ),
+							'label' => __('Available number of installments', 'partners-site_v2'),
 							'name'              => 'rates_leasing',
 							'type'              => 'select',
 							'instructions'      => '',
@@ -287,7 +287,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 				),
 				array(
 					'key'               => 'najem',
-					'label'             => 'Najem',
+					'label'             => __('Rental', 'partners-site_v2'),
 					'name'              => 'najem',
 					'type'              => 'repeater',
 					'instructions'      => '',
@@ -306,7 +306,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 					'sub_fields'        => array(
 						array(
 							'key' => 'auto_enable',
-							'label' => __( 'Włączaj ofertę automatycznie', 'partners-site_v2' ),
+							'label' => __('Automatically include this offer', 'partners-site_v2'),
 							'name' => 'auto_enable',
 							'aria-label' => '',
 							'type' => 'radio',
@@ -319,8 +319,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								'id' => '',
 							),
 							'choices' => [
-								'enable' => 'Tak',
-								'disable' => 'Nie',
+								'enable' => __( 'Yes', 'partners-site_v2' ),
+								'disable' => __( 'No', 'partners-site_v2' ),
 								
 							],
 							'default_value' => 'disable',
@@ -333,7 +333,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'najem_description',
-							'label' => __( 'Opis dla dealerów', 'partners-site_v2' ),
+							'label' => __('Description for dealers', 'partners-site_v2'),
 							'name'              => 'najem_description',
 							'type'              => 'textarea',
 							'instructions'      => '',
@@ -352,7 +352,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key' => 'exclude_cars',
-							'label' => 'Modele wykluczone z oferty',
+							'label' => __('Models excluded from the offer', 'partners-site_v2'),
 							'name' => 'exclude_cars',
 							'aria-label' => '',
 							'type' => 'checkbox',
@@ -375,7 +375,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key' => 'exclude_state',
-							'label' => 'Modele wykluczone z oferty',
+							'label' => __('Models excluded from the offer', 'partners-site_v2'),
 							'name' => 'exclude_state',
 							'aria-label' => '',
 							'type' => 'radio',
@@ -388,9 +388,9 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								'id' => '',
 							),
 							'choices' => [
-								'nowy' => 'Nowe auta',
-								'used' => 'Używane auta',
-								'null' => 'Wszystkie auta'
+								'nowy' => __( 'New cars', 'partners-site_v2' ),
+								'used' => __( 'Used cars', 'partners-site_v2' ),
+								'null' => __( 'All cars', 'partners-site_v2' )
 							],
 							'default_value' => false,
 							'return_format' => 'value',
@@ -402,7 +402,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'najem_pricing',
-							'label' => __( 'Wartość pojazdu', 'partners-site_v2' ),
+							'label' => __('Vehicle value', 'partners-site_v2'),
 							'name'              => 'najem_pricing',
 							'type'              => 'select',
 							'instructions'      => '',
@@ -414,7 +414,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								'id'    => '',
 							),
 							'choices'           => array(								
-								'netto'  => 'netto',
+								'netto'  => __( 'net', 'partners-site_v2' ),
 							),
 							'default_value'     => false,
 							'allow_null'        => 0,
@@ -426,7 +426,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'najem_offer',
-							'label'             => 'Rodzaj finansowania',
+							'label'             => __('Type of financing', 'partners-site_v2'),
 							'name'              => 'najem_offer',
 							'type'              => 'select',
 							'instructions'      => '',
@@ -448,7 +448,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'default_income_najem',
-							'label' => __( 'Domyślna atrakcyjnośc/prowizja', 'partners-site_v2' ),
+							'label' => __('Default incentive/commission', 'partners-site_v2'),
 							'name'              => 'default_income_najem',
 							'type'              => 'select',
 							'instructions'      => '',
@@ -470,7 +470,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'default_installment_najem',
-							'label' => __( 'Domyślna ilość rat najmu', 'partners-site_v2' ),
+							'label' => __('Default number of rental installments', 'partners-site_v2'),
 							'name'              => 'default_installment_najem',
 							'type'              => 'select',
 							'instructions'      => '',
@@ -492,7 +492,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'default_fee_najem',
-							'label' => __( 'Domyślna wpłata własna', 'partners-site_v2' ),
+							'label' => __('Default down payment', 'partners-site_v2'),
 							'name'              => 'default_fee_najem',
 							'type'              => 'select',
 							'instructions'      => '',
@@ -514,7 +514,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'fee_najem',
-							'label' => __( 'Dostępne wpłaty własne', 'partners-site_v2' ),
+							'label' => __('Available down payments', 'partners-site_v2'),
 							'name'              => 'fee_najem',
 							'type'              => 'select',
 							'instructions'      => '',
@@ -536,7 +536,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'rates_najem',
-							'label' => __( 'Dostępna ilość rat', 'partners-site_v2' ),
+							'label' => __('Available number of installments', 'partners-site_v2'),
 							'name'              => 'rates_najem',
 							'type'              => 'select',
 							'instructions'      => '',
@@ -558,7 +558,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'milleage',
-							'label' => __( 'Dostępne roczne przebiegi', 'partners-site_v2' ),
+							'label' => __('Available annual mileage', 'partners-site_v2'),
 							'name'              => 'milleage',
 							'type'              => 'select',
 							'instructions'      => '',

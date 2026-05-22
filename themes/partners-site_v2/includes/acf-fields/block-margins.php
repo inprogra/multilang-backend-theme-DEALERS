@@ -4,11 +4,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_6062c89279958',
-			'title'                 => 'Odstępy',
+			'title'                 => __( 'Spacing', 'partners-site_v2' ),
 			'fields'                => array(
 				array(
 					'key'               => 'field_6062ccff17095',
-					'label' => __( 'Odstępy', 'partners-site_v2' ),
+					'label'				=> __( 'Spacing', 'partners-site_v2' ),
 					'name'              => '',
 					'type'              => 'accordion',
 					'instructions'      => '',
@@ -25,7 +25,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_6062c8b4904c4',
-					'label' => __( 'Odstęp górny', 'partners-site_v2' ),
+					'label' 			=> __( 'Top spacing', 'partners-site_v2' ),
 					'name'              => 'margin-top',
 					'type'              => 'select',
 					'instructions'      => '',
@@ -53,10 +53,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_6062c8cd904c5',
-					'label' => __( 'Odstęp dolny', 'partners-site_v2' ),
+					'label' 			=> __( 'Bottom spacing', 'partners-site_v2' ),
 					'name'              => 'margin-bottom',
 					'type'              => 'select',
-					'instructions' => __( 'Odstępy pomiędzy blokami nie sumują się. <br>Odstęp będzie równy większej wartości odstępu z sąsiadujących bloków.', 'partners-site_v2' ),
+					'instructions' 		=> __( 'Spacing between blocks does not accumulate. <br>The spacing will be equal to the larger value of the spacing from the adjacent blocks.', 'partners-site_v2' ),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => array(
@@ -81,7 +81,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_6062cd670fb9d',
-					'label'             => 'End',
+					'label'             => __( 'End', 'partners-site_v2' ),
 					'name'              => '',
 					'type'              => 'accordion',
 					'instructions'      => '',

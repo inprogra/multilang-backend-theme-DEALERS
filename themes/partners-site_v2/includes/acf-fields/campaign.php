@@ -3,14 +3,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_6040acb02a4a7',
-			'title'                 => 'Pola kampanii na sliderze',
+			'title'                 => __( 'Campaign fields on the slider', 'partners-site_v2' ),
 			'fields'                => array(
 				array(
 					'key'               => 'field_6040ad670702d',
-					'label' => __( 'Tytuł', 'partners-site_v2' ),
+					'label'				=> __( 'Title', 'partners-site_v2' ),
 					'name'              => 'title',
 					'type'              => 'text',
-					'instructions' => __( '(max. 45 znaków)', 'partners-site_v2' ),
+					'instructions' 		=> sprintf(__( '(max. %s chars)', 'partners-site_v2' ), 45),
 					'required'          => 1,
 					'conditional_logic' => 0,
 					'wrapper'           => array(
@@ -26,10 +26,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 				),
 				array(
 					'key'               => 'field_6040acb907029',
-					'label' => __( 'Podtytuł', 'partners-site_v2' ),
+					'label' 			=> __( 'Subtitle', 'partners-site_v2' ),
 					'name'              => 'subtitle',
 					'type'              => 'text',
-					'instructions' => __( '(max. 50 znaków)', 'partners-site_v2' ),
+					'instructions' 		=> sprintf(__( '(max. %s chars)', 'partners-site_v2' ), 50),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => array(
@@ -45,10 +45,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 				),
 				array(
 					'key'               => 'field_6040ad240702b',
-					'label'             => 'Link',
+					'label'             => __( 'Link', 'partners-site_v2' ),
 					'name'              => 'link',
 					'type'              => 'link',
-					'instructions' => __( 'Jeżeli link nie zostanie podany, slajd będzie prowadził do strony kampanii', 'partners-site_v2' ),
+					'instructions'		=> __( 'If no link is provided, the slide will link to the campaign page', 'partners-site_v2' ),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => array(
@@ -60,10 +60,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 				),
 				array(
 					'key'               => 'field_6040ae150702e',
-					'label' => __( 'Zdjęcie', 'partners-site_v2' ),
+					'label' 			=> __( 'Photo', 'partners-site_v2' ),
 					'name'              => 'image',
 					'type'              => 'image',
-					'instructions' => __( '(min. szerokość: 1920px, Zalecana szerokość: 3840px)<br>(min. wysokość: 807px)<br>Zdjęcie główne kampanii wykorzystywane w różnych sliderach na stronie.', 'partners-site_v2' ),
+					'instructions' 		=> __( '(min. width: 1920px, Recommended width: 3840px)<br>(min. height: 807px)<br>The main campaign image used in various sliders on the website.', 'partners-site_v2' ),
 					'required'          => 1,
 					'conditional_logic' => 0,
 					'wrapper'           => array(

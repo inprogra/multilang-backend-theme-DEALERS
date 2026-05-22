@@ -7,11 +7,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_60d5ce6f2e2a6',
-			'title'                 => 'Opcje Jazdy testowej',
+			'title'                 => __('Test drive options', 'partners-site_v2'),
 			'fields'                => array(
 				array(
 					'key'               => 'field_60d5ce87a76ee',
-					'label'             => 'Grupy modelowe',
+					'label'             => __('Model groups', 'partners-site_v2'),
 					'name'              => 'models_groups',
 					'type'              => 'repeater',
 					'instructions'      => '',
@@ -30,7 +30,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					'sub_fields'        => array(
 						array(
 							'key'               => 'field_60d5ceaaa76ef',
-							'label'             => 'Modele',
+							'label'             => __('Models', 'partners-site_v2'),
 							'name'              => 'models',
 							'type'              => 'repeater',
 							'instructions'      => '',
@@ -49,7 +49,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							'sub_fields'        => array(
 								array(
 									'key'               => 'field_602b96dc02487',
-									'label'             => 'Model',
+									'label'             => __( 'Model', 'partners-site_v2' ),
 									'name'              => 'model',
 									'type'              => 'select',
 									'instructions'      => '',
@@ -71,7 +71,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key'               => 'field_60d5cf35a76f1',
-									'label' => __( 'Zdjęcie', 'partners-site_v2' ),
+									'label' => __( 'Photo', 'partners-site_v2' ),
 									'name'              => 'image',
 									'type'              => 'image',
 									'instructions'      => '',

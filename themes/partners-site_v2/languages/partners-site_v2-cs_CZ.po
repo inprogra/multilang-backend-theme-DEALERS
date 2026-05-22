@@ -16,11 +16,15 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
 "X-Generator: Manual\n"
 
-#: functions.php:10
+#: functions.php:77
 msgid "Primary Menu"
 msgstr "Hlavní menu"
 
-#: functions.php:11
+#: functions.php:78
+msgid "Side Menu"
+msgstr "Boční menu"
+
+#: functions.php:79
 msgid "Footer Menu"
 msgstr "Menu zápatí"
 

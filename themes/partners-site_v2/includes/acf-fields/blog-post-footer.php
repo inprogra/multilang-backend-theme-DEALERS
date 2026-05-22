@@ -4,14 +4,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_668fd8d66ece8',
-			'title'                 => 'Blog Footer',
+			'title'                 => __( 'Blog Footer', 'partners-site_v2' ),
 			'fields'                => array(
 				array(
 					'key'               => 'field_668fd8d65cf72',
-					'label' => __( 'Zdjęcie', 'partners-site_v2' ),
+					'label' 			=> __( 'Photo', 'partners-site_v2' ),
 					'name'              => 'img',
 					'type'              => 'image',
-					'instructions' => __( 'Należy sprawdzić czy wysokość treści nie przewyższa wysokości obrazka<br>(min. szerokość zdjęcia: 944px, Zalecana szerokość: 2832px)', 'partners-site_v2' ),
+					'instructions' 		=> __( 'Please make sure the content height does not exceed the image height<br>(minimum image width: 944px, recommended width: 2832px)', 'partners-site_v2' ),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => array(
@@ -32,7 +32,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_668fd8f15cf73',
-					'label' => __( 'Nagłówek', 'partners-site_v2' ),
+					'label'				=> __( 'Header', 'partners-site_v2' ),
 					'name'              => 'heading',
 					'type'              => 'text',
 					'instructions'      => '',
@@ -51,7 +51,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_668fd8f35cf74',
-					'label' => __( 'Zawartość', 'partners-site_v2' ),
+					'label' 			=> __( 'Content', 'partners-site_v2' ),
 					'name'              => 'content',
 					'type'              => 'flexible_content',
 					'instructions'      => '',
@@ -66,12 +66,12 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						'layout_60214709443cz'  => array(
 							'key'        => 'layout_60214709443cz',
 							'name'       => 'description',
-							'label'      => 'Opis',
+							'label'      => __( 'Description', 'partners-site_v2' ),
 							'display'    => 'block',
 							'sub_fields' => array(
 								array(
 									'key'               => 'field_668fd8f45cf75',
-									'label'             => 'Opis',
+									'label'             => __( 'Description', 'partners-site_v2' ),
 									'name'              => 'description',
 									'type'              => 'textarea',
 									'instructions'      => '',
@@ -95,12 +95,12 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						'layout_60214709443c1z' => array(
 							'key'        => 'layout_60214709443c1z',
 							'name'       => 'link',
-							'label'      => 'Przycisk',
+							'label'      => __( 'Button', '' ),
 							'display'    => 'block',
 							'sub_fields' => array(
 								array(
 									'key'               => 'field_668fd8f55cf76',
-									'label'             => 'Akcja przycisku',
+									'label'             => __( 'Button action', 'partners-site_v2' ),
 									'name'              => 'buttonAction',
 									'type'              => 'select',
 									'instructions'      => '',
@@ -112,8 +112,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										'id'    => '',
 									),
 									'choices'           => array(
-										'link' => 'Link',
-										'form' => 'Formularz',
+										'link' => __( 'Link', 'partners-site_v2' ),
+										'form' => __( 'Form', 'partners-site_v2' ),
 									),
 									'default_value'     => false,
 									'allow_null'        => 0,
@@ -125,7 +125,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key'               => 'field_668fd8f75cf77',
-									'label'             => 'Tekst przycisku',
+									'label'             => __( 'Button Text', 'partners-site_v2' ),
 									'name'              => 'buttonText',
 									'type'              => 'text',
 									'instructions'      => '',
@@ -152,7 +152,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key'               => 'field_668fd8f85cf78',
-									'label'             => 'Link',
+									'label'             => __( 'Link', 'partners-site_v2' ),
 									'name'              => 'link',
 									'type'              => 'link',
 									'instructions'      => '',
@@ -178,7 +178,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							'max'        => '',
 						),
 					),
-					'button_label'      => 'Dodaj zawartość',
+					'button_label'      => __( 'Add Content', 'partners-site_v2' ),
 					'min'               => '',
 					'max'               => '',
 				),

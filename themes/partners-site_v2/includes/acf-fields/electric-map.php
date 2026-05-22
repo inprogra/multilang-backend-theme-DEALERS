@@ -4,11 +4,11 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_map_generator',
-			'title'                 => 'Mapa zasięgu',
+			'title'                 => __( 'Coverage map', 'partners-site_v2' ),
 			'fields'                => array(
 				array(
 					'key'               => 'table-preview',
-					'label'             => 'Tabela',
+					'label'             => __( 'Table', 'partners-site_v2' ),
 					'name'              => 'table',
 					'type'              => 'table',
 					'instructions'      => '',

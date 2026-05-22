@@ -14,11 +14,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: functions.php:10
+#: functions.php:77
 msgid "Primary Menu"
 msgstr ""
 
-#: functions.php:11
+#: functions.php:78
+msgid "Side Menu"
+msgstr ""
+
+#: functions.php:78
 msgid "Footer Menu"
 msgstr ""
 

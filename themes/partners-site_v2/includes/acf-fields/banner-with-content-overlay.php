@@ -4,14 +4,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_603d0aedba030',
-			'title'                 => 'BannerWithContentOverlay',
+			'title'                 => __( 'BannerWithContentOverlay', 'partners-site_v2' ),
 			'fields'                => array(
 				array(
 					'key'               => 'field_603d0af8e3731',
-					'label' => __( 'Zdjęcie', 'partners-site_v2' ),
+					'label' 			=> __( 'Photo', 'partners-site_v2' ),
 					'name'              => 'img',
 					'type'              => 'image',
-					'instructions' => __( '(min. szerokość: 1920px, Zalecana szerokość: 3840px)<br>(min wysokość: 556px)', 'partners-site_v2' ),
+					'instructions' 		=> __( '(min. width: 1920px, recommended width: 3840px)<br>(min. height: 556px)', 'partners-site_v2' ),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => array(
@@ -32,14 +32,14 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'format_banner',
-					'label'             => 'Banner w formacie 16:90?',
+					'label'             => __('Banner in 16:9 aspect ratio?', 'partners-site_v2'),
 					'name'              => 'format_banner',
 					'type'              => 'checkbox',
 					'instructions'      => '',
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'choices'           => array(
-						'tak' => 'tak',
+						'tak' => __('yes', 'partners-site_v2'),
 
 					),
 					'allow_null'        => true,
@@ -54,10 +54,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_603d0b15e3732',
-					'label' => __( 'Nagłówek', 'partners-site_v2' ),
+					'label'				=> __( 'Header', 'partners-site_v2' ),
 					'name'              => 'heading',
 					'type'              => 'text',
-					'instructions' => __( '(max. 46 znaków)', 'partners-site_v2' ),
+					'instructions' 		=> sprintf(__( '(max. %s chars)', 'partners-site_v2' ), 46),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => array(
@@ -73,10 +73,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_603d0b1ce3733',
-					'label'             => 'Opis',
+					'label'             => __('Description', 'partners-site_v2' ),
 					'name'              => 'description',
 					'type'              => 'textarea',
-					'instructions' => __( '(max. 330 znaków)', 'partners-site_v2' ),
+					'instructions' 		=> sprintf(__( '(max. %s chars)', 'partners-site_v2' ), 330),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => array(
@@ -92,7 +92,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_603d0b25e3734',
-					'label'             => 'Link',
+					'label'             => __( 'Link', 'partners-site_v2' ),
 					'name'              => 'link',
 					'type'              => 'link',
 					'instructions'      => '',
