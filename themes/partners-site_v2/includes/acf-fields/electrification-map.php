@@ -46,7 +46,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'electrification-map-model',
-					'label'             => __( 'Model', 'partners-site_v2' ),
+					'label'             => __('Model', 'partners-site_v2'),
 					'name'              => 'electrification-map-model',
 					'type'              => 'select',
 					'instructions'      => '',

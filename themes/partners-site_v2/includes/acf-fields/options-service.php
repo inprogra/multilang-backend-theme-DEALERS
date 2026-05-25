@@ -57,7 +57,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							'min'               => 0,
 							'max'               => 3,
 							'layout'            => 'row',
-							'button_label'      => __('Add a campaign', 'partners-site_v2'),
+							'button_label'      => __('Add campaign', 'partners-site_v2'),
 							'sub_fields'        => array(
 								array(
 									'key'               => 'field_606222543bd29',
@@ -181,7 +181,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							'min'               => 0,
 							'max'               => 3,
 							'layout'            => 'row',
-							'button_label'      => __('Add a campaign', 'partners-site_v2'),
+							'button_label'      => __('Add campaign', 'partners-site_v2'),
 							'sub_fields'        => array(
 								array(
 									'key'               => 'field_606222213bd275',
@@ -419,7 +419,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							'label' => __( 'Header', 'partners-site_v2' ),
 							'name'              => 'heading',
 							'type'              => 'text',
-							'instructions' => __( 'Domyślnie tekst nagłówka jest w kolorze szarym. <br>Aby dana fraza była w kolorze czarnym, proszę umieścić ją pomiędzy &lt;strong>&lt;/strong&gt; , np. &lt;strong>TEKST&lt;/strong&gt;. <br>Aby dodać przejście do kolejnej lini proszę dodać &lt;br> np. TEKST &lt;br>TEKST', 'partners-site_v2' ),
+							'instructions' => __( 'By default, the header text is gray. <br>To make a phrase black, please place it between &lt;strong&gt;&lt;/strong&gt;,<br>e.g., &lt;strong&gt;TEXT&lt;/strong&gt;. <br>To add a line break, please add &lt;br&gt;, e.g., TEXT &lt;br&gt;TEXT', 'partners-site_v2' ),
 							'required'          => 1,
 							'conditional_logic' => 0,
 							'wrapper'           => array(
@@ -933,7 +933,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 									'min'               => 1,
 									'max'               => 1,
 									'layout'            => 'row',
-									'button_label'      => __('Add a campaign', 'partners-site_v2'),
+									'button_label'      => __('Add campaign', 'partners-site_v2'),
 									'sub_fields'        => array(
 										array(
 											'key'          => 'vinomat_box_link_type',

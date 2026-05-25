@@ -470,7 +470,7 @@ if (function_exists('acf_add_local_field_group')) :
                                     'id' => '',
                                 ],
                                 'choices' => [
-                                    'link' => __( 'Link', 'partners-site_v2' ),
+                                    'link' => __('Link', 'partners-site_v2'),
                                     'form' => __( 'Form', 'partners-site_v2' ),
                                 ],
                                 'default_value' => false,
@@ -512,7 +512,7 @@ if (function_exists('acf_add_local_field_group')) :
                             ),
                             array(
                                 'key' => 'field_605de5c1d405c',
-                                'label' => __( 'Link', 'partners-site_v2' ),
+                                'label' => __('Link', 'partners-site_v2'),
                                 'name' => 'link',
                                 'type' => 'link',
                                 'instructions' => '',

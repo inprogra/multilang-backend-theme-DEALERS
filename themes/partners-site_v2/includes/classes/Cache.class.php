@@ -91,7 +91,7 @@ class Cache {
 				$admin_bar->add_menu(
 					array(
 						'id'    => 'purge-cache',
-						'title' => 'Wyczyść Cache',
+						'title' => __('Clear Cache', 'partners-site_v2'),
 						'href'  => '#',
 					)
 				);

@@ -214,7 +214,10 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b976a02489',
-					'label' => sprintf(__('Regular price (%s gross)', 'partners-site_v2'), __( 'currency', 'partners-site_v2' )),
+					'label' => sprintf(
+						__('Regular price (%s gross)', 'partners-site_v2'),
+						__( 'currency', 'partners-site_v2' )
+					),
 					'name' => 'regular-price',
 					'type' => 'number',
 					'instructions' => '',
@@ -275,7 +278,10 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b97980248a',
-					'label' => sprintf(__( 'Cena promocyjna (%s brutto)', 'partners-site_v2' ), __( 'currency', 'partners-site_v2' )),
+					'label' => sprintf(
+							__( 'Promotional price (% gross)', 'partners-site_v2' ),
+							__( 'currency', 'partners-site_v2' )
+						),
 					'name' => 'discount-price',
 					'type' => 'number',
 					'instructions' => '',
@@ -360,7 +366,7 @@ if (function_exists('acf_add_local_field_group')):
 					'choices' => array(
 						'0-20000' => __( '0-20,000 km', 'partners-site_v2' ),
 						'20001-100000' => __( '20,000-100,000 km', 'partners-site_v2' ),
-						'100001-200000' => __( '20-100 tys. km', 'partners-site_v2' ),
+						'100001-200000' => __('100,000-200,000 km', 'partners-site_v2'),
 					),
 					'default_value' => false,
 					'allow_null' => 1,
@@ -482,7 +488,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'field_602b96dc02486',
-					'label' => __( 'Model', 'partners-site_v2' ),
+					'label' => __('Model', 'partners-site_v2'),
 					'name' => 'model',
 					'type' => 'select',
 					'instructions' => '',
@@ -671,7 +677,7 @@ if (function_exists('acf_add_local_field_group')):
 						'id' => '',
 					),
 					'choices' => array(
-						'Diesel' => __( 'Diesel', 'partners-site_v2' ),
+						'Diesel' => __('Diesel', 'partners-site_v2'),
 						'Benzyna' => __( 'Gasoline', 'partners-site_v2' ),
 						'Hybryda Plug-In' => __( 'Plug-in hybrid', 'partners-site_v2' ),
 						'Elektryczny' => __( 'Electric', 'partners-site_v2' ),
@@ -698,7 +704,7 @@ if (function_exists('acf_add_local_field_group')):
 					),
 					'choices' => array(
 						'fwd' => __( 'Front-wheel drive (FWD)', 'partners-site_v2' ),
-						'rwd' => __( 'Rear-wheel drive (RWD)', 'partners-site_v2' ),
+						'rwd' => __('Rear-wheel drive (RWD)', 'partners-site_v2'),
 						'4x4' => __( 'All-wheel drive (AWD)', 'partners-site_v2' ),
 					),
 					'default_value' => '',
@@ -953,7 +959,7 @@ if (function_exists('acf_add_local_field_group')):
 					'label' => __( 'Header', 'partners-site_v2' ),
 					'name' => 'accordion-heading',
 					'type' => 'text',
-					'instructions' => __( 'Domyślnie tekst nagłówka jest w kolorze szarym. <br>Aby dana fraza była w kolorze czarnym, proszę umieścić ją pomiędzy &lt;strong>&lt;/strong&gt; , np. &lt;strong>TEKST&lt;/strong&gt; <br>(max. 166 znaki)', 'partners-site_v2' ),
+					'instructions' => __( 'By default, the header text is gray. <br>To make a specific phrase black, please place it between &lt;strong&gt;&lt;/strong&gt;,<br>e.g., &lt;strong&gt;TEXT&lt;/strong&gt; <br>(max. 166 characters)', 'partners-site_v2' ),
 					'required' => 1,
 					'conditional_logic' => 0,
 					'wrapper' => array(
@@ -1427,11 +1433,11 @@ if (function_exists('acf_add_local_field_group')):
 						'id' => '',
 					),
 					'choices' => array(
-						0 => __( 'Status not checked', 'partners-site_v2' ),
-						1 => __( 'Data available in DOL', 'partners-site_v2' ),
-						2 => __( 'Data not available in DOL', 'partners-site_v2' ),
-						3 => __( 'DOL Synchronized', 'partners-site_v2' ),
-						4 => __( 'Synchronization failed', 'partners-site_v2' ),
+						0 => __('Status not checked', 'partners-site_v2'),
+						1 => __('Data available in DOL', 'partners-site_v2'),
+						2 => __('Data not available in DOL', 'partners-site_v2'),
+						3 => __('DOL Synchronized', 'partners-site_v2'),
+						4 => __('Synchronization failed', 'partners-site_v2'),
 					),
 					'default_value' => 0,
 					'return_format' => 'value',
@@ -1443,7 +1449,7 @@ if (function_exists('acf_add_local_field_group')):
 				),
 				array(
 					'key' => 'model_1',
-					'label' => __( 'Model', 'partners-site_v2' ),
+					'label' => __('Model', 'partners-site_v2'),
 					'name' => 'model_1',
 					'type' => 'text',
 					'instructions' => '',

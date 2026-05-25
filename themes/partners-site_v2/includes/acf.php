@@ -179,8 +179,8 @@ function registerCustomBlocks()
 		acf_register_block_type(
 			array(
 				'name' => 'offer-boxes',
-				'title' => __('Sales blocks', 'partners-site_v2'),
-				'description' => __('Sales blocks', 'partners-site_v2'),
+				'title' => __('Sales tiles', 'partners-site_v2'),
+				'description' => __('Sales tiles', 'partners-site_v2'),
 				'render_template' => 'includes/blocks/offer-boxes.php',
 				'category' => 'volvo',
 				'mode' => 'edit',
@@ -470,8 +470,8 @@ function registerCustomBlocks()
 		acf_register_block_type(
 			array(
 				'name' => 'table-component',
-				'title' => __('Table Generator', 'partners-site_v2'),
-				'description' => __('Table Generator', 'partners-site_v2'),
+				'title' => __('Table generator', 'partners-site_v2'),
+				'description' => __('Table generator', 'partners-site_v2'),
 				'render_template' => 'includes/blocks/table-component.php',
 				'category' => 'volvo',
 				'mode' => 'edit',
@@ -739,8 +739,8 @@ function registerAcfOptionsPages()
 
 		acf_add_options_page(
 			array(
-				'page_title' => __('Dealer Settings', 'partners-site_v2'),
-				'menu_title' => __('Dealer Settings', 'partners-site_v2'),
+				'page_title' => __('Dealer settings', 'partners-site_v2'),
+				'menu_title' => __('Dealer settings', 'partners-site_v2'),
 				'menu_slug' => 'options-dealer',
 				'post_id' => 'options-dealer',
 				'capability' => 'edit_posts',

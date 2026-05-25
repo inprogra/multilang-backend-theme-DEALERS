@@ -467,8 +467,8 @@ function rudr_network_settings_pages()
 {
 
     add_menu_page(
-        __( 'Eventy', 'partners-site_v2'),
-        __( 'Eventy', 'partners-site_v2'),
+        __('Events', 'partners-site_v2'),
+        __('Events', 'partners-site_v2'),
         'manage_network_options',
         'event-page',
         'event_cb',
@@ -1970,11 +1970,11 @@ function my_lead_custom_dashboard_widget_display()
         ]
     );
     if ($latest_stock->have_posts()) {
-        echo '<table class="table table-flip-color">';
+        echo '<table class="table table-flip-color" style="max-width: 100%">';
         while ($latest_stock->have_posts()) {
             echo '<tr>';
             $latest_stock->the_post();
-            echo '<td>' . get_field('originUrl') . '</td>';
+            echo '<td style="overflow-wrap: break-word;word-break: break-word; max-width: 70%">' . get_field('originUrl') . '</td>';
             echo '<td>' . get_field('source') . '</td>';
             echo '<td>' . get_the_date() . '</td>';
             echo '<td><a target="_blank" href="' . get_edit_post_link() . '">' . __('Edit', 'partners-site_v2') . '</a></td>';
@@ -2078,7 +2078,7 @@ function my_show_extra_profile_fields($user)
                 <input type="text" name="phone" id="phone"
                     value="<?php echo esc_attr(get_the_author_meta('phone', $user->ID)); ?>" class="regular-text"
                     required /><br />
-                <span class="description"><?php _e('Enter your phone number.', 'partners-site_v2'); ?></span>
+                <span class="description"><?php esc_html_e('Enter your phone number.', 'partners-site_v2'); ?></span>
             </td>
         </tr>
     </table>
@@ -2380,7 +2380,7 @@ function static_html_ajax_regenerate() {
         // Regenerate for all sites
         $generator->scheduleBackgroundGeneration();
         wp_send_json_success([
-            'message' => __('Zaplanowano regenerację dla wszystkich dealerów w tle', 'partners-site_v2')
+            'message' => __('A regeneration job has been scheduled for all dealers in the background', 'partners-site_v2')
         ]);
     } else {
         // Regenerate for current site

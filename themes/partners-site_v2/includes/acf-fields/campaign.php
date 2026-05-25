@@ -45,7 +45,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 				),
 				array(
 					'key'               => 'field_6040ad240702b',
-					'label'             => __( 'Link', 'partners-site_v2' ),
+					'label'             => __('Link', 'partners-site_v2'),
 					'name'              => 'link',
 					'type'              => 'link',
 					'instructions'		=> __( 'If no link is provided, the slide will link to the campaign page', 'partners-site_v2' ),

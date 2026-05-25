@@ -42,7 +42,7 @@ class DolFindCarMapper {
         $vin = $carData->vin ?? ($dolCar->id ?? null);
 
         if (empty($vin)) {
-            return new \WP_Error('findcar_map_error', 'Brak VIN samochodu');
+            return new \WP_Error('findcar_map_error', __('No car VIN', 'partners-site_v2'));
         }
 
         // Try to enrich from Volvo Partner API
@@ -56,7 +56,7 @@ class DolFindCarMapper {
         if (!empty($model)) {
             $listing['model'] = ['originalName' => $model];
         } else {
-            return new \WP_Error('findcar_map_error', 'Brak modelu samochodu');
+            return new \WP_Error('findcar_map_error', __('No car model', 'partners-site_v2'));
         }
 
         // Production Year
@@ -83,7 +83,7 @@ class DolFindCarMapper {
         if (!empty($images)) {
             $listing['mediaUrls'] = $images;
         } else {
-            return new \WP_Error('findcar_map_error', 'Brak zdjęć samochodu');
+            return new \WP_Error('findcar_map_error', __('Photos of the car are missing', 'partners-site_v2'));
         }
 
         // Content Body (description)
@@ -173,7 +173,9 @@ class DolFindCarMapper {
         }
 
         if (!empty($missing)) {
-            return new \WP_Error('findcar_map_error', 'Brak wymaganych pól: ' . implode(', ', $missing) . '. Wymagane jest wzbogacenie danych przez API Volvo (token może być niedostępny lub VIN nieznany).');
+            return new \WP_Error('findcar_map_error', 
+                __('Required fields missing', 'partners-site_v2') . ': ' . implode(', ', $missing) . '. ' . 
+                __('Data enrichment via the Volvo API is required (token may be unavailable or VIN unknown).', 'partners-site_v2'));
         }
 
         return $listing;

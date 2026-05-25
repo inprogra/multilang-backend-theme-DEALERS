@@ -13,7 +13,7 @@ if (function_exists('acf_add_local_field_group')) :
                     'label' => __( 'Title', 'partners-site_v2' ),
                     'name'              => 'heading',
                     'type'              => 'text',
-                    'instructions' => __( 'By default, the header text is gray. To make a specific phrase black, please place it between &lt;strong&gt;&lt;/strong&gt;, <br>e.g., &lt;strong&gt;TEXT&lt;/strong&gt;', 'partners-site_v2' ),
+                    'instructions' => __( 'By default, the header text is gray. To make a specific phrase black, please place it between &lt;strong&gt;&lt;/strong&gt;,<br>e.g., &lt;strong&gt;TEXT&lt;/strong&gt;', 'partners-site_v2' ),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => array(
@@ -48,7 +48,7 @@ if (function_exists('acf_add_local_field_group')) :
                     'sub_fields'        => array(
                         array(
                             'key' => 'widget_model',
-                            'label' => __( 'Model', 'partners-site_v2' ),
+                            'label' => __('Model', 'partners-site_v2'),
                             'name' => 'widget_model',
                             'type' => 'select',
                             'instructions' => '',

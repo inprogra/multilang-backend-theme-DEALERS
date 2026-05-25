@@ -15,7 +15,7 @@ class StockCar {
 		register_post_type(
 			'stock-car',
 			array(
-				'label'    => 'Samochody dostępne na miejscu',
+				'label'    => __('Cars available on site', 'partners-site_v2'),
 				'public'   => true,
 				'rewrite'  => array(
 					'slug' => 'dostepne-na-miejscu',

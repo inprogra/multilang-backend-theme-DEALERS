@@ -110,7 +110,7 @@ class CarSpecification
 	public function limitPermissionsForPostType($current_screen): void
 	{
 		if (!is_main_site() && $this->isCarSpecificationPostType($current_screen)) {
-			echo 'Brak uprawnień';
+			esc_html_e('No permissions', 'partners-site_v2');
 			/** @noinspection ForgottenDebugOutputInspection */
 			wp_die();
 		}

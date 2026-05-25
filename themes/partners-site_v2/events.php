@@ -3,7 +3,7 @@
             <g>
                 <path d="M41.267,18.557H26.832V4.134C26.832,1.851,24.99,0,22.707,0c-2.283,0-4.124,1.851-4.124,4.135v14.432H4.141   c-2.283,0-4.139,1.851-4.138,4.135c-0.001,1.141,0.46,2.187,1.207,2.934c0.748,0.749,1.78,1.222,2.92,1.222h14.453V41.27   c0,1.142,0.453,2.176,1.201,2.922c0.748,0.748,1.777,1.211,2.919,1.211c2.282,0,4.129-1.851,4.129-4.133V26.857h14.435   c2.283,0,4.134-1.867,4.133-4.15C45.399,20.425,43.548,18.557,41.267,18.557z" />
             </g>
-        </svg>Dodaj użytkownika</a>
+        </svg><?php esc_html_e('Dodaj użytkownika', 'partners-site_v2'); ?></a>
 </div>
 <div class="events">
     <div class="result">
@@ -13,27 +13,27 @@
 <div id="ex1" class="modal">
     <div class="title"></div>
     <input type="text" name="password" value="" id="password" class="password" />
-    <button class="change_password btn btn-submit">Zmień hasło</button>
+    <button class="change_password btn btn-submit"><?php esc_html_e('Change password', 'partners-site_v2'); ?></button>
 </div>
 <div id="addUser" class="modal">
-    <div class="title">Dodaj użytkownika</div>
-    <div> Nazwa użyktownika<br />
-        <input type="text" name="username" placeholder="Nazwa użytkownika" value="" id="username" class="username" />
+    <div class="title"><?php esc_html_e('Add user', 'partners-site_v2'); ?></div>
+    <div> <?php esc_html_e('Username', 'partners-site_v2'); ?><br />
+        <input type="text" name="username" placeholder="<?php esc_attr_e('Username', 'partners-site_v2'); ?>" value="" id="username" class="username" />
     </div>
-    <div> Adres email<br />
-        <input type="email" name="email" placeholder="Adres email" value="" id="email" class="email" />
+    <div> <?php esc_html_e('Email Address', 'partners-site_v2'); ?><br />
+        <input type="email" name="email" placeholder="<?php esc_attr_e('Email Address', 'partners-site_v2'); ?>" value="" id="email" class="email" />
     </div>
-    <div> Hasło<br />
-        <input type="text" name="password" placeholder="Hasło" value="" id="password" class="password" />
+    <div> <?php esc_html_e('Password', 'partners-site_v2'); ?><br />
+        <input type="text" name="password" placeholder="<?php esc_attr_e('Password', 'partners-site_v2'); ?>" value="" id="password" class="password" />
     </div>
-    <div> Wyvbierz instancję<br />
+    <div> <?php esc_html_e('Select instance', 'partners-site_v2'); ?><br />
         <select name="instance" id="instance">
 
         </select>
     </div>
     <br />
     <br />
-    <button class="add_user btn btn-submit">Dodaj użytkownika</button>
+    <button class="add_user btn btn-submit"><?php esc_html_e('Add user', 'partners-site_v2'); ?></button>
 </div>
 <script
 			  src="https://code.jquery.com/jquery-3.7.1.js"
@@ -49,7 +49,7 @@
         $.get("https://events.dealervolvo.pl/api/getUsers?token=test", function(data) {
             data = JSON.parse(data);
             var k = '';
-            $('#instance').append('<option value="All">Wszystkie</option>');
+            $('#instance').append('<option value="All"><?php echo json_encode(__('All', 'partners-site_v2')); ?></option>');
             $.each(data, function(key, value) {
 
                 if (k !== key) {
@@ -119,7 +119,7 @@
 
                         }
                     });
-                    alert('Użytkownik dodany');
+                    alert(<?php echo json_encode(__('User added', 'partners-site_v2')); ?>);
 
                 } else {
                     fetch('https://events.dealervolvo.pl/' + instance + '/api/cockpit/saveUser?token=4ca43516c3548033e78fa126f2ae9b', {
@@ -140,16 +140,16 @@
                         })
                         .then(user => user.json())
                         .then(user => console.log(user));
-                    alert('Użytkownik dodany');
+                    alert(<?php echo json_encode(__('User added', 'partners-site_v2')); ?>);
                 }
             })
             $('.hideUser').click(function() {
                 if ($(this).find('span.active').length > 0) {
                     var status = false;  
-                    var messageBox = 'Konto wyłączone';              
+                    var messageBox = <?php echo json_encode(__('Account disabled', 'partners-site_v2')); ?>;
                 } else {
                     var status = true;
-                    var messageBox = 'Konto włączone'
+                    var messageBox = <?php echo json_encode(__('Account enabled', 'partners-site_v2')); ?>
                 }
                 email = $(this).parent().attr('data-email');
                 $.each($('.single_user[data-email="' + email + '"]'), function(key, value) {
@@ -176,7 +176,7 @@
             }) 
             $('#ex1 button').click(function() {
                 if ($('#ex1 input').val().length < 4) {
-                    alert('hasło jest za krótkie');
+                    alert(<?php echo json_encode(__('password is too short', 'partners-site_v2')); ?>);
                     return false;
                 }
 
@@ -200,7 +200,7 @@
                         .then(user => console.log(user));
 
                 })
-                alert('hasło zmienione');
+                alert(<?php echo json_encode(__('password changed', 'partners-site_v2')); ?>);
 
 
             })

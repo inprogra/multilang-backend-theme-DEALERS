@@ -105,7 +105,7 @@ class DolOtomotoMapper {
         $vin = $carData->vin ?? ($dolCar->id ?? null);
 
         if (empty($vin)) {
-            return new \WP_Error('otomoto_map_error', 'Brak VIN samochodu');
+            return new \WP_Error('otomoto_map_error', __('No car VIN', 'partners-site_v2'));
         }
 
         // Required dealer settings
@@ -118,7 +118,7 @@ class DolOtomotoMapper {
             }
         }
         if (!empty($missingSettings)) {
-            return new \WP_Error('otomoto_map_error', 'Brak ustawień lokalizacji Otomoto: ' . implode(', ', $missingSettings));
+            return new \WP_Error('otomoto_map_error', __('No Otomoto location settings', 'partners-site_v2') . ': ' . implode(', ', $missingSettings));
         }
 
         $title = $this->buildTitle($carData);

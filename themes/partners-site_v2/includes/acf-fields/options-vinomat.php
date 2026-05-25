@@ -127,7 +127,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 							'min'               => 1,
 							'max'               => 1,
 							'layout'            => 'row',
-							'button_label'      => __('Add a campaign', 'partners-site_v2'),
+							'button_label'      => __('Add campaign', 'partners-site_v2'),
 							'sub_fields'        => array(
 								array(
 									'key'               => 'vinomat_box_link_type',
@@ -402,7 +402,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						array(
 
 							'key'               => 'vinomat_box_link',
-							'label'             => __( 'Link', 'partners-site_v2' ),
+							'label'             => __('Link', 'partners-site_v2'),
 							'name'              => 'vinomat_box_link',
 							'type'              => 'link',
 							'instructions'      => '',

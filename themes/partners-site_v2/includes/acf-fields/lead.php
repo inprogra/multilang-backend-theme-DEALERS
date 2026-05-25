@@ -93,7 +93,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					),
 					'choices'           => array(
 						'default'    => __( 'Default', 'partners-site_v2' ),
-						'used-cars'  => __( 'Used Cars', 'partners-site_v2' ),
+						'used-cars'  => __( 'Used cars', 'partners-site_v2' ),
 						'service'    => __( 'Service', 'partners-site_v2' ),
 						'test-drive' => __( 'Test Drive', 'partners-site_v2' ),
 					),
@@ -118,7 +118,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 					),
 					'choices'           => array(
 						'new-cars'  => __( 'New cars', 'partners-site_v2' ),
-						'used-cars' => __( 'Used Cars', 'partners-site_v2' ),
+						'used-cars' => __( 'Used cars', 'partners-site_v2' ),
 						'service'   => __( 'Service', 'partners-site_v2' ),
 					),
 					'default_value'     => '',
@@ -141,8 +141,8 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						'id'    => '',
 					),
 					'choices'           => array(
-						'sent'  => __( 'Sent', 'partners-site_v2' ),
-						'saved' => __( 'Saved', 'partners-site_v2' ),
+						'sent'  => __('Sent', 'partners-site_v2'),
+						'saved' => __('Saved', 'partners-site_v2'),
 					),
 					'default_value'     => false,
 					'allow_null'        => 0,
@@ -312,7 +312,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_612ced9da31382',
-					'label'             => __( 'Model', 'partners-site_v2' ),
+					'label'             => __('Model', 'partners-site_v2'),
 					'name'              => 'model',
 					'type'              => 'select',
 					'instructions'      => '',
@@ -501,7 +501,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_602ce8bb314de',
-					'label'             => __( 'youLeadData', 'partners-site_v2' ),
+					'label'             => __('youLeadData', 'partners-site_v2'),
 					'name'              => 'youLeadData',
 					'type'              => 'textarea',
 					'instructions'      => '',

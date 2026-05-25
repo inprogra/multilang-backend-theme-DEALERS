@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Partners Site V2 1.0.0\n"
-"Report-Msgid-Bugs-To: https://volvotest.pl\n"
-"POT-Creation-Date: 2026-02-03 12:00+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-24 16:12+0200\n"
 "PO-Revision-Date: 2026-02-04 14:30+0000\n"
 "Last-Translator: Volvo Team <dev@volvotest.pl>\n"
 "Language-Team: Czech\n"
@@ -16,49 +16,231 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
 "X-Generator: Manual\n"
 
-#: functions.php:77
+#: events.php:52 includes/controllers/EventController.class.php:631
+#: includes/controllers/StockController.class.php:233
+msgid "All"
+msgstr "Vše"
+
+#: events.php:6 events.php:19
+msgid "Add user"
+msgstr "Přidat uživatele"
+
+#: events.php:16
+msgid "Change password"
+msgstr "Změnit heslo"
+
+#: events.php:20 events.php:21
+#: includes/acf-fields/dealer-options.php:1116
+msgid "Username"
+msgstr "Uživatelské jméno"
+
+#: events.php:29
+msgid "Select instance"
+msgstr "Vybrat instanci"
+
+#: events.php:122 events.php:143
+msgid "User added"
+msgstr "Uživatel přidán"
+
+#: events.php:149
+msgid "Account disabled"
+msgstr "Účet deaktivován"
+
+#: events.php:152
+msgid "Account enabled"
+msgstr "Účet aktivován"
+
+#: events.php:179
+msgid "password is too short"
+msgstr "heslo je příliš krátké"
+
+#: events.php:203
+msgid "password changed"
+msgstr "heslo změněno"
+
+#: functions.php:78
 msgid "Primary Menu"
 msgstr "Hlavní menu"
 
-#: functions.php:78
+#: functions.php:79
 msgid "Side Menu"
 msgstr "Boční menu"
 
-#: functions.php:79
+#: functions.php:80
 msgid "Footer Menu"
 msgstr "Menu zápatí"
 
-#: page-dostepne-na-miejscu.php:5
-msgid "Available Cars"
-msgstr "Dostupné vozy"
+#: functions.php:470 functions.php:471
+#: includes/controllers/EventController.class.php:28
+#: includes/controllers/EventController.class.php:29
+#: includes/controllers/EventController.class.php:316
+msgid "Events"
+msgstr "Akce"
 
-#: includes/acf.php:519
-#: includes/acf.php:520
-#: includes/acf-fields/anchor.php:7
-#: includes/acf-fields/anchor.php:11
+#: functions.php:552
+msgid "Search"
+msgstr "Hledat"
+
+#: functions.php:956
+msgid "An error has occurred. Please try logging in again."
+msgstr "Došlo k chybě. Zkuste se prosím přihlásit znovu."
+
+#: functions.php:1916
+msgid "Recent 10 modified vehicles"
+msgstr "Posledních 10 upravených vozidel"
+
+#: functions.php:1921
+msgid "Recent Campaigns"
+msgstr "Poslední kampaně"
+
+#: functions.php:1926
+msgid "Recent Leads"
+msgstr "Poslední poptávky"
+
+#: functions.php:1931 includes/post-types.php:176
+msgid "Blog"
+msgstr "Blog"
+
+#: functions.php:1954 functions.php:1980 functions.php:2004 functions.php:2028
+#: includes/controllers/EventController.class.php:529
+#: includes/controllers/EventController.class.php:558
+msgid "Edit"
+msgstr "Upravit"
+
+#: functions.php:1955 functions.php:2005 functions.php:2029
+msgid "View"
+msgstr "Zobrazit"
+
+#: functions.php:2075
+msgid "Required field"
+msgstr "Povinné pole"
+
+#: functions.php:2081
+msgid "Enter your phone number."
+msgstr "Zadejte své telefonní číslo."
+
+#: functions.php:2121
+msgid "Your one-time code to log in to the website"
+msgstr "Váš jednorázový kód pro přihlášení na webové stránky"
+
+#: functions.php:2261
+msgid "File not found."
+msgstr "Soubor nebyl nalezen."
+
+#: functions.php:2357
+msgid "Regenerate HTML"
+msgstr "Znovu vygenerovat HTML"
+
+#: functions.php:2360
+msgid "Regenerate static HTML files for all pages"
+msgstr "Znovu vygenerovat statické soubory HTML pro všechny stránky"
+
+#: functions.php:2383
+msgid "A regeneration job has been scheduled for all dealers in the background"
+msgstr "Plánované generování pro všechny prodejce na pozadí"
+
+#: functions.php:2390
+#, php-format
+msgid "%d pages generated, errors: %d"
+msgstr "Vygenerováno %d stránek, chyby: %d"
+
+#: functions.php:2410
+msgid "Are you sure you want to regenerate the static HTML files?"
+msgstr "Opravdu chcete obnovit statické soubory HTML?"
+
+#: functions.php:2416
+msgid "Regenerating..."
+msgstr "Regenerační..."
+
+#: functions.php:2429 includes/classes/DolStatus.class.php:82
+#: includes/classes/DolStatus.class.php:84
+#: includes/controllers/EventController.class.php:87
+#: includes/controllers/EventController.class.php:718
+msgid "Error"
+msgstr "Chyba"
+
+#: functions.php:2434
+msgid "An error occurred during regeneration"
+msgstr "Při regeneraci došlo k chybě"
+
+#: functions.php:2577
+msgid "Information"
+msgstr "Informace"
+
+#: functions.php:2578
+msgid "This campaign slot has been set globally by the administrator"
+msgstr "Tento časový slot pro kampaň byl nastaven globálně správcem"
+
+#: includes/acf-fields/banner-with-content-overlay.php:95
+#: includes/acf-fields/blog-post-footer.php:115
+#: includes/acf-fields/blog-post-footer.php:155
+#: includes/acf-fields/campaign.php:48 includes/acf-fields/homepage.php:273
+#: includes/acf-fields/homepage.php:395 includes/acf-fields/homepage.php:471
+#: includes/acf-fields/homepage.php:547 includes/acf-fields/homepage.php:623
+#: includes/acf-fields/homepage.php:806 includes/acf-fields/homepage.php:918
+#: includes/acf-fields/homepage.php:1070 includes/acf-fields/homepage.php:1201
+#: includes/acf-fields/homepage.php:1371 includes/acf-fields/homepage.php:1512
+#: includes/acf-fields/homepage.php:1611 includes/acf-fields/homepage.php:1710
+#: includes/acf-fields/homepage.php:1829 includes/acf-fields/homepage.php:1956
+#: includes/acf-fields/offer-boxes.php:161
+#: includes/acf-fields/offer-cards.php:49
+#: includes/acf-fields/options-models.php:108
+#: includes/acf-fields/options-vinomat.php:405
+#: includes/acf-fields/preview-component.php:249
+#: includes/acf-fields/preview-component.php:289
+#: includes/acf-fields/three-boxes.php:113
+#: includes/acf-fields/three-boxes.php:212
+#: includes/acf-fields/three-boxes.php:311
+#: includes/acf-fields/two-column-content-component.php:473
+#: includes/acf-fields/two-column-content-component.php:515
+msgid "Link"
+msgstr "Odkaz"
+
+#: includes/acf-fields/preview-component.php:360
+#: includes/acf-fields/two-column-content-component.php:207
+#: includes/acf-fields/two-column-content-component.php:586
+msgid "Value"
+msgstr "Hodnota"
+
+#: includes/acf-fields/preview-component.php:341
+#: includes/acf-fields/two-column-content-component.php:567
+msgid "Label"
+msgstr "Název"
+
+#: includes/acf-fields/model-versions.php:29
+#: includes/acf-fields/options-service.php:457
+#: includes/acf-fields/options-service.php:519
+#: includes/acf-fields/options-taxonomy.php:61
+#: includes/acf-fields/options-taxonomy.php:133
+#: includes/acf-fields/options-taxonomy.php:225
+#: includes/acf-fields/options-taxonomy.php:297
+#: includes/acf-fields/options-taxonomy.php:369
+msgid "Name"
+msgstr "Název"
+
+#: includes/acf-fields/anchor.php:7 includes/acf-fields/anchor.php:11
+#: includes/acf.php:519 includes/acf.php:520
 msgid "Anchor"
 msgstr "Kotva"
 
 #: includes/acf-fields/anchor.php:14
 #: includes/acf-fields/banner-with-content-overlay.php:60
 #: includes/acf-fields/banner-with-content-overlay.php:79
-#: includes/acf-fields/blog.php:13
-#: includes/acf-fields/campaign.php:13
+#: includes/acf-fields/blog.php:13 includes/acf-fields/campaign.php:13
 #: includes/acf-fields/campaign.php:32
 #: includes/acf-fields/model-versions.php:97
 #: includes/acf-fields/model-versions.php:506
 #: includes/acf-fields/model-versions.php:525
 #: includes/acf-fields/options-service.php:250
-#: includes/acf-fields/options-service.php:288
-#: includes/acf-fields/options-service.php:522
-#: includes/acf-fields/options-service.php:634
 #: includes/acf-fields/options-service.php:269
+#: includes/acf-fields/options-service.php:288
 #: includes/acf-fields/options-service.php:326
 #: includes/acf-fields/options-service.php:366
-#: includes/acf-fields/showroom.php:403
-#: includes/acf-fields/showroom.php:569
-#: includes/acf-fields/showroom.php:735
-#: includes/acf-fields/stock-car.php:764
+#: includes/acf-fields/options-service.php:522
+#: includes/acf-fields/options-service.php:634
+#: includes/acf-fields/showroom.php:403 includes/acf-fields/showroom.php:569
+#: includes/acf-fields/showroom.php:735 includes/acf-fields/stock-car.php:770
+#, php-format
 msgid "(max. %s chars)"
 msgstr "(max. %s znaků)"
 
@@ -67,18 +249,12 @@ msgid "BannerWithContentOverlay"
 msgstr "BannerWithContentOverlay"
 
 #: includes/acf-fields/banner-with-content-overlay.php:11
-#: includes/acf-fields/blog-post-footer.php:11
-#: includes/acf-fields/blog.php:29
-#: includes/acf-fields/campaign.php:63
-#: includes/acf-fields/hero-image.php:11
-#: includes/acf-fields/homepage.php:743
-#: includes/acf-fields/homepage.php:976
-#: includes/acf-fields/homepage.php:1106
-#: includes/acf-fields/homepage.php:1307
-#: includes/acf-fields/homepage.php:1449
-#: includes/acf-fields/homepage.php:1548
-#: includes/acf-fields/homepage.php:1647
-#: includes/acf-fields/homepage.php:1766
+#: includes/acf-fields/blog-post-footer.php:11 includes/acf-fields/blog.php:29
+#: includes/acf-fields/campaign.php:63 includes/acf-fields/hero-image.php:11
+#: includes/acf-fields/homepage.php:743 includes/acf-fields/homepage.php:976
+#: includes/acf-fields/homepage.php:1106 includes/acf-fields/homepage.php:1307
+#: includes/acf-fields/homepage.php:1449 includes/acf-fields/homepage.php:1548
+#: includes/acf-fields/homepage.php:1647 includes/acf-fields/homepage.php:1766
 #: includes/acf-fields/model-category-colors.php:11
 #: includes/acf-fields/model-versions.php:558
 #: includes/acf-fields/offer-cards.php:64
@@ -102,21 +278,17 @@ msgid "Banner in 16:9 aspect ratio?"
 msgstr "Banner v poměru stran 16:9?"
 
 #: includes/acf-fields/banner-with-content-overlay.php:42
-#: includes/acf-fields/offer-boxes.php:45
+#: includes/acf-fields/electric.php:65 includes/acf-fields/offer-boxes.php:45
 #: includes/acf-fields/offer-boxes.php:67
 msgid "yes"
 msgstr "ano"
 
 #: includes/acf-fields/banner-with-content-overlay.php:57
 #: includes/acf-fields/blog-post-footer.php:35
-#: includes/acf-fields/map-cost.php:14
-#: includes/acf-fields/homepage.php:680
-#: includes/acf-fields/homepage.php:768
-#: includes/acf-fields/homepage.php:880
-#: includes/acf-fields/homepage.php:1239
-#: includes/acf-fields/homepage.php:1410
-#: includes/acf-fields/homepage.php:1790
-#: includes/acf-fields/homepage.php:1883
+#: includes/acf-fields/cost-map.php:14 includes/acf-fields/homepage.php:680
+#: includes/acf-fields/homepage.php:768 includes/acf-fields/homepage.php:880
+#: includes/acf-fields/homepage.php:1239 includes/acf-fields/homepage.php:1410
+#: includes/acf-fields/homepage.php:1790 includes/acf-fields/homepage.php:1883
 #: includes/acf-fields/homepage.php:1918
 #: includes/acf-fields/offer-boxes.php:123
 #: includes/acf-fields/offer-cards.php:88
@@ -127,30 +299,21 @@ msgstr "ano"
 #: includes/acf-fields/options-service.php:704
 #: includes/acf-fields/preview-component.php:87
 #: includes/acf-fields/site-heading.php:11
-#: includes/acf-fields/stock-car.php:953
-#: includes/acf-fields/three-boxes.php:11
+#: includes/acf-fields/stock-car.php:959 includes/acf-fields/three-boxes.php:11
 #: includes/acf-fields/two-column-content-component.php:149
 msgid "Header"
 msgstr "Záhlaví"
 
 #: includes/acf-fields/banner-with-content-overlay.php:76
 #: includes/acf-fields/blog-post-footer.php:69
-#: includes/acf-fields/blog-post-footer.php:74
-#: includes/acf-fields/blog.php:10
-#: includes/acf-fields/homepage.php:253
-#: includes/acf-fields/homepage.php:376
-#: includes/acf-fields/homepage.php:452
-#: includes/acf-fields/homepage.php:528
-#: includes/acf-fields/homepage.php:604
-#: includes/acf-fields/homepage.php:787
-#: includes/acf-fields/homepage.php:899
-#: includes/acf-fields/homepage.php:1051
-#: includes/acf-fields/homepage.php:1181
-#: includes/acf-fields/homepage.php:1493
-#: includes/acf-fields/homepage.php:1592
-#: includes/acf-fields/homepage.php:1691
-#: includes/acf-fields/homepage.php:1810
-#: includes/acf-fields/homepage.php:1937
+#: includes/acf-fields/blog-post-footer.php:74 includes/acf-fields/blog.php:10
+#: includes/acf-fields/homepage.php:253 includes/acf-fields/homepage.php:376
+#: includes/acf-fields/homepage.php:452 includes/acf-fields/homepage.php:528
+#: includes/acf-fields/homepage.php:604 includes/acf-fields/homepage.php:787
+#: includes/acf-fields/homepage.php:899 includes/acf-fields/homepage.php:1051
+#: includes/acf-fields/homepage.php:1181 includes/acf-fields/homepage.php:1493
+#: includes/acf-fields/homepage.php:1592 includes/acf-fields/homepage.php:1691
+#: includes/acf-fields/homepage.php:1810 includes/acf-fields/homepage.php:1937
 #: includes/acf-fields/model-category.php:11
 #: includes/acf-fields/model-versions.php:94
 #: includes/acf-fields/model-versions.php:522
@@ -172,44 +335,10 @@ msgstr "Záhlaví"
 #: includes/acf-fields/three-boxes.php:292
 #: includes/acf-fields/two-column-content-component.php:319
 #: includes/acf-fields/two-column-content-component.php:324
-#: includes/controllers/EventController.class.php:411
-#: includes/controllers/EventController.class.php:413
-#: includes/controllers/EventController.class.php:783
+#: includes/controllers/EventController.class.php:414
+#: includes/controllers/EventController.class.php:784
 msgid "Description"
 msgstr "Popis"
-
-#: includes/acf-fields/banner-with-content-overlay.php:95
-#: includes/acf-fields/blog-post-footer.php:115
-#: includes/acf-fields/blog-post-footer.php:155
-#: includes/acf-fields/campaign.php:48
-#: includes/acf-fields/homepage.php:273
-#: includes/acf-fields/homepage.php:395
-#: includes/acf-fields/homepage.php:471
-#: includes/acf-fields/homepage.php:547
-#: includes/acf-fields/homepage.php:623
-#: includes/acf-fields/homepage.php:806
-#: includes/acf-fields/homepage.php:918
-#: includes/acf-fields/homepage.php:1070
-#: includes/acf-fields/homepage.php:1201
-#: includes/acf-fields/homepage.php:1371
-#: includes/acf-fields/homepage.php:1512
-#: includes/acf-fields/homepage.php:1611
-#: includes/acf-fields/homepage.php:1710
-#: includes/acf-fields/homepage.php:1829
-#: includes/acf-fields/homepage.php:1956
-#: includes/acf-fields/offer-boxes.php:161
-#: includes/acf-fields/offer-cards.php:49
-#: includes/acf-fields/options-models.php:108
-#: includes/acf-fields/options-vinomat.php:405
-#: includes/acf-fields/preview-component.php:249
-#: includes/acf-fields/preview-component.php:289
-#: includes/acf-fields/three-boxes.php:113
-#: includes/acf-fields/three-boxes.php:212
-#: includes/acf-fields/three-boxes.php:311
-#: includes/acf-fields/two-column-content-component.php:473
-#: includes/acf-fields/two-column-content-component.php:515
-msgid "Link"
-msgstr "Odkaz"
 
 #: includes/acf-fields/block-margins.php:7
 #: includes/acf-fields/block-margins.php:11
@@ -258,11 +387,11 @@ msgstr "Tlačítko"
 msgid "Button action"
 msgstr "Akce tlačítka"
 
-#: includes/acf-fields/blog-post-footer.php:104
+#: includes/acf-fields/blog-post-footer.php:116
 #: includes/acf-fields/options-service.php:386
 #: includes/acf-fields/options-service.php:403
 #: includes/acf-fields/preview-component.php:250
-#: includes/acf-fields/two-column-content-component.php:472
+#: includes/acf-fields/two-column-content-component.php:474
 msgid "Form"
 msgstr "Formulář"
 
@@ -281,11 +410,12 @@ msgid "Add Content"
 msgstr "Přidat obsah"
 
 #: includes/acf-fields/blog-posts-component.php:7
-msgid "Blog posts module"
+msgid "Blog posts component"
 msgstr "Modul blogových příspěvků"
 
 #: includes/acf-fields/blog-posts-component.php:11
 #: includes/acf-fields/blog-posts-component.php:31
+#, php-format
 msgid "Title: Part %s"
 msgstr "Název: Část %s"
 
@@ -313,8 +443,7 @@ msgstr "Omezit počet příspěvků na stránku"
 msgid "Blog Content Settings"
 msgstr "Nastavení obsahu blogu"
 
-#: includes/acf-fields/blog.php:32
-#: includes/acf-fields/campaign.php:66
+#: includes/acf-fields/blog.php:32 includes/acf-fields/campaign.php:66
 msgid "(min. width: 1920px, Recommended width: 3840px)<br>(min. height: 807px)<br>The main campaign image used in various sliders on the website."
 msgstr "min. šířka: 1920px, doporučená šířka: 3840px)<br>(min. výška: 807px)<br>Hlavní fotografie kampaně používaná v různých posuvnících panelech na webu."
 
@@ -323,16 +452,14 @@ msgid "Select a Global Campaign"
 msgstr "Vyberte globální kampaň"
 
 #: includes/acf-fields/campaign-override.php:11
-#: includes/acf-fields/homepage.php:92
-#: includes/acf-fields/homepage.php:122
+#: includes/acf-fields/homepage.php:92 includes/acf-fields/homepage.php:122
 #: includes/acf-fields/options-service.php:89
 #: includes/acf-fields/options-service.php:119
 #: includes/acf-fields/options-service.php:188
 #: includes/acf-fields/options-service.php:965
 #: includes/acf-fields/options-service.php:995
 #: includes/acf-fields/options-vinomat.php:159
-#: includes/acf-fields/options-vinomat.php:189
-#: includes/post-types.php:57
+#: includes/acf-fields/options-vinomat.php:189 includes/post-types.php:57
 msgid "Campaign"
 msgstr "Kampaň"
 
@@ -344,17 +471,12 @@ msgstr "Kampaň, pod kterou se zobrazí obsah této stránky"
 msgid "Campaign fields on the slider"
 msgstr "Pole kampaně na posuvníku"
 
-#: includes/acf-fields/campaign.php:10
-#: includes/acf-fields/homepage.php:356
-#: includes/acf-fields/homepage.php:432
-#: includes/acf-fields/homepage.php:508
-#: includes/acf-fields/homepage.php:584
-#: includes/acf-fields/homepage.php:1473
-#: includes/acf-fields/homepage.php:1572
-#: includes/acf-fields/homepage.php:1671
+#: includes/acf-fields/campaign.php:10 includes/acf-fields/homepage.php:356
+#: includes/acf-fields/homepage.php:432 includes/acf-fields/homepage.php:508
+#: includes/acf-fields/homepage.php:584 includes/acf-fields/homepage.php:1473
+#: includes/acf-fields/homepage.php:1572 includes/acf-fields/homepage.php:1671
 #: includes/acf-fields/model-versions.php:503
-#: includes/acf-fields/offer-box.php:13
-#: includes/acf-fields/offer-cards.php:11
+#: includes/acf-fields/offer-box.php:13 includes/acf-fields/offer-cards.php:11
 #: includes/acf-fields/options-service.php:631
 #: includes/acf-fields/options-service.php:859
 #: includes/acf-fields/options-vinomat.php:53
@@ -385,47 +507,46 @@ msgstr "Technické údaje vozidla"
 #: includes/acf-fields/car-specification.php:13
 #: includes/acf-fields/cost-map.php:34
 #: includes/acf-fields/electrification-map.php:49
-#: includes/acf-fields/lead.php:315
-#: includes/acf-fields/model-override.php:11
+#: includes/acf-fields/lead.php:315 includes/acf-fields/model-override.php:11
 #: includes/acf-fields/offer-box.php:51
 #: includes/acf-fields/options-test-drive.php:52
-#: includes/acf-fields/stock-car.php:485
-#: includes/acf-fields/stock-car.php:1446
-#: includes/post-types.php:94
-#: includes/post-types.php:116
+#: includes/acf-fields/stock-car.php:491 includes/acf-fields/stock-car.php:1452
+#: includes/classes/DolCarsAdmin.class.php:84
+#: includes/controllers/StockController.class.php:178
+#: includes/post-types.php:94 includes/post-types.php:116
 msgid "Model"
 msgstr "Model"
 
 #: includes/acf-fields/car-specification.php:35
-#: includes/acf-fields/stock-car.php:462
+#: includes/acf-fields/stock-car.php:468
 msgid "Category"
 msgstr "Kategorie"
 
 #: includes/acf-fields/car-specification.php:57
 #: includes/acf-fields/car-specification.php:243
 #: includes/acf-fields/model-versions.php:244
-#: includes/acf-fields/stock-car.php:781
+#: includes/acf-fields/stock-car.php:787
 msgid "Maximum speed (km/h)"
 msgstr "Maximální rychlost (km/h)"
 
 #: includes/acf-fields/car-specification.php:78
 #: includes/acf-fields/car-specification.php:264
 #: includes/acf-fields/model-versions.php:265
-#: includes/acf-fields/stock-car.php:823
+#: includes/acf-fields/stock-car.php:829
 msgid "Trunk capacity (liters)"
 msgstr "Objem zavazadlového prostoru (litry)"
 
 #: includes/acf-fields/car-specification.php:99
 #: includes/acf-fields/car-specification.php:285
 #: includes/acf-fields/model-versions.php:286
-#: includes/acf-fields/stock-car.php:600
+#: includes/acf-fields/stock-car.php:606
 msgid "Seats"
 msgstr "Počet sedadel"
 
 #: includes/acf-fields/car-specification.php:120
 #: includes/acf-fields/car-specification.php:306
 #: includes/acf-fields/model-versions.php:307
-#: includes/acf-fields/stock-car.php:1556
+#: includes/acf-fields/stock-car.php:1562
 msgid "Height (cm)"
 msgstr "Výška (cm)"
 
@@ -437,31 +558,31 @@ msgstr "Výška (cm)"
 #: includes/acf-fields/car-specification.php:330
 #: includes/acf-fields/car-specification.php:351
 #: includes/acf-fields/car-specification.php:370
-#: includes/acf-fields/stock-car.php:1559
-#: includes/acf-fields/stock-car.php:1581
-#: includes/acf-fields/stock-car.php:1603
-#: includes/acf-fields/stock-car.php:1623
+#: includes/acf-fields/stock-car.php:1565
+#: includes/acf-fields/stock-car.php:1587
+#: includes/acf-fields/stock-car.php:1609
+#: includes/acf-fields/stock-car.php:1629
 msgid "NOTE! The value must be entered in centimeters"
 msgstr "POZOR! Hodnota musí být uvedena v centimetrech"
 
 #: includes/acf-fields/car-specification.php:141
 #: includes/acf-fields/car-specification.php:327
 #: includes/acf-fields/model-versions.php:328
-#: includes/acf-fields/stock-car.php:1578
+#: includes/acf-fields/stock-car.php:1584
 msgid "Length (cm)"
 msgstr "Délka (cm)"
 
 #: includes/acf-fields/car-specification.php:162
 #: includes/acf-fields/car-specification.php:348
 #: includes/acf-fields/model-versions.php:349
-#: includes/acf-fields/stock-car.php:1600
+#: includes/acf-fields/stock-car.php:1606
 msgid "Width with mirrors (cm)"
 msgstr "Šířka včetně zrcátek (cm)"
 
 #: includes/acf-fields/car-specification.php:181
 #: includes/acf-fields/car-specification.php:367
 #: includes/acf-fields/model-versions.php:368
-#: includes/acf-fields/stock-car.php:1620
+#: includes/acf-fields/stock-car.php:1626
 msgid "Ground clearance (cm)"
 msgstr "Světlá výška (cm)"
 
@@ -470,14 +591,15 @@ msgid "Versions"
 msgstr "Verze"
 
 #: includes/acf-fields/car-specification.php:221
-#: includes/acf-fields/stock-car.php:439
-#: includes/acf-fields/stock-car.php:1468
+#: includes/acf-fields/stock-car.php:445 includes/acf-fields/stock-car.php:1474
+#: includes/classes/DolCarsAdmin.class.php:85
+#: includes/controllers/StockController.class.php:193
 msgid "Version"
 msgstr "Verze"
 
-#: includes/acf-fields/cost-map.php:10
-#: includes/acf-fields/cost-map.php:25
-#: includes/acf-fields/cost-map.php:94
+#: includes/acf-fields/cost-map.php:10 includes/acf-fields/cost-map.php:25
+#: includes/acf-fields/cost-map.php:94 includes/acf.php:421
+#: includes/acf.php:422 includes/acf.php:674
 msgid "Cost Calculator"
 msgstr "Kalkulátor nákladů"
 
@@ -488,8 +610,9 @@ msgstr "Kalkulátor nákladů"
 msgid "Equipment Version"
 msgstr "Verze zařízení"
 
-#: includes/acf-fields/dealer-options.php:7
-msgid "Dealer Settings"
+#: includes/acf-fields/dealer-options.php:7 includes/acf.php:742
+#: includes/acf.php:743
+msgid "Dealer settings"
 msgstr "Nastavení prodejce"
 
 #: includes/acf-fields/dealer-options.php:11
@@ -506,8 +629,7 @@ msgid "Dealer Name"
 msgstr "Název prodejce"
 
 #: includes/acf-fields/dealer-options.php:67
-#: includes/acf-fields/employee.php:68
-#: includes/acf-fields/showroom.php:196
+#: includes/acf-fields/employee.php:68 includes/acf-fields/showroom.php:196
 msgid "Phone Number"
 msgstr "Telefonní číslo"
 
@@ -706,7 +828,7 @@ msgstr "Servis a příslušenství – telefon"
 msgid "Indexing Exclusion Settings"
 msgstr "Nastavení vyloučení z indexování"
 
-#: includes/acf-fields/dealer-options.php:1
+#: includes/acf-fields/dealer-options.php:916
 msgid "Exact URLs to exclude. E.g. https://volvoweb.com/dontIndexMe"
 msgstr "Přesné URL adresy, které mají být vyloučeny. Např. https://volvoweb.com/dontIndexMe"
 
@@ -751,10 +873,6 @@ msgstr "Integrace Otomoto"
 #: includes/acf-fields/dealer-options.php:1098
 msgid "Enable integration"
 msgstr "Povolit integraci"
-
-#: includes/acf-fields/dealer-options.php:1116
-msgid "Username"
-msgstr "Uživatelské jméno"
 
 #: includes/acf-fields/dealer-options.php:1140
 msgid "Password"
@@ -801,7 +919,7 @@ msgstr "Vyberte město..."
 msgid "District"
 msgstr "Čtvrť"
 
-#: includes/acf-fields/dealer-options.php:1289
+#: includes/acf-fields/dealer-options.php:1292
 msgid "Select district"
 msgstr "Vyberte čtvrť"
 
@@ -835,7 +953,7 @@ msgid "Contact person displayed in the listing"
 msgstr "Kontaktní osoba zobrazená v inzerátu"
 
 #: includes/acf-fields/dealer-options.php:1389
-#: includes/acf-fields/dealer-options.php:1410
+#: includes/acf-fields/dealer-options.php:1403
 msgid "Consents on the form"
 msgstr "Souhlasy uvedené ve formuláři"
 
@@ -866,11 +984,8 @@ msgstr "např. 6PL301"
 
 #: includes/acf-fields/electric-map.php:7
 #: includes/acf-fields/electrification-map.php:10
-#: includes/acf-fields/electrification-map.php:14
-#: includes/acf.php:397
-#: includes/acf.php:398
-#: includes/acf.php:662
-#: includes/acf.php:663
+#: includes/acf-fields/electrification-map.php:14 includes/acf.php:397
+#: includes/acf.php:398 includes/acf.php:662 includes/acf.php:663
 msgid "Coverage map"
 msgstr "Mapa pokrytí"
 
@@ -883,8 +998,7 @@ msgstr "Mapa pokrytí"
 msgid "Table"
 msgstr "Tabulka"
 
-#: includes/acf-fields/electric.php:14
-#: includes/acf-fields/leasing.php:12
+#: includes/acf-fields/electric.php:14 includes/acf-fields/leasing.php:12
 #: includes/acf-fields/options-electric-costs.php:12
 #: includes/acf-fields/options-vinomat.php:30
 #: includes/acf-fields/vinomat.php:12
@@ -919,8 +1033,7 @@ msgstr "Nabíječky"
 msgid "Business card"
 msgstr "Vizitka"
 
-#: includes/acf-fields/electric.php:163
-#: includes/acf-fields/showroom.php:124
+#: includes/acf-fields/electric.php:163 includes/acf-fields/showroom.php:124
 msgid "Address"
 msgstr "Adresa"
 
@@ -937,18 +1050,16 @@ msgid "Only one instance of the map can be displayed on each page of the new mod
 msgstr "Na každé stránce nového modelu lze zobrazit pouze jednu instanci mapy"
 
 #: includes/acf-fields/employee.php:7
-#: includes/acf-fields/options-service.php:784
-#: includes/post-types.php:133
+#: includes/acf-fields/options-service.php:784 includes/post-types.php:133
 msgid "Employee"
 msgstr "Zaměstnanec"
 
-#: includes/acf-fields/employee.php:11
-#: includes/acf-fields/lead.php:157
+#: includes/acf-fields/employee.php:11 includes/acf-fields/lead.php:157
+#: test-translation-inline.php:22
 msgid "First Name"
 msgstr "Jméno"
 
-#: includes/acf-fields/employee.php:30
-#: includes/acf-fields/lead.php:176
+#: includes/acf-fields/employee.php:30 includes/acf-fields/lead.php:176
 msgid "Last Name"
 msgstr "Příjmení"
 
@@ -960,10 +1071,8 @@ msgstr "Pozice"
 msgid "Department"
 msgstr "Oddělení"
 
-#: includes/acf-fields/employee.php:128
-#: includes/acf-fields/lead.php:25
-#: includes/acf-fields/showroom.php:7
-#: includes/acf-fields/stock-car.php:400
+#: includes/acf-fields/employee.php:128 includes/acf-fields/lead.php:25
+#: includes/acf-fields/showroom.php:7 includes/acf-fields/stock-car.php:406
 #: includes/post-types.php:150
 msgid "Showroom"
 msgstr "Prodejna"
@@ -986,30 +1095,28 @@ msgstr "Zobrazit kampaň jako vstupní stránku"
 
 #: includes/acf-fields/form-options.php:42
 #: includes/acf-fields/form-options.php:67
-#: includes/acf-fields/form-options.php:92
-#: includes/acf-fields/leasing.php:50
+#: includes/acf-fields/form-options.php:92 includes/acf-fields/leasing.php:50
 #: includes/acf-fields/leasing.php:323
-#: includes/acf-fields/model-version.php:60
-#: includes/acf-fields/stock-car.php:1377
-#: includes/acf-fields/stock-car.php:1404
+#: includes/acf-fields/model-versions.php:60
+#: includes/acf-fields/stock-car.php:1383
+#: includes/acf-fields/stock-car.php:1410
 #: includes/acf-fields/table-component.php:41
 msgid "No"
 msgstr "Ne"
 
 #: includes/acf-fields/form-options.php:43
 #: includes/acf-fields/form-options.php:68
-#: includes/acf-fields/form-options.php:93
-#: includes/acf-fields/leasing.php:49
+#: includes/acf-fields/form-options.php:93 includes/acf-fields/leasing.php:49
 #: includes/acf-fields/leasing.php:322
-#: includes/acf-fields/model-version.php:61
-#: includes/acf-fields/stock-car.php:1378
-#: includes/acf-fields/stock-car.php:1405
+#: includes/acf-fields/model-versions.php:61
+#: includes/acf-fields/stock-car.php:1384
+#: includes/acf-fields/stock-car.php:1411
 #: includes/acf-fields/table-component.php:42
 msgid "Yes"
 msgstr "Ano"
 
 #: includes/acf-fields/form-options.php:55
-msgid "Form on the right side"
+msgid "Form on the right"
 msgstr "Formulář vpravo"
 
 #: includes/acf-fields/form-options.php:80
@@ -1020,8 +1127,7 @@ msgstr "Zapnout ve formuláři dvojité potvrzení"
 msgid "Force a single category for this form?"
 msgstr "Vynutit pro tento formulář jednu kategorii?"
 
-#: includes/acf-fields/form-options.php:121
-#: includes/acf-fields/lead.php:108
+#: includes/acf-fields/form-options.php:121 includes/acf-fields/lead.php:108
 msgid "Form goal"
 msgstr "Účel formuláře"
 
@@ -1029,33 +1135,23 @@ msgstr "Účel formuláře"
 msgid "The user can select"
 msgstr "Uživatel si může vybrat"
 
-#: includes/acf-fields/form-options.php:134
-#: includes/acf-fields/lead.php:120
-#: includes/acf-fields/leasing.php:118
-#: includes/acf-fields/leasing.php:391
-#: includes/acf-fields/showroom.php:1004
-#: includes/acf-fields/showroom.php:1010
+#: includes/acf-fields/form-options.php:134 includes/acf-fields/lead.php:120
+#: includes/acf-fields/leasing.php:118 includes/acf-fields/leasing.php:391
+#: includes/acf-fields/showroom.php:1004 includes/acf-fields/showroom.php:1010
 msgid "New cars"
 msgstr "Nová auta"
 
-#: includes/acf-fields/form-options.php:135
-#: includes/acf-fields/lead.php:95
-#: includes/acf-fields/lead.php:121
-#: includes/acf-fields/leasing.php:119
-#: includes/acf-fields/leasing.php:392
-#: includes/acf-fields/showroom.php:1628
+#: includes/acf-fields/form-options.php:135 includes/acf-fields/leasing.php:119
+#: includes/acf-fields/lead.php:96 includes/acf-fields/lead.php:121
+#: includes/acf-fields/leasing.php:392 includes/acf-fields/showroom.php:1628
 #: includes/acf-fields/showroom.php:1634
 msgid "Used cars"
 msgstr "Ojetá auta"
 
-#: includes/acf-fields/form-options.php:136
-#: includes/acf-fields/lead.php:95
-#: includes/acf-fields/lead.php:122
-#: includes/acf-fields/options-service.php:9
-#: includes/acf-fields/showroom.php:1160
-#: includes/acf-fields/showroom.php:1166
-#: includes/acf.php:720
-#: includes/acf.php:721
+#: includes/acf-fields/form-options.php:136 includes/acf-fields/lead.php:97
+#: includes/acf-fields/lead.php:122 includes/acf-fields/options-service.php:9
+#: includes/acf-fields/showroom.php:1160 includes/acf-fields/showroom.php:1166
+#: includes/acf.php:720 includes/acf.php:721
 msgid "Service"
 msgstr "Servis"
 
@@ -1076,16 +1172,14 @@ msgstr "Další kód HTML na stránce s poděkováním"
 msgid "Additional code on the page"
 msgstr "Další kód na stránce"
 
-#: includes/acf-fields/gallery.php:7
-#: includes/acf-fields/gallery.php:11
+#: includes/acf-fields/gallery.php:7 includes/acf-fields/gallery.php:11
 #: includes/acf-fields/model-versions.php:429
-#: includes/acf-fields/model-versions.php:445
-#: includes/acf.php:325
+#: includes/acf-fields/model-versions.php:445 includes/acf.php:325
 #: includes/acf.php:326
 msgid "Gallery"
 msgstr "Galerie"
 
-#: includes/acf-fields/gallery.php:11
+#: includes/acf-fields/gallery.php:14
 msgid "(max. 3 photos)<br>When opened, the gallery displays the photos in their original size, with the option to zoom in."
 msgstr "(max. 3 fotografie)<br>Po otevření se v galerii zobrazí fotografie v původní velikosti s možností přiblížení."
 
@@ -1153,8 +1247,7 @@ msgstr "Ano, ztmavit pozadí"
 msgid "Homepage Option Fields"
 msgstr "Pole nastavení úvodní stránky"
 
-#: includes/acf-fields/homepage.php:14
-#: includes/acf-fields/homepage.php:31
+#: includes/acf-fields/homepage.php:14 includes/acf-fields/homepage.php:31
 msgid "Main Slider"
 msgstr "Hlavní posuvník"
 
@@ -1171,8 +1264,9 @@ msgstr "(max. 3 kampaně)"
 #: includes/acf-fields/options-service.php:60
 #: includes/acf-fields/options-service.php:184
 #: includes/acf-fields/options-service.php:936
-#: includes/acf-fields/options-vinomat.php:130
-msgid "Add a campaign"
+#: includes/acf-fields/options-vinomat.php:130 includes/post-types.php:58
+#: includes/post-types.php:59
+msgid "Add campaign"
 msgstr "Přidat kampaň"
 
 #: includes/acf-fields/homepage.php:67
@@ -1183,17 +1277,16 @@ msgid "Campaign type"
 msgstr "Typ kampaně"
 
 #: includes/acf-fields/homepage.php:79
-#: includes/acf-fields/option-service.php:76
-#: includes/acf-fields/option-service.php:952
-#: includes/acf-fields/option-vinomat.php:146
+#: includes/acf-fields/options-service.php:76
+#: includes/acf-fields/options-service.php:952
+#: includes/acf-fields/options-vinomat.php:146
 msgid "Local campaign"
 msgstr "Místní kampaň"
 
 #: includes/acf-fields/homepage.php:80
-#: includes/acf-fields/option-service.php:77
-#: includes/acf-fields/option-service.php:953
-#: includes/acf-fields/option-vinomat.php:147
-#: includes/post-types.php:77
+#: includes/acf-fields/options-service.php:77
+#: includes/acf-fields/options-service.php:953
+#: includes/acf-fields/options-vinomat.php:147 includes/post-types.php:77
 msgid "Global campaign"
 msgstr "Globální kampaň"
 
@@ -1205,7 +1298,7 @@ msgstr "Nahradit kampaně"
 msgid "Force this campaign?"
 msgstr "Vynutit tuto kampaň?"
 
-#: includes/acf-fields/homepage.php:183
+#: includes/acf-fields/homepage.php:186
 msgid "Selecting this option will enforce this campaign across all instances."
 msgstr "Výběrem této možnosti se tato kampaň uplatní ve všech instancích"
 
@@ -1225,29 +1318,23 @@ msgstr "Šedá pole"
 msgid "Should global content be loaded?"
 msgstr "Má být načten globální obsah?"
 
-#: includes/acf-fields/homepage.php:337
-#: includes/acf-fields/homepage.php:413
-#: includes/acf-fields/homepage.php:489
-#: includes/acf-fields/homepage.php:565
-#: includes/acf-fields/homepage.php:1530
-#: includes/acf-fields/homepage.php:1431
-#: includes/acf-fields/homepage.php:1629
-#: includes/acf-fields/three-boxes.php:32
+#: includes/acf-fields/homepage.php:337 includes/acf-fields/homepage.php:413
+#: includes/acf-fields/homepage.php:489 includes/acf-fields/homepage.php:565
+#: includes/acf-fields/homepage.php:1431 includes/acf-fields/homepage.php:1530
+#: includes/acf-fields/homepage.php:1629 includes/acf-fields/three-boxes.php:32
 #: includes/acf-fields/three-boxes.php:131
 #: includes/acf-fields/three-boxes.php:230
+#, php-format
 msgid "Box %s"
 msgstr "Rámeček %s"
 
-#: includes/acf-fields/homepage.php:644
-#: includes/acf-fields/homepage.php:663
+#: includes/acf-fields/homepage.php:644 includes/acf-fields/homepage.php:663
 msgid "Sales"
 msgstr "Prodej"
 
-#: includes/acf-fields/homepage.php:683
-#: includes/acf-fields/homepage.php:1886
-#: includes/acf-fields/offer-box.php:16
-#: includes/acf-fields/offer-cards.php:14
-msgid "By default, the header text is gray. To make a specific phrase black, please place it between &lt;strong&gt;&lt;/strong&gt;, <br>e.g., &lt;strong&gt;TEXT&lt;/strong&gt;"
+#: includes/acf-fields/homepage.php:683 includes/acf-fields/homepage.php:1886
+#: includes/acf-fields/offer-box.php:16 includes/acf-fields/offer-cards.php:14
+msgid "By default, the header text is gray. To make a specific phrase black, please place it between &lt;strong&gt;&lt;/strong&gt;,<br>e.g., &lt;strong&gt;TEXT&lt;/strong&gt;"
 msgstr "Ve výchozím nastavení je text záhlaví šedý. Chcete-li určitou frázi zbarvit černě, vložte ji mezi značky &lt;strong&gt;&lt;/strong&gt;, <br>např. &lt;strong&gt;TEXT&lt;/strong&gt;"
 
 #: includes/acf-fields/homepage.php:700
@@ -1263,18 +1350,17 @@ msgstr "Komponenta náhledu"
 msgid "(min. width: 944px, Recommended width: 2832px)"
 msgstr "(min. šířka: 944px, doporučená šířka: 2832px)"
 
-#: includes/acf-fields/homepage.php:823
-msgid "Sales blocks"
-msgstr "Prodejní bloky"
+#: includes/acf-fields/homepage.php:823 includes/acf.php:182
+#: includes/acf.php:183
+msgid "Sales tiles"
+msgstr "Prodejní dlaždice"
 
-#: includes/acf-fields/homepage.php:839
-#: includes/acf-fields/offer-boxes.php:82
-#: includes/acf-fields/stock-car.php:1010
+#: includes/acf-fields/homepage.php:839 includes/acf-fields/offer-boxes.php:82
+#: includes/acf-fields/stock-car.php:1016
 msgid "Elements"
 msgstr "Prvky"
 
-#: includes/acf-fields/homepage.php:858
-#: includes/acf-fields/offer-boxes.php:101
+#: includes/acf-fields/homepage.php:858 includes/acf-fields/offer-boxes.php:101
 #: includes/acf-fields/options-service.php:497
 #: includes/acf-fields/options-vinomat.php:425
 msgid "Icon"
@@ -1284,54 +1370,44 @@ msgstr "Ikona"
 msgid "Two-card listing"
 msgstr "Seznam se dvěma kartami"
 
-#: includes/acf-fields/homepage.php:958
-#: includes/acf-fields/homepage.php:1088
+#: includes/acf-fields/homepage.php:958 includes/acf-fields/homepage.php:1088
+#, php-format
 msgid "Offer card %s"
 msgstr "Karta nabídky %s"
 
-#: includes/acf-fields/homepage.php:979
-#: includes/acf-fields/homepage.php:1109
+#: includes/acf-fields/homepage.php:979 includes/acf-fields/homepage.php:1109
 msgid "Add a photo for the card."
 msgstr "Přidejte fotografii ke kartě."
 
-#: includes/acf-fields/homepage.php:1002
-#: includes/acf-fields/homepage.php:1132
+#: includes/acf-fields/homepage.php:1002 includes/acf-fields/homepage.php:1132
 #: includes/acf-fields/homepage.php:1277
 msgid "Select an option"
 msgstr "Vyberte možnost"
 
-#: includes/acf-fields/homepage.php:1005
-#: includes/acf-fields/homepage.php:1135
+#: includes/acf-fields/homepage.php:1005 includes/acf-fields/homepage.php:1135
 #: includes/acf-fields/homepage.php:1280
 msgid "Select one of the available options."
 msgstr "Vyberte jednu z dostupných možností."
 
-#: includes/acf-fields/homepage.php:1014
-#: includes/acf-fields/homepage.php:1044
+#: includes/acf-fields/homepage.php:1014 includes/acf-fields/homepage.php:1144
 msgid "Warranty"
 msgstr "Záruka"
 
-#: includes/acf-fields/homepage.php:1015
-#: includes/acf-fields/homepage.php:1045
+#: includes/acf-fields/homepage.php:1015 includes/acf-fields/homepage.php:1145
 msgid "Safety"
 msgstr "Bezpečnost"
 
-#: includes/acf-fields/homepage.php:1016
-#: includes/acf-fields/homepage.php:1046
-#: includes/acf-fields/showroom.php:2330
-#: includes/acf-fields/showroom.php:2336
+#: includes/acf-fields/homepage.php:1016 includes/acf-fields/homepage.php:1146
+#: includes/acf-fields/showroom.php:2330 includes/acf-fields/showroom.php:2336
 msgid "Accessories"
 msgstr "Příslušenství"
 
-#: includes/acf-fields/homepage.php:1017
-#: includes/acf-fields/homepage.php:1047
-#: includes/acf-fields/homepage.php:1731
-#: includes/acf-fields/homepage.php:1749
+#: includes/acf-fields/homepage.php:1017 includes/acf-fields/homepage.php:1147
+#: includes/acf-fields/homepage.php:1731 includes/acf-fields/homepage.php:1749
 msgid "Offer"
 msgstr "Nabídka"
 
-#: includes/acf-fields/homepage.php:1031
-#: includes/acf-fields/homepage.php:1161
+#: includes/acf-fields/homepage.php:1031 includes/acf-fields/homepage.php:1161
 msgid "Card title"
 msgstr "Název karty"
 
@@ -1347,32 +1423,20 @@ msgstr "Chcete-li text zbarvit šedě, vložte jej mezi značky &lt;strong&gt;&l
 msgid "Slider Family Volvo"
 msgstr "Posuvník Řada Volvo"
 
-#: includes/acf-fields/homepage.php:1289
-#: includes/acf-fields/model.php:23
+#: includes/acf-fields/homepage.php:1289 includes/acf-fields/model.php:23
 msgid "SUV"
 msgstr "SUV"
 
-#: includes/acf-fields/homepage.php:1290
-#: includes/acf-fields/model.php:25
+#: includes/acf-fields/homepage.php:1290 includes/acf-fields/model.php:25
 msgid "Sedan"
 msgstr "Sedan"
 
-#: includes/acf-fields/homepage.php:1289
-#: includes/acf-fields/model.php:27
+#: includes/acf-fields/homepage.php:1291 includes/acf-fields/model.php:27
 msgid "Station wagon"
 msgstr "Kombi"
 
-#: includes/acf-fields/model.php:24
-msgid "Crossover"
-msgstr "Crossover"
-
-#: includes/acf-fields/homepage.php:1289
-#: includes/acf-fields/model.php:28
-msgid "Cross Country"
-msgstr "Cross Country"
-
-#: includes/acf-fields/homepage.php:1289
-msgid "Electric_"
+#: includes/acf-fields/homepage.php:1292
+msgid "Electrics"
 msgstr "Elektromobil"
 
 #: includes/acf-fields/homepage.php:1332
@@ -1387,22 +1451,18 @@ msgstr "Cena vozu"
 msgid "Three-box offer"
 msgstr "Nabídka ve třech polích"
 
-#: includes/acf-fields/homepage.php:1413
-#: includes/acf-fields/three-boxes.php:14
+#: includes/acf-fields/homepage.php:1413 includes/acf-fields/three-boxes.php:14
 msgid "By default, the text is dark; if any part is to be highlighted in gray, surround it with &lt;strong&gt;&lt;/strong&gt; tags"
 msgstr "Ve výchozím nastavení je text tmavý; pokud má být některá část zvýrazněna šedě, obklopte ji značkami &lt;strong&gt;&lt;/strong&gt;"
 
-#: includes/acf-fields/homepage.php:1452
-#: includes/acf-fields/homepage.php:1551
-#: includes/acf-fields/homepage.php:1650
-#: includes/acf-fields/three-boxes.php:53
+#: includes/acf-fields/homepage.php:1452 includes/acf-fields/homepage.php:1551
+#: includes/acf-fields/homepage.php:1650 includes/acf-fields/three-boxes.php:53
 #: includes/acf-fields/three-boxes.php:152
 #: includes/acf-fields/three-boxes.php:251
 msgid "Add photo"
 msgstr "Přidat fotografii"
 
-#: includes/acf-fields/homepage.php:1848
-#: includes/acf-fields/homepage.php:1866
+#: includes/acf-fields/homepage.php:1848 includes/acf-fields/homepage.php:1866
 msgid "Available on site"
 msgstr "K dispozici na místě"
 
@@ -1410,13 +1470,11 @@ msgstr "K dispozici na místě"
 msgid "Teaser"
 msgstr "Upoutávka"
 
-#: includes/acf-fields/homepage.php:1976
-#: includes/acf-fields/homepage.php:2020
+#: includes/acf-fields/homepage.php:1976 includes/acf-fields/homepage.php:2020
 msgid "Photo at the bottom of the homepage"
 msgstr "Fotografie v dolní části domovské stránky"
 
-#: includes/acf-fields/homepage.php:1995
-#: includes/acf-fields/homepage.php:2046
+#: includes/acf-fields/homepage.php:1995 includes/acf-fields/homepage.php:2046
 msgid "Mobile photo"
 msgstr "Fotografie pro mobilní zařízení"
 
@@ -1424,10 +1482,8 @@ msgstr "Fotografie pro mobilní zařízení"
 msgid "(min. width: 1920px, Recommended width: 3840px)"
 msgstr "(min. šířka: 1920px, doporučená šířka: 3840px)"
 
-#: includes/acf-fields/html-code.php:10
-#: includes/acf-fields/html-code.php:14
-#: includes/acf.php:156
-#: includes/acf.php:157
+#: includes/acf-fields/html-code.php:10 includes/acf-fields/html-code.php:14
+#: includes/acf.php:156 includes/acf.php:157
 msgid "HTML code"
 msgstr "HTML kód"
 
@@ -1460,8 +1516,7 @@ msgid "Test Drive"
 msgstr "Zkušební jízda"
 
 #: includes/acf-fields/lead.php:132
-#: includes/controllers/EventController.class.php:525
-#: includes/controllers/EventController.class.php:527
+#: includes/controllers/EventController.class.php:528
 msgid "Status"
 msgstr "Stav"
 
@@ -1478,8 +1533,8 @@ msgid "Phone number"
 msgstr "Telefonní číslo"
 
 #: includes/acf-fields/lead.php:214
-#: includes/controllers/EventController.class.php:648
-#: includes/controllers/EventController.class.php:772
+#: includes/controllers/EventController.class.php:649
+#: includes/controllers/EventController.class.php:773
 msgid "Email"
 msgstr "E-mail"
 
@@ -1491,18 +1546,18 @@ msgstr "referrer"
 msgid "Message"
 msgstr "Zpráva"
 
-#: includes/acf-fields/lead.php:267
-#: includes/acf-fields/stock-car.php:74
+#: includes/acf-fields/lead.php:267 includes/acf-fields/stock-car.php:74
+#: includes/classes/DolCarsAdmin.class.php:87
 msgid "VIN"
 msgstr "VIN"
 
-#: includes/acf-fields/lead.php:291
-#: includes/acf-fields/stock-car.php:307
+#: includes/acf-fields/lead.php:291 includes/acf-fields/stock-car.php:313
+#: includes/classes/Lead.class.php:264
+#: includes/controllers/StockController.class.php:223
 msgid "Year of manufacture"
 msgstr "Rok výroby"
 
-#: includes/acf-fields/lead.php:341
-#: includes/post-types.php:15
+#: includes/acf-fields/lead.php:341 includes/post-types.php:15
 msgid "Categories"
 msgstr "Kategorie"
 
@@ -1523,7 +1578,7 @@ msgid "Consent to the processing of personal data"
 msgstr "Souhlas se zpracováním osobních údajů"
 
 #: includes/acf-fields/lead.php:466
-msgid "Souhlas s kontaktováním telefonicky"
+msgid "Consent to contact by phone"
 msgstr "Souhlas s kontaktováním telefonicky"
 
 #: includes/acf-fields/lead.php:485
@@ -1534,52 +1589,42 @@ msgstr "Souhlas s kontaktováním e-mailem"
 msgid "youLeadData"
 msgstr "youLeadData"
 
-#: includes/acf-fields/leasing.php:17
-#: includes/acf-fields/vinomat.php:35
+#: includes/acf-fields/leasing.php:17 includes/acf-fields/vinomat.php:35
 msgid "Leasing"
 msgstr "Leasing"
 
-#: includes/acf-fields/leasing.php:36
-#: includes/acf-fields/leasing.php:309
+#: includes/acf-fields/leasing.php:36 includes/acf-fields/leasing.php:309
 msgid "Automatically include this offer"
 msgstr "Automaticky zahrnout tuto nabídku"
 
-#: includes/acf-fields/leasing.php:63
-#: includes/acf-fields/leasing.php:336
-#: includes/acf-fields/vinomat.php:54
-#: includes/acf-fields/vinomat.php:141
+#: includes/acf-fields/leasing.php:63 includes/acf-fields/leasing.php:336
+#: includes/acf-fields/vinomat.php:54 includes/acf-fields/vinomat.php:141
 msgid "Description for dealers"
 msgstr "Popis pro prodejce"
 
-#: includes/acf-fields/leasing.php:82
-#: includes/acf-fields/leasing.php:105
-#: includes/acf-fields/leasing.php:355
-#: includes/acf-fields/leasing.php:378
+#: includes/acf-fields/leasing.php:82 includes/acf-fields/leasing.php:105
+#: includes/acf-fields/leasing.php:355 includes/acf-fields/leasing.php:378
 msgid "Models excluded from the offer"
 msgstr "Modely, na které se nabídka nevztahuje"
 
-#: includes/acf-fields/leasing.php:118
+#: includes/acf-fields/leasing.php:120 includes/acf-fields/leasing.php:393
 msgid "All cars"
 msgstr "Wszystkie auta"
 
-#: includes/acf-fields/leasing.php:132
-#: includes/acf-fields/leasing.php:405
+#: includes/acf-fields/leasing.php:132 includes/acf-fields/leasing.php:405
 msgid "Vehicle value"
 msgstr "Hodnota vozidla"
 
-#: includes/acf-fields/leasing.php:144
-#: includes/acf-fields/leasing.php:417
+#: includes/acf-fields/leasing.php:144 includes/acf-fields/leasing.php:417
 #: includes/acf-fields/vinomat.php:86
 msgid "net"
 msgstr "síť"
 
-#: includes/acf-fields/leasing.php:156
-#: includes/acf-fields/leasing.php:429
+#: includes/acf-fields/leasing.php:156 includes/acf-fields/leasing.php:429
 msgid "Type of financing"
 msgstr "Typ financování"
 
-#: includes/acf-fields/leasing.php:178
-#: includes/acf-fields/leasing.php:451
+#: includes/acf-fields/leasing.php:178 includes/acf-fields/leasing.php:451
 msgid "Default incentive/commission"
 msgstr "Výchozí bonus/provize"
 
@@ -1587,23 +1632,19 @@ msgstr "Výchozí bonus/provize"
 msgid "Default number of lease payments"
 msgstr "Výchozí počet leasingových splátek"
 
-#: includes/acf-fields/leasing.php:222
-#: includes/acf-fields/leasing.php:495
+#: includes/acf-fields/leasing.php:222 includes/acf-fields/leasing.php:495
 msgid "Default down payment"
 msgstr "Výchozí výše akontace"
 
-#: includes/acf-fields/leasing.php:244
-#: includes/acf-fields/leasing.php:517
+#: includes/acf-fields/leasing.php:244 includes/acf-fields/leasing.php:517
 msgid "Available down payments"
 msgstr "Možné výše akontace"
 
-#: includes/acf-fields/leasing.php:266
-#: includes/acf-fields/leasing.php:539
+#: includes/acf-fields/leasing.php:266 includes/acf-fields/leasing.php:539
 msgid "Available number of installments"
 msgstr "Možný počet splátek"
 
-#: includes/acf-fields/leasing.php:290
-#: includes/acf-fields/vinomat.php:122
+#: includes/acf-fields/leasing.php:290 includes/acf-fields/vinomat.php:122
 msgid "Rental"
 msgstr "Pronájem"
 
@@ -1640,23 +1681,13 @@ msgstr "Model, pod kterým se bude zobrazovat obsah této stránky"
 msgid "Basic data"
 msgstr "Základní informace"
 
-#: includes/acf-fields/model-versions.php:29
-#: includes/acf-fields/options-service.php:457
-#: includes/acf-fields/options-service.php:519
-#: includes/acf-fields/options-taxonomy.php:61
-#: includes/acf-fields/options-taxonomy.php:133
-#: includes/acf-fields/options-taxonomy.php:225
-#: includes/acf-fields/options-taxonomy.php:297
-#: includes/acf-fields/options-taxonomy.php:369
-msgid "Name"
-msgstr "Název"
-
 #: includes/acf-fields/model-versions.php:48
 msgid "Hide price"
 msgstr "Skrýt cenu"
 
 #: includes/acf-fields/model-versions.php:73
 #: includes/acf-fields/two-column-content-component.php:655
+#: includes/controllers/StockController.class.php:254
 msgid "Price"
 msgstr "Cena"
 
@@ -1666,25 +1697,25 @@ msgid "Basic Technical Specifications"
 msgstr "Základní technické parametry"
 
 #: includes/acf-fields/model-versions.php:144
-#: includes/acf-fields/stock-car.php:662
+#: includes/acf-fields/stock-car.php:668
 msgid "Fuel Type"
 msgstr "Druh paliva"
 
 #: includes/acf-fields/model-versions.php:163
 #: includes/acf-fields/options-electric-costs.php:234
 #: includes/acf-fields/options-electric-costs.php:445
-#: includes/acf-fields/stock-car.php:531
-#: includes/acf-fields/stock-car.php:1534
+#: includes/acf-fields/stock-car.php:537 includes/acf-fields/stock-car.php:1540
+#: includes/controllers/StockController.class.php:188
 msgid "Engine"
 msgstr "Motor"
 
 #: includes/acf-fields/model-versions.php:185
-#: includes/acf-fields/stock-car.php:622
+#: includes/acf-fields/stock-car.php:628
 msgid "Maximum Power (HP)"
 msgstr "Maximální výkon (k)"
 
 #: includes/acf-fields/model-versions.php:204
-#: includes/acf-fields/stock-car.php:715
+#: includes/acf-fields/stock-car.php:721
 msgid "Acceleration time (s)"
 msgstr "Zrychlení (s)"
 
@@ -1693,7 +1724,7 @@ msgid "Average fuel consumption (liters/100 km)"
 msgstr "Průměrná spotřeba paliva (l/100 km)"
 
 #: includes/acf-fields/model-versions.php:389
-#: includes/acf-fields/stock-car.php:802
+#: includes/acf-fields/stock-car.php:808
 msgid "Electric range"
 msgstr "Dojezd na elektrický pohon"
 
@@ -1729,66 +1760,62 @@ msgid "Video ID on youtube.com"
 msgstr "ID videa na youtube.com"
 
 #: includes/acf-fields/model-versions.php:628
-#: includes/acf-fields/model-versions.php:644
-#: includes/acf-fields/model.php:160
+#: includes/acf-fields/model-versions.php:644 includes/acf-fields/model.php:160
 #: includes/acf-fields/model.php:176
 msgid "Color variants"
 msgstr "Barevné varianty"
 
-#: includes/acf-fields/model-versions.php:659
-#: includes/acf-fields/model.php:191
+#: includes/acf-fields/model-versions.php:659 includes/acf-fields/model.php:191
 msgid "Select interior color"
 msgstr "Vyberte barvu interiéru"
 
-#: includes/acf-fields/model-versions.php:684
-#: includes/acf-fields/model.php:216
+#: includes/acf-fields/model-versions.php:684 includes/acf-fields/model.php:216
 msgid "Default vehicle gallery"
 msgstr "Výchozí galerie vozidla"
 
-#: includes/acf-fields/model-versions.php:709
-#: includes/acf-fields/model.php:241
+#: includes/acf-fields/model-versions.php:709 includes/acf-fields/model.php:241
 #: includes/acf-fields/offer-cards.php:30
 msgid "Tabs"
 msgstr "Záložky"
 
-#: includes/acf-fields/model-versions.php:728
-#: includes/acf-fields/model.php:260
+#: includes/acf-fields/model-versions.php:728 includes/acf-fields/model.php:260
 msgid "Select color"
 msgstr "Vyberte barvu"
 
-#: includes/acf-fields/model-versions.php:753
-#: includes/acf-fields/model.php:285
+#: includes/acf-fields/model-versions.php:753 includes/acf-fields/model.php:285
 msgid "Gallery type"
 msgstr "Typ galerie"
 
-#: includes/acf-fields/model-versions.php:764
-#: includes/acf-fields/model.php:279
+#: includes/acf-fields/model-versions.php:765 includes/acf-fields/model.php:297
 msgid "Gallery_Car"
 msgstr "auto"
 
-#: includes/acf-fields/model-versions.php:764
-#: includes/acf-fields/model.php:280
+#: includes/acf-fields/model-versions.php:766 includes/acf-fields/model.php:298
 msgid "Gallery_interior"
 msgstr "interiér"
 
-#: includes/acf-fields/model-versions.php:778
-#: includes/acf-fields/model.php:310
+#: includes/acf-fields/model-versions.php:778 includes/acf-fields/model.php:310
 msgid "Photos of the color variant"
 msgstr "Fotografie barevné varianty"
 
-#: includes/acf-fields/model.php:7
-#: includes/acf-fields/options-taxonomy.php:12
+#: includes/acf-fields/model.php:7 includes/acf-fields/options-taxonomy.php:12
 #: includes/acf-fields/options-taxonomy.php:28
-#: includes/acf-fields/options-test-drive.php:33
-#: includes/post-types.php:92
+#: includes/acf-fields/options-test-drive.php:33 includes/post-types.php:92
 #: includes/post-types.php:114
 msgid "Models"
 msgstr "Modely"
 
-#: includes/acf-fields/model.php:11
-#: includes/acf-fields/redirections.php:57
+#: includes/acf-fields/model.php:11 includes/acf-fields/redirections.php:50
 msgid "Type"
 msgstr "Typ"
+
+#: includes/acf-fields/model.php:24
+msgid "Crossover"
+msgstr "Crossover"
+
+#: includes/acf-fields/model.php:28
+msgid "Cross Country"
+msgstr "Cross Country"
 
 #: includes/acf-fields/model.php:41
 msgid "Model Name"
@@ -1910,6 +1937,7 @@ msgstr "Konfigurace elektrifikace"
 #: includes/acf-fields/options-electric-costs.php:212
 #: includes/acf-fields/options-electric-costs.php:334
 #: includes/acf-fields/options-electric-costs.php:423
+#: includes/classes/Lead.class.php:267
 msgid "Car model"
 msgstr "Model vozu"
 
@@ -1953,8 +1981,7 @@ msgstr "Text tlačítka"
 msgid "Charging time"
 msgstr "Doba nabíjení"
 
-#: includes/acf-fields/options-global.php:7
-#: includes/acf.php:776
+#: includes/acf-fields/options-global.php:7 includes/acf.php:776
 #: includes/acf.php:777
 msgid "Global settings"
 msgstr "Globální nastavení"
@@ -1985,15 +2012,10 @@ msgstr "Záhlaví na stránce všech aut, pokud nejsou nalezeny žádné výsled
 msgid "Header on the single car page"
 msgstr "Záhlaví na stránce jednoho auta"
 
-#: includes/acf-fields/options-models.php:7
-#: includes/acf.php:731
+#: includes/acf-fields/options-models.php:7 includes/acf.php:731
 #: includes/acf.php:732
 msgid "Models options"
 msgstr "Možnosti modelů"
-
-#: includes/acf-fields/options-service.php:747
-msgid "(up to 3 specializations)"
-msgstr "(až 3 specializace)"
 
 #: includes/acf-fields/options-models.php:11
 msgid "Default model categories displayed on mobile"
@@ -2090,11 +2112,16 @@ msgstr "Kontaktní osoby"
 msgid "Specializations"
 msgstr "Specializace"
 
+#: includes/acf-fields/options-service.php:747
+msgid "(up to 3 specializations)"
+msgstr "(až 3 specializace)"
+
 #: includes/acf-fields/options-service.php:763
 msgid "Specialization name"
 msgstr "Název specializace"
 
 #: includes/acf-fields/options-service.php:766
+#, php-format
 msgid "(max. %s chars_)"
 msgstr "(max. %s znaků)"
 
@@ -2120,8 +2147,7 @@ msgstr "Další nastavení"
 msgid "Code for thank-you page"
 msgstr "Kód pro stránku s poděkováním"
 
-#: includes/acf-fields/options-taxonomy.php:8
-#: includes/acf.php:683
+#: includes/acf-fields/options-taxonomy.php:8 includes/acf.php:683
 #: includes/acf.php:684
 msgid "Dictionaries"
 msgstr "Slovníky"
@@ -2140,7 +2166,7 @@ msgid "Engine types"
 msgstr "Typy motorů"
 
 #: includes/acf-fields/options-taxonomy.php:152
-#: includes/acf-fields/stock-car.php:677
+#: includes/acf-fields/stock-car.php:683
 msgid "Electric"
 msgstr "Elektrické"
 
@@ -2163,8 +2189,8 @@ msgid "Equipment types"
 msgstr "Typy výbavy"
 
 #: includes/acf-fields/options-taxonomy.php:320
-#: includes/acf-fields/stock-car.php:554
-#: includes/acf-fields/stock-car.php:1512
+#: includes/acf-fields/stock-car.php:560 includes/acf-fields/stock-car.php:1518
+#: includes/controllers/StockController.class.php:200
 msgid "Upholstery"
 msgstr "Čalounění"
 
@@ -2173,8 +2199,7 @@ msgstr "Čalounění"
 msgid "Upholstery types"
 msgstr "Typy čalounění"
 
-#: includes/acf-fields/options-test-drive.php:10
-#: includes/acf.php:764
+#: includes/acf-fields/options-test-drive.php:10 includes/acf.php:764
 #: includes/acf.php:765
 msgid "Test drive options"
 msgstr "Možnosti testovací jízdy"
@@ -2201,6 +2226,7 @@ msgstr "Stáří vozu"
 
 #: includes/acf-fields/options-vinomat.php:366
 #: includes/acf-fields/options-vinomat.php:385
+#, php-format
 msgid "Description %s"
 msgstr "Popis %s"
 
@@ -2228,23 +2254,11 @@ msgstr "Vpravo"
 msgid "Header type"
 msgstr "Typ záhlaví"
 
-#: includes/acf-fields/preview-component.php:341
-#: includes/acf-fields/two-column-content-component.php:567
-msgid "Label"
-msgstr "Název"
-
-#: includes/acf-fields/preview-component.php:360
-#: includes/acf-fields/two-column-content-component.php:207
-#: includes/acf-fields/two-column-content-component.php:586
-msgid "Value"
-msgstr "Hodnota"
-
 #: includes/acf-fields/quick-info.php:8
 msgid "Quick info"
 msgstr "Rychlá informace"
 
-#: includes/acf-fields/quick-info.php:13
-#: includes/acf.php:496
+#: includes/acf-fields/quick-info.php:13 includes/acf.php:496
 #: includes/acf.php:497
 msgid "Interesting facts"
 msgstr "Zajímavosti"
@@ -2262,8 +2276,7 @@ msgid "Bottom title"
 msgstr "Dolní nadpis"
 
 #: includes/acf-fields/redirections.php:8
-#: includes/acf-fields/redirections.php:31
-#: includes/acf.php:753
+#: includes/acf-fields/redirections.php:31 includes/acf.php:753
 #: includes/acf.php:754
 msgid "Redirects"
 msgstr "Přesměrování"
@@ -2272,15 +2285,15 @@ msgstr "Přesměrování"
 msgid "Redirects in CSV format"
 msgstr "Přesměrování ve formátu CSV"
 
-#: includes/acf-fields/redirections.php:24
+#: includes/acf-fields/redirections.php:34
 msgid "<strong>WARNING!</strong><br><br>302 Redirect: used for temporary redirects (short-term, e.g., one month) or for testing redirects before switching to a 301 redirect<br>301 Redirect: permanent, stored locally on users' devices. They should never be changed. Any changes or removal take a very long time<br><br><strong>First, add a 302 redirect, test it thoroughly, and once you are absolutely certain that the redirect links will not change and the redirect is functioning correctly, you can change it to a 301 redirect</strong><br/ ><br/><button class=\"removeRows\" type=\"button\">Remove selected rows</button>"
 msgstr "<strong>UPOZORNĚNÍ!</strong><br><br>Přesměrování 302: používá se pro dočasná přesměrování (krátkodobá, např. na jeden měsíc) nebo pro testování přesměrování před přechodem na přesměrování 301<br>Přesměrování 301: trvalé, ukládá se lokálně na zařízení uživatelů. Nikdy by se nemělo měnit. Jakékoli změny nebo odstranění trvají velmi dlouho<br><br><strong>Nejprve přidejte přesměrování 302, důkladně ho otestujte a jakmile si budete absolutně jisti, že se odkazy na přesměrování nezmění a přesměrování funguje správně, můžete ho změnit na přesměrování 301</strong><br/ ><br/><button class=\"removeRows\" type=\"button\">Odstranit vybrané řádky</button>"
 
-#: includes/acf-fields/redirections.php:82
+#: includes/acf-fields/redirections.php:75
 msgid "Source URL"
 msgstr "Zdrojová URL"
 
-#: includes/acf-fields/redirections.php:98
+#: includes/acf-fields/redirections.php:91
 msgid "Destination URL"
 msgstr "Cílová URL"
 
@@ -2288,10 +2301,8 @@ msgstr "Cílová URL"
 msgid "Post ID"
 msgstr "Post id"
 
-#: includes/acf-fields/short-notes.php:8
-#: includes/acf-fields/short-notes.php:12
-#: includes/acf.php:450
-#: includes/acf.php:451
+#: includes/acf-fields/short-notes.php:8 includes/acf-fields/short-notes.php:12
+#: includes/acf.php:450 includes/acf.php:451
 msgid "Short notes"
 msgstr "Krátké poznámky"
 
@@ -2339,76 +2350,53 @@ msgstr "Město showroomu"
 msgid "Showroom city to be used on the website odreki.poznajvolvo.pl"
 msgstr "Město showroomu, které se má použít na webových stránkách odreki.poznajvolvo.pl"
 
-#: includes/acf-fields/showroom.php:255
-#: includes/acf-fields/showroom.php:279
+#: includes/acf-fields/showroom.php:255 includes/acf-fields/showroom.php:279
 msgid "Showroom hours"
 msgstr "Otevírací doba showroomu"
 
-#: includes/acf-fields/showroom.php:302
-#: includes/acf-fields/showroom.php:468
+#: includes/acf-fields/showroom.php:302 includes/acf-fields/showroom.php:468
 #: includes/acf-fields/showroom.php:634
 msgid "Monday-Friday"
 msgstr "Pondělí–pátek"
 
-#: includes/acf-fields/showroom.php:317
-#: includes/acf-fields/showroom.php:366
-#: includes/acf-fields/showroom.php:483
-#: includes/acf-fields/showroom.php:532
-#: includes/acf-fields/showroom.php:649
-#: includes/acf-fields/showroom.php:698
+#: includes/acf-fields/showroom.php:317 includes/acf-fields/showroom.php:366
+#: includes/acf-fields/showroom.php:483 includes/acf-fields/showroom.php:532
+#: includes/acf-fields/showroom.php:649 includes/acf-fields/showroom.php:698
 msgid "From"
 msgstr "Od"
 
-#: includes/acf-fields/showroom.php:333
-#: includes/acf-fields/showroom.php:382
-#: includes/acf-fields/showroom.php:499
-#: includes/acf-fields/showroom.php:548
-#: includes/acf-fields/showroom.php:665
-#: includes/acf-fields/showroom.php:714
+#: includes/acf-fields/showroom.php:333 includes/acf-fields/showroom.php:382
+#: includes/acf-fields/showroom.php:499 includes/acf-fields/showroom.php:548
+#: includes/acf-fields/showroom.php:665 includes/acf-fields/showroom.php:714
 msgid "To"
 msgstr "Do"
 
-#: includes/acf-fields/showroom.php:351
-#: includes/acf-fields/showroom.php:517
-#: includes/acf-fields/showroom.php:683
-#: includes/acf-fields/showroom.php:817
-#: includes/acf-fields/showroom.php:896
-#: includes/acf-fields/showroom.php:974
-#: includes/acf-fields/showroom.php:1052
-#: includes/acf-fields/showroom.php:1130
-#: includes/acf-fields/showroom.php:1208
-#: includes/acf-fields/showroom.php:1286
-#: includes/acf-fields/showroom.php:1364
-#: includes/acf-fields/showroom.php:1442
-#: includes/acf-fields/showroom.php:1520
-#: includes/acf-fields/showroom.php:1598
-#: includes/acf-fields/showroom.php:1676
-#: includes/acf-fields/showroom.php:1754
-#: includes/acf-fields/showroom.php:1832
-#: includes/acf-fields/showroom.php:1910
-#: includes/acf-fields/showroom.php:1988
-#: includes/acf-fields/showroom.php:2066
-#: includes/acf-fields/showroom.php:2144
-#: includes/acf-fields/showroom.php:2222
-#: includes/acf-fields/showroom.php:2300
-#: includes/acf-fields/showroom.php:2378
+#: includes/acf-fields/showroom.php:351 includes/acf-fields/showroom.php:517
+#: includes/acf-fields/showroom.php:683 includes/acf-fields/showroom.php:817
+#: includes/acf-fields/showroom.php:896 includes/acf-fields/showroom.php:974
+#: includes/acf-fields/showroom.php:1052 includes/acf-fields/showroom.php:1130
+#: includes/acf-fields/showroom.php:1208 includes/acf-fields/showroom.php:1286
+#: includes/acf-fields/showroom.php:1364 includes/acf-fields/showroom.php:1442
+#: includes/acf-fields/showroom.php:1520 includes/acf-fields/showroom.php:1598
+#: includes/acf-fields/showroom.php:1676 includes/acf-fields/showroom.php:1754
+#: includes/acf-fields/showroom.php:1832 includes/acf-fields/showroom.php:1910
+#: includes/acf-fields/showroom.php:1988 includes/acf-fields/showroom.php:2066
+#: includes/acf-fields/showroom.php:2144 includes/acf-fields/showroom.php:2222
+#: includes/acf-fields/showroom.php:2300 includes/acf-fields/showroom.php:2378
 #: includes/acf-fields/showroom.php:2456
 msgid "Saturday"
 msgstr "Sobota"
 
-#: includes/acf-fields/showroom.php:400
-#: includes/acf-fields/showroom.php:566
+#: includes/acf-fields/showroom.php:400 includes/acf-fields/showroom.php:566
 #: includes/acf-fields/showroom.php:732
 msgid "Additional information"
 msgstr "Další informace"
 
-#: includes/acf-fields/showroom.php:421
-#: includes/acf-fields/showroom.php:445
+#: includes/acf-fields/showroom.php:421 includes/acf-fields/showroom.php:445
 msgid "Service center opening hours"
 msgstr "Otevírací doba servisního centra"
 
-#: includes/acf-fields/showroom.php:587
-#: includes/acf-fields/showroom.php:611
+#: includes/acf-fields/showroom.php:587 includes/acf-fields/showroom.php:611
 msgid "Customer Service Office opening hours"
 msgstr "Otevírací doba zákaznického servisu"
 
@@ -2420,237 +2408,153 @@ msgstr "Otevírací doba oddělení"
 msgid "Department hours"
 msgstr "Otevírací doba oddělení"
 
-#: includes/acf-fields/showroom.php:768
-#: includes/acf-fields/showroom.php:774
+#: includes/acf-fields/showroom.php:768 includes/acf-fields/showroom.php:774
 msgid "Business Development Center"
 msgstr "Centrum rozvoje podnikání"
 
-#: includes/acf-fields/showroom.php:782
-#: includes/acf-fields/showroom.php:861
-#: includes/acf-fields/showroom.php:939
-#: includes/acf-fields/showroom.php:1017
-#: includes/acf-fields/showroom.php:1095
-#: includes/acf-fields/showroom.php:1173
-#: includes/acf-fields/showroom.php:1251
-#: includes/acf-fields/showroom.php:1329
-#: includes/acf-fields/showroom.php:1407
-#: includes/acf-fields/showroom.php:1485
-#: includes/acf-fields/showroom.php:1563
-#: includes/acf-fields/showroom.php:1641
-#: includes/acf-fields/showroom.php:1719
-#: includes/acf-fields/showroom.php:1797
-#: includes/acf-fields/showroom.php:1875
-#: includes/acf-fields/showroom.php:1953
-#: includes/acf-fields/showroom.php:2031
-#: includes/acf-fields/showroom.php:2109
-#: includes/acf-fields/showroom.php:2187
-#: includes/acf-fields/showroom.php:2265
-#: includes/acf-fields/showroom.php:2343
-#: includes/acf-fields/showroom.php:2421
+#: includes/acf-fields/showroom.php:782 includes/acf-fields/showroom.php:861
+#: includes/acf-fields/showroom.php:939 includes/acf-fields/showroom.php:1017
+#: includes/acf-fields/showroom.php:1095 includes/acf-fields/showroom.php:1173
+#: includes/acf-fields/showroom.php:1251 includes/acf-fields/showroom.php:1329
+#: includes/acf-fields/showroom.php:1407 includes/acf-fields/showroom.php:1485
+#: includes/acf-fields/showroom.php:1563 includes/acf-fields/showroom.php:1641
+#: includes/acf-fields/showroom.php:1719 includes/acf-fields/showroom.php:1797
+#: includes/acf-fields/showroom.php:1875 includes/acf-fields/showroom.php:1953
+#: includes/acf-fields/showroom.php:2031 includes/acf-fields/showroom.php:2109
+#: includes/acf-fields/showroom.php:2187 includes/acf-fields/showroom.php:2265
+#: includes/acf-fields/showroom.php:2343 includes/acf-fields/showroom.php:2421
 msgid "Hours"
 msgstr "Otevírací doba"
 
-#: includes/acf-fields/showroom.php:789
-#: includes/acf-fields/showroom.php:868
-#: includes/acf-fields/showroom.php:946
-#: includes/acf-fields/showroom.php:1024
-#: includes/acf-fields/showroom.php:1102
-#: includes/acf-fields/showroom.php:1180
-#: includes/acf-fields/showroom.php:1258
-#: includes/acf-fields/showroom.php:1336
-#: includes/acf-fields/showroom.php:1414
-#: includes/acf-fields/showroom.php:1492
-#: includes/acf-fields/showroom.php:1570
-#: includes/acf-fields/showroom.php:1648
-#: includes/acf-fields/showroom.php:1726
-#: includes/acf-fields/showroom.php:1804
-#: includes/acf-fields/showroom.php:1882
-#: includes/acf-fields/showroom.php:1960
-#: includes/acf-fields/showroom.php:2038
-#: includes/acf-fields/showroom.php:2116
-#: includes/acf-fields/showroom.php:2194
-#: includes/acf-fields/showroom.php:2272
-#: includes/acf-fields/showroom.php:2350
-#: includes/acf-fields/showroom.php:2428
+#: includes/acf-fields/showroom.php:789 includes/acf-fields/showroom.php:868
+#: includes/acf-fields/showroom.php:946 includes/acf-fields/showroom.php:1024
+#: includes/acf-fields/showroom.php:1102 includes/acf-fields/showroom.php:1180
+#: includes/acf-fields/showroom.php:1258 includes/acf-fields/showroom.php:1336
+#: includes/acf-fields/showroom.php:1414 includes/acf-fields/showroom.php:1492
+#: includes/acf-fields/showroom.php:1570 includes/acf-fields/showroom.php:1648
+#: includes/acf-fields/showroom.php:1726 includes/acf-fields/showroom.php:1804
+#: includes/acf-fields/showroom.php:1882 includes/acf-fields/showroom.php:1960
+#: includes/acf-fields/showroom.php:2038 includes/acf-fields/showroom.php:2116
+#: includes/acf-fields/showroom.php:2194 includes/acf-fields/showroom.php:2272
+#: includes/acf-fields/showroom.php:2350 includes/acf-fields/showroom.php:2428
 msgid "Monday - Friday"
 msgstr "Pondělí – Pátek"
 
-#: includes/acf-fields/showroom.php:797
-#: includes/acf-fields/showroom.php:825
-#: includes/acf-fields/showroom.php:876
-#: includes/acf-fields/showroom.php:904
-#: includes/acf-fields/showroom.php:954
-#: includes/acf-fields/showroom.php:982
-#: includes/acf-fields/showroom.php:1032
-#: includes/acf-fields/showroom.php:1060
-#: includes/acf-fields/showroom.php:1110
-#: includes/acf-fields/showroom.php:1138
-#: includes/acf-fields/showroom.php:1188
-#: includes/acf-fields/showroom.php:1216
-#: includes/acf-fields/showroom.php:1266
-#: includes/acf-fields/showroom.php:1294
-#: includes/acf-fields/showroom.php:1344
-#: includes/acf-fields/showroom.php:1372
-#: includes/acf-fields/showroom.php:1422
-#: includes/acf-fields/showroom.php:1450
-#: includes/acf-fields/showroom.php:1500
-#: includes/acf-fields/showroom.php:1528
-#: includes/acf-fields/showroom.php:1578
-#: includes/acf-fields/showroom.php:1606
-#: includes/acf-fields/showroom.php:1656
-#: includes/acf-fields/showroom.php:1684
-#: includes/acf-fields/showroom.php:1734
-#: includes/acf-fields/showroom.php:1762
-#: includes/acf-fields/showroom.php:1812
-#: includes/acf-fields/showroom.php:1840
-#: includes/acf-fields/showroom.php:1890
-#: includes/acf-fields/showroom.php:1918
-#: includes/acf-fields/showroom.php:1968
-#: includes/acf-fields/showroom.php:1996
-#: includes/acf-fields/showroom.php:2046
-#: includes/acf-fields/showroom.php:2074
-#: includes/acf-fields/showroom.php:2124
-#: includes/acf-fields/showroom.php:2152
-#: includes/acf-fields/showroom.php:2202
-#: includes/acf-fields/showroom.php:2230
-#: includes/acf-fields/showroom.php:2280
-#: includes/acf-fields/showroom.php:2308
-#: includes/acf-fields/showroom.php:2358
-#: includes/acf-fields/showroom.php:2386
-#: includes/acf-fields/showroom.php:2436
-#: includes/acf-fields/showroom.php:2464
+#: includes/acf-fields/showroom.php:797 includes/acf-fields/showroom.php:825
+#: includes/acf-fields/showroom.php:876 includes/acf-fields/showroom.php:904
+#: includes/acf-fields/showroom.php:954 includes/acf-fields/showroom.php:982
+#: includes/acf-fields/showroom.php:1032 includes/acf-fields/showroom.php:1060
+#: includes/acf-fields/showroom.php:1110 includes/acf-fields/showroom.php:1138
+#: includes/acf-fields/showroom.php:1188 includes/acf-fields/showroom.php:1216
+#: includes/acf-fields/showroom.php:1266 includes/acf-fields/showroom.php:1294
+#: includes/acf-fields/showroom.php:1344 includes/acf-fields/showroom.php:1372
+#: includes/acf-fields/showroom.php:1422 includes/acf-fields/showroom.php:1450
+#: includes/acf-fields/showroom.php:1500 includes/acf-fields/showroom.php:1528
+#: includes/acf-fields/showroom.php:1578 includes/acf-fields/showroom.php:1606
+#: includes/acf-fields/showroom.php:1656 includes/acf-fields/showroom.php:1684
+#: includes/acf-fields/showroom.php:1734 includes/acf-fields/showroom.php:1762
+#: includes/acf-fields/showroom.php:1812 includes/acf-fields/showroom.php:1840
+#: includes/acf-fields/showroom.php:1890 includes/acf-fields/showroom.php:1918
+#: includes/acf-fields/showroom.php:1968 includes/acf-fields/showroom.php:1996
+#: includes/acf-fields/showroom.php:2046 includes/acf-fields/showroom.php:2074
+#: includes/acf-fields/showroom.php:2124 includes/acf-fields/showroom.php:2152
+#: includes/acf-fields/showroom.php:2202 includes/acf-fields/showroom.php:2230
+#: includes/acf-fields/showroom.php:2280 includes/acf-fields/showroom.php:2308
+#: includes/acf-fields/showroom.php:2358 includes/acf-fields/showroom.php:2386
+#: includes/acf-fields/showroom.php:2436 includes/acf-fields/showroom.php:2464
 msgid "Opening time"
 msgstr "Otevírací doba"
 
-#: includes/acf-fields/showroom.php:806
-#: includes/acf-fields/showroom.php:834
-#: includes/acf-fields/showroom.php:885
-#: includes/acf-fields/showroom.php:913
-#: includes/acf-fields/showroom.php:963
-#: includes/acf-fields/showroom.php:991
-#: includes/acf-fields/showroom.php:1041
-#: includes/acf-fields/showroom.php:1069
-#: includes/acf-fields/showroom.php:1119
-#: includes/acf-fields/showroom.php:1147
-#: includes/acf-fields/showroom.php:1197
-#: includes/acf-fields/showroom.php:1225
-#: includes/acf-fields/showroom.php:1275
-#: includes/acf-fields/showroom.php:1303
-#: includes/acf-fields/showroom.php:1353
-#: includes/acf-fields/showroom.php:1381
-#: includes/acf-fields/showroom.php:1431
-#: includes/acf-fields/showroom.php:1459
-#: includes/acf-fields/showroom.php:1509
-#: includes/acf-fields/showroom.php:1537
-#: includes/acf-fields/showroom.php:1587
-#: includes/acf-fields/showroom.php:1615
-#: includes/acf-fields/showroom.php:1665
-#: includes/acf-fields/showroom.php:1693
-#: includes/acf-fields/showroom.php:1743
-#: includes/acf-fields/showroom.php:1771
-#: includes/acf-fields/showroom.php:1821
-#: includes/acf-fields/showroom.php:1849
-#: includes/acf-fields/showroom.php:1899
-#: includes/acf-fields/showroom.php:1927
-#: includes/acf-fields/showroom.php:1977
-#: includes/acf-fields/showroom.php:2005
-#: includes/acf-fields/showroom.php:2055
-#: includes/acf-fields/showroom.php:2083
-#: includes/acf-fields/showroom.php:2133
-#: includes/acf-fields/showroom.php:2161
-#: includes/acf-fields/showroom.php:2211
-#: includes/acf-fields/showroom.php:2239
-#: includes/acf-fields/showroom.php:2289
-#: includes/acf-fields/showroom.php:2317
-#: includes/acf-fields/showroom.php:2367
-#: includes/acf-fields/showroom.php:2395
-#: includes/acf-fields/showroom.php:2445
-#: includes/acf-fields/showroom.php:2473
+#: includes/acf-fields/showroom.php:806 includes/acf-fields/showroom.php:834
+#: includes/acf-fields/showroom.php:885 includes/acf-fields/showroom.php:913
+#: includes/acf-fields/showroom.php:963 includes/acf-fields/showroom.php:991
+#: includes/acf-fields/showroom.php:1041 includes/acf-fields/showroom.php:1069
+#: includes/acf-fields/showroom.php:1119 includes/acf-fields/showroom.php:1147
+#: includes/acf-fields/showroom.php:1197 includes/acf-fields/showroom.php:1225
+#: includes/acf-fields/showroom.php:1275 includes/acf-fields/showroom.php:1303
+#: includes/acf-fields/showroom.php:1353 includes/acf-fields/showroom.php:1381
+#: includes/acf-fields/showroom.php:1431 includes/acf-fields/showroom.php:1459
+#: includes/acf-fields/showroom.php:1509 includes/acf-fields/showroom.php:1537
+#: includes/acf-fields/showroom.php:1587 includes/acf-fields/showroom.php:1615
+#: includes/acf-fields/showroom.php:1665 includes/acf-fields/showroom.php:1693
+#: includes/acf-fields/showroom.php:1743 includes/acf-fields/showroom.php:1771
+#: includes/acf-fields/showroom.php:1821 includes/acf-fields/showroom.php:1849
+#: includes/acf-fields/showroom.php:1899 includes/acf-fields/showroom.php:1927
+#: includes/acf-fields/showroom.php:1977 includes/acf-fields/showroom.php:2005
+#: includes/acf-fields/showroom.php:2055 includes/acf-fields/showroom.php:2083
+#: includes/acf-fields/showroom.php:2133 includes/acf-fields/showroom.php:2161
+#: includes/acf-fields/showroom.php:2211 includes/acf-fields/showroom.php:2239
+#: includes/acf-fields/showroom.php:2289 includes/acf-fields/showroom.php:2317
+#: includes/acf-fields/showroom.php:2367 includes/acf-fields/showroom.php:2395
+#: includes/acf-fields/showroom.php:2445 includes/acf-fields/showroom.php:2473
 msgid "Closing time"
 msgstr "Zavírací doba"
 
-#: includes/acf-fields/showroom.php:847
-#: includes/acf-fields/showroom.php:853
+#: includes/acf-fields/showroom.php:847 includes/acf-fields/showroom.php:853
 msgid "Assistance"
 msgstr "Asistence"
 
-#: includes/acf-fields/showroom.php:926
-#: includes/acf-fields/showroom.php:932
+#: includes/acf-fields/showroom.php:926 includes/acf-fields/showroom.php:932
 msgid "Auto Insurance"
 msgstr "Autopojištění"
 
-#: includes/acf-fields/showroom.php:1082
-#: includes/acf-fields/showroom.php:1088
+#: includes/acf-fields/showroom.php:1082 includes/acf-fields/showroom.php:1088
 msgid "Wadowscy Auto Detailing"
 msgstr "Wadowscy Auto Detailing"
 
-#: includes/acf-fields/showroom.php:1238
-#: includes/acf-fields/showroom.php:1244
+#: includes/acf-fields/showroom.php:1238 includes/acf-fields/showroom.php:1244
 msgid "Parts and Accessories"
 msgstr "Náhradní díly a příslušenství"
 
-#: includes/acf-fields/showroom.php:1316
-#: includes/acf-fields/showroom.php:1322
+#: includes/acf-fields/showroom.php:1316 includes/acf-fields/showroom.php:1322
 msgid "Online Sales of Parts and Accessories"
 msgstr "Online prodej náhradních dílů a příslušenství"
 
-#: includes/acf-fields/showroom.php:1394
-#: includes/acf-fields/showroom.php:1400
+#: includes/acf-fields/showroom.php:1394 includes/acf-fields/showroom.php:1400
 msgid "Fleet Sales"
 msgstr "Prodej vozového parku"
 
-#: includes/acf-fields/showroom.php:1472
-#: includes/acf-fields/showroom.php:1478
+#: includes/acf-fields/showroom.php:1472 includes/acf-fields/showroom.php:1478
 msgid "Volvo Service Club"
 msgstr "Volvo Service Club"
 
-#: includes/acf-fields/showroom.php:1550
-#: includes/acf-fields/showroom.php:1556
+#: includes/acf-fields/showroom.php:1550 includes/acf-fields/showroom.php:1556
 msgid "Bodywork and Paint Service"
 msgstr "Karosářské a lakovací služby"
 
-#: includes/acf-fields/showroom.php:1706
-#: includes/acf-fields/showroom.php:1712
+#: includes/acf-fields/showroom.php:1706 includes/acf-fields/showroom.php:1712
 msgid "Financing and Insurance"
 msgstr "Financování a pojištění"
 
-#: includes/acf-fields/showroom.php:1784
-#: includes/acf-fields/showroom.php:1790
+#: includes/acf-fields/showroom.php:1784 includes/acf-fields/showroom.php:1790
 msgid "Volvo Personal Service"
 msgstr "Volvo Personal Service"
 
-#: includes/acf-fields/showroom.php:1862
-#: includes/acf-fields/showroom.php:1868
+#: includes/acf-fields/showroom.php:1862 includes/acf-fields/showroom.php:1868
 msgid "Reception"
 msgstr "Recepce"
 
-#: includes/acf-fields/showroom.php:1940
-#: includes/acf-fields/showroom.php:1946
+#: includes/acf-fields/showroom.php:1940 includes/acf-fields/showroom.php:1946
 msgid "Administrative Office"
 msgstr "Administrativní kancelář"
 
-#: includes/acf-fields/showroom.php:2018
-#: includes/acf-fields/showroom.php:2024
+#: includes/acf-fields/showroom.php:2018 includes/acf-fields/showroom.php:2024
 msgid "Marketing and PR"
 msgstr "Marketing i PR"
 
-#: includes/acf-fields/showroom.php:2096
-#: includes/acf-fields/showroom.php:2102
+#: includes/acf-fields/showroom.php:2096 includes/acf-fields/showroom.php:2102
 msgid "Data Protection Officer"
 msgstr "Pověřenec pro ochranu osobních údajů"
 
-#: includes/acf-fields/showroom.php:2174
-#: includes/acf-fields/showroom.php:2180
+#: includes/acf-fields/showroom.php:2174 includes/acf-fields/showroom.php:2180
 msgid "Human Resources"
 msgstr "Lidské zdroje"
 
-#: includes/acf-fields/showroom.php:2252
-#: includes/acf-fields/showroom.php:2258
+#: includes/acf-fields/showroom.php:2252 includes/acf-fields/showroom.php:2258
 msgid "Tourist & Diplomat Sales"
 msgstr "Prodej turistům a diplomatům"
 
-#: includes/acf-fields/showroom.php:2408
-#: includes/acf-fields/showroom.php:2414
+#: includes/acf-fields/showroom.php:2408 includes/acf-fields/showroom.php:2414
 msgid "Parts"
 msgstr "Náhradní díly"
 
@@ -2666,15 +2570,15 @@ msgstr "Typ nadpisu"
 msgid "Kind of header"
 msgstr "Druh záhlaví"
 
-#: includes/acf-fields/site-heading.php:78
+#: includes/acf-fields/site-heading.php:85
 msgid "Gray header"
 msgstr "Šedá hlavička"
 
-#: includes/acf-fields/site-heading.php:78
+#: includes/acf-fields/site-heading.php:86
 msgid "Blog header"
 msgstr "Hlavička blogu"
 
-#: includes/acf-fields/site-heading.php:78
+#: includes/acf-fields/site-heading.php:87
 msgid "Standard header"
 msgstr "Standardní hlavička"
 
@@ -2722,252 +2626,256 @@ msgstr "Číslo nabídky"
 msgid "Salesperson's phone number"
 msgstr "Telefonní číslo prodejce"
 
-#: includes/acf-fields/stock-car.php:217
+#: includes/acf-fields/stock-car.php:218
+#, php-format
 msgid "Regular price (%s gross)"
 msgstr "Běžná cena (%s brutto)"
 
-#: includes/acf-fields/stock-car.php:217
+#: includes/acf-fields/stock-car.php:219 includes/acf-fields/stock-car.php:283
 msgid "currency"
 msgstr "zł"
 
-#: includes/acf-fields/stock-car.php:238
+#: includes/acf-fields/stock-car.php:241
 msgid "Omnibus price"
 msgstr "Celková cena"
 
-#: includes/acf-fields/stock-car.php:259
+#: includes/acf-fields/stock-car.php:262
 msgid "Has a promotional price"
 msgstr "Má akční cenu"
 
-#: includes/acf-fields/stock-car.php:278
+#: includes/acf-fields/stock-car.php:282
+#, php-format
 msgid "Promotional price (% gross)"
 msgstr "Akční cena (%s brutto)"
 
-#: includes/acf-fields/stock-car.php:328
+#: includes/acf-fields/stock-car.php:334
 msgid "Mileage in kilometers"
 msgstr "Najeto v kilometrech"
 
-#: includes/acf-fields/stock-car.php:349
+#: includes/acf-fields/stock-car.php:355
+#: includes/controllers/StockController.class.php:241
 msgid "Mileage"
 msgstr "Najeto"
 
-#: includes/acf-fields/stock-car.php:361
+#: includes/acf-fields/stock-car.php:367
+#: includes/controllers/StockController.class.php:244
 msgid "0-20,000 km"
 msgstr "0-20 tys. km"
 
-#: includes/acf-fields/stock-car.php:362
+#: includes/acf-fields/stock-car.php:368
+#: includes/controllers/StockController.class.php:245
 msgid "20,000-100,000 km"
 msgstr "20-100 tys. km"
 
-#: includes/acf-fields/stock-car.php:363
+#: includes/acf-fields/stock-car.php:369
 msgid "100,000-200,000 km"
 msgstr "100-200  tys. km"
 
-#: includes/acf-fields/stock-car.php:387
-msgid "Ready for pickup within 2 weeks"
-msgstr "K vyzvednutí do 2 týdnů"
-
-#: includes/acf-fields/stock-car.php:388
-msgid "Ready for pickup tomorrow"
-msgstr "K vyzvednutí zítra"
-
-#: includes/acf-fields/stock-car.php:375
+#: includes/acf-fields/stock-car.php:381
 msgid "Available for pickup within..."
 msgstr "K vyzvednutí do..."
 
-#: includes/acf-fields/stock-car.php:423
+#: includes/acf-fields/stock-car.php:393
+msgid "Ready for pickup within 2 weeks"
+msgstr "K vyzvednutí do 2 týdnů"
+
+#: includes/acf-fields/stock-car.php:394
+msgid "Ready for pickup tomorrow"
+msgstr "K vyzvednutí zítra"
+
+#: includes/acf-fields/stock-car.php:429
 msgid "Technical Specifications"
 msgstr "Technické specifikace"
 
-#: includes/acf-fields/stock-car.php:508
-#: includes/acf-fields/stock-car.php:1490
+#: includes/acf-fields/stock-car.php:514 includes/acf-fields/stock-car.php:1496
+#: includes/classes/DolCarsAdmin.class.php:86
+#: includes/controllers/StockController.class.php:183
 msgid "Color"
 msgstr "Barva"
 
-#: includes/acf-fields/stock-car.php:577
+#: includes/acf-fields/stock-car.php:583
+#: includes/controllers/StockController.class.php:205
 msgid "Transmission"
 msgstr "Převodovka"
 
-#: includes/acf-fields/stock-car.php:625
+#: includes/acf-fields/stock-car.php:631
 msgid "Car power; for hybrids, listed as e.g., 230+15. This field is displayed in the car’s technical specifications."
 msgstr "Výkon vozu; u hybridů je uveden např. jako 230+15. Toto pole se zobrazuje v technických specifikacích vozu."
 
-#: includes/acf-fields/stock-car.php:641
+#: includes/acf-fields/stock-car.php:647
 msgid "Total maximum power (HP)"
 msgstr "Celkový maximální výkon (HP)"
 
-#: includes/acf-fields/stock-car.php:644
+#: includes/acf-fields/stock-car.php:650
 msgid "Total vehicle power; this field is used to filter vehicles available immediately"
 msgstr "Celkový výkon vozidla; toto pole se používá k filtrování vozidel, která jsou k dispozici ihned"
 
-#: includes/acf-fields/stock-car.php:674
+#: includes/acf-fields/stock-car.php:680
 msgid "Diesel"
 msgstr "Nafta"
 
-#: includes/acf-fields/stock-car.php:675
+#: includes/acf-fields/stock-car.php:681
 msgid "Gasoline"
 msgstr "Benzín"
 
-#: includes/acf-fields/stock-car.php:676
+#: includes/acf-fields/stock-car.php:682
 msgid "Plug-in hybrid"
 msgstr "Plug-in hybrid"
 
-#: includes/acf-fields/stock-car.php:688
+#: includes/acf-fields/stock-car.php:694
 msgid "Drivetrain"
 msgstr "Pohon"
 
-#: includes/acf-fields/stock-car.php:700
-msgid "Pohon předních kol (FWD)"
-msgstr "Przedni (FWD)"
+#: includes/acf-fields/stock-car.php:706
+msgid "Front-wheel drive (FWD)"
+msgstr "Pohon předních kol (FWD)"
 
-#: includes/acf-fields/stock-car.php:701
-msgid "Pohon zadních kol (RWD)"
-msgstr "Rear-wheel drive (RWD)"
+#: includes/acf-fields/stock-car.php:707
+msgid "Rear-wheel drive (RWD)"
+msgstr "Pohon zadních kol (RWD)"
 
-#: includes/acf-fields/stock-car.php:702
+#: includes/acf-fields/stock-car.php:708
 msgid "All-wheel drive (AWD)"
 msgstr "Pohon všech kol (AWD)"
 
-#: includes/acf-fields/stock-car.php:748
-msgid "l/100 km"
-msgstr "l/100 km"
-
-#: includes/acf-fields/stock-car.php:749
-msgid "kWh/100 km"
-msgstr "kWh/100 km"
-
-#: includes/acf-fields/stock-car.php:736
+#: includes/acf-fields/stock-car.php:742
 msgid "Engine type"
 msgstr "Typ motoru"
 
-#: includes/acf-fields/stock-car.php:761
+#: includes/acf-fields/stock-car.php:754
+msgid "l/100 km"
+msgstr "l/100 km"
+
+#: includes/acf-fields/stock-car.php:755
+msgid "kWh/100 km"
+msgstr "kWh/100 km"
+
+#: includes/acf-fields/stock-car.php:767
 msgid "Average fuel consumption"
 msgstr "Průměrná spotřeba paliva"
 
-#: includes/acf-fields/stock-car.php:846
-#: includes/acf-fields/stock-car.php:885
+#: includes/acf-fields/stock-car.php:852 includes/acf-fields/stock-car.php:891
 msgid "Photos"
 msgstr "Fotografie"
 
-#: includes/acf-fields/stock-car.php:862
+#: includes/acf-fields/stock-car.php:868
 msgid "Photo format 4:3"
 msgstr "Formát fotografie 4:3"
 
-#: includes/acf-fields/stock-car.php:888
-#: includes/acf-fields/stock-car.php:915
+#: includes/acf-fields/stock-car.php:894 includes/acf-fields/stock-car.php:921
 msgid "(min. width: 944px, Recommended width: 2877px)<br>(min. height: 453px)<br>When opened, the gallery displays the original photo size."
 msgstr "(min. šířka: 944px, doporučená šířka: 2877px)<br>(min. výška: 453px)<br>Po otevření galerie zobrazí původní velikost fotografie."
 
-#: includes/acf-fields/stock-car.php:912
+#: includes/acf-fields/stock-car.php:918
 msgid "Photo for product feeds"
 msgstr "Fotografie pro produktové kanály"
 
-#: includes/acf-fields/stock-car.php:937
-#: includes/acf-fields/stock-car.php:972
+#: includes/acf-fields/stock-car.php:943 includes/acf-fields/stock-car.php:978
 msgid "Detailed technical specifications"
 msgstr "Podrobné technické specifikace"
 
-#: includes/acf-fields/stock-car.php:956
-msgid "By default, the header text is gray. <br>To make a specific phrase black, please place it between &lt;strong&gt;&lt;/strong&gt;, <br>e.g., &lt;strong&gt;TEXT&lt;/strong&gt; <br>(max. 166 characters)"
+#: includes/acf-fields/stock-car.php:962
+msgid "By default, the header text is gray. <br>To make a specific phrase black, please place it between &lt;strong&gt;&lt;/strong&gt;,<br>e.g., &lt;strong&gt;TEXT&lt;/strong&gt; <br>(max. 166 characters)"
 msgstr "Ve výchozím nastavení je text záhlaví šedý. <br>Chcete-li určitou frázi zbarvit černě, vložte ji mezi &lt;strong&gt;&lt;/strong&gt;, <br>např. &lt;strong&gt;TEXT&lt;/strong&gt; <br>(max. 166 znaků)"
 
-#: includes/acf-fields/stock-car.php:991
+#: includes/acf-fields/stock-car.php:997
 msgid "Section name"
 msgstr "Název sekce"
 
-#: includes/acf-fields/stock-car.php:1029
+#: includes/acf-fields/stock-car.php:1035
 msgid "Element"
 msgstr "Prvek"
 
-#: includes/acf-fields/stock-car.php:1052
-#: includes/acf.php:651
+#: includes/acf-fields/stock-car.php:1058 includes/acf.php:651
 #: includes/acf.php:652
 msgid "Financing"
 msgstr "Financování"
 
-#: includes/acf-fields/stock-car.php:1076
+#: includes/acf-fields/stock-car.php:1082
 msgid "Leasing offer"
 msgstr "Nabídka leasingu"
 
-#: includes/acf-fields/stock-car.php:1106
+#: includes/acf-fields/stock-car.php:1112
 msgid "Rental offer"
 msgstr "Nabídka pronájmu"
 
-#: includes/acf-fields/stock-car.php:1136
+#: includes/acf-fields/stock-car.php:1142
 msgid "Attractiveness/commission - Leasing"
 msgstr "Atraktivita/provize – leasing"
 
-#: includes/acf-fields/stock-car.php:1166
+#: includes/acf-fields/stock-car.php:1172
 msgid "Attractiveness/commission - Rental"
 msgstr "Atraktivita/provize – pronájem"
 
-#: includes/acf-fields/stock-car.php:1205
-#: includes/acf-fields/stock-car.php:1221
+#: includes/acf-fields/stock-car.php:1211
+#: includes/acf-fields/stock-car.php:1227
 msgid "Photos under detailed technical specifications"
 msgstr "Fotografie pod podrobnými technickými specifikacemi"
 
-#: includes/acf-fields/stock-car.php:1224
+#: includes/acf-fields/stock-car.php:1230
 msgid "(3 photos required)<br>The gallery displays the original photo size when opened."
 msgstr "(vyžadovány 3 fotografie)<br>Po otevření galerie zobrazí původní velikost fotografie."
 
-#: includes/acf-fields/stock-car.php:1249
+#: includes/acf-fields/stock-car.php:1255
 msgid "Energy labels"
 msgstr "Energetické štítky"
 
-#: includes/acf-fields/stock-car.php:1273
+#: includes/acf-fields/stock-car.php:1279
 msgid "Summer tires"
 msgstr "Letní pneumatiky"
 
-#: includes/acf-fields/stock-car.php:1292
-#: includes/acf-fields/stock-car.php:1329
+#: includes/acf-fields/stock-car.php:1298
+#: includes/acf-fields/stock-car.php:1335
 msgid "URL"
 msgstr "URL"
 
-#: includes/acf-fields/stock-car.php:1310
+#: includes/acf-fields/stock-car.php:1316
 msgid "Winter tires"
 msgstr "Zimní pneumatiky"
 
-#: includes/acf-fields/stock-car.php:1347
+#: includes/acf-fields/stock-car.php:1353
 msgid "Admin settings"
 msgstr "Nastavení administrátora"
 
-#: includes/acf-fields/stock-car.php:1364
+#: includes/acf-fields/stock-car.php:1370
 msgid "Synchronization odreki"
 msgstr "Synchronizace odreki"
 
-#: includes/acf-fields/stock-car.php:1379
+#: includes/acf-fields/stock-car.php:1385
 msgid "Waiting to be synchronized"
 msgstr "Čeká na synchronizaci"
 
-#: includes/acf-fields/stock-car.php:1391
+#: includes/acf-fields/stock-car.php:1397
 msgid "Car from Active Motors"
 msgstr "Auto od Active Motors"
 
-#: includes/acf-fields/stock-car.php:1417
+#: includes/acf-fields/stock-car.php:1423
 msgid "DOL Sync"
 msgstr "DOL Sync"
 
-#: includes/acf-fields/stock-car.php:1417
+#: includes/acf-fields/stock-car.php:1436
 msgid "Status not checked"
 msgstr "Status not checked"
 
-#: includes/acf-fields/stock-car.php:1417
+#: includes/acf-fields/stock-car.php:1437
 msgid "Data available in DOL"
 msgstr "Data available in DOL"
 
-#: includes/acf-fields/stock-car.php:1417
+#: includes/acf-fields/stock-car.php:1438
 msgid "Data not available in DOL"
 msgstr "Data not available in DOL"
 
-#: includes/acf-fields/stock-car.php:1417
+#: includes/acf-fields/stock-car.php:1439
 msgid "DOL Synchronized"
 msgstr "DOL Synchronized"
 
-#: includes/acf-fields/stock-car.php:1417
+#: includes/acf-fields/stock-car.php:1440
 msgid "Synchronization failed"
 msgstr "Synchronization failed"
 
-#: includes/acf-fields/table-component.php:7
-msgid "Table Generator"
+#: includes/acf-fields/table-component.php:7 includes/acf.php:473
+#: includes/acf.php:474
+msgid "Table generator"
 msgstr "Generátor tabulek"
 
 #: includes/acf-fields/table-component.php:28
@@ -2978,11 +2886,11 @@ msgstr "Zamknout první sloupec?"
 msgid "Color scheme"
 msgstr "Barevné schéma"
 
-#: includes/acf-fields/table-component.php:54
+#: includes/acf-fields/table-component.php:67
 msgid "Blue"
 msgstr "Modrá"
 
-#: includes/acf-fields/table-component.php:54
+#: includes/acf-fields/table-component.php:68
 msgid "Gray"
 msgstr "Šedá"
 
@@ -2994,8 +2902,7 @@ msgstr "Rozšířený textový editor"
 msgid "Text Editor"
 msgstr "Textový editor"
 
-#: includes/acf-fields/three-boxes.php:7
-#: includes/acf.php:599
+#: includes/acf-fields/three-boxes.php:7 includes/acf.php:599
 msgid "Three boxes"
 msgstr "Tři pole"
 
@@ -3007,7 +2914,7 @@ msgstr "TwoColumnContentComponent"
 msgid "Please ensure that the content height does not exceed the image height<br>(min. width 959px, Recommended width: 2877px)"
 msgstr "Ujistěte se, že výška obsahu nepřesahuje výšku obrázku<br>(min. šířka 959px, doporučená šířka: 2877px)"
 
-#: includes/acf-fields/two-column-content-component.php:54
+#: includes/acf-fields/two-column-content-component.php:38
 msgid "Link to the video on youtube.com<br> e.g., https://www.youtube.com/watch?v=LXb3EKWsInQ&t=4s"
 msgstr "Odkaz na video na youtube.com<br> např. https://www.youtube.com/watch?v=LXb3EKWsInQ&t=4s"
 
@@ -3039,11 +2946,11 @@ msgstr "Obsah v jednom sloupci"
 msgid "List view"
 msgstr "Zobrazení seznamu"
 
-#: includes/acf-fields/two-column-content-component.php:397
+#: includes/acf-fields/two-column-content-component.php:398
 msgid "1 column"
 msgstr "1 sloupec"
 
-#: includes/acf-fields/two-column-content-component.php:398
+#: includes/acf-fields/two-column-content-component.php:399
 msgid "2 columns"
 msgstr "2 sloupce"
 
@@ -3052,13 +2959,12 @@ msgstr "2 sloupce"
 msgid "Price from"
 msgstr "Cena od"
 
-#: includes/acf-fields/two-image.php:7
-#: includes/acf.php:251
+#: includes/acf-fields/two-image.php:7 includes/acf.php:251
 msgid "Two photos"
 msgstr "Dvě fotografie"
 
-#: includes/acf-fields/two-image.php:11
-#: includes/acf-fields/two-image.php:35
+#: includes/acf-fields/two-image.php:11 includes/acf-fields/two-image.php:35
+#, php-format
 msgid "Photo %s"
 msgstr "Fotografie %s"
 
@@ -3066,8 +2972,7 @@ msgstr "Fotografie %s"
 msgid "Pno map => Eurocode"
 msgstr "Pno mapa => Eurokód"
 
-#: includes/acf-fields/vinomat.php:73
-#: includes/acf-fields/vinomat.php:160
+#: includes/acf-fields/vinomat.php:73 includes/acf-fields/vinomat.php:160
 msgid "Base price"
 msgstr "Základní cena"
 
@@ -3075,13 +2980,11 @@ msgstr "Základní cena"
 msgid "gross"
 msgstr "hrubý"
 
-#: includes/acf-fields/vinomat.php:98
-#: includes/acf-fields/vinomat.php:185
+#: includes/acf-fields/vinomat.php:98 includes/acf-fields/vinomat.php:185
 msgid "mLeasing offer"
 msgstr "Nabídka mleasingu"
 
-#: includes/acf.php:85
-#: includes/acf.php:86
+#: includes/acf.php:85 includes/acf.php:86
 msgid "Offer Preview"
 msgstr "Náhled nabídky"
 
@@ -3097,13 +3000,7 @@ msgstr "Dvousloupcové rozložení"
 msgid "Photo/video + text"
 msgstr "Fotografie/video + text"
 
-#: includes/acf.php:182
-#: includes/acf.php:183
-msgid "Sales tiles"
-msgstr "Prodejní dlaždice"
-
-#: includes/acf.php:205
-#: includes/acf.php:206
+#: includes/acf.php:205 includes/acf.php:206
 msgid "Car sales tiles"
 msgstr "Dlaždice pro prodej vozů"
 
@@ -3119,18 +3016,15 @@ msgstr "Třísloupcové rozložení pro karty nabídek"
 msgid "Block with two images"
 msgstr "Blok se dvěma obrázky"
 
-#: includes/acf.php:277
-#: includes/acf.php:278
+#: includes/acf.php:277 includes/acf.php:278
 msgid "Banner with description"
 msgstr "Banner s popisem"
 
-#: includes/acf.php:301
-#: includes/acf.php:302
+#: includes/acf.php:301 includes/acf.php:302
 msgid "Banner photo"
 msgstr "Fotografie v banneru"
 
-#: includes/acf.php:349
-#: includes/acf.php:350
+#: includes/acf.php:349 includes/acf.php:350
 msgid "Text editor (Blog)"
 msgstr "Textový editor (blog)"
 
@@ -3141,17 +3035,6 @@ msgstr "Textový editor (pokročilý)"
 #: includes/acf.php:374
 msgid "Text editor for informational pages"
 msgstr "Textový editor pro informační stránky"
-
-#: includes/acf.php:421
-#: includes/acf.php:422
-#: includes/acf.php:674
-msgid "Cost calculator"
-msgstr "Kalkulátor nákladů"
-
-#: includes/acf.php:473
-#: includes/acf.php:474
-msgid "Table generator"
-msgstr "Generátor tabulek"
 
 #: includes/acf.php:577
 msgid "Blog posts"
@@ -3177,22 +3060,710 @@ msgstr "Autor"
 msgid "Electrification"
 msgstr "Elektrifikace"
 
-#: includes/acf.php:693
-#: includes/acf.php:694
+#: includes/acf.php:693 includes/acf.php:694
 msgid "Vinomat"
 msgstr "Vinomat"
 
-#: includes/acf.php:709
-#: includes/acf.php:710
+#: includes/acf.php:709 includes/acf.php:710
 msgid "Homepage options"
 msgstr "Možnosti domovské stránky"
 
-#: includes/acf.php:742
-#: includes/acf.php:743
-msgid "Dealer settings"
-msgstr "Nastavení prodejce"
+#: includes/classes/Cache.class.php:94
+msgid "Clear Cache"
+msgstr "Vymazat mezipaměť"
 
-#: includes/post-types.php:743
+#: includes/classes/Campaign.class.php:25
+#: includes/classes/CarSpecification.class.php:113
+#: includes/classes/DolCarsAdmin.class.php:108
+#: includes/classes/DolCarsAdmin.class.php:159
+#: includes/classes/DolCarsAdmin.class.php:243
+#: includes/classes/DolCarsAdmin.class.php:353
+#: includes/classes/DolCarsAdmin.class.php:397
+#: includes/classes/DolCarsAdmin.class.php:513
+#: includes/classes/DolCarsAdmin.class.php:825
+#: includes/classes/DolCarsAdmin.class.php:848
+#: includes/classes/DolCarsAdmin.class.php:880
+#: includes/classes/DolCarsAdmin.class.php:919
+#: includes/classes/Employee.class.php:26
+msgid "No permissions"
+msgstr "Žádná oprávnění"
+
+#: includes/classes/CarDictionary.class.php:602
+msgid "Imported car"
+msgstr "Dovážené auto"
+
+#: includes/classes/CarDictionary.class.php:604
+msgid "The car has already been imported"
+msgstr "Auto již bylo dovezeno"
+
+#: includes/classes/CarDictionary.class.php:1852
+#: includes/classes/CarDictionary.class.php:1907
+#: includes/classes/CarDictionary.class.php:1916
+#: includes/classes/CarDictionary.class.php:1927
+#: includes/classes/CarDictionary.class.php:1932
+msgid "Lack of funding"
+msgstr "Nedostatek finančních prostředků"
+
+#: includes/classes/CarOtoMoto.class.php:284
+msgid "The listing could not be deleted."
+msgstr "Záznam se nepodařilo smazat."
+
+#: includes/classes/CarOtoMoto.class.php:296
+msgid "The listing could not be updated."
+msgstr "Záznam se nepodařilo aktualizovat."
+
+#: includes/classes/CarSpecification.class.php:37
+msgid "Data from the DOL system has been imported."
+msgstr "Data ze systému DOL byla naimportována."
+
+#: includes/classes/CarSpecification.class.php:48
+msgid "Technical specifications of cars available on-site"
+msgstr "Technické údaje vozidel dostupných na místě"
+
+#: includes/classes/CarSpecification.class.php:73
+msgid "Import data from DOL"
+msgstr "Import dat ze systému DOL"
+
+#: includes/classes/CarSpecification.class.php:74
+msgid "Note! Any changes made to the technical specifications will be overwritten by data from the DOL system."
+msgstr "Pozor! Jakékoli změny provedené v technických specifikacích budou přepsány daty ze systému DOL."
+
+#: includes/classes/CarSpecification.class.php:76
+msgid "To import data from the DOL system, save the car as a draft or publish it."
+msgstr "Chcete-li importovat data ze systému DOL, uložte vůz jako koncept nebo jej zveřejněte."
+
+#: includes/classes/CarSpecification.class.php:96
+msgid "Importing data from DOL. <br>This operation may take a few minutes."
+msgstr "Probíhá import dat ze systému DOL. <br>Tato operace může trvat několik minut."
+
+#: includes/classes/CarSpecification.class.php:196
+msgid "Electric single Ext. range"
+msgstr "Elektrický model s prodlouženým dojezdem"
+
+#: includes/classes/CarSpecification.class.php:197
+msgid "Electric single"
+msgstr "Elektrická singl"
+
+#: includes/classes/DolCarsAdmin.class.php:70
+msgid "Cars — available for FIND CAR / OTOMOTO"
+msgstr "Auta — k dispozici pro FIND CAR / OTOMOTO"
+
+#: includes/classes/DolCarsAdmin.class.php:71
+msgid "Cars from DOL (Dealer Online) and used cars from inventory available for listing on platforms FIND CAR i OTOMOTO."
+msgstr "Auta od DOL (Dealer Online) a ojeté vozy ze skladových zásob, které lze nabídnout na platformách FIND CAR i OTOMOTO."
+
+#: includes/classes/DolCarsAdmin.class.php:74
+msgid "Refresh the list"
+msgstr "Obnovit seznam"
+
+#: includes/classes/DolCarsAdmin.class.php:83
+msgid "Source"
+msgstr "Zdroj"
+
+#: includes/classes/DolCarsAdmin.class.php:88
+msgid "Year"
+msgstr "Rok"
+
+#: includes/classes/DolCarsAdmin.class.php:89
+msgid "FIND CAR"
+msgstr "FIND CAR"
+
+#: includes/classes/DolCarsAdmin.class.php:90
+msgid "OTOMOTO"
+msgstr "OTOMOTO"
+
+#: includes/classes/DolCarsAdmin.class.php:91
+msgid "Actions"
+msgstr "Akce"
+
+#: includes/classes/DolCarsAdmin.class.php:96
+msgid "Click \"Refresh list\" to load the cars."
+msgstr "Kliknutím na \"Obnovit seznam\" načtete vozidla."
+
+#: includes/classes/DolCarsAdmin.class.php:114
+msgid "No dealer ID found for the current page"
+msgstr "Pro aktuální stránku nebylo nalezeno žádné ID prodejce"
+
+#: includes/classes/DolCarsAdmin.class.php:121
+msgid "Failed to retrieve cars from DOL"
+msgstr "Nepodařilo se načíst vozidla z DOL"
+
+#: includes/classes/DolCarsAdmin.class.php:165
+#: includes/classes/DolCarsAdmin.class.php:249
+msgid "No car data provided"
+msgstr "Nebyly poskytnuty žádné údaje o vozidle"
+
+#: includes/classes/DolCarsAdmin.class.php:172
+#: includes/classes/DolCarsAdmin.class.php:415
+msgid "FindCar integration is not enabled for this dealer"
+msgstr "Pro tohoto prodejce není povolena integrace FindCar"
+
+#: includes/classes/DolCarsAdmin.class.php:181
+#: includes/classes/DolCarsAdmin.class.php:375
+#: includes/classes/DolCarsAdmin.class.php:424
+msgid "FindCar login credentials are not configured"
+msgstr "Přihlašovací údaje pro FindCar nejsou nakonfigurovány"
+
+#: includes/classes/DolCarsAdmin.class.php:189
+#: includes/classes/DolCarsAdmin.class.php:268
+#: includes/classes/DolCarsAdmin.class.php:410
+#: includes/classes/DolCarsAdmin.class.php:526
+msgid "Car not found in saved DOL cars"
+msgstr "Vozidlo nebylo nalezeno v uložených vozidlech DOL"
+
+#: includes/classes/DolCarsAdmin.class.php:198
+#: includes/classes/DolCarsAdmin.class.php:277
+#: includes/classes/DolCarsAdmin.class.php:433
+#: includes/classes/DolCarsAdmin.class.php:544
+msgid "Mapping failed"
+msgstr "Mapování se nezdařilo"
+
+#: includes/classes/DolCarsAdmin.class.php:222
+msgid "FindCar API error"
+msgstr "Chyba API FindCar"
+
+#: includes/classes/DolCarsAdmin.class.php:233
+msgid "The car has been sent to FindCar"
+msgstr "Vozidlo bylo odesláno do FindCar"
+
+#: includes/classes/DolCarsAdmin.class.php:256
+#: includes/classes/DolCarsAdmin.class.php:531
+msgid "Otomoto integration is not enabled for this dealer"
+msgstr "Pro tohoto prodejce není povolena integrace Otomoto"
+
+#: includes/classes/DolCarsAdmin.class.php:260
+#: includes/classes/DolCarsAdmin.class.php:535
+msgid "Otomoto login credentials are not configured"
+msgstr "Přihlašovací údaje pro Otomoto nejsou nakonfigurovány"
+
+#: includes/classes/DolCarsAdmin.class.php:287
+#: includes/classes/DolCarsAdmin.class.php:495
+#: includes/classes/DolCarsAdmin.class.php:554
+msgid "Otomoto authentication failed"
+msgstr "Ověření Otomoto se nezdařilo"
+
+#: includes/classes/DolCarsAdmin.class.php:302
+#: includes/classes/DolCarsAdmin.class.php:569
+msgid "Error creating Otomoto photo collection"
+msgstr "Chyba při vytváření sbírky fotografií Otomoto"
+
+#: includes/classes/DolCarsAdmin.class.php:333
+msgid "Otomoto API error"
+msgstr "Chyba API Otomoto"
+
+#: includes/classes/DolCarsAdmin.class.php:343
+msgid "The car has been sent to Otomoto"
+msgstr "Vozidlo bylo odesláno do Otomoto"
+
+#: includes/classes/DolCarsAdmin.class.php:358
+#: includes/classes/DolCarsAdmin.class.php:402
+#: includes/classes/DolCarsAdmin.class.php:472
+#: includes/classes/DolCarsAdmin.class.php:518
+msgid "No car ID provided"
+msgstr "Nebylo zadáno ID vozidla"
+
+#: includes/classes/DolCarsAdmin.class.php:366
+msgid "No FindCar listing ID"
+msgstr "Chybí ID inzerátu FindCar"
+
+#: includes/classes/DolCarsAdmin.class.php:385
+msgid "Error while pausing the FindCar listing"
+msgstr "Chyba při pozastavení inzerátu FindCar"
+
+#: includes/classes/DolCarsAdmin.class.php:390
+msgid "The listing has been paused on FindCar"
+msgstr "Inzerát byl pozastaven na FindCar"
+
+#: includes/classes/DolCarsAdmin.class.php:446
+msgid "FindCar API error during resumption"
+msgstr "Chyba API FindCar při obnovení"
+
+#: includes/classes/DolCarsAdmin.class.php:457
+msgid "The listing has been resumed on FindCar"
+msgstr "Inzerát byl obnoven na FindCar"
+
+#: includes/classes/DolCarsAdmin.class.php:480
+msgid "No Otomoto offer ID"
+msgstr "Číslo nabídky Otomoto"
+
+#: includes/classes/DolCarsAdmin.class.php:485
+msgid "Otomoto integration is not enabled"
+msgstr "Integrace Otomoto není povolena"
+
+#: includes/classes/DolCarsAdmin.class.php:501
+msgid "Error while pausing the Otomoto listing"
+msgstr "Došlo k chybě při pozastavení inzerátu na Otomoto"
+
+#: includes/classes/DolCarsAdmin.class.php:506
+msgid "The listing has been paused in Otomoto"
+msgstr "Inzerát byl pozastaven v Otomoto"
+
+#: includes/classes/DolCarsAdmin.class.php:587
+msgid "Otomoto API error during resumption"
+msgstr "Chyba API Otomoto při obnovení"
+
+#: includes/classes/DolCarsAdmin.class.php:597
+msgid "The listing has been resumed in Otomoto"
+msgstr "Inzerát byl obnoven v Otomoto"
+
+#: includes/classes/DolCarsAdmin.class.php:734
+#: includes/controllers/StockController.class.php:235
+msgid "Used"
+msgstr "Použité"
+
+#: includes/classes/DolCarsAdmin.class.php:805
+msgid "No Otomoto login credentials configured"
+msgstr "Nenakonfigurovány přihlašovací údaje Otomoto"
+
+#: includes/classes/DolCarsAdmin.class.php:815
+msgid "Failed to log in to Otomoto"
+msgstr "Nepodařilo se přihlásit do Otomoto"
+
+#: includes/classes/DolCarsAdmin.class.php:839
+msgid "Connection active"
+msgstr "Připojení aktivní"
+
+#: includes/classes/DolCarsAdmin.class.php:885
+msgid "No region ID"
+msgstr "Žádné ID regionu"
+
+#: includes/classes/DolCarsAdmin.class.php:924
+msgid "No city ID"
+msgstr "Žádné ID města"
+
+#: includes/classes/DolFindCarMapper.class.php:45
+#: includes/classes/DolOtomotoMapper.class.php:108
+msgid "No car VIN"
+msgstr "Žádné VIN vozidla"
+
+#: includes/classes/DolFindCarMapper.class.php:59
+msgid "No car model"
+msgstr "Žádný model vozidla"
+
+#: includes/classes/DolFindCarMapper.class.php:85
+msgid "Photos of the car are missing"
+msgstr "Chybí fotografie vozidla"
+
+#: includes/classes/DolFindCarMapper.class.php:177
+#: includes/classes/DolStatus.class.php:64
+#: includes/classes/DolStatus.class.php:75
+msgid "Required fields missing"
+msgstr "Chybí povinná pole"
+
+#: includes/classes/DolFindCarMapper.class.php:178
+msgid "Data enrichment via the Volvo API is required (token may be unavailable or VIN unknown)."
+msgstr "Je vyžadováno obohacení dat prostřednictvím API Volvo (token může být nedostupný nebo VIN neznámé)."
+
+#: includes/classes/DolOtomotoMapper.class.php:121
+msgid "No Otomoto location settings"
+msgstr "Žádná nastavení polohy Otomoto"
+
+#: includes/classes/DolStatus.class.php:71
+#: includes/classes/DolStatus.class.php:73
+msgid "Not synchronized"
+msgstr "Nesynchronizováno"
+
+#: includes/classes/DolStatus.class.php:77
+msgid "Data missing"
+msgstr "Chybějící data"
+
+#: includes/classes/DolStatus.class.php:79
+msgid "Missing"
+msgstr "Chybí"
+
+#: includes/classes/DolStatus.class.php:87
+#: includes/classes/DolStatus.class.php:89
+msgid "Active"
+msgstr "Aktivní"
+
+#: includes/classes/DolStatus.class.php:92
+#: includes/classes/DolStatus.class.php:94
+msgid "Synchronized"
+msgstr "Synchronizováno"
+
+#: includes/classes/DolStatus.class.php:97
+#: includes/classes/DolStatus.class.php:99
+msgid "Inactive"
+msgstr "Neaktivní"
+
+#: includes/classes/DolStatus.class.php:122
+msgid "On"
+msgstr "Zapnuto"
+
+#: includes/classes/DolStatus.class.php:125
+msgid "Off"
+msgstr "Vypnuto"
+
+#: includes/classes/Lead.class.php:270
+msgid "Selected services"
+msgstr "Vybrané služby"
+
+#: includes/classes/StockCar.class.php:18
+msgid "Cars available on site"
+msgstr "Vozidla dostupná na místě"
+
+#: includes/controllers/EventController.class.php:36
+#: includes/controllers/EventController.class.php:37
+#: includes/controllers/EventController.class.php:579
+msgid "List of participants"
+msgstr "Seznam účastníků"
+
+#: includes/controllers/EventController.class.php:66
+msgid "Are you sure you want to delete this event?"
+msgstr "Opravdu chcete tuto událost smazat?"
+
+#: includes/controllers/EventController.class.php:84
+msgid "Event deleted!"
+msgstr "Událost smazána!"
+
+#: includes/controllers/EventController.class.php:91
+msgid "AJAX error: "
+msgstr "Chyba AJAX: "
+
+#: includes/controllers/EventController.class.php:92
+msgid "An error occurred while deleting the event."
+msgstr "Při mazání události došlo k chybě."
+
+#: includes/controllers/EventController.class.php:105
+#: includes/controllers/EventController.class.php:492
+msgid "Select an image"
+msgstr "Vyberte obrázek"
+
+#: includes/controllers/EventController.class.php:106
+msgid "Upload an image"
+msgstr "Nahrajte obrázek"
+
+#: includes/controllers/EventController.class.php:149
+msgid "The \"Name\" field is required."
+msgstr "Pole \"Název\" je povinné."
+
+#: includes/controllers/EventController.class.php:157
+msgid "The \"Image\" field is required."
+msgstr "Pole \"Obrázek\" je povinné."
+
+#: includes/controllers/EventController.class.php:194
+msgid "Changes saved successfully!"
+msgstr "Změny byly úspěšně uloženy!"
+
+#: includes/controllers/EventController.class.php:211
+msgid "Error while saving:"
+msgstr "Chyba při ukládání:"
+
+#: includes/controllers/EventController.class.php:242
+msgid "Connection error"
+msgstr "Chyba připojení"
+
+#: includes/controllers/EventController.class.php:248
+msgid "HTTP error"
+msgstr "Chyba HTTP"
+
+#: includes/controllers/EventController.class.php:258
+msgid "Failed to parse JSON"
+msgstr "Nepodařilo se analyzovat JSON"
+
+#: includes/controllers/EventController.class.php:305
+msgid "Event deleted successfully."
+msgstr "Událost byla úspěšně smazána."
+
+#: includes/controllers/EventController.class.php:320
+msgid "No events to display."
+msgstr "Nebyly nalezeny žádné události k zobrazení."
+
+#: includes/controllers/EventController.class.php:321
+#: includes/controllers/EventController.class.php:571
+#: includes/post-types.php:96 includes/post-types.php:118
+msgid "Add new"
+msgstr "Přidat nový"
+
+#: includes/controllers/EventController.class.php:342
+msgid "You are adding a new event"
+msgstr "Přidáváte novou událost"
+
+#: includes/controllers/EventController.class.php:353
+msgid "No event found with ID"
+msgstr "Nebyly nalezeny žádné události s ID"
+
+#: includes/controllers/EventController.class.php:370
+msgid "You are editing the event with ID"
+msgstr "Upravujete událost s ID"
+
+#: includes/controllers/EventController.class.php:396
+#: includes/controllers/EventController.class.php:516
+#: includes/controllers/EventController.class.php:770
+msgid "Event name"
+msgstr "Název události"
+
+#: includes/controllers/EventController.class.php:399
+#: includes/controllers/EventController.class.php:517
+#: includes/controllers/EventController.class.php:771
+msgid "Alternative name"
+msgstr "Alternativní název"
+
+#: includes/controllers/EventController.class.php:402
+msgid "Private event"
+msgstr "Soukromá událost"
+
+#: includes/controllers/EventController.class.php:405
+msgid "Number of tickets"
+msgstr "Počet vstupenek"
+
+#: includes/controllers/EventController.class.php:408
+msgid "Confirmation SMS text"
+msgstr "Text potvrzovací SMS"
+
+#: includes/controllers/EventController.class.php:411
+#: includes/controllers/EventController.class.php:783
+msgid "Event time"
+msgstr "Čas události"
+
+#: includes/controllers/EventController.class.php:422
+#: includes/controllers/EventController.class.php:518
+msgid "Image"
+msgstr "Obrázek"
+
+#: includes/controllers/EventController.class.php:506
+msgid "Save changes"
+msgstr "Uložit změny"
+
+#: includes/controllers/EventController.class.php:509
+msgid "Back to list"
+msgstr "Zpět na seznam"
+
+#: includes/controllers/EventController.class.php:530
+#: includes/controllers/EventController.class.php:562
+#: includes/controllers/EventController.class.php:662
+#: includes/controllers/EventController.class.php:686
+msgid "Delete"
+msgstr "Odstranit"
+
+#: includes/controllers/EventController.class.php:588
+#: includes/controllers/EventController.class.php:756
+msgid "(no name)"
+msgstr "(bez názvu)"
+
+#: includes/controllers/EventController.class.php:600
+#: includes/controllers/EventController.class.php:748
+msgid "API connection error"
+msgstr "Chyba připojení k API"
+
+#: includes/controllers/EventController.class.php:617
+msgid "Number of participants registered for the event"
+msgstr "Počet účastníků registrovaných na událost"
+
+#: includes/controllers/EventController.class.php:622
+msgid "Available spots"
+msgstr "Volná místa"
+
+#: includes/controllers/EventController.class.php:625
+msgid "Total number of participants"
+msgstr "Celkový počet účastníků"
+
+#: includes/controllers/EventController.class.php:629
+msgid "Filter by event"
+msgstr "Filtrovat podle události"
+
+#: includes/controllers/EventController.class.php:637
+msgid "Filter"
+msgstr "Filtrovat"
+
+#: includes/controllers/EventController.class.php:643
+msgid "Export CSV"
+msgstr "Exportovat CSV"
+
+#: includes/controllers/EventController.class.php:647
+msgid "First and last name"
+msgstr "Jméno a příjmení"
+
+#: includes/controllers/EventController.class.php:648
+#: includes/controllers/EventController.class.php:772
+msgid "Phone"
+msgstr "Telefon"
+
+#: includes/controllers/EventController.class.php:650
+msgid "Participant ID"
+msgstr "ID účastníka"
+
+#: includes/controllers/EventController.class.php:651
+#: includes/controllers/EventController.class.php:774
+msgid "Event"
+msgstr "Událost"
+
+#: includes/controllers/EventController.class.php:652
+#: includes/controllers/EventController.class.php:775
+msgid "Car"
+msgstr "Auto"
+
+#: includes/controllers/EventController.class.php:653
+#: includes/controllers/EventController.class.php:776
+msgid "Location"
+msgstr "Místo"
+
+#: includes/controllers/EventController.class.php:654
+#: includes/controllers/EventController.class.php:777
+msgid "Tax"
+msgstr "Daň"
+
+#: includes/controllers/EventController.class.php:655
+#: includes/controllers/EventController.class.php:778
+msgid "Consent 1"
+msgstr "Souhlas 1"
+
+#: includes/controllers/EventController.class.php:656
+#: includes/controllers/EventController.class.php:779
+msgid "Consent 2"
+msgstr "Souhlas 2"
+
+#: includes/controllers/EventController.class.php:657
+#: includes/controllers/EventController.class.php:780
+msgid "Consent 3"
+msgstr "Souhlas 3"
+
+#: includes/controllers/EventController.class.php:658
+#: includes/controllers/EventController.class.php:781
+msgid "Ticket status"
+msgstr "Stav vstupenky"
+
+#: includes/controllers/EventController.class.php:681
+msgid "(no associated event)"
+msgstr "(žádná přidružená událost)"
+
+#: includes/controllers/EventController.class.php:704
+msgid "Are you sure you want to delete this participant?"
+msgstr "Opravdu chcete tohoto účastníka smazat?"
+
+#: includes/controllers/EventController.class.php:715
+msgid "Participant deleted!"
+msgstr "Účastník byl smazán!"
+
+#: includes/controllers/EventController.class.php:723
+msgid "An error occurred while deleting the participant."
+msgstr "Při mazání účastníka došlo k chybě."
+
+#: includes/controllers/EventController.class.php:739
+msgid "No permissions to export data."
+msgstr "Nemáte oprávnění k exportu dat."
+
+#: includes/controllers/EventController.class.php:762
+msgid "No name"
+msgstr "Žádné jméno"
+
+#: includes/controllers/EventController.class.php:782
+msgid "SMS content"
+msgstr "Obsah SMS"
+
+#: includes/controllers/EventController.class.php:820
+msgid "No participant ID"
+msgstr "Žádné ID účastníka"
+
+#: includes/controllers/EventController.class.php:855
+msgid "Participant deleted successfully."
+msgstr "Účastník byl úspěšně smazán."
+
+#: includes/controllers/GaDashboardController.class.php:180
+msgid "Visitor Statistics (Google Analytics)"
+msgstr "Statistiky návštěvnosti (Google Analytics)"
+
+#: includes/controllers/GaDashboardController.class.php:194
+#: includes/i18n-setup.php:91
+msgid "An error occurred"
+msgstr "Došlo k chybě"
+
+#: includes/controllers/GaDashboardController.class.php:229
+#: includes/controllers/GaDashboardController.class.php:303
+msgid "Active users"
+msgstr "Aktivní uživatelé"
+
+#: includes/controllers/GaDashboardController.class.php:253
+msgid "Engagement"
+msgstr "Zapojení"
+
+#: includes/controllers/GaDashboardController.class.php:265
+#: includes/controllers/GaDashboardController.class.php:306
+msgid "Average session duration (s)"
+msgstr "Průměrná délka relace (s)"
+
+#: includes/controllers/GaDashboardController.class.php:298
+#: includes/controllers/GaDashboardController.class.php:330
+msgid "Show statistics"
+msgstr "Zobrazit statistiky"
+
+#: includes/controllers/GaDashboardController.class.php:302
+msgid "Date"
+msgstr "Datum"
+
+#: includes/controllers/GaDashboardController.class.php:304
+msgid "Sessions"
+msgstr "Relace"
+
+#: includes/controllers/GaDashboardController.class.php:305
+msgid "Engagement (%)"
+msgstr "Zapojení (%)"
+
+#: includes/controllers/GaDashboardController.class.php:327
+msgid "Hide statistics"
+msgstr "Skrýt statistiky"
+
+#: includes/controllers/GaDashboardController.class.php:335
+msgid "No data to display."
+msgstr "Nejsou k dispozici žádná data."
+
+#: includes/controllers/StockController.class.php:210
+msgid "Maximum power"
+msgstr "Maximální výkon"
+
+#: includes/controllers/StockController.class.php:213
+msgid "Up to 170 HP"
+msgstr "Až 170 k"
+
+#: includes/controllers/StockController.class.php:214
+msgid "170–200 HP"
+msgstr "170–200 k"
+
+#: includes/controllers/StockController.class.php:215
+msgid "201–250 HP"
+msgstr "201–250 k"
+
+#: includes/controllers/StockController.class.php:216
+msgid "251–300 HP"
+msgstr "251–300 k"
+
+#: includes/controllers/StockController.class.php:217
+msgid "Over 300 HP"
+msgstr "Více než 300 k"
+
+#: includes/controllers/StockController.class.php:234
+msgid "New"
+msgstr "Nové"
+
+#: includes/controllers/StockController.class.php:246
+msgid "100,000–200,000 km"
+msgstr "100 000–200 000 km"
+
+#: includes/editor.php:59
+msgid "Y/m/d"
+msgstr "Y/m/d"
+
+#: includes/i18n-setup.php:90
+msgid "Loading..."
+msgstr "Načítání..."
+
+#: includes/i18n-setup.php:92
+msgid "Success!"
+msgstr "Úspěšné!"
+
+#: includes/i18n-setup.php:95
+msgid "This field is required"
+msgstr "Toto pole je povinné"
+
+#: includes/i18n-setup.php:96
+msgid "Please enter a valid email address"
+msgstr "Zadejte platnou e-mailovou adresu"
+
+#: includes/i18n-setup.php:97
+msgid "Submit"
+msgstr "Odeslat"
+
+#: includes/post-types.php:26
 msgid "Departments"
 msgstr "Oddělení"
 
@@ -3203,11 +3774,6 @@ msgstr "Potenciální zákazníci"
 #: includes/post-types.php:55
 msgid "Campaigns"
 msgstr "Kampaně"
-
-#: includes/post-types.php:58
-#: includes/post-types.php:59
-msgid "Add campaign"
-msgstr "Přidat kampaň"
 
 #: includes/post-types.php:60
 msgid "Edit campaign"
@@ -3237,25 +3803,15 @@ msgstr "Upravit poznámku ke globální kampani"
 msgid "New note for a global campaign"
 msgstr "Nová poznámka ke globální kampani"
 
-#: includes/post-types.php:95
-#: includes/post-types.php:117
+#: includes/post-types.php:95 includes/post-types.php:117
 msgid "Add model"
 msgstr "Přidat model"
 
-#: includes/post-types.php:96
-#: includes/post-types.php:118
-#: includes/controllers/EventController.class.php:320
-#: includes/controllers/EventController.class.php:570
-msgid "Add new"
-msgstr "Přidat nový"
-
-#: includes/post-types.php:97
-#: includes/post-types.php:119
+#: includes/post-types.php:97 includes/post-types.php:119
 msgid "Edit model"
 msgstr "Upravit model"
 
-#: includes/post-types.php:98
-#: includes/post-types.php:120
+#: includes/post-types.php:98 includes/post-types.php:120
 msgid "New model"
 msgstr "Nový model"
 
@@ -3299,16 +3855,11 @@ msgstr "Upravit showroom"
 msgid "New Showroom"
 msgstr "Nový showroom"
 
-#: includes/post-types.php:176
-msgid "Blog"
-msgstr "Blog"
-
 #: includes/post-types.php:178
 msgid "Post"
 msgstr "Příspěvek"
 
-#: includes/post-types.php:179
-#: includes/post-types.php:180
+#: includes/post-types.php:179 includes/post-types.php:180
 msgid "Add post"
 msgstr "Přidat příspěvek"
 
@@ -3320,934 +3871,38 @@ msgstr "Upravit příspěvek"
 msgid "New post"
 msgstr "Nový příspěvek"
 
-#: includes/classes/CarSpecification.class.php:37
-msgid "Data from the DOL system has been imported."
-msgstr "Data ze systému DOL byla naimportována."
-
-#: includes/classes/CarSpecification.class.php:48
-msgid "Technical specifications of cars available on-site"
-msgstr "Technické údaje vozidel dostupných na místě"
-
-#: includes/classes/CarSpecification.class.php:73
-msgid "Import data from DOL"
-msgstr "Import dat ze systému DOL"
-
-#: includes/classes/CarSpecification.class.php:74
-msgid "Note! Any changes made to the technical specifications will be overwritten by data from the DOL system."
-msgstr "Pozor! Jakékoli změny provedené v technických specifikacích budou přepsány daty ze systému DOL."
-
-#: includes/classes/CarSpecification.class.php:76
-msgid "To import data from the DOL system, save the car as a draft or publish it."
-msgstr "Chcete-li importovat data ze systému DOL, uložte vůz jako koncept nebo jej zveřejněte."
-
-#: includes/classes/CarSpecification.class.php:96
-msgid "Importing data from DOL. <br>This operation may take a few minutes."
-msgstr "Probíhá import dat ze systému DOL. <br>Tato operace může trvat několik minut."
-
-#: includes/classes/CarSpecification.class.php:196
-msgid "Electric single Ext. range"
-msgstr "Elektrický model s prodlouženým dojezdem"
-
-#: includes/classes/CarSpecification.class.php:197
-msgid "Electric single"
-msgstr "Elektrická singl"
-
-#: functions.php:470
-#: functions.php:471
-#: includes/controllers/EventController.class.php:28
-#: includes/controllers/EventController.class.php:29
-msgid "Events"
-msgstr "Akce"
-
-#: functions.php:522
-msgid "Search"
-msgstr "Hledat"
-
-#: functions.php:958
-msgid "An error has occurred. Please try logging in again."
-msgstr "Došlo k chybě. Zkuste se prosím přihlásit znovu."
-
-#: functions.php:1916
-msgid "Recent 10 modified vehicles"
-msgstr "Posledních 10 upravených vozidel"
-
-#: functions.php:1921
-msgid "Recent Campaigns"
-msgstr "Poslední kampaně"
-
-#: functions.php:1926
-msgid "Recent Leads"
-msgstr "Poslední poptávky"
-
-#: functions.php:1947
-#: functions.php:1980
-#: functions.php:2004
-#: functions.php:2028
-#: includes/controllers/EventController.class.php:525
-#: includes/controllers/EventController.class.php:528
-#: includes/controllers/EventController.class.php:557
-msgid "Edit"
-msgstr "Upravit"
-
-#: functions.php:2121
-msgid "Your one-time code to log in to the website"
-msgstr "Váš jednorázový kód pro přihlášení na webové stránky"
-
-#: functions.php:1948
-#: functions.php:1981
-#: functions.php:2005
-#: functions.php:2029
-msgid "View"
-msgstr "Zobrazit"
-
-#: functions.php:2261
-msgid "File not found."
-msgstr "Soubor nebyl nalezen."
-
-#: functions.php:2357
-msgid "Regenerate HTML"
-msgstr "Znovu vygenerovat HTML"
-
-#: functions.php:2357
-msgid "Regenerate static HTML files for all pages"
-msgstr "Znovu vygenerovat statické soubory HTML pro všechny stránky"
-
-#: functions.php:2383
-msgid "A regeneration job has been scheduled for all dealers in the background"
-msgstr "Plánované generování pro všechny prodejce na pozadí"
-
-#: functions.php:2390
-msgid "%d pages generated, errors: %d"
-msgstr "Vygenerováno %d stránek, chyby: %d"
-
-#: functions.php:2577
-msgid "Information"
-msgstr "Informace"
-
-#: functions.php:2578
-msgid "This campaign slot has been set globally by the administrator"
-msgstr "Tento časový slot pro kampaň byl nastaven globálně správcem"
-
-#: functions.php:2075
-msgid "Required field"
-msgstr "Povinné pole"
-
-#: functions.php:2081
-msgid "Enter your phone number."
-msgstr "Zadejte své telefonní číslo."
-
-#: functions.php:2416
-msgid "Are you sure you want to regenerate the static HTML files?"
-msgstr "Opravdu chcete obnovit statické soubory HTML?"
-
-#: functions.php:2416
-msgid "Regenerating..."
-msgstr "Regenerační..."
-
-#: functions.php:2434
-msgid "An error occurred during regeneration"
-msgstr "Při regeneraci došlo k chybě"
-
-#: includes/controllers/EventController.class.php:36
-#: includes/controllers/EventController.class.php:37
-#: includes/controllers/EventController.class.php:578
-msgid "List of participants"
-msgstr "Seznam účastníků"
-
-#: includes/controllers/EventController.class.php:66
-msgid "Are you sure you want to delete this event?"
-msgstr "Opravdu chcete tuto událost smazat?"
-
-#: includes/controllers/EventController.class.php:84
-msgid "Event deleted!"
-msgstr "Událost smazána!"
-
-#: includes/controllers/EventController.class.php:87
-#: includes/controllers/EventController.class.php:717
-msgid "Error"
-msgstr "Chyba"
-
-#: includes/controllers/EventController.class.php:92
-msgid "An error occurred while deleting the event."
-msgstr "Při mazání události došlo k chybě."
-
-#: includes/controllers/EventController.class.php:105
-#: includes/controllers/EventController.class.php:491
-msgid "Select an image"
-msgstr "Vyberte obrázek"
-
-#: includes/controllers/EventController.class.php:106
-msgid "Upload an image"
-msgstr "Nahrajte obrázek"
-
-#: includes/controllers/EventController.class.php:149
-msgid "The \"Name\" field is required."
-msgstr "Pole \"Název\" je povinné."
-
-#: includes/controllers/EventController.class.php:157
-msgid "The \"Image\" field is required."
-msgstr "Pole \"Obrázek\" je povinné."
-
-#: includes/controllers/EventController.class.php:193
-msgid "Changes saved successfully!"
-msgstr "Změny byly úspěšně uloženy!"
-
-#: includes/controllers/EventController.class.php:210
-msgid "Error while saving:"
-msgstr "Chyba při ukládání:"
-
-#: includes/controllers/EventController.class.php:241
-msgid "Connection error"
-msgstr "Chyba připojení"
-
-#: includes/controllers/EventController.class.php:247
-msgid "HTTP error"
-msgstr "Chyba HTTP"
-
-#: includes/controllers/EventController.class.php:257
-msgid "Failed to parse JSON"
-msgstr "Nepodařilo se analyzovat JSON"
-
-#: includes/controllers/EventController.class.php:304
-msgid "Event deleted successfully."
-msgstr "Událost byla úspěšně smazána."
-
-#: includes/controllers/EventController.class.php:319
-msgid "No events to display."
-msgstr "Nebyly nalezeny žádné události k zobrazení."
-
-#: includes/controllers/EventController.class.php:341
-msgid "You are adding a new event"
-msgstr "Přidáváte novou událost"
-
-#: includes/controllers/EventController.class.php:352
-msgid "No event found with ID"
-msgstr "Nebyly nalezeny žádné události s ID"
-
-#: includes/controllers/EventController.class.php:369
-msgid "You are editing the event with ID"
-msgstr "Upravujete událost s ID"
-
-#: includes/controllers/EventController.class.php:395
-#: includes/controllers/EventController.class.php:515
-#: includes/controllers/EventController.class.php:769
-msgid "Event name"
-msgstr "Název události"
-
-#: includes/controllers/EventController.class.php:398
-#: includes/controllers/EventController.class.php:516
-#: includes/controllers/EventController.class.php:770
-msgid "Alternative name"
-msgstr "Alternativní název"
-
-#: includes/controllers/EventController.class.php:401
-msgid "Private event"
-msgstr "Soukromá událost"
-
-#: includes/controllers/EventController.class.php:404
-msgid "Number of tickets"
-msgstr "Počet vstupenek"
-
-#: includes/controllers/EventController.class.php:407
-msgid "Confirmation SMS text"
-msgstr "Text potvrzovací SMS"
-
-#: includes/controllers/EventController.class.php:410
-#: includes/controllers/EventController.class.php:782
-msgid "Event time"
-msgstr "Čas události"
-
-#: includes/controllers/EventController.class.php:421
-#: includes/controllers/EventController.class.php:517
-msgid "Image"
-msgstr "Obrázek"
-
-#: includes/controllers/EventController.class.php:505
-msgid "Save changes"
-msgstr "Uložit změny"
-
-#: includes/controllers/EventController.class.php:508
-msgid "Back to list"
-msgstr "Zpět na seznam"
-
-#: includes/controllers/EventController.class.php:529
-#: includes/controllers/EventController.class.php:661
-msgid "Delete"
-msgstr "Odstranit"
-
-#: includes/controllers/EventController.class.php:587
-#: includes/controllers/EventController.class.php:755
-msgid "(no name)"
-msgstr "(bez názvu)"
-
-#: includes/controllers/EventController.class.php:599
-#: includes/controllers/EventController.class.php:747
-msgid "API connection error"
-msgstr "Chyba připojení k API"
-
-#: includes/controllers/EventController.class.php:616
-msgid "Number of participants registered for the event"
-msgstr "Počet účastníků registrovaných na událost"
-
-#: includes/controllers/EventController.class.php:621
-msgid "Available spots"
-msgstr "Volná místa"
-
-#: includes/controllers/EventController.class.php:624
-msgid "Total number of participants"
-msgstr "Celkový počet účastníků"
-
-#: includes/controllers/EventController.class.php:628
-msgid "Filter by event"
-msgstr "Filtrovat podle události"
-
-#: includes/controllers/EventController.class.php:630
-msgid "All"
-msgstr "Vše"
-
-#: includes/controllers/EventController.class.php:636
-msgid "Filter"
-msgstr "Filtrovat"
-
-#: includes/controllers/EventController.class.php:642
-msgid "Export CSV"
-msgstr "Exportovat CSV"
-
-#: includes/controllers/EventController.class.php:646
-msgid "First and last name"
-msgstr "Jméno a příjmení"
-
-#: includes/controllers/EventController.class.php:647
-#: includes/controllers/EventController.class.php:771
-msgid "Phone"
-msgstr "Telefon"
-
-#: includes/controllers/EventController.class.php:649
-msgid "Participant ID"
-msgstr "ID účastníka"
-
-#: includes/controllers/EventController.class.php:650
-#: includes/controllers/EventController.class.php:773
-msgid "Event"
-msgstr "Událost"
-
-#: includes/controllers/EventController.class.php:651
-#: includes/controllers/EventController.class.php:774
-msgid "Car"
-msgstr "Auto"
-
-#: includes/controllers/EventController.class.php:652
-#: includes/controllers/EventController.class.php:775
-msgid "Location"
-msgstr "Místo"
-
-#: includes/controllers/EventController.class.php:653
-#: includes/controllers/EventController.class.php:776
-msgid "Tax"
-msgstr "Daň"
-
-#: includes/controllers/EventController.class.php:654
-#: includes/controllers/EventController.class.php:777
-msgid "Consent 1"
-msgstr "Souhlas 1"
-
-#: includes/controllers/EventController.class.php:655
-#: includes/controllers/EventController.class.php:778
-msgid "Consent 2"
-msgstr "Souhlas 2"
-
-#: includes/controllers/EventController.class.php:656
-#: includes/controllers/EventController.class.php:779
-msgid "Consent 3"
-msgstr "Souhlas 3"
-
-#: includes/controllers/EventController.class.php:657
-#: includes/controllers/EventController.class.php:780
-msgid "Ticket status"
-msgstr "Stav vstupenky"
-
-#: includes/controllers/EventController.class.php:680
-msgid "(no associated event)"
-msgstr "(žádná přidružená událost)"
-
-#: includes/controllers/EventController.class.php:703
-msgid "Are you sure you want to delete this participant?"
-msgstr "Opravdu chcete tohoto účastníka smazat?"
-
-#: includes/controllers/EventController.class.php:714
-msgid "Participant deleted!"
-msgstr "Účastník byl smazán!"
-
-#: includes/controllers/EventController.class.php:722
-msgid "An error occurred while deleting the participant."
-msgstr "Při mazání účastníka došlo k chybě."
-
-#: includes/controllers/EventController.class.php:738
-msgid "No permissions to export data."
-msgstr "Nemáte oprávnění k exportu dat."
-
-#: includes/controllers/EventController.class.php:761
-msgid "No name"
-msgstr "Žádné jméno"
-
-#: includes/controllers/EventController.class.php:781
-msgid "SMS content"
-msgstr "Obsah SMS"
-
-#: includes/controllers/EventController.class.php:819
-msgid "No participant ID"
-msgstr "Žádné ID účastníka"
-
-#: includes/controllers/EventController.class.php:854
-msgid "Participant deleted successfully."
-msgstr "Účastník byl úspěšně smazán."
-
-
-
-##########################
-
-
-
-#: includes/acf-fields.php:10
-msgid "Car Details"
-msgstr "Detaily vozu"
-
-#: includes/acf-fields.php:16
-msgid "Enter car model"
-msgstr "Zadejte model vozu"
-
-#: includes/acf-fields.php:21
-msgid "Enter car version"
-msgstr "Zadejte verzi vozu"
-
-#: includes/acf-fields.php:25
-msgid "Year"
-msgstr "Rok"
-
-#: includes/acf-fields.php:26
-msgid "Production year"
-msgstr "Rok výroby"
-
-#: includes/acf-fields.php:31
-msgid "Car price in PLN"
-msgstr "Cena vozu v PLN"
-
-#: includes/acf-fields.php:36
-msgid "Car mileage in kilometers"
-msgstr "Najeto v kilometrech"
-
-#: includes/acf-fields.php:41
-msgid "Select fuel type"
-msgstr "Vyberte typ paliva"
-
-#: includes/acf-fields.php:46
-msgid "Select transmission type"
-msgstr "Vyberte typ převodovky"
-
-#: includes/acf-fields.php:51
-msgid "Exterior color"
-msgstr "Vnější barva"
-
-#: includes/acf-fields.php:55
-msgid "Interior"
-msgstr "Interiér"
-
-#: includes/acf-fields.php:56
-msgid "Interior color and material"
-msgstr "Barva a materiál interiéru"
-
-#: includes/acf-fields.php:61
-msgid "Vehicle Identification Number"
-msgstr "Identifikační číslo vozidla"
-
-#: includes/acf-fields.php:65
-msgid "Dealer"
-msgstr "Prodejce"
-
-#: includes/acf-fields.php:66
-msgid "Select dealer"
-msgstr "Vyberte prodejce"
-
-#: includes/acf-fields.php:70
-msgid "Images"
-msgstr "Obrázky"
-
-#: includes/acf-fields.php:71
-msgid "Upload car images"
-msgstr "Nahrát obrázky vozu"
-
-#: includes/acf-fields.php:75
-msgid "Financing Options"
-msgstr "Možnosti financování"
-
-#: includes/acf-fields.php:80
-msgid "Leasing Available"
-msgstr "Leasing k dispozici"
-
-#: includes/acf-fields.php:81
-msgid "Enable leasing option"
-msgstr "Povolit možnost leasingu"
-
-#: includes/acf-fields.php:85
-msgid "Rent Available"
-msgstr "Pronájem k dispozici"
-
-#: includes/acf-fields.php:86
-msgid "Enable rent option"
-msgstr "Povolit možnost pronájmu"
-
-#: includes/acf-fields.php:90
-msgid "Monthly Rate"
-msgstr "Měsíční splátka"
-
-#: includes/acf-fields.php:91
-msgid "Estimated monthly rate"
-msgstr "Odhadovaná měsíční splátka"
-
-#: header.php:10
-msgid "Skip to content"
-msgstr "Přejít k obsahu"
-
-#: footer.php:10
-msgid "All rights reserved"
-msgstr "Všechna práva vyhrazena"
-
-#: footer.php:15
-msgid "Privacy Policy"
-msgstr "Zásady ochrany osobních údajů"
-
-#: footer.php:16
-msgid "Terms of Service"
-msgstr "Podmínky služby"
-
-#: footer.php:17
-msgid "Contact"
-msgstr "Kontakt"
-
-# Sellcar Steps - Step 2
-#: includes/views/layouts/sellcar/steps/step2.twig
-msgid "Krok 2/6"
-msgstr "Krok 2/6"
-
-msgid "Pierwsza rejestracja"
-msgstr "První registrace"
-
-msgid "Kiedy pojazd został zarejestrowany?"
-msgstr "Kdy bylo vozidlo registrováno?"
-
-msgid "Wybierz datę rejestracji"
-msgstr "Vyberte datum registrace"
-
-msgid "Generacja"
-msgstr "Generace"
-
-msgid "Wiadomość"
-msgstr "Zpráva"
-
-msgid "Jaka jest wersja nadwozia?"
-msgstr "Jaká je verze karoserie?"
-
-# Sellcar Steps - Step 3
-#: includes/views/layouts/sellcar/steps/step3.twig
-msgid "Krok 3/6"
-msgstr "Krok 3/6"
-
-msgid "Silnik"
-msgstr "Motor"
-
-msgid "Jaka wersja silnika jest w pojeździe?"
-msgstr "Jaká verze motoru je ve vozidle?"
-
-msgid "Jaka wersja napędu jest w pojeździe?"
-msgstr "Jaká verze pohonu je ve vozidle?"
-
-# Sellcar Steps - Step 4
-#: includes/views/layouts/sellcar/steps/step4.twig
-msgid "Krok 4/6"
-msgstr "Krok 4/6"
-
-msgid "Wyposażenie"
-msgstr "Výbava"
-
-msgid "Jaka skrzynia biegów jest w pojeździe?"
-msgstr "Jaká převodovka je ve vozidle?"
-
-msgid "Jaka jest wersja wyposażenia w pojeździe?"
-msgstr "Jaká je verze výbavy ve vozidle?"
-
-msgid "Ile miejsc zawiera pojazd?"
-msgstr "Kolik míst má vozidlo?"
-
-# Sellcar Steps - Step 5
-#: includes/views/layouts/sellcar/steps/step5.twig
-msgid "Krok 5/6"
-msgstr "Krok 5/6"
-
-msgid "Informacje ogólne"
-msgstr "Obecné informace"
-
-msgid "Wyceniasz pojazd jako osoba prywatna czy firma?"
-msgstr "Oceňujete vozidlo jako soukromá osoba nebo firma?"
-
-msgid "Osoba prywatna"
-msgstr "Soukromá osoba"
-
-msgid "Firma"
-msgstr "Firma"
-
-msgid "Jaka była forma sprzedaży pojazdu?"
-msgstr "Jaká byla forma prodeje vozidla?"
-
-msgid "Faktura VAT"
-msgstr "Faktura DPH"
-
-msgid "Umowa kupna sprzedaży"
-msgstr "Kupní smlouva"
-
-msgid "Przebieg auta w km"
-msgstr "Ujetá vzdálenost vozu v km"
-
-msgid "Przebieg auta"
-msgstr "Ujetá vzdálenost vozu"
-
-msgid "Wskaż łączną liczbę właścicieli"
-msgstr "Uveďte celkový počet vlastníků"
-
-msgid "Liczba właścicieli"
-msgstr "Počet vlastníků"
-
-msgid "Czy pojazd był serwisowany w ASO?"
-msgstr "Bylo vozidlo servisováno v autorizovaném servisu?"
-
-msgid "Tak"
-msgstr "Ano"
-
-msgid "Nie"
-msgstr "Ne"
-
-msgid "Gdzie został zakupiony pojazd?"
-msgstr "Kde bylo vozidlo zakoupeno?"
-
-msgid "W Polsce"
-msgstr "V Polsku"
-
-msgid "Za granicą"
-msgstr "V zahraničí"
-
-# Sellcar Steps - Step 6
-#: includes/views/layouts/sellcar/steps/step6.twig
-msgid "Krok 6/6"
-msgstr "Krok 6/6"
-
-msgid "Dane kontaktowe"
-msgstr "Kontaktní údaje"
-
-msgid "Twoje dane*"
-msgstr "Vaše údaje*"
-
-msgid "Imię"
-msgstr "Jméno"
-
-msgid "Nazwisko"
-msgstr "Příjmení"
-
-msgid "Numer telefonu"
-msgstr "Telefonní číslo"
-
-msgid "Interesuje mnie*"
-msgstr "Zajímá mě*"
-
-msgid "zakup nowego pojazdu"
-msgstr "nákup nového vozidla"
-
-msgid "zakup używanego pojazdu"
-msgstr "nákup ojetého vozidla"
-
-msgid "wyłącznie sprzedaż pojazdu używanego"
-msgstr "pouze prodej ojetého vozidla"
-
-msgid "Administratorem Twoich danych osobowych będzie Volvo Car Poland sp. z o.o. z siedzibą w Warszawie, ul. Puławska 558/560, 02-884 Warszawa (dalej jako: \\\"Volvo Car Poland\\\")."
-msgstr "Správcem vašich osobních údajů bude Volvo Car Poland sp. z o.o. se sídlem ve Varšavě, ul. Puławska 558/560, 02-884 Varšava (dále jako: \\\"Volvo Car Poland\\\")."
-
-msgid "więcej &gt;"
-msgstr "více &gt;"
-
-msgid "Zaznacz wszystkie zgody."
-msgstr "Zaškrtněte všechny souhlasy."
-
-msgid "Jeżeli wyrazisz poniższe zgody, będziemy mogli dokonać wstępnej wyceny Twojego samochodu, a autoryzowany dealer marki Volvo będzie mógł się z Tobą skontaktować w celu dokonania dokładnej wyceny Twojego samochodu i przedstawienia oferty jego wykupu"
-msgstr "Pokud udělíte níže uvedené souhlasy, budeme moci provést předběžné ocenění vašeho vozu a autorizovaný prodejce značky Volvo vás bude moci kontaktovat za účelem provedení přesného ocenění vašeho vozu a předložení nabídky na jeho výkup"
-
-msgid "* Zapoznałam/em się z treścią"
-msgstr "* Seznámil/a jsem se s obsahem"
-
-msgid "regulaminu"
-msgstr "pravidel"
-
-msgid "i akceptuję jego treść."
-msgstr "a akceptuji jeho obsah."
-
-msgid "* Wyrażam zgodę na udostępnienie moich danych osobowych przez Volvo Car Poland sp. z o.o., ul. Puławska 558/560, Warszawa (02-884) do"
-msgstr "* Souhlasím se sdílením mých osobních údajů společností Volvo Car Poland sp. z o.o., ul. Puławska 558/560, Varšava (02-884) s"
-
-msgid "w celu przedstawienia mi przez"
-msgstr "za účelem předložení nabídky společností"
-
-msgid "dokładnej wyceny i oferty wykupu mojego samochodu marki Volvo."
-msgstr "přesného ocenění a nabídky výkupu mého vozu značky Volvo."
-
-msgid "Jestem świadoma/y, że powyższe zgody mogę wycofać w każdej chwili, jednakże wycofanie danej zgody nie wpływa na zgodność z prawem przetwarzania, którego dokonano na podstawie zgody przed jej wycofaniem. Zgodę możesz wycofać za pomocą formularza dostępnego na stronie:"
-msgstr "Jsem si vědom/a, že výše uvedené souhlasy mohu kdykoli odvolat, avšak odvolání daného souhlasu nemá vliv na zákonnost zpracování provedeného na základě souhlasu před jeho odvoláním. Souhlas můžete odvolat pomocí formuláře dostupného na stránce:"
-
-msgid "Jeżeli wyrazisz poniższe zgody, będziemy mogli przesyłać do Ciebie informacje o produktach i usługach marki Volvo"
-msgstr "Pokud udělíte níže uvedené souhlasy, budeme vám moci zasílat informace o produktech a službách značky Volvo"
-
-msgid "Wyrażam zgody marketingowe na oba poniższe kanały kontaktu."
-msgstr "Souhlasím s marketingovými sděleními prostřednictvím obou níže uvedených komunikačních kanálů."
-
-msgid "kontakt głosowy, na podany przeze mnie numer telefonu, w tym przy użyciu automatycznych systemów wywołujących"
-msgstr "hlasový kontakt na mnou uvedené telefonní číslo, včetně použití automatických volacích systémů"
-
-msgid "SMS/e-mail, na podany przeze mnie numer telefonu, w tym przy użyciu automatycznych systemów wywołujących"
-msgstr "SMS/e-mail na mnou uvedené telefonní číslo, včetně použití automatických volacích systémů"
-
-# Cookies
-#: includes/views/components/organisms/cookies/cookies.twig
-msgid "Zaakceptuj wszystkie"
-msgstr "Přijmout vše"
-
-msgid "Zaakceptuj tylko wymagane"
-msgstr "Přijmout pouze požadované"
-
-# Auto-generated translations
-
-msgid "Krok 1/6"
-msgstr "Krok 1/6"
-
-msgid "E-mail"
-msgstr "E-mail"
-
-msgid "Telefon"
-msgstr "Telefon"
-
-msgid "Adres"
-msgstr "Adresa"
-
-msgid "Miasto"
-msgstr "Město"
-
-msgid "Kod pocztowy"
-msgstr "PSČ"
-
-msgid "Model Pojazdu"
-msgstr "Model vozidla"
-
-msgid "Przebieg"
-msgstr "Ujetá vzdálenost"
-
-msgid "Skrzynia biegów"
-msgstr "Převodovka"
-
-msgid "Paliwo"
-msgstr "Palivo"
-
-msgid "Kolor"
-msgstr "Barva"
-
-msgid "Wnętrze"
-msgstr "Interiér"
-
-msgid "Cena"
-msgstr "Cena"
-
-msgid "Rok produkcji"
-msgstr "Rok výroby"
-
-msgid "Wybierz"
-msgstr "Vyberte"
-
-msgid "Wyślij"
-msgstr "Odeslat"
-
-msgid "Wyślij wiadomość"
-msgstr "Odeslat zprávu"
-
-msgid "Zapisz"
-msgstr "Uložit"
-
-msgid "Anuluj"
-msgstr "Zrušit"
-
-msgid "Zamknij"
-msgstr "Zavřít"
-
-msgid "Otwórz"
-msgstr "Otevřít"
-
-msgid "Zobacz"
-msgstr "Zobrazit"
-
-msgid "Zobacz więcej"
-msgstr "Zobrazit více"
-
-msgid "Czytaj więcej"
-msgstr "Číst více"
-
-msgid "Wstecz"
-msgstr "Zpět"
-
-msgid "Dalej"
-msgstr "Další"
-
-msgid "Zakończ"
-msgstr "Dokončit"
-
-msgid "Potwierdź"
-msgstr "Potvrdit"
-
-msgid "Pola obowiązkowe"
-msgstr "Povinná pole"
-
-msgid "To pole jest obowiązkowe"
-msgstr "Toto pole je povinné"
-
-msgid "Wybierz datę"
-msgstr "Vyberte datum"
-
-msgid "Wybierz kategorię"
-msgstr "Vyberte kategorii"
-
-msgid "Wybierz opcję"
-msgstr "Vyberte možnost"
-
-msgid "Automatyczna"
-msgstr "Automatická"
-
-msgid "Manualna"
-msgstr "Manuální"
-
-msgid "Wyrażam zgodę"
-msgstr "Souhlasím"
-
-msgid "Zapoznałem się"
-msgstr "Seznámil jsem se"
-
-msgid "Zapoznałam się"
-msgstr "Seznámila jsem se"
-
-msgid "Polityka prywatności"
-msgstr "Zásady ochrany osobních údajů"
-
-msgid "Regulamin"
-msgstr "Podmínky"
-
-msgid "Zgoda"
-msgstr "Souhlas"
-
-msgid "Zgody"
-msgstr "Souhlasy"
-
-msgid "Zaznacz wszystkie zgody"
-msgstr "Zaškrtněte všechny souhlasy"
-
-msgid "Ustawienia cookies"
-msgstr "Nastavení cookies"
-
-msgid "Wpisz swoje imię"
-msgstr "Zadejte své jméno"
-
-msgid "Wpisz swoje nazwisko"
-msgstr "Zadejte své příjmení"
-
-msgid "Wpisz swój numer telefonu"
-msgstr "Zadejte své telefonní číslo"
-
-msgid "Wpisz prawidłowy adres e-mail"
-msgstr "Zadejte platnou e-mailovou adresu"
-
-msgid "Nieprawidłowy format"
-msgstr "Neplatný formát"
-
-msgid "Jaki posiadasz model pojazdu?"
-msgstr "Jaký model vozidla máte?"
-
-msgid "Kontakt"
-msgstr "Kontakt"
-
-msgid "O nas"
-msgstr "O nás"
-
-msgid "Strona główna"
-msgstr "Domovská stránka"
-
-msgid "Modele"
-msgstr "Modely"
-
-msgid "Kampanie"
-msgstr "Kampaně"
-
-msgid "Samochody"
-msgstr "Vozidla"
-
-msgid "Nowe"
-msgstr "Nové"
-
-msgid "Używane"
-msgstr "Použité"
-
-msgid "Szczegóły"
-msgstr "Podrobnosti"
-
-msgid "Opis"
-msgstr "Popis"
-
-msgid "Specyfikacja"
-msgstr "Specifikace"
-
-msgid "Galeria"
-msgstr "Galerie"
-
-msgid "Zdjęcia"
-msgstr "Fotografie"
-
-msgid "Wideo"
-msgstr "Video"
-
-msgid "Pobierz"
-msgstr "Stáhnout"
-
-msgid "Drukuj"
-msgstr "Tisk"
-
-msgid "Udostępnij"
-msgstr "Sdílet"
-
-msgid "Szukaj"
-msgstr "Hledat"
-
-msgid "Filtruj"
-msgstr "Filtrovat"
-
-msgid "Sortuj"
-msgstr "Seřadit"
-
-msgid "Wszystkie"
-msgstr "Všechny"
-
-msgid "Żadne"
-msgstr "Žádné"
-
-msgid "Data"
-msgstr "Datum"
-
-msgid "Godzina"
-msgstr "Čas"
-
-msgid "Dzień"
-msgstr "Den"
-
-msgid "Miesiąc"
-msgstr "Měsíc"
-
-msgid "Rok"
-msgstr "Rok"
+#: includes/post-types.php:245
+msgid "Welcome to the Global Campaigns screen!"
+msgstr "Vítejte na obrazovce Globální kampaně!"
+
+#: includes/post-types.php:246
+msgid "Here, you can add your own content to existing global campaigns displayed on your website."
+msgstr "Zde můžete přidat vlastní obsah ke stávajícím globálním kampaním zobrazeným na vašem webu."
+
+#: includes/post-types.php:247
+msgid "Create a page below and add content that will appear under the campaign you select."
+msgstr "Vytvořte níže stránku a přidejte obsah, který se zobrazí v rámci vámi vybrané kampaně."
+
+#: includes/post-types.php:248
+msgid "Don’t forget to select a new campaign in <a href=\"/wp/wp-admin/admin.php?page=options-homepage\">Home Page Options</a>"
+msgstr "Nezapomeňte vybrat novou kampaň v sekci <a href=\"/wp/wp-admin/admin.php?page=options-homepage\">Nastavení úvodní stránky</a>"
+
+#: page-klauzula-informacyjna.php:9
+msgid "Home page"
+msgstr "Úvodní stránka"
+
+#: page-klauzula-informacyjna.php:11 page-klauzula-informacyjna.php:17
+msgid "Processing of personal data"
+msgstr "Zpracování osobních údajů"
+
+#: wp-templates/template-download-valuation.php:16
+msgid "Your browser does not support the display of PDF files. You can download the PDF using the link below"
+msgstr "Váš prohlížeč nepodporuje zobrazení souborů PDF. Soubor PDF si můžete stáhnout pomocí níže uvedeného odkazu"
+
+#: wp-templates/template-download-valuation.php:17
+msgid "Download price quote"
+msgstr "Stáhnout cenovou nabídku"
+
+#: wp-templates/template-events.php:27
+msgid "Concerts, meetings, presentations"
+msgstr "Koncerty, setkání, prezentace"

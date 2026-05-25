@@ -49,7 +49,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 							'sub_fields'        => array(
 								array(
 									'key'               => 'field_602b96dc02487',
-									'label'             => __( 'Model', 'partners-site_v2' ),
+									'label'             => __('Model', 'partners-site_v2'),
 									'name'              => 'model',
 									'type'              => 'select',
 									'instructions'      => '',

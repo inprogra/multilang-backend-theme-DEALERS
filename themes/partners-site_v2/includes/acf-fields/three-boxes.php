@@ -110,7 +110,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'linksBox',
-							'label'             => __( 'Link', 'partners-site_v2' ),
+							'label'             => __('Link', 'partners-site_v2'),
 							'name'              => 'link',
 							'type'              => 'link',
 							'instructions'      => '',
@@ -209,7 +209,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'linksBox2',
-							'label'             => __( 'Link', 'partners-site_v2' ),
+							'label'             => __('Link', 'partners-site_v2'),
 							'name'              => 'link2',
 							'type'              => 'link',
 							'instructions'      => '',
@@ -308,7 +308,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'linksBox3',
-							'label'             => __( 'Link', 'partners-site_v2' ),
+							'label'             => __('Link', 'partners-site_v2'),
 							'name'              => 'link3',
 							'type'              => 'link',
 							'instructions'      => '',

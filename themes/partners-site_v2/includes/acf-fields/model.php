@@ -20,12 +20,12 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						'id'    => '',
 					),
 					'choices'           => array(
-						'suv'           => __( 'SUV', 'partners-site_v2' ),
-						'crossover'         => __( 'Crossover', 'partners-site_v2' ),
-						'sedan'         => __( 'Sedan', 'partners-site_v2' ),
+						'suv'           => __('SUV', 'partners-site_v2'),
+						'crossover'         => __('Crossover', 'partners-site_v2'),
+						'sedan'         => __('Sedan', 'partners-site_v2'),
 						
 						'kombi'         => __( 'Station wagon', 'partners-site_v2' ),
-						'cross-country' => __( 'Cross Country', 'partners-site_v2' ),
+						'cross-country' => __('Cross Country', 'partners-site_v2'),
 						
 					),
 					'default_value'     => false,

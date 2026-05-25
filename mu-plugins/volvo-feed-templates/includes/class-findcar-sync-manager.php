@@ -66,8 +66,8 @@ class FindCar_Sync_Manager
             }
         }
         
-        $bulk_actions['findcar_sync'] = __('Wyślij do FindCar', 'volvo-feed-templates');
-        $bulk_actions['findcar_preview'] = __('FindCar - Podgląd', 'volvo-feed-templates');
+        $bulk_actions['findcar_sync'] = __('Send to FindCar', 'volvo-feed-templates');
+        $bulk_actions['findcar_preview'] = 'FindCar - ' . __('Preview', 'volvo-feed-templates');
         return $bulk_actions;
     }
 
@@ -190,7 +190,7 @@ class FindCar_Sync_Manager
             $api_key = isset($_POST['acf']['field_findcar_dealer_api_key']) ? $_POST['acf']['field_findcar_dealer_api_key'] : '';
             
             if (empty($api_key)) {
-                acf_add_validation_error('acf[field_findcar_dealer_api_key]', 'API Key jest wymagany');
+                acf_add_validation_error('acf[field_findcar_dealer_api_key]', __('API key is required', 'volvo-feed-templates'));
             }
         }
     }
@@ -304,7 +304,7 @@ class FindCar_Sync_Manager
             if (!empty($existing_listing_id)) {
                 return $this->delete_listing($car_id);
             }
-            return new WP_Error('findcar_skip', 'Samochód nie jest włączony do synchronizacji FindCar');
+            return new WP_Error('findcar_skip', __('The car is not included in FindCar synchronization', 'volvo-feed-templates'));
         }
 
         $showroom_id = get_field('showroom', $car_id);
@@ -317,12 +317,12 @@ class FindCar_Sync_Manager
          
       
         if (empty($api_key) || empty($location_id) || empty($api_key)) {
-            return new WP_Error('findcar_error', 'Brak credentials');
+            return new WP_Error('findcar_error', __('No credentials', 'volvo-feed-templates'));
         }
 
         $missing_fields = $this->data_mapper->validate_car_fields($car_id);
         if (!empty($missing_fields)) { 
-            $error_msg = 'Brak wymaganych pól: ' . implode(', ', $missing_fields);
+            $error_msg = __('Missing required fields', 'volvo-feed-templates') . ': ' . implode(', ', $missing_fields);
             update_field('findcar_sync_error', $error_msg, $car_id);
             return new WP_Error('findcar_validation_error', $error_msg);
         }
@@ -422,7 +422,7 @@ class FindCar_Sync_Manager
         $showroom_id = get_field('showroom', $car_id);
 
         if (!$dealer_auto_sync && !$showroom_id) {
-            return new WP_Error('findcar_error', 'Brak showroomu');
+            return new WP_Error('findcar_error', __('No showroom', 'volvo-feed-templates'));
         }
 
         if ($dealer_auto_sync) {
@@ -436,12 +436,12 @@ class FindCar_Sync_Manager
         }
 
         if (empty($api_key) || empty($location_id)) {
-            return new WP_Error('findcar_error', 'Brak credentials');
+            return new WP_Error('findcar_error', __('No credentials', 'volvo-feed-templates'));
         }
 
         $listing_id = get_field('findcar_listing_id', $car_id);
         if (empty($listing_id)) {
-            return new WP_Error('findcar_error', 'Brak ID ogłoszenia');
+            return new WP_Error('findcar_error', __('No offer ID', 'volvo-feed-templates'));
         }
 
         $client = new FindCar_API_Client($api_key, $location_token, $this->find_car_env);
@@ -519,7 +519,7 @@ class FindCar_Sync_Manager
         $showroom_findcar_enabled = get_field('findcar_enabled', $showroom_id);
         
         if (!$showroom_findcar_enabled) {
-            return new WP_Error('findcar_error', 'Integracja FindCar nie jest włączona dla tego showroomu');
+            return new WP_Error('findcar_error', __('FindCar integration is not enabled for this showroom', 'volvo-feed-templates'));
         }
 
         $args = [
@@ -656,12 +656,12 @@ class FindCar_Sync_Manager
            
             if (!$enabled) {
                 restore_current_blog();
-                wp_send_json_error(['message' => 'Integracja FindCar nie jest włączona']);
+                wp_send_json_error(['message' => __('FindCar integration is not enabled', 'volvo-feed-templates')]);
             }
             
             if (empty($api_key)) {
                 restore_current_blog();
-                wp_send_json_error(['message' => 'Brak API Key']);
+                wp_send_json_error(['message' => __('No API key', 'volvo-feed-templates')]);
             }
 
             $client = new FindCar_API_Client($api_key, $location_token, true);
@@ -685,7 +685,7 @@ class FindCar_Sync_Manager
             if (isset($result['success']) && $result['success']) {
                 wp_send_json_success($result);
             } else {
-                wp_send_json_error(['message' => $result['message'] ?? 'Błąd połączenia']);
+                wp_send_json_error(['message' => $result['message'] ?? __('Connection error', 'volvo-feed-templates')]);
             }
         }
     }
@@ -704,7 +704,7 @@ class FindCar_Sync_Manager
             
             if (!$enabled) {
                 restore_current_blog();
-                wp_send_json_error(['message' => 'Integracja FindCar nie jest włączona']);
+                wp_send_json_error(['message' => __('FindCar integration is not enabled', 'volvo-feed-templates')]);
             }
 
             $result = self::sync_all_for_dealer();
@@ -734,7 +734,7 @@ class FindCar_Sync_Manager
         $enabled = get_field('findcar_enabled', 'options-dealer');
         
         if (!$enabled) {
-            return new WP_Error('findcar_error', 'Integracja nie jest włączona');
+            return new WP_Error('findcar_error', __('Integration is not enabled', 'volvo-feed-templates'));
         }
 
         $args = [
@@ -761,7 +761,7 @@ class FindCar_Sync_Manager
         $location_token = get_field('findcar_location_token', 'options-dealer');
 
         if (empty($api_key) || empty($location_id)) {
-            return new WP_Error('findcar_error', 'Brak credentials');
+            return new WP_Error('findcar_error', __('No credentials', 'volvo-feed-templates'));
         }
 
         foreach ($query->posts as $car_id) {
@@ -795,7 +795,7 @@ class FindCar_Sync_Manager
             if (!empty($existing_listing_id)) {
                 return self::delete_listing_for_dealer($car_id, $api_key, $location_id, $location_token);
             }
-            return new WP_Error('findcar_skip', 'Samochód nie jest włączony do synchronizacji FindCar');
+            return new WP_Error('findcar_skip', __('The car is not included in FindCar synchronization', 'volvo-feed-templates'));
         }
 
         $mapper = new FindCar_Data_Mapper();
@@ -875,7 +875,7 @@ class FindCar_Sync_Manager
         $car_id = isset($_POST['car_id']) ? intval($_POST['car_id']) : 0;
         
         if (!$car_id) {
-            wp_send_json_error(['message' => 'Brak ID samochodu']);
+            wp_send_json_error(['message' => __('Brak ID samochodu', 'volvo-feed-templates')]);
         }
         
         $manager = new self();
@@ -895,7 +895,7 @@ class FindCar_Sync_Manager
         $showroom_id = isset($_POST['showroom_id']) ? intval($_POST['showroom_id']) : 0;
         
         if (!$showroom_id) {
-            wp_send_json_error(['message' => 'Brak ID showroomu']);
+            wp_send_json_error(['message' => __('No showroom ID', 'volvo-feed-templates')]);
         }
         
         $manager = new self();
@@ -931,7 +931,7 @@ class FindCar_Sync_Manager
         $car_ids = isset($_POST['car_ids']) ? array_map('intval', $_POST['car_ids']) : [];
         
         if (empty($car_ids)) {
-            wp_send_json_error(['message' => 'Nie wybrano samochodów']);
+            wp_send_json_error(['message' => __('No cars selected', 'volvo-feed-templates')]);
         }
         
         $manager = new self();

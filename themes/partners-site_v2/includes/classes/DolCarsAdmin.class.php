@@ -67,11 +67,11 @@ class DolCarsAdmin {
     public function renderAdminPage() {
         ?>
         <div class="wrap">
-            <h1>Samochody — dostępne dla FIND CAR / OTOMOTO</h1>
-            <p>Samochody z DOL (Dealer Online) i używane ze stocku dostępne do publikacji na platformach FIND CAR i OTOMOTO.</p>
+            <h1><?php esc_html_e('Cars — available for FIND CAR / OTOMOTO', 'partners-site_v2'); ?></h1>
+            <p><?php esc_html_e('Cars from DOL (Dealer Online) and used cars from inventory available for listing on platforms FIND CAR i OTOMOTO.', 'partners-site_v2'); ?></p>
 
             <div id="dol-cars-controls">
-                <button id="refresh-dol-cars" class="button button-secondary">Odśwież listę</button>
+                <button id="refresh-dol-cars" class="button button-secondary"><?php esc_html_e('Refresh the list', 'partners-site_v2'); ?></button>
                 <span class="spinner" id="dol-cars-spinner"></span>
             </div>
 
@@ -80,20 +80,20 @@ class DolCarsAdmin {
             <table class="wp-list-table widefat fixed striped" id="dol-cars-table">
                 <thead>
                     <tr>
-                        <th>Źródło</th>
-                        <th>Model</th>
-                        <th>Wersja</th>
-                        <th>Kolor</th>
-                        <th>VIN</th>
-                        <th>Rok</th>
-                        <th>FIND CAR</th>
-                        <th>OTOMOTO</th>
-                        <th>Akcje</th>
+                        <th><?php esc_html_e('Source', 'partners-site_v2'); ?></th>
+                        <th><?php esc_html_e('Model', 'partners-site_v2'); ?></th>
+                        <th><?php esc_html_e('Version', 'partners-site_v2'); ?></th>
+                        <th><?php esc_html_e('Color', 'partners-site_v2'); ?></th>
+                        <th><?php esc_html_e('VIN', 'partners-site_v2'); ?></th>
+                        <th><?php esc_html_e('Year', 'partners-site_v2'); ?></th>
+                        <th><?php esc_html_e('FIND CAR', 'partners-site_v2'); ?></th>
+                        <th><?php esc_html_e('OTOMOTO', 'partners-site_v2'); ?></th>
+                        <th><?php esc_html_e('Actions', 'partners-site_v2'); ?></th>
                     </tr>
                 </thead>
                 <tbody id="dol-cars-tbody">
                     <tr>
-                        <td colspan="9">Kliknij "Odśwież listę", aby załadować samochody.</td>
+                        <td colspan="9"><?php esc_html_e('Click "Refresh list" to load the cars.', 'partners-site_v2'); ?></td>
                     </tr>
                 </tbody>
             </table>
@@ -105,20 +105,20 @@ class DolCarsAdmin {
         check_ajax_referer('dol_cars_nonce', 'nonce');
 
         if (!current_user_can('edit_posts')) {
-            wp_send_json_error(['message' => 'Brak uprawnień']);
+            wp_send_json_error(['message' => __('No permissions', 'partners-site_v2')]);
         }
 
         $dealerId = $this->getCurrentDealerId();
 
         if (!$dealerId) {
-            wp_send_json_error(['message' => 'Nie znaleziono ID dealera dla aktualnej strony']);
+            wp_send_json_error(['message' => __('No dealer ID found for the current page', 'partners-site_v2')]);
         }
 
         $carDict = new CarDictionary(new \GuzzleHttp\Client());
         $response = json_decode($carDict->getDolCars());
 
         if (!$response || !isset($response->content)) {
-            wp_send_json_error(['message' => 'Nie udało się pobrać samochodów z DOL']);
+            wp_send_json_error(['message' => __('Failed to retrieve cars from DOL', 'partners-site_v2')]);
         }
 
         $filtered = $this->filterCarsByDealer($response->content, $dealerId);
@@ -156,20 +156,20 @@ class DolCarsAdmin {
         check_ajax_referer('dol_cars_nonce', 'nonce');
 
         if (!current_user_can('edit_posts')) {
-            wp_send_json_error(['message' => 'Brak uprawnień']);
+            wp_send_json_error(['message' => __('No permissions', 'partners-site_v2')]);
         }
 
         $carData = json_decode(stripslashes($_POST['car_data'] ?? '[]'), true);
 
         if (empty($carData) || !isset($carData['id'])) {
-            wp_send_json_error(['message' => 'Nie podano danych samochodu']);
+            wp_send_json_error(['message' => __('No car data provided', 'partners-site_v2')]);
         }
 
         $dealerId = $this->getCurrentDealerId();
 
         $findcarEnabled = get_field('findcar_enabled', 'options-dealer');
         if (!$findcarEnabled) {
-            wp_send_json_error(['message' => 'Integracja FindCar nie jest włączona dla tego dealera']);
+            wp_send_json_error(['message' => __('FindCar integration is not enabled for this dealer', 'partners-site_v2')]);
         }
 
         $apiKey = get_field('findcar_api_key', 'options-dealer');
@@ -178,7 +178,7 @@ class DolCarsAdmin {
         $inventoryBrandNew = get_field('findcar_inventory_brand_new', 'options-dealer');
 
         if (empty($apiKey) || empty($locationId)) {
-            wp_send_json_error(['message' => 'Dane logowania FindCar nie są skonfigurowane']);
+            wp_send_json_error(['message' => __('FindCar login credentials are not configured', 'partners-site_v2')]);
         }
 
         $savedCars = $this->getSavedDolCars($dealerId);
@@ -186,7 +186,7 @@ class DolCarsAdmin {
         $dolCar = $savedCars[$carId] ?? null;
 
         if (!$dolCar) {
-            wp_send_json_error(['message' => 'Samochód nie znaleziony w zapisanych samochodach DOL']);
+            wp_send_json_error(['message' => __('Car not found in saved DOL cars', 'partners-site_v2')]);
         }
 
         $dolCar = is_object($dolCar) ? $dolCar : json_decode(json_encode($dolCar));
@@ -195,7 +195,7 @@ class DolCarsAdmin {
         $listingData = $mapper->map($dolCar);
 
         if (is_wp_error($listingData)) {
-            wp_send_json_error(['message' => 'Mapowanie nie powiodło się: ' . $listingData->get_error_message()]);
+            wp_send_json_error(['message' => __('Mapping failed', 'partners-site_v2') . ': ' . $listingData->get_error_message()]);
         }
 
         $client = new \FindCar_API_Client($apiKey, $locationToken);
@@ -219,7 +219,7 @@ class DolCarsAdmin {
         @file_put_contents($log_file, $log_msg, FILE_APPEND);
 
         if (is_wp_error($result)) {
-            wp_send_json_error(['message' => 'Błąd API FindCar: ' . $result->get_error_message()]);
+            wp_send_json_error(['message' => __('FindCar API error', 'partners-site_v2') . ': ' . $result->get_error_message()]);
         }
 
         $this->markCarAsSent($dealerId, $carId, 'findcar', [
@@ -230,7 +230,7 @@ class DolCarsAdmin {
         ]);
 
         wp_send_json_success([
-            'message' => 'Samochód został wysłany do FindCar',
+            'message' => __('The car has been sent to FindCar', 'partners-site_v2'),
             'listing_number' => $result['publicListingNumber'] ?? null,
             'listing_url' => $result['listingUrl'] ?? null,
         ]);
@@ -240,24 +240,24 @@ class DolCarsAdmin {
         check_ajax_referer('dol_cars_nonce', 'nonce');
 
         if (!current_user_can('edit_posts')) {
-            wp_send_json_error(['message' => 'Brak uprawnień']);
+            wp_send_json_error(['message' => __('No permissions', 'partners-site_v2')]);
         }
 
         $carData = json_decode(stripslashes($_POST['car_data'] ?? '[]'), true);
 
         if (empty($carData) || !isset($carData['id'])) {
-            wp_send_json_error(['message' => 'Nie podano danych samochodu']);
+            wp_send_json_error(['message' => __('No car data provided', 'partners-site_v2')]);
         }
 
         $dealerId = $this->getCurrentDealerId();
 
         $otomotoSettings = get_field('otomoto_settings', 'options-dealer');
         if (!$otomotoSettings || empty($otomotoSettings['otomoto_enabled'])) {
-            wp_send_json_error(['message' => 'Integracja Otomoto nie jest włączona dla tego dealera']);
+            wp_send_json_error(['message' => __('Otomoto integration is not enabled for this dealer', 'partners-site_v2')]);
         }
 
         if (empty($otomotoSettings['otomoto_username']) || empty($otomotoSettings['otomoto_password']) || empty($otomotoSettings['otomoto_client_id']) || empty($otomotoSettings['otomoto_client_secret'])) {
-            wp_send_json_error(['message' => 'Dane logowania Otomoto nie są skonfigurowane']);
+            wp_send_json_error(['message' => __('Otomoto login credentials are not configured', 'partners-site_v2')]);
         }
 
         $savedCars = $this->getSavedDolCars($dealerId);
@@ -265,7 +265,7 @@ class DolCarsAdmin {
         $dolCar = $savedCars[$carId] ?? null;
 
         if (!$dolCar) {
-            wp_send_json_error(['message' => 'Samochód nie znaleziony w zapisanych samochodach DOL']);
+            wp_send_json_error(['message' => __('Car not found in saved DOL cars', 'partners-site_v2')]);
         }
 
         $dolCar = is_object($dolCar) ? $dolCar : json_decode(json_encode($dolCar));
@@ -274,7 +274,7 @@ class DolCarsAdmin {
         $payload = $mapper->map($dolCar);
 
         if (is_wp_error($payload)) {
-            wp_send_json_error(['message' => 'Mapowanie nie powiodło się: ' . $payload->get_error_message()]);
+            wp_send_json_error(['message' => __('Mapping failed', 'partners-site_v2') . ': ' . $payload->get_error_message()]);
         }
 
         $client = new CarOtoMoto(
@@ -284,7 +284,7 @@ class DolCarsAdmin {
         );
 
         if (!$client->isAuthenticated()) {
-            wp_send_json_error(['message' => 'Uwierzytelnienie Otomoto nie powiodło się']);
+            wp_send_json_error(['message' => __('Otomoto authentication failed', 'partners-site_v2')]);
         }
 
         $images = [];
@@ -299,7 +299,7 @@ class DolCarsAdmin {
         if (!empty($images)) {
             $collection = $client->createImageCollection();
             if (is_wp_error($collection)) {
-                wp_send_json_error(['message' => 'Błąd tworzenia kolekcji zdjęć Otomoto: ' . $collection->get_error_message()]);
+                wp_send_json_error(['message' => __('Error creating Otomoto photo collection', 'partners-site_v2') . ': ' . $collection->get_error_message()]);
             }
 
             $collectionId = $collection['id'] ?? null;
@@ -330,7 +330,7 @@ class DolCarsAdmin {
         @file_put_contents($log_file, $log_msg, FILE_APPEND);
 
         if (is_wp_error($result)) {
-            wp_send_json_error(['message' => 'Błąd API Otomoto: ' . $result->get_error_message()]);
+            wp_send_json_error(['message' => __('Otomoto API error', 'partners-site_v2') . ': ' . $result->get_error_message()]);
         }
 
         $this->markCarAsSent($dealerId, $carId, 'otomoto', [
@@ -340,7 +340,7 @@ class DolCarsAdmin {
         ]);
 
         wp_send_json_success([
-            'message' => 'Samochód został wysłany do Otomoto',
+            'message' => __('The car has been sent to Otomoto', 'partners-site_v2'),
             'advert_id' => $result['id'] ?? null,
             'advert_url' => $result['url'] ?? null,
         ]);
@@ -350,12 +350,12 @@ class DolCarsAdmin {
         check_ajax_referer('dol_cars_nonce', 'nonce');
 
         if (!current_user_can('edit_posts')) {
-            wp_send_json_error(['message' => 'Brak uprawnień']);
+            wp_send_json_error(['message' => __('No permissions', 'partners-site_v2')]);
         }
 
         $carId = sanitize_text_field($_POST['car_id'] ?? '');
         if (empty($carId)) {
-            wp_send_json_error(['message' => 'Nie podano ID samochodu']);
+            wp_send_json_error(['message' => __('No car ID provided', 'partners-site_v2')]);
         }
 
         $dealerId = $this->getCurrentDealerId();
@@ -363,7 +363,7 @@ class DolCarsAdmin {
         $findcarData = $sentCars[$carId]['findcar_data'] ?? [];
 
         if (empty($findcarData['listing_id'])) {
-            wp_send_json_error(['message' => 'Brak ID oferty FindCar']);
+            wp_send_json_error(['message' => __('No FindCar listing ID', 'partners-site_v2')]);
         }
 
         $apiKey = get_field('findcar_api_key', 'options-dealer');
@@ -372,7 +372,7 @@ class DolCarsAdmin {
         $inventoryBrandNew = get_field('findcar_inventory_brand_new', 'options-dealer');
 
         if (empty($apiKey) || empty($locationId)) {
-            wp_send_json_error(['message' => 'Dane logowania FindCar nie są skonfigurowane']);
+            wp_send_json_error(['message' => __('FindCar login credentials are not configured', 'partners-site_v2')]);
         }
 
         $client = new \FindCar_API_Client($apiKey, $locationToken);
@@ -382,24 +382,24 @@ class DolCarsAdmin {
         $result = $client->delete_listing($targetLocationId, $partnerListingId);
 
         if (is_wp_error($result)) {
-            wp_send_json_error(['message' => 'Błąd podczas zatrzymywania oferty FindCar: ' . $result->get_error_message()]);
+            wp_send_json_error(['message' => __('Error while pausing the FindCar listing', 'partners-site_v2') . ': ' . $result->get_error_message()]);
         }
 
         $this->markCarAsStopped($dealerId, $carId, 'findcar');
 
-        wp_send_json_success(['message' => 'Oferta została zatrzymana w FindCar']);
+        wp_send_json_success(['message' => __('The listing has been paused on FindCar', 'partners-site_v2')]);
     }
 
     public function ajaxResumeOnFindcar() {
         check_ajax_referer('dol_cars_nonce', 'nonce');
 
         if (!current_user_can('edit_posts')) {
-            wp_send_json_error(['message' => 'Brak uprawnień']);
+            wp_send_json_error(['message' => __('No permissions', 'partners-site_v2')]);
         }
 
         $carId = sanitize_text_field($_POST['car_id'] ?? '');
         if (empty($carId)) {
-            wp_send_json_error(['message' => 'Nie podano ID samochodu']);
+            wp_send_json_error(['message' => __('No car ID provided', 'partners-site_v2')]);
         }
 
         $dealerId = $this->getCurrentDealerId();
@@ -407,12 +407,12 @@ class DolCarsAdmin {
         $dolCar = $savedCars[$carId] ?? null;
 
         if (!$dolCar) {
-            wp_send_json_error(['message' => 'Samochód nie znaleziony w zapisanych samochodach DOL']);
+            wp_send_json_error(['message' => __('Car not found in saved DOL cars', 'partners-site_v2')]);
         }
 
         $findcarEnabled = get_field('findcar_enabled', 'options-dealer');
         if (!$findcarEnabled) {
-            wp_send_json_error(['message' => 'Integracja FindCar nie jest włączona dla tego dealera']);
+            wp_send_json_error(['message' => __('FindCar integration is not enabled for this dealer', 'partners-site_v2')]);
         }
 
         $apiKey = get_field('findcar_api_key', 'options-dealer');
@@ -421,7 +421,7 @@ class DolCarsAdmin {
         $inventoryBrandNew = get_field('findcar_inventory_brand_new', 'options-dealer');
 
         if (empty($apiKey) || empty($locationId)) {
-            wp_send_json_error(['message' => 'Dane logowania FindCar nie są skonfigurowane']);
+            wp_send_json_error(['message' => __('FindCar login credentials are not configured', 'partners-site_v2')]);
         }
 
         $dolCar = is_object($dolCar) ? $dolCar : json_decode(json_encode($dolCar));
@@ -430,7 +430,7 @@ class DolCarsAdmin {
         $listingData = $mapper->map($dolCar);
 
         if (is_wp_error($listingData)) {
-            wp_send_json_error(['message' => 'Mapowanie nie powiodło się: ' . $listingData->get_error_message()]);
+            wp_send_json_error(['message' => __('Mapping failed', 'partners-site_v2') . ': ' . $listingData->get_error_message()]);
         }
 
         $client = new \FindCar_API_Client($apiKey, $locationToken);
@@ -443,7 +443,7 @@ class DolCarsAdmin {
         $result = $client->create_listing_brand_new($targetLocationId, $partnerListingId, $listingDataForApi);
 
         if (is_wp_error($result)) {
-            wp_send_json_error(['message' => 'Błąd API FindCar podczas wznawiania: ' . $result->get_error_message()]);
+            wp_send_json_error(['message' => __('FindCar API error during resumption', 'partners-site_v2') . ': ' . $result->get_error_message()]);
         }
 
         $this->markCarAsSent($dealerId, $carId, 'findcar', [
@@ -454,7 +454,7 @@ class DolCarsAdmin {
         ]);
 
         wp_send_json_success([
-            'message' => 'Oferta została wznowiona w FindCar',
+            'message' => __('The listing has been resumed on FindCar', 'partners-site_v2'),
             'listing_number' => $result['publicListingNumber'] ?? null,
             'listing_url' => $result['listingUrl'] ?? null,
         ]);
@@ -469,7 +469,7 @@ class DolCarsAdmin {
 
         $carId = sanitize_text_field($_POST['car_id'] ?? '');
         if (empty($carId)) {
-            wp_send_json_error(['message' => 'Nie podano ID samochodu']);
+            wp_send_json_error(['message' => __('No car ID provided', 'partners-site_v2')]);
         }
 
         $dealerId = $this->getCurrentDealerId();
@@ -477,12 +477,12 @@ class DolCarsAdmin {
         $otomotoData = $sentCars[$carId]['otomoto_data'] ?? [];
 
         if (empty($otomotoData['advert_id'])) {
-            wp_send_json_error(['message' => 'Brak ID ogłoszenia Otomoto']);
+            wp_send_json_error(['message' => __('No Otomoto listing ID', 'partners-site_v2')]);
         }
 
         $otomotoSettings = get_field('otomoto_settings', 'options-dealer');
         if (!$otomotoSettings || empty($otomotoSettings['otomoto_enabled'])) {
-            wp_send_json_error(['message' => 'Integracja Otomoto nie jest włączona']);
+            wp_send_json_error(['message' => __('Otomoto integration is not enabled', 'partners-site_v2')]);
         }
 
         $client = new CarOtoMoto(
@@ -492,30 +492,30 @@ class DolCarsAdmin {
         );
 
         if (!$client->isAuthenticated()) {
-            wp_send_json_error(['message' => 'Uwierzytelnienie Otomoto nie powiodło się']);
+            wp_send_json_error(['message' => __('Otomoto authentication failed', 'partners-site_v2')]);
         }
 
         $result = $client->deleteAdvert($otomotoData['advert_id']);
 
         if (is_wp_error($result)) {
-            wp_send_json_error(['message' => 'Błąd podczas zatrzymywania ogłoszenia Otomoto: ' . $result->get_error_message()]);
+            wp_send_json_error(['message' => __('Error while pausing the Otomoto listing', 'partners-site_v2') . ': ' . $result->get_error_message()]);
         }
 
         $this->markCarAsStopped($dealerId, $carId, 'otomoto');
 
-        wp_send_json_success(['message' => 'Ogłoszenie zostało zatrzymane w Otomoto']);
+        wp_send_json_success(['message' => __('The listing has been paused in Otomoto', 'partners-site_v2')]);
     }
 
     public function ajaxResumeOnOtomoto() {
         check_ajax_referer('dol_cars_nonce', 'nonce');
 
         if (!current_user_can('edit_posts')) {
-            wp_send_json_error(['message' => 'Brak uprawnień']);
+            wp_send_json_error(['message' => __('No permissions', 'partners-site_v2')]);
         }
 
         $carId = sanitize_text_field($_POST['car_id'] ?? '');
         if (empty($carId)) {
-            wp_send_json_error(['message' => 'Nie podano ID samochodu']);
+            wp_send_json_error(['message' => __('No car ID provided', 'partners-site_v2')]);
         }
 
         $dealerId = $this->getCurrentDealerId();
@@ -523,16 +523,16 @@ class DolCarsAdmin {
         $dolCar = $savedCars[$carId] ?? null;
 
         if (!$dolCar) {
-            wp_send_json_error(['message' => 'Samochód nie znaleziony w zapisanych samochodach DOL']);
+            wp_send_json_error(['message' => __('Car not found in saved DOL cars', 'partners-site_v2')]);
         }
 
         $otomotoSettings = get_field('otomoto_settings', 'options-dealer');
         if (!$otomotoSettings || empty($otomotoSettings['otomoto_enabled'])) {
-            wp_send_json_error(['message' => 'Integracja Otomoto nie jest włączona dla tego dealera']);
+            wp_send_json_error(['message' => __('Otomoto integration is not enabled for this dealer', 'partners-site_v2')]);
         }
 
         if (empty($otomotoSettings['otomoto_username']) || empty($otomotoSettings['otomoto_password']) || empty($otomotoSettings['otomoto_client_id']) || empty($otomotoSettings['otomoto_client_secret'])) {
-            wp_send_json_error(['message' => 'Dane logowania Otomoto nie są skonfigurowane']);
+            wp_send_json_error(['message' => __('Otomoto login credentials are not configured', 'partners-site_v2')]);
         }
 
         $dolCar = is_object($dolCar) ? $dolCar : json_decode(json_encode($dolCar));
@@ -541,7 +541,7 @@ class DolCarsAdmin {
         $payload = $mapper->map($dolCar);
 
         if (is_wp_error($payload)) {
-            wp_send_json_error(['message' => 'Mapowanie nie powiodło się: ' . $payload->get_error_message()]);
+            wp_send_json_error(['message' => __('Mapping failed', 'partners-site_v2') . ': ' . $payload->get_error_message()]);
         }
 
         $client = new CarOtoMoto(
@@ -551,7 +551,7 @@ class DolCarsAdmin {
         );
 
         if (!$client->isAuthenticated()) {
-            wp_send_json_error(['message' => 'Uwierzytelnienie Otomoto nie powiodło się']);
+            wp_send_json_error(['message' => __('Otomoto authentication failed', 'partners-site_v2')]);
         }
 
         $images = [];
@@ -566,7 +566,7 @@ class DolCarsAdmin {
         if (!empty($images)) {
             $collection = $client->createImageCollection();
             if (is_wp_error($collection)) {
-                wp_send_json_error(['message' => 'Błąd tworzenia kolekcji zdjęć Otomoto: ' . $collection->get_error_message()]);
+                wp_send_json_error(['message' => __('Error creating Otomoto photo collection', 'partners-site_v2') . ': ' . $collection->get_error_message()]);
             }
 
             $collectionId = $collection['id'] ?? null;
@@ -584,7 +584,7 @@ class DolCarsAdmin {
         $result = $client->createAdvert($payload);
 
         if (is_wp_error($result)) {
-            wp_send_json_error(['message' => 'Błąd API Otomoto podczas wznawiania: ' . $result->get_error_message()]);
+            wp_send_json_error(['message' => __('Otomoto API error during resumption', 'partners-site_v2') . ': ' . $result->get_error_message()]);
         }
 
         $this->markCarAsSent($dealerId, $carId, 'otomoto', [
@@ -594,7 +594,7 @@ class DolCarsAdmin {
         ]);
 
         wp_send_json_success([
-            'message' => 'Ogłoszenie zostało wznowione w Otomoto',
+            'message' => __('The listing has been resumed in Otomoto', 'partners-site_v2'),
             'advert_id' => $result['id'] ?? null,
             'advert_url' => $result['url'] ?? null,
         ]);
@@ -731,7 +731,7 @@ class DolCarsAdmin {
 
                 $car = (object) [
                     'id' => $carId,
-                    'source' => 'Używane',
+                    'source' => __('Used', 'partners-site_v2'),
                     'post_id' => $postId,
                     'model' => get_field('model_1', $postId) ?: get_field('model', $postId),
                     'version' => get_field('version_1', $postId) ?: get_field('version', $postId),
@@ -802,7 +802,7 @@ class DolCarsAdmin {
     private function getOtomotoClient() {
         $settings = get_field('otomoto_settings', 'options-dealer');
         if (empty($settings) || empty($settings['otomoto_username']) || empty($settings['otomoto_password']) || empty($settings['otomoto_client_id']) || empty($settings['otomoto_client_secret'])) {
-            return new \WP_Error('otomoto_missing_credentials', 'Brak skonfigurowanych danych logowania Otomoto');
+            return new \WP_Error('otomoto_missing_credentials', __('No Otomoto login credentials configured', 'partners-site_v2'));
         }
 
         $client = new \CarOtoMoto(
@@ -812,7 +812,7 @@ class DolCarsAdmin {
         );
 
         if (!$client->isAuthenticated()) {
-            return new \WP_Error('otomoto_auth_failed', 'Nie udało się zalogować do Otomoto');
+            return new \WP_Error('otomoto_auth_failed', __('Failed to log in to Otomoto', 'partners-site_v2'));
         }
 
         return $client;
@@ -822,7 +822,7 @@ class DolCarsAdmin {
         check_ajax_referer('otomoto_location_nonce', 'nonce');
 
         if (!current_user_can('manage_options')) {
-            wp_send_json_error(['message' => 'Brak uprawnień']);
+            wp_send_json_error(['message' => __('No permissions', 'partners-site_v2')]);
         }
 
         $client = $this->getOtomotoClient();
@@ -836,7 +836,7 @@ class DolCarsAdmin {
         }
 
         wp_send_json_success([
-            'message' => 'Połączenie aktywne',
+            'message' => __('Connection active', 'partners-site_v2'),
             'data' => $result,
         ]);
     }
@@ -845,7 +845,7 @@ class DolCarsAdmin {
         check_ajax_referer('otomoto_location_nonce', 'nonce');
 
         if (!current_user_can('manage_options')) {
-            wp_send_json_error(['message' => 'Brak uprawnień']);
+            wp_send_json_error(['message' => __('No permissions', 'partners-site_v2')]);
         }
 
         $client = $this->getOtomotoClient();
@@ -877,12 +877,12 @@ class DolCarsAdmin {
         check_ajax_referer('otomoto_location_nonce', 'nonce');
 
         if (!current_user_can('manage_options')) {
-            wp_send_json_error(['message' => 'Brak uprawnień']);
+            wp_send_json_error(['message' => __('No permissions', 'partners-site_v2')]);
         }
 
         $regionId = intval($_GET['region_id'] ?? 0);
         if (!$regionId) {
-            wp_send_json_error(['message' => 'Brak ID regionu']);
+            wp_send_json_error(['message' => __('No region ID', 'partners-site_v2')]);
         }
 
         $client = $this->getOtomotoClient();
@@ -916,12 +916,12 @@ class DolCarsAdmin {
         check_ajax_referer('otomoto_location_nonce', 'nonce');
 
         if (!current_user_can('manage_options')) {
-            wp_send_json_error(['message' => 'Brak uprawnień']);
+            wp_send_json_error(['message' => __('No permissions', 'partners-site_v2')]);
         }
 
         $cityId = intval($_GET['city_id'] ?? 0);
         if (!$cityId) {
-            wp_send_json_error(['message' => 'Brak ID miasta']);
+            wp_send_json_error(['message' => __('No city ID', 'partners-site_v2')]);
         }
 
         $client = $this->getOtomotoClient();

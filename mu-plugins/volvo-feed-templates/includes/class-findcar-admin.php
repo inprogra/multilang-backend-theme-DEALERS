@@ -56,17 +56,17 @@ class FindCar_Admin
             'dealerKey' => 'options',
             'blogId' => get_current_blog_id(),
             'i18n' => [
-                'testing' => 'Testowanie połączenia...',
-                'testSuccess' => 'Połączenie aktywne',
-                'testError' => 'Błąd połączenia',
-                'syncing' => 'Synchronizacja...',
-                'syncSuccess' => 'Zsynchronizowano',
-                'syncError' => 'Błąd synchronizacji',
-                'enabling' => 'Włączanie...',
-                'enableSuccess' => 'Włączono synchronizację',
-                'enableError' => 'Błąd',
-                'preview' => 'Podgląd',
-                'loading' => 'Ładowanie...',
+                'testing' => __('Connection testing...', 'volvo-feed-templates'),
+                'testSuccess' => __('Active connection', 'volvo-feed-templates'),
+                'testError' => __('Connection error', 'volvo-feed-templates'),
+                'syncing' => __('Synchronization...', 'volvo-feed-templates'),
+                'syncSuccess' => __('Synchronized', 'volvo-feed-templates'),
+                'syncError' => __('Synchronization error', 'volvo-feed-templates'),
+                'enabling' => __('Enabling...', 'volvo-feed-templates'),
+                'enableSuccess' => __('Synchronization is enabled', 'volvo-feed-templates'),
+                'enableError' => __('Error', 'volvo-feed-templates'),
+                'preview' => __('Preview', 'volvo-feed-templates'),
+                'loading' => __('Loading...', 'volvo-feed-templates'),
             ],
         ]);
     }
@@ -108,9 +108,9 @@ class FindCar_Admin
             return;
         }
 
-        $is_missing_fields = strpos($sync_error, 'Brak wymaganych pól:') !== false;
+        $is_missing_fields = strpos($sync_error, __('Missing required fields', 'volvo-feed-templates') . ':') !== false;
         $notice_class = $is_missing_fields ? 'notice-warning' : 'notice-error';
-        $notice_title = $is_missing_fields ? 'FindCar - Brakuje danych do publikacji' : 'FindCar - Błąd synchronizacji';
+        $notice_title = $is_missing_fields ? 'FindCar - ' . __('Missing required fields', 'volvo-feed-templates') : 'FindCar - ' . __('Synchronization error', 'volvo-feed-templates');
 
         echo '<div class="notice ' . $notice_class . ' is-dismissible">';
         echo '<p><strong>' . esc_html($notice_title) . '</strong></p>';

@@ -1,0 +1,646 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-25 15:34+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: includes/class-feed-template.php:403 includes/class-feed-template.php:461
+msgid "No permissions"
+msgstr "Brak uprawnień"
+
+#: includes/class-feed-template.php:410
+msgid "Incorrect data"
+msgstr "Nieprawidłowe dane"
+
+#: includes/class-feed-template.php:414
+msgid "The feed name is required"
+msgstr "Nazwa feedu jest wymagana"
+
+#: includes/class-feed-template.php:426
+msgid "Feed saved successfully"
+msgstr "Feed zapisany pomyślnie"
+
+#: includes/class-feed-template.php:428
+msgid "The feed could not be saved"
+msgstr "Nie udało się zapisać feedu"
+
+#: includes/class-feed-template.php:444 includes/class-feed-template.php:489
+msgid "The feed ID is required"
+msgstr "ID feedu jest wymagane"
+
+#: includes/class-feed-template.php:450
+msgid "Feed successfully deleted"
+msgstr "Feed usunięty pomyślnie"
+
+#: includes/class-feed-template.php:452
+msgid "The feed could not be deleted"
+msgstr "Nie udało się usunąć feedu"
+
+#: includes/class-feed-template.php:469
+msgid "The feed ID and new name are required"
+msgstr "ID feedu i nowa nazwa są wymagane"
+
+#: includes/class-feed-template.php:475
+msgid "Feed copied successfully"
+msgstr "Feed skopiowany pomyślnie"
+
+#: includes/class-feed-template.php:477
+msgid "The feed could not be copied"
+msgstr "Nie udało się skopiować feedu"
+
+#: includes/class-feed-template.php:495
+msgid "Feed not found"
+msgstr "Feed nie znaleziony"
+
+#: includes/class-feed-template.php:511
+msgid "ID"
+msgstr "ID"
+
+#: includes/class-feed-template.php:512
+msgid "Title"
+msgstr "Tytuł"
+
+#: includes/class-feed-template.php:513
+msgid "Description"
+msgstr "Opis"
+
+#: includes/class-feed-template.php:514
+#: includes/class-findcar-data-mapper.php:465
+msgid "Price"
+msgstr "Cena"
+
+#: includes/class-feed-template.php:515
+msgid "Promotional price"
+msgstr "Cena promocyjna"
+
+#: includes/class-feed-template.php:516
+msgid "Main photo"
+msgstr "Główne zdjęcie"
+
+#: includes/class-feed-template.php:517
+msgid "All photos"
+msgstr "Wszystkie zdjęcia"
+
+#: includes/class-feed-template.php:518
+msgid "Link"
+msgstr "Link"
+
+#: includes/class-feed-template.php:519
+msgid "Brand"
+msgstr "Marka"
+
+#: includes/class-feed-template.php:520
+msgid "Model"
+msgstr "Model"
+
+#: includes/class-feed-template.php:521
+msgid "Version"
+msgstr "Wersja"
+
+#: includes/class-feed-template.php:522
+msgid "Year"
+msgstr "Rok"
+
+#: includes/class-feed-template.php:523
+#: includes/class-findcar-data-mapper.php:464
+msgid "Year of manufacture"
+msgstr "Rok produkcji"
+
+#: includes/class-feed-template.php:524
+msgid "Mileage"
+msgstr "Przebieg"
+
+#: includes/class-feed-template.php:525
+#: includes/class-findcar-data-mapper.php:468
+#: includes/class-findcar-data-mapper.php:469
+msgid "Fuel Type"
+msgstr "Rodzaj paliwa"
+
+#: includes/class-feed-template.php:526
+#: includes/class-findcar-data-mapper.php:470
+msgid "Transmission"
+msgstr "Skrzynia biegów"
+
+#: includes/class-feed-template.php:527
+msgid "Drivetrain"
+msgstr "Układ napędowy"
+
+#: includes/class-feed-template.php:528
+#: includes/class-findcar-data-mapper.php:471
+msgid "Drive"
+msgstr "Napęd"
+
+#: includes/class-feed-template.php:529
+msgid "Car body type"
+msgstr "Typ nadwozia"
+
+#: includes/class-feed-template.php:530
+#: includes/class-findcar-data-mapper.php:472
+msgid "Color"
+msgstr "Kolor"
+
+#: includes/class-feed-template.php:531
+msgid "Number of doors"
+msgstr "Liczba drzwi"
+
+#: includes/class-feed-template.php:532
+msgid "Engine"
+msgstr "Silnik"
+
+#: includes/class-feed-template.php:533
+msgid "Power"
+msgstr "Moc"
+
+#: includes/class-feed-template.php:534
+msgid "Power (HP)"
+msgstr "Moc (KM)"
+
+#: includes/class-feed-template.php:535
+msgid "VIN"
+msgstr "VIN"
+
+#: includes/class-feed-template.php:536
+msgid "Offer number"
+msgstr "Numer oferty"
+
+#: includes/class-feed-template.php:537
+msgid "Category"
+msgstr "Kategoria"
+
+#: includes/class-feed-template.php:538
+msgid "Dealer name"
+msgstr "Nazwa dealera"
+
+#: includes/class-feed-template.php:539
+msgid "Dealer's phone number"
+msgstr "Telefon dealera"
+
+#: includes/class-feed-template.php:540
+msgid "Dealer location"
+msgstr "Lokalizacja dealera"
+
+#: includes/class-feed-template.php:541
+msgid "Dealer ID"
+msgstr "ID dealera"
+
+#: includes/class-feed-template.php:542
+msgid "Showroom"
+msgstr "Salon"
+
+#: includes/class-feed-template.php:543
+msgid "Currency"
+msgstr "Waluta"
+
+#: includes/class-feed-template.php:544
+msgid "Featured"
+msgstr "Wyróżniony"
+
+#: includes/class-feed-template.php:545
+#: volvo-feed-templates.php:340
+msgid "Car type"
+msgstr "Typ samochodu"
+
+#: includes/class-findcar-acf-fields.php:18
+msgid "Synchronization FindCar.pl"
+msgstr "Synchronizacja FindCar.pl"
+
+#: includes/class-findcar-acf-fields.php:39
+msgid "Sync with FindCar.pl"
+msgstr "Synchronizuj z FindCar.pl"
+
+#: includes/class-findcar-acf-fields.php:42
+msgid "Check this box to send this car to FindCar.pl"
+msgstr "Zaznacz, aby wysłać to auto do FindCar.pl"
+
+#: includes/class-findcar-acf-fields.php:53
+#: includes/class-findcar-acf-fields.php:197
+#: includes/class-findcar-acf-fields.php:224
+msgid "Enabled"
+msgstr "Włączona"
+
+#: includes/class-findcar-acf-fields.php:54
+#: includes/class-findcar-acf-fields.php:198
+#: includes/class-findcar-acf-fields.php:225
+msgid "Disabled"
+msgstr "Wyłączona"
+
+#: includes/class-findcar-acf-fields.php:58
+msgid "Offer ID FindCar"
+msgstr "ID oferty FindCar"
+
+#: includes/class-findcar-acf-fields.php:75
+msgid "Offer number FindCar"
+msgstr "FindCar Numer oferty"
+
+#: includes/class-findcar-acf-fields.php:92
+msgid "FindCar URL"
+msgstr "FindCar URL"
+
+#: includes/class-findcar-acf-fields.php:109
+msgid "Last sync"
+msgstr "Ostatnia synchronizacja"
+
+#: includes/class-findcar-acf-fields.php:126
+#: includes/class-findcar-admin.php:64 includes/class-findcar-admin.php:113
+msgid "Synchronization error"
+msgstr "Błąd synchronizacji"
+
+#: includes/class-findcar-acf-fields.php:146
+msgid "FindCar.pl"
+msgstr "FindCar.pl"
+
+#: includes/class-findcar-acf-fields.php:167
+msgid "Settings"
+msgstr "Ustawienia"
+
+#: includes/class-findcar-acf-fields.php:183
+msgid "Enable integration"
+msgstr "Włącz integrację"
+
+#: includes/class-findcar-acf-fields.php:186
+msgid "Enable car synchronization with FindCar.pl"
+msgstr "Włącz synchronizację samochodów z FindCar.pl"
+
+#: includes/class-findcar-acf-fields.php:202
+msgid "Automatic synchronization"
+msgstr "Automatyczna synchronizacja"
+
+#: includes/class-findcar-acf-fields.php:205
+msgid "Automatically sync cars after publication"
+msgstr "Automatycznie synchronizuj samochody po publikacji"
+
+#: includes/class-findcar-acf-fields.php:229
+msgid "API key"
+msgstr "Klucz API"
+
+#: includes/class-findcar-acf-fields.php:232
+msgid "FindCar.pl API key"
+msgstr "Klucz API FindCar.pl"
+
+#: includes/class-findcar-acf-fields.php:252
+#: includes/class-findcar-acf-fields.php:255
+msgid "Location authorization token"
+msgstr "Token autoryzacji lokalizacji"
+
+#: includes/class-findcar-acf-fields.php:275
+msgid "Location ID"
+msgstr "ID lokalizacji"
+
+#: includes/class-findcar-acf-fields.php:278
+msgid "Location ID in FindCar.pl"
+msgstr "ID lokalizacji w FindCar.pl"
+
+#: includes/class-findcar-acf-fields.php:298
+msgid "New inventory IDs"
+msgstr "ID inwentarza nowych"
+
+#: includes/class-findcar-acf-fields.php:301
+msgid "Vehicle identification number for new cars"
+msgstr "ID inwentarza dla samochodów nowych"
+
+#: includes/class-findcar-acf-fields.php:313
+msgid "Used inventory ID"
+msgstr "ID inwentarza używanych"
+
+#: includes/class-findcar-acf-fields.php:316
+msgid "Vehicle identification number for used cars"
+msgstr "ID inwentarza dla samochodów używanych"
+
+#: includes/class-findcar-acf-fields.php:328
+msgid "Connection status"
+msgstr "Status połączenia"
+
+#: includes/class-findcar-acf-fields.php:352
+msgid "Status"
+msgstr "Status"
+
+#: includes/class-findcar-acf-fields.php:369
+#: includes/class-findcar-acf-fields.php:388
+msgid "Test connection"
+msgstr "Testuj połączenie"
+
+#: includes/class-findcar-acf-fields.php:394
+msgid "Synchronize all"
+msgstr "Synchronizuj wszystkie"
+
+#: includes/class-findcar-acf-fields.php:413
+#: includes/class-findcar-admin.php:68
+#: includes/class-findcar-sync-manager.php:70
+#: volvo-feed-templates.php:350
+msgid "Preview"
+msgstr "Podgląd"
+
+#: includes/class-findcar-acf-fields.php:413
+msgid "Synchronize all cars"
+msgstr "Synchronizuj wszystkie samochody"
+
+#: includes/class-findcar-admin.php:59
+msgid "Connection testing..."
+msgstr "Testowanie połączenia..."
+
+#: includes/class-findcar-admin.php:60
+#: includes/class-findcar-api-client.php:182
+msgid "Active connection"
+msgstr "Połączenie aktywne"
+
+#: includes/class-findcar-admin.php:61
+#: includes/class-findcar-sync-manager.php:688
+msgid "Connection error"
+msgstr "Błąd połączenia"
+
+#: includes/class-findcar-admin.php:62
+msgid "Synchronization..."
+msgstr "Synchronizacja..."
+
+#: includes/class-findcar-admin.php:63
+msgid "Synchronized"
+msgstr "Zsynchronizowano"
+
+#: includes/class-findcar-admin.php:65
+msgid "Enabling..."
+msgstr "Włączanie..."
+
+#: includes/class-findcar-admin.php:66
+msgid "Synchronization is enabled"
+msgstr "Włączono synchronizację"
+
+#: includes/class-findcar-admin.php:67
+msgid "Error"
+msgstr "Błąd"
+
+#: includes/class-findcar-admin.php:69
+msgid "Loading..."
+msgstr "Ładowanie..."
+
+#: includes/class-findcar-admin.php:111
+#: includes/class-findcar-admin.php:113
+#: includes/class-findcar-sync-manager.php:325
+msgid "Missing required fields"
+msgstr "Brak wymaganych pól"
+
+#: includes/class-findcar-api-client.php:189
+msgid "An unexpected response"
+msgstr "Nieoczekiwana odpowiedź"
+
+#: includes/class-findcar-api-client.php:205
+#: includes/class-findcar-api-client.php:235
+msgid "Failed to retrieve the location"
+msgstr "Nie udało się pobrać lokalizacji"
+
+#: includes/class-findcar-api-client.php:220
+msgid "Unable to retrieve dealer data"
+msgstr "Nie udało się pobrać danych dealera"
+
+#: includes/class-findcar-api-client.php:250
+msgid "The dictionaries could not be downloaded"
+msgstr "Nie udało się pobrać słowników"
+
+#: includes/class-findcar-api-client.php:265
+msgid "Unable to retrieve brands and models"
+msgstr "Nie udało się pobrać marek i modeli"
+
+#: includes/class-findcar-api-client.php:287
+#: includes/class-findcar-api-client.php:309
+msgid "Offer could not be created"
+msgstr "Nie udało się utworzyć ogłoszenia"
+
+#: includes/class-findcar-api-client.php:330
+msgid "Offer could not be updated"
+msgstr "Nie udało się zaktualizować ogłoszenia"
+
+#: includes/class-findcar-api-client.php:347
+msgid "Offer could not be deleted"
+msgstr "Nie udało się usunąć ogłoszenia"
+
+#: includes/class-findcar-api-client.php:365
+msgid "Offer was not found"
+msgstr "Ogłoszenie nie zostało znalezione"
+
+#: includes/class-findcar-api-client.php:368
+msgid "Offer could not be downloaded"
+msgstr "Nie udało się pobrać ogłoszenia"
+
+#: includes/class-findcar-api-client.php:390
+msgid "The new car quote could not be created"
+msgstr "Nie udało się utworzyć ogłoszenia nowego samochodu"
+
+#: includes/class-findcar-api-client.php:412
+msgid "The used car listing could not be created"
+msgstr "Nie udało się utworzyć ogłoszenia używanego samochodu"
+
+#: includes/class-findcar-data-mapper.php:169
+msgid "Car not found"
+msgstr "Nie znaleziono samochodu"
+
+#: includes/class-findcar-data-mapper.php:182
+msgid "No car model"
+msgstr "Brak modelu samochodu"
+
+#: includes/class-findcar-data-mapper.php:229
+msgid "No photos of the car"
+msgstr "Brak zdjęć samochodu"
+
+#: includes/class-findcar-data-mapper.php:375
+msgid "No offer content (contentBody)"
+msgstr "Brak treści ogłoszenia (contentBody)"
+
+#: includes/class-findcar-data-mapper.php:378
+msgid "No engine capacity (engineCapacityCc)"
+msgstr "Brak pojemności silnika (engineCapacityCc)"
+
+#: includes/class-findcar-data-mapper.php:381
+msgid "No engine power (enginePowerHp)"
+msgstr "Brak mocy silnika (enginePowerHp)"
+
+#: includes/class-findcar-data-mapper.php:384
+msgid "No car body type (bodyType)"
+msgstr "Brak typu nadwozia (bodyType)"
+
+#: includes/class-findcar-data-mapper.php:463
+msgid "Car model"
+msgstr "Model samochodu"
+
+#: includes/class-findcar-data-mapper.php:466
+msgid "Photos"
+msgstr "Zdjęcia"
+
+#: includes/class-findcar-data-mapper.php:467
+msgid "Photo Gallery"
+msgstr "Galeria zdjęć"
+
+#: includes/class-findcar-sync-manager.php:69
+msgid "Send to FindCar"
+msgstr "Wyślij do FindCar"
+
+#: includes/class-findcar-sync-manager.php:193
+msgid "API key is required"
+msgstr "Wymagany jest klucz API"
+
+#: includes/class-findcar-sync-manager.php:307
+#: includes/class-findcar-sync-manager.php:798
+msgid "The car is not included in FindCar synchronization"
+msgstr "Samochód nie jest włączony do synchronizacji FindCar"
+
+#: includes/class-findcar-sync-manager.php:320
+#: includes/class-findcar-sync-manager.php:439
+#: includes/class-findcar-sync-manager.php:764
+msgid "No credentials"
+msgstr "Brak credentials"
+
+#: includes/class-findcar-sync-manager.php:425
+msgid "No showroom"
+msgstr "Brak showroomu"
+
+#: includes/class-findcar-sync-manager.php:444
+msgid "No offer ID"
+msgstr "Brak ID ogłoszenia"
+
+#: includes/class-findcar-sync-manager.php:522
+msgid "FindCar integration is not enabled for this showroom"
+msgstr "Integracja FindCar nie jest włączona dla tego showroomu"
+
+#: includes/class-findcar-sync-manager.php:659
+#: includes/class-findcar-sync-manager.php:707
+msgid "FindCar integration is not enabled"
+msgstr "Integracja FindCar nie jest włączona"
+
+#: includes/class-findcar-sync-manager.php:664
+msgid "No API key"
+msgstr "Brak API Key"
+
+#: includes/class-findcar-sync-manager.php:737
+msgid "Integration is not enabled"
+msgstr "Integracja nie jest włączona"
+
+#: includes/class-findcar-sync-manager.php:878
+msgid "Brak ID samochodu"
+msgstr "Car ID missing"
+
+#: includes/class-findcar-sync-manager.php:898
+msgid "No showroom ID"
+msgstr "Brak ID showroomu"
+
+#: includes/class-findcar-sync-manager.php:934
+msgid "No cars selected"
+msgstr "Nie wybrano samochodów"
+
+#: volvo-feed-templates.php:82
+#, php-format
+msgid "FindCar: %d synchronized, errors: %d, skipped: %d. %s"
+msgstr "FindCar: Zsynchronizowano %d, błędów: %d, pominięto: %d. %s"
+
+#: volvo-feed-templates.php:86
+#, php-format
+msgid "FindCar: %d cars have been successfully synchronized."
+msgstr "FindCar: Pomyślnie zsynchronizowano %d samochodów."
+
+#: volvo-feed-templates.php:286 volvo-feed-templates.php:287
+#: volvo-feed-templates.php:332
+msgid "Product feeds"
+msgstr "Feedy produktowe"
+
+#: volvo-feed-templates.php:296 volvo-feed-templates.php:297
+#: volvo-feed-templates.php:332 volvo-feed-templates.php:352
+msgid "My feeds"
+msgstr "Moje feedy"
+
+#: volvo-feed-templates.php:333
+msgid "Create feed"
+msgstr "Utwórz feed"
+
+#: volvo-feed-templates.php:334
+msgid "Edit feed"
+msgstr "Edytuj feed"
+
+#: volvo-feed-templates.php:335
+msgid "Delete"
+msgstr "Usuń"
+
+#: volvo-feed-templates.php:336
+msgid "Copy"
+msgstr "Kopiuj"
+
+#: volvo-feed-templates.php:337
+msgid "Feed name"
+msgstr "Nazwa feedu"
+
+#: volvo-feed-templates.php:338
+msgid "Slug (URL)"
+msgstr "Slug (URL)"
+
+#: volvo-feed-templates.php:339
+msgid "Format"
+msgstr "Format"
+
+#: volvo-feed-templates.php:341
+msgid "Used"
+msgstr "Używany"
+
+#: volvo-feed-templates.php:342
+msgid "New"
+msgstr "Nowy"
+
+#: volvo-feed-templates.php:343
+msgid "Both"
+msgstr "Oba"
+
+#: volvo-feed-templates.php:344
+msgid "CSV"
+msgstr "CSV"
+
+#: volvo-feed-templates.php:345
+msgid "XML"
+msgstr "XML"
+
+#: volvo-feed-templates.php:346
+msgid "Fields"
+msgstr "Pola"
+
+#: volvo-feed-templates.php:347
+msgid "Save"
+msgstr "Zapisz"
+
+#: volvo-feed-templates.php:348
+msgid "Cancel"
+msgstr "Anuluj"
+
+#: volvo-feed-templates.php:349
+msgid "Copy URL"
+msgstr "Kopiuj URL"
+
+#: volvo-feed-templates.php:351
+msgid "Global feeds"
+msgstr "Globalne feedy"
+
+#: volvo-feed-templates.php:353
+msgid "Available feeds"
+msgstr "Dostępne feedy"
+
+#: volvo-feed-templates.php:354
+msgid "No feeds found"
+msgstr "Nie znaleziono feedów"
+
+#: volvo-feed-templates.php:355
+msgid "Are you sure you want to delete this feed?"
+msgstr "Czy na pewno chcesz usunąć ten feed?"
+
+#: volvo-feed-templates.php:356
+msgid "URL copied to clipboard"
+msgstr "URL skopiowany do schowka"
+
+#: volvo-feed-templates.php:388
+msgid "This plugin requires WordPress Multisite to be enabled."
+msgstr "Ta wtyczka wymaga włączenia funkcji WordPress Multisite."

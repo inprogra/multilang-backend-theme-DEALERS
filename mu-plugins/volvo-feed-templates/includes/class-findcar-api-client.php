@@ -179,14 +179,14 @@ if (!empty($this->location_token)) {
         if ($response['status_code'] === 200 && isset($response['data'])) {
             return [
                 'success' => true,
-                'message' => 'Połączenie aktywne',
+                'message' => __('Active connection', 'volvo-feed-templates'),
                 'data' => $response['data'],
             ];
         }
 
         return [
             'success' => false,
-            'message' => 'Nieoczekiwana odpowiedź: ' . $response['status_code'],
+            'message' => __('An unexpected response', 'volvo-feed-templates') . ': ' . $response['status_code'],
         ];
     }
 
@@ -202,7 +202,7 @@ if (!empty($this->location_token)) {
             return $response['data'];
         }
 
-        return new WP_Error('findcar_api_error', 'Nie udało się pobrać lokalizacji');
+        return new WP_Error('findcar_api_error', __('Failed to retrieve the location', 'volvo-feed-templates'));
     }
 
     public function get_dealership()
@@ -217,7 +217,7 @@ if (!empty($this->location_token)) {
             return $response['data'];
         }
 
-        return new WP_Error('findcar_api_error', 'Nie udało się pobrać danych dealera');
+        return new WP_Error('findcar_api_error', __('Unable to retrieve dealer data', 'volvo-feed-templates'));
     }
 
     public function get_locations()
@@ -232,7 +232,7 @@ if (!empty($this->location_token)) {
             return $response['data'];
         }
 
-        return new WP_Error('findcar_api_error', 'Nie udało się pobrać lokalizacji');
+        return new WP_Error('findcar_api_error', __('Failed to retrieve the location', 'volvo-feed-templates'));
     }
 
     public function get_dictionaries()
@@ -247,7 +247,7 @@ if (!empty($this->location_token)) {
             return $response['data'];
         }
 
-        return new WP_Error('findcar_api_error', 'Nie udało się pobrać słowników');
+        return new WP_Error('findcar_api_error', __('The dictionaries could not be downloaded', 'volvo-feed-templates'));
     }
 
     public function get_makes_models()
@@ -262,7 +262,7 @@ if (!empty($this->location_token)) {
             return $response['data'];
         }
 
-        return new WP_Error('findcar_api_error', 'Nie udało się pobrać marek i modeli');
+        return new WP_Error('findcar_api_error', __('Unable to retrieve brands and models', 'volvo-feed-templates'));
     }
 
     public function create_listing($location_id, $partner_listing_id, $listing_data)
@@ -284,7 +284,7 @@ if (!empty($this->location_token)) {
             return $response['data'];
         }
 
-        return new WP_Error('findcar_api_error', 'Nie udało się utworzyć ogłoszenia');
+        return new WP_Error('findcar_api_error', __('Offer could not be created', 'volvo-feed-templates'));
     }
 
     public function create_listing_by_inventory($inventory_id, $partner_listing_id, $listing_data)
@@ -306,7 +306,7 @@ if (!empty($this->location_token)) {
             return $response['data'];
         }
 
-        return new WP_Error('findcar_api_error', 'Nie udało się utworzyć ogłoszenia');
+        return new WP_Error('findcar_api_error', __('Offer could not be created', 'volvo-feed-templates'));
     }
 
     public function update_listing($location_id, $partner_listing_id, $listing_data)
@@ -327,7 +327,7 @@ if (!empty($this->location_token)) {
             return $response['data'];
         }
 
-        return new WP_Error('findcar_api_error', 'Nie udało się zaktualizować ogłoszenia');
+        return new WP_Error('findcar_api_error', __('Offer could not be updated', 'volvo-feed-templates'));
     }
 
     public function delete_listing($location_id, $partner_listing_id)
@@ -344,7 +344,7 @@ if (!empty($this->location_token)) {
             return true;
         }
 
-        return new WP_Error('findcar_api_error', 'Nie udało się usunąć ogłoszenia');
+        return new WP_Error('findcar_api_error', __('Offer could not be deleted', 'volvo-feed-templates'));
     }
 
     public function get_listing($location_id, $partner_listing_id)
@@ -362,10 +362,10 @@ if (!empty($this->location_token)) {
         }
 
         if ($response['status_code'] === 404) {
-            return new WP_Error('findcar_not_found', 'Ogłoszenie nie zostało znalezione');
+            return new WP_Error('findcar_not_found', __('Offer was not found', 'volvo-feed-templates'));
         }
 
-        return new WP_Error('findcar_api_error', 'Nie udało się pobrać ogłoszenia');
+        return new WP_Error('findcar_api_error', __('Offer could not be downloaded', 'volvo-feed-templates'));
     }
 
     public function create_listing_brand_new($location_id, $partner_listing_id, $listing_data)
@@ -387,7 +387,7 @@ if (!empty($this->location_token)) {
             return $response['data'];
         }
 
-        return new WP_Error('findcar_api_error', 'Nie udało się utworzyć ogłoszenia nowego samochodu');
+        return new WP_Error('findcar_api_error', __('The new car quote could not be created', 'volvo-feed-templates'));
     }
 
     public function create_listing_pre_owned($location_id, $partner_listing_id, $listing_data)
@@ -409,6 +409,6 @@ if (!empty($this->location_token)) {
             return $response['data'];
         }
 
-        return new WP_Error('findcar_api_error', 'Nie udało się utworzyć ogłoszenia używanego samochodu');
+        return new WP_Error('findcar_api_error', __('The used car listing could not be created', 'volvo-feed-templates'));
     }
 }

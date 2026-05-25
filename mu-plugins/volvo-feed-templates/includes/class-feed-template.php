@@ -400,18 +400,18 @@ class Feed_Template
         check_ajax_referer('volvo_feed_templates_nonce', 'nonce');
         
         if (!current_user_can('edit_posts')) {
-            wp_send_json_error(['message' => 'Brak uprawnień'], 403);
+            wp_send_json_error(['message' => __('No permissions', 'volvo-feed-templates')], 403);
         }
 
         $data = isset($_POST['data']) ? json_decode(stripslashes($_POST['data']), true) : [];
         $blog_id = isset($_POST['blog_id']) ? intval($_POST['blog_id']) : get_current_blog_id();
 
         if (empty($data) || !is_array($data)) {
-            wp_send_json_error(['message' => 'Nieprawidłowe dane'], 400);
+            wp_send_json_error(['message' => __('Incorrect data', 'volvo-feed-templates')], 400);
         }
 
         if (empty($data['name'])) {
-            wp_send_json_error(['message' => 'Nazwa feedu jest wymagana'], 400);
+            wp_send_json_error(['message' => __('The feed name is required', 'volvo-feed-templates')], 400);
         }
 
         if (empty($data['slug'])) {
@@ -423,9 +423,9 @@ class Feed_Template
         $result = self::save_template($data, $blog_id);
 
         if ($result) {
-            wp_send_json_success(['message' => 'Feed zapisany pomyślnie']);
+            wp_send_json_success(['message' => __('Feed saved successfully', 'volvo-feed-templates')]);
         } else {
-            wp_send_json_error(['message' => 'Nie udało się zapisać feedu'], 500);
+            wp_send_json_error(['message' => __('The feed could not be saved', 'volvo-feed-templates')], 500);
         }
     }
 
@@ -441,15 +441,15 @@ class Feed_Template
         $blog_id = isset($_POST['blog_id']) ? intval($_POST['blog_id']) : get_current_blog_id();
 
         if (empty($template_id)) {
-            wp_send_json_error(['message' => 'ID feedu jest wymagane'], 400);
+            wp_send_json_error(['message' => __('The feed ID is required', 'volvo-feed-templates')], 400);
         }
 
         $result = self::delete_template($template_id, $blog_id);
 
         if ($result) {
-            wp_send_json_success(['message' => 'Feed usunięty pomyślnie']);
+            wp_send_json_success(['message' => __('Feed successfully deleted', 'volvo-feed-templates')]);
         } else {
-            wp_send_json_error(['message' => 'Nie udało się usunąć feedu'], 500);
+            wp_send_json_error(['message' => __('The feed could not be deleted', 'volvo-feed-templates')], 500);
         }
     }
 
@@ -458,7 +458,7 @@ class Feed_Template
         check_ajax_referer('volvo_feed_templates_nonce', 'nonce');
         
         if (!current_user_can('edit_posts')) {
-            wp_send_json_error(['message' => 'Brak uprawnień'], 403);
+            wp_send_json_error(['message' => __('No permissions', 'volvo-feed-templates')], 403);
         }
 
         $template_id = isset($_POST['template_id']) ? sanitize_text_field($_POST['template_id']) : '';
@@ -466,15 +466,15 @@ class Feed_Template
         $blog_id = isset($_POST['blog_id']) ? intval($_POST['blog_id']) : get_current_blog_id();
 
         if (empty($template_id) || empty($new_name)) {
-            wp_send_json_error(['message' => 'ID feedu i nowa nazwa są wymagane'], 400);
+            wp_send_json_error(['message' => __('The feed ID and new name are required', 'volvo-feed-templates')], 400);
         }
 
         $result = self::copy_template($template_id, $new_name, $blog_id);
 
         if ($result) {
-            wp_send_json_success(['message' => 'Feed skopiowany pomyślnie']);
+            wp_send_json_success(['message' => __('Feed copied successfully', 'volvo-feed-templates')]);
         } else {
-            wp_send_json_error(['message' => 'Nie udało się skopiować feedu'], 500);
+            wp_send_json_error(['message' => __('The feed could not be copied', 'volvo-feed-templates')], 500);
         }
     }
 
@@ -486,13 +486,13 @@ class Feed_Template
         $blog_id = isset($_POST['blog_id']) ? intval($_POST['blog_id']) : get_current_blog_id();
 
         if (empty($template_id)) {
-            wp_send_json_error(['message' => 'ID feedu jest wymagane'], 400);
+            wp_send_json_error(['message' => __('The feed ID is required', 'volvo-feed-templates')], 400);
         }
 
         $template = self::get_template_by_slug($template_id, $blog_id);
         
         if (!$template) {
-            wp_send_json_error(['message' => 'Feed nie znaleziony'], 404);
+            wp_send_json_error(['message' => __('Feed not found', 'volvo-feed-templates')], 404);
         }
 
         $generator = new Feed_Generator($template, $blog_id);
@@ -509,40 +509,40 @@ class Feed_Template
     {
         return [
             'id' => __('ID', 'volvo-feed-templates'),
-            'title' => __('Tytuł', 'volvo-feed-templates'),
-            'description' => __('Opis', 'volvo-feed-templates'),
-            'price' => __('Cena', 'volvo-feed-templates'),
-            'discount_price' => __('Cena promocyjna', 'volvo-feed-templates'),
-            'image_url' => __('Główne zdjęcie', 'volvo-feed-templates'),
-            'images' => __('Wszystkie zdjęcia', 'volvo-feed-templates'),
+            'title' => __('Title', 'volvo-feed-templates'),
+            'description' => __('Description', 'volvo-feed-templates'),
+            'price' => __('Price', 'volvo-feed-templates'),
+            'discount_price' => __('Promotional price', 'volvo-feed-templates'),
+            'image_url' => __('Main photo', 'volvo-feed-templates'),
+            'images' => __('All photos', 'volvo-feed-templates'),
             'link' => __('Link', 'volvo-feed-templates'),
-            'brand' => __('Marka', 'volvo-feed-templates'),
+            'brand' => __('Brand', 'volvo-feed-templates'),
             'model' => __('Model', 'volvo-feed-templates'),
-            'version' => __('Wersja', 'volvo-feed-templates'),
-            'year' => __('Rok', 'volvo-feed-templates'),
-            'production_year' => __('Rok produkcji', 'volvo-feed-templates'),
-            'mileage' => __('Przebieg', 'volvo-feed-templates'),
-            'fuel_type' => __('Rodzaj paliwa', 'volvo-feed-templates'),
-            'gearbox' => __('Skrzynia biegów', 'volvo-feed-templates'),
-            'transmission' => __('Napęd', 'volvo-feed-templates'),
-            'drive' => __('Napęd', 'volvo-feed-templates'),
-            'body_type' => __('Typ nadwozia', 'volvo-feed-templates'),
-            'color' => __('Kolor', 'volvo-feed-templates'),
-            'door_count' => __('Liczba drzwi', 'volvo-feed-templates'),
-            'engine' => __('Silnik', 'volvo-feed-templates'),
-            'power' => __('Moc', 'volvo-feed-templates'),
-            'power_hp' => __('Moc (KM)', 'volvo-feed-templates'),
+            'version' => __('Version', 'volvo-feed-templates'),
+            'year' => __('Year', 'volvo-feed-templates'),
+            'production_year' => __('Year of manufacture', 'volvo-feed-templates'),
+            'mileage' => __('Mileage', 'volvo-feed-templates'),
+            'fuel_type' => __('Fuel Type', 'volvo-feed-templates'),
+            'gearbox' => __('Transmission', 'volvo-feed-templates'),
+            'transmission' => __('Drivetrain', 'volvo-feed-templates'),
+            'drive' => __('Drive', 'volvo-feed-templates'),
+            'body_type' => __('Car body type', 'volvo-feed-templates'),
+            'color' => __('Color', 'volvo-feed-templates'),
+            'door_count' => __('Number of doors', 'volvo-feed-templates'),
+            'engine' => __('Engine', 'volvo-feed-templates'),
+            'power' => __('Power', 'volvo-feed-templates'),
+            'power_hp' => __('Power (HP)', 'volvo-feed-templates'),
             'vin' => __('VIN', 'volvo-feed-templates'),
-            'offer_number' => __('Numer oferty', 'volvo-feed-templates'),
-            'category' => __('Kategoria', 'volvo-feed-templates'),
-            'dealer_name' => __('Nazwa dealera', 'volvo-feed-templates'),
-            'dealer_phone' => __('Telefon dealera', 'volvo-feed-templates'),
-            'dealer_location' => __('Lokalizacja dealera', 'volvo-feed-templates'),
-            'dealer_id' => __('ID dealera', 'volvo-feed-templates'),
-            'showroom' => __('Salon', 'volvo-feed-templates'),
-            'currency' => __('Waluta', 'volvo-feed-templates'),
-            'is_featured' => __('Wyróżniony', 'volvo-feed-templates'),
-            'car_type' => __('Typ samochodu', 'volvo-feed-templates'),
+            'offer_number' => __('Offer number', 'volvo-feed-templates'),
+            'category' => __('Category', 'volvo-feed-templates'),
+            'dealer_name' => __('Dealer name', 'volvo-feed-templates'),
+            'dealer_phone' => __('Dealer\'s phone number', 'volvo-feed-templates'),
+            'dealer_location' => __('Dealer location', 'volvo-feed-templates'),
+            'dealer_id' => __('Dealer ID', 'volvo-feed-templates'),
+            'showroom' => __('Showroom', 'volvo-feed-templates'),
+            'currency' => __('Currency', 'volvo-feed-templates'),
+            'is_featured' => __('Featured', 'volvo-feed-templates'),
+            'car_type' => __('Car type', 'volvo-feed-templates'),
         ];
     }
 

@@ -55,8 +55,8 @@ function registerThemePostTypes() {
 			'label'        => __('Campaigns', 'partners-site_v2'),
 			'labels'       => array(
 				'singular_name' => __('Campaign', 'partners-site_v2'),
-				'add_new'       => __('Add a campaign', 'partners-site_v2'),
-				'add_new_item'  => __('Add a campaign', 'partners-site_v2'),
+				'add_new'       => __('Add campaign', 'partners-site_v2'),
+				'add_new_item'  => __('Add campaign', 'partners-site_v2'),
 				'edit_item'     => __('Edit campaign', 'partners-site_v2'),
 				'new_item'      => __('New campaign', 'partners-site_v2'),
 			),
@@ -242,10 +242,10 @@ function general_admin_notice() {
 				break;
 			case 'edit-campaign-override':   // Nadpisywanie kampanii
 				echo '<div class="notice notice-info">' .
-					'<h3>Witamy na ekranie Kampanii globalnych!</h3>' .
-					'<p>W tym miejscu moves dodać własne treści do istniejących już kampanii globalnych wyświetlanych na Twojej stronie.</p>' .
-					'<p>Stwórz poniżej stronę i dodaj w niej treści które wyświetlą się pod kampanią która wybierzesz.</p>' .
-					'<p>Nie zapomnij wybrać nowej kampanii w <a href="/wp/wp-admin/admin.php?page=options-homepage">Opcjach Strony Głównej</a></p>' .
+					'<h3>' . esc_html__('Welcome to the Global Campaigns screen!', 'partners-site_v2') . '</h3>' .
+					'<p>' . esc_html__('Here, you can add your own content to existing global campaigns displayed on your website.', 'partners-site_v2') . '</p>' .
+					'<p>' . esc_html__('Create a page below and add content that will appear under the campaign you select.', 'partners-site_v2') . '</p>' .
+					'<p>' . esc_html__('Don’t forget to select a new campaign in <a href="/wp/wp-admin/admin.php?page=options-homepage">Home Page Options</a>', 'partners-site_v2') . '</a></p>' .
 					'</div>';
 				break;
 			case 'edit-model-override':   // Modele

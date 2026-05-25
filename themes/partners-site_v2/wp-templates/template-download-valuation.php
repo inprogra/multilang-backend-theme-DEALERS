@@ -13,8 +13,8 @@
 
     <div class="pdf-container" style="height: 100vh; width: 100%;">
         <object data="<?php echo esc_url($pdf_url); ?>" type="application/pdf" style="height: 100vh; width: 100%;">
-            <p>Twoja przeglądarka nie obsługuje wyświetlania plików PDF. Możesz pobrać PDF za pomocą poniższego linku:
-                <a href="<?php echo esc_url($pdf_url); ?>" target="_blank">Pobierz wycenę</a>.
+            <p><?php esc_html_e('Your browser does not support the display of PDF files. You can download the PDF using the link below', 'partners-site_v2'); ?>:
+                <a href="<?php echo esc_url($pdf_url); ?>" target="_blank"><?php esc_html_e('Download price quote', 'partners-site_v2'); ?></a>.
             </p>
         </object>
     </div>

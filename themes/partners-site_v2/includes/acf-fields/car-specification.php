@@ -10,7 +10,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 			'fields'                => array(
 				array(
 					'key'               => 'field_6103f56d78246',
-					'label'             => __( 'Model', 'partners-site_v2' ),
+					'label'             => __('Model', 'partners-site_v2'),
 					'name'              => 'model',
 					'type'              => 'select',
 					'instructions'      => '',

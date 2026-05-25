@@ -261,13 +261,13 @@ class Lead
 			$message .= ' VIN: ' . $meta['vin'];
 		}
 		if (! empty($meta['productionYear'])) {
-			$message .= ' Rok produkcji: ' . $meta['productionYear'];
+			$message .= ' ' . __('Year of manufacture', 'partners-site_v2') . ': ' . $meta['productionYear'];
 		}
 		if (! empty($meta['model'])) {
-			$message .= ' Model samochodu: ' . $meta['model'];
+			$message .= ' ' . __('Car model', 'partners-site_v2') . ': ' . $meta['model'];
 		}
 		if (! empty($meta['services'])) {
-			$message .= ' Wybrane usługi: ' . join(', ', $meta['services']);
+			$message .= ' ' . __('Selected services', 'partners-site_v2') . ': ' . join(', ', $meta['services']);
 		}
 
 		return $message;

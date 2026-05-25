@@ -175,52 +175,52 @@ class StockController extends Controller
 				),
 				'mainFilters' => array(
 					'model' => array(
-						'label' => 'Model',
+						'label' => __('Model', 'partners-site_v2'),
 						'values' => $this->mapDictionaryToMultiselect($car_models),
 						'selected' => $filters['model'] ?? array(),
 					),
 					'color' => array(
-						'label' => 'Kolor',
+						'label' => __('Color', 'partners-site_v2'),
 						'values' => $this->mapDictionaryToMultiselect($car_colors),
 						'selected' => $filters['color'] ?? array(),
 					),
 					'engine' => array(
-						'label' => 'Silnik',
+						'label' => __('Engine', 'partners-site_v2'),
 						'values' => $this->mapDictionaryToMultiselect($car_engine),
 						'selected' => $filters['engine'] ?? array(),
 					),
 					'version' => array(
-						'label' => 'Wersja',
+						'label' => __('Version', 'partners-site_v2'),
 						'values' => $this->mapDictionaryToMultiselect($car_version),
 						'selected' => $filters['version'] ?? array(),
 					),
 				),
 				'secondaryFilters' => array(
 					'inlay' => array(
-						'label' => 'Tapicerka',
+						'label' => __('Upholstery', 'partners-site_v2'),
 						'values' => $this->mapDictionaryToMultiselect($car_inlay),
 						'selected' => $filters['inlay'] ?? array(),
 					),
 					'gearbox' => array(
-						'label' => 'Skrzynia biegów',
+						'label' => __('Transmission', 'partners-site_v2'),
 						'values' => $this->mapDictionaryToMultiselect($car_gearbox),
 						'selected' => $filters['gearbox'] ?? array(),
 					),
 					'max-power' => array(
-						'label' => 'Moc maksymalna',
+						'label' => __('Maximum power', 'partners-site_v2'),
 						'values' => $this->mapDictionaryToMultiselect(
 							array(
-								'0-170' => 'Do 170 KM',
-								'170-200' => '170-200 KM',
-								'201-250' => '201-250 KM',
-								'251-300' => '251-300 KM',
-								'301-10000' => 'Powyżej 300 KM',
+								'0-170' => __('Up to 170 HP', 'partners-site_v2'),
+								'170-200' => __('170–200 HP', 'partners-site_v2'),
+								'201-250' => __('201–250 HP', 'partners-site_v2'),
+								'251-300' => __('251–300 HP', 'partners-site_v2'),
+								'301-10000' => __('Over 300 HP', 'partners-site_v2'),
 							)
 						),
 						'selected' => $filters['max-power'] ?? array(),
 					),
 					'production-year' => array(
-						'label' => 'Rok produkcji',
+						'label' => __('Year of manufacture', 'partners-site_v2'),
 						'values' => $this->mapDictionaryToMultiselect(
 							$years
 						),
@@ -230,20 +230,20 @@ class StockController extends Controller
 						'label' => 'car_type',
 						'values' => $this->mapDictionaryToMultiselect(
 							array(
-								'all' => 'Wszystkie',
-								'new' => 'Nowe',
-								'used' => 'Używane',
+								'all' => __('All', 'partners-site_v2'),
+								'new' => __('New', 'partners-site_v2'),
+								'used' => __('Used', 'partners-site_v2'),
 							)
 						),
 						'selected' => $filters['cartype'] ?? array(),
 					),
 					'distance' => array(
-						'label' => 'Przebieg',
+						'label' => __('Mileage', 'partners-site_v2'),
 						'values' => $this->mapDictionaryToMultiselect(
 							array(
-								'0-20000' => '0-20 tys. km',
-								'20001-100000' => '20-100 tys. km',
-								'100001-200000' => '100-200  tys. km',
+								'0-20000' => __('0-20,000 km', 'partners-site_v2'),
+								'20001-100000' => __('20,000-100,000 km', 'partners-site_v2'),
+								'100001-200000' => __('100,000–200,000 km', 'partners-site_v2'),
 							)
 						),
 						'selected' => $filters['mileage'] ?? array(),
@@ -251,7 +251,7 @@ class StockController extends Controller
 				),
 				'priceRangeFilter' => array(
 					'name' => 'discount-price',
-					'label' => 'Cena',
+					'label' => __('Price', 'partners-site_v2'),
 					'min' => $min,
 					'max' => $max,
 					'selected' => array(

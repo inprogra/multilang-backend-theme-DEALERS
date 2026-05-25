@@ -599,9 +599,9 @@ class CarDictionary
       
 		restore_current_blog();
       
-		exit('Auto zaimportowane '.$vin_data);
+		exit(esc_html__('Imported car', 'partners-site_v2') . ' ' . $vin_data);
 		} else {
-			exit('Auto jest już zaimportowane '.$vin_data);
+			exit(esc_html__('The car has already been imported', 'partners-site_v2') . ' ' . $vin_data);
 		}
 	}
 	public function getOldCarsData() {
@@ -672,7 +672,17 @@ class CarDictionary
 				if ($b['blog_id'] == 1) {
 					$dealerId = 1;
 				}
-                $data = ['blog_id' => $b['blog_id'],'address'=> $addresses,'multisalon' => $multisalon, 'cars' => $count_pages,'domain'=> $b['domain'], 'dealerId' => $dealerId,'showrooms' => $showrooms,'car_ids' => $cars,'cars_data' => $cars_data];
+				$data = [
+					'blog_id' => $b['blog_id'],
+					'address' => $addresses,
+					'multisalon' => $multisalon,
+					'cars' => $count_pages,
+					'domain' => $b['domain'],
+					'dealerId' => $dealerId,
+					'showrooms' => $showrooms,
+					'car_ids' => $cars,
+					'cars_data' => $cars_data
+				];
 			
 				if ($dealerId ) {
 					
@@ -1839,7 +1849,7 @@ class CarDictionary
 	}
 	public function filterLeaseOffer($car_id,$key=null) {
 		
-		$result['none'] = 'Brak finansowania';
+		$result['none'] = __('Lack of funding', 'partners-site_v2');
 		$options        = getBasicOptions(0);
 		
 		$model = (get_field('model_1', $car_id) ? get_field('model_1', $car_id) : get_field('model', $car_id));
@@ -1894,7 +1904,7 @@ class CarDictionary
 
 		$tmp          = array();
 		$lease_number = (int) $options['leasing'][0];
-		$tmp[0]       = 'Brak finansowania';
+		$tmp[0]       = __('Lack of funding', 'partners-site_v2');
 		$leasing_products = $this->getLeasingProducts();	
 		// for ($i = 0; $lease_number > $i; $i++) {
 		// 	$x             = $i + 1;
@@ -1903,7 +1913,7 @@ class CarDictionary
 		// 	$tmp[$x] = '[' . $price_variant . '] ' . $options['najem_' . $i . '_najem_offer'][0] . ' ' . $options['najem_' . $i . '_najem_description'][0];
 		// }
 		
-		$tmp[0] = 'Brak finansowania';
+		$tmp[0] = __('Lack of funding', 'partners-site_v2');
 		foreach($leasing_products as $k=>$p) {
 			$tmp[$k] = $p;
 		}
@@ -1914,12 +1924,12 @@ class CarDictionary
 	{	
 		$leasing_products = $this->getLeasingProducts();
 		
-		$result['none'] = 'Brak finansowania';
+		$result['none'] = __('Lack of funding', 'partners-site_v2');
 		$options        = getBasicOptions(0);
 		$tmp            = array();
 		$lease_number   = (int) $options['najem'][0];
 		
-		$tmp[0] = 'Brak finansowania';
+		$tmp[0] = __('Lack of funding', 'partners-site_v2');
 		foreach($leasing_products as $k=>$p) {
 			$tmp[$k] = $p;
 		}

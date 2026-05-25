@@ -4,7 +4,7 @@ if (function_exists('acf_add_local_field_group')):
     acf_add_local_field_group(
         array(
             'key' => 'group_60586610e9086',
-            'title' => __( 'Dealer Settings', 'partners-site_v2' ),
+            'title' => __( 'Dealer settings', 'partners-site_v2' ),
             'fields' => array(
                 array(
                     'key' => 'field_6058b8ba89298',
@@ -301,7 +301,7 @@ if (function_exists('acf_add_local_field_group')):
 
                 array(
                     'key' => 'field_6058b8b089297',
-                    'label' => __( 'Social Media', 'partners-site_v2' ),
+                    'label' => __('Social Media', 'partners-site_v2'),
                     'name' => '',
                     'type' => 'tab',
                     'instructions' => '',
@@ -317,7 +317,7 @@ if (function_exists('acf_add_local_field_group')):
                 ),
                 array(
                     'key' => 'field_6058b86089290',
-                    'label' => __( 'Social media', 'partners-site_v2' ),
+                    'label' => __('Social Media', 'partners-site_v2'),
                     'name' => 'social-media',
                     'type' => 'group',
                     'instructions' => '',
@@ -332,7 +332,7 @@ if (function_exists('acf_add_local_field_group')):
                     'sub_fields' => array(
                         array(
                             'key' => 'field_6058b87189291',
-                            'label' => __( 'Facebook', 'partners-site_v2' ),
+                            'label' => __('Facebook', 'partners-site_v2'),
                             'name' => 'facebook',
                             'type' => 'url',
                             'instructions' => '',
@@ -348,7 +348,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'field_6058b88989292',
-                            'label' => __( 'Instagram', 'partners-site_v2' ),
+                            'label' => __('Instagram', 'partners-site_v2'),
                             'name' => 'instagram',
                             'type' => 'url',
                             'instructions' => '',
@@ -380,7 +380,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'field_6058b89b89295',
-                            'label' => __( 'YouTube', 'partners-site_v2' ),
+                            'label' => __('YouTube', 'partners-site_v2'),
                             'name' => 'youtube',
                             'type' => 'url',
                             'instructions' => '',
@@ -448,7 +448,7 @@ if (function_exists('acf_add_local_field_group')):
                     'sub_fields' => array(
                         array(
                             'key' => 'field_6058b298189291',
-                            'label' => __( 'Client ID', 'partners-site_v2' ),
+                            'label' => __('Client ID', 'partners-site_v2'),
                             'name' => 'client-id',
                             'type' => 'text',
                             'instructions' => '',
@@ -464,7 +464,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'field_6058b87182691',
-                            'label' => __( 'App ID', 'partners-site_v2' ),
+                            'label' => __('App ID', 'partners-site_v2'),
                             'name' => 'app-id',
                             'type' => 'text',
                             'instructions' => '',
@@ -480,7 +480,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'field_4158b87189291',
-                            'label' => __( 'App Secret Key', 'partners-site_v2' ),
+                            'label' => __('App Secret Key', 'partners-site_v2'),
                             'name' => 'app-secret-key',
                             'type' => 'text',
                             'instructions' => '',
@@ -667,7 +667,7 @@ if (function_exists('acf_add_local_field_group')):
                     'sub_fields' => array(
                         array(
                             'key' => 'fb_token',
-                            'label' => __( 'Access Token', 'partners-site_v2' ),
+                            'label' => __('Access Token', 'partners-site_v2'),
                             'name' => 'fb_token',
                             'type' => 'text',
                             'instructions' => '',
@@ -699,7 +699,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'fb_pixel',
-                            'label' => __( 'Pixel ID', 'partners-site_v2' ),
+                            'label' => __('Pixel ID', 'partners-site_v2'),
                             'name' => 'fb_pixel',
                             'type' => 'text',
                             'instructions' => '',
@@ -1161,7 +1161,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'otomoto_client_id',
-                            'label' => __( 'Client ID', 'partners-site_v2' ),
+                            'label' => __('Client ID', 'partners-site_v2'),
                             'name' => 'otomoto_client_id',
                             'type' => 'text',
                             'instructions' => '',
@@ -1185,7 +1185,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'otomoto_client_secret',
-                            'label' => __( 'Client Secret', 'partners-site_v2' ),
+                            'label' => __('Client Secret', 'partners-site_v2'),
                             'name' => 'otomoto_client_secret',
                             'type' => 'password',
                             'instructions' => '',
@@ -1234,7 +1234,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),
                         array(
                             'key' => 'otomoto_region_id',
-                            'label' => __( 'Region', 'partners-site_v2' ),
+                            'label' => __('Region', 'partners-site_v2'),
                             'name' => 'otomoto_region_id',
                             'type' => 'select',
                             'instructions' => __( 'Select region', 'partners-site_v2' ),
@@ -1451,7 +1451,7 @@ if (function_exists('acf_add_local_field_group')):
                     'sub_fields' => array(                       
                         array(
                             'key' => 'ttmsapikey',
-                            'label' => __( 'API Key', 'partners-site_v2' ),
+                            'label' => __('API Key', 'partners-site_v2'),
                             'name' => 'ttmsapikey',
                             'type' => 'text',
                             'instructions' => '',
@@ -1471,7 +1471,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),          
                         array(
                             'key' => 'parmaPartnerCode',
-                            'label' => __( 'Partner Code', 'partners-site_v2' ),
+                            'label' => __('Partner Code', 'partners-site_v2'),
                             'name' => 'parmaPartnerCode',
                             'type' => 'text',
                             'instructions' => '',
@@ -1491,7 +1491,7 @@ if (function_exists('acf_add_local_field_group')):
                         ),          
                         array(
                             'key' => 'booking_partner_id',
-                            'label' => __( 'Partner ID', 'partners-site_v2' ),
+                            'label' => __('Partner ID', 'partners-site_v2'),
                             'name' => 'partner_id',
                             'type' => 'text',
                             'instructions' => '',

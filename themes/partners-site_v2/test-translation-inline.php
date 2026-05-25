@@ -19,7 +19,7 @@ if (file_exists($mofile)) {
 }
 
 // Test translation
-$test = __('Imię', 'partners-site_v2');
+$test = __('First Name', 'partners-site_v2');
 echo "<!-- Translation Test: Imię = " . $test . " (should be Jméno) -->";
 echo "<!-- Translation Working: " . ($test === 'Jméno' ? 'YES' : 'NO') . " -->";
 echo "<!-- End Translation Debug -->";

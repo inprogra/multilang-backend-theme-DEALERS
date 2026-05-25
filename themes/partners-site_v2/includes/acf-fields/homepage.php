@@ -59,7 +59,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 							'min'               => 0,
 							'max'               => 3,
 							'layout'            => 'row',
-							'button_label'      => __('Add a campaign', 'partners-site_v2'),
+							'button_label'      => __('Add campaign', 'partners-site_v2'),
 							'sub_fields'        => array(
 								
 								array(
@@ -270,7 +270,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 				),
 				array(
 					'key'               => 'offerLinks',
-					'label'             => __( 'Link', 'partners-site_v2' ),
+					'label'             => __('Link', 'partners-site_v2'),
 					'name'              => 'offerLinks',
 					'type'              => 'link',
 					'instructions'      => '',
@@ -392,7 +392,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'greyLinksBox',
-							'label'             => __( 'Link', 'partners-site_v2' ),
+							'label'             => __('Link', 'partners-site_v2'),
 							'name'              => 'link',
 							'type'              => 'link',
 							'instructions'      => '',
@@ -468,7 +468,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'greyLinksBox2',
-							'label'             => __( 'Link', 'partners-site_v2' ),
+							'label'             => __('Link', 'partners-site_v2'),
 							'name'              => 'link2',
 							'type'              => 'link',
 							'instructions'      => '',
@@ -544,7 +544,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'greyLinksBox3',
-							'label'             => __( 'Link', 'partners-site_v2' ),
+							'label'             => __('Link', 'partners-site_v2'),
 							'name'              => 'link3',
 							'type'              => 'link',
 							'instructions'      => '',
@@ -620,7 +620,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'greyLinksBox4',
-							'label'             => __( 'Link', 'partners-site_v2' ),
+							'label'             => __('Link', 'partners-site_v2'),
 							'name'              => 'link4',
 							'type'              => 'link',
 							'instructions'      => '',
@@ -680,7 +680,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 							'label' => __( 'Header', 'partners-site_v2' ),
 							'name'              => 'heading',
 							'type'              => 'text',
-							'instructions' => __( 'By default, the header text is gray. To make a specific phrase black, please place it between &lt;strong&gt;&lt;/strong&gt;, <br>e.g., &lt;strong&gt;TEXT&lt;/strong&gt;', 'partners-site_v2' ),
+							'instructions' => __( 'By default, the header text is gray. To make a specific phrase black, please place it between &lt;strong&gt;&lt;/strong&gt;,<br>e.g., &lt;strong&gt;TEXT&lt;/strong&gt;', 'partners-site_v2' ),
 							'required'          => 0,
 							'conditional_logic' => 0,
 							'wrapper'           => array(
@@ -803,7 +803,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								),
 								array(
 									'key'               => 'field_6040b435a66b9',
-									'label'             => __( 'Link', 'partners-site_v2' ),
+									'label'             => __('Link', 'partners-site_v2'),
 									'name'              => 'link',
 									'type'              => 'link',
 									'instructions'      => '',
@@ -820,7 +820,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'field_6040b4b5a66ba',
-							'label' => __('Sales blocks', 'partners-site_v2'),
+							'label' => __('Sales tiles', 'partners-site_v2'),
 							'name'              => 'offer-boxes',
 							'type'              => 'group',
 							'instructions'      => '',
@@ -915,7 +915,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 										),
 										array(
 											'key'          => 'field_6040b53ea66bf',
-											'label'        => __( 'Link', 'partners-site_v2' ),
+											'label'        => __('Link', 'partners-site_v2'),
 											'name'         => 'link',
 											'type'         => 'link',
 											'instructions' => '',
@@ -1067,7 +1067,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'linksCard',
-							'label'             => __( 'Link', 'partners-site_v2' ),
+							'label'             => __('Link', 'partners-site_v2'),
 							'name'              => 'link',
 							'type'              => 'link',
 							'instructions'      => '',
@@ -1198,7 +1198,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'linksCard2',
-							'label'             => __( 'Link', 'partners-site_v2' ),
+							'label'             => __('Link', 'partners-site_v2'),
 							'name'              => 'link2',
 							'type'              => 'link',
 							'instructions'      => '',
@@ -1286,10 +1286,10 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								'id'    => '',
 							),
 							'choices'           => array(
-								'suv'    => __( 'SUV', 'partners-site_v2' ),
-								'sedan' => __( 'Sedan', 'partners-site_v2' ),
+								'suv'    => __('SUV', 'partners-site_v2'),
+								'sedan' => __('Sedan', 'partners-site_v2'),
 								'kombi'    => __( 'Station wagon', 'partners-site_v2' ),
-								'electric' => __( 'Electric_', 'partners-site_v2' ),
+								'electric' => __( 'Electrics', 'partners-site_v2' ),
 							
 		
 							),
@@ -1368,7 +1368,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'linksSlide',
-							'label'             => __( 'Link', 'partners-site_v2' ),
+							'label'             => __('Link', 'partners-site_v2'),
 							'name'              => 'linksSlide',
 							'type'              => 'link',
 							'instructions'      => '',
@@ -1509,7 +1509,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'linksBox',
-							'label'             => __( 'Link', 'partners-site_v2' ),
+							'label'             => __('Link', 'partners-site_v2'),
 							'name'              => 'link',
 							'type'              => 'link',
 							'instructions'      => '',
@@ -1608,7 +1608,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'linksBox2',
-							'label'             => __( 'Link', 'partners-site_v2' ),
+							'label'             => __('Link', 'partners-site_v2'),
 							'name'              => 'link2',
 							'type'              => 'link',
 							'instructions'      => '',
@@ -1707,7 +1707,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'linksBox3',
-							'label'             => __( 'Link', 'partners-site_v2' ),
+							'label'             => __('Link', 'partners-site_v2'),
 							'name'              => 'link3',
 							'type'              => 'link',
 							'instructions'      => '',
@@ -1826,7 +1826,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 						),
 						array(
 							'key'               => 'linkOffer',
-							'label'             => __( 'Link', 'partners-site_v2' ),
+							'label'             => __('Link', 'partners-site_v2'),
 							'name'              => 'link',
 							'type'              => 'link',
 							'instructions'      => '',
@@ -1883,7 +1883,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 							'label' => __( 'Header', 'partners-site_v2' ),
 							'name'              => 'heading',
 							'type'              => 'text',
-							'instructions' => __( 'By default, the header text is gray. To make a specific phrase black, please place it between &lt;strong&gt;&lt;/strong&gt;, <br>e.g., &lt;strong&gt;TEXT&lt;/strong&gt;', 'partners-site_v2' ),
+							'instructions' => __( 'By default, the header text is gray. To make a specific phrase black, please place it between &lt;strong&gt;&lt;/strong&gt;,<br>e.g., &lt;strong&gt;TEXT&lt;/strong&gt;', 'partners-site_v2' ),
 							'required'          => 0,
 							'conditional_logic' => 0,
 							'wrapper'           => array(
@@ -1953,7 +1953,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								),
 								array(
 									'key'               => 'field_6040b435a66a0',
-									'label'             => __( 'Link', 'partners-site_v2' ),
+									'label'             => __('Link', 'partners-site_v2'),
 									'name'              => 'link',
 									'type'              => 'link',
 									'instructions'      => '',
