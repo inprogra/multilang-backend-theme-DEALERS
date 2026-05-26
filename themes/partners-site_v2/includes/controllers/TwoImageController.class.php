@@ -15,7 +15,7 @@ class TwoImageController extends Controller
         $backendPreview = get_field('backendPreview');
         if ($backendPreview) {
             $img = Cache::getAsset('twoImage.png');
-            return '<img src="' . esc_url($img) . '" alt="Podgląd bloku Dwa Zdjęcia">';
+            return '<img src="' . esc_url($img) . '" alt="' . esc_attr__('Preview of the "Two Photos" block', 'partners-site_v2') . '">';
         }
 
         $firstImageId = get_field('firstPicture');

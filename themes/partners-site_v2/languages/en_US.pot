@@ -3942,3 +3942,11 @@ msgstr ""
 #: includes/classes/CarDictionary.class.php:2093
 msgid "Pure performance and refined driving dynamics. Equipped with Öhlins suspension, forged wheels, and Brembo brakes."
 msgstr ""
+
+#: includes/classes/ProductTagsMetaBox.class.php:84
+msgid "No tags"
+msgstr ""
+
+#: includes/controllers/TwoImageController.class.php:18
+msgid "Preview of the \"Two Photos\" block"
+msgstr ""
