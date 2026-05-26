@@ -3906,3 +3906,39 @@ msgstr "Stáhnout cenovou nabídku"
 #: wp-templates/template-events.php:27
 msgid "Concerts, meetings, presentations"
 msgstr "Koncerty, setkání, prezentace"
+
+#: includes/classes/CarDictionary.class.php:2085
+msgid "The base trim level features black exterior accents and an interior with black fabric seats."
+msgstr "Základní výbavová úroveň se vyznačuje černými vnějšími prvky a interiérem s černými látkovými sedadly."
+
+#: includes/classes/CarDictionary.class.php:2086
+msgid "Signature comfort with top-tier details and a well-equipped standard interior."
+msgstr "Charakteristický komfort s prvotřídními detaily a bohatě vybaveným standardním interiérem."
+
+#: includes/classes/CarDictionary.class.php:2087
+msgid "Signature comfort with top-tier details, a well-equipped standard interior, and premium amenities."
+msgstr "Charakteristický komfort s prvotřídními detaily, bohatě vybaveným standardním interiérem a prémiovým vybavením."
+
+#: includes/classes/CarDictionary.class.php:2088
+msgid "The essence of refined elegance and responsible luxury. With chrome exterior accents and our standard Momentum interior."
+msgstr "Podstata vytříbené elegance a uvážlivého luxusu. S chromovými vnějšími prvky a naším standardním interiérem Momentum."
+
+#: includes/classes/CarDictionary.class.php:2089
+msgid "The most refined equipment. Chrome exterior accents, advanced comfort features, and exclusive leather seats create the ultimate in Scandinavian luxury."
+msgstr "Nejrafinovanější výbava. Chromové exteriérové prvky, pokročilé komfortní funkce a exkluzivní kožená sedadla vytvářejí vrchol skandinávského luxusu."
+
+#: includes/classes/CarDictionary.class.php:2090
+msgid "Built for active driving. With glossy black exterior accents, a sport suspension, and a stylishly finished interior."
+msgstr "Stvořeno pro aktivní jízdu. S lesklými černými exteriérovými prvky, sportovním podvozkem a stylově provedeným interiérem."
+
+#: includes/classes/CarDictionary.class.php:2091
+msgid "A rugged yet elegant look. High ground clearance, large wheels, a unique front end, and contrasting wheel arch trim and underbody guards."
+msgstr "Robustní, ale elegantní vzhled. Vysoká světlá výška, velká kola, jedinečná přední část a kontrastní obložení podběhů kol a ochranné prvky podvozku."
+
+#: includes/classes/CarDictionary.class.php:2092
+msgid "Ready for adventure. A rugged yet elegant body design, high ground clearance, and all-wheel drive."
+msgstr "Připraven na dobrodružství. Robustní, ale elegantní design karoserie, vysoká světlá výška a pohon všech kol."
+
+#: includes/classes/CarDictionary.class.php:2093
+msgid "Pure performance and refined driving dynamics. Equipped with Öhlins suspension, forged wheels, and Brembo brakes."
+msgstr "Čistý výkon a rafinovaná jízdní dynamika. Vybaveno odpružením Öhlins, kovanými koly a brzdami Brembo."

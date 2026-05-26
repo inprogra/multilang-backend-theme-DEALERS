@@ -3906,3 +3906,39 @@ msgstr "Pobierz wycenę"
 #: wp-templates/template-events.php:27
 msgid "Concerts, meetings, presentations"
 msgstr "Koncerty, spotkania, prezentacje"
+
+#: includes/classes/CarDictionary.class.php:2085
+msgid "The base trim level features black exterior accents and an interior with black fabric seats."
+msgstr "Podstawowa wersja wyposażenia z czarnymi detalami zewnętrznymi i wnętrzem z siedzeniami z tapicerką tekstylną w tonacji czerni."
+
+#: includes/classes/CarDictionary.class.php:2086
+msgid "Signature comfort with top-tier details and a well-equipped standard interior."
+msgstr "Będący znakiem rozpoznawczym komfort z najwyżej klasy detalami i dobrze wyposażonym standardowym wnętrzem."
+
+#: includes/classes/CarDictionary.class.php:2087
+msgid "Signature comfort with top-tier details, a well-equipped standard interior, and premium amenities."
+msgstr "Będący znakiem rozpoznawczym komfort z najwyżej klasy detalami i dobrze wyposażonym standardowym wnętrzem oraz udogodnieniami klasy premium."
+
+#: includes/classes/CarDictionary.class.php:2088
+msgid "The essence of refined elegance and responsible luxury. With chrome exterior accents and our standard Momentum interior."
+msgstr "Esencja wyrafinowanej elegancji i odpowiedzialnego luksusu. Z chromowanymi elementami zewnętrznymi i naszym standardowym wnętrzem w wersji Momentum."
+
+#: includes/classes/CarDictionary.class.php:2089
+msgid "The most refined equipment. Chrome exterior accents, advanced comfort features, and exclusive leather seats create the ultimate in Scandinavian luxury."
+msgstr "Najbardziej wyrafinowane wyposażenie. Chromowane detale zewnętrzne, zaawansowane funkcje komfortowe i ekskluzywne skórzane siedzenia tworzą absolutny skandynawski luksus."
+
+#: includes/classes/CarDictionary.class.php:2090
+msgid "Built for active driving. With glossy black exterior accents, a sport suspension, and a stylishly finished interior."
+msgstr "Stworzony do aktywnej jazdy. Z czarnymi błyszczącymi elementami zewnętrznymi, sportowym zawieszeniem i stylowo wykończonym wnętrzem."
+
+#: includes/classes/CarDictionary.class.php:2091
+msgid "A rugged yet elegant look. High ground clearance, large wheels, a unique front end, and contrasting wheel arch trim and underbody guards."
+msgstr "Surowy, a zarazem elegancki wygląd. Duży prześwit, duże koła, unikatowy przód, kontrastujące nakładki nadkoli i osłony podwozia."
+
+#: includes/classes/CarDictionary.class.php:2092
+msgid "Ready for adventure. A rugged yet elegant body design, high ground clearance, and all-wheel drive."
+msgstr "Przygotowany na przygody. Surowe, a zarazem eleganckie wzornictwo nadwozia, duży prześwit i napęd na wszystkie koła."
+
+#: includes/classes/CarDictionary.class.php:2093
+msgid "Pure performance and refined driving dynamics. Equipped with Öhlins suspension, forged wheels, and Brembo brakes."
+msgstr "Czyste osiągi i wyrafinowana dynamika jazdy. Wyposażony w zawieszenie Öhlins, kute felgi i hamulce Brembo."

@@ -2082,15 +2082,15 @@ class CarDictionary
 	);
 
 	private static $versionsDescriptions = array(
-		'Momentum Core'          => 'Podstawowa wersja wyposażenia z czarnymi detalami zewnętrznymi i wnętrzem z siedzeniami z tapicerką tekstylną w tonacji czerni.',
-		'Momentum'               => 'Będący znakiem rozpoznawczym komfort z najwyżej klasy detalami i dobrze wyposażonym standardowym wnętrzem.',
-		'Momentum Pro'           => 'Będący znakiem rozpoznawczym komfort z najwyżej klasy detalami i dobrze wyposażonym standardowym wnętrzem oraz udogodnieniami klasy premium.',
-		'Inscription Expression' => 'Esencja wyrafinowanej elegancji i odpowiedzialnego luksusu. Z chromowanymi elementami zewnętrznymi i naszym standardowym wnętrzem w wersji Momentum.',
-		'Inscription'            => 'Najbardziej wyrafinowane wyposażenie. Chromowane detale zewnętrzne, zaawansowane funkcje komfortowe i ekskluzywne skórzane siedzenia tworzą absolutny skandynawski luksus.',
-		'R-Design'               => 'Stworzony do aktywnej jazdy. Z czarnymi błyszczącymi elementami zewnętrznymi, sportowym zawieszeniem i stylowo wykończonym wnętrzem.',
-		'Cross Country'          => 'Surowy, a zarazem elegancki wygląd. Duży prześwit, duże koła, unikatowy przód, kontrastujące nakładki nadkoli i osłony podwozia.',
-		'Cross Country Pro'      => 'Przygotowany na przygody. Surowe, a zarazem eleganckie wzornictwo nadwozia, duży prześwit i napęd na wszystkie koła.',
-		'Polestar Engineered'    => 'Czyste osiągi i wyrafinowana dynamika jazdy. Wyposażony w zawieszenie Öhlins, kute felgi i hamulce Brembo.',
+		'Momentum Core'          => 'The base trim level features black exterior accents and an interior with black fabric seats.',
+		'Momentum'               => 'Signature comfort with top-tier details and a well-equipped standard interior.',
+		'Momentum Pro'           => 'Signature comfort with top-tier details, a well-equipped standard interior, and premium amenities.',
+		'Inscription Expression' => 'The essence of refined elegance and responsible luxury. With chrome exterior accents and our standard Momentum interior.',
+		'Inscription'            => 'The most refined equipment. Chrome exterior accents, advanced comfort features, and exclusive leather seats create the ultimate in Scandinavian luxury.',
+		'R-Design'               => 'Built for active driving. With glossy black exterior accents, a sport suspension, and a stylishly finished interior.',
+		'Cross Country'          => 'A rugged yet elegant look. High ground clearance, large wheels, a unique front end, and contrasting wheel arch trim and underbody guards.',
+		'Cross Country Pro'      => 'Ready for adventure. A rugged yet elegant body design, high ground clearance, and all-wheel drive.',
+		'Polestar Engineered'    => 'Pure performance and refined driving dynamics. Equipped with Öhlins suspension, forged wheels, and Brembo brakes.',
 	);
 
 	private static $inlays = array(
@@ -2286,12 +2286,15 @@ class CarDictionary
 
 	public static function getVersionsDescriptions(): array
 	{
-		return self::$versionsDescriptions;
+		return array_map(
+            fn($text) => __( $text, 'partners-site_v2' ),
+            self::$versionsDescriptions
+        );
 	}
 
 	public static function getVersionDescription($version): ?string
 	{
-		return self::$versionsDescriptions[$version] ?? null;
+		return self::$versionsDescriptions[$version] ? __( self::$versionsDescriptions[$version], 'partners-site_v2' ) : null;
 	}
 	public function getLeasingOffer(): array
 	{

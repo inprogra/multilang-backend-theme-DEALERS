@@ -659,7 +659,7 @@ class StockCarController extends Controller
 					'galleryThumbs' => $galleryThumbs,
 					'versionDescription' => CarDictionary::getVersionDescription(get_field('version')),
 					'button' => array(
-						'text' => 'Jazda testowa',
+						'text' => __('Test Drive', 'partners-site_v2'),
 						'permalink' => MultisiteFixer::getHomeUrl() . '/jazda-testowa?s_model=' . $model,
 					),
 				),
