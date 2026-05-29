@@ -830,13 +830,22 @@ function volvo_global_get_page($request) {
             }
 
         } else { // index
-            global $post;
-            $post = $page;
-            setup_postdata( $post );
+            $page = get_page_by_path($path_parts[0]);
+            if (!$page) {
+                $page = volvo_global_get_global_page_by_path($path_parts[0]);
+            }
 
-            $response['data'] = volvo_global_get_models($blog_id);
+            if ($page) {
+                global $post;
+                $post = $page;
+                setup_postdata( $post );
 
-            wp_reset_postdata();
+                $response['data'] = volvo_global_get_models($blog_id);
+
+                wp_reset_postdata();
+            } else {
+                $response['page_404'] = true;
+            }
         }
 
     } else {
