@@ -2551,8 +2551,6 @@ function volvo_global_block_prepare_to_view(array $blocks, int $blog_id): array
                     list($tmp, $engine) = $electrification->get_models_and_engines();
                 }
                 
-
-                
                 $chargers        = array();
                 $chargers[]      = array(
                     'value' => $opt['calculator_chargers_0_calculator_charger_address'][0],
@@ -2645,6 +2643,73 @@ function volvo_global_block_prepare_to_view(array $blocks, int $blog_id): array
                         'combinations_desc' => $electrification->combinations_desc,
                         'legal_map'         => (!empty($opt['maps_disclaimer']) ? $opt['maps_disclaimer'][0] : ''),
                         'selectedModel'		=> $selectedModel,
+                    ]
+                ];
+
+                $blocks[$key_block] = $result;
+                break;
+            case 'acf/gallery':
+
+                $gallery      = $block['data']['gallery'];
+                $galleryItems = array();
+
+                foreach ( $gallery as $itemId ) {
+                    $img_id = $itemId;
+                    $itemId = wp_get_attachment_url($itemId);
+
+                    $images = [
+                        [
+                            'blog_id' => $blog_id,
+                            'img_id' => $img_id,
+                            'height' => 1080,
+                            'width' => 1920,
+                            'crop' =>  'crop',
+                            'image' => $itemId,
+                            'query' => 1680,										
+                            'theight' => 300,
+                            'twidth' => 200,
+                            'tcrop' =>  false,																		
+                        ],
+                        [
+                            'blog_id' => $blog_id,
+                            'img_id' => $img_id,
+                            'height' => 700,
+                            'width' => 1440,
+                            'crop' => 'false',
+                            'image' => $itemId,
+                            'query' => 1000,										
+                            'theight' => 300,
+                            'twidth' => 200,
+                            'tcrop' =>  false,		
+                        ],
+                        [
+                            'blog_id' => $blog_id,
+                            'img_id' => $img_id,
+                            'height' => false,
+                            'width' => 1000,
+                            'crop' => 'crop',
+                            'image' => $itemId,
+                            'query' => 100,										
+                            'theight' => 300,
+                            'twidth' => 200,
+                            'tcrop' =>  false,		
+                        ]
+                    ];
+
+                    $images = volvo_global_prepare_images_render($images);
+
+                    $galleryItems[] = array(
+                        'mobileImage'  => $images,
+                        'desktopImage' => $images,
+                        'full'         => '',
+                        'domain'       => get_site_url(),
+                    );
+                }
+                
+                $result = [
+                    'block_name' => $block['block_name'],
+                    'data' => [
+        				'gallery' => $galleryItems,
                     ]
                 ];
 
