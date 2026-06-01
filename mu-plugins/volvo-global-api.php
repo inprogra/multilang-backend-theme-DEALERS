@@ -10,7 +10,8 @@ if (!defined('ABSPATH')) {
 }
 
 require_once WPMU_PLUGIN_DIR . '/volvo-global-api/classes/FeaturedCars.class.php';
-require_once WPMU_PLUGIN_DIR . '/volvo-global-api/classes/Electrification.class.php';
+require_once WPMU_PLUGIN_DIR . '/volvo-global-api/components/blocks.php';
+
 
 /**
  * Add CORS headers for volvo/v1 namespace
@@ -819,6 +820,13 @@ function volvo_global_get_page($request) {
                     $post = $page;
                     setup_postdata( $post );
 
+                    if ($_GET['paged']) {
+                        $paged = (int) $_GET['paged'];
+                        $paged = ($paged > 0) ? $paged : 1;
+
+                        set_query_var('paged', $paged);
+                    }
+
                     $response['model'] = volvo_global_get_model_data($page, $blog_id);
 
                     wp_reset_postdata();
@@ -1620,12 +1628,11 @@ function volvo_global_get_model_data($post, $blog_id): array|null
     $modelShortName = get_field( 'short-name', $post->ID );
     $model = null;
     if (!$model) {
-
 		$model = array(
 			'heading'   => get_field( 'name', $post->ID ),
 			'shortName' => $modelShortName,
 			'versions'  => array(),
-			'content2'   => $post->post_content ? volvo_global_block_prepare_to_view(volvo_global_blocks_prepare_all( $post->post_content, $blog_id ), $blog_id) : '', // parse blocks
+			'content'   => $post->post_content ? volvo_global_block_prepare_to_view(volvo_global_blocks_prepare_all( $post->post_content, $blog_id ), $blog_id) : '', // parse blocks
 			'slug_url' 	=> parse_url(get_the_permalink($post->ID))['path']
 		);
 		
@@ -1773,7 +1780,7 @@ function volvo_global_get_model_data($post, $blog_id): array|null
 					'image'         => ($twoColumnImage ? 'https://image-render.cloud/api/renderImage?image='.$twoColumnImage.'&size=800' : false),
 					'sizes'			=> $twoColumnImageSizes ?? null
 				),
-				'content'                   => volvo_global_block_prepare_to_view(volvo_global_blocks_prepare_all( $version->post_content, $blog_id ), $blog_id), // prepare blocks to view
+				'content'                   => ($version->post_content) ? volvo_global_block_prepare_to_view(volvo_global_blocks_prepare_all( $version->post_content, $blog_id ), $blog_id) : '', // prepare blocks to view
 				'overrideContent'           => $version_override['versionOverrideBlocks'],
 			);
         }
@@ -1804,7 +1811,7 @@ function volvo_global_get_version_override($version_id, $featuredCarsOptions, $b
 
     $versionOverrideBlocks = [];
     foreach ( $versionOverride->posts as $override ) {
-        $versionOverrideBlocks[] = volvo_global_block_prepare_to_view(volvo_global_blocks_prepare_all( $override->post_content, $blog_id ), $blog_id); // prepare blocks to view
+        $versionOverrideBlocks[] = ($override->post_content) ? volvo_global_block_prepare_to_view(volvo_global_blocks_prepare_all( $override->post_content, $blog_id ), $blog_id) : ''; // prepare blocks to view
     }
     
     $stock = new \VGA\Classes\FeaturedCars();
@@ -1947,9 +1954,20 @@ function volvo_global_blocks_prepare_all( $post_content_or_blocks, $blog_id ): a
             $raw_data      = $block['attrs']['data'] ?? [];
             $fields_def = volvo_global_blocks_get_block_fields_def( $block_name );
             
+            $margins = [];
+            if (array_key_exists('margin-top', $block['attrs']['data']) && array_key_exists('margin-bottom', $block['attrs']['data'])) {
+                $margins = [
+                    'margin' => [
+                        'top' => $block['attrs']['data']['margin-top'],
+                        'bottom' => $block['attrs']['data']['margin-bottom']
+                    ]
+                ];
+            }
+
             $block_data = array_merge(
                 ['block_type'  => 'acf'],
-                volvo_global_blocks_maps( $raw_data, $fields_def, $block_name, $blog_id )
+                volvo_global_blocks_maps( $raw_data, $fields_def, $block_name, $blog_id ),
+                $margins
             );
         }
         // wp native blocks
@@ -1968,7 +1986,7 @@ function volvo_global_blocks_prepare_all( $post_content_or_blocks, $blog_id ): a
 
         $parsed_content[] = [
             'block_name' => $block_name,
-            'data'       => $block_data
+            'data'       => $block_data,
         ];
     }
     
@@ -2063,14 +2081,10 @@ function volvo_global_blocks_maps( array $raw_data, array $fields_definition, st
                         // Prefiks dla pól wewnątrz danego wiersza, np: "sekcja_0"
                         $row_prefix = "{$current_key}_{$index}";
                         
-                        // Rekurencyjnie
+                        // Rekurencja
                         $parsed_layout_fields = volvo_global_blocks_maps( $raw_data, $active_layout['sub_fields'], $block_name, $blog_id, $row_prefix );
 
                         $parsed[ $field_name ][] = $parsed_layout_fields;
-                        //array_merge(
-                        //    [ 'acf_fc_layout' => $layout_name ], // Klucz identyfikujący layout w ACF
-                        //    $parsed_layout_fields
-                        //);
                     }
                 }
             }
@@ -2089,6 +2103,15 @@ function volvo_global_blocks_maps( array $raw_data, array $fields_definition, st
         elseif ( 'group' === $field['type'] && ! empty( $field['sub_fields'] ) ) {
             $parsed[ $field_name ] = volvo_global_blocks_maps( $raw_data, $field['sub_fields'], $block_name, $blog_id, $current_key );
         }
+        // TABLE
+        elseif ( 'table' === $field['type'] ) {
+            $parsed[ $field_name ] = [
+                'use_header' => isset( $raw_data[ $current_key ]['p']['o']['uh'] ) ? (int) $raw_data[ $current_key ]['p']['o']['uh'] : 0,
+                'header'     => $raw_data[ $current_key ]['h'] ?? [],
+                'caption'    => $raw_data[ $current_key ]['p']['ca'] ?? '',
+                'body'       => $raw_data[ $current_key ]['b'] ?? []
+            ];
+        }
         // OTHER FIELDS
         else {
             if ( isset( $raw_data[ $current_key ] ) ) {
@@ -2100,17 +2123,6 @@ function volvo_global_blocks_maps( array $raw_data, array $fields_definition, st
                         $value = $decoded;
                     }
                 }
-                if ('image' === $field['type']) {
-                    $value = volvo_global_block_image_render($value, $block_name, $blog_id);
-                }
-
-                if ('contact-info' === $field_name) {
-                    //$value = volvo_global_block_contact_person($value, $block_name);
-                }
-
-                if ('link' === $field_name && isset($value) && is_array($value)) {
-                    //$value = volvo_global_block_link($value, $block_name);
-                }
 
                 $parsed[ $field_name ] = is_string($value) ? trim($value) : $value;
             } else {
@@ -2120,258 +2132,6 @@ function volvo_global_blocks_maps( array $raw_data, array $fields_definition, st
     }
     $v_volvo_global_blocks_maps--;
     return $parsed;
-}
-
-function volvo_global_block_image_render(int $img_id, string $block_name, int $blog_id, ?array $img_attr = null): array|int
-{
-    switch ($block_name) {
-        case 'acf/two-column-content-component':
-            $item_url = wp_get_attachment_url($img_id);
-            $item_url = volvo_global_clear_url($item_url, $blog_id);
-
-            $images = [
-                [
-                    'blog_id' => $blog_id,
-                    'img_id' => $img_id,
-                    'height' => 850,				
-                    'width' => 1300,
-                    'crop' =>  'crop',
-                    'image' => $item_url,
-                    'query' => 1440,										
-                    'theight' => 300,
-                    'twidth' => 200,
-                    'tcrop' =>  false,																		
-                ],
-                [
-                    'blog_id' => $blog_id,
-                    'img_id' => $img_id,
-                    'height' => 700,
-                    'width' => 1200,
-                    'crop' => 'crop',
-                    'image' => $item_url,
-                    'query' => 1000,										
-                    'theight' => 300,
-                    'twidth' => 200,
-                    'tcrop' =>  false,		
-                ],
-                [
-                    'blog_id' => $blog_id,
-                    'img_id' => $img_id,
-                    'height' => 500,
-                    'width' => 900,
-                    'crop' => 'crop',
-                    'image' => $item_url,
-                    'query' => 100,										
-                    'theight' => 300,
-                    'twidth' => 200,
-                    'tcrop' =>  false,		
-                ]
-            ];
-
-            return volvo_global_prepare_images_render($images);
-        case 'acf/preview-component':
-            $item_url = wp_get_attachment_url($img_id);
-            $item_url = volvo_global_clear_url($item_url, $blog_id);
-
-            $images = [
-                [
-                    'blog_id' => $blog_id,
-                    'img_id' => $img_id,
-                    'height' => 1024,				
-                    'width' => 1562,
-                    'crop' =>  'fit',
-                    'image' => $item_url,
-                    'query' => 1680,										
-                    'theight' => 300,
-                    'twidth' => 200,
-                    'tcrop' =>  false,																		
-                ],
-                [
-                    'blog_id' => $blog_id,
-                    'img_id' => $img_id,
-                    'height' => 900,				
-                    'width' => 1300, 
-                    'crop' =>  'fit',
-                    'image' => $item_url,
-                    'query' => 1440,										
-                    'theight' => 300,
-                    'twidth' => 200,
-                    'tcrop' =>  false,																		
-                ],
-                [
-                    'blog_id' => $blog_id,
-                    'img_id' => $img_id,
-                    'height' => 800,
-                    'width' => 1100, 
-                    'crop' => 'crop',
-                    'image' => $item_url,
-                    'query' => 1000,										
-                    'theight' => 300,
-                    'twidth' => 200,
-                    'tcrop' =>  false,		
-                ],
-                [
-                    'blog_id' => $blog_id,
-                    'img_id' => $img_id,
-                    'height' => false,
-                    'width' => 1300,
-                    'crop' => 'crop',
-                    'image' => $item_url,
-                    'query' => 100,										
-                    'theight' => 300,
-                    'twidth' => 200,
-                    'tcrop' =>  false,		
-                ]
-            ];
-
-            return volvo_global_prepare_images_render($images);
-        case 'acf/banner-with-content-overlay':
-            if (is_null($img_attr)) {
-                return $img_id;
-                break;
-            }
-            $item_url = wp_get_attachment_url($img_id);
-            
-            $img_width = 0;
-            $img_height = 0;
-            
-            if (file_exists('/var/www/volvocars-partner.pl/partners-site/web' . parse_url($item_url)['path'])) {
-                $img_width = (int) getimagesize('/var/www/volvocars-partner.pl/partners-site/web' . parse_url($item_url)['path'])[0];
-                $img_height = (int) getimagesize('/var/www/volvocars-partner.pl/partners-site/web' . parse_url($item_url)['path'])[1];
-            }
-            
-            $crop_image = $img_attr['crop_image'];
-            
-            $crop_image = ($crop_image ? $crop_image : 'crop-center');
-            
-            $count_ratio = ($img_height > 0 ? $img_width/$img_height : false);
-        
-            $images = [
-                [
-                    'blog_id' => $blog_id,
-                    'img_id' => $img_id,
-                    'height' => ($count_ratio > 1.7 ? 1000 : 1200),
-                    'width' => ($count_ratio > 1.7 ? 2500 : 2500),
-                    'crop'  => ($count_ratio > 1.7 ? 'crop' : $crop_image),
-                    'image' => $item_url,
-                    'query' => 1500
-                ],
-                [
-                    'blog_id' => $blog_id,
-                    'img_id' => $img_id,	
-                    'height' => false,
-                    'width' => 1700,
-                    'crop'  => false,
-                    'image' => $item_url,
-                    'query' => 1200
-                ],
-                [	'blog_id' => $blog_id,
-                    'img_id' => $img_id,
-                    'height' => false,
-                    'width' => 1200,
-                    'crop'  => false,
-                    'image' => $item_url,
-                    'query' => 900
-                ],
-                [
-                    'blog_id' => $blog_id,
-                    'img_id' => $img_id,
-                    'height' => false,
-                    'width' => 900,
-                    'crop'  => false,
-                    'image' => $item_url,
-                    'query' => 700
-                ],
-                [
-                    'blog_id' => $blog_id,
-                    'img_id' => $img_id,
-                    'height' => 767,
-                    'width' => 767,
-                    'crop'  => 'crop',
-                    'image' => $item_url,
-                    'query' => 100
-                ]
-                
-            ];
-
-            return volvo_global_prepare_images_render($images);
-        case 'acf/hero-image':
-            if (is_null($img_attr)) {
-                return $img_id;
-                break;
-            }
-            
-            $item_url = wp_get_attachment_url($img_id);
-            $item_url = volvo_global_clear_url($item_url, $blog_id);
-
-            $img_width = 0;
-            $img_height = 0;
-            
-            if (file_exists('/var/www/volvocars-partner.pl/partners-site/web' . parse_url($item_url)['path'])) {
-                $img_width = (int) getimagesize('/var/www/volvocars-partner.pl/partners-site/web' . parse_url($item_url)['path'])[0];
-                $img_height = (int) getimagesize('/var/www/volvocars-partner.pl/partners-site/web' . parse_url($item_url)['path'])[1];
-            }
-
-            $crop_image = $img_attr['crop_image'];
-            
-            $crop_image = ($crop_image ? $crop_image : 'crop-center');
-
-            $count_ratio = ($img_height > 0 ? $img_width/$img_height : false);
-            
-            $images = [
-                [
-                    'blog_id' => $blog_id,
-                    'img_id' => $img_id,
-                    'height' => ($count_ratio > 1.7 ? 1024 : 1020),
-                    'width' => ($count_ratio > 1.7 ? 1920 : 1920),
-                    'crop'  => ($count_ratio > 1.7 ? 'max' : $crop_image),
-                    'image' => $item_url,
-                    'query' => 1500
-                ],
-                [
-                    'blog_id' => $blog_id,
-                    'img_id' => $img_id,	
-                    'height' => false,
-                    'width' => 1500,
-                    'crop'  => false,
-                    'image' => $item_url,
-                    'query' => 1200
-                ],
-                [	'blog_id' => $blog_id,
-                    'img_id' => $img_id,
-                    'height' => false,
-                    'width' => 1200,
-                    'crop'  => false,
-                    'image' => $item_url,
-                    'query' => 900
-                ],
-                [
-                    'blog_id' => $blog_id,
-                    'img_id' => $img_id,
-                    'height' => false,
-                    'width' => 900,
-                    'crop'  => false,
-                    'image' => $item_url,
-                    'query' => 700
-                ],
-                [
-                    'blog_id' => $blog_id,
-                    'img_id' => $img_id,
-                    'height' => 767,
-                    'width' => 767,
-                    'crop'  => 'crop',
-                    'image' => $item_url,
-                    'query' => 100
-                ]
-                
-            ];
-                
-            return volvo_global_prepare_images_render($images);
-        default:
-            return $img_id;
-    }
-
-    return volvo_global_prepare_images_render($images);
 }
 
 function volvo_global_clear_url(string $url, int $blog_id): string
@@ -2401,49 +2161,39 @@ function volvo_global_youtube_link_to_video_id(string $youtube_url): string
     }
 }
 
-function volvo_global_block_contact_person(int $person_id, string $block): mixed
+function volvo_global_block_contact_person(int $person_id): array
 {
-    switch ($block) {
-        case 'acf/two-column-content-component':
-        case 'acf/preview-component':
-            return [
-                'name' => get_field('name', $person_id) . ' ' . get_field('surname', $person_id),
-                'position' => get_field('position', $person_id),
-                'phone' => get_field('phone', $person_id),
-                'email' => get_field('email', $person_id),
-            ];
-
-            break;
-        default:
-            return $person_id;
+    if (!$person_id) {
+        return [];
     }
+
+    return [
+        'name'      => trim(get_field('name', $person_id) . ' ' . get_field('surname', $person_id)),
+        'position'  => get_field('position', $person_id),
+        'phone'     => get_field('phone', $person_id),
+        'email'     => get_field('email', $person_id),
+    ];
 }
 
-function volvo_global_block_link($content_link, $block)
+function volvo_global_block_link(?array $content_link)
 {
-    switch ($block) {
-        case 'acf/two-column-content-component':
-        case 'acf/preview-component':
-            if (!is_null($content_link) && !empty($content_link) && is_array($content_link) && !empty($content_link)) {
-                $result = volvo_global_build_link($content_link);
+    if (!is_null($content_link) && !empty($content_link) && is_array($content_link) && !empty($content_link)) {
+        $result = volvo_global_build_link($content_link);
 
-                if (strpos($result['url'], '---') !== false) {
+        if (strpos($result['url'], '---') !== false) {
 
-                    $rep = explode('---', $result['url']);
+            $rep = explode('---', $result['url']);
 
-                    $result['url'] = '/dostepne-na-miejscu/#' . $rep[1];
-                }
+            $result['url'] = '/dostepne-na-miejscu/#' . $rep[1];
+        }
 
-                return $result;
-            }
-
-            break;
+        return $result;
     }
 
     return $content_link;
 }
 
-function volvo_global_block_description(string $description): string
+function volvo_global_block_description_parsedown(string $description): string
 {
     $Parsedown = new \Parsedown();
     return $Parsedown->text($description);
@@ -2466,688 +2216,117 @@ function volvo_global_block_prepare_to_view(array $blocks, int $blog_id): array
     foreach($blocks as $key_block => $block) {
         switch ($block['block_name']) {
             case 'acf/anchor':
-                $result = [
-                    'block_name' => $block['block_name'],
-                    'data' => [
-                        'anchor'     => $block['data']['anchor'],
-                    ],
-                ];
+                $result = volvo_global_get_block_data($block, $blog_id);
 
                 $blocks[$key_block] = $result;
                 break;
             case 'acf/banner-with-content-overlay':
-                
-                $link = $block['data']['link'];
+                $result = volvo_global_get_block_data($block, $blog_id);
 
-                $hasButton = ! empty( $link );
-                $button    = array();
+                $blocks[$key_block] = $result;
+                break;
+            case 'acf/blog-posts-component':
+                $result = volvo_global_get_block_data($block, $blog_id);
 
-                if ( $hasButton ) {
-                    $button = volvo_global_build_link( $link );
-                    
-                    if (strpos($button['url'],'#') !== false) {
-                        
-                        $rep = explode('#',$button['url']);
-                        
-                        $button['url'] = '/dostepne-na-miejscu/#'.$rep[1];
-                    }
-                }
-                
-		        $crop_image = 'crop-center';
-                $img_attr = [
-                    'crop_image' => $crop_image
-                ];
-                
-                $images = volvo_global_block_image_render($block['data']['img'], $block['block_name'], $blog_id, $img_attr);
-
-                $result = [
-                    'block_name' => $block['block_name'],
-                    'data' => [
-                        'image'       => $images,
-                        'heading'     => $block['data']['heading'],
-                        'description' => $block['data']['description'],
-                        'format'      => $block['data']['format_banner'],
-                        'hasButton'   => $hasButton,
-                        'button'      => $button,
-                    ]
-                ];
+                $blocks[$key_block] = $result;
+                break;
+            case 'acf/blog-post-footer':
+                $result = volvo_global_get_block_data($block, $blog_id);
 
                 $blocks[$key_block] = $result;
                 break;
             case 'acf/cost-map':
-
-                $selectedModel = $block['data']['cost-map-model'];
-                $selectedVersion = $block['data']['cost-map-version'];
-
-                $opt    = getBasicOptions(0);
-                
-                $tmp        = array();
-                $engine     = array();
-                $chargers   = (int) $opt['chargers'][0];
-                
-                $addresses  = array();
-
-                for ($i = 0; $chargers > $i; $i++) {
-                    $db          = str_replace("\r\n", "\\n", $opt['chargers_' . $i . '_charger_type'][0]);
-                    $addresses[] = array(
-                        $opt['chargers_' . $i . '_charger_address'][0],
-                        $db,
-                        '#',
-                        ($opt['chargers_' . $i . '_super_charger'][0] !== '' ? true : false),
-
-                    );
-                }
-
-                $cars_chargers = (int) $opt['calculator_chargers'][0];
-
-                $electrification = new \VGA\Clasess\Electrification();
-
-                $ranges_cost = array();
-
-                for ($i = 0; $cars_chargers > $i; $i++) {
-
-                    $model        = str_replace(' ', '_', $opt['calculator_chargers_' . $i . '_electric_model_charge'][0]);
-                    $motor        = str_replace(' ', '_', $opt['calculator_chargers_' . $i . '_electric_engine_charge'][0]);
-                    $charger      = $opt['calculator_chargers_' . $i . '_calculator_charger_address'][0];
-                    $charger_time = $opt['calculator_chargers_' . $i . '_calculator_charger_time'][0];
-                    $ranges_cost[$model . '_' . $motor . '_' . $charger] = $charger_time;
-                }
-                
-                if ($selectedModel) {
-                    $excludedEngines = $electrification->get_version_excluded_engines($selectedModel, $selectedVersion);
-                    $engine = $electrification->get_car_engines($selectedModel, $excludedEngines);
-                } else {
-                    list($tmp, $engine) = $electrification->get_models_and_engines();
-                }
-                
-                $chargers        = array();
-                $chargers[]      = array(
-                    'value' => $opt['calculator_chargers_0_calculator_charger_address'][0],
-                    'text'  => $opt['calculator_chargers_0_calculator_charger_text'][0],
-                    'times' => $opt['calculator_chargers_0_calculator_charger_time'],
-                );
-                $chargers[]      = array(
-                    'value' => $opt['calculator_chargers_1_calculator_charger_address'][0],
-                    'text'  => $opt['calculator_chargers_1_calculator_charger_text'][0],
-                    'times' => $opt['calculator_chargers_1_calculator_charger_time'],
-                );
-                $chargers[]      = array(
-                    'value' => $opt['calculator_chargers_2_calculator_charger_address'][0],
-                    'text'  => $opt['calculator_chargers_2_calculator_charger_text'][0],
-                    'times' => $opt['calculator_chargers_2_calculator_charger_time'],
-                );
-                $additional_info = array();
-
-                $additional_info[0]['title'] = $opt['kw_add_info_title'][0];
-                $additional_info[0]['desc']  = $opt['kw_add_info_desc'][0];
-                $additional_info[1]['title'] = $opt['kw_add_info_title_2'][0];
-                $additional_info[1]['desc']  = $opt['kw_add_info_desc_2'][0];
-
-                $result = [
-                    'block_name' => $block['block_name'],
-                    'data' => [
-                        'chargers'        => $chargers,
-                        'models'          => $tmp,
-                        'engine'          => $engine,
-                        'dataset'         => $electrification->dataSet,
-                        'ranges_calc'     => $electrification->range_calc,
-                        'ranges_cost'     => $ranges_cost,
-                        'additional_info' => $additional_info,
-                        'charger_legal'   => (!empty($opt['charger_disclaimer']) ? $opt['charger_disclaimer'][0] : ''),
-                        'min_price'       => $opt['min_price_kw'][0],
-                        'max_price'       => $opt['max_price_kw'][0],
-                        'selectedModel'	  => $block['data']['cost-map-model'],
-                    ]
-                ];
+                $result = volvo_global_get_block_data($block, $blog_id);
 
                 $blocks[$key_block] = $result;
                 break;
             case 'acf/electrification-map':
-
-                $opt     = getBasicOptions(0);
-
-                $chargers  = (int) $opt['chargers'][0];
-
-                $addresses = array();
-
-                for ($i = 0; $chargers > $i; $i++) {
-                    $db          = str_replace("\r\n", "\\n", $opt['chargers_' . $i . '_charger_type'][0]);
-                    $addresses[] = array(
-                        $opt['chargers_' . $i . '_charger_address'][0],
-                        $db,
-                        '#',
-                        ($opt['chargers_' . $i . '_super_charger'][0] !== '' ? true : false),
-
-                    );
-                }
-                $electrification = new \VGA\Classes\Electrification();
-
-                $selectedModel = $block['data']['electrification-map-model'];
-                $selectedVersion = $block['data']['electrification-map-version'];
-                
-                if ($selectedModel) {
-                    $excludedEngines = $electrification->get_version_excluded_engines($selectedModel, $selectedVersion);
-                    
-                    $engine = $electrification->get_car_engines($selectedModel, $excludedEngines);
-                    
-                } else {
-                    list($tmp, $engine) = $electrification->get_models_and_engines();
-                }
-
-                $content     = $tmp;
-                $header_size = ($content['header'] ? count($content['header']) : 0);
-
-                $result = [
-                    'block_name' => $block['block_name'],
-                    'data' => [
-                        'showMap'			=> ($block['data']['electrification-map-show'] ? false : true ),
-                        'firstElement'		=> false,
-                        'points'            => $addresses,
-                        'content'           => $content,
-                        'ranges'            => $electrification->range,
-                        'models'            => $tmp,
-                        'engine'            => $engine,
-                        'size'              => $header_size,
-                        'combinations'      => $electrification->combinations,
-                        'combinations_desc' => $electrification->combinations_desc,
-                        'legal_map'         => (!empty($opt['maps_disclaimer']) ? $opt['maps_disclaimer'][0] : ''),
-                        'selectedModel'		=> $selectedModel,
-                    ]
-                ];
+                $result = volvo_global_get_block_data($block, $blog_id);
 
                 $blocks[$key_block] = $result;
                 break;
             case 'acf/gallery':
-
-                $gallery      = $block['data']['gallery'];
-                $galleryItems = array();
-
-                foreach ( $gallery as $itemId ) {
-                    $img_id = $itemId;
-                    $itemId = wp_get_attachment_url($itemId);
-
-                    $images = [
-                        [
-                            'blog_id' => $blog_id,
-                            'img_id' => $img_id,
-                            'height' => 1080,
-                            'width' => 1920,
-                            'crop' =>  'crop',
-                            'image' => $itemId,
-                            'query' => 1680,										
-                            'theight' => 300,
-                            'twidth' => 200,
-                            'tcrop' =>  false,																		
-                        ],
-                        [
-                            'blog_id' => $blog_id,
-                            'img_id' => $img_id,
-                            'height' => 700,
-                            'width' => 1440,
-                            'crop' => 'false',
-                            'image' => $itemId,
-                            'query' => 1000,										
-                            'theight' => 300,
-                            'twidth' => 200,
-                            'tcrop' =>  false,		
-                        ],
-                        [
-                            'blog_id' => $blog_id,
-                            'img_id' => $img_id,
-                            'height' => false,
-                            'width' => 1000,
-                            'crop' => 'crop',
-                            'image' => $itemId,
-                            'query' => 100,										
-                            'theight' => 300,
-                            'twidth' => 200,
-                            'tcrop' =>  false,		
-                        ]
-                    ];
-
-                    $images = volvo_global_prepare_images_render($images);
-
-                    $galleryItems[] = array(
-                        'mobileImage'  => $images,
-                        'desktopImage' => $images,
-                        'full'         => '',
-                        'domain'       => get_site_url(),
-                    );
-                }
-                
-                $result = [
-                    'block_name' => $block['block_name'],
-                    'data' => [
-        				'gallery' => $galleryItems,
-                    ]
-                ];
+                $result = volvo_global_get_block_data($block, $blog_id);
 
                 $blocks[$key_block] = $result;
                 break;
             case 'acf/hero-image':
-                $bigDescription   = $block['data']['bigDescription'];
-                $smallDescription = $block['data']['smallDescription'];
-                $darkOverlay      = $block['data']['darkOverlay'];
-
-                $crop_image = $block['data']['field_crop'];
-                $crop_image = ($crop_image ? $crop_image : 'crop-center');
-                $img_attr = [
-                    'crop_image' => $crop_image
-                ];
-                
-                $images = volvo_global_block_image_render($block['data']['img'], $block['block_name'], $blog_id, $img_attr);
-
-                $result = [
-                    'block_name' => $block['block_name'],
-                    'data' => [
-                        'image' => $images,
-                        'bigDescription'   => $bigDescription,
-                        'smallDescription'  => $smallDescription,
-                        'darkOverlay'      => $darkOverlay,
-                    ]
-                ];
+                $result = volvo_global_get_block_data($block, $blog_id);
 
                 $blocks[$key_block] = $result;
                 break;
             case 'acf/html-code':
-                $htmlCode = strip_tags($block['data']['html_code_render'],'<script><iframe><img>');
-
-                $result = [
-                    'block_name' => $block['block_name'],
-                    'data' => [
-                        'htmlCode'	  => $htmlCode,
-                    ]
-                ];
+                $result = volvo_global_get_block_data($block, $blog_id);
 
                 $blocks[$key_block] = $result;
                 break;
             case 'acf/offer-box':
-                $offerBoxes = [];
-
-                $boxesField = $block['data']['offer_boxes'];
-                $heading = $block['data']['heading'];
-
-                foreach ($boxesField as $box) {
-                    $carModel = $box['widget_model'];
-
-                    $query = new \WP_Query([
-                        'post_type'      => 'stock-car',
-                        'posts_per_page' => 4,
-                        'post_status'    => 'publish',
-                        'cache_results'  => true,
-                        'meta_key'       => 'model',
-                        'meta_value'     => $carModel,
-                        'orderby'        => 'rand'
-                    ]);
-
-
-                    foreach ($query->posts as $car) {
-
-                        $category = get_field('category', $car->ID);
-                        $engine = get_field('engine', $car->ID);
-                        $price = get_field('regular-price', $car->ID);
-                        $carUrl = get_permalink($car->ID);
-                        $images = get_field('images', $car->ID);
-
-                        $getImage = null;
-                        if (! empty($images)) {
-                            $img_id = $images[0];
-                            $itemId = wp_get_attachment_url($img_id);
-
-                            //$image = new ImageBuilder($image);
-                            //$image->addSize(array(288, 162));
-                            //$image->addSize(array(576, 324));
-                            //$image->addSize(array(864, 486));
-                            //$image->addMediaQuery(null, '288px', true);
-                            $images = [
-                                [
-                                    'blog_id' => $blog_id,
-                                    'img_id' => $img_id,
-                                    'height' => 162,
-                                    'width' => 288,
-                                    'crop' =>  true,
-                                    'image' => $itemId,
-                                    'query' => 1680
-                                ],
-                                [
-                                    'blog_id' => $blog_id,
-                                    'img_id' => $img_id,
-                                    'height' => '324',
-                                    'width' => 576,
-                                    'crop' => 'true',
-                                    'image' => $itemId,
-                                    'query' => 1000
-                                ],
-                                [
-                                    'blog_id' => $blog_id,
-                                    'img_id' => $img_id,
-                                    'height' => 486,
-                                    'width' => 864,
-                                    'crop' => 'crop',
-                                    'image' => $itemId,
-                                    'query' => 100
-                                ]
-                            ];
-                            $getImage = volvo_global_prepare_images_render($images);
-                        }
-                        
-                        $offerBoxes[] = [
-                            'widget_model' => $carModel,
-                            'category'     => $category,
-                            'engine'       => $engine,
-                            'carUrl'       => $carUrl,
-                            'price'        => $price,
-                            'image'        => $getImage,
-
-                        ];
-                    }
-                    
-                }
-
-                $result = [
-                    'block_name' => $block['block_name'],
-                    'data' => [
-                        'offerBoxes' => $offerBoxes,
-                        'heading'    => $heading,
-                    ]
-                ];
+                $result = volvo_global_get_block_data($block, $blog_id);
 
                 $blocks[$key_block] = $result;
                 break;
             case 'acf/offer-boxes':
-                $items = [];
-                if (is_array($block['data']['items']) && array_filter($block['data']['items'])) {
-                    foreach ( $block['data']['items'] as $box ) {
-                        $hasButton = ! empty( $box['link'] );
-                        $rewrite = false;
-                        
-                        if ($hasButton && strpos($box['link']['url'],'#') !== false) {
-                            $rewrite = true;
-                            $rep = explode('#',$box['link']['url']);
-                            
-                            $box['link']['url'] = '/dostepne-na-miejscu/#'.$rep[1];
-                            
-                        }
-                        $link = $hasButton ? volvo_global_build_link( $box['link'] ) : null;
-                        if ($rewrite) {
-                            $box['link']['text'] = $box['link']['title'];
-                            $link = $box['link'];
-                        }
-
-                        $items[] = array(
-                            'icon'        => $box['icon'],
-                            'heading'     => $box['heading'],
-                            'description' => $box['description'],
-                            'hasButton'   => $hasButton,
-                            'link'        => $link,
-                        );
-                    }
-                }
-
-                $result = [
-                    'block_name' => $block['block_name'],
-                    'data' => [
-                        'layout'     => $block['data']['layout'],
-                        'pullUp'     => $block['data']['pull_up'],
-                        'items'      => $items,
-                        'iconView'   => $block['data']['iconview'],
-                    ],
-                ];
+                $result = volvo_global_get_block_data($block, $blog_id);
 
                 $blocks[$key_block] = $result;
                 break;
             case "acf/offer-cards":
-                $cards = [];
-                $cardsField = $block['data']['cards'];
-
-                foreach ($cardsField as $key => $card) {
-                    $link = '';
-
-                    if ($card['link'] !== "") {
-                        $link = volvo_global_build_link($card['link']);
-                    }
-                    $img_id = $card['image'];
-                    $itemId = wp_get_attachment_url($card['image']);
-                    $images = [
-                        [
-                            'blog_id' => $blog_id,
-                            'img_id' => $img_id,
-                            'height' => 275,
-                            'width' => 472,
-                            'crop' =>  'crop',
-                            'image' => $itemId,
-                            'query' => 1200
-                        ],
-                        [
-                            'blog_id' => $blog_id,
-                            'img_id' => $img_id,
-                            'height' => 175,
-                            'width' => 300,
-                            'crop' => 'crop',
-                            'image' => $itemId,
-                            'query' => 100
-                        ]
-                    ];
-                    
-                    $images = volvo_global_prepare_images_render($images);
-
-                    $cards[] = [
-                        'link' => $link,
-                        'heading' => $card['heading'],
-                        'description' => $card['description'],
-                        'image' => $images,
-                        'ctaText' => $card['cta-text'],
-                    ];
-                }
-
-
-
-                $result = [
-                    'block_name' => $block['block_name'],
-                    'data' => [
-                        'heading' => $block['data']['heading'],
-                        'cards' => $cards
-                    ],
-                ];
+                $result = volvo_global_get_block_data($block, $blog_id);
 
                 $blocks[$key_block] = $result;
                 break;
             case 'acf/preview-component':
-                $reverse = $block['data']['image-position'] ?? false;
+                $result = volvo_global_get_block_data($block, $blog_id);
                 
-                $allowed_tags = ['h1','h2','h3','h4','h5','h6'];
-                $heading_tag = $block['data']['heading_tag'];
+                $blocks[$key_block] = $result;
+                break;
+            case 'acf/quick-info':
+                $result = volvo_global_get_block_data($block, $blog_id);
 
-                if (!in_array($heading_tag, $allowed_tags)) {
-                    $heading_tag = 'h2';
-                }
-                
-                foreach ( $block['data']['content'] as $k => &$contentItem ) {
-                    if (array_key_exists('contact-info', $contentItem)) {
-                        $contentItem['contactPerson'] = volvo_global_block_contact_person($contentItem['contact-info'], $block['block_name']);
-                    }
-                    
-                    if (array_key_exists('link', $contentItem)) {
-                        $contentItem['link'] = volvo_global_block_link($contentItem['link'], $block['block_name']);
-                    }
-                }
-                
-                $result = [
-                    'block_name' => $block['block_name'],
-                    'data' => [
-                        'reverse'      => $reverse == 'right',
-                        'image'        => $block['data']['img'],
-                        'heading_tag'  => $heading_tag,
-                        'heading'      => $block['data']['heading'],
-                        'content'      => $block['data']['content'],
-                    ]
-                ];
+                $blocks[$key_block] = $result;
+                break;
+            case 'acf/short-notes':
+                $result = volvo_global_get_block_data($block, $blog_id);
 
                 $blocks[$key_block] = $result;
                 break;
             case 'acf/site-heading';
-                $version = $block['data']['field_quick_header'];
-		
-                if ( $version && $version == 'tak' ) {
-                    $template = 'grey-heading';
-                } else if ($version && $version == 'blog' ) {
-                    $template = 'site-heading-blog';
-                } else {
-                    $template = 'site-heading';
-                }
-                
-                $result = [
-                    'block_name' => $block['block_name'],
-                    'data' => [
-                        'template'        => $template,
-                        'heading'         => $block['data']['heading'],
-                        'header_type'     => $block['data']['header_type'],
-                        'description'     => $block['data']['description'],
-                        'date'            => get_the_date('d.m.Y'),
-                        'tags'	          => volvo_global_get_post_tags(),
-                        'current_blog_id' => $blog_id
-                    ]
-                ];
+                $result = volvo_global_get_block_data($block, $blog_id);
+
+                $blocks[$key_block] = $result;
+                break;
+            case 'acf/table-component':
+                $result = volvo_global_get_block_data($block, $blog_id);
+
+                $blocks[$key_block] = $result;
+                break;
+            case 'acf/text-editor':
+                $result = volvo_global_get_block_data($block, $blog_id);
+
+                $blocks[$key_block] = $result;
+                break;
+            case 'acf/text-editor-extended':
+                $result = volvo_global_get_block_data($block, $blog_id);
+
+                $blocks[$key_block] = $result;
+                break;
+            case 'acf/three-boxes':
+                $result = volvo_global_get_block_data($block, $blog_id);
 
                 $blocks[$key_block] = $result;
                 break;
             case 'acf/two-column-content-component':
-                $reverse = $block['data']['image-position'] ?? false;
-                $video = $block['data']['video'];
-
-                if (array_key_exists('description', $block['data']['content'][0])) {
-                    $contentParsedown = volvo_global_block_description($block['data']['content'][0]['description']);
-                    $block['data']['content'][0]['description'] = $contentParsedown;
-                }
-
-                foreach ( $block['data']['content'] as &$contentItem ) {
-                    if (array_key_exists('contact-info', $contentItem)) {
-                        $contentItem['contactPerson'] = volvo_global_block_contact_person($contentItem['contact-info'], $block['block_name']);
-                    }
-
-                    if (array_key_exists('link', $contentItem) && !empty($contentItem['link'])) {
-                        $contentItem['link'] = volvo_global_block_link($contentItem['link'], $block['block_name']);
-                    }
-                }
-
-                $result = [
-                    'block_name' => $block['block_name'],
-                    'data' => [
-                        'reverse' => 'right' == $reverse,
-                        'custom_reverse' => $reverse, 
-                        'image' => $block['data']['img'],
-                        'subheading' => $block['data']['subheading'],
-                        'heading' => $block['data']['heading'],
-                        'content' => $block['data']['content'],
-                        'left_content' => $block['data']['single_opt_column'],
-                        'equal_columns' => $block['data']['imgage-width'],
-                        'video' => ($video ? volvo_global_youtube_link_to_video_id($video) : false),
-                    ]
-                ];
+                $result = volvo_global_get_block_data($block, $blog_id);
 
                 $blocks[$key_block] = $result;
                 break;
             case "acf/two-image":
-                $firstImageId = $block['data']['firstPicture'];
-                $secondImageId = $block['data']['secondPicture'];
-
-                $img_id_first = $firstImageId;
-                $img_id_second = $secondImageId;
-
-                $itemId_first = wp_get_attachment_url($firstImageId);
-                $itemId_second = wp_get_attachment_url($img_id_second);
-
-                $image_first = [
-                    [
-                        'blog_id' => $blog_id,
-                        'img_id' => $img_id_first,
-                        'height' => 800,				
-                        'width' => 1200,
-                        'crop' =>  'crop',
-                        'image' => $itemId_first,
-                        'query' => 1680,										
-                        'theight' => 300,
-                        'twidth' => 200,
-                        'tcrop' =>  false,																		
-                    ],
-                    [
-                        'blog_id' => $blog_id,
-                        'img_id' => $img_id_first,
-                        'height' => 600,
-                        'width' => 800,
-                        'crop' => 'crop',
-                        'image' => $itemId_first,
-                        'query' => 1000,										
-                        'theight' => 300,
-                        'twidth' => 200,
-                        'tcrop' =>  false,		
-                    ],
-                    [
-                        'blog_id' => $blog_id,
-                        'img_id' => $img_id_first,
-                        'height' => 450,
-                        'width' => 450,
-                        'crop' => 'crop',
-                        'image' => $itemId_first,
-                        'query' => 100,										
-                        'theight' => 300,
-                        'twidth' => 200,
-                        'tcrop' =>  false,		
-                    ]
-                ];
-                $image_second = [
-                    [
-                        'blog_id' => $blog_id,
-                        'img_id' => $img_id_second,
-                        'height' => 800,				
-                        'width' => 1200,
-                        'crop' =>  'crop',
-                        'image' => $itemId_second,
-                        'query' => 1680,										
-                        'theight' => 300,
-                        'twidth' => 200,
-                        'tcrop' =>  false,																		
-                    ],
-                    [
-                        'blog_id' => $blog_id,
-                        'img_id' => $img_id_second,
-                        'height' => 600,
-                        'width' => 800,
-                        'crop' => 'crop',
-                        'image' => $itemId_second,
-                        'query' => 1000,										
-                        'theight' => 300,
-                        'twidth' => 200,
-                        'tcrop' =>  false,		
-                    ],
-                    [
-                        'blog_id' => $blog_id,
-                        'img_id' => $img_id_second,
-                        'height' => 450,
-                        'width' => 450,
-                        'crop' => 'crop',
-                        'image' => $itemId_second,
-                        'query' => 100,										
-                        'theight' => 300,
-                        'twidth' => 200,
-                        'tcrop' =>  false,		
-                    ]
-                ];
-                $image_first = volvo_global_prepare_images_render($image_first);
-                $image_second = volvo_global_prepare_images_render($image_second);
-
-                $result = [
-                    'block_name' => $block['block_name'],
-                    'data' => [
-                        'firstImage' => $image_first,
-                        'secondImage' => $image_second,
-                    ]
-                ];
+                $result = volvo_global_get_block_data($block, $blog_id);
 
                 $blocks[$key_block] = $result;
                 break;
             default:
-                //var_dump($block['block_name']);exit;
+                var_dump($block['block_name']);exit;
         }
     }
 
