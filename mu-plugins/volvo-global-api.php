@@ -63,26 +63,6 @@ add_action('rest_api_init', function () {
     ));
 });
 
-add_action('rest_api_init', function () {
-    // Global page endpoint - for send form any path
-    register_rest_route('volvo/v1', '/page', array(
-        'methods'             => 'POST',
-        'callback'            => 'volvo_global_post_page',
-        'permission_callback' => '__return_true',
-        'args'                => array(
-            'path'   => array(
-                'required'          => false,
-                'default'           => '/',
-                'sanitize_callback' => 'sanitize_text_field',
-            ),
-            'domain' => array(
-                'required'          => false,
-                'sanitize_callback' => 'sanitize_text_field',
-            ),
-        ),
-    ));
-});
-
 /**
  * Frontend domain to WordPress domain mapping
  *
@@ -1014,60 +994,6 @@ function volvo_global_get_page($request) {
     
     return new WP_REST_Response($response, 200);
 }
-
-/**
- * Forms endpoint callback
- *
- * @param WP_REST_Request $request
- * @return WP_REST_Response
- */
-function volvo_global_post_page($request) {
-    $path = $request->get_param('path') ?: '/';
-    
-    // Get domain from header or query param
-    $domain = isset($_SERVER['HTTP_X_WP_DOMAIN']) ? sanitize_text_field($_SERVER['HTTP_X_WP_DOMAIN']) : '';
-    if (empty($domain)) {
-        $domain = $request->get_param('domain');
-    }
-    if (empty($domain)) {
-        $domain = $_SERVER['HTTP_HOST'] ?? '';
-    }
-    
-    $blog_id = volvo_global_resolve_blog_id($domain);
-    
-    // Fallback to main blog if domain not found
-    if (!$blog_id) {
-        $blog_id = 1;
-    }
-    
-    // Switch to target blog
-    switch_to_blog($blog_id);
-    
-    // Build response based on path
-    $response = array(
-        'path'   => $path,
-        'domain' => $domain,
-        'site'   => array(
-            'name' => get_bloginfo('name'),
-            'url'  => get_bloginfo('url'),
-        ),
-    );
-
-    $parse_url = wp_parse_url(ltrim($path, '/'));
-    $path_parts = explode('/', trim($parse_url['path'], '/'));
-
-    if (in_array($path_parts[0], ['serwis', 'service'])) {
-
-        // @TODO: obsługa wyszukiwania po vin
-        // @TODO: obsługa zapisu na serwis
-
-    }
-
-    restore_current_blog();
-    
-    return new WP_REST_Response($response, 200);
-}
-
 
 // PAGES
 
