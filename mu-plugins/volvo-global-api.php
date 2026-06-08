@@ -1611,9 +1611,9 @@ function volvo_global_is_has_any_service(array $showroomsBlog): bool
  * Showroom form
  * 
  * @param array $showroomsBlog
- * @return array
+ * @return array|bool
  */
-function volvo_global_get_showrooms_form(array $showroomsBlog): array
+function volvo_global_get_showrooms_form(array $showroomsBlog): array|bool
 {
     $formShowrooms = false;
     if ( volvo_global_is_multi_showroom_and_service($showroomsBlog) ) {
