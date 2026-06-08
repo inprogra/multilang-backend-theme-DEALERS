@@ -3950,3 +3950,10 @@ msgstr "Žádné tagy"
 #: includes/controllers/TwoImageController.class.php:18
 msgid "Preview of the \"Two Photos\" block"
 msgstr "Náhled bloku Dvě fotografie"
+
+#: includes/controllers/ServiceController.class.php:240
+msgid "year"
+msgid_plural "years"
+msgstr[0] "rok"
+msgstr[1] "roky"
+msgstr[2] "let"

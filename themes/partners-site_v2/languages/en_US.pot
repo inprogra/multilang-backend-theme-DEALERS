@@ -3950,3 +3950,9 @@ msgstr ""
 #: includes/controllers/TwoImageController.class.php:18
 msgid "Preview of the \"Two Photos\" block"
 msgstr ""
+
+#: includes/controllers/ServiceController.class.php:240
+msgid "year"
+msgid_plural "years"
+msgstr[0] "year"
+msgstr[1] "years"
