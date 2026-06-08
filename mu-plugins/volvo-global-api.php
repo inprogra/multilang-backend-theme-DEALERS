@@ -2752,10 +2752,29 @@ function volvo_global_get_service_box_years_info(array $options, ?int $date_year
     
     $box_years_info = array();
     
+    $year_plural = _n_noop(
+        'year',
+        'years',
+        'partners-site_v2'
+    );
+
+    $year_label_main = translate_nooped_plural(
+        $year_plural,
+        2,
+        'partners-site_v2'
+    ); // lata
+
+    $year_label = translate_nooped_plural(
+        $year_plural,
+        $date_year,
+        'partners-site_v2'
+    );
+    /*
     $year_label = $year_label_main = _x('years', 'no more than 5', 'partners-site_v2'); // lata
     if ((int) $date_year > 5) {
         $year_label = _x('years', 'more than 5', 'partners-site_v2'); // lat
     }
+    */
 
     $templates = volvo_global_get_service_vinomat_box_templates($options);
 
