@@ -10,6 +10,7 @@ if (!defined('ABSPATH')) {
 }
 
 require_once WPMU_PLUGIN_DIR . '/volvo-global-api/classes/FeaturedCars.class.php';
+require_once WPMU_PLUGIN_DIR . '/volvo-global-api/classes/CarSpecificationDataImporter.class.php';
 require_once WPMU_PLUGIN_DIR . '/volvo-global-api/components/blocks.php';
 
 
@@ -48,6 +49,26 @@ add_action('rest_api_init', function () {
     register_rest_route('volvo/v1', '/page', array(
         'methods'             => 'GET',
         'callback'            => 'volvo_global_get_page',
+        'permission_callback' => '__return_true',
+        'args'                => array(
+            'path'   => array(
+                'required'          => false,
+                'default'           => '/',
+                'sanitize_callback' => 'sanitize_text_field',
+            ),
+            'domain' => array(
+                'required'          => false,
+                'sanitize_callback' => 'sanitize_text_field',
+            ),
+        ),
+    ));
+});
+
+add_action('rest_api_init', function () {
+    // Global page endpoint - returns page data for any path
+    register_rest_route('volvo/v1', '/page', array(
+        'methods'             => 'POST',
+        'callback'            => 'volvo_global_post_page',
         'permission_callback' => '__return_true',
         'args'                => array(
             'path'   => array(
@@ -830,6 +851,9 @@ function volvo_global_get_page($request) {
     $parse_url = wp_parse_url(ltrim($path, '/'));
     $path_parts = explode('/', trim($parse_url['path'], '/'));
     
+    global $is_volvo_ms_global_page;
+    $is_volvo_ms_global_page = false;
+    
     // For homepage (path = /)
     if ($path_parts[0] === '') {
         $response['heroSlider']    = volvo_global_get_hero_slider();
@@ -844,7 +868,6 @@ function volvo_global_get_page($request) {
     // For contact pages, get page by path
     } elseif (in_array($path_parts[0], ['kontakt', 'contact'])) {
 
-        $is_volvo_ms_global_page = false;
         $page = get_page_by_path($path_parts[0]);
         if (!$page) {
             $page = volvo_global_get_global_page_by_path($path_parts[0]);
@@ -909,7 +932,6 @@ function volvo_global_get_page($request) {
 
     } elseif (in_array($path_parts[0], ['serwis', 'service'])) {
 
-        $is_volvo_ms_global_page = false;
         $post = get_page_by_path($path_parts[0]);
         if (!$post) {
             $post = volvo_global_get_global_page_by_path($path_parts[0]);
@@ -937,7 +959,6 @@ function volvo_global_get_page($request) {
         if (!isset($path_parts[1]) || count($path_parts) > 2) {
             $response['page_404'] = true;
         } else {
-            $is_volvo_ms_global_page = false;
             $post = get_page_by_path($path_parts[1], OBJECT, 'campaign');
             
             if (!$post) {
@@ -990,6 +1011,67 @@ function volvo_global_get_page($request) {
     // Add social media
     $response['social_media'] = volvo_global_get_footer_social_madia();
     
+    restore_current_blog();
+    
+    return new WP_REST_Response($response, 200);
+}
+
+/**
+ * POST page endpoint callback
+ *
+ * @param WP_REST_Request $request
+ * @return WP_REST_Response
+ */
+function volvo_global_post_page($request) {
+    $path = $request->get_param('path') ?: '/';
+
+    
+    // Get domain from header or query param
+    $domain = isset($_SERVER['HTTP_X_WP_DOMAIN']) ? sanitize_text_field($_SERVER['HTTP_X_WP_DOMAIN']) : '';
+    if (empty($domain)) {
+        $domain = $request->get_param('domain');
+    }
+    if (empty($domain)) {
+        $domain = $_SERVER['HTTP_HOST'] ?? '';
+    }
+    
+    $blog_id = volvo_global_resolve_blog_id($domain);
+    
+    // Fallback to main blog if domain not found
+    if (!$blog_id) {
+        $blog_id = 1;
+    }
+    
+    // Switch to target blog
+    switch_to_blog($blog_id);
+    
+    // Build response based on path
+    $response = array(
+        'path'   => $path,
+        'domain' => $domain,
+        'site'   => array(
+            'name' => get_bloginfo('name'),
+            'url'  => get_bloginfo('url'),
+        ),
+    );
+
+    $parse_url = wp_parse_url(ltrim($path, '/'));
+    $path_parts = explode('/', trim($parse_url['path'], '/'));
+    
+    if (in_array($path_parts[0], ['serwis', 'service'])) {
+        $checkYear = $request->get_param('checkYear');
+        if ($checkYear == '1') {
+
+            $response = array_merge($response, volvo_global_post_service_check_vin($request, $blog_id));
+
+        } else {
+            return new \WP_Error( 'invalid_request', __( 'Page not found.', 'webinar-plugin' ), [ 'status' => 404 ] );
+        }
+
+    } else {
+        return new \WP_Error( 'invalid_request', __( 'Page not found.', 'webinar-plugin' ), [ 'status' => 404 ] );
+    }
+
     restore_current_blog();
     
     return new WP_REST_Response($response, 200);
@@ -2462,7 +2544,104 @@ function volvo_global_get_acf_fields(int $post_id)
  */
 function volvo_global_get_service_page_index(int $blog_id)
 {
+    $dealersData = volvo_global_get_service_dealers_data($blog_id);
+
+    $options = volvo_global_get_basic_options( 0 );
+
+    $news = volvo_global_get_service_news($options, $blog_id);
+
+    $globalCampaign = false;
+    $special_service = false;
+    
+    if ( 1 == $blog_id ) {
+        $globalCampaign = $dealersData;
+        $special_service = true;
+    }
+
+    return array(
+        'global_form'       => $globalCampaign,
+        'global_service'    => $special_service,
+        'newsBox'           => array_reverse( $news ),
+        'result'            => null,
+        'year'              => null,
+        'vin'               => null,
+        'towColumnsList'    => volvo_global_get_service_two_columns_list(),
+        'formService'       => volvo_global_get_service_form( $blog_id, 'vinomat' ),
+        'accordionSection'  => volvo_global_get_service_accordion_section($blog_id),
+        'contactSection'    => volvo_global_get_service_get_contact_section(),
+    );
+}
+
+/**
+ * Page service - Check VIN
+ * 
+ * @param WP_REST_Request $request
+ * @param int $blog_id
+ * @return array
+ */
+function volvo_global_post_service_check_vin($request, int $blog_id): array
+{
+    $vin = trim($request->get_param('vinomat-search'));
+
+    $vin = strtoupper($vin);
+    
+    $date_year = volvo_global_get_vin_date_year($vin);
+
+    $options = volvo_global_get_basic_options( 0 );
+
+    if ($date_year == -1) {
+        $date_year = 0;
+    }
+
+    $result = ($date_year) ? volvo_global_get_service_box_years_info($options, $date_year) : [];
+
+    return array(
+        'result'           => $result,
+        'year'             => $date_year,
+        'vin'              => ( $vin ? $vin : null ),
+    );
+}
+
+function volvo_global_get_vin_date_year(string $vin): ?int
+{
+    global $volvo_global_years;
+
+    $vin = strtoupper($vin);
+    if (empty($vin) || !preg_match('/^[A-Z0-9]+$/', $vin)) {
+        return null;
+    }
+
+    $client = new \GuzzleHttp\Client();
+    $check_db = new VGA\Classes\CarSpecificationDataImporter($client);
+    
+    $vin_data = $check_db->getVinomatDol($vin);
+    
+    $date_year = null;
+
+    if (!is_array($vin_data)) {
+        $registerDate = new \DateTime($vin_data);
+        
+        $today     = new \DateTime();
+        $interval  = $today->diff($registerDate);
+        $date_year = $interval->format('%y');
+    }
+
+    if ($vin_data && is_array($vin_data) && array_key_exists('productionYear', $vin_data)) {
+        $date_year = (int) date('Y') - $vin_data['productionYear'];             
+    }
+    
+    $y = $vin[9];
+    if (!$date_year && isset($y) && array_key_exists($y, $volvo_global_years)) {
+        $date_year = (int) date('Y') - (int) $volvo_global_years[$y];
+    }
+
+    return $date_year;
+}
+
+function volvo_global_get_service_dealers_data(int $blog_id)
+{
     $dealersData = [];
+    
     if ( 1 == $blog_id ) {
         $dealers = volvo_global_get_service_blog_ids($blog_id);
         
@@ -2472,7 +2651,7 @@ function volvo_global_get_service_page_index(int $blog_id)
                     $dealersData[] = [
                         'key' => $d['dealerId'],
                         'value' => $a,
-                        'sorter' => str_replace(['Ł', 'Ś', 'Ź', 'Ż'], ['L', 'S', 'Z', 'Z'], $a)
+                        'sorter' => str_replace(['Ć', 'Ł', 'Ś', 'Ź', 'Ż'], ['C', 'L', 'S', 'Z', 'Z'], $a)
                     ];
                 }
             }
@@ -2484,15 +2663,15 @@ function volvo_global_get_service_page_index(int $blog_id)
         array_pop($dealersData);
     }
 
-    $options = getBasicOptions( 0 );
+    return $dealersData;
+}
 
-    $news       = array();
+function volvo_global_get_service_news(array $options, int $blog_id): array
+{
+    $news = [];
+
     $admin_news = $options['vinomat_news'][0];
 
-    $dealer_news = get_field( 'vinomat-section', 'options-service' );
-
-    $date_year = null;
-    
     switch_to_blog( 1 );
     
     for ( $i = 0; $i < (int) $admin_news; $i++ ) {
@@ -2500,7 +2679,7 @@ function volvo_global_get_service_page_index(int $blog_id)
         $link = $options['options-service_vinomat-section_vinomat_news_' . $i . '_slides_0_type'][0];
 
         if (!$url) {
-            $url_type = ($link && in_array($link, ['global', 'link'])) ? $link : null;
+            $url_type = ($link && in_array($link, ['global', 'link'], true)) ? $link : null;
             
             if ($url_type) {
                 $url_id = $options['options-service_vinomat-section_vinomat_news_' . $i . '_slides_0_' . $url_type . '-campaign'][0];
@@ -2521,10 +2700,36 @@ function volvo_global_get_service_page_index(int $blog_id)
             'link'  => $url,
         );
     }
+
+    $news = array_reverse($news);
+
+    foreach ($news as $key => $value) {
+        if (!empty($news[$key]['link']) && is_array($news[$key]['link']) && isset($news[$key]['link']['url'])) {
+            $news[$key]['link']['url'] = volvo_global_clear_url($news[$key]['link']['url'], $blog_id);
+        }
+    }
     
     restore_current_blog();
-    
-    $news = array_reverse($news);
+
+    // update dealers news
+    $dealer_news = get_field( 'vinomat-section', 'options-service' );
+
+    $x = 0;
+    foreach ( $dealer_news['vinomat_news'] as $n ) {
+        $news[$x] = array(
+            'title' => $n['vinomat_news_title'],
+            'desc'  => $n['vinomat_news_desc'],
+            'image' => wp_get_attachment_image_src( $n['vinomat_news_image'] )[0],
+            'link'  => $n['vinomat_box_link'],
+        );
+        $x++;
+    }
+
+    return $news;
+}
+
+function volvo_global_get_service_vinomat_box_templates(array $options): array
+{
     $templates_count = $options['vinomat_box_templates'][0];
     
     $templates = [];
@@ -2537,26 +2742,26 @@ function volvo_global_get_service_page_index(int $blog_id)
         
         $templates[$options[ 'vinomat_box_templates_' . $i . '_vinomat_box_title_template' ][0]][] = $info;
     }
-    
-    foreach ($news as $key=>$value) {
-        if (!empty($news[$key]['link']) && is_array($news[$key]['link']) && isset($news[$key]['link']['url'])) {
-            $news[$key]['link']['url'] = volvo_global_clear_url($news[$key]['link']['url'], $blog_id);
-        }
-    }
-    
-    if ($date_year == -1) {
-        $date_year = 0;
-    }
+
+    return $templates;
+}
+
+function volvo_global_get_service_box_years_info(array $options, ?int $date_year): array
+{
     $box_years = $options['vinomat_box'][0];
     
     $box_years_info = array();
+    
     $year_label = $year_label_main = _x('years', 'no more than 5', 'partners-site_v2'); // lata
     if ((int) $date_year > 5) {
-        $year_label = __('years', 'partners-site_v2'); // lat
+        $year_label = _x('years', 'more than 5', 'partners-site_v2'); // lat
     }
-    
+
+    $templates = volvo_global_get_service_vinomat_box_templates($options);
+
     for ( $i = 0; $i < $box_years; $i++ ) {
-        $t = unserialize( $options[ 'vinomat_box_' . $i . '_vinomat_box_years' ][0] );		
+        
+        $t = unserialize( $options[ 'vinomat_box_' . $i . '_vinomat_box_years' ][0] );
         
         foreach($templates as $key => $value) {
             foreach ( $t as $a ) {
@@ -2609,46 +2814,8 @@ function volvo_global_get_service_page_index(int $blog_id)
             }
         }
     }
-    
-    $x = 0;
-    foreach ( $dealer_news['vinomat_news'] as $n ) {
-        $url = unserialize($options[ 'vinomat_box_' . $i . '_vinomat_box_link' ][0]);
-        
-        $news[$x] = array(
-            'title' => $n['vinomat_news_title'],
-            'desc'  => $n['vinomat_news_desc'],
-            'image' => wp_get_attachment_image_src( $n['vinomat_news_image'] )[0],
-            'link'  => $n['vinomat_box_link'],
-        );
-        $x++;
-    }
-    
-    $result = null;
 
-    if ( $date_year ) {
-        $result = $box_years_info;
-    }
-    
-    $globalCampaign = false;
-    $special_service = false;
-    
-    if ( 1 == $blog_id ) {
-        $globalCampaign = $dealersData;
-        $special_service = true;
-    }
-
-    return array(
-        'global_form'       => $globalCampaign,
-        'global_service'    => $special_service,
-        'newsBox'           => array_reverse( $news ),
-        'result'            => $result,
-        'year'              => $date_year,
-        'vin'               => null,
-        'towColumnsList'    => volvo_global_get_service_two_columns_list(),
-        'formService'       => volvo_global_get_service_form( $blog_id, 'vinomat' ),
-        'accordionSection'  => volvo_global_get_service_accordion_section($blog_id),
-        'contactSection'    => volvo_global_get_service_get_contact_section(),
-    );
+    return $box_years_info;
 }
 
 function volvo_global_get_service_hero_slider(int $blog_id): array
@@ -3172,7 +3339,9 @@ function volvo_global_get_campaing_page(\WP_Post $post, int $blog_id): array
     $landing_page = get_field('one_page');
     $side_form = (get_field('side_form') == 'on' ? get_field('side_form') : false);
 
-    restore_current_blog();
+    for ($switch; $switch > 0; $switch--) {
+        restore_current_blog();
+    }
 
     if ($is_volvo_ms_global_page) {
         switch_to_blog( 1 );
