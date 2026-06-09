@@ -652,7 +652,7 @@ function volvo_global_get_block_acf_gallery (array $block, int $blog_id)
             'mobileImage'  => $images,
             'desktopImage' => $images,
             'full'         => '',
-            'domain'       => get_site_url(),
+            'domain'       => get_bloginfo('url'),
         );
     }
     

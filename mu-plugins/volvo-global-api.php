@@ -218,9 +218,9 @@ function volvo_global_prepare_image($image, $sizes = array('full', 'large', 'med
     if (empty($image)) {
         return null;
     }
-    
+
     $attachment_id = is_array($image) ? ($image['ID'] ?? $image['id'] ?? 0) : (int) $image;
-    
+
     if (!$attachment_id) {
         // If it's a URL string
         if (is_string($image) && filter_var($image, FILTER_VALIDATE_URL)) {
@@ -237,7 +237,7 @@ function volvo_global_prepare_image($image, $sizes = array('full', 'large', 'med
     
     $attachment = get_post($attachment_id);
     $alt = get_post_meta($attachment_id, '_wp_attachment_image_alt', true);
-    
+
     $result = array(
         'url'    => wp_get_attachment_url($attachment_id),
         'alt'    => $alt,
@@ -641,12 +641,13 @@ function volvo_global_get_slider_family() {
     $slider_family_box = get_field('sliderFamilyBox', 'options-homepage');
     $slider_title = get_field('sliderTitle', 'options-homepage');
     
+    $main_slider_family = false;
     // Fallback to global site if empty
     if (empty($slider_family_box)) {
         switch_to_blog(1);
+        $main_slider_family = true;
         $slider_family_box = get_field('sliderFamilyBox', 'options-homepage');
         $slider_title = get_field('sliderTitle', 'options-homepage');
-        restore_current_blog();
     }
     
     $items = array();
@@ -661,6 +662,10 @@ function volvo_global_get_slider_family() {
                 'link'   => volvo_global_build_link($box['linksSlide'] ?? null),
             );
         }
+    }
+
+    if ($main_slider_family) {
+        restore_current_blog();
     }
     
     return array(
