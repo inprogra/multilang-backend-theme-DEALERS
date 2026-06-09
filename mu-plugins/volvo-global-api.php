@@ -272,6 +272,10 @@ function volvo_global_prepare_images_render(array $data) {
 		
     //$cache = new \VGA\Classes\Cache();
     foreach($data as $key => $value) {
+        if (empty($value['img_id']) || empty($value['image'])) {
+            unset($data[$key]);
+            continue;
+        }
         //$cache_check = $cache->getDatabaseKey( $value['blog_id'].'-'.$value['img_id'].'-'.$value['width'].'-'.$value['height'].'-'.$value['crop']);
          $cache_check = false;
         if (!$cache_check) {
@@ -288,10 +292,10 @@ function volvo_global_prepare_images_render(array $data) {
 
 function volvo_global_prepare_image_for_render(
     int $blog_id,
-    int $img_id,
+    int|string|null $img_id,
     ?int $width,
     ?int $height,
-    string $img_url,
+    ?string $img_url,
     ?string $crop,
     ?int $twidth = null,
     ?int $theight = null,
@@ -983,6 +987,34 @@ function volvo_global_get_page($request) {
         $slug = str_replace('jazda-testowa-model-', '', $path_parts[0]);
         $response = array_merge($response, volvo_global_get_test_drive_model($slug, $blog_id));
 
+    } elseif (in_array($path_parts[0], ['wydarzenia', 'events'], true)) {
+        $page = get_page_by_path($path_parts[0]);
+
+        if (!$page) {
+            $response['page_404'] = true;
+        } else {
+
+            if ($blog_id == 36) {
+                $blog_id = 37;
+            }
+            
+            $instance_id = get_fields('options-dealer')['event_instance'];
+            if ($instance_id) {
+                $blog_id = $instance_id;
+            }
+
+            $response['page'] = array(
+                'instance_id'    => $blog_id,
+                'id'             => $page->ID,
+                'title'          => get_the_title($page->ID),
+                'content'        => volvo_global_prepare_content_block($page->post_content, $blog_id),
+                'featured_image' => volvo_global_prepare_image(get_post_thumbnail_id($page->ID)),
+                'acf'            => function_exists('get_fields') ? get_fields($page->ID) : array(),
+            );
+        }
+
+    } elseif (in_array($path_parts[0], ['o-nas', 'about-us'], true)) {
+                
     } else {
         // For other pages, get page by path
         $page = get_page_by_path(ltrim($path, '/'));
@@ -991,7 +1023,7 @@ function volvo_global_get_page($request) {
             $response['page'] = array(
                 'id'             => $page->ID,
                 'title'          => get_the_title($page->ID),
-                'content'        => apply_filters('the_content', $page->post_content),
+                'content'        => volvo_global_prepare_content_block($page->post_content, $blog_id),
                 'featured_image' => volvo_global_prepare_image(get_post_thumbnail_id($page->ID)),
                 'acf'            => function_exists('get_fields') ? get_fields($page->ID) : array(),
             );
