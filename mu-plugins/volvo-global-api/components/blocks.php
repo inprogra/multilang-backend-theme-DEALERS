@@ -1015,7 +1015,7 @@ function volvo_global_get_block_acf_text_editor (array $block, int $blog_id)
     $result = [
         'block_name' => $block['block_name'],
         'data' => [
-            'content' => $block['data']['content'],
+            'content' => apply_filters( 'acf_the_content', $block['data']['content']),
             'margin'     => volvo_global_get_block_acf_prepare_margin($block['data']),
         ]
     ];
@@ -1028,7 +1028,7 @@ function volvo_global_get_block_acf_text_editor_extended (array $block, int $blo
     $result = [
         'block_name' => $block['block_name'],
         'data' => [
-            'content' => $block['data']['content'],
+            'content' => apply_filters( 'acf_the_content', $block['data']['content']),
             'margin'     => volvo_global_get_block_acf_prepare_margin($block['data']),
         ]
     ];
