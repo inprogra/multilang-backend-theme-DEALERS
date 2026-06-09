@@ -264,7 +264,7 @@ function volvo_global_prepare_image($image, $sizes = array('full', 'large', 'med
             );
         }
     }
-    
+
     return $result;
 }
 
@@ -544,12 +544,14 @@ function volvo_global_get_offer_cards() {
     $offer1 = get_field('offer1', 'options-homepage');
     $offer2 = get_field('offer2', 'options-homepage');
     
+    $main_site = false;
     // Fallback to global site if empty
     if (empty($offer1['imageCard']) && empty($offer2['imageCard2'])) {
         switch_to_blog(1);
+        $main_site = true;
+
         $offer1 = get_field('offer1', 'options-homepage');
         $offer2 = get_field('offer2', 'options-homepage');
-        restore_current_blog();
     }
     
     $items = array();
@@ -574,6 +576,10 @@ function volvo_global_get_offer_cards() {
         );
     }
     
+    if ($main_site) {
+        restore_current_blog();
+    }
+    
     return array('items' => $items);
 }
 
@@ -588,13 +594,15 @@ function volvo_global_get_offer_box() {
     $box3 = get_field('offerBox3', 'options-homepage');
     $main_heading = get_field('mainHeading', 'options-homepage');
     
+    $main_site = false;
     // Fallback to global
     if (empty($box1['imageBox']) && empty($box2['imageBox2']) && empty($box3['imageBox3'])) {
         switch_to_blog(1);
+        $main_site = true;
+
         $box1 = get_field('offerBox1', 'options-homepage');
         $box2 = get_field('offerBox2', 'options-homepage');
         $box3 = get_field('offerBox3', 'options-homepage');
-        restore_current_blog();
     }
     
     $items = array();
@@ -626,6 +634,10 @@ function volvo_global_get_offer_box() {
         );
     }
     
+    if ($main_site) {
+        restore_current_blog();
+    }
+    
     return array(
         'mainHeading' => $main_heading,
         'items'       => $items,
@@ -641,11 +653,12 @@ function volvo_global_get_slider_family() {
     $slider_family_box = get_field('sliderFamilyBox', 'options-homepage');
     $slider_title = get_field('sliderTitle', 'options-homepage');
     
-    $main_slider_family = false;
+    $main_site = false;
     // Fallback to global site if empty
     if (empty($slider_family_box)) {
         switch_to_blog(1);
-        $main_slider_family = true;
+        $main_site = true;
+
         $slider_family_box = get_field('sliderFamilyBox', 'options-homepage');
         $slider_title = get_field('sliderTitle', 'options-homepage');
     }
@@ -664,7 +677,7 @@ function volvo_global_get_slider_family() {
         }
     }
 
-    if ($main_slider_family) {
+    if ($main_site) {
         restore_current_blog();
     }
     
@@ -682,23 +695,36 @@ function volvo_global_get_slider_family() {
 function volvo_global_get_offer_card() {
     $offer_card = get_field('OfferCard', 'options-homepage');
     
+    $main_site = false;
     // Fallback to global
     if (empty($offer_card['image'])) {
         switch_to_blog(1);
+        $main_site = true;
+
         $offer_card = get_field('OfferCard', 'options-homepage');
-        restore_current_blog();
+        
     }
     
     if (empty($offer_card)) {
+        if ($main_site) {
+            restore_current_blog();
+        }
+    
         return array();
     }
-    
-    return array(
+
+    $result = array(
         'image'       => volvo_global_prepare_image($offer_card['image'] ?? null),
         'title'       => $offer_card['headingOffer'] ?? '',
         'description' => nl2br(esc_html($offer_card['description'] ?? '')),
         'link'        => volvo_global_build_link($offer_card['link'] ?? null),
     );
+
+    if ($main_site) {
+        restore_current_blog();
+    }
+    
+    return $result;
 }
 
 /**
@@ -709,11 +735,13 @@ function volvo_global_get_offer_card() {
 function volvo_global_get_offers() {
     $offers_options = get_field('offers', 'options-homepage');
     
+    $main_site = false;
     // Fallback to global site if empty
     if (empty($offers_options['heading']) && empty($offers_options['offer-boxes'])) {
         switch_to_blog(1);
+        $main_site = true;
+
         $offers_options = get_field('offers', 'options-homepage');
-        restore_current_blog();
     }
     
     $offer_boxes_options = $offers_options['offer-boxes'] ?? array();
@@ -754,6 +782,10 @@ function volvo_global_get_offers() {
         $preview_image = volvo_global_prepare_image($preview_options['image']);
     }
     
+    if ($main_site) {
+        restore_current_blog();
+    }
+
     return array(
         'heading'            => $offers_options['heading'] ?? '',
         'showPreviewComponent' => $offers_options['enable-preview-component'] ?? false,
@@ -2070,36 +2102,36 @@ function volvo_global_get_models(int $blog_id): array|null
  */
 function volvo_global_get_model_price_status(int $modelId): bool
 {
-		$hide_price = false;
+    $hide_price = false;
 
-		$variations = new \WP_Query(
-			array(
-				'post_type'      => 'model',
-				'posts_per_page' => 99,
-				'post_parent'    => $modelId,
-				'cache_results'  => true,
-				'meta_key'       => 'price',
-				'orderby'        => 'meta_value_num',
-				'order'          => 'ASC',
-			)
-		);
+    $variations = new \WP_Query(
+        array(
+            'post_type'      => 'model',
+            'posts_per_page' => 99,
+            'post_parent'    => $modelId,
+            'cache_results'  => true,
+            'meta_key'       => 'price',
+            'orderby'        => 'meta_value_num',
+            'order'          => 'ASC',
+        )
+    );
 
-		if ( array_filter( $variations->posts ) ) {
-			if ( array_filter( $variations->posts ) ) {
-			foreach($variations->posts as $p) {
-				$variation = $p;
-				$variation = $variations->posts[0];
+    if ( array_filter( $variations->posts ) ) {
+        if ( array_filter( $variations->posts ) ) {
+            foreach($variations->posts as $p) {
+                $variation = $p;
+                $variation = $variations->posts[0];
 
-				$price_status = get_field( 'hide_price', $variation->ID );
+                $price_status = get_field( 'hide_price', $variation->ID );
 
-				if ( $price_status ) {
-					$hide_price = $price_status;
-					break;
-				}
-			}
-			
-		}
-	}
+                if ( $price_status ) {
+                    $hide_price = $price_status;
+                    break;
+                }
+            }
+            
+        }
+    }
 
     return $hide_price;
 }
@@ -2314,9 +2346,9 @@ function volvo_global_get_model_data($post, $blog_id): array|null
 				'overrideContent'           => $version_override['versionOverrideBlocks'],
 			);
         }
-
-        restore_current_blog();
     }
+
+    restore_current_blog();
 
     return $model;
 }
@@ -2939,7 +2971,7 @@ function volvo_global_get_service_hero_slider(int $blog_id): array
             'thumbnail' => $image_thumb,
         );
 
-        if ( ms_is_switched() ) {
+        if ( $slide->site_ID !== $blog_id ) {
             restore_current_blog();
         }
     }
