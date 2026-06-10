@@ -189,7 +189,10 @@ function volvo_global_blocks_maps( array $raw_data, array $fields_definition, st
                         // Rekurencja
                         $parsed_layout_fields = volvo_global_blocks_maps( $raw_data, $active_layout['sub_fields'], $block_name, $blog_id, $row_prefix );
 
-                        $parsed[ $field_name ][] = $parsed_layout_fields;
+                        $parsed[ $field_name ][] = array_merge(
+                            [ 'acf_fc_layout' => $layout_name ],
+                            $parsed_layout_fields
+                        );
                     }
                 }
             }
