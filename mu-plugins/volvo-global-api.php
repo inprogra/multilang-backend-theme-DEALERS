@@ -857,6 +857,8 @@ function volvo_global_is_authenticated() {
 function volvo_global_get_page($request) {
     $path = $request->get_param('path') ?: '/';
     
+    $time_start = microtime(true);
+
     // Get domain from header or query param
     $domain = isset($_SERVER['HTTP_X_WP_DOMAIN']) ? sanitize_text_field($_SERVER['HTTP_X_WP_DOMAIN']) : '';
     if (empty($domain)) {
@@ -1028,7 +1030,7 @@ function volvo_global_get_page($request) {
         $page = get_page_by_path($path_parts[0]);
 
         if (!$page) {
-            $response['page_404'] = true;
+            $response['page'] = null;
         } else {
 
             if ($blog_id == 36) {
@@ -1050,20 +1052,30 @@ function volvo_global_get_page($request) {
             );
         }
 
-    } elseif (in_array($path_parts[0], ['o-nas', 'about-us'], true)) {
-                
     } else {
         // For other pages, get page by path
         $page = get_page_by_path(ltrim($path, '/'));
         
+        $is_volvo_ms_global_page = false;
+        if (!$page) {
+            $page = volvo_global_get_global_page_by_path(ltrim($path, '/'));
+            $is_volvo_ms_global_page = true;
+        }
+
         if ($page) {
+            if ($is_volvo_ms_global_page) {
+                switch_to_blog(1);
+            }
             $response['page'] = array(
                 'id'             => $page->ID,
                 'title'          => get_the_title($page->ID),
-                'content'        => volvo_global_prepare_content_block($page->post_content, $blog_id),
+                'content'        => volvo_global_prepare_content_block($page->post_content, get_current_blog_id()),
                 'featured_image' => volvo_global_prepare_image(get_post_thumbnail_id($page->ID)),
                 'acf'            => function_exists('get_fields') ? get_fields($page->ID) : array(),
             );
+            if ($is_volvo_ms_global_page) {
+                restore_current_blog();
+            }
         } else {
             $response['page'] = null;
         }
@@ -1081,7 +1093,14 @@ function volvo_global_get_page($request) {
     $response['social_media'] = volvo_global_get_footer_social_madia();
     
     restore_current_blog();
-    
+
+    $time_end = microtime(true);
+    if ($_GET['api-test']) {
+        $response['time'] = $time_end - $time_start;
+        if (defined('APP_START_TIME')) {
+            $response['time_app'] = $time_end - APP_START_TIME;
+        }
+    }
     return new WP_REST_Response($response, 200);
 }
 
