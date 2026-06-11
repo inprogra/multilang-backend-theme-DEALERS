@@ -41,13 +41,13 @@ class GaDashboardController {
 
         if (!$jsonKey) {
             error_log('Brak klucza GA (Google Analytics)');
-            return ['error' => 'Brak klucza GA (Google Analytics)'];
+            return ['error' => __('GA key not found(Google Analytics)', 'partners-site_v2')];
         }
 
         $serviceAccount = json_decode($jsonKey, true);
         if (!isset($serviceAccount['private_key'])) {
             error_log('Błąd: Nieprawidłowy format klucza JSON.');
-            return ['error' => 'Błąd: Nieprawidłowy format klucza JSON.'];
+            return ['error' => __('Error: Invalid JSON key format.', 'partners-site_v2')];
         }
 
         $privateKey = $serviceAccount['private_key'];
@@ -74,7 +74,7 @@ class GaDashboardController {
 
         if (is_wp_error($response)) {
             error_log('Błąd cURL: ' . print_r($response->get_error_messages(), true));
-            return ['error' => 'Błąd cURL: ' . print_r($response->get_error_messages(), true)];
+            return ['error' => __('Error', 'partners-site_v2') . ' cURL: ' . print_r($response->get_error_messages(), true)];
         }
 
         $body = json_decode(wp_remote_retrieve_body($response), true);
@@ -84,7 +84,7 @@ class GaDashboardController {
             return $body['access_token'];
         }
 
-        return ['error' => 'Błąd: Nie udało się uzyskać tokena dostępu'];
+        return ['error' => __('Error: Unable to obtain an access token', 'partners-site_v2')];
     }
 
     public function generate_jwt($assertion, $privateKey) {
@@ -150,20 +150,20 @@ class GaDashboardController {
         $response = wp_remote_post($url, $args);
     
         if (is_wp_error($response)) {
-            return ['error' => 'Błąd cURL: ' . print_r($response->get_error_messages(), true)];
+            return ['error' => __('Error', 'partners-site_v2') . ' cURL: ' . print_r($response->get_error_messages(), true)];
         }
     
         $status_code = wp_remote_retrieve_response_code($response);
     
         if ($status_code !== 200) {
-            return ['error' => 'Błąd: Zapytanie zwróciło niepoprawny status ' . $status_code];
+            return ['error' => __('Error: The request returned an invalid status', 'partners-site_v2') . ' ' . $status_code];
         }
     
         $body = wp_remote_retrieve_body($response);
         $data = json_decode($body, true);
     
         if (isset($data['error'])) {
-            return ['error' => 'Błąd: ' . $data['error']['message']];
+            return ['error' => __('Error', 'partners-site_v2') . ': ' . $data['error']['message']];
         }
     
         return $data;

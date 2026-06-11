@@ -3659,6 +3659,22 @@ msgstr ""
 msgid "Participant deleted successfully."
 msgstr ""
 
+#: includes/controllers/GaDashboardController.class.php:44
+msgid "GA key not found(Google Analytics)"
+msgstr ""
+
+#: includes/controllers/GaDashboardController.class.php:50
+msgid "Error: Invalid JSON key format."
+msgstr ""
+
+#: includes/controllers/GaDashboardController.class.php:87
+msgid "Error: Unable to obtain an access token"
+msgstr ""
+
+#: includes/controllers/GaDashboardController.class.php:159
+msgid "Error: The request returned an invalid status"
+msgstr ""
+
 #: includes/controllers/GaDashboardController.class.php:180
 msgid "Visitor Statistics (Google Analytics)"
 msgstr ""

@@ -3659,6 +3659,22 @@ msgstr "Brak ID uczestnika"
 msgid "Participant deleted successfully."
 msgstr "Uczestnik usunięty poprawnie."
 
+#: includes/controllers/GaDashboardController.class.php:44
+msgid "GA key not found(Google Analytics)"
+msgstr "Brak klucza GA (Google Analytics)"
+
+#: includes/controllers/GaDashboardController.class.php:50
+msgid "Error: Invalid JSON key format."
+msgstr "Błąd: Nieprawidłowy format klucza JSON."
+
+#: includes/controllers/GaDashboardController.class.php:87
+msgid "Error: Unable to obtain an access token"
+msgstr "Błąd: Nie udało się uzyskać tokena dostępu"
+
+#: includes/controllers/GaDashboardController.class.php:159
+msgid "Error: The request returned an invalid status"
+msgstr "Błąd: Zapytanie zwróciło niepoprawny status"
+
 #: includes/controllers/GaDashboardController.class.php:180
 msgid "Visitor Statistics (Google Analytics)"
 msgstr "Statystyki odwiedzin (Google Analytics)"

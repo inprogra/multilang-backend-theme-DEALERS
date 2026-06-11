@@ -3659,6 +3659,22 @@ msgstr "Žádné ID účastníka"
 msgid "Participant deleted successfully."
 msgstr "Účastník byl úspěšně smazán."
 
+#: includes/controllers/GaDashboardController.class.php:44
+msgid "GA key not found(Google Analytics)"
+msgstr "Chybí klíč GA (Google Analytics)"
+
+#: includes/controllers/GaDashboardController.class.php:50
+msgid "Error: Invalid JSON key format."
+msgstr "Chyba: Nesprávný formát klíče JSON."
+
+#: includes/controllers/GaDashboardController.class.php:87
+msgid "Error: Unable to obtain an access token"
+msgstr "Chyba: Nepodařilo se získat přístupový token"
+
+#: includes/controllers/GaDashboardController.class.php:159
+msgid "Error: The request returned an invalid status"
+msgstr "Chyba: Dotaz vrátil nesprávný status"
+
 #: includes/controllers/GaDashboardController.class.php:180
 msgid "Visitor Statistics (Google Analytics)"
 msgstr "Statistiky návštěvnosti (Google Analytics)"
