@@ -323,10 +323,6 @@ function volvo_global_get_block_acf_banner_with_content_overlay (array $block, i
 
     $images = [
         volvo_global_prepare_image_for_render($blog_id, $img_id, ($count_ratio > 1.7 ? 2500 : 2500), ($count_ratio > 1.7 ? 1000 : 1200), $item_url, ($count_ratio > 1.7 ? 'crop' : $crop_image)),
-        volvo_global_prepare_image_for_render($blog_id, $img_id, 1700, false, $item_url, false),
-        volvo_global_prepare_image_for_render($blog_id, $img_id, 1200, null, $item_url, false),
-        volvo_global_prepare_image_for_render($blog_id, $img_id, 900, null, $item_url, false),
-        volvo_global_prepare_image_for_render($blog_id, $img_id, 767, 767, $item_url, 'crop'),
     ];
     
     $images = volvo_global_prepare_images_render($images);
@@ -645,8 +641,6 @@ function volvo_global_get_block_acf_gallery (array $block, int $blog_id)
 
         $images = [
             volvo_global_prepare_image_for_render($blog_id, $img_id, 1920, 1080, $img_url, 'crop', 300, 200, false),
-            volvo_global_prepare_image_for_render($blog_id, $img_id, 1440, null, $img_url, false, 300, 200, false),
-            volvo_global_prepare_image_for_render($blog_id, $img_id, 767, 767, $img_url, 'crop', 300, 200, false),
         ];
 
         $images = volvo_global_prepare_images_render($images);
@@ -703,10 +697,6 @@ function volvo_global_get_block_acf_hero_image (array $block, int $blog_id)
     
     $images = [
         volvo_global_prepare_image_for_render($blog_id, $img_id, ($count_ratio > 1.7 ? 1920 : 1920), ($count_ratio > 1.7 ? 1024 : 1020), $item_url, false),
-        volvo_global_prepare_image_for_render($blog_id, $img_id, 1500, null, $item_url, false),
-        volvo_global_prepare_image_for_render($blog_id, $img_id, 1200, null, $item_url, false),
-        volvo_global_prepare_image_for_render($blog_id, $img_id, 900, null, $item_url, false),
-        volvo_global_prepare_image_for_render($blog_id, $img_id, 767, 767, $item_url, 'crop'),
     ];
         
     $images = volvo_global_prepare_images_render($images);
@@ -774,8 +764,6 @@ function volvo_global_get_block_acf_offer_box (array $block, int $blog_id)
 
                 $images = [
                     volvo_global_prepare_image_for_render($blog_id, $img_id, 288, 162, $itemId, false),
-                    volvo_global_prepare_image_for_render($blog_id, $img_id, 576, 324, $itemId, false),
-                    volvo_global_prepare_image_for_render($blog_id, $img_id, 864, 486, $itemId, 'crop'),
                 ];
                 $getImage = volvo_global_prepare_images_render($images);
             }
@@ -864,7 +852,6 @@ function volvo_global_get_block_acf_offer_cards (array $block, int $blog_id)
         $itemId = wp_get_attachment_url($card['image']);
         $images = [
             volvo_global_prepare_image_for_render($blog_id, $img_id, 472, 275, $itemId, 'crop'),
-            volvo_global_prepare_image_for_render($blog_id, $img_id, 300, 175, $itemId, 'crop'),
         ];
         
         $images = volvo_global_prepare_images_render($images);
@@ -907,9 +894,6 @@ function volvo_global_get_block_acf_preview_component (array $block, int $blog_i
     
     $images = [
         volvo_global_prepare_image_for_render($blog_id, $img_id, 1562, 1024, $item_url, 'fit'),
-        volvo_global_prepare_image_for_render($blog_id, $img_id, 1300, 900, $item_url, 'fit'),
-        volvo_global_prepare_image_for_render($blog_id, $img_id, 1100, 800, $item_url, 'crop'),
-        volvo_global_prepare_image_for_render($blog_id, $img_id, 1300, null, $item_url, 'crop'),
     ];
 
     $images = volvo_global_prepare_images_render($images);
@@ -1084,8 +1068,6 @@ function volvo_global_get_block_acf_two_column_content_component (array $block, 
     
     $images = [
         volvo_global_prepare_image_for_render($blog_id, $img_id, 1300, 850, $item_url, 'crop', 300, 200, false),
-        volvo_global_prepare_image_for_render($blog_id, $img_id, 1200, 700, $item_url, 'crop', 300, 200, false),
-        volvo_global_prepare_image_for_render($blog_id, $img_id, 900, 500, $item_url, 'crop', 300, 200, false),
     ];
 
     $image = volvo_global_prepare_images_render($images);
@@ -1140,13 +1122,9 @@ function volvo_global_get_block_acf_two_image (array $block, int $blog_id)
 
     $image_first = [
         volvo_global_prepare_image_for_render($blog_id, $img_id_first, 1200, 800, $itemId_first, 'crop', 300, 200, false),
-        volvo_global_prepare_image_for_render($blog_id, $img_id_first, 800, 600, $itemId_first, 'crop', 300, 200, false),
-        volvo_global_prepare_image_for_render($blog_id, $img_id_first, 450, 450, $itemId_first, 'crop', 300, 200, false),
     ];
     $image_second = [
         volvo_global_prepare_image_for_render($blog_id, $img_id_second, 1200, 800, $itemId_second, 'crop', 300, 200, false),
-        volvo_global_prepare_image_for_render($blog_id, $img_id_second, 800, 600, $itemId_second, 'crop', 300, 200, false),
-        volvo_global_prepare_image_for_render($blog_id, $img_id_second, 450, 450, $itemId_second, 'crop', 300, 200, false),
     ];
     $image_first = volvo_global_prepare_images_render($image_first);
     $image_second = volvo_global_prepare_images_render($image_second);

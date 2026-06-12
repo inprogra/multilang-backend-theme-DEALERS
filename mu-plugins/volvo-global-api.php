@@ -1329,8 +1329,6 @@ function volvo_global_get_test_drive_index(int $blog_id): array
 
             $images = [
                 volvo_global_prepare_image_for_render($blog_id_current, $img_id, 500, null, $img_url, true),
-                volvo_global_prepare_image_for_render($blog_id_current, $img_id, 700, null, $img_url, true),
-                volvo_global_prepare_image_for_render($blog_id_current, $img_id, 500, null, $img_url, true),
             ];
 
             $images = volvo_global_prepare_images_render($images);
@@ -1428,8 +1426,6 @@ function volvo_global_get_test_drive_model(string $slug, int $blog_id): array
 
                 $images = [
                     volvo_global_prepare_image_for_render($blog_id_current, $img_id, 1024, 600, $img_url, true),
-                    volvo_global_prepare_image_for_render($blog_id_current, $img_id, 700, null, $img_url, true),
-                    volvo_global_prepare_image_for_render($blog_id_current, $img_id, 500, null, $img_url, true),
                 ];
 
                 $images = volvo_global_prepare_images_render($images);
@@ -2067,8 +2063,6 @@ function volvo_global_get_models(int $blog_id): array|null
 						$img_url = wp_get_attachment_url($itemId);
 						$images = [
                             volvo_global_prepare_image_for_render($blog_id, $img_id, 320, 180, $img_url, false),
-                            volvo_global_prepare_image_for_render($blog_id, $img_id, 300, null, $img_url, false),
-                            volvo_global_prepare_image_for_render($blog_id, $img_id, 406, 174, $img_url, 'crop'),
 						];
 						$imagesDesktop = volvo_global_prepare_images_render($images);
 						$imagesMobile = [];
@@ -2433,13 +2427,9 @@ function volvo_global_get_model_data_gallery(array $gallery_ids, int $blog_id): 
 
         $images = [
             volvo_global_prepare_image_for_render($blog_id, $img_id, 1920, 1080, $img_url, false),
-            volvo_global_prepare_image_for_render($blog_id, $img_id, 1440, 700, $img_url, false),
-            volvo_global_prepare_image_for_render($blog_id, $img_id, 1000, null, $img_url, 'crop'),
         ];
         $imagesThumbs = [
             volvo_global_prepare_image_for_render($blog_id, $img_id, 500, 200, $img_url, false),
-            volvo_global_prepare_image_for_render($blog_id, $img_id, 300, 200, $img_url, false),
-            volvo_global_prepare_image_for_render($blog_id, $img_id, 300, null, $img_url, 'crop'),
         ];
         $images = volvo_global_prepare_images_render($images);
         $galleryPictures[] = $images;
@@ -2946,27 +2936,11 @@ function volvo_global_get_service_hero_slider(int $blog_id): array
 
         $images = [
             volvo_global_prepare_image_for_render($blog_id, $img_id, 3840, 1614, $img_url, true),
-            volvo_global_prepare_image_for_render($blog_id, $img_id, 1600, 672, $img_url, true),
-            volvo_global_prepare_image_for_render($blog_id, $img_id, 1366, 574, $img_url, true),
-
-            volvo_global_prepare_image_for_render($blog_id, $img_id, 450, false, $img_url, true),
-            volvo_global_prepare_image_for_render($blog_id, $img_id, 900, false, $img_url, true),
-            volvo_global_prepare_image_for_render($blog_id, $img_id, 1350, false, $img_url, true),
-
-            volvo_global_prepare_image_for_render($blog_id, $img_id, 721, false, $img_url, true),
-            volvo_global_prepare_image_for_render($blog_id, $img_id, 1442, false, $img_url, true),
-            volvo_global_prepare_image_for_render($blog_id, $img_id, 2163, false, $img_url, true),
-
-            volvo_global_prepare_image_for_render($blog_id, $img_id, 959, false, $img_url, true),
-            volvo_global_prepare_image_for_render($blog_id, $img_id, 1918, false, $img_url, true),
-            volvo_global_prepare_image_for_render($blog_id, $img_id, 2877, false, $img_url, true),
         ];
         $image = volvo_global_prepare_images_render($images);
 
         $images_thumb = [
             volvo_global_prepare_image_for_render($blog_id, $img_id, 56, 104, $img_url, true),
-            volvo_global_prepare_image_for_render($blog_id, $img_id, 112, 208, $img_url, true),
-            volvo_global_prepare_image_for_render($blog_id, $img_id, 168, 312, $img_url, true),
         ];
         $image_thumb = volvo_global_prepare_images_render($images_thumb);
 
@@ -3100,8 +3074,6 @@ function volvo_global_get_service_form( int $blog_id, $type = null ): array
 
     $images = [
         volvo_global_prepare_image_for_render($blog_id, $img_id, 392, false, $img_url, true),
-        volvo_global_prepare_image_for_render($blog_id, $img_id, 784, false, $img_url, true),
-        volvo_global_prepare_image_for_render($blog_id, $img_id, 1176, false, $img_url, true),
     ];
     $image = volvo_global_prepare_images_render($images);
 
