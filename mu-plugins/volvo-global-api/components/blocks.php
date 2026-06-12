@@ -987,8 +987,12 @@ function volvo_global_get_block_acf_table_component (array $block, int $blog_id)
         'data' => [
             'color'          => $block['data']['table_color'],
             'blocked_column' => $block['data']['static_header'],
-            'headers'        => ($content['header'] ? $content['header'] : null),
-            'rows'           => ($content['body'] ? $content['body'] : null),
+            'content'        => [
+                'use_header'     => $content['use_header'],
+                'caption'        => $content['caption'],
+                'header'         => ($content['header'] ? $content['header'] : null),
+                'body'           => ($content['body'] ? $content['body'] : null),
+            ],
             //'size'           => ($content['header'] ? count($content['header']) : null),
             'margin'         => volvo_global_get_block_acf_prepare_margin($block['data']),
         ]
