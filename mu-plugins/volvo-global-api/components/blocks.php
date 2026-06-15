@@ -297,35 +297,10 @@ function volvo_global_get_block_acf_banner_with_content_overlay (array $block, i
             $button['url'] = '/dostepne-na-miejscu/#'.$rep[1];
         }
     }
-    
-    $crop_image = 'crop-center';
-    $img_attr = [
-        'crop_image' => $crop_image
-    ];
 
     $img_id = $block['data']['img'];
-    $item_url = wp_get_attachment_url($img_id);
-    $item_url = volvo_global_clear_url($item_url, $blog_id);
-
-    $img_width = 0;
-    $img_height = 0;
     
-    if (file_exists('/var/www/volvocars-partner.pl/partners-site/web' . parse_url($item_url)['path'])) {
-        $img_width = (int) getimagesize('/var/www/volvocars-partner.pl/partners-site/web' . parse_url($item_url)['path'])[0];
-        $img_height = (int) getimagesize('/var/www/volvocars-partner.pl/partners-site/web' . parse_url($item_url)['path'])[1];
-    }
-    
-    $crop_image = $img_attr['crop_image'];
-    
-    $crop_image = ($crop_image ? $crop_image : 'crop-center');
-    
-    $count_ratio = ($img_height > 0 ? $img_width/$img_height : false);
-
-    $images = [
-        volvo_global_prepare_image_for_render($blog_id, $img_id, ($count_ratio > 1.7 ? 2500 : 2500), ($count_ratio > 1.7 ? 1000 : 1200), $item_url, ($count_ratio > 1.7 ? 'crop' : $crop_image)),
-    ];
-    
-    $images = volvo_global_prepare_images_render($images);
+    $images = volvo_global_prepare_image($img_id);
 
     $result = [
         'block_name' => $block['block_name'],
@@ -367,18 +342,8 @@ function volvo_global_get_block_acf_blog_posts_component (array $block, int $blo
                 $img_id = get_post_thumbnail_id(get_the_ID());
             }
             
-            $blog_id = $blog_id;
-            $itemId = wp_get_attachment_url($img_id);
             if ($img_id) {
-                $imagesDesktop['sizes'][] = array(
-                    'width' => (int)getimagesize($itemId)[0],
-                    'height' => (int)getimagesize($itemId)[1],
-                    'image' => $itemId,
-                    'src' => ($full ? $full : 'https://image-render.cloud/api/renderImage?image='.$itemId.'&size=320&img='.$img_id.'&blog_id='.$blog_id),
-                    'full' => ($full ? $full : 'https://image-render.cloud/api/renderImage?image='.$itemId.'&size=320&img='.$img_id.'&blog_id='.$blog_id),
-                    'thumbnail' => ($thumbnail ? $thumbnail : 'https://image-render.cloud/api/renderImage?image='.$itemId.'&size=500&img='.$img_id.'&blog_id='.$blog_id),
-                    'domain' => $itemId,
-                );
+                $imagesDesktop = volvo_global_prepare_image($img_id);
             }
             $post_data = [
                 'heading' => get_the_title(),
@@ -386,13 +351,13 @@ function volvo_global_get_block_acf_blog_posts_component (array $block, int $blo
                 'blog_desc'   => get_field('blog_desc', get_the_ID()),
                 'link' => ['url' => get_permalink()],
                 'date' => get_the_date('d.m.Y'),
-                'description' => get_the_excerpt(),
+                //'description' => get_the_excerpt(),
                 'ctaText' => strtoupper(__('Przeczytaj', 'partners-site_v2'))
             ];
 
-            if (empty($post_data['description'])) {
-                $post_data['description'] = wp_trim_words(get_the_content(), 30, '...');
-            }
+            //if (empty($post_data['description'])) {
+            //    $post_data['description'] = wp_trim_words(get_the_content(), 30, '...');
+            //}
 
             $posts_array[] = $post_data;
         }
@@ -425,6 +390,7 @@ function volvo_global_get_block_acf_blog_post_footer (array $block, int $blog_id
     $author_data = [];
     
     $post_author_id = get_post_field('post_author', get_the_ID());
+    
     if ($post_author_id) {
         $post_author = get_userdata($post_author_id);
 
@@ -678,28 +644,11 @@ function volvo_global_get_block_acf_hero_image (array $block, int $blog_id)
     
     $img_id = $block['data']['img'];
 
-    $item_url = wp_get_attachment_url($img_id);
-    $item_url = volvo_global_clear_url($item_url, $blog_id);
-
-    $img_width = 0;
-    $img_height = 0;
-    
-    if (file_exists('/var/www/volvocars-partner.pl/partners-site/web' . parse_url($item_url)['path'])) {
-        $img_width = (int) getimagesize('/var/www/volvocars-partner.pl/partners-site/web' . parse_url($item_url)['path'])[0];
-        $img_height = (int) getimagesize('/var/www/volvocars-partner.pl/partners-site/web' . parse_url($item_url)['path'])[1];
+    $images = volvo_global_prepare_image($img_id);
+    if ($_GET['acf-block-test']) {
+        print_r($images);exit;
     }
-
-    $crop_image = $img_attr['crop_image'];
-    
-    $crop_image = ($crop_image ? $crop_image : 'crop-center');
-
-    $count_ratio = ($img_height > 0 ? $img_width/$img_height : false);
-    
-    $images = [
-        volvo_global_prepare_image_for_render($blog_id, $img_id, ($count_ratio > 1.7 ? 1920 : 1920), ($count_ratio > 1.7 ? 1024 : 1020), $item_url, false),
-    ];
-        
-    $images = volvo_global_prepare_images_render($images);
+    $images['crop_image'] = $crop_image;
     
     $result = [
         'block_name' => $block['block_name'],

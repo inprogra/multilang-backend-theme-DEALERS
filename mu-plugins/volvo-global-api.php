@@ -954,20 +954,23 @@ function volvo_global_get_page($request) {
         if (count($path_parts) == 1 || ((count($path_parts) === 3) && $path_parts[1] === 'page')) { // index
             volvo_global_set_paged($path_parts);
 
-            $response = array_merge(
-                $response,
-                volvo_global_get_blog_index($path_parts, $blog_id)
-            );
+            $response['page'] = volvo_global_get_blog_index($path_parts, $blog_id);
         
         } else { // item
 
+            global $post;
             $post = get_page_by_path($path_parts[1], OBJECT, 'blog');
 
             if ($post) {
-                $response['id']         = $post->ID;
-                $response['title']      = get_the_title($post->ID);
-                $response['content']    = volvo_global_prepare_content_block($post->post_content, $blog_id);
+                setup_postdata( $post );
 
+                $response['page'] = [
+                    'id'         => $post->ID,
+                    'title'      => get_the_title($post->ID),
+                    'content'    => volvo_global_prepare_content_block($post->post_content, $blog_id)
+                ];
+
+                wp_reset_postdata();
             } else {
                 $response['page_404'] = true;
             }
@@ -1042,6 +1045,8 @@ function volvo_global_get_page($request) {
                 $blog_id = $instance_id;
             }
 
+            setup_postdata( $page );
+
             $response['page'] = array(
                 'instance_id'    => $blog_id,
                 'id'             => $page->ID,
@@ -1050,6 +1055,8 @@ function volvo_global_get_page($request) {
                 'featured_image' => volvo_global_prepare_image(get_post_thumbnail_id($page->ID)),
                 'acf'            => function_exists('get_fields') ? get_fields($page->ID) : array(),
             );
+
+            wp_reset_postdata();
         }
 
     } else {
@@ -1066,6 +1073,9 @@ function volvo_global_get_page($request) {
             if ($is_volvo_ms_global_page) {
                 switch_to_blog(1);
             }
+
+            setup_postdata( $page );
+            
             $response['page'] = array(
                 'id'             => $page->ID,
                 'title'          => get_the_title($page->ID),
@@ -1076,6 +1086,8 @@ function volvo_global_get_page($request) {
             if ($is_volvo_ms_global_page) {
                 restore_current_blog();
             }
+
+            wp_reset_postdata();
         } else {
             $response['page'] = null;
         }
@@ -1247,22 +1259,17 @@ function volvo_global_get_blog_index(array $path, int $blog_id)
     $page = get_page_by_path($path[0]);
             
     if ($page) {
-        global $post;
-        $post = $page;
-        setup_postdata( $post );
+        setup_postdata( $page );
 
         $response = [];
         $response['id']         = $page->ID;
         $response['title']      = get_the_title($page->ID);
 
-        $response['title_1']    = get_field('title_1');
-        $response['title_2']    = get_field('title_2');
-
-        $response = array_merge($response, volvo_global_get_blog_pages($blog_id));
+        $response['content']    = volvo_global_prepare_content_block($page->post_content, $blog_id);
 
         wp_reset_postdata();
     } else {
-        $response['page_404'] = true;
+        $response = null;
     }
 
     return $response;
@@ -1440,8 +1447,12 @@ function volvo_global_get_test_drive_model(string $slug, int $blog_id): array
     $title = '';
     
     if (!empty($test_car)) {
+        setup_postdata( $test_car[0] );
+
         $title = $test_car[0]->post_title;
         $content = volvo_global_prepare_content_block($test_car[0]->post_content, 1);
+
+        wp_reset_postdata();
     }
 
     $source = '';
@@ -2224,6 +2235,9 @@ function volvo_global_get_model_data($post, $blog_id): array|null
 		$featuredCarsOptions = get_field('featured-cars', 'options-global');
 		
 		foreach ( $versions->posts as $version ) {
+
+            setup_postdata( $version );
+
 			$colors = [];
 			$gallery = get_field( 'gallery', $version->ID );
 			$gallery_ids = $gallery;
@@ -2358,6 +2372,8 @@ function volvo_global_get_model_data($post, $blog_id): array|null
 				'content'                   => ($version->post_content) ? volvo_global_prepare_content_block( $version->post_content, $blog_id ) : '', // prepare blocks to view
 				'overrideContent'           => $version_override['versionOverrideBlocks'],
 			);
+
+            wp_reset_postdata();
         }
     }
 
@@ -2386,7 +2402,11 @@ function volvo_global_get_version_override(int $version_id, array $featuredCarsO
 
     $versionOverrideBlocks = [];
     foreach ( $versionOverride->posts as $override ) {
+        setup_postdata( $override );
+
         $versionOverrideBlocks[] = ($override->post_content) ? volvo_global_prepare_content_block( $override->post_content, $blog_id ) : ''; // prepare blocks to view
+
+        wp_reset_postdata();
     }
     
     $stock = new \VGA\Classes\FeaturedCars();
@@ -2690,7 +2710,7 @@ function volvo_global_get_vin_date_year(string $vin): ?int
     }
 
     $client = new \GuzzleHttp\Client();
-    $check_db = new VGA\Classes\CarSpecificationDataImporter($client);
+    $check_db = new \VGA\Classes\CarSpecificationDataImporter($client);
     
     $vin_data = $check_db->getVinomatDol($vin);
     
@@ -3367,6 +3387,8 @@ function volvo_global_get_campaing_page(\WP_Post $post, int $blog_id): array
 		switch_to_blog( $blog_id );
 	}
 
+    setup_postdata( $post );
+
     $content          = volvo_global_prepare_content_block( $post->post_content, get_current_blog_id() );
 	$legalInfoContent = get_field( 'legal-info-content', $post->ID );
 
@@ -3390,8 +3412,12 @@ function volvo_global_get_campaing_page(\WP_Post $post, int $blog_id): array
     }
 
     if (!empty($check_campaign->posts)) {
-        foreach ( $check_campaign->posts as $local_camp ) { 
+        foreach ( $check_campaign->posts as $local_camp ) {
+            setup_postdata( $local_camp );
+
             $content = volvo_global_prepare_content_block( $local_camp->post_content, $blog_id );
+
+            wp_reset_postdata();
         }
     }
 
@@ -3411,7 +3437,11 @@ function volvo_global_get_campaing_page(\WP_Post $post, int $blog_id): array
 
     $additionalContent = [];
     foreach ( $campaignOverride->posts as $override ) {
+        setup_postdata( $override );
+
         $additionalContent[] = volvo_global_prepare_content_block( $override->post_content, $blog_id );
+
+        wp_reset_postdata();
     }
     $additionalContent = array_filter($additionalContent);
 
@@ -3434,15 +3464,19 @@ function volvo_global_get_campaing_page(\WP_Post $post, int $blog_id): array
         $post_title = get_the_title($post->ID);
     }
     
+    wp_reset_postdata();
+    
     restore_current_blog();
     
     return [
-        'id' => $post_id,
-        'title' => $post_title,
-        'sideform' => $side_form,
-        'onepage' => $landing_page,
-        'content'           => $content,
-        'legalInfoContent'  => $legalInfoContent,
-        'additionalContent' => $additionalContent,
+        'page' => [
+            'id' => $post_id,
+            'title' => $post_title,
+            'sideform' => $side_form,
+            'onepage' => $landing_page,
+            'content'           => $content,
+            'legalInfoContent'  => $legalInfoContent,
+            'additionalContent' => $additionalContent,
+        ]
     ];
 }
