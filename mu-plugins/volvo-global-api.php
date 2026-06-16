@@ -1233,12 +1233,8 @@ function volvo_global_get_model_page_item(array $path, int $blog_id) {
         return $response;
     }
 
-    global $post;
-    $post = $page;
-    setup_postdata( $post );
+    setup_postdata( $page );
 
-    volvo_global_set_paged();
-    
     $response['id']     = $page->ID;
     $response['title']  = get_the_title($page->ID);
     $response['model']  = volvo_global_get_model_data($page, $blog_id);

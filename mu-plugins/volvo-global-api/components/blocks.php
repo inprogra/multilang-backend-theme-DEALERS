@@ -404,20 +404,6 @@ function volvo_global_get_block_acf_blog_post_footer (array $block, int $blog_id
 
     $imageId = $block['data']['img'];
     
-    /*
-    $image->addSize( array( 450, null ) );
-    $image->addSize( array( 900, null ) );
-    $image->addSize( array( 1350, null ) );
-
-    $image->addSize( array( 721, null ) );
-    $image->addSize( array( 1442, null ) );
-    $image->addSize( array( 2163, null ) );
-
-    $image->addSize( array( 944, null ) );
-    $image->addSize( array( 1888, null ) );
-    $image->addSize( array( 2832, null ) );
-    */
-
     $image = volvo_global_prepare_image($imageId);
 
     $content = $block['data']['content'];
