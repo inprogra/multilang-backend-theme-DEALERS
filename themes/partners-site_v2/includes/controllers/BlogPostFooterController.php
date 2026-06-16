@@ -62,7 +62,7 @@ class BlogPostFooterController extends Controller {
 					);
 				}
 
-				if ( $contentItem['acf_fc_layout'] === 'link' && isset( $contentItem['link'] ) ) {
+				if ( $contentItem['acf_fc_layout'] === 'link' && isset( $contentItem['link'] ) && is_array($contentItem['link']) ) {
 					$contentItem['link'] = MultisiteFixer::buildLink( $contentItem['link'] );
 				}
 			}
