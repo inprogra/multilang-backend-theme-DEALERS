@@ -361,7 +361,6 @@ function volvo_global_format_slide($slide) {
     $subtitle = get_field('subtitle', $slide_id);
     $link = get_field('link', $slide_id);
     $image_id = get_field('image', $slide_id);
-    
     $formatted_link = volvo_global_build_link($link);
     
     if (!$formatted_link || !array_filter($formatted_link)) {
@@ -957,7 +956,7 @@ function volvo_global_get_page($request) {
             $response['page'] = volvo_global_get_blog_index($path_parts, $blog_id);
         
         } else { // item
-
+            
             global $post;
             $post = get_page_by_path($path_parts[1], OBJECT, 'blog');
 
@@ -2506,9 +2505,9 @@ function volvo_global_block_contact_person(int $person_id): array
     ];
 }
 
-function volvo_global_block_link(?array $content_link)
+function volvo_global_block_link(array|string|null $content_link)
 {
-    if (!is_null($content_link) && !empty($content_link) && is_array($content_link) && !empty($content_link)) {
+    if (!is_null($content_link) && !empty($content_link) && is_array($content_link)) {
         $result = volvo_global_build_link($content_link);
 
         if (strpos($result['url'], '---') !== false) {

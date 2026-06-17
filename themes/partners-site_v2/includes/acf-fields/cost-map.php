@@ -1,6 +1,6 @@
 <?php
 
-use Classes\CarDictionary;
+// use Classes\CarDictionary;
 
 if ( function_exists( 'acf_add_local_field_group' ) ) :
 
@@ -42,7 +42,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						'class' => '',
 						'id'    => '',
 					),
-					'choices'           => CarDictionary::getModels('elektryczne'),
+					'choices'           => [], //CarDictionary::getModels('elektryczne'),
 					'default_value'     => false,
 					'allow_null'        => 1,
 					'multiple'          => 0,
@@ -65,7 +65,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						'class' => '',
 						'id' => '',
 					),
-					'choices' => CarDictionary::getVersions(),
+					'choices' => [], //CarDictionary::getVersions(),
 					'default_value' => false,
 					'return_format' => 'value',
 					'multiple' => 0,

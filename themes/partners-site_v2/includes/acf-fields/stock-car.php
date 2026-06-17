@@ -1,11 +1,11 @@
 <?php
 
-use Classes\CarDictionary;
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Exception\GuzzleException;
-$post_id = (isset($_GET['post']) ? $_GET['post'] : null);
-$dictionary = new CarDictionary(new GuzzleHttp\Client());
+// use Classes\CarDictionary;
+// use GuzzleHttp\Client;
+// use GuzzleHttp\Exception\ClientException;
+// use GuzzleHttp\Exception\GuzzleException;
+// $post_id = (isset($_GET['post']) ? $_GET['post'] : null);
+// $dictionary = new CarDictionary(new GuzzleHttp\Client());
 if (function_exists('acf_add_local_field_group')):
 
 	
@@ -120,7 +120,7 @@ if (function_exists('acf_add_local_field_group')):
 						'class' => '',
 						'id' => '',
 					),
-					'default_value' => CarDictionary::getPno12(),
+					'default_value' => '', //CarDictionary::getPno12(),
 					'placeholder' => '',
 					'prepend' => '',
 					'append' => '',
@@ -447,7 +447,7 @@ if (function_exists('acf_add_local_field_group')):
 						'class' => '',
 						'id' => '',
 					),
-					'choices' => CarDictionary::getVersions(),
+					'choices' => [], //CarDictionary::getVersions(),
 					'default_value' => false,
 					'allow_null' => 1,
 					'multiple' => 0,
@@ -470,7 +470,7 @@ if (function_exists('acf_add_local_field_group')):
 						'class' => '',
 						'id' => '',
 					),
-					'choices' => CarDictionary::getModelCategories(),
+					'choices' => [], //CarDictionary::getModelCategories(),
 					'default_value' => false,
 					'allow_null' => 1,
 					'multiple' => 0,
@@ -493,7 +493,7 @@ if (function_exists('acf_add_local_field_group')):
 						'class' => '',
 						'id' => '',
 					),
-					'choices' => CarDictionary::getModels(),
+					'choices' => [], //CarDictionary::getModels(),
 					'default_value' => false,
 					'allow_null' => 1,
 					'multiple' => 0,
@@ -516,7 +516,7 @@ if (function_exists('acf_add_local_field_group')):
 						'class' => '',
 						'id' => '',
 					),
-					'choices' => CarDictionary::getColors(),
+					'choices' => [], //CarDictionary::getColors(),
 					'default_value' => false,
 					'allow_null' => 1,
 					'multiple' => 0,
@@ -539,7 +539,7 @@ if (function_exists('acf_add_local_field_group')):
 						'class' => '',
 						'id' => '',
 					),
-					'choices' => CarDictionary::getEngines(),
+					'choices' => [], //CarDictionary::getEngines(),
 					'default_value' => false,
 					'allow_null' => 1,
 					'multiple' => 0,
@@ -562,7 +562,7 @@ if (function_exists('acf_add_local_field_group')):
 						'class' => '',
 						'id' => '',
 					),
-					'choices' => CarDictionary::getInlays(),
+					'choices' => [], //CarDictionary::getInlays(),
 					'default_value' => false,
 					'allow_null' => 1,
 					'multiple' => 0,
@@ -585,7 +585,7 @@ if (function_exists('acf_add_local_field_group')):
 						'class' => '',
 						'id' => '',
 					),
-					'choices' => CarDictionary::getGearboxes(),
+					'choices' => [], //CarDictionary::getGearboxes(),
 					'default_value' => false,
 					'allow_null' => 1,
 					'multiple' => 0,
@@ -1092,8 +1092,8 @@ if (function_exists('acf_add_local_field_group')):
 						'class' => '',
 						'id' => '',
 					),
-					'choices' => $dictionary->filterLeaseOffer($post_id),
-					'default_value' => $dictionary->getDefaultValue($post_id,'leasing'),
+					'choices' => [], //$dictionary->filterLeaseOffer($post_id),
+					'default_value' => '', //$dictionary->getDefaultValue($post_id,'leasing'),
 					'allow_null' => 1,
 					'multiple' => 0,
 					'ui' => 0,
@@ -1122,8 +1122,8 @@ if (function_exists('acf_add_local_field_group')):
 						'class' => '',
 						'id' => '',
 					),
-					'choices' => $dictionary->filterNajemOffer($post_id),
-					'default_value' => $dictionary->getDefaultValue($post_id,'najem'),
+					'choices' => [], //$dictionary->filterNajemOffer($post_id),
+					'default_value' => '', //$dictionary->getDefaultValue($post_id,'najem'),
 					'allow_null' => 1,
 					'multiple' => 0,
 					'ui' => 0,
@@ -1152,8 +1152,8 @@ if (function_exists('acf_add_local_field_group')):
 						'class' => '',
 						'id' => '',
 					),
-					'choices' => $dictionary->getAttractionSettings( 'leasing' ),
-					'default_value' => $dictionary->getAttractionDefault('leasing'),
+					'choices' => [], //$dictionary->getAttractionSettings( 'leasing' ),
+					'default_value' => '', //$dictionary->getAttractionDefault('leasing'),
 					'allow_null' => 1,
 					'multiple' => 0,
 					'ui' => 0,
@@ -1191,8 +1191,8 @@ if (function_exists('acf_add_local_field_group')):
 							),
 						),
 					),
-					'choices' => $dictionary->getAttractionSettings( 'najem' ),
-					'default_value' => $dictionary->getAttractionDefault('najem'),
+					'choices' => [], //$dictionary->getAttractionSettings( 'najem' ),
+					'default_value' => '', //$dictionary->getAttractionDefault('najem'),
 					'allow_null' => 1,
 					'multiple' => 0,
 					'ui' => 0,

@@ -413,8 +413,7 @@ function volvo_global_get_block_acf_blog_post_footer (array $block, int $blog_id
             if (array_key_exists('contact-info', $contentItem)) {
                 $contentItem['contactPerson'] = volvo_global_block_contact_person($contentItem['contact-info']);
             }
-
-        
+            
             if (array_key_exists('link', $contentItem)) {
                 $contentItem['link'] = volvo_global_block_link($contentItem['link']);
             }

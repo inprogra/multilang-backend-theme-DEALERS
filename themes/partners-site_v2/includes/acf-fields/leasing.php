@@ -1,9 +1,9 @@
 <?php
-use Classes\CarDictionary;
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Exception\GuzzleException;
-$dictionary = new CarDictionary( new GuzzleHttp\Client() );
+// use Classes\CarDictionary;
+// use GuzzleHttp\Client;
+// use GuzzleHttp\Exception\ClientException;
+// use GuzzleHttp\Exception\GuzzleException;
+// $dictionary = new CarDictionary( new GuzzleHttp\Client() );
 
 if ( function_exists( 'acf_add_local_field_group' ) ) {
 	acf_add_local_field_group(
@@ -91,7 +91,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								'class' => '',
 								'id' => '',
 							),
-							'choices' => $dictionary->getModels(),
+							'choices' => [], //$dictionary->getModels(),
 							'default_value' => false,
 							'return_format' => 'value',
 							'multiple' => 1,
@@ -164,7 +164,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								'class' => '',
 								'id'    => '',
 							),
-							'choices'           => $dictionary->getLeasingOffer(),
+							'choices'           => [], //$dictionary->getLeasingOffer(),
 							'default_value'     => false,
 							'allow_null'        => 0,
 							'multiple'          => 0,
@@ -186,7 +186,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								'class' => '',
 								'id'    => '',
 							),
-							'choices'           => $dictionary->getAttractionSettings( 'leasing' ),
+							'choices'           => [], //$dictionary->getAttractionSettings( 'leasing' ),
 							'default_value'     => false,
 							'allow_null'        => 0,
 							'multiple'          => 0,
@@ -208,7 +208,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								'class' => '',
 								'id'    => '',
 							),
-							'choices'           => $dictionary->getAttractionSettings( 'leasing', 'installments' ),
+							'choices'           => [], //$dictionary->getAttractionSettings( 'leasing', 'installments' ),
 							'default_value'     => false,
 							'allow_null'        => 0,
 							'multiple'          => 0,
@@ -230,7 +230,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								'class' => '',
 								'id'    => '',
 							),
-							'choices'           => $dictionary->getAttractionSettings( 'leasing', 'entityFee' ),
+							'choices'           => [], //$dictionary->getAttractionSettings( 'leasing', 'entityFee' ),
 							'default_value'     => false,
 							'allow_null'        => 0,
 							'multiple'          => 0,
@@ -252,7 +252,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								'class' => '',
 								'id'    => '',
 							),
-							'choices'           => $dictionary->getAttractionSettings( 'leasing', 'entityFee' ),
+							'choices'           => [], //$dictionary->getAttractionSettings( 'leasing', 'entityFee' ),
 							'default_value'     => false,
 							'allow_null'        => 0,
 							'multiple'          => 1,
@@ -274,7 +274,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								'class' => '',
 								'id'    => '',
 							),
-							'choices'           => $dictionary->getAttractionSettings( 'leasing', 'installments' ),
+							'choices'           => [], //$dictionary->getAttractionSettings( 'leasing', 'installments' ),
 							'default_value'     => false,
 							'allow_null'        => 0,
 							'multiple'          => 1,
@@ -364,7 +364,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								'class' => '',
 								'id' => '',
 							),
-							'choices' => $dictionary->getModels(),
+							'choices' => [], //$dictionary->getModels(),
 							'default_value' => false,
 							'return_format' => 'value',
 							'multiple' => 1,
@@ -437,7 +437,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								'class' => '',
 								'id'    => '',
 							),
-							'choices'           => $dictionary->getNajemOffer(),
+							'choices'           => [], //$dictionary->getNajemOffer(),
 							'default_value'     => false,
 							'allow_null'        => 0,
 							'multiple'          => 0,
@@ -459,7 +459,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								'class' => '',
 								'id'    => '',
 							),
-							'choices'           => $dictionary->getAttractionSettings( 'najem' ),
+							'choices'           => [], //$dictionary->getAttractionSettings( 'najem' ),
 							'default_value'     => false,
 							'allow_null'        => 0,
 							'multiple'          => 0,
@@ -481,7 +481,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								'class' => '',
 								'id'    => '',
 							),
-							'choices'           => $dictionary->getAttractionSettings( 'najem', 'installments' ),
+							'choices'           => [], //$dictionary->getAttractionSettings( 'najem', 'installments' ),
 							'default_value'     => false,
 							'allow_null'        => 0,
 							'multiple'          => 0,
@@ -503,7 +503,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								'class' => '',
 								'id'    => '',
 							),
-							'choices'           => $dictionary->getAttractionSettings( 'najem', 'entityFee' ),
+							'choices'           => [], //$dictionary->getAttractionSettings( 'najem', 'entityFee' ),
 							'default_value'     => false,
 							'allow_null'        => 0,
 							'multiple'          => 0,
@@ -525,7 +525,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								'class' => '',
 								'id'    => '',
 							),
-							'choices'           => $dictionary->getAttractionSettings( 'najem', 'entityFee' ),
+							'choices'           => [], //$dictionary->getAttractionSettings( 'najem', 'entityFee' ),
 							'default_value'     => false,
 							'allow_null'        => 0,
 							'multiple'          => 1,
@@ -547,7 +547,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								'class' => '',
 								'id'    => '',
 							),
-							'choices'           => $dictionary->getAttractionSettings( 'najem', 'installments' ),
+							'choices'           => [], //$dictionary->getAttractionSettings( 'najem', 'installments' ),
 							'default_value'     => false,
 							'allow_null'        => 0,
 							'multiple'          => 1,

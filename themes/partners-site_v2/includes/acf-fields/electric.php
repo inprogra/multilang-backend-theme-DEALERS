@@ -1,11 +1,11 @@
 <?php
-use Classes\CarDictionary;
-use Classes\Showroom;
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Exception\GuzzleException;
-$showroom = new \Classes\Showroom();
-$dictionary = new CarDictionary( new GuzzleHttp\Client() );
+//use Classes\CarDictionary;
+//use Classes\Showroom;
+//use GuzzleHttp\Client;
+//use GuzzleHttp\Exception\ClientException;
+//use GuzzleHttp\Exception\GuzzleException;
+//$showroom = new \Classes\Showroom();
+//$dictionary = new CarDictionary( new GuzzleHttp\Client() );
 
 if ( function_exists( 'acf_add_local_field_group' ) ) {
 	acf_add_local_field_group(

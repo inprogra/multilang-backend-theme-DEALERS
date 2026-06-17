@@ -1,11 +1,11 @@
 <?php
-use Classes\CarDictionary;
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Exception\GuzzleException;
-use Classes\IconsDictionary;
+// use Classes\CarDictionary;
+// use GuzzleHttp\Client;
+// use GuzzleHttp\Exception\ClientException;
+// use GuzzleHttp\Exception\GuzzleException;
+// use Classes\IconsDictionary;
 
-$dictionary = new CarDictionary( new GuzzleHttp\Client() );
+// $dictionary = new CarDictionary( new GuzzleHttp\Client() );
 $years = [
     '1' => '1+',
     '2' => '2+',
@@ -250,7 +250,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								'class' => '',
 								'id'    => '',
 							),
-							'choices'           => $dictionary->getVinomatBoxes(),
+							'choices'           => [], //$dictionary->getVinomatBoxes(),
 							'default_value'     => false,
 							'allow_null'        => 0,
 							'multiple'          => 1,
@@ -433,7 +433,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								'class' => '',
 								'id'    => '',
 							),
-							'choices'           => IconsDictionary::getIcons(),
+							'choices'           => [], //IconsDictionary::getIcons(),
 							'default_value'     => false,
 							'allow_null'        => 0,
 							'multiple'          => 0,

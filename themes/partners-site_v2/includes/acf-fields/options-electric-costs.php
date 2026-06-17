@@ -1,9 +1,9 @@
 <?php
-use Classes\CarDictionary;
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Exception\GuzzleException;
-$dictionary = new CarDictionary( new GuzzleHttp\Client() );
+// use Classes\CarDictionary;
+// use GuzzleHttp\Client;
+// use GuzzleHttp\Exception\ClientException;
+// use GuzzleHttp\Exception\GuzzleException;
+// $dictionary = new CarDictionary( new GuzzleHttp\Client() );
 
 if ( function_exists( 'acf_add_local_field_group' ) ) {
 	acf_add_local_field_group(
@@ -220,7 +220,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								'class' => '',
 								'id'    => '',
 							),
-							'choices'           => $dictionary->getModels('electric'),
+							'choices'           => [], //$dictionary->getModels('electric'),
 							'default_value'     => false,
 							'allow_null'        => 0,
 							'multiple'          => 0,
@@ -242,7 +242,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								'class' => '',
 								'id'    => '',
 							),
-							'choices'           => $dictionary->getEngines(),
+							'choices'           => [], //$dictionary->getEngines(),
 							'default_value'     => false,
 							'allow_null'        => 0,
 							'multiple'          => 0,
@@ -343,7 +343,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								'class' => '',
 								'id' => '',
 							),
-							'choices' => $dictionary->getModels('electric'),
+							'choices' => [], //$dictionary->getModels('electric'),
 							'default_value' => false,
 							'return_format' => 'value',
 							'multiple' => 0,
@@ -366,7 +366,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								'class' => '',
 								'id' => '',
 							),
-							'choices' => CarDictionary::getVersions(),
+							'choices' => [], //CarDictionary::getVersions(),
 							'default_value' => false,
 							'return_format' => 'value',
 							'multiple' => 0,
@@ -389,7 +389,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								'class' => '',
 								'id' => '',
 							),
-							'choices' => $dictionary->getEngines(true),
+							'choices' => [], //$dictionary->getEngines(true),
 							'default_value' => array(
 							),
 							'return_format' => 'value',
@@ -431,7 +431,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								'class' => '',
 								'id'    => '',
 							),
-							'choices'           => $dictionary->getModels('electric'),
+							'choices'           => [], //$dictionary->getModels('electric'),
 							'default_value'     => false,
 							'allow_null'        => 0,
 							'multiple'          => 0,
@@ -453,7 +453,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 								'class' => '',
 								'id'    => '',
 							),
-							'choices'           => $dictionary->getEngines(),
+							'choices'           => [], //$dictionary->getEngines(),
 							'default_value'     => false,
 							'allow_null'        => 0,
 							'multiple'          => 0,

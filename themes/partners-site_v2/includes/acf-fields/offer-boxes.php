@@ -1,6 +1,6 @@
 <?php
 
-use Classes\IconsDictionary;
+// use Classes\IconsDictionary;
 
 if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
@@ -109,7 +109,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								'class' => '',
 								'id'    => '',
 							),
-							'choices'           => IconsDictionary::getIcons(),
+							'choices'           => [], //IconsDictionary::getIcons(),
 							'default_value'     => false,
 							'allow_null'        => 0,
 							'multiple'          => 0,
