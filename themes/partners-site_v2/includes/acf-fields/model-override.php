@@ -8,7 +8,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 			'fields'                => array(
 				array(
 					'key'               => 'field_604f1fef287ca',
-					'label'             => __( 'Model', 'partners-site_v2' ),
+					'label'             => __('Model', 'partners-site_v2'),
 					'name'              => 'model',
 					'type'              => 'network_post_object',
 					'instructions' => __('The model under which this page\'s content will be displayed', 'partners-site_v2'),

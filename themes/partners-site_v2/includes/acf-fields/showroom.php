@@ -1001,13 +1001,13 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key' => 'field_department_3_title',
-							'label' => __('New Cars', 'partners-site_v2'),
+							'label' => __('New cars', 'partners-site_v2'),
 							'name' => 'department_3_title',
 							'type' => 'message',
 						),
 						array(
 							'key' => 'field_department_3_name',
-							'label' => __('New Cars', 'partners-site_v2'),
+							'label' => __('New cars', 'partners-site_v2'),
 							'name' => 'department_3_name',
 							'type' => 'text',
 							'default_value' => 'samochody_nowe', 

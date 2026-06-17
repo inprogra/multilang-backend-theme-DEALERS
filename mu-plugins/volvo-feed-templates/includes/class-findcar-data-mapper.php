@@ -166,7 +166,7 @@ class FindCar_Data_Mapper
         $car = $this->get_car_data($car_id);
         
         if (!$car) {
-            return new WP_Error('findcar_map_error', 'Nie znaleziono samochodu');
+            return new WP_Error('findcar_map_error', __('Car not found', 'volvo-feed-templates'));
         }
 
         $listing = [];
@@ -179,7 +179,7 @@ class FindCar_Data_Mapper
                 'originalName' => $model_name,
             ];
         } else {
-            return new WP_Error('findcar_map_error', 'Brak modelu samochodu');
+            return new WP_Error('findcar_map_error', __('No car model', 'volvo-feed-templates'));
         }
 
         $production_year = get_field('production-year', $car_id);
@@ -226,7 +226,7 @@ class FindCar_Data_Mapper
         if (!empty($images)) {
             $listing['mediaUrls'] = $images;
         } else {
-            return new WP_Error('findcar_map_error', 'Brak zdjęć samochodu');
+            return new WP_Error('findcar_map_error', __('No photos of the car', 'volvo-feed-templates'));
         }
 
         $drive = get_field('driveType', $car_id);
@@ -372,16 +372,16 @@ class FindCar_Data_Mapper
         }
 
         if (empty($listing['contentBody'])) {
-            return new WP_Error('findcar_map_error', 'Brak treści ogłoszenia (contentBody)');
+            return new WP_Error('findcar_map_error', __('No offer content (contentBody)', 'volvo-feed-templates'));
         }
         if (empty($listing['engineCapacityCc'])) {
-            return new WP_Error('findcar_map_error', 'Brak pojemności silnika (engineCapacityCc)');
+            return new WP_Error('findcar_map_error', __('No engine capacity (engineCapacityCc)', 'volvo-feed-templates'));
         }
         if (empty($listing['enginePowerHp'])) {
-            return new WP_Error('findcar_map_error', 'Brak mocy silnika (enginePowerHp)');
+            return new WP_Error('findcar_map_error', __('No engine power (enginePowerHp)', 'volvo-feed-templates'));
         }
         if (empty($listing['bodyType'])) {
-            return new WP_Error('findcar_map_error', 'Brak typu nadwozia (bodyType)');
+            return new WP_Error('findcar_map_error', __('No car body type (bodyType)', 'volvo-feed-templates'));
         }
 
         $listing = apply_filters('findcar_map_car_to_listing', $listing, $car_id);
@@ -460,16 +460,16 @@ class FindCar_Data_Mapper
     public function get_required_fields()
     {
         return [
-            'model' => 'Model samochodu',
-            'production-year' => 'Rok produkcji',
-            'regular-price' => 'Cena',
-            'images' => 'Zdjęcia',
-            'gallery' => 'Galeria zdjęć',
-            'fuel-type' => 'Rodzaj paliwa',
-            'engine_type' => 'Rodzaj paliwa',
-            'gearbox' => 'Skrzynia biegów',
-            'driveType' => 'Napęd',
-            'color' => 'Kolor',
+            'model' => __('Car model', 'volvo-feed-templates'),
+            'production-year' => __('Year of manufacture', 'volvo-feed-templates'),
+            'regular-price' => __('Price', 'volvo-feed-templates'),
+            'images' => __('Photos', 'volvo-feed-templates'),
+            'gallery' => __('Photo Gallery', 'volvo-feed-templates'),
+            'fuel-type' => __('Fuel Type', 'volvo-feed-templates'),
+            'engine_type' => __('Fuel Type', 'volvo-feed-templates'),
+            'gearbox' => __('Transmission', 'volvo-feed-templates'),
+            'driveType' => __('Drive', 'volvo-feed-templates'),
+            'color' => __('Color', 'volvo-feed-templates'),
         ];
     }
 

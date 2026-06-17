@@ -4,7 +4,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_603d0aedba030',
-			'title'                 => __( 'BannerWithContentOverlay', 'partners-site_v2' ),
+			'title'                 => __('BannerWithContentOverlay', 'partners-site_v2'),
 			'fields'                => array(
 				array(
 					'key'               => 'field_603d0af8e3731',
@@ -92,7 +92,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 				),
 				array(
 					'key'               => 'field_603d0b25e3734',
-					'label'             => __( 'Link', 'partners-site_v2' ),
+					'label'             => __('Link', 'partners-site_v2'),
 					'name'              => 'link',
 					'type'              => 'link',
 					'instructions'      => '',

@@ -1,0 +1,646 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-25 15:34+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: includes/class-feed-template.php:403 includes/class-feed-template.php:461
+msgid "No permissions"
+msgstr "Chybí oprávnění"
+
+#: includes/class-feed-template.php:410
+msgid "Incorrect data"
+msgstr "Nesprávné údaje"
+
+#: includes/class-feed-template.php:414
+msgid "The feed name is required"
+msgstr "Název kanál je povinný"
+
+#: includes/class-feed-template.php:426
+msgid "Feed saved successfully"
+msgstr "Kanál byl úspěšně uložen"
+
+#: includes/class-feed-template.php:428
+msgid "The feed could not be saved"
+msgstr "Kanál se nepodařilo uložit"
+
+#: includes/class-feed-template.php:444 includes/class-feed-template.php:489
+msgid "The feed ID is required"
+msgstr "ID kanálu je povinné"
+
+#: includes/class-feed-template.php:450
+msgid "Feed successfully deleted"
+msgstr "Kanál byl úspěšně smazán"
+
+#: includes/class-feed-template.php:452
+msgid "The feed could not be deleted"
+msgstr "Kanál se nepodařilo smazat"
+
+#: includes/class-feed-template.php:469
+msgid "The feed ID and new name are required"
+msgstr "ID kanálu a nový název jsou povinné"
+
+#: includes/class-feed-template.php:475
+msgid "Feed copied successfully"
+msgstr "Kanál byl úspěšně zkopírován"
+
+#: includes/class-feed-template.php:477
+msgid "The feed could not be copied"
+msgstr "Kanál se nepodařilo zkopírovat"
+
+#: includes/class-feed-template.php:495
+msgid "Feed not found"
+msgstr "Kanál nebyl nalezen"
+
+#: includes/class-feed-template.php:511
+msgid "ID"
+msgstr "ID"
+
+#: includes/class-feed-template.php:512
+msgid "Title"
+msgstr "Název"
+
+#: includes/class-feed-template.php:513
+msgid "Description"
+msgstr "Popis"
+
+#: includes/class-feed-template.php:514
+#: includes/class-findcar-data-mapper.php:465
+msgid "Price"
+msgstr "Cena"
+
+#: includes/class-feed-template.php:515
+msgid "Promotional price"
+msgstr "Akční cena"
+
+#: includes/class-feed-template.php:516
+msgid "Main photo"
+msgstr "Hlavní fotografie"
+
+#: includes/class-feed-template.php:517
+msgid "All photos"
+msgstr "Všechny fotografie"
+
+#: includes/class-feed-template.php:518
+msgid "Link"
+msgstr "Odkaz"
+
+#: includes/class-feed-template.php:519
+msgid "Brand"
+msgstr "Značka"
+
+#: includes/class-feed-template.php:520
+msgid "Model"
+msgstr "Model"
+
+#: includes/class-feed-template.php:521
+msgid "Version"
+msgstr "Verze"
+
+#: includes/class-feed-template.php:522
+msgid "Year"
+msgstr "Rok"
+
+#: includes/class-feed-template.php:523
+#: includes/class-findcar-data-mapper.php:464
+msgid "Year of manufacture"
+msgstr "Rok výroby"
+
+#: includes/class-feed-template.php:524
+msgid "Mileage"
+msgstr "Najeto"
+
+#: includes/class-feed-template.php:525
+#: includes/class-findcar-data-mapper.php:468
+#: includes/class-findcar-data-mapper.php:469
+msgid "Fuel Type"
+msgstr "Typ paliva"
+
+#: includes/class-feed-template.php:526
+#: includes/class-findcar-data-mapper.php:470
+msgid "Transmission"
+msgstr "Převodovka"
+
+#: includes/class-feed-template.php:527
+msgid "Drivetrain"
+msgstr "Pohonná jednotka"
+
+#: includes/class-feed-template.php:528
+#: includes/class-findcar-data-mapper.php:471
+msgid "Drive"
+msgstr "Pohon"
+
+#: includes/class-feed-template.php:529
+msgid "Car body type"
+msgstr "Typ karoserie"
+
+#: includes/class-feed-template.php:530
+#: includes/class-findcar-data-mapper.php:472
+msgid "Color"
+msgstr "Barva"
+
+#: includes/class-feed-template.php:531
+msgid "Number of doors"
+msgstr "Počet dveří"
+
+#: includes/class-feed-template.php:532
+msgid "Engine"
+msgstr "Motor"
+
+#: includes/class-feed-template.php:533
+msgid "Power"
+msgstr "Výkon"
+
+#: includes/class-feed-template.php:534
+msgid "Power (HP)"
+msgstr "Výkon (HP)"
+
+#: includes/class-feed-template.php:535
+msgid "VIN"
+msgstr "VIN"
+
+#: includes/class-feed-template.php:536
+msgid "Offer number"
+msgstr "Číslo nabídky"
+
+#: includes/class-feed-template.php:537
+msgid "Category"
+msgstr "Kategorie"
+
+#: includes/class-feed-template.php:538
+msgid "Dealer name"
+msgstr "Jméno prodejce"
+
+#: includes/class-feed-template.php:539
+msgid "Dealer's phone number"
+msgstr "Telefonní číslo prodejce"
+
+#: includes/class-feed-template.php:540
+msgid "Dealer location"
+msgstr "Umístění prodejce"
+
+#: includes/class-feed-template.php:541
+msgid "Dealer ID"
+msgstr "ID prodejce"
+
+#: includes/class-feed-template.php:542
+msgid "Showroom"
+msgstr "Showroom"
+
+#: includes/class-feed-template.php:543
+msgid "Currency"
+msgstr "Měna"
+
+#: includes/class-feed-template.php:544
+msgid "Featured"
+msgstr "Vybrané"
+
+#: includes/class-feed-template.php:545
+#: volvo-feed-templates.php:340
+msgid "Car type"
+msgstr "Typ vozu"
+
+#: includes/class-findcar-acf-fields.php:18
+msgid "Synchronization FindCar.pl"
+msgstr "Synchronizace FindCar.pl"
+
+#: includes/class-findcar-acf-fields.php:39
+msgid "Sync with FindCar.pl"
+msgstr "Synchronizovat s FindCar.pl"
+
+#: includes/class-findcar-acf-fields.php:42
+msgid "Check this box to send this car to FindCar.pl"
+msgstr "Zaškrtněte toto políčko, chcete-li odeslat tento vůz na FindCar.pl"
+
+#: includes/class-findcar-acf-fields.php:53
+#: includes/class-findcar-acf-fields.php:197
+#: includes/class-findcar-acf-fields.php:224
+msgid "Enabled"
+msgstr "Povoleno"
+
+#: includes/class-findcar-acf-fields.php:54
+#: includes/class-findcar-acf-fields.php:198
+#: includes/class-findcar-acf-fields.php:225
+msgid "Disabled"
+msgstr "Zakázáno"
+
+#: includes/class-findcar-acf-fields.php:58
+msgid "Offer ID FindCar"
+msgstr "ID nabídky FindCar"
+
+#: includes/class-findcar-acf-fields.php:75
+msgid "Offer number FindCar"
+msgstr "Číslo nabídky FindCar"
+
+#: includes/class-findcar-acf-fields.php:92
+msgid "FindCar URL"
+msgstr "URL FindCar"
+
+#: includes/class-findcar-acf-fields.php:109
+msgid "Last sync"
+msgstr "Poslední synchronizace"
+
+#: includes/class-findcar-acf-fields.php:126
+#: includes/class-findcar-admin.php:64 includes/class-findcar-admin.php:113
+msgid "Synchronization error"
+msgstr "Chyba synchronizace"
+
+#: includes/class-findcar-acf-fields.php:146
+msgid "FindCar.pl"
+msgstr "FindCar.pl"
+
+#: includes/class-findcar-acf-fields.php:167
+msgid "Settings"
+msgstr "Nastavení"
+
+#: includes/class-findcar-acf-fields.php:183
+msgid "Enable integration"
+msgstr "Povolit integraci"
+
+#: includes/class-findcar-acf-fields.php:186
+msgid "Enable car synchronization with FindCar.pl"
+msgstr "Povolit synchronizaci vozů s FindCar.pl"
+
+#: includes/class-findcar-acf-fields.php:202
+msgid "Automatic synchronization"
+msgstr "Automatická synchronizace"
+
+#: includes/class-findcar-acf-fields.php:205
+msgid "Automatically sync cars after publication"
+msgstr "Automaticky synchronizovat vozy po zveřejnění"
+
+#: includes/class-findcar-acf-fields.php:229
+msgid "API key"
+msgstr "API klíč"
+
+#: includes/class-findcar-acf-fields.php:232
+msgid "FindCar.pl API key"
+msgstr "API klíč FindCar.pl"
+
+#: includes/class-findcar-acf-fields.php:252
+#: includes/class-findcar-acf-fields.php:255
+msgid "Location authorization token"
+msgstr "Token autorizace polohy"
+
+#: includes/class-findcar-acf-fields.php:275
+msgid "Location ID"
+msgstr "ID polohy"
+
+#: includes/class-findcar-acf-fields.php:278
+msgid "Location ID in FindCar.pl"
+msgstr "ID polohy ve FindCar.pl"
+
+#: includes/class-findcar-acf-fields.php:298
+msgid "New inventory IDs"
+msgstr "ID nových vozů"
+
+#: includes/class-findcar-acf-fields.php:301
+msgid "Vehicle identification number for new cars"
+msgstr "Identifikační číslo vozidla pro nové vozy"
+
+#: includes/class-findcar-acf-fields.php:313
+msgid "Used inventory ID"
+msgstr "ID ojetých vozů"
+
+#: includes/class-findcar-acf-fields.php:316
+msgid "Vehicle identification number for used cars"
+msgstr "Identifikační číslo vozidla pro ojeté vozy"
+
+#: includes/class-findcar-acf-fields.php:328
+msgid "Connection status"
+msgstr "Stav připojení"
+
+#: includes/class-findcar-acf-fields.php:352
+msgid "Status"
+msgstr "Stav"
+
+#: includes/class-findcar-acf-fields.php:369
+#: includes/class-findcar-acf-fields.php:388
+msgid "Test connection"
+msgstr "Otestovat připojení"
+
+#: includes/class-findcar-acf-fields.php:394
+msgid "Synchronize all"
+msgstr "Synchronizovat vše"
+
+#: includes/class-findcar-acf-fields.php:413
+#: includes/class-findcar-admin.php:68
+#: includes/class-findcar-sync-manager.php:70
+#: volvo-feed-templates.php:350
+msgid "Preview"
+msgstr "Náhled"
+
+#: includes/class-findcar-acf-fields.php:413
+msgid "Synchronize all cars"
+msgstr "Synchronizovat všechny vozy"
+
+#: includes/class-findcar-admin.php:59
+msgid "Connection testing..."
+msgstr "Testování připojení..."
+
+#: includes/class-findcar-admin.php:60
+#: includes/class-findcar-api-client.php:182
+msgid "Active connection"
+msgstr "Aktivní připojení"
+
+#: includes/class-findcar-admin.php:61
+#: includes/class-findcar-sync-manager.php:688
+msgid "Connection error"
+msgstr "Chyba připojení"
+
+#: includes/class-findcar-admin.php:62
+msgid "Synchronization..."
+msgstr "Synchronizace..."
+
+#: includes/class-findcar-admin.php:63
+msgid "Synchronized"
+msgstr "Synchronizováno"
+
+#: includes/class-findcar-admin.php:65
+msgid "Enabling..."
+msgstr "Povolení..."
+
+#: includes/class-findcar-admin.php:66
+msgid "Synchronization is enabled"
+msgstr "Synchronizace je povolena"
+
+#: includes/class-findcar-admin.php:67
+msgid "Error"
+msgstr "Chyba"
+
+#: includes/class-findcar-admin.php:69
+msgid "Loading..."
+msgstr "Načítání..."
+
+#: includes/class-findcar-admin.php:111
+#: includes/class-findcar-admin.php:113
+#: includes/class-findcar-sync-manager.php:325
+msgid "Missing required fields"
+msgstr "Chybí povinná pole"
+
+#: includes/class-findcar-api-client.php:189
+msgid "An unexpected response"
+msgstr "Neočekávaná odpověď"
+
+#: includes/class-findcar-api-client.php:205
+#: includes/class-findcar-api-client.php:235
+msgid "Failed to retrieve the location"
+msgstr "Nepodařilo se načíst polohu"
+
+#: includes/class-findcar-api-client.php:220
+msgid "Unable to retrieve dealer data"
+msgstr "Nelze načíst údaje o prodejci"
+
+#: includes/class-findcar-api-client.php:250
+msgid "The dictionaries could not be downloaded"
+msgstr "Slovníky se nepodařilo stáhnout"
+
+#: includes/class-findcar-api-client.php:265
+msgid "Unable to retrieve brands and models"
+msgstr "Nelze načíst značky a modely"
+
+#: includes/class-findcar-api-client.php:287
+#: includes/class-findcar-api-client.php:309
+msgid "Offer could not be created"
+msgstr "Nabídku nebylo možné vytvořit"
+
+#: includes/class-findcar-api-client.php:330
+msgid "Offer could not be updated"
+msgstr "Nabídku nebylo možné aktualizovat"
+
+#: includes/class-findcar-api-client.php:347
+msgid "Offer could not be deleted"
+msgstr "Nabídku nebylo možné smazat"
+
+#: includes/class-findcar-api-client.php:365
+msgid "Offer was not found"
+msgstr "Nabídka nebyla nalezena"
+
+#: includes/class-findcar-api-client.php:368
+msgid "Offer could not be downloaded"
+msgstr "Nabídku nebylo možné stáhnout"
+
+#: includes/class-findcar-api-client.php:390
+msgid "The new car quote could not be created"
+msgstr "Nelze vytvořit nabídku nového vozu"
+
+#: includes/class-findcar-api-client.php:412
+msgid "The used car listing could not be created"
+msgstr "Nelze vytvořit nabídku ojetého vozu"
+
+#: includes/class-findcar-data-mapper.php:169
+msgid "Car not found"
+msgstr "Vozidlo nebylo nalezeno"
+
+#: includes/class-findcar-data-mapper.php:182
+msgid "No car model"
+msgstr "Žádný model vozu"
+
+#: includes/class-findcar-data-mapper.php:229
+msgid "No photos of the car"
+msgstr "Žádné fotografie vozu"
+
+#: includes/class-findcar-data-mapper.php:375
+msgid "No offer content (contentBody)"
+msgstr "Žádný obsah nabídky (contentBody)"
+
+#: includes/class-findcar-data-mapper.php:378
+msgid "No engine capacity (engineCapacityCc)"
+msgstr "Žádný objem motoru (engineCapacityCc)"
+
+#: includes/class-findcar-data-mapper.php:381
+msgid "No engine power (enginePowerHp)"
+msgstr "Žádný výkon motoru (enginePowerHp)"
+
+#: includes/class-findcar-data-mapper.php:384
+msgid "No car body type (bodyType)"
+msgstr "Žádný typ karoserie (bodyType)"
+
+#: includes/class-findcar-data-mapper.php:463
+msgid "Car model"
+msgstr "Model vozu"
+
+#: includes/class-findcar-data-mapper.php:466
+msgid "Photos"
+msgstr "Fotografie"
+
+#: includes/class-findcar-data-mapper.php:467
+msgid "Photo Gallery"
+msgstr "Fotogalerie"
+
+#: includes/class-findcar-sync-manager.php:69
+msgid "Send to FindCar"
+msgstr "Odeslat do FindCar"
+
+#: includes/class-findcar-sync-manager.php:193
+msgid "API key is required"
+msgstr "Je vyžadován klíč API"
+
+#: includes/class-findcar-sync-manager.php:307
+#: includes/class-findcar-sync-manager.php:798
+msgid "The car is not included in FindCar synchronization"
+msgstr "Vozidlo není zahrnuto v synchronizaci FindCar"
+
+#: includes/class-findcar-sync-manager.php:320
+#: includes/class-findcar-sync-manager.php:439
+#: includes/class-findcar-sync-manager.php:764
+msgid "No credentials"
+msgstr "Žádné přihlašovací údaje"
+
+#: includes/class-findcar-sync-manager.php:425
+msgid "No showroom"
+msgstr "Žádný showroom"
+
+#: includes/class-findcar-sync-manager.php:444
+msgid "No offer ID"
+msgstr "Žádné ID nabídky"
+
+#: includes/class-findcar-sync-manager.php:522
+msgid "FindCar integration is not enabled for this showroom"
+msgstr "Integrace FindCar není pro tento showroom povolena"
+
+#: includes/class-findcar-sync-manager.php:659
+#: includes/class-findcar-sync-manager.php:707
+msgid "FindCar integration is not enabled"
+msgstr "Integrace FindCar není povolena"
+
+#: includes/class-findcar-sync-manager.php:664
+msgid "No API key"
+msgstr "Žádný klíč API"
+
+#: includes/class-findcar-sync-manager.php:737
+msgid "Integration is not enabled"
+msgstr "Integrace není povolena"
+
+#: includes/class-findcar-sync-manager.php:878
+msgid "Brak ID samochodu"
+msgstr "Chybějící ID vozidla"
+
+#: includes/class-findcar-sync-manager.php:898
+msgid "No showroom ID"
+msgstr "Žádné ID showroomu"
+
+#: includes/class-findcar-sync-manager.php:934
+msgid "No cars selected"
+msgstr "Nebyly vybrány žádné vozy"
+
+#: volvo-feed-templates.php:82
+#, php-format
+msgid "FindCar: %d synchronized, errors: %d, skipped: %d. %s"
+msgstr "FindCar: %d synchronizováno, chyby: %d, přeskočeno: %d. %s"
+
+#: volvo-feed-templates.php:86
+#, php-format
+msgid "FindCar: %d cars have been successfully synchronized."
+msgstr "FindCar: %d vozidel bylo úspěšně synchronizováno."
+
+#: volvo-feed-templates.php:286 volvo-feed-templates.php:287
+#: volvo-feed-templates.php:332
+msgid "Product feeds"
+msgstr "Produktové kanály"
+
+#: volvo-feed-templates.php:296 volvo-feed-templates.php:297
+#: volvo-feed-templates.php:332 volvo-feed-templates.php:352
+msgid "My feeds"
+msgstr "Moje kanály"
+
+#: volvo-feed-templates.php:333
+msgid "Create feed"
+msgstr "Vytvořit kanál"
+
+#: volvo-feed-templates.php:334
+msgid "Edit feed"
+msgstr "Upravit kanál"
+
+#: volvo-feed-templates.php:335
+msgid "Delete"
+msgstr "Odstranit"
+
+#: volvo-feed-templates.php:336
+msgid "Copy"
+msgstr "Kopírovat"
+
+#: volvo-feed-templates.php:337
+msgid "Feed name"
+msgstr "Název kanálu"
+
+#: volvo-feed-templates.php:338
+msgid "Slug (URL)"
+msgstr "Slug (URL)"
+
+#: volvo-feed-templates.php:339
+msgid "Format"
+msgstr "Formát"
+
+#: volvo-feed-templates.php:341
+msgid "Used"
+msgstr "Používaný"
+
+#: volvo-feed-templates.php:342
+msgid "New"
+msgstr "Nový"
+
+#: volvo-feed-templates.php:343
+msgid "Both"
+msgstr "Obojí"
+
+#: volvo-feed-templates.php:344
+msgid "CSV"
+msgstr "CSV"
+
+#: volvo-feed-templates.php:345
+msgid "XML"
+msgstr "XML"
+
+#: volvo-feed-templates.php:346
+msgid "Fields"
+msgstr "Pole"
+
+#: volvo-feed-templates.php:347
+msgid "Save"
+msgstr "Uložit"
+
+#: volvo-feed-templates.php:348
+msgid "Cancel"
+msgstr "Zrušit"
+
+#: volvo-feed-templates.php:349
+msgid "Copy URL"
+msgstr "Kopírovat URL"
+
+#: volvo-feed-templates.php:351
+msgid "Global feeds"
+msgstr "Globální kanály"
+
+#: volvo-feed-templates.php:353
+msgid "Available feeds"
+msgstr "Dostupné kanály"
+
+#: volvo-feed-templates.php:354
+msgid "No feeds found"
+msgstr "Nebyly nalezeny žádné kanály"
+
+#: volvo-feed-templates.php:355
+msgid "Are you sure you want to delete this feed?"
+msgstr "Opravdu chcete tento kanál odstranit?"
+
+#: volvo-feed-templates.php:356
+msgid "URL copied to clipboard"
+msgstr "URL zkopírováno do schránky"
+
+#: volvo-feed-templates.php:388
+msgid "This plugin requires WordPress Multisite to be enabled."
+msgstr "Tento plugin vyžaduje, aby byla povolena funkce WordPress Multisite."

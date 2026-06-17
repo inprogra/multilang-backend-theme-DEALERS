@@ -23,10 +23,28 @@ add_action('muplugins_loaded', function() {
     }
 }, 1);
 
-// if (!is_user_logged_in()) {
 $GLOBALS['ident'] = get_current_blog_id();
 $GLOBALS['disable_dol'] = false;
-// }
+
+// Early exit for REST API, custom API, and AJAX requests - skip template loading
+$is_rest_request = (isset($_SERVER['REQUEST_URI']) && strpos($_SERVER['REQUEST_URI'], '/wp-json/') === 0);
+$is_api_request = (isset($_SERVER['REQUEST_URI']) && strpos($_SERVER['REQUEST_URI'], '/api/') === 0);
+$is_ajax_request = (defined('DOING_AJAX') && DOING_AJAX);
+
+if ($is_rest_request || $is_api_request || $is_ajax_request) {
+    // Only load the minimum files needed for REST/API/AJAX endpoints
+    // Classes are autoloaded via Composer classmap - no explicit includes needed
+    require_once get_template_directory() . '/includes/post-types.php';    // Register post types for WP_Query
+    require_once get_template_directory() . '/includes/helpers/helpers.php'; // Utility functions
+    require_once get_template_directory() . '/includes/multisite-fixes.php'; // MultisiteFixer hooks
+    require_once get_template_directory() . '/includes/redirections.php';    // Redirections + validateQuery
+    require_once get_template_directory() . '/includes/cache.php';           // Cache class
+    require_once get_template_directory() . '/includes/api.php';             // Custom REST endpoints
+    require_once get_template_directory() . '/includes/ajax.php';            // AJAX handlers
+    // ACF plugin is loaded as mu-plugin - get_field() works without theme acf.php
+    return; // Skip all template/admin includes below
+}
+
 use Classes\Controller;
 use Classes\CarDictionary;
 use Classes\Redirections;
@@ -49,8 +67,7 @@ new DolCarsAdmin();
 
 add_action('init', function() {
     $controller = new \Controllers\GaDashboardController();
-    $controller->init(); 
-     
+    $controller->init();
 });
 // if (get_current_blog_id() === 21) { 
 
@@ -370,7 +387,206 @@ add_action('rest_api_init', function () {
         'callback' => 'get_site_info',
         'permission_callback' => '__return_true'
     ));
+
+    register_rest_route('volvo/v1', '/employees/(?P<blog_id>\d+)', array(
+        'methods' => 'GET',
+        'callback' => 'get_employees_by_blog_id',
+        'permission_callback' => '__return_true'
+    ));
+
+    register_rest_route('volvo/v1', '/dealer-info', array(
+        'methods' => 'GET',
+        'callback' => 'get_dealer_info',
+        'permission_callback' => '__return_true'
+    ));
 });
+
+/**
+ * Get employees by blog ID
+ */
+function get_employees_by_blog_id($request) {
+    $blog_id = $request->get_param('blog_id');
+
+    if (!$blog_id) {
+        return new \WP_Error('missing_param', 'Blog ID is required', array('status' => 400));
+    }
+
+    switch_to_blog($blog_id);
+
+    $employees = array();
+    $employee_categories = get_terms([
+        'taxonomy' => 'employee_category',
+        'hide_empty' => false,
+    ]);
+
+    $showrooms = new \WP_Query(array(
+        'post_type' => 'showroom',
+        'post_status' => 'publish',
+        'posts_per_page' => -1,
+    ));
+
+    foreach ($showrooms->posts as $showroom) {
+        $slug = get_post_field('post_name', $showroom->ID);
+        $showroom_name = get_field('name', $showroom->ID);
+        $departments_hours = get_field('departments_hours', $showroom->ID);
+
+        foreach ($employee_categories as $category) {
+            $query_args = array(
+                'post_type' => 'employee',
+                'posts_per_page' => -1,
+                'meta_query' => array(
+                    array(
+                        'key' => 'category',
+                        'value' => $category->term_id,
+                        'compare' => '='
+                    ),
+                    array(
+                        'key' => 'showroom',
+                        'value' => $showroom->ID,
+                        'compare' => '='
+                    )
+                )
+            );
+
+            $showroom_employees = new \WP_Query($query_args);
+
+            if ($showroom_employees->have_posts()) {
+                $category_hours = array(
+                    'week' => array(
+                        'from' => get_field('week_from', 'employee_category_' . $category->term_id) ?: '',
+                        'to' => get_field('week_to', 'employee_category_' . $category->term_id) ?: ''
+                    ),
+                    'saturday' => array(
+                        'from' => get_field('saturday_from', 'employee_category_' . $category->term_id) ?: '',
+                        'to' => get_field('saturday_to', 'employee_category_' . $category->term_id) ?: ''
+                    )
+                );
+
+                $category_employees = array();
+                foreach ($showroom_employees->posts as $employee) {
+                    $category_employees[] = array(
+                        'name' => get_field('name', $employee->ID) . ' ' . get_field('surname', $employee->ID),
+                        'position' => get_field('position', $employee->ID),
+                        'phone' => get_field('phone', $employee->ID),
+                        'email' => get_field('email', $employee->ID)
+                    );
+                }
+
+                $employees[] = array(
+                    'name' => get_field('name', $employee->ID) . ' ' . get_field('surname', $employee->ID),
+                    'position' => get_field('position', $employee->ID),
+                    'phone' => get_field('phone', $employee->ID),
+                    'email' => get_field('email', $employee->ID),
+                    'category' => $category->name,
+                    'showroom' => $slug,
+                    'showroom_name' => $showroom_name,
+                    'category_hours' => $category_hours
+                );
+            }
+        }
+    }
+
+    restore_current_blog();
+
+    return $employees;
+}
+
+/**
+ * Get dealer info for contact page
+ */
+function get_dealer_info() {
+    switch_to_blog(MultisiteFixer::getCurrentBlogId());
+
+    $dealer_name = get_field('name', 'options-dealer') ?: get_option('dealer_name', '');
+    $dealer_address = get_field('address', 'options-dealer') ?: array();
+    $dealer_phone = get_option('dealer_phone', '');
+
+    $showrooms = array();
+    $showrooms_and_services = Showroom::getShowroomsAndServices();
+
+    if (is_array($showrooms_and_services) && !empty($showrooms_and_services)) {
+        foreach ($showrooms_and_services as $showroom_id) {
+            $has_showroom = get_field('has-showroom', $showroom_id);
+            $has_service = get_field('has-service', $showroom_id);
+
+            $showroom_info = array(
+                'name' => get_field('name', $showroom_id),
+                'address' => get_field('address', $showroom_id),
+                'phone' => get_field('address', $showroom_id)['phone'] ?: ''
+            );
+
+            if ($has_showroom) {
+                $showroom_open_hours = get_field('showroom-open-hours', $showroom_id);
+                $showroom_info['salon_hours'] = '';
+                if ($showroom_open_hours) {
+                    $showroom_info['salon_hours'] = '<p>Poniedziałek - Piątek <strong>' . $showroom_open_hours['monday-friday']['from'] . '-' . $showroom_open_hours['monday-friday']['to'] . '</strong></p>';
+                    if (!empty($showroom_open_hours['saturday']['from'])) {
+                        $showroom_info['salon_hours'] .= '<p>Sobota <strong>' . $showroom_open_hours['saturday']['from'] . '-' . $showroom_open_hours['saturday']['to'] . '</strong></p>';
+                    }
+                }
+            }
+
+            if ($has_service) {
+                $service_open_hours = get_field('service-open-hours', $showroom_id);
+                $showroom_info['service_hours'] = '';
+                if ($service_open_hours) {
+                    $showroom_info['service_hours'] = '<p>Poniedziałek - Piątek <strong>' . $service_open_hours['monday-friday']['from'] . '-' . $service_open_hours['monday-friday']['to'] . '</strong></p>';
+                }
+            }
+
+            $showrooms[] = $showroom_info;
+        }
+    }
+
+    restore_current_blog();
+
+    $primary_showroom = !empty($showrooms) ? $showrooms[0] : null;
+
+    $address_html = '';
+    if (!empty($primary_showroom['address'])) {
+        $addr = $primary_showroom['address'];
+        $address_parts = array();
+        if (!empty($addr['street'])) $address_parts[] = $addr['street'];
+        if (!empty($addr['city'])) $address_parts[] = $addr['city'];
+        if (!empty($addr['zip-code'])) $address_parts[] = $addr['zip-code'];
+        $address_html = '<p>' . implode(' / ', $address_parts) . '</p>';
+    }
+
+    return array(
+        'dealer_name' => $dealer_name,
+        'address' => $address_html,
+        'phone' => $primary_showroom['phone'] ?: $dealer_phone,
+        'salon_hours' => $primary_showroom['salon_hours'] ?: '',
+        'service_hours' => $primary_showroom['service_hours'] ?: ''
+    );
+}
+
+/**
+ * Get header menu items
+ */
+function getHeaderMenu() {
+    $menu = new \Classes\Menu('header');
+    $items = $menu->getItems();
+    return $items ?? array();
+}
+
+/**
+ * Get side navigation menu items
+ */
+function getSideNavMenu() {
+    $menu = new \Classes\Menu('side-nav');
+    $items = $menu->getItems();
+    return $items ?? array();
+}
+
+/**
+ * Get footer menu items
+ */
+function getFooterMenu() {
+    $menu = new \Classes\Menu('footer');
+    $items = $menu->getItems();
+    return $items ?? array();
+}
 
 /**
  * Get complete site information
@@ -466,7 +682,14 @@ add_action('network_admin_menu', 'rudr_network_settings_pages');
 function rudr_network_settings_pages()
 {
 
-    add_menu_page('Eventy', 'Eventy', 'manage_network_options', 'event-page', 'event_cb', 'dashicons-airplane');
+    add_menu_page(
+        __('Events', 'partners-site_v2'),
+        __('Events', 'partners-site_v2'),
+        'manage_network_options',
+        'event-page',
+        'event_cb',
+        'dashicons-airplane'
+    );
 
     //add_submenu_page( 'themes.php', 'More settings', 'More settings', 'manage_network_options', 'more-settings', 'more_settings_cb' );
 
@@ -542,7 +765,7 @@ function validateQuery($request)
 
         foreach ($blog_ids as $v) {
             switch_to_blog($v);
-            $title_of_the_page  = 'Szukaj';
+            $title_of_the_page  = __('Search', 'partners-site_v2');
             $content = '';
             $parent_id = null;
             //		exit();
@@ -946,7 +1169,7 @@ add_action('parse_request', function ($query) {
         $hash = $_POST['o'];
         $user = wp_get_current_user();
         if (!$mfa) {
-            exit('Wystąpił błąd spróbuj zalogować sie ponownie');
+            exit(__('An error has occurred. Please try logging in again.', 'partners-site_v2'));
         }
         $user_token = get_the_author_meta('mfa_token', $user->ID);
         if ($mfa == '11111' && $user->ID == 165) {
@@ -1906,22 +2129,22 @@ function register_stock_cars_custom_dashboard_widget()
 {
     wp_add_dashboard_widget(
         'my_stock_cars_custom_dashboard_widget',
-        'Ostatnie 10 pojazdów modyfikowanych',
+        __('Recent 10 modified vehicles', 'partners-site_v2'),
         'my_stock_cars_custom_dashboard_widget_display'
     );
     wp_add_dashboard_widget(
         'my_campaign_custom_dashboard_widget',
-        'Ostatnie Kampanie',
+        __('Recent Campaigns', 'partners-site_v2'),
         'my_campaign_custom_dashboard_widget_display'
     );
     wp_add_dashboard_widget(
         'my_lead_custom_dashboard_widget',
-        'Ostatnie Leady',
+        __('Recent Leads', 'partners-site_v2'),
         'my_lead_custom_dashboard_widget_display'
     );
     wp_add_dashboard_widget(
         'my_blog_custom_dashboard_widget',
-        'Blog',
+        __('Blog', 'partners-site_v2'),
         'my_blog_custom_dashboard_widget_display'
     );
 }
@@ -1944,8 +2167,8 @@ function my_blog_custom_dashboard_widget_display()
             echo '<td>' . esc_html(get_the_title()) . '</td>';
             echo '<td></td>';
             echo '<td>' . get_the_date() . '</td>';
-            echo '<td><a target="_blank" href="' . get_edit_post_link() . '">Edytuj</a></td>';
-            echo '<td><a target="_blank" href="' . get_permalink() . '">Zobacz</a></td>';
+            echo '<td><a target="_blank" href="' . get_edit_post_link() . '">' . __('Edit', 'partners-site_v2') . '</a></td>';
+            echo '<td><a target="_blank" href="' . get_permalink() . '">' . __('View', 'partners-site_v2') . '</a></td>';
             echo '</tr>';
         }
         echo '</table>';
@@ -1963,15 +2186,15 @@ function my_lead_custom_dashboard_widget_display()
         ]
     );
     if ($latest_stock->have_posts()) {
-        echo '<table class="table table-flip-color">';
+        echo '<table class="table table-flip-color" style="max-width: 100%">';
         while ($latest_stock->have_posts()) {
             echo '<tr>';
             $latest_stock->the_post();
-            echo '<td>' . get_field('originUrl') . '</td>';
+            echo '<td style="overflow-wrap: break-word;word-break: break-word; max-width: 70%">' . get_field('originUrl') . '</td>';
             echo '<td>' . get_field('source') . '</td>';
             echo '<td>' . get_the_date() . '</td>';
-            echo '<td><a target="_blank" href="' . get_edit_post_link() . '">Edytuj</a></td>';
-            // echo '<td><a target="_blank" href="' . get_permalink() . '">Zobacz</a></td>';
+            echo '<td><a target="_blank" href="' . get_edit_post_link() . '">' . __('Edit', 'partners-site_v2') . '</a></td>';
+            // echo '<td><a target="_blank" href="' . get_permalink() . '">' . __('View', 'partners-site_v2') . '</a></td>';
             echo '</tr>';
         }
         echo '</table>';
@@ -1994,8 +2217,8 @@ function my_campaign_custom_dashboard_widget_display()
             echo '<tr>';
             $latest_stock->the_post();
             echo '<td>' . esc_html(get_the_title()) . '</td>';
-            echo '<td><a target="_blank" href="' . get_edit_post_link() . '">Edytuj</a></td>';
-            echo '<td><a target="_blank" href="' . get_permalink() . '">Zobacz</a></td>';
+            echo '<td><a target="_blank" href="' . get_edit_post_link() . '">' . __('Edit', 'partners-site_v2') . '</a></td>';
+            echo '<td><a target="_blank" href="' . get_permalink() . '">' . __('View', 'partners-site_v2') . '</a></td>';
             echo '</tr>';
         }
         echo '</table>';
@@ -2018,8 +2241,8 @@ function my_stock_cars_custom_dashboard_widget_display()
             echo '<tr>';
             $latest_stock->the_post();
             echo '<td>' . esc_html(get_the_title()) . '</td>';
-            echo '<td><a target="_blank" href="' . get_edit_post_link() . '">Edytuj</a></td>';
-            echo '<td><a target="_blank" href="' . get_permalink() . '">Zobacz</a></td>';
+            echo '<td><a target="_blank" href="' . get_edit_post_link() . '">' . __('Edit', 'partners-site_v2') . '</a></td>';
+            echo '<td><a target="_blank" href="' . get_permalink() . '">' . __('View', 'partners-site_v2') . '</a></td>';
             echo '</tr>';
         }
         echo '</table>';
@@ -2065,13 +2288,13 @@ function my_show_extra_profile_fields($user)
     <table class="form-table">
         <tr>
             <th><label for="phone">Numer telefonu</label><?php if (!get_the_author_meta('phone', $user->ID)) {
-                                                                echo '<div style="color:red;">POLE WYMAGANE</div>';
+                                                                echo '<div style="color:red;">' . mb_strtoupper(__('Required field', 'partners-site_v2')) . '</div>';
                                                             } ?></th>
             <td>
                 <input type="text" name="phone" id="phone"
                     value="<?php echo esc_attr(get_the_author_meta('phone', $user->ID)); ?>" class="regular-text"
                     required /><br />
-                <span class="description">Podaj numer telefonu.</span>
+                <span class="description"><?php esc_html_e('Enter your phone number.', 'partners-site_v2'); ?></span>
             </td>
         </tr>
     </table>
@@ -2111,7 +2334,7 @@ function custom_login_redirect($redirect_to, $request, $user)
             $params = array(
                 'to' => $check_phone, //numery odbiorców rozdzielone przecinkami
                 'from' => 'VolvoCarsPL', //pole nadawcy stworzone w https://ssl.smsapi.pl/sms_settings/sendernames
-                'message' => 'Twój jednorazowy kod do zalogowania się do strony: ' . $random_number, //treść wiadomości
+                'message' => __('Your one-time code to log in to the website', 'partners-site_v2') . ': ' . $random_number, //treść wiadomości
                 'encoding' => 'UTF-8',
                 'format' => 'json'
             );
@@ -2251,7 +2474,7 @@ add_action('init', function() {
             exit;
         } else {
             status_header(404);
-            echo 'Plik nie znaleziony.';
+            echo __('File not found.', 'partners-site_v2');
             exit;
         }
     }
@@ -2347,10 +2570,10 @@ function static_html_admin_bar_menu($admin_bar) {
 
     $admin_bar->add_menu([
         'id' => 'regenerate-static-html',
-        'title' => 'Regeneruj HTML',
+        'title' => __('Regenerate HTML', 'partners-site_v2'),
         'href' => '#',
         'meta' => [
-            'title' => 'Regeneruj statyczne pliki HTML dla wszystkich stron'
+            'title' => __('Regenerate static HTML files for all pages', 'partners-site_v2')
         ]
     ]);
 }
@@ -2373,14 +2596,14 @@ function static_html_ajax_regenerate() {
         // Regenerate for all sites
         $generator->scheduleBackgroundGeneration();
         wp_send_json_success([
-            'message' => 'Zaplanowano regenerację dla wszystkich dealerów w tle'
+            'message' => __('A regeneration job has been scheduled for all dealers in the background', 'partners-site_v2')
         ]);
     } else {
         // Regenerate for current site
         $results = $generator->generateAllPagesForSite($blog_id);
         wp_send_json_success([
             'message' => sprintf(
-                'Wygenerowano %d stron, błędów: %d',
+                __('%d pages generated, errors: %d', 'partners-site_v2'),
                 $results['success'],
                 $results['failed']
             ),
@@ -2400,13 +2623,13 @@ function static_html_admin_scripts() {
         $('#wp-admin-bar-regenerate-static-html a').on('click', function(e) {
             e.preventDefault();
             
-            if (!confirm('Czy na pewno chcesz zregenerować statyczne pliki HTML?')) {
+            if (!confirm(<?php echo json_encode(__('Are you sure you want to regenerate the static HTML files?', 'partners-site_v2')); ?>)) {
                 return;
             }
 
             var $link = $(this);
             var originalText = $link.text();
-            $link.text('Regenerowanie...');
+            $link.text(<?php echo json_encode(__('Regenerating...', 'partners-site_v2')); ?>);
 
             $.ajax({
                 url: ajaxurl,
@@ -2419,12 +2642,12 @@ function static_html_admin_scripts() {
                     if (response.success) {
                         alert(response.data.message);
                     } else {
-                        alert('Błąd: ' + response.data.message);
+                        alert(<?php echo json_encode(__('Error', 'partners-site_v2')); ?> + ': ' + response.data.message);
                     }
                     $link.text(originalText);
                 },
                 error: function() {
-                    alert('Wystąpił błąd podczas regeneracji');
+                    alert(<?php echo json_encode(__('An error occurred during regeneration', 'partners-site_v2')); ?>);
                     $link.text(originalText);
                 }
             });
@@ -2567,8 +2790,8 @@ add_filter('acf/prepare_field', function ($field) {
             return [
                 'type'    => 'message',
                 'key'     => 'field_global_message_' . $row_index,
-                'label'   => 'Informacja',
-                'message' => 'Ten slot kampanii został ustawiony globalnie przez administratora',
+                'label'   => __('Information', 'partners-site_v2'),
+                'message' => __('This campaign slot has been set globally by the administrator', 'partners-site_v2'),
                 'wrapper' => [
                     'class' => 'acf-global-message',
                     'width' => '',

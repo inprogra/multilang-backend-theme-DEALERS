@@ -22,7 +22,7 @@ class Campaign {
 
 	public function limitPermissionsForPostType( $current_screen ): void {
 		if ( is_main_site() && $this->isCampaignOverridePostType( $current_screen ) ) {
-			echo 'Brak uprawnień';
+			esc_html_e('No permissions', 'partners-site_v2');
 			/** @noinspection ForgottenDebugOutputInspection */
 			wp_die();
 		}

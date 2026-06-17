@@ -377,3 +377,315 @@ function volvo_format_hours($hours) {
         'to' => $hours['to'] ?? '',
     );
 }
+
+/**
+ * Switch to blog based on domain
+ *
+ * @param string|null $domain Domain to switch to (optional)
+ * @return int|null Blog ID that was switched to, or null if not found
+ */
+function volvo_switch_to_blog_by_domain($domain = null) {
+    if (empty($domain)) {
+        $domain = $_SERVER['HTTP_HOST'] ?? '';
+    }
+    $domain = strtolower($domain);
+
+    $blogs = wp_get_sites();
+    $exclude_blogs = [3, 38];
+
+    foreach ($blogs as $blog) {
+        if (in_array($blog['blog_id'], $exclude_blogs)) {
+            continue;
+        }
+
+        $blog_domain = strtolower($blog['domain']);
+
+        if ($blog_domain !== $domain) {
+            continue;
+        }
+
+        switch_to_blog($blog['blog_id']);
+        return $blog['blog_id'];
+    }
+
+    return null;
+}
+
+/**
+ * Get employees for contact page (grouped by category)
+ * Falls back to direct ACF field grouping when taxonomy doesn't exist
+ *
+ * @param WP_REST_Request|null $request REST request object (optional, for backwards compatibility)
+ */
+function volvo_get_employees($request = null) {
+    $domain = null;
+    if ($request !== null && method_exists($request, 'get_param')) {
+        $domain = $request->get_param('domain');
+    }
+
+    $blog_id = volvo_switch_to_blog_by_domain($domain);
+    if ($blog_id === null) {
+        $blog_id = get_current_blog_id();
+        switch_to_blog($blog_id);
+    }
+
+    // First try to get employee categories from taxonomy
+    $employee_categories = get_terms([
+        'taxonomy' => 'employee_category',
+        'hide_empty' => false,
+    ]);
+
+    $showrooms = get_posts([
+        'post_type' => 'showroom',
+        'post_status' => 'publish',
+        'posts_per_page' => -1,
+    ]);
+
+    $showroom_name = '';
+    if (!empty($showrooms)) {
+        $showroom_name = get_field('name', $showrooms[0]->ID) ?: '';
+    }
+
+    // If no categories from taxonomy, query all employees and group by ACF category field
+    if (empty($employee_categories)) {
+        // Get category names from global wp_terms table (employee_category terms)
+        // These are stored in the main global tables (NOT site-specific)
+        // IMPORTANT: Use base prefix 'wp_' since terms are global, not per-blog
+        global $wpdb;
+        $category_names = [];
+        
+        // After switch_to_blog(), $wpdb->prefix changes to site-specific (e.g., wp_25_)
+        // But wp_terms and wp_term_taxonomy are GLOBAL tables (no blog prefix)
+        // So we need to use the base prefix explicitly
+        $base_prefix = $wpdb->base_prefix ?: 'wp_';
+        $terms_result = $wpdb->get_results(
+            "SELECT t.term_id, t.name FROM {$base_prefix}terms t 
+             JOIN {$base_prefix}term_taxonomy tt ON t.term_id = tt.term_id 
+             WHERE tt.taxonomy = 'employee_category'"
+        );
+        foreach ($terms_result as $term) {
+            $category_names[$term->term_id] = $term->name;
+        }
+
+        $employees_query = new \WP_Query([
+            'post_type'      => 'employee',
+            'posts_per_page' => -1,
+            'post_status'    => 'publish',
+        ]);
+
+        $categories_data = [];
+
+        if ($employees_query->have_posts()) {
+            foreach ($employees_query->posts as $employee) {
+                $category_id = get_post_meta($employee->ID, 'category', true) ?: 'uncategorized';
+                $name = get_post_meta($employee->ID, 'name', true) ?: '';
+                $surname = get_post_meta($employee->ID, 'surname', true) ?: '';
+
+                $employee_data = [
+                    'name' => $name . ' ' . $surname,
+                    'position' => get_post_meta($employee->ID, 'position', true) ?: '',
+                    'phone' => get_post_meta($employee->ID, 'phone', true) ?: '',
+                    'email' => get_post_meta($employee->ID, 'email', true) ?: '',
+                ];
+
+                $category_label = isset($category_names[$category_id]) ? $category_names[$category_id] : 'Category ' . $category_id;
+
+                if (!isset($categories_data[$category_id])) {
+                    $categories_data[$category_id] = [
+                        'name' => $category_label,
+                        'name_id' => sanitize_title($category_label),
+                        'hours' => '',
+                        'employees' => [],
+                    ];
+                }
+                $categories_data[$category_id]['employees'][] = $employee_data;
+            }
+        }
+
+        restore_current_blog();
+
+        return new \WP_REST_Response([
+            'showroom_name' => $showroom_name,
+            'categories' => array_values($categories_data),
+        ], 200);
+    }
+
+    // Original logic when categories exist in taxonomy
+    $categories_data = [];
+
+    foreach ($employee_categories as $category) {
+        $query_args = [
+            'post_type' => 'employee',
+            'posts_per_page' => -1,
+            'meta_query' => [
+                [
+                    'key' => 'category',
+                    'value' => $category->term_id,
+                    'compare' => '='
+                ],
+            ],
+        ];
+
+        $showroom_employees = new \WP_Query($query_args);
+
+        if ($showroom_employees->have_posts()) {
+            $week_from = get_field('week_from', 'employee_category_' . $category->term_id) ?: '';
+            $week_to = get_field('week_to', 'employee_category_' . $category->term_id) ?: '';
+            $saturday_from = get_field('saturday_from', 'employee_category_' . $category->term_id) ?: '';
+            $saturday_to = get_field('saturday_to', 'employee_category_' . $category->term_id) ?: '';
+
+            $hours_html = '<p>Poniedziałek - piątek: <strong>' . $week_from . '-' . $week_to . '</strong></p>';
+            if (!empty($saturday_from)) {
+                $hours_html .= '<p>Sobota: <strong>' . $saturday_from . '-' . $saturday_to . '</strong></p>';
+            }
+
+            $employees = [];
+            foreach ($showroom_employees->posts as $employee) {
+                $employees[] = [
+                    'name' => get_field('name', $employee->ID) . ' ' . get_field('surname', $employee->ID),
+                    'position' => get_field('position', $employee->ID),
+                    'phone' => get_field('phone', $employee->ID),
+                    'email' => get_field('email', $employee->ID),
+                ];
+            }
+
+            $categories_data[] = [
+                'name' => $category->name,
+                'name_id' => sanitize_title($category->name),
+                'hours' => $hours_html,
+                'employees' => $employees,
+            ];
+        }
+    }
+
+    restore_current_blog();
+
+    return new \WP_REST_Response([
+        'showroom_name' => $showroom_name,
+        'categories' => $categories_data,
+    ], 200);
+}
+
+/**
+ * Get contact info for contact page
+ *
+ * @param WP_REST_Request|null $request REST request object (optional, for backwards compatibility)
+ */
+function volvo_get_contact_info($request = null) {
+    $domain = null;
+    if ($request !== null && method_exists($request, 'get_param')) {
+        $domain = $request->get_param('domain');
+    }
+
+    $blog_id = volvo_switch_to_blog_by_domain($domain);
+    if ($blog_id === null) {
+        $blog_id = get_current_blog_id();
+        switch_to_blog($blog_id);
+    }
+
+    $dealer_name = get_field('name', 'options-dealer') ?: '';
+    $showrooms = get_posts([
+        'post_type' => 'showroom',
+        'post_status' => 'publish',
+        'posts_per_page' => 1,
+    ]);
+
+    $address_html = '';
+    $phone = '';
+    $salon_hours = '';
+    $service_hours = '';
+
+    if (!empty($showrooms)) {
+        $showroom = $showrooms[0];
+        $address = get_field('address', $showroom->ID);
+
+        if (!empty($address)) {
+            $address_parts = [];
+            if (!empty($address['street'])) $address_parts[] = $address['street'];
+            if (!empty($address['city'])) $address_parts[] = $address['city'];
+            if (!empty($address['zip-code'])) $address_parts[] = $address['zip-code'];
+            $address_html = '<p>' . implode(' / ', $address_parts) . '</p>';
+            $phone = $address['phone'] ?? '';
+        }
+
+        $has_showroom = get_field('has-showroom', $showroom->ID);
+        $has_service = get_field('has-service', $showroom->ID);
+
+        if ($has_showroom) {
+            $showroom_open_hours = get_field('showroom-open-hours', $showroom->ID);
+            if ($showroom_open_hours) {
+                $salon_hours = '<p>Poniedziałek - Piątek <strong>' . $showroom_open_hours['monday-friday']['from'] . '-' . $showroom_open_hours['monday-friday']['to'] . '</strong></p>';
+                if (!empty($showroom_open_hours['saturday']['from'])) {
+                    $salon_hours .= '<p>Sobota <strong>' . $showroom_open_hours['saturday']['from'] . '-' . $showroom_open_hours['saturday']['to'] . '</strong></p>';
+                }
+            }
+        }
+
+        if ($has_service) {
+            $service_open_hours = get_field('service-open-hours', $showroom->ID);
+            if ($service_open_hours) {
+                $service_hours = '<p>Poniedziałek - Piątek <strong>' . $service_open_hours['monday-friday']['from'] . '-' . $service_open_hours['monday-friday']['to'] . '</strong></p>';
+            }
+        }
+    }
+
+    restore_current_blog();
+
+    return new \WP_REST_Response([
+        'dealer_name' => $dealer_name,
+        'address' => $address_html,
+        'phone' => $phone,
+        'salon_hours' => $salon_hours,
+        'service_hours' => $service_hours,
+    ], 200);
+}
+
+add_filter('rest_pre_serve_request', function ($value, $result, $request, $server_context) {
+    $origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
+
+    if ($origin && preg_match('/\.volvotest\.pl$/', parse_url($origin, PHP_URL_HOST))) {
+        header('Access-Control-Allow-Origin: ' . $origin);
+        header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+        header('Access-Control-Allow-Credentials: true');
+        header('Access-Control-Allow-Headers: Authorization, Content-Type, X-WP-Domain, X-WP-Token, X-Requested-With');
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+        status_header(200);
+        exit;
+    }
+
+    return $value;
+}, 10, 4);
+
+add_action('rest_api_init', function () {
+    // Register employees endpoint
+    register_rest_route('volvo/v1', '/employees', array(
+        'methods'             => 'GET',
+        'callback'            => 'volvo_get_employees',
+        'permission_callback' => '__return_true',
+        'args' => array(
+            'domain' => array(
+                'required'          => false,
+                'validate_callback' => function ($param) {
+                    return is_string($param);
+                },
+            ),
+        ),
+    ));
+
+    // Register contact-info endpoint
+    register_rest_route('volvo/v1', '/contact-info', array(
+        'methods'             => 'GET',
+        'callback'            => 'volvo_get_contact_info',
+        'permission_callback' => '__return_true',
+        'args' => array(
+            'domain' => array(
+                'required'          => false,
+                'validate_callback' => function ($param) {
+                    return is_string($param);
+                },
+            ),
+        ),
+    ));
+});

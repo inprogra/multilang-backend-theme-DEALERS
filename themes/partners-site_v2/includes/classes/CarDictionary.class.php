@@ -1813,7 +1813,7 @@ class CarDictionary
 		switch($type) {
 			case 'leasing':
 				$options = $this->filterLeaseOffer($car_id);
-				$leasing_setup = get_field('lease_car',$car_id);
+				$leasing_setup = get_post_meta($car_id, 'lease_car', true); //get_field('lease_car',$car_id);
 				if (is_array($options) && !$leasing_setup || $leasing_setup == 'none' && count($options) > 1 ) {		
 
 					return array_key_last($options);
@@ -1822,7 +1822,7 @@ class CarDictionary
 			break;
 			case 'najem':
 				$options = $this->filterNajemOffer($car_id);
-				$najem_setup = get_field('najem_car',$car_id);
+				$najem_setup = get_post_meta($car_id, 'najem_car', true); //get_field('najem_car',$car_id);
 				if (is_array($options) && !$najem_setup || $najem_setup == 'none' && count($options) > 1 ) {		
 
 					return array_key_last($options);

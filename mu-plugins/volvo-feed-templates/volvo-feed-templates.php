@@ -79,11 +79,11 @@ class Volvo_Feed_Templates
         
         if ($errors > 0 || $skipped > 0) {
             echo '<div class="notice notice-warning is-dismissible">';
-            echo '<p>' . sprintf(__('FindCar: Zsynchronizowano %d, błędów: %d, pominięto: %d. %s', 'volvo-feed-templates'), $synced, $errors, $skipped, $error_details) . '</p>';
+            echo '<p>' . sprintf(__('FindCar: %d synchronized, errors: %d, skipped: %d. %s', 'volvo-feed-templates'), $synced, $errors, $skipped, $error_details) . '</p>';
             echo '</div>';
         } else {
             echo '<div class="notice notice-success is-dismissible">';
-            echo '<p>' . sprintf(__('FindCar: Pomyślnie zsynchronizowano %d samochodów.', 'volvo-feed-templates'), $synced) . '</p>';
+            echo '<p>' . sprintf(__('FindCar: %d cars have been successfully synchronized.', 'volvo-feed-templates'), $synced) . '</p>';
             echo '</div>';
         }
     }
@@ -283,8 +283,8 @@ class Volvo_Feed_Templates
         
         if ($blog_id == 1 && is_super_admin()) {
             add_menu_page(
-                __('Feedy produktowe', 'volvo-feed-templates'),
-                __('Feedy produktowe', 'volvo-feed-templates'),
+                __('Product feeds', 'volvo-feed-templates'),
+                __('Product feeds', 'volvo-feed-templates'),
                 'manage_network',
                 'volvo-feed-templates',
                 [$this, 'render_admin_page'],
@@ -293,8 +293,8 @@ class Volvo_Feed_Templates
             );
         } else {
             add_menu_page(
-                __('Moje feedy', 'volvo-feed-templates'),
-                __('Moje feedy', 'volvo-feed-templates'),
+                __('My feeds', 'volvo-feed-templates'),
+                __('My feeds', 'volvo-feed-templates'),
                 'edit_posts',
                 'volvo-feed-templates',
                 [$this, 'render_admin_page'],
@@ -329,31 +329,31 @@ class Volvo_Feed_Templates
             'templates' => $templates,
             'globalTemplates' => $global_templates,
             'i18n' => [
-                'title' => $is_main_blog ? __('Feedy produktowe', 'volvo-feed-templates') : __('Moje feedy', 'volvo-feed-templates'),
-                'createNew' => __('Utwórz feed', 'volvo-feed-templates'),
-                'editTemplate' => __('Edytuj feed', 'volvo-feed-templates'),
-                'delete' => __('Usuń', 'volvo-feed-templates'),
-                'copy' => __('Kopiuj', 'volvo-feed-templates'),
-                'templateName' => __('Nazwa feedu', 'volvo-feed-templates'),
+                'title' => $is_main_blog ? __('Product feeds', 'volvo-feed-templates') : __('My feeds', 'volvo-feed-templates'),
+                'createNew' => __('Create feed', 'volvo-feed-templates'),
+                'editTemplate' => __('Edit feed', 'volvo-feed-templates'),
+                'delete' => __('Delete', 'volvo-feed-templates'),
+                'copy' => __('Copy', 'volvo-feed-templates'),
+                'templateName' => __('Feed name', 'volvo-feed-templates'),
                 'slug' => __('Slug (URL)', 'volvo-feed-templates'),
                 'format' => __('Format', 'volvo-feed-templates'),
-                'carType' => __('Typ samochodu', 'volvo-feed-templates'),
-                'used' => __('Używany', 'volvo-feed-templates'),
-                'new' => __('Nowy', 'volvo-feed-templates'),
-                'both' => __('Oba', 'volvo-feed-templates'),
+                'carType' => __('Car type', 'volvo-feed-templates'),
+                'used' => __('Used', 'volvo-feed-templates'),
+                'new' => __('New', 'volvo-feed-templates'),
+                'both' => __('Both', 'volvo-feed-templates'),
                 'csv' => __('CSV', 'volvo-feed-templates'),
                 'xml' => __('XML', 'volvo-feed-templates'),
-                'fields' => __('Pola', 'volvo-feed-templates'),
-                'save' => __('Zapisz', 'volvo-feed-templates'),
-                'cancel' => __('Anuluj', 'volvo-feed-templates'),
-                'copyUrl' => __('Kopiuj URL', 'volvo-feed-templates'),
-                'preview' => __('Podgląd', 'volvo-feed-templates'),
-                'globalTemplates' => __('Globalne feedy', 'volvo-feed-templates'),
-                'myTemplates' => __('Moje feedy', 'volvo-feed-templates'),
-                'availableTemplates' => __('Dostępne feedy', 'volvo-feed-templates'),
-                'noTemplates' => __('Nie znaleziono feedów', 'volvo-feed-templates'),
-                'confirmDelete' => __('Czy na pewno chcesz usunąć ten feed?', 'volvo-feed-templates'),
-                'urlCopied' => __('URL skopiowany do schowka', 'volvo-feed-templates'),
+                'fields' => __('Fields', 'volvo-feed-templates'),
+                'save' => __('Save', 'volvo-feed-templates'),
+                'cancel' => __('Cancel', 'volvo-feed-templates'),
+                'copyUrl' => __('Copy URL', 'volvo-feed-templates'),
+                'preview' => __('Preview', 'volvo-feed-templates'),
+                'globalTemplates' => __('Global feeds', 'volvo-feed-templates'),
+                'myTemplates' => __('My feeds', 'volvo-feed-templates'),
+                'availableTemplates' => __('Available feeds', 'volvo-feed-templates'),
+                'noTemplates' => __('No feeds found', 'volvo-feed-templates'),
+                'confirmDelete' => __('Are you sure you want to delete this feed?', 'volvo-feed-templates'),
+                'urlCopied' => __('URL copied to clipboard', 'volvo-feed-templates'),
             ]
         ]);
 
@@ -412,5 +412,12 @@ function Volvo_Feed_Templates()
 
 register_activation_hook(__FILE__, ['Volvo_Feed_Templates', 'activate']);
 register_deactivation_hook(__FILE__, ['Volvo_Feed_Templates', 'deactivate']);
+
+add_action('plugins_loaded', function () {
+    load_textdomain(
+        'volvo-feed-templates',
+        VFT_PLUGIN_DIR . 'languages/volvo-feed-templates-' . determine_locale() . '.mo'
+    );
+});
 
 add_action('init', 'Volvo_Feed_Templates', 5);

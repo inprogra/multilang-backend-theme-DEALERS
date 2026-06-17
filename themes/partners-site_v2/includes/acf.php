@@ -1,7 +1,12 @@
 <?php
 
 use Classes\Cache;
+use Classes\CarDictionary;
+use Classes\IconsDictionary;
 use Classes\Showroom;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\GuzzleException;
 
 add_filter('acf/prepare_field', 'acfFieldsRestrictions');
 function acfFieldsRestrictions($field)
@@ -836,4 +841,229 @@ function acfChangeNumberFormat($value)
 {
 	$value = str_replace('.', ',', $value);
 	return $value;
+}
+
+add_filter('acf/load_field/key=widget_model', 'acfLoadCarModels');
+add_filter('acf/load_field/key=exclude_cars', 'acfLoadCarModels');
+add_filter('acf/load_field/key=field_6103f56d78246', 'acfLoadCarModels');
+add_filter('acf/load_field/key=field_602b96dc02487', 'acfLoadCarModels');
+function acfLoadCarModels($field)
+{
+    $field['choices'] = CarDictionary::getModels();
+    
+    return $field;
+}
+
+add_filter('acf/load_field/key=electric_model', 'acfLoadCarElectricModels');
+add_filter('acf/load_field/key=electric_model_charge', 'acfLoadCarElectricModels');
+add_filter('acf/load_field/key=model_ev', 'acfLoadCarElectricModels');
+add_filter('acf/load_field/key=electric_model_charge', 'acfLoadCarElectricModels');
+add_filter('acf/load_field/key=electrification-map-model', 'acfLoadCarElectricModels');
+add_filter('acf/load_field/key=cost-map-model', 'acfLoadCarElectricModels');
+function acfLoadCarElectricModels($field)
+{
+	if (
+		$field['key'] === 'electric_model_charge' ||
+		$field['key'] === 'model_ev' ||
+		$field['key'] === 'electric_model_charge' ||
+		$field['key'] === 'electric_model'
+	) {
+		$field['choices'] = CarDictionary::getModels('electric');
+	}
+	else {
+	    $field['choices'] = CarDictionary::getModels('elektryczne');
+	}
+    
+    return $field;
+}
+
+add_filter('acf/load_field/key=field_6103f56d78245', 'acfLoadCarModelCategories');
+function acfLoadCarModelCategories($field)
+{
+    $field['choices'] = CarDictionary::getModelCategories();
+    
+    return $field;
+}
+
+add_filter('acf/load_field/key=version', 'acfLoadCarModelVersions');
+add_filter('acf/load_field/key=electrification-map-version', 'acfLoadCarModelVersions');
+add_filter('acf/load_field/key=cost-map-version', 'acfLoadCarModelVersions');
+add_filter('acf/load_field/key=field_6110f50ed8c8b', 'acfLoadCarModelVersions');
+function acfLoadCarModelVersions($field)
+{
+    $field['choices'] = CarDictionary::getVersions();
+    
+    return $field;
+}
+
+add_filter('acf/load_field/key=vinomat_box_image', 'acfLoadIconsDictionary');
+add_filter('acf/load_field/key=field_606224de573cc', 'acfLoadIconsDictionary');
+add_filter('acf/load_field/key=field_605f69b30f61f', 'acfLoadIconsDictionary');
+add_filter('acf/load_field/key=field_6040b4f3a66bc', 'acfLoadIconsDictionary');
+function acfLoadIconsDictionary($field) {
+    $field['choices'] = IconsDictionary::getIcons();
+    
+    return $field;
+}
+
+add_filter('acf/load_field/key=leasing_offer', 'acfLoadLeasingOffer');
+function acfLoadLeasingOffer($field)
+{
+	$dictionary = new CarDictionary( new GuzzleHttp\Client() );
+
+    $field['choices'] = $dictionary->getLeasingOffer();
+    
+    return $field;
+}
+
+add_filter('acf/load_field/key=lease_car', 'acfLoadFilterLeaseOffer');
+function acfLoadFilterLeaseOffer($field)
+{
+	$post_id = (isset($_GET['post']) ? $_GET['post'] : null);
+
+	$dictionary = new CarDictionary( new GuzzleHttp\Client() );
+
+    $field['choices'] = $dictionary->filterLeaseOffer($post_id);
+    $field['default_value'] = $dictionary->getDefaultValue($post_id, 'leasing');
+    
+    return $field;
+}
+
+add_filter('acf/load_field/key=najem_car', 'acfLoadFilterNajemOffer');
+function acfLoadFilterNajemOffer($field)
+{
+	$post_id = (isset($_GET['post']) ? $_GET['post'] : null);
+
+	$dictionary = new CarDictionary( new GuzzleHttp\Client() );
+
+    $field['choices'] = $dictionary->filterNajemOffer($post_id);
+    $field['default_value'] = $dictionary->getDefaultValue($post_id,'najem');
+    
+    return $field;
+}
+
+add_filter('acf/load_field/key=income_najem', 'acfLoadAttractionSettings');
+add_filter('acf/load_field/key=income', 'acfLoadAttractionSettings');
+function acfLoadAttractionSettings($field)
+{
+	$dictionary = new CarDictionary( new GuzzleHttp\Client() );
+
+	if ($field['key'] === 'income') {
+	    $field['choices'] = $dictionary->getAttractionSettings( 'leasing' );
+		$field['default_value'] = $dictionary->getAttractionDefault( 'leasing' );
+	}
+	elseif ($field['key'] === 'income_najem') {
+		$field['choices'] = $dictionary->getAttractionSettings( 'najem' );
+		$field['default_value'] = $dictionary->getAttractionDefault( 'najem' );
+	}
+    
+    return $field;
+}
+
+add_filter('acf/load_field/key=vinomat_box_template', 'acfLoadVinomatBoxes');
+function acfLoadVinomatBoxes($field)
+{
+	$dictionary = new CarDictionary( new GuzzleHttp\Client() );
+
+    $field['choices'] = $dictionary->getVinomatBoxes();
+    
+    return $field;
+}
+
+add_filter('acf/load_field/key=rates_najem', 'acfLoadDefaultLeasing');
+add_filter('acf/load_field/key=fee_najem', 'acfLoadDefaultLeasing');
+add_filter('acf/load_field/key=default_fee_najem', 'acfLoadDefaultLeasing');
+add_filter('acf/load_field/key=default_installment_najem', 'acfLoadDefaultLeasing');
+add_filter('acf/load_field/key=default_income_najem', 'acfLoadDefaultLeasing');
+add_filter('acf/load_field/key=najem_offer', 'acfLoadDefaultLeasing');
+add_filter('acf/load_field/key=rates_leasing', 'acfLoadDefaultLeasing');
+add_filter('acf/load_field/key=fee_leasing', 'acfLoadDefaultLeasing');
+add_filter('acf/load_field/key=default_fee_leasing', 'acfLoadDefaultLeasing');
+add_filter('acf/load_field/key=default_installment_leasing', 'acfLoadDefaultLeasing');
+add_filter('acf/load_field/key=default_income_leasing', 'acfLoadDefaultLeasing');
+function acfLoadDefaultLeasing($field)
+{
+	$dictionary = new CarDictionary( new GuzzleHttp\Client() );
+
+	if ($field['key'] === 'default_income_leasing') {
+	    $field['choices'] = $dictionary->getAttractionSettings( 'leasing' );
+	}
+	elseif ($field['key'] === 'default_installment_leasing' || $field['key'] === 'rates_leasing') {
+	    $field['choices'] = $dictionary->getAttractionSettings( 'leasing', 'installments' );
+	}
+	elseif ($field['key'] === 'default_fee_leasing' || $field['key'] === 'fee_leasing') {
+	    $field['choices'] = $dictionary->getAttractionSettings( 'leasing', 'entityFee' );
+	}
+	elseif ($field['key'] === 'najem_offer') {
+		$field['choices'] = $dictionary->getNajemOffer();
+	}
+	elseif ($field['key'] === 'default_income_najem') {
+	    $field['choices'] = $dictionary->getAttractionSettings( 'najem' );
+	}
+	elseif ($field['key'] === 'default_installment_najem' || $field['key'] === 'rates_najem') {
+	    $field['choices'] = $dictionary->getAttractionSettings( 'najem', 'installments' );
+	}
+	elseif ($field['key'] === 'default_fee_najem' || $field['key'] === 'fee_najem') {
+	    $field['choices'] = $dictionary->getAttractionSettings( 'najem', 'entityFee' );
+	}
+
+    return $field;
+}
+
+add_filter('acf/load_field/key=electric_engine_charge', 'acfLoadCarEngines');
+add_filter('acf/load_field/key=excluded_engines', 'acfLoadCarEngines');
+add_filter('acf/load_field/key=electric_engine', 'acfLoadCarEngines');
+add_filter('acf/load_field/key=field_602b9bba02ce7', 'acfLoadCarEngines');
+function acfLoadCarEngines($field)
+{
+	if ($field['key'] === 'excluded_engines') {
+		$field['choices'] = CarDictionary::getEngines(true);
+	}
+	else {
+	    $field['choices'] = CarDictionary::getEngines();
+	}
+    
+    return $field;
+}
+
+//add_filter('acf/load_value/key=field_pno', 'acfLoadCarPno12', 10, 3);
+function acfLoadCarPno12($value, $field, $v)
+{
+	if ($value)
+	CarDictionary::getPno12();
+	
+    return $field;
+}
+
+add_action('acf/input/admin_footer', 'acf_allow_svg_in_select');
+function acf_allow_svg_in_select()
+{
+    ?>
+    <script type="text/javascript">
+    (function($) {
+        if (typeof acf === 'undefined') return;
+
+        acf.add_filter('select2_args', function(args, $select, settings, field) {
+
+			var $fieldContainer = $select.closest('.acf-field');
+            var fieldType = $fieldContainer.data('type');
+			
+			console.log('select2_args', fieldType);
+            if (fieldType === 'icon_select') {
+
+				var renderSvgHtml = function(state) {
+					if (!state.id) {
+						return state.text;
+					}
+					return $('<span>' + state.text + '</span>');
+				};
+
+				args.templateResult = renderSvgHtml;
+				args.templateSelection = renderSvgHtml;
+			}
+            return args;
+        });
+    })(jQuery);
+    </script>
+    <?php
 }

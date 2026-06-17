@@ -61,42 +61,42 @@ class DolStatus
             $findcar_status = get_post_meta($post_id, 'findcar_status', true);
             $findcar_listing_status = get_post_meta($post_id, 'findcar_listing_status', true);
 
-            $is_missing_fields = !empty($findcar_sync_error) && strpos($findcar_sync_error, 'Brak wymaganych pól:') !== false;
+            $is_missing_fields = !empty($findcar_sync_error) && strpos($findcar_sync_error, __('Required fields missing', 'partners-site_v2') . ':') !== false;
             $is_api_error = !empty($findcar_sync_error) && !$is_missing_fields;
             $is_synced = !empty($findcar_listing_id) && empty($findcar_sync_error);
             $is_active = $findcar_status === 'active' && $findcar_listing_status === 'active';
 
             if (!$findcar_enabled && !$is_synced) {
                 $color = '#9e9e9e';
-                $title = 'Findcar: Niezsynchronizowany';
+                $title = 'Findcar: ' . __('Not synchronized', 'partners-site_v2');
                 $status_class = 'findcar-grey';
-                $label = 'Niezsynchronizowany';
+                $label = __('Not synchronized', 'partners-site_v2');
             } elseif ($is_missing_fields) {
-                $missing_list = str_replace('Brak wymaganych pól: ', '', $findcar_sync_error);
+                $missing_list = str_replace(__('Required fields missing', 'partners-site_v2') . ': ', '', $findcar_sync_error);
                 $color = '#ff9800';
-                $title = 'Findcar: Brakuje danych - ' . esc_attr($missing_list);
+                $title = 'Findcar: ' . __('Data missing', 'partners-site_v2') . ' - ' . esc_attr($missing_list);
                 $status_class = 'findcar-orange';
-                $label = 'Brakuje: ' . esc_html($missing_list);
+                $label = __('Missing', 'partners-site_v2') . ': ' . esc_html($missing_list);
             } elseif ($is_api_error) {
                 $color = '#f44336';
-                $title = 'Findcar: Błąd - ' . esc_attr($findcar_sync_error);
+                $title = 'Findcar: ' . __('Error', 'partners-site_v2') . ' - ' . esc_attr($findcar_sync_error);
                 $status_class = 'findcar-red';
-                $label = 'Błąd: ' . esc_html($findcar_sync_error);
+                $label = __('Error', 'partners-site_v2') . ': ' . esc_html($findcar_sync_error);
             } elseif ($is_active) {
                 $color = '#4caf50';
-                $title = 'Findcar: Aktywne';
+                $title = 'Findcar: ' . __('Active', 'partners-site_v2');
                 $status_class = 'findcar-green';
-                $label = 'Aktywne';
+                $label = __('Active', 'partners-site_v2');
             } elseif ($is_synced) {
                 $color = '#4caf50';
-                $title = 'Findcar: Zsynchronizowany';
+                $title = 'Findcar: ' . __('Synchronized', 'partners-site_v2');
                 $status_class = 'findcar-green';
-                $label = 'Zsynchronizowany';
+                $label = __('Synchronized', 'partners-site_v2');
             } else {
                 $color = '#f44336';
-                $title = 'Findcar: Nieaktywne';
+                $title = 'Findcar: ' . __('Inactive', 'partners-site_v2');
                 $status_class = 'findcar-red';
-                $label = 'Nieaktywne';
+                $label = __('Inactive', 'partners-site_v2');
             }
 
             echo <<<HTML
@@ -119,10 +119,10 @@ class DolStatus
             
             if ($otomoto_enabled) {
                 $color = 'green';
-                $title = 'Otomoto: Włączone';
+                $title = esc_attr('Otomoto: ' . __('On', 'partners-site_v2'));
             } else {
                 $color = 'red';
-                $title = 'Otomoto: Wyłączone';
+                $title = esc_attr('Otomoto: ' . __('Off', 'partners-site_v2'));
             }
             
             echo <<<HTML

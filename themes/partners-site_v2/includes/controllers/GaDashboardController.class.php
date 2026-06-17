@@ -41,13 +41,13 @@ class GaDashboardController {
 
         if (!$jsonKey) {
             error_log('Brak klucza GA (Google Analytics)');
-            return ['error' => 'Brak klucza GA (Google Analytics)'];
+            return ['error' => __('GA key not found(Google Analytics)', 'partners-site_v2')];
         }
 
         $serviceAccount = json_decode($jsonKey, true);
         if (!isset($serviceAccount['private_key'])) {
             error_log('Błąd: Nieprawidłowy format klucza JSON.');
-            return ['error' => 'Błąd: Nieprawidłowy format klucza JSON.'];
+            return ['error' => __('Error: Invalid JSON key format.', 'partners-site_v2')];
         }
 
         $privateKey = $serviceAccount['private_key'];
@@ -74,7 +74,7 @@ class GaDashboardController {
 
         if (is_wp_error($response)) {
             error_log('Błąd cURL: ' . print_r($response->get_error_messages(), true));
-            return ['error' => 'Błąd cURL: ' . print_r($response->get_error_messages(), true)];
+            return ['error' => __('Error', 'partners-site_v2') . ' cURL: ' . print_r($response->get_error_messages(), true)];
         }
 
         $body = json_decode(wp_remote_retrieve_body($response), true);
@@ -84,7 +84,7 @@ class GaDashboardController {
             return $body['access_token'];
         }
 
-        return ['error' => 'Błąd: Nie udało się uzyskać tokena dostępu'];
+        return ['error' => __('Error: Unable to obtain an access token', 'partners-site_v2')];
     }
 
     public function generate_jwt($assertion, $privateKey) {
@@ -150,20 +150,20 @@ class GaDashboardController {
         $response = wp_remote_post($url, $args);
     
         if (is_wp_error($response)) {
-            return ['error' => 'Błąd cURL: ' . print_r($response->get_error_messages(), true)];
+            return ['error' => __('Error', 'partners-site_v2') . ' cURL: ' . print_r($response->get_error_messages(), true)];
         }
     
         $status_code = wp_remote_retrieve_response_code($response);
     
         if ($status_code !== 200) {
-            return ['error' => 'Błąd: Zapytanie zwróciło niepoprawny status ' . $status_code];
+            return ['error' => __('Error: The request returned an invalid status', 'partners-site_v2') . ' ' . $status_code];
         }
     
         $body = wp_remote_retrieve_body($response);
         $data = json_decode($body, true);
     
         if (isset($data['error'])) {
-            return ['error' => 'Błąd: ' . $data['error']['message']];
+            return ['error' => __('Error', 'partners-site_v2') . ': ' . $data['error']['message']];
         }
     
         return $data;
@@ -177,7 +177,7 @@ class GaDashboardController {
     public static function register_ga_widget() {
         wp_add_dashboard_widget(
             'ds_ga_dashboard_widget',                  
-            'Statystyki odwiedzin (Google Analytics)',              
+            __('Visitor Statistics (Google Analytics)', 'partners-site_v2'),
             [__CLASS__, 'display_ga_widget'],          
             null,                                      
             null,                                      
@@ -191,7 +191,7 @@ class GaDashboardController {
         $data = $gaController->getGaData($propertyId);
         
         if (isset($data['error'])) {
-            echo '<p><strong>Wystąpił błąd:</strong> ' . esc_html($data['error']) . '</p>';
+            echo '<p><strong>' . esc_html__('An error occurred', 'partners-site_v2') . ':</strong> ' . esc_html($data['error']) . '</p>';
             return;
         }
 
@@ -226,7 +226,7 @@ class GaDashboardController {
                         data: {
                             labels: ' . json_encode($dates) . ',
                             datasets: [{
-                                label: "Aktywni użytkownicy",
+                                label: ' . json_encode(__('Active users', 'partners-site_v2')) . ',
                                 data: ' . json_encode($activeUsers) . ',
                                 borderColor: "rgba(75, 192, 192, 1)",
                                 backgroundColor: "rgba(0, 120, 125, 0.2)",
@@ -250,7 +250,7 @@ class GaDashboardController {
                                 fill: true,
                                 tension: 0.4
                             }, {
-                                label: "Zaangażowanie",
+                                label: ' . json_encode(__("Engagement", 'partners-site_v2')) . ',
                                 data: ' . json_encode($engagementRate) . ',
                                 borderColor: "rgba(255, 159, 64, 1)",
                                 backgroundColor: "rgba(255, 159, 64, 0.2)",
@@ -262,7 +262,7 @@ class GaDashboardController {
                                 fill: true,
                                 tension: 0.4
                             }, {
-                                label: "Średni czas sesji (s)",
+                                label: ' . json_encode(__("Average session duration (s)", 'partners-site_v2')) . ',
                                 data: ' . json_encode($averageSessionDuration) . ',
                                 borderColor: "rgba(54, 162, 235, 1)",
                                 backgroundColor: "rgba(54, 162, 235, 0.2)",
@@ -295,15 +295,15 @@ class GaDashboardController {
                         }
                     });
                   </script>';
-                  echo '<button id="toggleTableBtn" style="padding:10px;margin-top:10px;background-color:#284e80;color:white;border:none;border-radius:5px;cursor:pointer;">Pokaż statystyki</button>';
+                  echo '<button id="toggleTableBtn" style="padding:10px;margin-top:10px;background-color:#284e80;color:white;border:none;border-radius:5px;cursor:pointer;">' . esc_html__('Show statistics', 'partners-site_v2') . '</button>';
             echo '<div id="statsTable" style="display:none;margin-top:20px;">';
             echo '<table style="width:100%;border-collapse:collapse;margin-bottom:10px;">
                     <tr>
-                        <th style="border:1px solid #ddd;padding:8px;">Data</th>
-                        <th style="border:1px solid #ddd;padding:8px; background-color: rgba(0, 120, 125, 0.2);">Aktywni użytkownicy</th>
-                        <th style="border:1px solid #ddd;padding:8px; background-color: rgba(40, 80, 120, 0.2);">Sesje</th>
-                        <th style="border:1px solid #ddd;padding:8px; background-color: rgba(255, 159, 64, 0.2);">Zaangażowanie (%)</th>
-                        <th style="border:1px solid #ddd;padding:8px; background-color: rgba(54, 162, 235, 0.2);">Średni czas sesji (s)</th>
+                        <th style="border:1px solid #ddd;padding:8px;">' . json_encode(__('Date', 'partners-site_v2')) . '</th>
+                        <th style="border:1px solid #ddd;padding:8px; background-color: rgba(0, 120, 125, 0.2);">' . esc_html__('Active users', 'partners-site_v2') . '</th>
+                        <th style="border:1px solid #ddd;padding:8px; background-color: rgba(40, 80, 120, 0.2);">' . esc_html__('Sessions', 'partners-site_v2') . '</th>
+                        <th style="border:1px solid #ddd;padding:8px; background-color: rgba(255, 159, 64, 0.2);">' . esc_html__('Engagement (%)', 'partners-site_v2') . '</th>
+                        <th style="border:1px solid #ddd;padding:8px; background-color: rgba(54, 162, 235, 0.2);">' . esc_html__('Average session duration (s)', 'partners-site_v2') . '</th>
                     </tr>';
 
             foreach ($data['rows'] as $index => $row) {
@@ -324,15 +324,15 @@ class GaDashboardController {
                         var table = document.getElementById("statsTable");
                         if (table.style.display === "none") {
                             table.style.display = "block";
-                            this.innerText = "Ukryj statystyki";
+                            this.innerText = ' . json_encode(__('Hide statistics', 'partners-site_v2'), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . ';
                         } else {
                             table.style.display = "none";
-                            this.innerText = "Pokaż statystyki";
+                            this.innerText = ' . json_encode(__('Show statistics', 'partners-site_v2'), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . ';
                         }
                     });
                 </script>';
         } else {
-            echo '<p>Brak danych do wyświetlenia.</p>';
+            echo '<p>' . esc_html__('No data to display.', 'partners-site_v2') . '</p>';
         }
     }
 }

@@ -81,7 +81,7 @@ class ProductTagsMetaBox {
         if (!empty($tags)) {
             $formatted_tags = "'" . implode("','", $tags) . "'";
         } else {
-            $formatted_tags = "Brak tagów";
+            $formatted_tags = __("No tags", 'partners-site_v2');
         }
 
         var_dump($tags); // tylko do debugowania

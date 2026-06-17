@@ -105,7 +105,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 						),
 						array(
 							'key'               => 'field_603cfbdsf3360',
-							'label'             => __( 'Link', 'partners-site_v2' ),
+							'label'             => __('Link', 'partners-site_v2'),
 							'name'              => 'link',
 							'type'              => 'link',
 							'instructions'      => '',

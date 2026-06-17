@@ -281,7 +281,7 @@ class CarOtoMoto {
         $data = json_decode($result['response'], true);
 
         if ($result['httpCode'] >= 400) {
-            $message = $data['error']['message'] ?? ('Nie udało się usunąć ogłoszenia. HTTP ' . $result['httpCode']);
+            $message = $data['error']['message'] ?? (__('The listing could not be deleted.', 'partners-site_v2') . ' HTTP ' . $result['httpCode']);
             return new \WP_Error('otomoto_api_error', $message, ['response' => $data]);
         }
 
@@ -293,7 +293,7 @@ class CarOtoMoto {
         $data = json_decode($result['response'], true);
 
         if ($result['httpCode'] >= 400) {
-            $message = $data['error']['message'] ?? ('Nie udało się zaktualizować ogłoszenia. HTTP ' . $result['httpCode']);
+            $message = $data['error']['message'] ?? (__('The listing could not be updated.', 'partners-site_v2') . ' HTTP ' . $result['httpCode']);
             if (!empty($data['error']['details']) && is_array($data['error']['details'])) {
                 $details = [];
                 foreach ($data['error']['details'] as $field => $error) {

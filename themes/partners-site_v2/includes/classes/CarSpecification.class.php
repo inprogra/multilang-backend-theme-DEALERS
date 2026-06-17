@@ -34,7 +34,7 @@ class CarSpecification
 		if (isset($_GET['car-specification-data-imported'])) {
 			echo '
                 <div class="updated">
-                  <p>Dane z systemu DOL zostały zaimportowane.</p>
+                  <p>' . __('Data from the DOL system has been imported.', 'partners-site_v2') . '</p>
                </div>
             ';
 		}
@@ -45,7 +45,7 @@ class CarSpecification
 		register_post_type(
 			'car-specification',
 			array(
-				'label' => 'Dane techniczne aut dostępnych na miejscu',
+				'label' => __('Technical specifications of cars available on-site', 'partners-site_v2'),
 				'public' => false,
 				'rewrite' => false,
 				'show_ui' => true,
@@ -70,10 +70,10 @@ class CarSpecification
 		if ($pagenow !== 'post-new.php') {
 			$html .= '<input type="hidden" name="postId" value="' . get_the_ID() . '" class="js-car-specification__input-post-id" />';
 			$html .= '<span class="car-specification__spinner spinner js-car-specification__spinner"></span>';
-			$html .= '<button type="button" class="car-specification__button button-primary js-car-specification__button">Zaimportuj dane z DOL</button>';
-			$html .= '<p>Uwaga! Wszystkie wprowadzone zmiany w danych technicznych zostaną nadpisane danymi z systemu DOL.</p>';
+			$html .= '<button type="button" class="car-specification__button button-primary js-car-specification__button">' . __('Import data from DOL', 'partners-site_v2') . '</button>';
+			$html .= '<p>' . __('Note! Any changes made to the technical specifications will be overwritten by data from the DOL system.', 'partners-site_v2') . '</p>';
 		} else {
-			$html .= '<p>Aby zaimportować dane z systemu DOL, zapisz samochód jako szkic, lub opublikuj.</p>';
+			$html .= '<p>' . __('To import data from the DOL system, save the car as a draft or publish it.', 'partners-site_v2') . '</p>';
 		}
 		
 		$html .= '</div>';
@@ -93,7 +93,7 @@ class CarSpecification
 
 		$html = '<div class="car-specification-backdrop js-car-specification-backdrop">';
 		$html .= '<div class="car-specification-backdrop__inner">';
-		$html .= '<span class="car-specification-backdrop__text">Importowanie danych z DOL. <br>Operacja może potrwać kilka minut.</span>';
+		$html .= '<span class="car-specification-backdrop__text">' . __('Importing data from DOL. <br>This operation may take a few minutes.', 'partners-site_v2') . '</span>';
 		$html .= '<a class="a-spinner car-specification-backdrop__spinner"></a>';
 		$html .= '</div>';
 		$html .= '</div>';
@@ -110,7 +110,7 @@ class CarSpecification
 	public function limitPermissionsForPostType($current_screen): void
 	{
 		if (!is_main_site() && $this->isCarSpecificationPostType($current_screen)) {
-			echo 'Brak uprawnień';
+			esc_html_e('No permissions', 'partners-site_v2');
 			/** @noinspection ForgottenDebugOutputInspection */
 			wp_die();
 		}
@@ -193,8 +193,8 @@ class CarSpecification
 
 
 		$engines = [
-			'Single Motor Extended Range' => 'Single elektryczny Ext. range',
-			'Single Motor' => 'Single elektryczny'
+			'Single Motor Extended Range' => __('Electric single Ext. range', 'partners-site_v2'),
+			'Single Motor' => __('Electric single', 'partners-site_v2')
 		];
 		$engine = explode(' (', $data->car->engineDesc)[0];
 

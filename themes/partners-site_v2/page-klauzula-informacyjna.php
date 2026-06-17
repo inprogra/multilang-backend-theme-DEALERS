@@ -6,15 +6,15 @@ get_header();
 <div class= "mainContainerInformationClause">
     <div class="breadcrumbsContainer">
         <ul>
-            <li><span class="mobileSeparator"><</span><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Strona główna</a></li>
+            <li><span class="mobileSeparator"><</span><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e('Home page', 'partners-site_v2'); ?></a></li>
             <li><span>/</span></li>
-            <li class="thisSite">Przetwarzanie danych osobowych</li>
+            <li class="thisSite"><?php esc_html_e('Processing of personal data', 'partners-site_v2'); ?></li>
         </ul>
             
     </div>
     <div class="informationClauseHeaderContainer">
         <div class="informationClauseHeader">
-            <h1>Przetwarzanie danych osobowych</h1>
+            <h1><?php esc_html_e('Processing of personal data', 'partners-site_v2'); ?></h1>
         </div>
     </div>
 

@@ -15,7 +15,7 @@ function findcar_register_acf_fields()
 
     acf_add_local_field_group([
         'key' => 'group_findcar_car_settings',
-        'title' => 'Synchronizacja FindCar.pl',
+        'title' => __('Synchronization FindCar.pl', 'volvo-feed-templates'),
         'location' => [
             [
                 [
@@ -36,10 +36,10 @@ function findcar_register_acf_fields()
         'fields' => [
             [
                 'key' => 'field_findcar_enabled',
-                'label' => 'Synchronizuj z FindCar.pl',
+                'label' => __('Sync with FindCar.pl', 'volvo-feed-templates'),
                 'name' => 'findcar_enabled',
                 'type' => 'true_false',
-                'instructions' => 'Zaznacz, aby wysłać to auto do FindCar.pl',
+                'instructions' => __('Check this box to send this car to FindCar.pl', 'volvo-feed-templates'),
                 'required' => 0,
                 'conditional_logic' => 0,
                 'wrapper' => [
@@ -50,12 +50,12 @@ function findcar_register_acf_fields()
                 'message' => '',
                 'default_value' => 0,
                 'ui' => 1,
-                'ui_on_text' => 'Włączona',
-                'ui_off_text' => 'Wyłączona',
+                'ui_on_text' => __('Enabled', 'volvo-feed-templates'),
+                'ui_off_text' => __('Disabled', 'volvo-feed-templates'),
             ],
             [
                 'key' => 'field_findcar_listing_id',
-                'label' => 'ID oferty FindCar',
+                'label' => __('Offer ID FindCar', 'volvo-feed-templates'),
                 'name' => 'findcar_listing_id',
                 'type' => 'text',
                 'instructions' => '',
@@ -72,7 +72,7 @@ function findcar_register_acf_fields()
             ],
             [
                 'key' => 'field_findcar_listing_number',
-                'label' => 'FindCar Numer oferty',
+                'label' => __('Offer number FindCar', 'volvo-feed-templates'),
                 'name' => 'findcar_listing_number',
                 'type' => 'text',
                 'instructions' => '',
@@ -89,7 +89,7 @@ function findcar_register_acf_fields()
             ],
             [
                 'key' => 'field_findcar_listing_url',
-                'label' => 'FindCar URL',
+                'label' => __('FindCar URL', 'volvo-feed-templates'),
                 'name' => 'findcar_listing_url',
                 'type' => 'url',
                 'instructions' => '',
@@ -106,7 +106,7 @@ function findcar_register_acf_fields()
             ],
             [
                 'key' => 'field_findcar_last_sync',
-                'label' => 'Ostatnia synchronizacja',
+                'label' => __('Last sync', 'volvo-feed-templates'),
                 'name' => 'findcar_last_sync',
                 'type' => 'text',
                 'instructions' => '',
@@ -123,7 +123,7 @@ function findcar_register_acf_fields()
             ],
             [
                 'key' => 'field_findcar_sync_error',
-                'label' => 'Błąd synchronizacji',
+                'label' => __('Synchronization error', 'volvo-feed-templates'),
                 'name' => 'findcar_sync_error',
                 'type' => 'text',
                 'instructions' => '',
@@ -143,7 +143,7 @@ function findcar_register_acf_fields()
 
     acf_add_local_field_group([
         'key' => 'group_findcar_dealer_options',
-        'title' => 'FindCar.pl',
+        'title' => __('FindCar.pl', 'volvo-feed-templates'),
         'location' => [
             [
                 [
@@ -164,7 +164,7 @@ function findcar_register_acf_fields()
         'fields' => [
             [
                 'key' => 'field_findcar_dealer_tab',
-                'label' => 'Ustawienia',
+                'label' => __('Settings', 'volvo-feed-templates'),
                 'name' => '',
                 'type' => 'tab',
                 'instructions' => '',
@@ -180,10 +180,10 @@ function findcar_register_acf_fields()
             ],
             [
                 'key' => 'field_findcar_dealer_enabled',
-                'label' => 'Włącz integrację',
+                'label' => __('Enable integration', 'volvo-feed-templates'),
                 'name' => 'findcar_enabled',
                 'type' => 'true_false',
-                'instructions' => 'Włącz synchronizację samochodów z FindCar.pl',
+                'instructions' => __('Enable car synchronization with FindCar.pl', 'volvo-feed-templates'),
                 'required' => 0,
                 'conditional_logic' => 0,
                 'wrapper' => [
@@ -194,15 +194,15 @@ function findcar_register_acf_fields()
                 'message' => '',
                 'default_value' => 0,
                 'ui' => 1,
-                'ui_on_text' => 'Włączona',
-                'ui_off_text' => 'Wyłączona',
+                'ui_on_text' => __('Enabled', 'volvo-feed-templates'),
+                'ui_off_text' => __('Disabled', 'volvo-feed-templates'),
             ],
             [
                 'key' => 'field_findcar_dealer_auto_sync',
-                'label' => 'Automatyczna synchronizacja',
+                'label' => __('Automatic synchronization', 'volvo-feed-templates'),
                 'name' => 'findcar_auto_sync',
                 'type' => 'true_false',
-                'instructions' => 'Automatycznie synchronizuj samochody po publikacji',
+                'instructions' => __('Automatically sync cars after publication', 'volvo-feed-templates'),
                 'required' => 0,
                 'conditional_logic' => [
                     [
@@ -221,15 +221,15 @@ function findcar_register_acf_fields()
                 'message' => '',
                 'default_value' => 1,
                 'ui' => 1,
-                'ui_on_text' => 'Włączona',
-                'ui_off_text' => 'Wyłączona',
+                'ui_on_text' => __('Enabled', 'volvo-feed-templates'),
+                'ui_off_text' => __('Disabled', 'volvo-feed-templates'),
             ],
             [
                 'key' => 'field_findcar_dealer_api_key',
-                'label' => 'Klucz API',
+                'label' => __('API key', 'volvo-feed-templates'),
                 'name' => 'findcar_api_key',
                 'type' => 'password',
-                'instructions' => 'Klucz API FindCar.pl',
+                'instructions' => __('FindCar.pl API key', 'volvo-feed-templates'),
                 'required' => 0,
                 'conditional_logic' => [
                     [
@@ -249,10 +249,10 @@ function findcar_register_acf_fields()
             ],
             [
                 'key' => 'field_findcar_dealer_location_token',
-                'label' => 'Token autoryzacji lokalizacji',
+                'label' => __('Location authorization token', 'volvo-feed-templates'),
                 'name' => 'findcar_location_token',
                 'type' => 'password',
-                'instructions' => 'Token autoryzacji lokalizacji',
+                'instructions' => __('Location authorization token', 'volvo-feed-templates'),
                 'required' => 0,
                 'conditional_logic' => [
                     [
@@ -272,10 +272,10 @@ function findcar_register_acf_fields()
             ],
             [
                 'key' => 'field_findcar_dealer_location_id',
-                'label' => 'ID lokalizacji',
+                'label' => __('Location ID', 'volvo-feed-templates'),
                 'name' => 'findcar_location_id',
                 'type' => 'text',
-                'instructions' => 'ID lokalizacji w FindCar.pl',
+                'instructions' => __('Location ID in FindCar.pl', 'volvo-feed-templates'),
                 'required' => 0,
                 'conditional_logic' => [
                     [
@@ -295,10 +295,10 @@ function findcar_register_acf_fields()
             ],
             [
                 'key' => 'field_findcar_inventory_brand_new',
-                'label' => 'ID inwentarza nowych',
+                'label' => __('New inventory IDs', 'volvo-feed-templates'),
                 'name' => 'findcar_inventory_brand_new',
                 'type' => 'text',
-                'instructions' => 'ID inwentarza dla samochodów nowych',
+                'instructions' => __('Vehicle identification number for new cars', 'volvo-feed-templates'),
                 'required' => 0,
                 'conditional_logic' => 0,
                 'wrapper' => [
@@ -310,10 +310,10 @@ function findcar_register_acf_fields()
             ],
             [
                 'key' => 'field_findcar_inventory_pre_owned',
-                'label' => 'ID inwentarza używanych',
+                'label' => __('Used inventory ID', 'volvo-feed-templates'),
                 'name' => 'findcar_inventory_pre_owned',
                 'type' => 'text',
-                'instructions' => 'ID inwentarza dla samochodów używanych',
+                'instructions' => __('Vehicle identification number for used cars', 'volvo-feed-templates'),
                 'required' => 0,
                 'conditional_logic' => 0,
                 'wrapper' => [
@@ -325,7 +325,7 @@ function findcar_register_acf_fields()
             ],
             [
                 'key' => 'field_findcar_dealer_status_tab',
-                'label' => 'Status połączenia',
+                'label' => __('Connection status', 'volvo-feed-templates'),
                 'name' => '',
                 'type' => 'tab',
                 'instructions' => '',
@@ -349,7 +349,7 @@ function findcar_register_acf_fields()
             ],
             [
                 'key' => 'field_findcar_dealer_connection_status',
-                'label' => 'Status',
+                'label' => __('Status', 'volvo-feed-templates'),
                 'name' => 'findcar_connection_status',
                 'type' => 'text',
                 'instructions' => '',
@@ -366,7 +366,7 @@ function findcar_register_acf_fields()
             ],
             [
                 'key' => 'field_findcar_dealer_test_button',
-                'label' => 'Testuj połączenie',
+                'label' => __('Test connection', 'volvo-feed-templates'),
                 'name' => 'findcar_test_button',
                 'type' => 'message',
                 'instructions' => '',
@@ -385,13 +385,13 @@ function findcar_register_acf_fields()
                     'class' => '',
                     'id' => '',
                 ],
-                'message' => '<button type="button" class="button" id="findcar-test-connection">Testuj połączenie</button>',
+                'message' => '<button type="button" class="button" id="findcar-test-connection">' . __('Test connection', 'volvo-feed-templates') . '</button>',
                 'new_lines' => 'wpautop',
                 'esc_html' => 0,
             ],
             [
                 'key' => 'field_findcar_dealer_sync_button',
-                'label' => 'Synchronizuj wszystkie',
+                'label' => __('Synchronize all', 'volvo-feed-templates'),
                 'name' => 'findcar_sync_button',
                 'type' => 'message',
                 'instructions' => '',
@@ -410,7 +410,7 @@ function findcar_register_acf_fields()
                     'class' => '',
                     'id' => '',
                 ],
-                'message' => '<button type="button" class="button button-secondary" id="findcar-preview-sync">Podgląd</button> <button type="button" class="button button-primary" id="findcar-sync-all">Synchronizuj wszystkie samochody</button>',
+                'message' => '<button type="button" class="button button-secondary" id="findcar-preview-sync">' . __('Preview', 'volvo-feed-templates') . '</button> <button type="button" class="button button-primary" id="findcar-sync-all">' . __('Synchronize all cars', 'volvo-feed-templates') . '</button>',
                 'new_lines' => 'wpautop',
                 'esc_html' => 0,
             ],
