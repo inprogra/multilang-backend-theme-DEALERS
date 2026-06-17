@@ -6,6 +6,8 @@ use Closure;
 
 class MultisiteFixer
 {
+	private static bool $initialized = false;
+
     private static $currentBlogId;
     private static $homeUrl;
     private static $isPageGlobal = false;
@@ -34,7 +36,8 @@ class MultisiteFixer
 
     public static function getHomeUrl($authorization = null): string
     {
-       
+		self::init();
+		
         if ($authorization) {
             $url = parse_url(self::$homeUrl);
             return $url['scheme'] . '://' . self::$htpasswd . '@' . $url['host'];
@@ -49,6 +52,8 @@ class MultisiteFixer
 
     public static function buildLink(array $link, $authorization = null): array
     {
+		self::init();
+		
         $newLink = [];
 
         $newLink['url'] = self::buildUrl($link['url'], $authorization);
@@ -74,6 +79,8 @@ class MultisiteFixer
             return $url;
         }
 
+		self::init();
+		
         $current = parse_url($url);
 
         //        If no 'scheme" or 'host' then set it to homeUrl values
@@ -105,16 +112,24 @@ class MultisiteFixer
         return $url;
     }
 
-    public function init(): void
+    public static function init(): void
     {
+		if (self::$initialized) {
+            return;
+        }
+
         self::$currentBlogId = get_current_blog_id(); 
        
        
         self::$homeUrl = get_home_url();
+		
+		self::$initialized = true;
     }
 
     public function templateDirectoryUri(): string
     {
+		self::init();
+		
         $template = get_template();
         $theme_root = self::$homeUrl . '/app/themes';
 
@@ -123,6 +138,8 @@ class MultisiteFixer
 
     public function parseRequest($query): void
     {
+		self::init();
+		
         if (self::$currentBlogId === 1 || is_admin()) {
             return;
         }

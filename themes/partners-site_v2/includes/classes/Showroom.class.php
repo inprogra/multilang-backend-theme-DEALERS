@@ -8,20 +8,26 @@ use GuzzleHttp\Exception\GuzzleException;
 use Classes\MultisiteFixer;
 
 class Showroom {
+	private static bool $initialized = false;
+
 	public  $allshowrooms 		= [];
 	private static $showrooms           = array();
 	private static $services            = array();
 	private static $showroomsAndSerices = array();
 
 	public function __construct() {
-		add_action( 'init', array( $this, 'init' ) );
+		add_action( 'init', array( __CLASS__, 'init' ) );
 		add_action( 'admin_menu', array( $this, 'removeFromAdminMenu' ), 100 );
 		add_action( 'current_screen', array( $this, 'limitPermissionsForPostType' ), 999 );
 		add_action( 'employee_category_edit_form', array( $this, 'hideDefaultFieldsForCategory' ) );
 		add_action( 'employee_category_add_form', array( $this, 'hideDefaultFieldsForCategory' ) );
 	}
 
-	public function init(): void {
+	public static function init(): void {
+		if (self::$initialized) {
+            return;
+        }
+
 		switch_to_blog( MultisiteFixer::getCurrentBlogId() );
 
 		$showrooms = new \WP_Query(
@@ -48,8 +54,12 @@ class Showroom {
 		}
 
 		restore_current_blog();
+		
+		self::$initialized = true;
 	}
 	public function getShowroomsGlobal($type = null) {
+		self::init();
+		
 		$importTool = new \Classes\CarDictionary(new \GuzzleHttp\Client());        
         $blog_ids = $importTool->getBlogIds();
 		$showroomsArr = [];
@@ -89,37 +99,51 @@ class Showroom {
 		return $showroomsArr;
 	}
 	public static function isMultiShowroomAndService(): bool {
+		self::init();
+
 		$filter_unique = array_unique(self::$showroomsAndSerices);
 		
 		return count( $filter_unique ) > 1;
 	}
 
 	public static function isMultiShowroom(): bool {
+		self::init();
+
 		$filterOut = array_unique(self::$showrooms);
 
 		return count( $filterOut ) > 1;
 	}
 
 	public static function isMultiService(): bool {
+		self::init();
+
 		$filterOut = array_unique(self::$services);
 		return count( $filterOut ) > 1;
 	}
 
 	public static function hasAnyService(): bool {
+		self::init();
+
 		$filterOut = array_unique(self::$services);
 		return count( $filterOut ) > 0;
 	}
 
 	public static function getShowroomsAndServices(): array {
+		self::init();
+
 		$filterOut = array_unique(self::$showroomsAndSerices);
 		return $filterOut;
 	}
 
 	public static function getShowrooms(): array {
+		self::init();
+
 		return self::$showrooms;
 	}
 
 	public static function getServices(): array {
+		self::init();
+
 		return self::$services;
 	}
 
