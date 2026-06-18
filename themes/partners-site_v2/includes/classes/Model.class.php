@@ -9,7 +9,7 @@ class Model {
 		add_filter( 'use_block_editor_for_post', array( $this, 'disableBlockEditor' ), 10, 2 );
 		add_action( 'current_screen', array( $this, 'limitPermissionsForPostType' ), 999 );
 		add_action( 'template_redirect', array( $this, 'redirect' ), 1 );
-		add_filter( 'post_type_link', array( $this, 'adjustPermalinks' ), 1, 2 );
+		add_filter( 'post_type_link', array( __CLASS__, 'adjustPermalinks' ), 1, 2 );
 		add_action( 'model_category_edit_form', array( $this, 'hideDescriptionForCategory' ) );
 		add_action( 'model_category_add_form', array( $this, 'hideDescriptionForCategory' ) );
 		add_action( 'wp_before_admin_bar_render', array( $this, 'beforeAdminBarRender' ) );
@@ -57,7 +57,7 @@ class Model {
 		}
 	}
 
-	public function adjustPermalinks( $post_link, $post ) {
+	public static function adjustPermalinks( $post_link, $post ) {
 		if ( is_object( $post ) && $post->post_type === 'model' ) {
 			if ( $post->post_parent !== 0 ) {
 				$post = get_post( $post->post_parent );

@@ -40,6 +40,7 @@ if ($is_rest_request || $is_api_request || $is_ajax_request) {
     require_once get_template_directory() . '/includes/multisite-fixes.php'; // MultisiteFixer hooks
     require_once get_template_directory() . '/includes/redirections.php';    // Redirections + validateQuery
     require_once get_template_directory() . '/includes/cache.php';           // Cache class
+    require_once get_template_directory() . '/includes/functions-rest.php';           // REST functions
     require_once get_template_directory() . '/includes/api.php';             // Custom REST endpoints
     require_once get_template_directory() . '/includes/ajax.php';            // AJAX handlers
     // ACF plugin is loaded as mu-plugin - get_field() works without theme acf.php
@@ -66,7 +67,7 @@ new ProductTagsMetaBox();
 new EventController();
 new DolCarsAdmin();
 
-add_action('init', function() {
+add_action('admin_init', function() {
     $controller = new \Controllers\GaDashboardController();
     $controller->init();
 });
