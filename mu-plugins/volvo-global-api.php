@@ -2855,10 +2855,7 @@ function volvo_global_get_service_news(array $options, int $blog_id): array
     $news = [];
 
     $admin_news = $options['vinomat_news'][0];
-if (array_key_exists('api-test', $_GET) && $_GET['api-test']) {
-    echo '<pre>';
-    print_r($options);exit;
-}
+
     switch_to_blog( 1 );
     
     for ( $i = 0; $i < (int) $admin_news; $i++ ) {
@@ -3223,13 +3220,7 @@ function volvo_global_get_service_form( int $blog_id, ?string $type = null ): ar
     $globalFormOptions = get_field( 'form', 'options-global' );
     $img_id = $globalFormOptions['thank-you-image'];
 
-    $img_url = wp_get_attachment_url($img_id);
-
-    $images = [
-        volvo_global_prepare_image_for_render($blog_id, $img_id, 392, false, $img_url, true),
-    ];
-    $image = volvo_global_prepare_images_render($images);
-
+    $image = volvo_global_prepare_image($img_id);
 
     $formOptions = get_field( 'form', 'options-service' );
     $models = array();
