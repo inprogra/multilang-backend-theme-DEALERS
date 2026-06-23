@@ -281,9 +281,6 @@ function volvo_get_showrooms() {
         ));
         
         foreach ($showroom_posts as $showroom) {
-            if (array_key_exists('site-info-test', $_GET)) {
-                //print_r($showroom);exit;
-            }
             $showroom = [
                 'id'            => $showroom->ID,
                 'showroom_id'   => get_field('showroomId', $showroom->ID),
