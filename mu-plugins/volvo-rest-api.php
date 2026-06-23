@@ -107,8 +107,10 @@ function volvo_get_dealer_info() {
             break;
         }
         $social[] = ['name' => $key, 'url' => $social[$key],'svg' => $svg];
-        unset($social[$key]);
-        if ($social[$key] == '') {
+        if (array_key_exists($key, $social)) {
+            unset($social[$key]);
+        }
+        if (array_key_exists($key, $social) && ($social[$key] == '')) {
             unset($social[$key]);
         }
     }

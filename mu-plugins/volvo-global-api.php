@@ -1111,7 +1111,7 @@ function volvo_global_get_page($request) {
     restore_current_blog();
 
     $time_end = microtime(true);
-    if ($_GET['api-test']) {
+    if (array_key_exists('api-test', $_GET) && $_GET['api-test']) {
         $response['time'] = $time_end - $time_start;
         if (defined('APP_START_TIME')) {
             $response['time_app'] = $time_end - APP_START_TIME;
@@ -1262,7 +1262,7 @@ function volvo_global_get_blog_index(array $path, int $blog_id): ?array
         $response = [];
         $response['id']         = $page->ID;
         $response['title']      = get_the_title($page->ID);
-
+        $response['post_type']  = $page->post_type;
         $response['content']    = volvo_global_prepare_content_block($page->post_content, $page->ID, $blog_id);
     } else {
         $response = null;
@@ -2696,7 +2696,7 @@ function volvo_global_set_paged(array $page_parts = []): void
 {
     if (isset($_GET['page']) && ($paged = (int) $_GET['page']) > 1 ) {
         set_query_var('paged', $paged);
-    } elseif (($paged = (int) $page_parts[2]) > 1) {
+    } elseif (isset($page_parts[2]) && ($paged = (int) $page_parts[2]) > 1) {
         set_query_var('paged', $paged);
     }
 }
@@ -2855,12 +2855,15 @@ function volvo_global_get_service_news(array $options, int $blog_id): array
     $news = [];
 
     $admin_news = $options['vinomat_news'][0];
-
+if (array_key_exists('api-test', $_GET) && $_GET['api-test']) {
+    echo '<pre>';
+    print_r($options);exit;
+}
     switch_to_blog( 1 );
     
     for ( $i = 0; $i < (int) $admin_news; $i++ ) {
-        $url = ($options[ 'vinomat_news_' . $i . '_vinomat_box_link' ][0] ? unserialize($options[ 'vinomat_news_' . $i . '_vinomat_box_link' ][0]) : null);
-        $link = $options['options-service_vinomat-section_vinomat_news_' . $i . '_slides_0_type'][0];
+        $url = isset($options[ 'vinomat_news_' . $i . '_vinomat_box_link' ][0]) ? unserialize($options[ 'vinomat_news_' . $i . '_vinomat_box_link' ][0]) : null;
+        $link = isset($options['options-service_vinomat-section_vinomat_news_' . $i . '_slides_0_type']) ? $options['options-service_vinomat-section_vinomat_news_' . $i . '_slides_0_type'][0] : null;
 
         if (!$url) {
             $url_type = ($link && in_array($link, ['global', 'link'], true)) ? $link : null;
