@@ -1424,15 +1424,7 @@ function volvo_global_get_test_drive_model(string $slug, int $blog_id): array
             }
 
             foreach ($gallery as $itemId) {
-                $img_id = $itemId;
-                $img_url = wp_get_attachment_url($itemId);
-
-                $images = [
-                    volvo_global_prepare_image_for_render($blog_id_current, $img_id, 1024, 600, $img_url, true),
-                ];
-
-                $images = volvo_global_prepare_images_render($images);
-                $galleryPictures[] = $images;
+                $galleryPictures[] = volvo_global_prepare_image($itemId);
             }
 
             $x++;
@@ -3510,12 +3502,14 @@ function volvo_global_get_service_get_contact_section(): array
     $localContactSectionOptions = get_field( 'contact-section', 'options-service' );
     $contacs                    = array();
 
-    foreach ( $localContactSectionOptions['employees'] as $contact ) {
-        $employee  = get_fields( $contact['employee'] );
-        $contacs[] = array(
-            'specializations' => $contact['specializations'],
-            'employee'        => $employee,
-        );
+    if (!empty($localContactSectionOptions['employees']) && is_countable($localContactSectionOptions['employees'])) {
+        foreach ( $localContactSectionOptions['employees'] as $contact ) {
+            $employee  = get_fields( $contact['employee'] );
+            $contacs[] = array(
+                'specializations' => $contact['specializations'],
+                'employee'        => $employee,
+            );
+        }
     }
 
     return array(

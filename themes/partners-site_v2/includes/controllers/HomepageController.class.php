@@ -59,6 +59,7 @@ class HomepageController extends Controller
 		switch_to_blog(MultisiteFixer::getCurrentBlogId());
 		// switch_to_blog(1);
 
+		$blog_id = get_current_blog_id();
 		$showOffer = get_field('offerBtn', 'options-homepage');
 		$title = get_field('offerTitle', 'options-homepage');$img_id = $offer1['imageCard']['id'];
 		$pimg = new ImageBuilder(-1, false);

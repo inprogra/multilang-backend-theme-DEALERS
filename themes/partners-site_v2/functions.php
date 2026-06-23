@@ -814,7 +814,7 @@ function validateQuery($request)
             foreach ($data as $q) {
 
 
-                if ($q[0] !== '') {
+                if (isset($q[0]) && $q[0] !== '') {
                     $uri = parse_url($q[0]);
                     // var_dump($uri)
                     $verify_url = $uri['path'];

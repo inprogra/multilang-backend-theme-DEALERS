@@ -151,7 +151,7 @@ class MultisiteFixer
         ];
 
         $id = false;
-        if ($query->query_vars['name']) {
+        if (array_key_exists('name', $query->query_vars) && $query->query_vars['name']) {
             $page = get_page_by_path($query->query_vars['name'], OBJECT, [$query->query_vars['post_type']] ?? ['page']);
             if ($page) {
                 $id = $page->ID;

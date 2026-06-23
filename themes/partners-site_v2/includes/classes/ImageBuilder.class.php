@@ -65,7 +65,7 @@ class ImageBuilder {
 				} else {
 					$data[$key]['src'] = $cache_check;
 				}
-				$data[$key]['thumb'] = 'https://image-render.cloud/api/renderImage?image='.$value['image'].'&size='.$value['twidth'].'&height='.($value['theight'] ? $value['theight'] : false).'&fit='.($value['tcrop'] ? $value['tcrop'] : false).'&flip='.($value['tcrop'] ? 1 : false).'&blog_id='.$value['blog_id'].'&img_id='.$value['img_id'];
+				$data[$key]['thumb'] = 'https://image-render.cloud/api/renderImage?image='.$value['image'].'&size='.(isset($value['twidth']) ? $value['twidth'] : false).'&height='.(isset($value['theight']) ? $value['theight'] : false).'&fit='.(isset($value['tcrop']) ? $value['tcrop'] : false).'&flip='.(isset($value['tcrop']) ? 1 : false).'&blog_id='.$value['blog_id'].'&img_id='.$value['img_id'];
 		}
 		return $data;
 	}
