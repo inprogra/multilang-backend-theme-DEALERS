@@ -246,7 +246,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 										'id'    => '',
 									),
 									'choices'           => array(
-										'link' => __( 'Link', 'partners-site_v2' ),
+										'link' => __('Link', 'partners-site_v2'),
 										'form' => __( 'Form', 'partners-site_v2' ),
 									),
 									'default_value'     => false,
@@ -286,7 +286,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 								),
 								array(
 									'key'               => 'field_6021470944994',
-									'label'             => __( 'Link', 'partners-site_v2' ),
+									'label'             => __('Link', 'partners-site_v2'),
 									'name'              => 'link',
 									'type'              => 'link',
 									'instructions'      => '',

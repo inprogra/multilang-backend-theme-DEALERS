@@ -23,7 +23,7 @@ function registerThemePostTypes() {
 		'employee_category',
 		'employee',
 		array(
-			'label'              => __( 'Działy', 'partners-site_v2' ),
+			'label'              => __('Departments', 'partners-site_v2'),
 			'hierarchical'       => false,
 			'show_in_rest'       => false,
 			'show_ui'            => true,
@@ -34,7 +34,7 @@ function registerThemePostTypes() {
 
 	$customPostTypes = array(
 		'lead'              => array(
-			'label'           => __( 'Leady', 'partners-site_v2' ),
+			'label'           => __('Leads', 'partners-site_v2'),
 			'public'          => false,
 			'rewrite'         => false,
 			'show_ui'         => true,
@@ -52,13 +52,13 @@ function registerThemePostTypes() {
 			'supports'        => array( 'revisions' ),
 		),
 		'campaign'          => array(
-			'label'        => __( 'Kampanie', 'partners-site_v2' ),
+			'label'        => __('Campaigns', 'partners-site_v2'),
 			'labels'       => array(
-				'singular_name' => __( 'Kampania', 'partners-site_v2' ),
-				'add_new'       => __( 'Dodaj kampanię', 'partners-site_v2' ),
-				'add_new_item'  => __( 'Dodaj kampanię', 'partners-site_v2' ),
-				'edit_item'     => __( 'Edytuj kampanię', 'partners-site_v2' ),
-				'new_item'      => __( 'Nowa kampania', 'partners-site_v2' ),
+				'singular_name' => __('Campaign', 'partners-site_v2'),
+				'add_new'       => __('Add campaign', 'partners-site_v2'),
+				'add_new_item'  => __('Add campaign', 'partners-site_v2'),
+				'edit_item'     => __('Edit campaign', 'partners-site_v2'),
+				'new_item'      => __('New campaign', 'partners-site_v2'),
 			),
 			'public'       => true,
 			'show_ui'      => true,
@@ -72,13 +72,13 @@ function registerThemePostTypes() {
 			),
 		),
 		'campaign-override' => array(
-			'label'        => __( 'Kampanie globalne', 'partners-site_v2' ),
+			'label'        => __('Global campaigns', 'partners-site_v2'),
 			'labels'       => array(
-				'singular_name' => __( 'Kampania globalna', 'partners-site_v2' ),
-				'add_new'       => __( 'Dodaj dopisek do kampanii globalnej', 'partners-site_v2' ),
-				'add_new_item'  => __( 'Dodaj dopisek', 'partners-site_v2' ),
-				'edit_item'     => __( 'Edytuj dopisek kampanii globalnej', 'partners-site_v2' ),
-				'new_item'      => __( 'Nowy dopisek do kampanii globalnej', 'partners-site_v2' ),
+				'singular_name' => __('Global campaign', 'partners-site_v2'),
+				'add_new'       => __('Add a note to a global campaign', 'partners-site_v2'),
+				'add_new_item'  => __('Add note', 'partners-site_v2'),
+				'edit_item'     => __('Edit global campaign note', 'partners-site_v2'),
+				'new_item'      => __('New note for a global campaign', 'partners-site_v2'),
 			),
 			'has_archive'  => false,
 			'public'       => true,
@@ -89,13 +89,13 @@ function registerThemePostTypes() {
 			'supports'     => array( 'title', 'editor', 'revisions' ),
 		),
 		'model'             => array(
-			'label'        => __( 'Modele', 'partners-site_v2' ),
+			'label'        => __('Models', 'partners-site_v2'),
 			'labels'       => array(
-				'singular_name' => __( 'Model', 'partners-site_v2' ),
-				'add_new'       => __( 'Dodaj model', 'partners-site_v2' ),
-				'add_new_item'  => __( 'Dodaj nowy', 'partners-site_v2' ),
-				'edit_item'     => __( 'Edytuj model', 'partners-site_v2' ),
-				'new_item'      => __( 'Nowy model', 'partners-site_v2' ),
+				'singular_name' => __('Model', 'partners-site_v2'),
+				'add_new'       => __('Add model', 'partners-site_v2'),
+				'add_new_item'  => __('Add new', 'partners-site_v2'),
+				'edit_item'     => __('Edit model', 'partners-site_v2'),
+				'new_item'      => __('New model', 'partners-site_v2'),
 			),
 			'has_archive'  => false,
 			'rewrite'      => array(
@@ -111,13 +111,13 @@ function registerThemePostTypes() {
 			'supports'     => array( 'page-attributes', 'title', 'editor', 'revisions' ),
 		),
 		'model-override'    => array(
-			'label'        => __( 'Modele', 'partners-site_v2' ),
+			'label'        => __('Models', 'partners-site_v2'),
 			'labels'       => array(
-				'singular_name' => __( 'Model', 'partners-site_v2' ),
-				'add_new'       => __( 'Dodaj model', 'partners-site_v2' ),
-				'add_new_item'  => __( 'Dodaj nowy', 'partners-site_v2' ),
-				'edit_item'     => __( 'Edytuj model', 'partners-site_v2' ),
-				'new_item'      => __( 'Nowy model', 'partners-site_v2' ),
+				'singular_name' => __('Model', 'partners-site_v2'),
+				'add_new'       => __('Add model', 'partners-site_v2'),
+				'add_new_item'  => __('Add new', 'partners-site_v2'),
+				'edit_item'     => __('Edit model', 'partners-site_v2'),
+				'new_item'      => __('New model', 'partners-site_v2'),
 			),
 			'has_archive'  => false,
 			'public'       => true,
@@ -128,13 +128,13 @@ function registerThemePostTypes() {
 			'supports'     => array( 'title', 'editor', 'revisions' ),
 		),
 		'employee'          => array(
-			'label'        => 'Pracownicy',
+			'label'        => __('Employees', 'partners-site_v2'),
 			'labels'       => array(
-				'singular_name' => __( 'Pracownik', 'partners-site_v2' ),
-				'add_new'       => __( 'Dodaj pracownika', 'partners-site_v2' ),
-				'add_new_item'  => __( 'Dodaj nowego pracownika', 'partners-site_v2' ),
-				'edit_item'     => __( 'Edytuj pracownika', 'partners-site_v2' ),
-				'new_item'      => __( 'Nowy pracownik', 'partners-site_v2' ),
+				'singular_name' => __('Employee', 'partners-site_v2'),
+				'add_new'       => __('Add employee', 'partners-site_v2'),
+				'add_new_item'  => __('Add new employee', 'partners-site_v2'),
+				'edit_item'     => __('Edit employee', 'partners-site_v2'),
+				'new_item'      => __('New employee', 'partners-site_v2'),
 			),
 			'has_archive'  => false,
 			'public'       => true,
@@ -145,13 +145,13 @@ function registerThemePostTypes() {
 			'supports'     => array( 'title', 'editor', 'revisions' ),
 		),
 		'showroom'          => array(
-			'label'               => __( 'Salony', 'partners-site_v2' ),
+			'label'               => __('Showrooms', 'partners-site_v2'),
 			'labels'              => array(
-				'singular_name' => __( 'Salon', 'partners-site_v2' ),
-				'add_new'       => __( 'Dodaj salon', 'partners-site_v2' ),
-				'add_new_item'  => __( 'Dodaj nowy salon', 'partners-site_v2' ),
-				'edit_item'     => __( 'Edytuj salon', 'partners-site_v2' ),
-				'new_item'      => __( 'Nowy salon', 'partners-site_v2' ),
+				'singular_name' => __('Showroom', 'partners-site_v2'),
+				'add_new'       => __('Add Showroom', 'partners-site_v2'),
+				'add_new_item'  => __('Add new Showroom', 'partners-site_v2'),
+				'edit_item'     => __('Edit Showroom', 'partners-site_v2'),
+				'new_item'      => __('New Showroom', 'partners-site_v2'),
 			),
 			'has_archive'         => false,
 			'public'              => true,
@@ -173,13 +173,13 @@ function registerThemePostTypes() {
 			'map_meta_cap'        => true,
 		),
 		'blog'          => array(
-			'label'        => 'Blog',
+			'label'        => __('Blog', 'partners-site_v2'),
 			'labels'       => array(
-				'singular_name' => __( 'Post', 'partners-site_v2' ),
-				'add_new'       => __( 'Dodaj post', 'partners-site_v2' ),
-				'add_new_item'  => __( 'Dodaj post', 'partners-site_v2' ),
-				'edit_item'     => __( 'Edytuj post', 'partners-site_v2' ),
-				'new_item'      => __( 'Nowy post', 'partners-site_v2' ),
+				'singular_name' => __('Post', 'partners-site_v2'),
+				'add_new'       => __('Add post', 'partners-site_v2'),
+				'add_new_item'  => __('Add post', 'partners-site_v2'),
+				'edit_item'     => __('Edit post', 'partners-site_v2'),
+				'new_item'      => __('New post', 'partners-site_v2'),
 			),
 			'public'       => true,
 			'show_ui'      => true,
@@ -242,10 +242,10 @@ function general_admin_notice() {
 				break;
 			case 'edit-campaign-override':   // Nadpisywanie kampanii
 				echo '<div class="notice notice-info">' .
-					'<h3>Witamy na ekranie Kampanii globalnych!</h3>' .
-					'<p>W tym miejscu moves dodać własne treści do istniejących już kampanii globalnych wyświetlanych na Twojej stronie.</p>' .
-					'<p>Stwórz poniżej stronę i dodaj w niej treści które wyświetlą się pod kampanią która wybierzesz.</p>' .
-					'<p>Nie zapomnij wybrać nowej kampanii w <a href="/wp/wp-admin/admin.php?page=options-homepage">Opcjach Strony Głównej</a></p>' .
+					'<h3>' . esc_html__('Welcome to the Global Campaigns screen!', 'partners-site_v2') . '</h3>' .
+					'<p>' . esc_html__('Here, you can add your own content to existing global campaigns displayed on your website.', 'partners-site_v2') . '</p>' .
+					'<p>' . esc_html__('Create a page below and add content that will appear under the campaign you select.', 'partners-site_v2') . '</p>' .
+					'<p>' . esc_html__('Don’t forget to select a new campaign in <a href="/wp/wp-admin/admin.php?page=options-homepage">Home Page Options</a>', 'partners-site_v2') . '</a></p>' .
 					'</div>';
 				break;
 			case 'edit-model-override':   // Modele

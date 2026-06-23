@@ -25,16 +25,16 @@ class EventController extends Controller
     public function registerMenu()
     {
         add_menu_page(
-            'Eventy',
-            'Eventy',
+            __( 'Events', 'partners-site_v2'),
+            __( 'Events', 'partners-site_v2'),
             'publish_pages',
             'eventy', 
             [$this, 'renderPage']
         );
         add_submenu_page(
             'eventy', 
-            'Lista uczestników', 
-            'Lista uczestników',
+            __( 'List of participants', 'partners-site_v2'), 
+            __( 'List of participants', 'partners-site_v2'),
             'publish_pages',
             'eventy-lista-uczestnikow',
             [$this, 'renderParticipantsPage'] 
@@ -63,7 +63,7 @@ class EventController extends Controller
             e.preventDefault();
 
             var eventId = $(this).data('event-id');
-            var confirmDelete = confirm('Czy na pewno chcesz usunąć ten event?');
+            var confirmDelete = confirm(" . json_encode(__('Are you sure you want to delete this event?', 'partners-site_v2')) . ");
             if (!confirmDelete) return;
 
             console.log({
@@ -81,15 +81,15 @@ class EventController extends Controller
                 contentType: 'application/x-www-form-urlencoded',  
                 success: function(response) {
                     if (response.success) {
-                        alert('Event usunięty!');
+                        alert(" . json_encode(__('Event deleted!', 'partners-site_v2')) . ");
                         location.reload(); 
                     } else {
-                        alert('Błąd: ' + response.data.message);
+                        alert(" . json_encode(__('Error', 'partners-site_v2')) . " + ': ' + response.data.message);
                     }
                 },
                 error: function(xhr, status, error) {
-                    console.error('Błąd AJAX: ', xhr, status, error);  
-                    alert('Wystąpił błąd podczas usuwania eventu.');
+                    console.error(" . json_encode(__('AJAX error: ', 'partners-site_v2')) . ", xhr, status, error);  
+                    alert(" . json_encode(__('An error occurred while deleting the event.', 'partners-site_v2')) . ");
                 }
             });
         });
@@ -102,8 +102,8 @@ class EventController extends Controller
             var imagePreview = input.siblings('img'); 
 
             var mediaUploader = wp.media({
-                title: 'Wybierz obrazek',
-                button: { text: 'Wstaw obrazek' },
+                title: " . json_encode(__('Select an image', 'partners-site_v2')) . ",
+                button: { text: " . json_encode(__('Upload an image', 'partners-site_v2')) . " },
                 multiple: false
             });
 
@@ -146,14 +146,16 @@ class EventController extends Controller
             var nameField = form.find('input[name=\"name\"]');
             if (!nameField.val().trim()) {
                 nameField.addClass('validation-error');
-                $('<p class=\"validation-message\">Pole nazwa jest wymagane.</p>').insertAfter(nameField);
+                var msg_name = " . json_encode(__('The "Name" field is required.', 'partners-site_v2')) . ";
+                $('<p class=\"validation-message\">' + msg_name + '</p>').insertAfter(nameField);
                 valid = false;
             }
 
             var imageField = form.find('input[name=\"image\"]');
             if (!imageField.val().trim()) {
                 imageField.addClass('validation-error');
-                $('<p class=\"validation-message\">Pole obrazek jest wymagane.</p>').insertAfter(imageField);
+                var msg_image = " . json_encode(__('The "Image" field is required.', 'partners-site_v2')) . ";
+                $('<p class=\"validation-message\">' + msg_image + '</p>').insertAfter(imageField);
                 valid = false;
             }
 
@@ -189,7 +191,8 @@ class EventController extends Controller
                 data: JSON.stringify({ data: [ payload ] }),
                 contentType: 'application/json',
                 success: function(response) {
-                    $('<div class=\"notice notice-success\"><p>Zmiany zapisane poprawnie!</p></div>').insertBefore('.wrap h1');
+                    var msg_success = " . json_encode(__('Changes saved successfully!', 'partners-site_v2')) . ";
+                    $('<div class=\"notice notice-success\"><p>' + msg_success + '</p></div>').insertBefore('.wrap h1');
                     setTimeout(function() {
                         $('html, body').animate({
                             scrollTop: $('.notice').offset().top
@@ -205,8 +208,8 @@ class EventController extends Controller
                     var msg = xhr.responseJSON && (xhr.responseJSON.message || xhr.responseJSON.error)
                         ? (xhr.responseJSON.message || xhr.responseJSON.error)
                         : xhr.status;
-
-                    $('<div class=\"notice notice-error\"><p>Błąd podczas zapisu: ' + msg + '</p></div>').insertBefore('.wrap h1');
+                    var msg_prefix = " . json_encode(__('Error while saving:', 'partners-site_v2')) . ";
+                    $('<div class=\"notice notice-error\"><p>' + msg_prefix + ' ' + msg + '</p></div>').insertBefore('.wrap h1');
                 }
             });
         });
@@ -236,13 +239,13 @@ class EventController extends Controller
     ]);
 
     if (is_wp_error($response)) {
-        return ['error' => 'Błąd połączenia: ' . $response->get_error_message()];
+        return ['error' => __('Connection error', 'partners-site_v2') . ': ' . $response->get_error_message()];
     }
 
     $status_code = wp_remote_retrieve_response_code($response);
     if ($status_code !== 200) {
         return [
-            'error'       => "Błąd HTTP: $status_code",
+            'error'       => __('HTTP error', 'partners-site_v2') . ": $status_code",
             'body_preview'=> substr(wp_remote_retrieve_body($response), 0, 500) 
         ];
     }
@@ -252,7 +255,7 @@ class EventController extends Controller
     $data = json_decode($body, true);
     if (json_last_error() !== JSON_ERROR_NONE) {
         return [
-            'error'       => 'Nie udało się sparsować JSON: ' . json_last_error_msg(),
+            'error'       => __('Failed to parse JSON', 'partners-site_v2') . ': ' . json_last_error_msg(),
             'body_preview'=> substr($body, 0, 500)
         ];
     }
@@ -299,7 +302,7 @@ class EventController extends Controller
     }
 
 
-    wp_send_json_success(['message' => 'Event usunięty poprawnie.']);
+    wp_send_json_success(['message' => __('Event deleted successfully.', 'partners-site_v2')]);
 }
 
 
@@ -310,12 +313,12 @@ class EventController extends Controller
     public function renderPage()
 {
    
-    echo '<div class="wrap"><h1>Eventy</h1>';
+    echo '<div class="wrap"><h1>' . esc_html__('Events', 'partners-site_v2') . '</h1>';
 
     $data = $this->fetchExternalEvents();
     if (!$data || empty($data['entries']) && !isset($_GET['add'])) { 
-        echo '<p>Brak eventów do wyświetlenia.</p>';
-        echo '<p><a class="button button-primary" href="' . esc_url(admin_url('admin.php?page=eventy&add=new')) . '">Dodaj nowy</a></p>';
+        echo '<p>' . esc_html__('No events to display.', 'partners-site_v2') . '</p>';
+        echo '<p><a class="button button-primary" href="' . esc_url(admin_url('admin.php?page=eventy&add=new')) . '">' . esc_html__('Add new', 'partners-site_v2') . '</a></p>';
         // return;
     }
    
@@ -336,7 +339,7 @@ class EventController extends Controller
                 'opening_hours' => ['open' => ''],
                 'image' => ['path' => '']
             ];
-            echo '<h2>Dodajesz nowy event</h2>';
+            echo '<h2>' . esc_html__('You are adding a new event', 'partners-site_v2') . '</h2>';
         } else {
             $editId = sanitize_text_field($_GET['edit']);
             $event = null;
@@ -347,7 +350,7 @@ class EventController extends Controller
                 }
             }
             if (!$event) {
-                echo '<p>Nie znaleziono eventu o ID: ' . esc_html($editId) . '</p></div>';
+                echo '<p>' . esc_html__('No event found with ID', 'partners-site_v2') . ': ' . esc_html($editId) . '</p></div>';
                 return;
             }
             $defaultFields = [
@@ -364,7 +367,7 @@ class EventController extends Controller
                     $event[$key] = $defaultValue;
                 }
             }
-            echo '<h2>Edytujesz event o ID: <code>' . esc_html($event['_id']) . '</code></h2>';
+            echo '<h2>' . esc_html__('You are editing the event with ID', 'partners-site_v2') . ': <code>' . esc_html($event['_id']) . '</code></h2>';
         }
 
         echo '<form id="event-edit-form" method="post" action="">';
@@ -390,25 +393,25 @@ class EventController extends Controller
         
             switch ($col) {
                 case 'name':
-                    $label = 'Nazwa wydarzenia';
+                    $label = __('Event name', 'partners-site_v2');
                     break;
                 case 'second_name':
-                    $label = 'Dodatkowa nazwa';
+                    $label = __('Alternative name', 'partners-site_v2');
                     break;
                 case 'private':
-                    $label = 'Wydarzenie prywatne';
+                    $label = __('Private event', 'partners-site_v2');
                     break;
                 case 'sizing':
-                    $label = 'Ilość biletów';
+                    $label = __('Number of tickets', 'partners-site_v2');
                     break;
                 case 'sms':
-                    $label = 'Treść sms z potwierdzeniem';
+                    $label = __('Confirmation SMS text', 'partners-site_v2');
                     break;
                 case 'opening_hours':
-                    $label = 'Godzina wydarzenia';
+                    $label = __('Event time', 'partners-site_v2');
                     break;
                 case 'description':
-                    $label = 'Opis';
+                    $label = __('Description', 'partners-site_v2');
                     break;
                 case 'interval':
 
@@ -416,7 +419,7 @@ class EventController extends Controller
                     $label = '';
                     break;
                 case 'image':
-                    $label = 'Obrazek';
+                    $label = __('Image', 'partners-site_v2');
                     break;
                 default:
                     $label = $col; 
@@ -486,7 +489,7 @@ class EventController extends Controller
                     
                         echo '<input type="text" id="' . $inputId . '" name="' . esc_attr($col) . '" value="' . esc_attr($imgVal) . '" class="regular-text" />';
                     
-                        echo ' <button class="button select-image-button" data-input-id="' . $inputId . '">Wybierz obrazek</button>';
+                        echo ' <button class="button select-image-button" data-input-id="' . $inputId . '">' . esc_html__('Select an image', 'partners-site_v2') . '</button>';
                     
                         echo '<br><img src="' . esc_url($imgVal) . '" style="max-width:150px; max-height:150px; object-fit:cover; margin-top:10px;" />';
                     
@@ -500,19 +503,19 @@ class EventController extends Controller
         }
 
         echo '</table>';
-        submit_button('Zapisz zmiany');
+        submit_button(esc_html__('Save changes', 'partners-site_v2'));
         echo '</form>';
 
-        echo '<p><a href="' . esc_url(admin_url('admin.php?page=eventy')) . '">&larr; Powrót do listy</a></p>';
+        echo '<p><a href="' . esc_url(admin_url('admin.php?page=eventy')) . '">&larr; ' . esc_html__('Back to list', 'partners-site_v2') . '</a></p>';
         echo '</div>';
         return;
     }
 
  
 $columns = [
-    'name' => 'Nazwa wydarzenia',
-    'second_name' => 'Dodatkowa nazwa',
-    'image' => 'Obrazek',
+    'name' => __('Event name', 'partners-site_v2'),
+    'second_name' => __('Alternative name', 'partners-site_v2'),
+    'image' => __('Image', 'partners-site_v2'),
   
 ];
 
@@ -522,9 +525,9 @@ echo '<th style="width:50px; text-align:center;">#</th>';
 foreach ($columns as $colKey => $colLabel) {
     echo '<th>' . esc_html($colLabel) . '</th>';
 }
-echo '<th style="width:60px; text-align:center;">Status</th>';  
-echo '<th style="width:60px; text-align:center;">Edytuj</th>';  
-echo '<th style="width:60px; text-align:center;">Usuń</th>';    
+echo '<th style="width:60px; text-align:center;">' . esc_html__('Status', 'partners-site_v2') . '</th>';  
+echo '<th style="width:60px; text-align:center;">' . esc_html__('Edit', 'partners-site_v2') . '</th>';  
+echo '<th style="width:60px; text-align:center;">' . esc_html__('Delete', 'partners-site_v2') . '</th>';    
 echo '</tr></thead><tbody>';
 
 $index = 1;
@@ -552,11 +555,11 @@ foreach ($data['entries'] as $event) {
 
     $id = $event['_id'] ?? '';
     echo '<td style="width:60px; text-align:center;">';
-    echo '<a class="button button-primary" href="' . esc_url(admin_url('admin.php?page=eventy&edit=' . $id)) . '">Edytuj</a>';
+    echo '<a class="button button-primary" href="' . esc_url(admin_url('admin.php?page=eventy&edit=' . $id)) . '">' . esc_html__('Edit', 'partners-site_v2') . '</a>';
     echo '</td>';
 
     echo '<td style="width:60px; text-align:center;">';
-    echo '<a class="button button-danger" href="#" data-event-id="' . $event['_id'] . '">Usuń</a>';
+    echo '<a class="button button-danger" href="#" data-event-id="' . $event['_id'] . '">' . esc_html__('Delete', 'partners-site_v2') . '</a>';
     echo '</td>';
 
     echo '</tr>';
@@ -565,7 +568,7 @@ echo '</tbody></table>';
 
 
 
-    echo '<p><a class="button button-primary" href="' . esc_url(admin_url('admin.php?page=eventy&add=new')) . '">Dodaj nowy</a></p>';
+    echo '<p><a class="button button-primary" href="' . esc_url(admin_url('admin.php?page=eventy&add=new')) . '">' . esc_html__('Add new', 'partners-site_v2') . '</a></p>';
     echo '</div>';
 }
 
@@ -573,7 +576,7 @@ echo '</tbody></table>';
 //  spis uzytkownikow
 
 public function renderParticipantsPage() {
-    echo '<div class="wrap"><h1>Lista uczestników</h1>';
+    echo '<div class="wrap"><h1>' . __( 'List of participants', 'partners-site_v2') . '</h1>';
 
     $selectedEvent = $_GET['filter_event'] ?? '';
 
@@ -582,7 +585,7 @@ public function renderParticipantsPage() {
     $eventsSizing = [];
     if (!empty($eventsData['entries'])) {
         foreach ($eventsData['entries'] as $event) {
-            $eventsMap[$event['_id']] = $event['name'] ?? '(brak nazwy)';
+            $eventsMap[$event['_id']] = $event['name'] ?? json_encode(__('(no name)', 'partners-site_v2'));
             $eventsSizing[$event['_id']] = $event['sizing']['name'] ?? null;
         }
     }
@@ -594,7 +597,7 @@ public function renderParticipantsPage() {
     $response = wp_remote_get('https://events.dealervolvo.pl/instance' . $blogId . '/api/collections/get/events?token=4ca43516c3548033e78fa126f2ae9b');
 
     if (is_wp_error($response)) {
-        echo '<p>Błąd połączenia z API: ' . esc_html($response->get_error_message()) . '</p></div>';
+        echo '<p>' . esc_html__('API connection error', 'partners-site_v2') . ': ' . esc_html($response->get_error_message()) . '</p></div>';
         return;
     }
     $body = wp_remote_retrieve_body($response);
@@ -611,52 +614,52 @@ public function renderParticipantsPage() {
     $totalParticipants = count($participants);
 
     if ($selectedEvent) {
-        echo '<p>Liczba uczestników zapisanych na wydarzenie <strong>' . esc_html($eventsMap[$selectedEvent]) . '</strong>: ' . $totalParticipants . '</p>';
+        echo '<p>' . esc_html__('Number of participants registered for the event', 'partners-site_v2') . ' <strong>' . esc_html($eventsMap[$selectedEvent]) . '</strong>: ' . $totalParticipants . '</p>';
 
         if (isset($eventsSizing[$selectedEvent])) {
             $available = intval($eventsSizing[$selectedEvent]);
             $color = ($totalParticipants < $available) ? 'green' : 'red';
-            echo '<p><strong>Dostępne miejsca:</strong> <span style="color:' . $color . ';">' . $available . '</span></p>';
+            echo '<p><strong>' . esc_html__('Available spots', 'partners-site_v2') . ':</strong> <span style="color:' . $color . ';">' . $available . '</span></p>';
         }
     } else {
-        echo '<p>Łączna liczba uczestników: ' . $totalParticipants . '</p>';
+        echo '<p>' . esc_html__('Total number of participants', 'partners-site_v2') . ': ' . $totalParticipants . '</p>';
     }
     echo '<form method="get" style="margin-bottom:20px;">';
     echo '<input type="hidden" name="page" value="eventy-lista-uczestnikow" />';
-    echo '<label for="filter_event">Filtruj według eventu: </label>';
+    echo '<label for="filter_event">' . esc_html__('Filter by event', 'partners-site_v2') . ': </label>';
     echo '<select name="filter_event" id="filter_event">';
-    echo '<option value="">-- Wszystkie --</option>';
+    echo '<option value="">-- ' . esc_html__('All', 'partners-site_v2') . ' --</option>';
     foreach ($eventsMap as $eventId => $eventName) {
         $selected = ($selectedEvent === $eventId) ? 'selected' : '';
         echo '<option value="' . esc_attr($eventId) . '" ' . $selected . '>' . esc_html($eventName) . '</option>';
     }
     echo '</select>';
-    echo ' <input type="submit" class="button" value="Filtruj" />';
+    echo ' <input type="submit" class="button" value="' . esc_attr__('Filter', 'partners-site_v2') . '" />';
     echo '</form>';
 
     echo '<form method="post" action="' . admin_url('admin-post.php') . '" style="margin-bottom:10px;">';
     echo '<input type="hidden" name="action" value="export_events_csv">';
     echo '<input type="hidden" name="filter_event" value="' . esc_attr($selectedEvent) . '">';
-    echo '<input type="submit" class="button button-primary" value="Eksportuj CSV">';
+    echo '<input type="submit" class="button button-primary" value="' . esc_attr__('Export CSV', 'partners-site_v2') . '">';
     echo '</form>';
 
     $columns = [
-        'name' => 'Imię i nazwisko',
-        'phone' => 'Telefon',
-        'email' => 'E-mail',
-        'unique_id' => 'ID uczestnika',
-        'type' => 'Wydarzenie',
-        'car' => 'Samochód',
-        'place' => 'Miejsce',
-        'tax' => 'Podatek',
-        'agree_1' => 'Zgoda 1',
-        'agree_2' => 'Zgoda 2',
-        'agree_3' => 'Zgoda 3',
-        'ticket_status' => 'Status biletu',
+        'name' => __('First and last name', 'partners-site_v2'),
+        'phone' => __('Phone', 'partners-site_v2'),
+        'email' => __('Email', 'partners-site_v2'),
+        'unique_id' => __('Participant ID', 'partners-site_v2'),
+        'type' => __('Event', 'partners-site_v2'),
+        'car' => __('Car', 'partners-site_v2'),
+        'place' => __('Location', 'partners-site_v2'),
+        'tax' => __('Tax', 'partners-site_v2'),
+        'agree_1' => __('Consent 1', 'partners-site_v2'),
+        'agree_2' => __('Consent 2', 'partners-site_v2'),
+        'agree_3' => __('Consent 3', 'partners-site_v2'),
+        'ticket_status' => __('Ticket status', 'partners-site_v2'),
         '_created' => '', 
         '_modified' => '', 
         '_id' => '', 
-        'usun' => 'Usuń'
+        'usun' => __('Delete', 'partners-site_v2')
     ];
     
     echo '<table class="wp-list-table widefat fixed striped">';
@@ -675,12 +678,12 @@ public function renderParticipantsPage() {
             $value = $entry[$key] ?? '';
     
             if ($key === 'type') {
-                $value = (!empty($value['_id']) && isset($eventsMap[$value['_id']])) ? $eventsMap[$value['_id']] : '(brak powiązanego eventu)';
+                $value = (!empty($value['_id']) && isset($eventsMap[$value['_id']])) ? $eventsMap[$value['_id']] : json_encode(__('(no associated event)', 'partners-site_v2'));
             }
     
             if ($key === 'usun') {
                 $id = $entry['_id'] ?? '';
-                $value = '<a class="button button-danger delete-participant" href="#" data-participant-id="' . esc_attr($id) . '">Usuń</a>';
+                $value = '<a class="button button-danger delete-participant" href="#" data-participant-id="' . esc_attr($id) . '">' . esc_html__('Delete', 'partners-site_v2') . '</a>';
             }
     
             if (in_array($key, ['agree_1','agree_2','agree_3','ticket_status'])) {
@@ -698,7 +701,7 @@ public function renderParticipantsPage() {
         $(document).on('click', '.delete-participant', function(e) {
             e.preventDefault();
             var participantId = $(this).data('participant-id');
-            if (!confirm('Czy na pewno chcesz usunąć tego uczestnika?')) return;
+            if (!confirm(" . json_encode(__('Are you sure you want to delete this participant?', 'partners-site_v2')) . ")) return;
 
             $.ajax({
                 url: ajaxurl,
@@ -709,15 +712,15 @@ public function renderParticipantsPage() {
                 },
                 success: function(response) {
                     if (response.success) {
-                        alert('Uczestnik usunięty!');
+                        alert(" . json_encode(__('Participant deleted!', 'partners-site_v2')) . ");
                         location.reload();
                     } else {
-                        alert('Błąd: ' + response.data.message);
+                        alert(" . json_encode(__('Error', 'partners-site_v2')) . " + ': ' + response.data.message);
                     }
                 },
                 error: function(xhr) {
                     console.error('Błąd AJAX: ', xhr);
-                    alert('Wystąpił błąd podczas usuwania uczestnika.');
+                    alert(" . json_encode(__('An error occurred while deleting the participant.', 'partners-site_v2')) . ");
                 }
             });
         });
@@ -733,7 +736,7 @@ public function renderParticipantsPage() {
 //    Eksport CSV
 
 public function exportEventsCsv() {
-    if (!current_user_can('manage_options')) wp_die('Brak uprawnień do eksportu danych.');
+    if (!current_user_can('manage_options')) wp_die(esc_html__('No permissions to export data.', 'partners-site_v2'));
 
     $selectedEvent = $_POST['filter_event'] ?? '';
 
@@ -742,7 +745,7 @@ public function exportEventsCsv() {
     $blogId = !empty($instanceID) ? $instanceID : get_current_blog_id();
 
     $response = wp_remote_get('https://events.dealervolvo.pl/instance/' . $blogId . '/api/collections/get/events?token=4ca43516c3548033e78fa126f2ae9b');
-    if (is_wp_error($response)) wp_die('Błąd połączenia z API: ' . $response->get_error_message());
+    if (is_wp_error($response)) wp_die(esc_html__('API connection error', 'partners-site_v2') . ': ' . $response->get_error_message());
     $body = wp_remote_retrieve_body($response);
     $participants = json_decode($body, true)['entries'] ?? [];
 
@@ -750,13 +753,13 @@ public function exportEventsCsv() {
     $eventsMap = [];
     if (!empty($eventsData['entries'])) {
         foreach ($eventsData['entries'] as $event) {
-            $eventsMap[$event['_id']] = $event['name'] ?? '(brak nazwy)';
+            $eventsMap[$event['_id']] = $event['name'] ?? json_encode(__('(no name)', 'partners-site_v2'));
         }
     }
 
     if ($selectedEvent) {
         $participants = array_filter($participants, fn($p) => isset($p['type']['_id']) && $p['type']['_id'] === $selectedEvent);
-        $eventName = isset($eventsMap[$selectedEvent]) ? sanitize_title($eventsMap[$selectedEvent]) : 'brak_nazwy';
+        $eventName = isset($eventsMap[$selectedEvent]) ? sanitize_title($eventsMap[$selectedEvent]) : json_encode(__('No name', 'partners-site_v2'));
     } else {
         $eventName = 'wszystkie';
     }
@@ -764,21 +767,21 @@ public function exportEventsCsv() {
     $csvColumns = ['name','second_name','phone','email','type','car','place','tax','agree_1','agree_2','agree_3','ticket_status','sms','opening_hours','description'];
 
     $csvLabels = [
-        'name' => 'Nazwa wydarzenia',
-        'second_name' => 'Dodatkowa nazwa',
-        'phone' => 'Telefon',
-        'email' => 'E-mail',
-        'type' => 'Wydarzenie',
-        'car' => 'Samochód',
-        'place' => 'Miejsce',
-        'tax' => 'Podatek',
-        'agree_1' => 'Zgoda 1',
-        'agree_2' => 'Zgoda 2',
-        'agree_3' => 'Zgoda 3',
-        'ticket_status' => 'Status biletu',
-        'sms' => 'Treść SMS',
-        'opening_hours' => 'Godzina wydarzenia',
-        'description' => 'Opis',
+        'name' => __('Event name', 'partners-site_v2'),
+        'second_name' => __('Alternative name', 'partners-site_v2'),
+        'phone' => __('Phone', 'partners-site_v2'),
+        'email' => __('Email', 'partners-site_v2'),
+        'type' => __('Event', 'partners-site_v2'),
+        'car' => __('Car', 'partners-site_v2'),
+        'place' => __('Location', 'partners-site_v2'),
+        'tax' => __('Tax', 'partners-site_v2'),
+        'agree_1' => __('Consent 1', 'partners-site_v2'),
+        'agree_2' => __('Consent 2', 'partners-site_v2'),
+        'agree_3' => __('Consent 3', 'partners-site_v2'),
+        'ticket_status' => __('Ticket status', 'partners-site_v2'),
+        'sms' => __('SMS content', 'partners-site_v2'),
+        'opening_hours' => __('Event time', 'partners-site_v2'),
+        'description' => __('Description', 'partners-site_v2'),
     ];
 
     $resource = fopen('php://memory', 'w');
@@ -814,7 +817,7 @@ public function exportEventsCsv() {
 
 public function ajaxDeleteParticipant() {
     if (!isset($_POST['_id'])) {
-        wp_send_json_error(['message' => 'Brak ID uczestnika']);
+        wp_send_json_error(['message' => __('No participant ID', 'partners-site_v2')]);
     }
 
     $participantId = sanitize_text_field($_POST['_id']);
@@ -849,6 +852,6 @@ public function ajaxDeleteParticipant() {
         wp_send_json_error(['message' => $data['error']]);
     }
 
-    wp_send_json_success(['message' => 'Uczestnik usunięty poprawnie.']);
+    wp_send_json_success(['message' => __('Participant deleted successfully.', 'partners-site_v2')]);
 }  
 }

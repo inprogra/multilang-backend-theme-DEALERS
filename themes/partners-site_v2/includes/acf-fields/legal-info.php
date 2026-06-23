@@ -7,7 +7,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 			'fields'                => array(
 				array(
 					'key'               => 'field_60bddee594ff1',
-					'label' => __( 'Treść', 'partners-site_v2' ),
+					'label' => __('Content', 'partners-site_v2'),
 					'name'              => 'legal-info-content',
 					'type'              => 'wysiwyg',
 					'instructions'      => '',

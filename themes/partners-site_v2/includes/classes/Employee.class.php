@@ -23,7 +23,7 @@ class Employee {
 			( is_main_site() && $this->isEmployeePostType( $current_screen ) ) ||
 			( ! is_main_site() && $this->isEmployeeCategory( $current_screen ) )
 		) {
-			echo 'Brak uprawnień';
+			esc_html_e('No permissions', 'partners-site_v2');
 			/** @noinspection ForgottenDebugOutputInspection */
 			wp_die();
 		}

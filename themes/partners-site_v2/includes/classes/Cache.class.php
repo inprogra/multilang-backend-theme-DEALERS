@@ -12,38 +12,39 @@ class Cache {
 	private $prefix;
 	private $redis_local;
 	private $cacheEnabled;
+	private $redisInitialized = false;
+
 	public function __construct() {
 		$this->cacheEnabled = !env('DISABLE_REDIS_CACHE');
 		$this->addActions();
-		
-		if ($this->cacheEnabled) {
-			$this->redis = new \Predis\Client([
-				// 'scheme' => 'tcp',
-				// 'host' => '127.0.0.1',
-				// #'host'   => 'redis',
-				// 'port' => 6379,
-				// 'password' => 'q5M3wF7i02iW'
-					'scheme' => 'tcp',
-				'host' => '80.190.80.248',
-				#'host'   => 'redis',
-				'port' => 6379,
-				'password' => 'q5M3wF7i02iW'
-			]);
-			$this->redis_local =  new \Predis\Client([
-				'scheme' => 'tcp',
-				'host' => '127.0.0.1',			
-				'port' => 6379,
-				// 'password' => 'q5M3wF7i02iW'
-				// 	'scheme' => 'tcp',
-				// 'host' => '80.190.80.248',
-				// #'host'   => 'redis',
-				// 'port' => 6379,
-				'password' => 'q5M3wF7i02iW'
-			]);
+	}
+
+	private function initRedis(): void {
+		if ($this->redisInitialized) {
+			return;
 		}
+		$this->redisInitialized = true;
+
+		if (!$this->cacheEnabled) {
+			return;
+		}
+
+		$this->redis = new \Predis\Client([
+			'scheme' => 'tcp',
+			'host' => '80.190.80.248',
+			'port' => 6379,
+			'password' => 'q5M3wF7i02iW'
+		]);
+		$this->redis_local = new \Predis\Client([
+			'scheme' => 'tcp',
+			'host' => '127.0.0.1',
+			'port' => 6379,
+			'password' => 'q5M3wF7i02iW'
+		]);
 	}
 	
 	public function getDatabaseKey($key) {
+		$this->initRedis();
 		if (!$this->cacheEnabled) {
 			return null;
 		}
@@ -53,6 +54,7 @@ class Cache {
 		return $data;
 	}
 	public function get($key) {
+		$this->initRedis();
 		if (!$this->cacheEnabled) {
 			return null;
 		}
@@ -71,6 +73,7 @@ class Cache {
         return null;
     }
     public function set($key, $data, $ttl = 3600) {
+        $this->initRedis();
         if (!$this->cacheEnabled) {
             return;
         }
@@ -79,6 +82,7 @@ class Cache {
         $this->redis_local->setex($key, $ttl, $data);
     }
     public function delete($key) {
+        $this->initRedis();
         if (!$this->cacheEnabled) {
             return;
         }
@@ -91,7 +95,7 @@ class Cache {
 				$admin_bar->add_menu(
 					array(
 						'id'    => 'purge-cache',
-						'title' => 'Wyczyść Cache',
+						'title' => __('Clear Cache', 'partners-site_v2'),
 						'href'  => '#',
 					)
 				);
@@ -103,6 +107,7 @@ class Cache {
 	}
 
 	public function purgeSiteCache() {
+		$this->initRedis();
 		if ($this->cacheEnabled) {
 			$this->redis_local->flushAll();
 		}

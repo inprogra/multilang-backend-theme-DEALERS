@@ -3,6 +3,7 @@
         {{ openSection(1, 2)|raw }}
         {% include 'components/atoms/site-heading/site-heading.twig' with {
             heading: siteHeading.heading,
+            header_type: '1',
             description: siteHeading.description
         } only %}
         {{ closeSection()|raw }}

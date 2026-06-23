@@ -4,7 +4,7 @@ if ( function_exists( 'acf_add_local_field_group' ) ) :
 	acf_add_local_field_group(
 		array(
 			'key'                   => 'group_table_generator',
-			'title'                 => __('Table Generator', 'partners-site_v2'),
+			'title'                 => __('Table generator', 'partners-site_v2'),
 			'fields'                => array(				
 				array(
 					'key'               => 'table_preview',

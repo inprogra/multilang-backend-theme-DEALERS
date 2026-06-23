@@ -24,7 +24,7 @@ $blogId = $instanceID;
 <script type="text/javascript" data-name="instance<?= $blogId; ?>" src="https://events.dealervolvo.pl/js/render.js?token=tickets&v=1.0.8&xyz=<?= time(); ?>"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 <div class="events_title">
-	<h2><?= the_title(); ?> <span>Koncerty, spotkania, prezentacje</span></h2>
+	<h2><?= the_title(); ?> <span><?php esc_html_e('Concerts, meetings, presentations', 'partners-site_v2'); ?></span></h2>
 </div>
 <div class="tickets"></div>
 <style>
