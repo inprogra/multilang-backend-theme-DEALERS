@@ -1,5 +1,6 @@
 <?php
 
+require_once WPMU_PLUGIN_DIR . '/volvo-global-api/classes/CacheTagsCollector.class.php';
 require_once WPMU_PLUGIN_DIR . '/volvo-global-api/classes/Electrification.class.php';
 
 
@@ -366,7 +367,7 @@ function volvo_global_get_block_acf_banner_with_content_overlay (array $block): 
  * @param array $block
  * @return array
  */
-function volvo_global_get_block_acf_blog_posts_component (array $block): array
+function volvo_global_get_block_acf_blog_posts_component (array $block, int $blog_id): array
 {
     $page_limit = $block['data']['limit'];
     $tags = $block['data']['tags'];
@@ -409,6 +410,8 @@ function volvo_global_get_block_acf_blog_posts_component (array $block): array
             //}
 
             $posts_array[] = $post_data;
+
+            \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:page:{$post->ID}");
         }
 
         $total_pages = $posts_query->max_num_pages;

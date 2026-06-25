@@ -126,6 +126,8 @@ function volvo_get_dealer_info() {
         $dealer_info['dealer_logo'] = wp_get_attachment_url($dealer_info['dealer_logo']);
     }
 
+    $dealer_info['cache_tags'] = volvo_global_build_cache_tags('options-dealer');
+
     return new WP_REST_Response($dealer_info, 200);
 }
 
@@ -169,6 +171,8 @@ function volvo_get_menus() {
     } else {
         $menus['footer_menu'] = array();
     }
+
+    $menus['cache_tags'] = volvo_global_build_cache_tags('menus', $locations);
 
     return new WP_REST_Response($menus, 200);
 }
@@ -234,7 +238,11 @@ function volvo_get_addresses() {
  */
 function volvo_get_site_info() {
     $dealer_info = volvo_get_dealer_info()->get_data();
+    $cache_tags = $dealer_info['cache_tags'];
+    unset($dealer_info['cache_tags']);
     $menus = volvo_get_menus()->get_data();
+    $cache_tags = array_merge($cache_tags, $menus['cache_tags']);
+    unset($menus['cache_tags']);
     $addresses = volvo_get_addresses();
 
     $site_info = array_merge(
@@ -248,6 +256,8 @@ function volvo_get_site_info() {
         )
         
     );
+
+    $site_info['cache_tags'] = array_values(array_unique(array_merge($cache_tags, volvo_global_build_cache_tags('site-info', $site_info))));
 
     return new WP_REST_Response($site_info, 200);
 }
@@ -325,6 +335,8 @@ function volvo_get_dealer($request) {
     $exclude_blogs = [3, 38];
     $mSalon = ['PL041', 'PL050'];
 
+    $post_ids = [];
+
     foreach ($blogs as $blog) {
         if (in_array($blog['blog_id'], $exclude_blogs)) {
             continue;
@@ -386,6 +398,7 @@ function volvo_get_dealer($request) {
             'booking_partner_id' => $booking_partner_id,
             'bboking_partner_api_key' => $booking_api_key,
             'showrooms' => $showrooms,
+            'cache_tags' => volvo_global_build_cache_tags('getDealer', ['showroom_posts' => $showroom_posts])
         );
 
         restore_current_blog();
@@ -754,3 +767,69 @@ add_action('rest_api_init', function () {
         ),
     ));
 });
+
+function volvo_global_build_cache_tags(mixed $post_id, array|null $data = []): array
+{
+    $cache_tags = [];
+    
+    $site_id = get_current_blog_id();
+
+    if ($post_id === 'options-dealer') {
+        $cache_tags = [
+            "site:{$site_id}",
+            "site:{$site_id}:dealer-info",
+            "site:{$site_id}:page:{$post_id}",
+            //"site:{$site_id}:pages",
+        ];
+    } elseif ($post_id === 'menus') {
+        $cache_tags = [
+            "site:{$site_id}",
+            "site:{$site_id}:navigation",
+        ];
+
+        foreach ($data as $location => $menu_id) {
+            if ($menu_id) {
+                $cache_tags[] = "site:{$site_id}:navigation:{$menu_id}";
+                $cache_tags[] = "site:{$site_id}:navigation:location:{$location}";
+            }
+        }
+    } elseif ($post_id === 'site-info') {
+        $cache_tags = [
+            "site:{$site_id}",
+            "site:{$site_id}:site-info",
+            //"site:{$site_id}:pages"
+        ];
+        foreach($data['showrooms']['items'] as $item) {
+            $cache_tags[] = "site:{$site_id}:pages:{$item['id']}";
+        }
+    } elseif ($post_id === 'getDealer') {
+        $cache_tags = [
+            "site:{$site_id}",
+            "site:{$site_id}:{$post_id}",
+            //"site:{$site_id}:pages"
+        ];
+        $cache_tags = array_merge($cache_tags, volvo_global_build_cache_tags('options-dealer'));
+        
+        foreach($data['showroom_posts'] as $item) {
+            $cache_tags[] = "site:{$site_id}:pages:{$item->ID}";
+        }
+    } elseif ($post_id === 'options-homepage') {
+        $cache_tags[] = "site:{$site_id}:page:{$post_id}";
+
+        if (array_key_exists('slide_posts', $data)) {
+            foreach($data['slide_posts'] as $item) {
+                $blog_id = !empty($item->site_ID) ? $item->site_ID  :$site_id;
+                $cache_tags[] = "site:{$blog_id}:page:{$item->ID}";
+            }
+        }
+    } elseif ($post_id === 'contact') {
+        if (array_key_exists('showrooms', $data) && array_key_exists('showroomsAndSerices', $data['showrooms'])) {
+            foreach($data['showrooms']['showroomsAndSerices'] as $item) {
+                $cache_tags[] = "site:{$site_id}:page:{$item}";
+            }
+        }
+
+    }
+
+    return array_values(array_unique($cache_tags));
+}

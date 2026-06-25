@@ -1586,8 +1586,9 @@ class StockCarController extends Controller
 		}
 		if ($type == 'all') {
 			$blog_ids = [];
-			$blogs = wp_get_sites();
+			$blogs = get_sites();
 			foreach ($blogs as $b) {
+				$b = $b->to_array();
 				array_push($blog_ids, $b['blog_id']);
 			}
 		} else {

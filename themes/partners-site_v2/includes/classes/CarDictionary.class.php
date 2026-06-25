@@ -609,10 +609,11 @@ class CarDictionary
 		$mSalon = ['PL041','PL050'];
 
         $blog_ids = [];
-        $blogs = wp_get_sites();
+        $blogs = get_sites();
 	
 		$exclude_blogs = [3,38];
         foreach ($blogs as $b) {
+			$b = $b->to_array();
 			if (!in_array($b['blog_id'],$exclude_blogs)) {
 			$dealerId = null;
 			$showrooms = [];
@@ -697,10 +698,11 @@ class CarDictionary
 		$mSalon = ['PL041','PL050'];
 
         $blog_ids = [];
-        $blogs = wp_get_sites();
+        $blogs = get_sites();
 	
 		$exclude_blogs = [3,38];
         foreach ($blogs as $b) {
+			$b = $b->to_array();
 			if (!in_array($b['blog_id'],$exclude_blogs)) {
 			$dealerId = null;
 			$showrooms = [];
@@ -1677,9 +1679,10 @@ class CarDictionary
 		$csv = new \ParseCsv\Csv();
 		$csv->auto($file_path);
 		$leasing_data = $this->upload_path;
-		$sites        = wp_get_sites();
+		$sites        = get_sites();
 		$blog_ids     = array();
 		foreach ($sites as $site) {
+			$site = $site->to_array();
 			array_push($blog_ids, $site['blog_id']);
 		}
 

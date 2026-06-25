@@ -9,6 +9,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+require_once WPMU_PLUGIN_DIR . '/volvo-global-api/classes/CacheTagsCollector.class.php';
 require_once WPMU_PLUGIN_DIR . '/volvo-global-api/classes/FeaturedCars.class.php';
 require_once WPMU_PLUGIN_DIR . '/volvo-global-api/classes/CarSpecificationDataImporter.class.php';
 require_once WPMU_PLUGIN_DIR . '/volvo-global-api/components/blocks.php';
@@ -64,6 +65,24 @@ add_action('rest_api_init', function () {
     ));
 });
 
+add_action( 'rest_api_init', function () {
+    register_rest_route( 'volvo/v1', '/resolve-path', array(
+        'methods'             => 'GET',
+        'callback'            => 'volvo_global_resolve_canonical_path',
+        'permission_callback' => '__return_true',
+        'args'                => array(
+            'path'   => array(
+                'required'          => true,
+                'sanitize_callback' => 'sanitize_text_field',
+            ),
+            'domain' => array(
+                'required'          => false,
+                'sanitize_callback' => 'sanitize_text_field',
+            ),
+        ),
+    ));
+});
+
 add_action('rest_api_init', function () {
     // Global page endpoint - returns page data for any path
     register_rest_route('volvo/v1', '/page', array(
@@ -83,6 +102,178 @@ add_action('rest_api_init', function () {
         ),
     ));
 });
+
+/**
+ * Resolve canonical path
+ *
+ * @param \WP_REST_Request $request
+ * @return \WP_REST_Response
+ */
+function volvo_global_resolve_canonical_path( $request ) {
+    $path = $request->get_param( 'path' );
+    if ( empty( $path ) ) {
+        return new \WP_Error( 'no_path', 'Path not found', array( 'status' => 400 ) );
+    }
+    
+    global $is_volvo_ms_global_page;
+    $is_volvo_ms_global_page = false;
+
+    $path_clean = trim( $path, '/' );
+    $segments = array_filter( explode( '/', $path_clean ) );
+    
+    // Get domain from header or query param
+    $domain = isset($_SERVER['HTTP_X_WP_DOMAIN']) ? sanitize_text_field($_SERVER['HTTP_X_WP_DOMAIN']) : '';
+    if (empty($domain)) {
+        $domain = $request->get_param('domain');
+    }
+    if (empty($domain)) {
+        $domain = $_SERVER['HTTP_HOST'] ?? '';
+    }
+    
+    $blog_id = volvo_global_resolve_blog_id($domain);
+    
+    // Fallback to main blog if domain not found
+    if (!$blog_id) {
+        $blog_id = 1;
+    }
+    
+    // Switch to target blog
+    switch_to_blog($blog_id);
+
+    if ( empty( $segments ) ) {
+        $page_id = get_option('page_on_front');
+
+        restore_current_blog();
+
+        return new \WP_REST_Response( array(
+            'redirect'      => false,
+            'status'        => 200,
+            'type'          => 'home',
+            'id'            => $page_id,
+            'post_type'     => get_post_field('post_type', $page_id),
+            'post_status'   => get_post_field('post_status', $page_id),
+            'path_valid'    => '',
+            'global'        => false,
+        ), 200 );
+    }
+
+    // PAGE
+    $page_by_path = volvo_global_get_page_by_path( $path_clean, array( 'page', 'campaign', 'service', 'model' ) );
+
+    if ( $page_by_path && 'publish' === $page_by_path->post_status ) {
+        restore_current_blog();
+
+        $correct_global = false;
+        if ($is_volvo_ms_global_page) {
+            $correct_global = true;
+        }
+
+        return new \WP_REST_Response( array(
+            'redirect'      => false,
+            'status'        => 200,
+            'id'            => $page_by_path->ID,
+            'post_type'     => $page_by_path->post_type,
+            'post_status'   => $page_by_path->post_status,
+            'path_valid'    => $path_clean,
+            'global'        => $correct_global,
+        ), 200 );
+    }
+
+    // CANONICAL PAGE
+    $target_slug = end( $segments );
+
+    // Posty, które mają podany slug
+    $args = array(
+        'name'        => $target_slug,
+        'post_type'   => array( 'page', 'campaign', 'service', 'model' ),
+        'post_status' => 'publish',
+        'numberposts' => 1,
+    );
+    
+    $found_posts = get_posts( $args );
+    
+    if (empty($found_posts)) {
+        switch_to_blog(1);
+
+        $found_posts = get_posts( $args );
+
+        $is_volvo_ms_global_page = true;
+    }
+
+    // WP OLD SLUG
+    if ( empty( $found_posts ) ) {
+        if ($is_volvo_ms_global_page) {
+            restore_current_blog();
+            $is_volvo_ms_global_page = false;
+        }
+
+        $args = array(
+            'meta_key'    => '_wp_old_slug',
+            'meta_value'  => $target_slug,
+            'post_type'   => array( 'page', 'campaign', 'service', 'model' ),
+            'post_status' => 'publish',
+            'posts_per_page' => 1,
+        );
+
+        $old_slug_query = new \WP_Query( $args );
+
+        if ( $old_slug_query->have_posts() ) {
+            $found_posts = $old_slug_query->posts;
+        } else {
+            switch_to_blog(1);
+
+            $is_volvo_ms_global_page = true;
+
+            $old_slug_query = new \WP_Query( $args );
+
+            if ( $old_slug_query->have_posts() ) {
+                $found_posts = $old_slug_query->posts;
+            }
+        }
+    }
+
+    // Page found
+    if ( ! empty( $found_posts ) ) {
+        $matched_post = $found_posts[0];
+        
+        $correct_permalink = get_permalink( $matched_post->ID );
+        $correct_path = str_replace( home_url(), '', $correct_permalink );
+        $correct_path = trim( $correct_path, '/' );
+        $correct_global = false;
+
+        if ($is_volvo_ms_global_page) {
+            restore_current_blog();
+            $is_volvo_ms_global_page = false;
+            $correct_global = true;
+        }
+
+        restore_current_blog();
+
+        return new \WP_REST_Response( array(
+            'redirect'      => true,
+            'status'        => 301,
+            'id'            => $matched_post->ID,
+            'post_type'     => $matched_post->post_type,
+            'post_status'   => $matched_post->post_status,
+            'path_valid'    => $correct_path,
+            'global'        => $correct_global,
+        ), 200 );
+    }
+
+    if ($is_volvo_ms_global_page) {
+        restore_current_blog();
+        $is_volvo_ms_global_page = false;
+    }
+
+    restore_current_blog();
+
+    // Page not found
+    return new \WP_REST_Response( array(
+        'error'     => '404_not_found',
+        'status'    => 404,
+        'message'   => 'Page not found.'
+    ), 404 );
+}
 
 /**
  * Frontend domain to WordPress domain mapping
@@ -389,6 +580,7 @@ function volvo_global_format_slide($slide) {
  * @return array
  */
 function volvo_global_get_hero_slider() {
+
     $slider_options = get_field('slider', 'options-homepage');
     $slides = array();
     $slide_posts = array();
@@ -427,6 +619,8 @@ function volvo_global_get_hero_slider() {
         }
     }
     
+    $slides_cache_tags = [];
+
     // Format slides
     foreach ($slide_posts as $slide) {
         if (!empty($slide->site_ID) && $slide->site_ID !== get_current_blog_id()) {
@@ -439,8 +633,11 @@ function volvo_global_get_hero_slider() {
         
         if (!empty($formatted_slide)) {
             $slides[] = $formatted_slide;
+            $slides_cache_tags[] = $slide;
         }
     }
+
+    \VGA\Classes\Cache_Tags_Collector::instance()->add(volvo_global_build_cache_tags('options-homepage', ['slide_posts' => $slides_cache_tags]));
     
     return array('slides' => $slides);
 }
@@ -826,6 +1023,8 @@ function volvo_global_get_dealer_info($authenticated = false) {
         $dealer_info['youlead'] = $youlead ?: array();
     }
     
+    \VGA\Classes\Cache_Tags_Collector::instance()->add(volvo_global_build_cache_tags('options-dealer'));
+
     return $dealer_info;
 }
 
@@ -890,6 +1089,10 @@ function volvo_global_get_page($request) {
         ),
     );
 
+    \VGA\Classes\Cache_Tags_Collector::reset();
+    
+    \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}");
+
     $parse_url = wp_parse_url(ltrim($path, '/'));
     $path_parts = explode('/', trim($parse_url['path'], '/'));
     
@@ -898,6 +1101,8 @@ function volvo_global_get_page($request) {
     
     // For homepage (path = /)
     if ($path_parts[0] === '') {
+        \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:home");
+
         $response['heroSlider']    = volvo_global_get_hero_slider();
         $response['specialOffer']  = volvo_global_get_special_offer();
         $response['greyBox']       = volvo_global_get_grey_boxes();
@@ -913,6 +1118,11 @@ function volvo_global_get_page($request) {
         $page = volvo_global_get_page_by_path($path_parts[0]);
         
         if ($page) {
+            \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:contact");
+
+            $cache_site_id = $is_volvo_ms_global_page ? 1 : $blog_id;
+            \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$cache_site_id}:page:{$page->ID}");
+
             $showrooms = volvo_global_get_showrooms_blog();
             /*
             $response['siteHeading']   = array(
@@ -928,6 +1138,12 @@ function volvo_global_get_page($request) {
             $response['formShowrooms']      = volvo_global_get_showrooms_form($showrooms);
             $response['thankyouImage']      = volvo_global_get_contact_thank_you_image();
             $response['thankYouCode']       = volvo_global_get_contact_thank_you();
+
+            \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:page:options-dealer");
+            \VGA\Classes\Cache_Tags_Collector::instance()->add("site:1:page:options-global");
+            
+            \VGA\Classes\Cache_Tags_Collector::instance()->add(volvo_global_build_cache_tags('contact', ['showrooms' => $showrooms]));
+            
         } else {
             $response['page'] = null;
         }
@@ -935,6 +1151,7 @@ function volvo_global_get_page($request) {
     // For models pages, get page by path
     } elseif (in_array($path_parts[0], ['modele', 'models'])) {
         if (count($path_parts) == 3) {
+            \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:models");
 
             $response = array_merge(
                 $response,
@@ -942,17 +1159,22 @@ function volvo_global_get_page($request) {
             );
 
         } else { // index
+            \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:models");
 
             $response = array_merge(
                 $response,
                 volvo_global_get_model_index($path_parts, $blog_id)
             );
             
+            \VGA\Classes\Cache_Tags_Collector::instance()->add("site:1:page:{$response['id']}");
         }
     } elseif (in_array($path_parts[0], ['blog'])) {
 
         if (count($path_parts) == 1 || ((count($path_parts) === 3) && $path_parts[1] === 'page')) { // index
             volvo_global_set_paged($path_parts);
+
+            \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:blog");
+            \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:blog-index");
 
             $response['page'] = volvo_global_get_blog_index($path_parts, $blog_id);
         
@@ -967,6 +1189,9 @@ function volvo_global_get_page($request) {
                     'post_type'     => $post->post_type,
                     'content'       => volvo_global_prepare_content_block($post->post_content, $post->ID, $blog_id)
                 ];
+
+                \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:blog");
+                \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:page:{$post->ID}");
             } else {
                 $response['page'] = null;
             }
@@ -985,6 +1210,10 @@ function volvo_global_get_page($request) {
             if ($is_volvo_ms_global_page) {
                 restore_current_blog();
             }
+
+            $cache_site_id = ($is_volvo_ms_global_page) ? 1 : $blog_id;
+            \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$cache_site_id}:service");
+            \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$cache_site_id}:page:{$post->ID}");
 
             $response = array_merge($response, volvo_global_get_service_page_index($blog_id));
 
@@ -1021,11 +1250,19 @@ function volvo_global_get_page($request) {
             if ($is_volvo_ms_global_page) {
                 restore_current_blog();
             }
+
+            $cache_site_id = ($is_volvo_ms_global_page) ? 1 : $blog_id;
+            \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$cache_site_id}:drive-test");
+            \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$cache_site_id}:drive-test-index");
+            \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$cache_site_id}:page:{$post->ID}");
         }
 
         $response = array_merge($response, volvo_global_get_test_drive_index($blog_id));
 
     } elseif (strpos($path_parts[0], 'jazda-testowa-model-') !== false) {
+        \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:drive-test");
+        \VGA\Classes\Cache_Tags_Collector::instance()->add("site:1:drive-test-models");
+        \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:drive-test-models");
         
         $slug = str_replace('jazda-testowa-model-', '', $path_parts[0]);
         $response = array_merge($response, volvo_global_get_test_drive_model($slug, $blog_id));
@@ -1036,6 +1273,9 @@ function volvo_global_get_page($request) {
         if (!$page) {
             $response['page'] = null;
         } else {
+            $cache_site_id = ($is_volvo_ms_global_page) ? 1 : $blog_id;
+            \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$cache_site_id}:events-index");
+            \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$cache_site_id}:page:{$page->ID}");
 
             if ($blog_id == 36) {
                 $blog_id = 37;
@@ -1065,12 +1305,15 @@ function volvo_global_get_page($request) {
 
     } else {
         // For other pages, get page by path
-        $page = volvo_global_get_page_by_path(ltrim($path, '/'));
-        
+        $page = volvo_global_get_page_by_path(trim($path, '/'));
+
         if ($page) {
             if ($is_volvo_ms_global_page) {
                 switch_to_blog(1);
             }
+
+            $cache_site_id = ($is_volvo_ms_global_page) ? 1 : $blog_id;
+            \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$cache_site_id}:page:{$page->ID}");
             
             $response['page'] = array(
                 'id'             => $page->ID,
@@ -1097,6 +1340,29 @@ function volvo_global_get_page($request) {
         }
     }
 
+    if (array_key_exists('page', $response) && is_null($response['page'])) {
+        $response_resolve = volvo_global_resolve_canonical_path($request);
+        $response_resolve_data = $response_resolve->get_data();
+        
+        if (array_key_exists('path_valid', $response_resolve_data)) {
+            $path_valid = $response_resolve_data['path_valid'];
+            $page = volvo_global_get_page_by_path(trim($path_valid, '/'), ['page']);
+            
+            if (!$page) {
+                $path_valid_parts = explode('/', trim($path_valid, '/'));
+
+                if (volvo_global_get_page_by_path(end($path_valid_parts), ['page', 'campaign', 'model'])) {
+                    $response['page_valid'] = $response_resolve_data;
+                }
+            }
+
+            if ($page) {
+                $response['page_valid'] = $response_resolve_data;
+                
+            }
+        }
+    }
+
     // Add dealer info (partially auth-protected)
     $response['dealer'] = volvo_global_get_dealer_info($authenticated);
     
@@ -1109,6 +1375,8 @@ function volvo_global_get_page($request) {
     $response['social_media'] = volvo_global_get_footer_social_madia();
     
     restore_current_blog();
+
+    $response['cache_tags'] = \VGA\Classes\Cache_Tags_Collector::instance()->all();
 
     $time_end = microtime(true);
     if (array_key_exists('api-test', $_GET) && $_GET['api-test']) {
@@ -1204,6 +1472,8 @@ function volvo_global_get_model_index(array $path, int $blog_id): array
         return $response;
     }
     
+    \VGA\Classes\Cache_Tags_Collector::instance()->add("site:1:page:{$page->ID}");
+
     $response['id']     = $page->ID;
     $response['title']  = get_the_title($page->ID);
     $response['data']   = volvo_global_get_models($blog_id);
@@ -1241,6 +1511,8 @@ function volvo_global_get_model_page_item(array $path, int $blog_id): array
         $response['id']     = $page->ID;
         $response['title']  = get_the_title($page->ID);
         $response['model']  = volvo_global_get_model_data($page, $blog_id);
+
+        \VGA\Classes\Cache_Tags_Collector::instance()->add("site:1:page:{$page->ID}");
     }
     restore_current_blog();
 
@@ -1264,6 +1536,8 @@ function volvo_global_get_blog_index(array $path, int $blog_id): ?array
         $response['title']      = get_the_title($page->ID);
         $response['post_type']  = $page->post_type;
         $response['content']    = volvo_global_prepare_content_block($page->post_content, $page->ID, $blog_id);
+
+        \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:page:{$page->ID}");
     } else {
         $response = null;
     }
@@ -1413,6 +1687,8 @@ function volvo_global_get_test_drive_model(string $slug, int $blog_id): array
                 break;
             }
 
+            \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id_current}:page:{$version->ID}");
+
             $gallery = get_field('gallery', $version->ID);
 
             if ($gallery) {
@@ -1437,6 +1713,8 @@ function volvo_global_get_test_drive_model(string $slug, int $blog_id): array
     if (!empty($test_car)) {
         $title = $test_car[0]->post_title;
         $content = volvo_global_prepare_content_block($test_car[0]->post_content, $test_car[0]->ID, get_current_blog_id());
+
+        \VGA\Classes\Cache_Tags_Collector::instance()->add("site:1:page:{$test_car[0]->ID}");
     }
 
     $source = '';
@@ -1447,10 +1725,14 @@ function volvo_global_get_test_drive_model(string $slug, int $blog_id): array
         }
     }
 
+    restore_current_blog();
+
     // Get dealer options from current blog
     $partnerName = get_field('name', 'options-dealer');
     $thanksCode = get_field('code_test_drive', 'options-dealer');
     $thanksCode = str_replace('||time||', time(), $thanksCode);
+
+    \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:page:options-dealer");
 
     // Showrooms
     $showrooms = false;
@@ -1460,6 +1742,8 @@ function volvo_global_get_test_drive_model(string $slug, int $blog_id): array
         $showroomsIds = array_unique($showroomsBlog['showroomsAndSerices']);
         foreach ($showroomsIds as $id) {
             $showrooms[$id] = get_field('name', $id);
+
+            \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:page:{$id}");
         }
     }
 
@@ -1514,6 +1798,8 @@ function volvo_global_get_menus(): array
             $menus['footer'] = array_map('volvo_global_format_menu_item', $menu_items);
         }
     }
+
+    \VGA\Classes\Cache_Tags_Collector::instance()->add(volvo_global_build_cache_tags('menus', $locations));
     
     return $menus;
 }
@@ -1545,6 +1831,8 @@ function volvo_global_format_menu_item($item): array
  */
 function volvo_global_get_footer_social_madia(): array
 {
+    $blog_id = get_current_blog_id();
+    \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:page:options-dealer");
 
     $socialMedia = get_field( 'social-media', 'options-dealer' );
     
@@ -1591,10 +1879,10 @@ function volvo_global_get_contact_thank_you_image(): array|null
  * Blog page|post
  * 
  * @param string $path
- * @param string $type
+ * @param string|array $type
  * @return ?\WP_Post
  */
-function volvo_global_get_page_by_path(string $path, $type = 'page'): ?\WP_Post
+function volvo_global_get_page_by_path(string $path, string|array $type = 'page'): ?\WP_Post
 {
     $page = get_page_by_path(ltrim($path), OBJECT, $type);
 
@@ -1609,10 +1897,10 @@ function volvo_global_get_page_by_path(string $path, $type = 'page'): ?\WP_Post
  * Global page
  * 
  * @param string $path
- * @param string $type
+ * @param string|array $type
  * @return ?\WP_Post
  */
-function volvo_global_get_global_page_by_path(string $path, $type = 'page'): ?\WP_Post
+function volvo_global_get_global_page_by_path(string $path, string|array $type = 'page'): ?\WP_Post
 {
     global $is_volvo_ms_global_page;
 
@@ -1889,9 +2177,12 @@ function volvo_global_get_showrooms_employees(array $showroomsBlog): array
     $showroomsEmployees = [];
 
     $showrooms = array_unique($showroomsBlog['showroomsAndSerices']);
+    $blog_id = get_current_blog_id();
 
     if ( array_filter( $showrooms ) ) {
         foreach ( $showrooms as $showroom ) {
+            \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:page:{$showroom}");
+
             $slug = get_post_field( 'post_name', $showroom );
             $showroomsEmployees[ $slug ] = [
                 'name'       => get_field( 'name', $showroom ),
@@ -1963,9 +2254,11 @@ function volvo_global_get_showrooms_employees(array $showroomsBlog): array
                         'hours'            => $hours,               
                         'department_hours' => $departmentHoursForCategory, 
                     ];
-            
+
+                    \VGA\Classes\Cache_Tags_Collector::instance()->add("site:1:taxonomy:{$category->term_id}");
                     foreach ( $showroomEmployees->posts as $employee ) {
                         $employeeId = $employee->ID;
+                        \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:page:{$employeeId}");
                         $currentCategory['employees'][] = [
                             'name'     => get_field('name', $employeeId) . ' ' . get_field('surname', $employeeId),
                             'position' => get_field('position', $employeeId),
@@ -2039,6 +2332,7 @@ function volvo_global_get_models(int $blog_id): array|null
 {
     //$cache = new \VGA\Classes\Cache();
     //$cache->get('modele-rest'.$blog_id);
+
     $data = null;
 
     if (!$data) {
@@ -2058,6 +2352,8 @@ function volvo_global_get_models(int $blog_id): array|null
 		$categoryActiveDesktop  = get_field( 'show-desktop', 'options-models' );
 		
 		foreach ( $categories as $category ) {
+            \VGA\Classes\Cache_Tags_Collector::instance()->add("site:1:taxonomy:{$category->term_id}");
+
 			$item = array(
 				'heading'         => $category->name,
 				'subheading'      => get_field( 'description', 'model_category_' . $category->term_id ),
@@ -2110,6 +2406,8 @@ function volvo_global_get_models(int $blog_id): array|null
 							'imageDesktop' => $imagesDesktop,
 							'url'          => volvo_global_build_link(['url' => get_the_permalink( $modelId )])['url'],
 						);
+
+                        \VGA\Classes\Cache_Tags_Collector::instance()->add("site:1:page:{$modelId}");
 					}
 				}
 				
@@ -2169,6 +2467,7 @@ function volvo_global_get_model_price_status(int $modelId): bool
                 $variation = $p;
                 $variation = $variations->posts[0];
 
+                \VGA\Classes\Cache_Tags_Collector::instance()->add("site:1:page:{$variation->ID}");
                 $price_status = get_field( 'hide_price', $variation->ID );
 
                 if ( $price_status ) {
@@ -2194,6 +2493,11 @@ function volvo_global_get_model_price(int $model_id, bool $custom_price = false)
 {
     $price = null;
 
+    if ($custom_price) {
+        $price = get_field('menu_price', $model_id);
+        return $price;
+    }
+
     $variations = new \WP_Query(
         array(
             'post_type'      => 'model',
@@ -2205,11 +2509,6 @@ function volvo_global_get_model_price(int $model_id, bool $custom_price = false)
             'order'          => 'ASC',
         )
     );
-
-    if ($custom_price) {
-        $price = get_field('menu_price', $model_id);
-        return $price;
-    }
     
     if ( array_filter( $variations->posts ) ) {
         $variation = $variations->posts[0];
@@ -2219,6 +2518,8 @@ function volvo_global_get_model_price(int $model_id, bool $custom_price = false)
         if ( $variationPrice ) {
             $price = $variationPrice;
         }
+
+        \VGA\Classes\Cache_Tags_Collector::instance()->add("site:1:page:{$variation->ID}");
     }
 
     return $price;
@@ -2234,6 +2535,8 @@ function volvo_global_get_model_price(int $model_id, bool $custom_price = false)
 function volvo_global_get_model_data($post, $blog_id): array|null
 {
     switch_to_blog( 1 );
+
+    \VGA\Classes\Cache_Tags_Collector::instance()->add("site:1:page:{$post->ID}");
 
     $modelShortName = get_field( 'short-name', $post->ID );
     $model = null;
@@ -2255,9 +2558,11 @@ function volvo_global_get_model_data($post, $blog_id): array|null
 			)
 		);
 
+        \VGA\Classes\Cache_Tags_Collector::instance()->add("site:1:page:options-global");
 		$featuredCarsOptions = get_field('featured-cars', 'options-global');
 		
 		foreach ( $versions->posts as $version ) {
+            \VGA\Classes\Cache_Tags_Collector::instance()->add("site:1:page:{$version->ID}");
 
 			$colors = [];
 			$gallery = get_field( 'gallery', $version->ID );
@@ -2701,6 +3006,7 @@ function volvo_global_set_paged(array $page_parts = []): void
  */
 function volvo_global_get_service_page_index(int $blog_id): array
 {
+
     $dealersData = volvo_global_get_service_dealers_data($blog_id);
 
     $options = volvo_global_get_basic_options( 0 );
@@ -2725,7 +3031,7 @@ function volvo_global_get_service_page_index(int $blog_id): array
         'towColumnsList'    => volvo_global_get_service_two_columns_list(),
         'formService'       => volvo_global_get_service_form( $blog_id, 'vinomat' ),
         'accordionSection'  => volvo_global_get_service_accordion_section($blog_id),
-        'contactSection'    => volvo_global_get_service_get_contact_section(),
+        'contactSection'    => volvo_global_get_service_get_contact_section($blog_id),
     );
 }
 
@@ -3174,6 +3480,7 @@ function volvo_global_get_service_two_columns_list(): array
 {
     switch_to_blog( 1 );
     $advantagesListOptions = get_field( 'advantages-list', 'options-service' );
+    \VGA\Classes\Cache_Tags_Collector::instance()->add("site:1:page:options-service");
     restore_current_blog();
 
     if ( is_array( $advantagesListOptions['list1'] ) ) {
@@ -3223,9 +3530,13 @@ function volvo_global_get_service_form( int $blog_id, ?string $type = null ): ar
         }
     }
 
+    \VGA\Classes\Cache_Tags_Collector::instance()->add("site:1:page:options-global");
+    
     restore_current_blog();
 
     switch_to_blog( $blog_id );
+
+    \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:page:options-service");
 
     $thanksRequest = get_field('service_additional_section', 'options-service');
     $thanksData = $thanksRequest['field_thankyou_code'];
@@ -3255,6 +3566,8 @@ function volvo_global_get_service_form( int $blog_id, ?string $type = null ): ar
         $showrooms    = array();
         foreach ( $showroomsBlog['services'] as $id ) {
             $showrooms[ $id ] = get_field( 'name', $id );
+
+            \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:page:{$id}");
         }
         $formService['showrooms'] = $showrooms;
     }
@@ -3459,8 +3772,12 @@ function volvo_global_get_service_accordion_section( int $blog_id ): array
     $accordionSectionOptions = get_field( 'services-section', 'options-service' );
     $multisiteUrl = get_home_url();
 
+    \VGA\Classes\Cache_Tags_Collector::instance()->add("site:1:page:options-service");
+
     restore_current_blog();
     
+    \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:page:options-service");
+
     $localAccordionSectionOptions = get_field( 'services-section', 'options-service' );
     
     if ( is_array( $accordionSectionOptions['services'] ) ) {
@@ -3489,16 +3806,21 @@ function volvo_global_get_service_accordion_section( int $blog_id ): array
 /**
  * Service contact section
  * 
+ * @param int $blog_id
  * @return array
  */
-function volvo_global_get_service_get_contact_section(): array
+function volvo_global_get_service_get_contact_section(int $blog_id): array
 {
     switch_to_blog( 1 );
 
     $contactSectionOptions = get_field( 'contact-section', 'options-service' );
 
+    \VGA\Classes\Cache_Tags_Collector::instance()->add("site:1:page:options-service");
+
     restore_current_blog();
     
+    \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:page:options-service");
+
     $localContactSectionOptions = get_field( 'contact-section', 'options-service' );
     $contacs                    = array();
 
@@ -3528,6 +3850,9 @@ function volvo_global_get_service_get_contact_section(): array
 function volvo_global_get_campaing_page(\WP_Post $post, int $blog_id): array
 {
     global $is_volvo_ms_global_page;
+
+    $cache_tags_site = ($is_volvo_ms_global_page) ? 1 : $blog_id;
+    \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$cache_tags_site}:page:{$post->ID}");
 
     $switch = 1;
     switch_to_blog( 1 );
@@ -3570,9 +3895,13 @@ function volvo_global_get_campaing_page(\WP_Post $post, int $blog_id): array
 
     if (!empty($check_campaign->posts)) {
         $post_last = end( $check_campaign->posts );
+
         //foreach ( $check_campaign->posts as $local_camp ) {
             $content = volvo_global_prepare_content_block( $post_last->post_content, $post_last->ID, $blog_id );
         //}
+        foreach ( $check_campaign->posts as $local_camp ) {
+            \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:page:{$local_camp->ID}");
+        }
     }
 
     $campaignOverride = new \WP_Query(
@@ -3592,6 +3921,8 @@ function volvo_global_get_campaing_page(\WP_Post $post, int $blog_id): array
     $additionalContent = [];
     foreach ( $campaignOverride->posts as $override ) {
         $additionalContent[] = volvo_global_prepare_content_block( $override->post_content, $override->ID, $blog_id );
+
+        \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:page:{$override->ID}");
     }
     $additionalContent = array_filter($additionalContent);
 
