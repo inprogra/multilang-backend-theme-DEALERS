@@ -79,7 +79,7 @@ function my_stop_hook_logging() {
     remove_action('all', 'my_log_current_hook_methods');
 }
 
-if ($_GET['api-test-log']) {
+if (array_key_exists('api-test-log', $_GET) && $_GET['api-test-log']) {
 
     //add_action('setup_theme', 'my_start_hook_logging', PHP_INT_MAX);
     //add_action('after_setup_theme', 'my_stop_hook_logging', PHP_INT_MIN);

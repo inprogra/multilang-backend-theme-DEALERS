@@ -503,8 +503,9 @@ class CarDictionary
 		$mSalon = ['PL041','PL050'];
 
         $blog_ids = [];
-        $blogs = wp_get_sites();
+        $blogs = get_sites();
         foreach ($blogs as $b) {
+			$b = $b->to_array();
 			$dealerId = null;
 			$showrooms = [];
 			$multisalon = false;
@@ -1460,9 +1461,10 @@ class CarDictionary
 		$csv = new \ParseCsv\Csv();
 		$csv->auto($file_path);
 		$leasing_data = $this->upload_path;
-		$sites        = wp_get_sites();
+		$sites        = get_sites();
 		$blog_ids     = array();
 		foreach ($sites as $site) {
+			$site = $site->to_array();
 			array_push($blog_ids, $site['blog_id']);
 		}
 

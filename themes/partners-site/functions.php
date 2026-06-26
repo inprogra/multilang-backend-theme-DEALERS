@@ -277,8 +277,9 @@ function validateQuery($request)
     $url = 'https://' . $_SERVER['HTTP_HOST'] . '' . $_SERVER['REQUEST_URI'];
     if ($request == 'api/generateSearch') {
         $blog_ids = [];
-        $blogs = wp_get_sites();
+        $blogs = get_sites();
         foreach ($blogs as $b) {
+            $b = $b->to_array();
             array_push($blog_ids, $b['blog_id']);
         }
 
@@ -464,8 +465,9 @@ add_action('parse_request', function ($query) {
         }
 
         $blog_ids = [];
-        $blogs = wp_get_sites();
+        $blogs = get_sites();
         foreach ($blogs as $b) {
+            $b = $b->to_array();
             array_push($blog_ids, $b['blog_id']);
         }
         $urls = [];
@@ -564,8 +566,9 @@ add_action('parse_request', function ($query) {
     }
     if ($query->request == 'api/modifyPages' && is_admin()) {
         $blog_ids = [];
-        $blogs = wp_get_sites();
+        $blogs = get_sites();
         foreach ($blogs as $b) {
+            $b = $b->to_array();
             array_push($blog_ids, $b['blog_id']);
         }
 
@@ -721,8 +724,9 @@ add_action('parse_request', function ($query) {
     if ($query->request == 'api/checkConn') {
         $importTool = new \Classes\CarDictionary(new \GuzzleHttp\Client());
         $blog_ids = [];
-        $blogs = wp_get_sites();
+        $blogs = get_sites();
         foreach ($blogs as $b) {
+            $b = $b->to_array();
             array_push($blog_ids, $b['blog_id']);
         }
         $eurocodes = [];
@@ -792,9 +796,10 @@ add_action('parse_request', function ($query) {
     }
     if ($query->request === 'api/disable_finance') {
         $importTool = new \Classes\CarDictionary(new \GuzzleHttp\Client());
-        $blogs = wp_get_sites();
+        $blogs = get_sites();
         $x = 0;
         foreach ($blogs as $b) {
+            $b = $b->to_array();
             $bid = $b['blog_id'];
             switch_to_blog($bid);
 
@@ -830,8 +835,9 @@ add_action('parse_request', function ($query) {
     }
     if ($query->request === 'api/add_finance_settings') {
         $importTool = new \Classes\CarDictionary(new \GuzzleHttp\Client());
-        $blogs = wp_get_sites();
+        $blogs = get_sites();
         foreach ($blogs as $b) {
+            $b = $b->to_array();
             $bid = $b['blog_id'];
             switch_to_blog($bid);
 
@@ -905,7 +911,7 @@ add_action('parse_request', function ($query) {
         }
         $x = 0;
         if (!empty($config)) {
-            $blogs = wp_get_sites();
+            $blogs = get_sites();
             $leasing_products = $importTool->getLeasingProducts(true);
             $models = array_values($importTool->getModels());
            
@@ -919,6 +925,7 @@ add_action('parse_request', function ($query) {
                 $totalCars = array_diff($models, $cars);
                
                 foreach ($blogs as $b) {
+                    $b = $b->to_array();
                     $bid = $b['blog_id'];
                     switch_to_blog($bid);
 
@@ -988,9 +995,10 @@ add_action('parse_request', function ($query) {
     }
     if ($query->request == 'api/clearLeads') {
         $blog_ids = [];
-        $blogs = wp_get_sites();
+        $blogs = get_sites();
 
         foreach ($blogs as $b) {
+            $b = $b->to_array();
             array_push($blog_ids, $b['blog_id']);
         }
 
@@ -1027,8 +1035,9 @@ add_action('parse_request', function ($query) {
     if ($query->request === 'api/generateCache') {
         $importTool = new \Classes\CarDictionary(new \GuzzleHttp\Client());
         $blog_ids = [];
-        $blogs = wp_get_sites();
+        $blogs = get_sites();
         foreach ($blogs as $b) {
+            $b = $b->to_array();
             array_push($blog_ids, $b['blog_id']);
         }
 

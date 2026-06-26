@@ -1367,12 +1367,12 @@ function volvo_global_get_page($request) {
     $response['dealer'] = volvo_global_get_dealer_info($authenticated);
     
     // Add menus
-    $response['menus'] = volvo_global_get_menus();
+    // $response['menus'] = volvo_global_get_menus(); -> REST API /menus
 
     // Addresses
 
     // Add social media
-    $response['social_media'] = volvo_global_get_footer_social_madia();
+    // $response['social_media'] = volvo_global_get_footer_social_madia();
     
     restore_current_blog();
 
@@ -3651,9 +3651,10 @@ function volvo_global_get_service_blog_ids(int $blog_id, bool $domain_only = fal
     $exclude_blogs = [3,38];
 
     $blog_ids = [];
-    $blogs = wp_get_sites();
+    $blogs = get_sites();
 
     foreach ($blogs as $b) {
+        $b = $b->to_array();
         if (in_array($b['blog_id'], $exclude_blogs)) {
             continue;
         }

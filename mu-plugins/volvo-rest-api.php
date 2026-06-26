@@ -331,13 +331,14 @@ function volvo_get_dealer($request) {
     }
     $requested_domain = strtolower($requested_domain);
 
-    $blogs = wp_get_sites();
+    $blogs = get_sites();
     $exclude_blogs = [3, 38];
     $mSalon = ['PL041', 'PL050'];
 
     $post_ids = [];
 
     foreach ($blogs as $blog) {
+        $blog = $blog->to_array();
         if (in_array($blog['blog_id'], $exclude_blogs)) {
             continue;
         }
@@ -468,10 +469,11 @@ function volvo_switch_to_blog_by_domain($domain = null) {
     }
     $domain = strtolower($domain);
 
-    $blogs = wp_get_sites();
+    $blogs = get_sites();
     $exclude_blogs = [3, 38];
 
     foreach ($blogs as $blog) {
+        $blog = $blog->to_array();
         if (in_array($blog['blog_id'], $exclude_blogs)) {
             continue;
         }
@@ -800,7 +802,7 @@ function volvo_global_build_cache_tags(mixed $post_id, array|null $data = []): a
             //"site:{$site_id}:pages"
         ];
         foreach($data['showrooms']['items'] as $item) {
-            $cache_tags[] = "site:{$site_id}:pages:{$item['id']}";
+            $cache_tags[] = "site:{$site_id}:page:{$item['id']}";
         }
     } elseif ($post_id === 'getDealer') {
         $cache_tags = [
@@ -811,7 +813,7 @@ function volvo_global_build_cache_tags(mixed $post_id, array|null $data = []): a
         $cache_tags = array_merge($cache_tags, volvo_global_build_cache_tags('options-dealer'));
         
         foreach($data['showroom_posts'] as $item) {
-            $cache_tags[] = "site:{$site_id}:pages:{$item->ID}";
+            $cache_tags[] = "site:{$site_id}:page:{$item->ID}";
         }
     } elseif ($post_id === 'options-homepage') {
         $cache_tags[] = "site:{$site_id}:page:{$post_id}";
