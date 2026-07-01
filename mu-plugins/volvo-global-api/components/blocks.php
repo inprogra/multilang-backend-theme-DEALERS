@@ -399,7 +399,7 @@ function volvo_global_get_block_acf_blog_posts_component (array $block, int $blo
                 'heading'       => get_the_title($post->ID),
                 'image'         => $imagesDesktop,
                 'blog_desc'     => get_field('blog_desc', $post->ID),
-                'link'          => ['url' => get_permalink($post->ID)],
+                'link'          => ['url' => volvo_global_clear_url(get_permalink($post->ID))],
                 'date'          => get_the_date('d.m.Y', $post->ID),
                 //'description'   => get_the_excerpt(),
                 //'ctaText'       => strtoupper(__('Read', 'partners-site_v2'))
@@ -1219,10 +1219,8 @@ function volvo_global_get_block_acf_two_image (array $block, int $blog_id): arra
     $img_id_second = $block['data']['secondPicture'];
 
     $item_url_first = wp_get_attachment_url($img_id_first);
-    $item_url_first = volvo_global_clear_url($item_url_first, $blog_id);
 
     $item_url_second = wp_get_attachment_url($img_id_second);
-    $item_url_second = volvo_global_clear_url($item_url_second, $blog_id);
 
     $image_first = [
         volvo_global_prepare_image_for_render($blog_id, $img_id_first, 1200, 800, $item_url_first, 'crop', 300, 200, false),

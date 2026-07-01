@@ -416,7 +416,7 @@ function volvo_global_prepare_image($image, $sizes = array('full', 'large', 'med
         // If it's a URL string
         if (is_string($image) && filter_var($image, FILTER_VALIDATE_URL)) {
             return array(
-                'url'    => $image,
+                'url'    => volvo_global_clear_url($image),
                 'alt'    => '',
                 'width'  => null,
                 'height' => null,
@@ -430,7 +430,7 @@ function volvo_global_prepare_image($image, $sizes = array('full', 'large', 'med
     $alt = get_post_meta($attachment_id, '_wp_attachment_image_alt', true);
 
     $result = array(
-        'url'    => wp_get_attachment_url($attachment_id),
+        'url'    => volvo_global_clear_url(wp_get_attachment_url($attachment_id)),
         'alt'    => $alt,
         'width'  => null,
         'height' => null,
@@ -449,7 +449,7 @@ function volvo_global_prepare_image($image, $sizes = array('full', 'large', 'med
         $size_data = wp_get_attachment_image_src($attachment_id, $size);
         if ($size_data) {
             $result['sizes'][$size] = array(
-                'url'    => $size_data[0],
+                'url'    => volvo_global_clear_url($size_data[0]),
                 'width'  => $size_data[1],
                 'height' => $size_data[2],
             );
@@ -498,7 +498,7 @@ function volvo_global_prepare_image_for_render(
         'height'    => $height,
         'width'     => $width,
         'crop'      => $crop,
-        'image'     => $img_url,
+        'image'     => volvo_global_clear_url($img_url),
         'twidth'    => $twidth,
         'theight'   => $theight,
         'tcrop'     => $tcrop,
@@ -532,6 +532,8 @@ function volvo_global_build_link($link) {
         return null;
     }
     
+    $result['url'] = volvo_global_clear_url($result['url']);
+
     return $result;
 }
 
@@ -556,7 +558,7 @@ function volvo_global_format_slide($slide) {
     
     if (!$formatted_link || !array_filter($formatted_link)) {
         $formatted_link = array(
-            'url'   => get_the_permalink($slide_id),
+            'url'   => volvo_global_clear_url(get_the_permalink($slide_id)),
             'title' => 'Dowiedz się więcej',
         );
     }
@@ -1082,10 +1084,10 @@ function volvo_global_get_page($request) {
     // Build response based on path
     $response = array(
         'path'   => $path,
-        'domain' => $domain,
+        'domain' => str_replace('-backend', '', $domain),
         'site'   => array(
             'name' => get_bloginfo('name'),
-            'url'  => get_bloginfo('url'),
+            'url'  => str_replace('-backend', '', get_bloginfo('url')),
         ),
     );
 
@@ -1404,6 +1406,8 @@ function volvo_global_get_page($request) {
             $response['time_app'] = $time_end - APP_START_TIME;
         }
     }
+
+    //$response = volvo_global_replace_domain($request, $response);
 
     return new WP_REST_Response($response, 200);
 }
@@ -2796,7 +2800,7 @@ function volvo_global_get_model_data_gallery(array $gallery_ids, int $blog_id): 
 
     foreach ( $gallery_ids as $img_id ) {
         
-        $img_url = wp_get_attachment_url($img_id);
+        $img_url = volvo_global_clear_url(wp_get_attachment_url($img_id));
 
         $images = [
             volvo_global_prepare_image_for_render($blog_id, $img_id, 1920, 1080, $img_url, false),
@@ -2828,11 +2832,35 @@ function volvo_global_clear_url(string $url, ?int $blog_id = null): string
 {
     $domain = $blog_id ? get_blogaddress_by_id($blog_id) : '';
 
+    if (empty($domain)) {
+        $$domain = $_SERVER['HTTP_X_SOURCE_ORIGIN'] ?? '';
+        if (empty($domain)) {
+            $domain = $_GET['domain-frontend'] ?? '';
+        }
+        
+        if (empty($domain)) {
+            $domain = '';
+        }
+    }
+
+    $domain = trim(trim($domain), '/');
+
+    switch_to_blog(1);
+    $main_domain = get_bloginfo('url');
+    restore_current_blog();
+
+    $current_domain = get_bloginfo('url');
+
     $url = str_replace(
         [
-            'https://main.volvocars-partner.pl/',
-            'https://main-backend.volvotest.pl/',
-        ], $domain, $url);
+            'https://main.volvocars-partner.pl',
+            'https://main-backend.volvotest.pl',
+            $main_domain,
+            $current_domain
+        ],
+        $domain,
+        $url
+    );
 
     return $url;
 }
@@ -3381,7 +3409,7 @@ function volvo_global_get_service_hero_slider(int $blog_id): array
         $title   = get_field( 'title', $slide->ID );
         $img_id  = get_field( 'image', $slide->ID );
 
-        $img_url = wp_get_attachment_url($img_id);
+        $img_url = volvo_global_clear_url(wp_get_attachment_url($img_id));
 
         $images = [
             volvo_global_prepare_image_for_render($blog_id, $img_id, 3840, 1614, $img_url, true),
@@ -3818,7 +3846,7 @@ function volvo_global_get_service_accordion_section( int $blog_id ): array
     }
 
     foreach ( $accordion as &$accordionItem ) {
-        $accordionItem['description'] = str_replace( $multisiteUrl, get_home_url(), $accordionItem['description'] );
+        $accordionItem['description'] = volvo_global_clear_url($accordionItem['description']);
     }
     unset( $accordionItem );
 
@@ -4116,4 +4144,47 @@ function volvo_global_get_page_acf_fields_data(int $page_id, int $blog_id): arra
     }
 
     return $acf;
+}
+
+/**
+ * Replace backend domain
+ *
+ * @param WP_REST_Request $request
+ * @param array $data
+ * @return array
+ */
+function volvo_global_replace_domain(WP_REST_Request $request, array $data): array
+{
+    $app_frontend_domain = $request->get_header('x-source-domain');
+    if (empty($app_frontend_domain)) {
+        $app_frontend_domain = $request->get_param('domain-frontend');
+    }
+    
+    if (empty($app_frontend_domain)) {
+        $app_frontend_domain = '';
+    }
+
+    $app_frontend_domain = trim($app_frontend_domain, '/');
+
+    switch_to_blog(1);
+    $main_domain = get_bloginfo('url');
+    restore_current_blog();
+
+    $domains = [
+        'domain_backend' => [
+            $main_domain,
+            'https://main.volvocars-partner.pl',
+            get_bloginfo('url')
+        ],
+        'domain_frontend' => $app_frontend_domain
+    ];
+    
+    array_walk_recursive($data, function (&$value, $key) use ($domains) {
+        if (is_string($value)) {
+            // $value passed by reference
+            $value = str_replace($domains['domain_backend'], $domains['domain_frontend'], $value);
+        }
+    });
+
+    return $data;
 }

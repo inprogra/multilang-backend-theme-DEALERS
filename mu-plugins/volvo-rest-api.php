@@ -75,9 +75,10 @@ add_action('rest_api_init', function () {
 /**
  * Get dealer information from ACF options
  *
+ * @param WP_REST_Request $request
  * @return WP_REST_Response
  */
-function volvo_get_dealer_info() {
+function volvo_get_dealer_info(WP_REST_Request $request) {
     $social = get_field( 'social-media', 'options-dealer' );
     foreach($social as $key=>$value) {
         $svg = '';
@@ -123,10 +124,12 @@ function volvo_get_dealer_info() {
 
     // If logo is an attachment ID, get the URL
     if (is_numeric($dealer_info['dealer_logo'])) {
-        $dealer_info['dealer_logo'] = wp_get_attachment_url($dealer_info['dealer_logo']);
+        $dealer_info['dealer_logo'] = volvo_rest_clear_url(wp_get_attachment_url($dealer_info['dealer_logo']));
     }
 
     $dealer_info['cache_tags'] = volvo_global_build_cache_tags('options-dealer');
+
+    //$dealer_info = volvo_rest_replace_domain($request, $dealer_info);
 
     return new WP_REST_Response($dealer_info, 200);
 }
@@ -134,9 +137,10 @@ function volvo_get_dealer_info() {
 /**
  * Get menu information
  *
+ * @param WP_REST_Request $request
  * @return WP_REST_Response
  */
-function volvo_get_menus() {
+function volvo_get_menus(WP_REST_Request $request) {
     $menus = array();
 
     // Get all registered menu locations
@@ -174,6 +178,8 @@ function volvo_get_menus() {
 
     $menus['cache_tags'] = volvo_global_build_cache_tags('menus', $locations);
 
+    //$menus = volvo_rest_replace_domain($request, $menus);
+
     return new WP_REST_Response($menus, 200);
 }
 
@@ -194,7 +200,7 @@ function volvo_format_menu_items($menu_items) {
         $formatted_items[] = array(
             'id'          => $item->ID,
             'title'       => $item->title,
-            'url'         => $item->url,
+            'url'         => volvo_rest_clear_url($item->url),
             'target'      => $item->target,
             'parent_id'   => $item->menu_item_parent,
             'order'       => $item->menu_order,
@@ -236,11 +242,11 @@ function volvo_get_addresses() {
  *
  * @return WP_REST_Response
  */
-function volvo_get_site_info() {
-    $dealer_info = volvo_get_dealer_info()->get_data();
+function volvo_get_site_info(WP_REST_Request $request) {
+    $dealer_info = volvo_get_dealer_info($request)->get_data();
     $cache_tags = $dealer_info['cache_tags'];
     unset($dealer_info['cache_tags']);
-    $menus = volvo_get_menus()->get_data();
+    $menus = volvo_get_menus($request)->get_data();
     $cache_tags = array_merge($cache_tags, $menus['cache_tags']);
     unset($menus['cache_tags']);
     $addresses = volvo_get_addresses();
@@ -250,7 +256,7 @@ function volvo_get_site_info() {
         $menus,
         array(
             'site_name' => get_bloginfo('name'),
-            'site_url'  => get_bloginfo('url'),
+            'site_url'  => str_replace('-backend', '', get_bloginfo('url')),
             'addresses' => $addresses,
             'showrooms' => volvo_get_showrooms()
         )
@@ -258,6 +264,8 @@ function volvo_get_site_info() {
     );
 
     $site_info['cache_tags'] = array_values(array_unique(array_merge($cache_tags, volvo_global_build_cache_tags('site-info', $site_info))));
+    
+    //$site_info = volvo_rest_replace_domain($request, $site_info);
 
     return new WP_REST_Response($site_info, 200);
 }
@@ -324,7 +332,10 @@ function volvo_get_showrooms() {
     ];
 }
 
-function volvo_get_dealer($request) {
+/**
+ * @param WP_REST_Request $request
+ */
+function volvo_get_dealer(WP_REST_Request $request) {
     $requested_domain = $request->get_param('domain');
     if (empty($requested_domain)) {
         $requested_domain = $_SERVER['HTTP_HOST'];
@@ -403,6 +414,8 @@ function volvo_get_dealer($request) {
         );
 
         restore_current_blog();
+
+        //$data = volvo_rest_replace_domain($request, $data);
 
         return new WP_REST_Response($data, 200);
     }
@@ -834,4 +847,88 @@ function volvo_global_build_cache_tags(mixed $post_id, array|null $data = []): a
     }
 
     return array_values(array_unique($cache_tags));
+}
+
+/**
+ * Clear url
+ * 
+ * @param string $url
+ * @param ?int $blog_id
+ * @return string
+ */
+function volvo_rest_clear_url(string $url, ?int $blog_id = null): string
+{
+    $domain = $blog_id ? get_blogaddress_by_id($blog_id) : '';
+
+    if (empty($domain)) {
+        $domain = $_SERVER['HTTP_X_SOURCE_ORIGIN'] ?? '';
+        if (empty($domain)) {
+            $domain = array_key_exists('domain-frontend', $_GET) ? $_GET['domain-frontend'] : '';
+        }
+        
+        if (empty($domain)) {
+            $domain = '';
+        }
+    }
+
+    $domain = trim(trim($domain), '/');
+
+    switch_to_blog(1);
+    $main_domain = get_bloginfo('url');
+    restore_current_blog();
+    
+    $current_domain = get_bloginfo('url');
+
+    $url = str_replace(
+        [
+            'https://main.volvocars-partner.pl',
+            'https://main-backend.volvotest.pl',
+            $main_domain,
+            $current_domain
+        ], $domain, $url);
+
+    return $url;
+}
+
+/**
+ * Replace backend domain
+ *
+ * @param WP_REST_Request $request
+ * @param array $data
+ * @return array
+ */
+function volvo_rest_replace_domain(WP_REST_Request $request, array $data): array
+{
+    $app_frontend_domain = $request->get_header('x-source-domain');
+    if (empty($app_frontend_domain)) {
+        $app_frontend_domain = $request->get_param('domain-frontend');
+    }
+    
+    if (empty($app_frontend_domain)) {
+        $app_frontend_domain = '';
+    }
+
+    $app_frontend_domain = trim($app_frontend_domain, '/');
+
+    switch_to_blog(1);
+    $main_domain = get_bloginfo('url');
+    restore_current_blog();
+
+    $domains = [
+        'domain_backend' => [
+            $main_domain,
+            'https://main.volvocars-partner.pl',
+            get_bloginfo('url')
+        ],
+        'domain_frontend' => $app_frontend_domain
+    ];
+    
+    array_walk_recursive($data, function (&$value, $key) use ($domains) {
+        if (is_string($value)) {
+            // $value passed by reference
+            $value = str_replace($domains['domain_backend'], $domains['domain_frontend'], $value);
+        }
+    });
+
+    return $data;
 }
