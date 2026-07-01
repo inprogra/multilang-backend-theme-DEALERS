@@ -780,7 +780,7 @@ function volvo_global_build_cache_tags(mixed $post_id, array|null $data = []): a
         $cache_tags = [
             "site:{$site_id}",
             "site:{$site_id}:dealer-info",
-            "site:{$site_id}:page:{$post_id}",
+            "site:{$site_id}:option:{$post_id}",
             //"site:{$site_id}:pages",
         ];
     } elseif ($post_id === 'menus') {
@@ -816,7 +816,7 @@ function volvo_global_build_cache_tags(mixed $post_id, array|null $data = []): a
             $cache_tags[] = "site:{$site_id}:page:{$item->ID}";
         }
     } elseif ($post_id === 'options-homepage') {
-        $cache_tags[] = "site:{$site_id}:page:{$post_id}";
+        $cache_tags[] = "site:{$site_id}:option:{$post_id}";
 
         if (array_key_exists('slide_posts', $data)) {
             foreach($data['slide_posts'] as $item) {

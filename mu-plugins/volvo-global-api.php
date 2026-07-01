@@ -1112,6 +1112,20 @@ function volvo_global_get_page($request) {
         $response['offers']        = volvo_global_get_offers();
         $response['offerCard']     = volvo_global_get_offer_card();
 
+        if (empty($request->get_param('path'))) {
+            $request->set_param('path', '/');
+        }
+        $response_resolve = volvo_global_resolve_canonical_path($request);
+        $response_resolve_data = $response_resolve->get_data();
+        
+        $acf = [];
+        if (is_array($response_resolve_data)) {
+            $page_id = $response_resolve_data['id'];
+            $global = $response_resolve_data['global'];
+            $acf = volvo_global_get_page_acf_fields_data($page_id, ($global) ? 1 : get_current_blog_id());
+        }
+
+        $response['acf']           = $acf;
     // For contact pages, get page by path
     } elseif (in_array($path_parts[0], ['kontakt', 'contact'])) {
 
@@ -1138,9 +1152,10 @@ function volvo_global_get_page($request) {
             $response['formShowrooms']      = volvo_global_get_showrooms_form($showrooms);
             $response['thankyouImage']      = volvo_global_get_contact_thank_you_image();
             $response['thankYouCode']       = volvo_global_get_contact_thank_you();
+            $response['acf']                = volvo_global_get_page_acf_fields_data($page->ID, ($is_volvo_ms_global_page) ? 1 : get_current_blog_id());
 
-            \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:page:options-dealer");
-            \VGA\Classes\Cache_Tags_Collector::instance()->add("site:1:page:options-global");
+            \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:option:options-dealer");
+            \VGA\Classes\Cache_Tags_Collector::instance()->add("site:1:option:options-global");
             
             \VGA\Classes\Cache_Tags_Collector::instance()->add(volvo_global_build_cache_tags('contact', ['showrooms' => $showrooms]));
             
@@ -1187,7 +1202,8 @@ function volvo_global_get_page($request) {
                     'id'            => $post->ID,
                     'title'         => get_the_title($post->ID),
                     'post_type'     => $post->post_type,
-                    'content'       => volvo_global_prepare_content_block($post->post_content, $post->ID, $blog_id)
+                    'content'       => volvo_global_prepare_content_block($post->post_content, $post->ID, $blog_id),
+                    'acf'           => volvo_global_get_page_acf_fields_data($post->ID, get_current_blog_id()),
                 ];
 
                 \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:blog");
@@ -1207,6 +1223,8 @@ function volvo_global_get_page($request) {
                 switch_to_blog(1);
             }
             $response['title']  = get_the_title($post->ID);
+            $acf    = volvo_global_get_page_acf_fields_data($post->ID, get_current_blog_id());
+
             if ($is_volvo_ms_global_page) {
                 restore_current_blog();
             }
@@ -1216,6 +1234,7 @@ function volvo_global_get_page($request) {
             \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$cache_site_id}:page:{$post->ID}");
 
             $response = array_merge($response, volvo_global_get_service_page_index($blog_id));
+            $response['acf'] = $acf;
 
         } else {
             $response['page'] = null;
@@ -1245,7 +1264,7 @@ function volvo_global_get_page($request) {
             $response['page'] = [
                 'id'             => $post->ID,
                 'title'          => get_the_title($post->ID),
-                'acf'            => function_exists('get_fields') ? get_fields($post->ID) : array(),
+                'acf'            => volvo_global_get_page_acf_fields_data($post->ID, get_current_blog_id()),
             ];
             if ($is_volvo_ms_global_page) {
                 restore_current_blog();
@@ -1296,7 +1315,7 @@ function volvo_global_get_page($request) {
                 'post_type'      => $page->post_type,
                 'content'        => volvo_global_prepare_content_block($page->post_content, $page->ID, $blog_id),
                 'featured_image' => volvo_global_prepare_image(get_post_thumbnail_id($page->ID)),
-                'acf'            => function_exists('get_fields') ? get_fields($page->ID) : array(),
+                'acf'            => volvo_global_get_page_acf_fields_data($page->ID, get_current_blog_id()),
             );
             if ($is_volvo_ms_global_page) {
                 restore_current_blog();
@@ -1321,7 +1340,7 @@ function volvo_global_get_page($request) {
                 'post_type'      => $page->post_type,
                 'content'        => volvo_global_prepare_content_block($page->post_content, $page->ID, get_current_blog_id()),
                 'featured_image' => volvo_global_prepare_image(get_post_thumbnail_id($page->ID)),
-                'acf'            => function_exists('get_fields') ? get_fields($page->ID) : array(),
+                'acf'            => volvo_global_get_page_acf_fields_data($page->ID, get_current_blog_id()),
             );
             if ($is_volvo_ms_global_page) {
                 restore_current_blog();
@@ -1477,6 +1496,7 @@ function volvo_global_get_model_index(array $path, int $blog_id): array
     $response['id']     = $page->ID;
     $response['title']  = get_the_title($page->ID);
     $response['data']   = volvo_global_get_models($blog_id);
+    $response['acf']    = volvo_global_get_page_acf_fields_data($page->ID, get_current_blog_id());
 
     restore_current_blog();
 
@@ -1511,6 +1531,7 @@ function volvo_global_get_model_page_item(array $path, int $blog_id): array
         $response['id']     = $page->ID;
         $response['title']  = get_the_title($page->ID);
         $response['model']  = volvo_global_get_model_data($page, $blog_id);
+        $response['acf']    = volvo_global_get_page_acf_fields_data($page->ID, get_current_blog_id());
 
         \VGA\Classes\Cache_Tags_Collector::instance()->add("site:1:page:{$page->ID}");
     }
@@ -1536,6 +1557,7 @@ function volvo_global_get_blog_index(array $path, int $blog_id): ?array
         $response['title']      = get_the_title($page->ID);
         $response['post_type']  = $page->post_type;
         $response['content']    = volvo_global_prepare_content_block($page->post_content, $page->ID, $blog_id);
+        $response['acf']        = volvo_global_get_page_acf_fields_data($page->ID, get_current_blog_id());
 
         \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:page:{$page->ID}");
     } else {
@@ -1725,6 +1747,8 @@ function volvo_global_get_test_drive_model(string $slug, int $blog_id): array
         }
     }
 
+    $acf = !empty($test_car) ? volvo_global_get_page_acf_fields_data($test_car[0]->ID, get_current_blog_id()) : [];
+
     restore_current_blog();
 
     // Get dealer options from current blog
@@ -1732,7 +1756,7 @@ function volvo_global_get_test_drive_model(string $slug, int $blog_id): array
     $thanksCode = get_field('code_test_drive', 'options-dealer');
     $thanksCode = str_replace('||time||', time(), $thanksCode);
 
-    \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:page:options-dealer");
+    \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:option:options-dealer");
 
     // Showrooms
     $showrooms = false;
@@ -1759,6 +1783,8 @@ function volvo_global_get_test_drive_model(string $slug, int $blog_id): array
     $response['partnerName'] = $partnerName;
     $response['thankyouImage'] = get_template_directory_uri() . '/assets/public/formThanksImage.png';
     $response['todayDate'] = $today->format('Y-m-d');
+
+    $response['acf'] = $acf;
 
     return $response;
 }
@@ -1832,7 +1858,7 @@ function volvo_global_format_menu_item($item): array
 function volvo_global_get_footer_social_madia(): array
 {
     $blog_id = get_current_blog_id();
-    \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:page:options-dealer");
+    \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:option:options-dealer");
 
     $socialMedia = get_field( 'social-media', 'options-dealer' );
     
@@ -2558,7 +2584,7 @@ function volvo_global_get_model_data($post, $blog_id): array|null
 			)
 		);
 
-        \VGA\Classes\Cache_Tags_Collector::instance()->add("site:1:page:options-global");
+        \VGA\Classes\Cache_Tags_Collector::instance()->add("site:1:option:options-global");
 		$featuredCarsOptions = get_field('featured-cars', 'options-global');
 		
 		foreach ( $versions->posts as $version ) {
@@ -3480,7 +3506,7 @@ function volvo_global_get_service_two_columns_list(): array
 {
     switch_to_blog( 1 );
     $advantagesListOptions = get_field( 'advantages-list', 'options-service' );
-    \VGA\Classes\Cache_Tags_Collector::instance()->add("site:1:page:options-service");
+    \VGA\Classes\Cache_Tags_Collector::instance()->add("site:1:option:options-service");
     restore_current_blog();
 
     if ( is_array( $advantagesListOptions['list1'] ) ) {
@@ -3530,13 +3556,13 @@ function volvo_global_get_service_form( int $blog_id, ?string $type = null ): ar
         }
     }
 
-    \VGA\Classes\Cache_Tags_Collector::instance()->add("site:1:page:options-global");
+    \VGA\Classes\Cache_Tags_Collector::instance()->add("site:1:option:options-global");
     
     restore_current_blog();
 
     switch_to_blog( $blog_id );
 
-    \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:page:options-service");
+    \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:option:options-service");
 
     $thanksRequest = get_field('service_additional_section', 'options-service');
     $thanksData = $thanksRequest['field_thankyou_code'];
@@ -3773,11 +3799,11 @@ function volvo_global_get_service_accordion_section( int $blog_id ): array
     $accordionSectionOptions = get_field( 'services-section', 'options-service' );
     $multisiteUrl = get_home_url();
 
-    \VGA\Classes\Cache_Tags_Collector::instance()->add("site:1:page:options-service");
+    \VGA\Classes\Cache_Tags_Collector::instance()->add("site:1:option:options-service");
 
     restore_current_blog();
     
-    \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:page:options-service");
+    \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:option:options-service");
 
     $localAccordionSectionOptions = get_field( 'services-section', 'options-service' );
     
@@ -3816,11 +3842,11 @@ function volvo_global_get_service_get_contact_section(int $blog_id): array
 
     $contactSectionOptions = get_field( 'contact-section', 'options-service' );
 
-    \VGA\Classes\Cache_Tags_Collector::instance()->add("site:1:page:options-service");
+    \VGA\Classes\Cache_Tags_Collector::instance()->add("site:1:option:options-service");
 
     restore_current_blog();
     
-    \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:page:options-service");
+    \VGA\Classes\Cache_Tags_Collector::instance()->add("site:{$blog_id}:option:options-service");
 
     $localContactSectionOptions = get_field( 'contact-section', 'options-service' );
     $contacs                    = array();
@@ -3936,14 +3962,14 @@ function volvo_global_get_campaing_page(\WP_Post $post, int $blog_id): array
 
     if ($is_volvo_ms_global_page) {
         switch_to_blog( 1 );
+    }
 
-        $post_id = $post->ID;
-        $post_title = get_the_title($post->ID);
+    $post_id = $post->ID;
+    $post_title = get_the_title($post->ID);
+    $acf = volvo_global_get_page_acf_fields_data($post->ID, get_current_blog_id());
 
+    if ($is_volvo_ms_global_page) {
         restore_current_blog();
-    } else {
-        $post_id = $post->ID;
-        $post_title = get_the_title($post->ID);
     }
     
     restore_current_blog();
@@ -3958,6 +3984,7 @@ function volvo_global_get_campaing_page(\WP_Post $post, int $blog_id): array
             'content'           => $content,
             'legalInfoContent'  => $legalInfoContent,
             'additionalContent' => $additionalContent,
+            'acf'               => $acf
         ]
     ];
 }
@@ -4043,4 +4070,50 @@ function volvo_global_get_search_data(string $search): array
     }
 
     return $results;
+}
+
+/**
+ * ACF fields for page
+ * 
+ * @param int $page_id
+ * @param int $blog_id
+ * @return array
+ */
+function volvo_global_get_page_acf_fields_data(int $page_id, int $blog_id): array
+{
+    $switch_blog = false;
+    if (get_current_blog_id() !== $blog_id) {
+        switch_to_blog( $blog_id );
+        $switch_blog = true;
+    }
+
+    $acf_all = function_exists('get_fields') ? get_fields($page_id) : array();
+
+    if ($switch_blog) {
+        restore_current_blog();
+    }
+
+    $acf = [];
+
+    $acf_fields = [
+        'source',
+        'destination',
+        'one_page',
+        'side_form',
+        'double_opt',
+        'disable_choose_cat',
+        'field_thankyou_code',
+        'field_thankyou_code_js',
+        'globalHtml'
+    ];
+
+    foreach ($acf_all as $key => $item) {
+        if (!in_array($key, $acf_fields)) {
+            continue;
+        }
+
+        $acf[$key] = trim($item);
+    }
+
+    return $acf;
 }
